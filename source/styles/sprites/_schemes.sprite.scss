@@ -1,0 +1,65 @@
+.schemesSprite {
+    width: 200px;
+    height: 200px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 800px 800px;
+    background-image: url('/public/images/schemes-sprite.png');
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url('/public/images/schemes-sprite@2x.png');
+    }
+    &.scheme1 {
+        background-position: -200px 0;
+        &.active {
+            background-position: 0 0;
+        }
+    }
+    &.scheme2 {
+        background-position: -600px 0;
+        &.active {
+            background-position: -400px 0;
+        }
+    }
+    &.scheme3 {
+        background-position: -200px -200px;
+        &.active {
+            background-position: 0 -200px;
+        }
+    }
+    &.scheme4 {
+        background-position: -600px -200px;
+        &.active {
+            background-position: -400px -200px;
+        }
+    }
+    &.scheme5 {
+        background-position: -200px -400px;
+        &.active {
+            background-position: 0 -400px;
+        }
+    }
+    &.scheme6 {
+        background-position: -600px -400px;
+        &.active {
+            background-position: -400px -400px;
+        }
+    }
+    &.scheme7 {
+        background-position: -200px -600px;
+        &.active {
+            background-position: 0 -600px;
+        }
+    }
+    &.scheme8 {
+        background-position: -600px -600px;
+        &.active {
+            background-position: -400px -600px;
+        }
+    }
+}
+.webp .schemesSprite {
+    background-image: url('/public/images/schemes-sprite.webp');
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url('/public/images/schemes-sprite@2x.webp');
+    }
+}

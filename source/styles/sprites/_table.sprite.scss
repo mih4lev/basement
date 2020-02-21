@@ -1,0 +1,53 @@
+.tableSprite {
+    width: 130px;
+    height: 130px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 390px 520px;
+    background-image: url('/public/images/table-sprite.jpg');
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url('/public/images/table-sprite@2x.jpg');
+    }
+    &.table1 {
+        background-position: 0 0;
+    }
+    &.table2 {
+        background-position: -130px 0;
+    }
+    &.table3 {
+        background-position: -260px 0;
+    }
+    &.table4 {
+        background-position: 0 -130px;
+    }
+    &.table5 {
+        background-position: -130px -130px;
+    }
+    &.table6 {
+        background-position: -260px -130px;
+    }
+    &.table7 {
+        background-position: 0 -260px;
+    }
+    &.table8 {
+        background-position: -130px -260px;
+    }
+    &.table9 {
+        background-position: -260px -260px;
+    }
+    &.table10 {
+        background-position: 0 -390px;
+    }
+    &.table11 {
+        background-position: -130px -390px;
+    }
+    &.table12 {
+        background-position: -260px -390px;
+    }
+}
+.webp .tableSprite {
+    background-image: url('/public/images/table-sprite.webp');
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url('/public/images/table-sprite@2x.webp');
+    }
+}

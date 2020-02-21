@@ -1,0 +1,229 @@
+// main categories
+
+.mainCategoriesSprite {
+    width: 209px;
+    height: 209px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 209px 627px;
+    background-image: url('/public/images/main_categories-sprite.jpg');
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url('/public/images/main_categories-sprite@2x.jpg');
+    }
+    &.spacesCategory {
+        background-position: 0 0;
+    }
+    &.featuresCategory {
+        background-position: 0 -209px;
+    }
+    &.engineeringCategory {
+        background-position: 0 -418px;
+    }
+}
+.webp .mainCategoriesSprite {
+    background-image: url('/public/images/main_categories-sprite.webp');
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url('/public/images/main_categories-sprite@2x.webp');
+    }
+}
+
+// spaces
+
+.spacesCategoriesSprite {
+    width: 130px;
+    height: 130px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 520px 650px;
+    background-image: url('/public/images/spaces-sprite.jpg');
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url('/public/images/spaces-sprite@2x.jpg');
+    }
+    &.bathroomsBasic {
+        background-position: 0 0;
+    }
+    &.bathroomsHalf {
+        background-position: -130px 0;
+    }
+    &.bathroomsUpgraded {
+        background-position: -260px 0;
+    }
+    &.familyRooms {
+        background-position: -390px 0;
+    }
+    &.gym {
+        background-position: 0 -130px;
+    }
+    &.homeTheatre {
+        background-position: -130px -130px;
+    }
+    &.kidsPlayrooms {
+        background-position: -260px -130px;
+    }
+    &.laundry {
+        background-position: -390px -130px;
+    }
+    &.mediaRoomsBasic {
+        background-position: 0 -260px;
+    }
+    &.musicRooms {
+        background-position: -130px -260px;
+    }
+    &.office {
+        background-position: -260px -260px;
+    }
+    &.storageRooms  {
+        background-position: -390px -260px;
+    }
+    &.wetBarsFullsize {
+        background-position: 0 -390px;
+    }
+    &.wetBarsKitchenLike {
+        background-position: -130px -390px;
+    }
+    &.wetBarsMedium {
+        background-position: -260px -390px;
+    }
+    &.wetBarsSmall {
+        background-position: -390px -390px;
+    }
+    &.wineCellars {
+        background-position: 0 -520px;
+    }
+}
+.webp .spacesCategoriesSprite {
+    background-image: url('/public/images/spaces-sprite.webp');
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url('/public/images/spaces-sprite@2x.webp');
+    }
+}
+
+// features
+
+.featuresCategoriesSprite {
+    width: 130px;
+    height: 130px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 650px 780px;
+    background-image: url('/public/images/features-sprite.jpg');
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url('/public/images/features-sprite@2x.jpg');
+    }
+    &.accessDoors {
+        background-position: 0 0;
+    }
+    &.barnDoors {
+        background-position: -130px 0;
+    }
+    &.basicShelving {
+        background-position: -260px 0;
+    }
+    &.bunkBed {
+        background-position: -390px 0;
+    }
+    &.ceilingsBasic {
+        background-position: -520px 0;
+    }
+    &.ceilingsHiddenAdvanced {
+        background-position: 0 -130px;
+    }
+    &.ceilingsHiddenLED {
+        background-position: -130px -130px;
+    }
+    &.ceilingsHighEnd {
+        background-position: -260px -130px;
+    }
+    &.columnsHalfWalls {
+        background-position: -390px -130px;
+    }
+    &.columnsStandAlone {
+        background-position: -520px -130px;
+    }
+    &.contemporaryWallPanelling {
+        background-position: 0 -260px;
+    }
+    &.customCabinetry {
+        background-position: -130px -260px;
+    }
+    &.doorsGlass {
+        background-position: -260px -260px;
+    }
+    &.doorsPocket {
+        background-position: -390px -260px;
+    }
+    &.entertainmentCenter {
+        background-position: -520px -260px;
+    }
+    &.fireplaces {
+        background-position: 0 -390px;
+    }
+    &.flooringLaminate {
+        background-position: -130px -390px;
+    }
+    &.flooring-LVT {
+        background-position: -260px -390px;
+    }
+    &.flooringTile {
+        background-position: -390px -390px;
+    }
+    &.hiddenDoors {
+        background-position: -520px -390px;
+    }
+    &.lighting {
+        background-position: 0 -520px;
+    }
+    &.stackedStoneWall {
+        background-position: -130px -520px;
+    }
+    &.stairRailings {
+        background-position: -260px -520px;
+    }
+    &.stairSteps {
+        background-position: -390px -520px;
+    }
+    &.underStairsSpace {
+        background-position: -520px -520px;
+    }
+    &.woodWallPanelling {
+        background-position: 0 -650px;
+    }
+}
+.webp .featuresCategoriesSprite {
+    background-image: url('/public/images/features-sprite.webp');
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url('/public/images/features-sprite@2x.webp');
+    }
+}
+
+// engineering
+
+.engineeringCategoriesSprite {
+    width: 130px;
+    height: 130px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 260px 260px;
+    background-image: url('/public/images/engineering-sprite.jpg');
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url('/public/images/engineering-sprite@2x.jpg');
+    }
+    &.egressWindows {
+        background-position: 0 0;
+    }
+    &.HVAC {
+        background-position: -130px 0;
+    }
+    &.walkOuts {
+        background-position: 0 -130px;
+    }
+    &.waterproofing {
+        background-position: -130px -130px;
+    }
+}
+.webp .engineeringCategoriesSprite {
+    background-image: url('/public/images/engineering-sprite.webp');
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url('/public/images/engineering-sprite@2x.webp');
+    }
+}

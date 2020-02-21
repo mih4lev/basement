@@ -1,0 +1,115 @@
+.awardsSprite {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 98px 1950px;
+    background-image: url('/public/images/awards-sprite.png');
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url('/public/images/awards-sprite@2x.png');
+    }
+    &.angiesList2011 {
+        width: 97px;
+        height: 97px;
+        background-position: 0 0px;
+    }
+    &.angiesList2012 {
+        width: 97px;
+        height: 97px;
+        background-position: 0 -97px;
+    }
+    &.angiesList2013 {
+        width: 98px;
+        height: 97px;
+        background-position: 0 -194px;
+    }
+    &.angiesList2014 {
+        width: 98px;
+        height: 97px;
+        background-position: 0 -291px;
+    }
+    &.angiesList2015 {
+        width: 97px;
+        height: 97px;
+        background-position: 0 -388px;
+    }
+    &.angiesList2016 {
+        width: 97px;
+        height: 98px;
+        background-position: 0 -485px;
+    }
+    &.angiesList2017 {
+        width: 97px;
+        height: 98px;
+        background-position: 0 -583px;
+    }
+    &.angiesList2018 {
+        width: 98px;
+        height: 98px;
+        background-position: 0 -681px;
+    }
+    &.epa {
+        width: 98px;
+        height: 98px;
+        background-position: 0 -779px;
+    }
+    &.bestPickReports2016 {
+        width: 97px;
+        height: 98px;
+        background-position: 0 -877px;
+    }
+    &.houzz2013 {
+        width: 97px;
+        height: 98px;
+        background-position: 0 -975px;
+    }
+    &.houzz2014 {
+        width: 97px;
+        height: 98px;
+        background-position: 0 -1073px;
+    }
+    &.houzz2015 {
+        width: 98px;
+        height: 98px;
+        background-position: 0 -1171px;
+    }
+    &.houzz2016 {
+        width: 98px;
+        height: 98px;
+        background-position: 0 -1269px;
+    }
+    &.houzz2017 {
+        width: 97px;
+        height: 98px;
+        background-position: 0 -1367px;
+    }
+    &.houzz2018 {
+        width: 97px;
+        height: 97px;
+        background-position: 0 -1465px;
+    }
+    &.houzz2019 {
+        width: 97px;
+        height: 97px;
+        background-position: 0 -1562px;
+    }
+    &.homeAdvisor3Years {
+        width: 98px;
+        height: 97px;
+        background-position: 0 -1659px;
+    }
+    &.homeAdvisorEliteService {
+        width: 98px;
+        height: 97px;
+        background-position: 0 -1756px;
+    }
+    &.homeAdvisor50Reviews {
+        width: 97px;
+        height: 97px;
+        background-position: 0 -1853px;
+    }
+}
+.webp .awardsSprite {
+    background-image: url('/public/images/awards-sprite.webp');
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url('/public/images/awards-sprite@2x.webp');
+    }
+}
