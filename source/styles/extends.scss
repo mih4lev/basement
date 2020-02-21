@@ -1,0 +1,53 @@
+%font {
+    font-family: "Gilroy", Arial, sans-serif;
+}
+
+%circle {
+    border: 5px solid $whiteColor;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+%yellowCircle {
+    @extend %circle;
+    border: 5px solid $yellowColor;
+}
+
+%shadow {
+    box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.25);
+}
+
+%blackWhite {
+    filter: grayscale(100%);
+    &:hover {
+        filter: none;
+    }
+}
+
+%animation {
+    transition: all 0.2s ease-in;
+}
+
+%center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.roundCategory {
+    @extend %circle;
+    @extend %shadow;
+    @extend %blackWhite;
+    @extend %animation;
+    @extend %center;
+    cursor: pointer;
+}
+
+.yellowCircle {
+    width: 147px;
+    height: 147px;
+    background-image: linear-gradient(56.42deg, #EFEFF0 14.82%, #FFFFFF 85.8%);
+    @extend %yellowCircle;
+    @extend %shadow;
+}

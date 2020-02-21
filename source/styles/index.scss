@@ -1,1 +1,25 @@
+@import "fonts";
+@import "variables";
+@import "mixins";
+@import "extends";
 @import "sprites/all.sprite";
+
+html {
+    height: 100%;
+}
+
+body {
+    //display: flex;
+    //flex-direction: column;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: "Gilroy", Arial, sans-serif;
+    font-size: 15px;
+    line-height: 125%;
+    font-weight: 300;
+    font-style: normal;
+    color: $blackColor;
+    background: $whiteColor;
+}
