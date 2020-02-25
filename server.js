@@ -15,7 +15,7 @@ app.engine(`hbs`, expressHbs({
     extname: `hbs`
 }));
 app.set('view engine', 'hbs');
-hbs.registerPartials(__dirname + '/views/components');
+hbs.registerPartials(__dirname + '/views/partials');
 // static source path
 app.use(`/public`, express.static(__dirname + `/public`));
 // middleware
@@ -23,6 +23,7 @@ app.use(express.json({ extended: true }));
 app.use(cookieParser('secretKeyBasementRemodelingDotCom'));
 app.use('/api', cors(corsOptions));
 app.use('/', require('./routes/home.route'));
+app.use('/guideline', require('./routes/guideline.route'));
 // 404
 app.use((request, response, next) => {
     const { url } = request;

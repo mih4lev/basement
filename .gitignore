@@ -7,6 +7,10 @@
 # ignore config
 /config/
 /config/.json
+# ignore svg sprite files
+/public/images/sprite.html
+/public/images/css/
+/public/images/css/sprite.css
 # ignore DS files
 .DS_Store
 /client/.DS_Store

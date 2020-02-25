@@ -80,6 +80,7 @@ gulp.task(`vector`, () => {
 
 gulp.task('sprite', () => {
     return gulp.src(`./source/images/sprite/*.svg`)
+        .pipe(plumber())
         .pipe(svgSprite())
         .pipe(gulp.dest(`./public/images/`));
 });
@@ -109,5 +110,6 @@ gulp.task(`reload`, (done) => {
     done();
 });
 
-const tasks = [`browser-sync`, `styles`, `fonts`, `bitmap`, `webp`, `temp`, `tempWebp`, `vector`, `sprite`];
+// const tasks = [`browser-sync`, `styles`, `fonts`, `bitmap`, `webp`, `temp`, `tempWebp`, `vector`, `sprite`];
+const tasks = [`browser-sync`, `styles`];
 gulp.task(`default`, gulp.parallel(...tasks));

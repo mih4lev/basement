@@ -1,225 +1,31 @@
-//
-@mixin respond($media) {
-    @if $media == desktop { // desktop = от 1000 до 1440
-        @media only screen and (min-width: $desktopWidth) and (max-width: $fullWidth - 1) { @content; }
+// response
+@mixin minWidth($width) {
+    @if $width == 1440 {
+        @media only screen and (min-width: 1440px) { @content; }
     }
-    @if $media == tablet { // tablet = от 768 до 999
-        @media only screen and (min-width: $tabletWidth) and (max-width: $desktopWidth - 1) { @content; }
+    @if $width == 1000 {
+        @media only screen and (min-width: 1000px) { @content; }
     }
-    @if $media == tabletMini { // tabletMini = От 480 до 767
-        @media only screen and (min-width: $tabletMiniWidth) and (max-width: $tabletWidth - 1) { @content; }
+    @if $width == 768 {
+        @media only screen and (min-width: 768px) { @content; }
     }
-    @if $media == mobile { // mobile = От 320 до 479
-        @media only screen and (max-width: $tabletMiniWidth - 1) { @content; }
+    @if $width == 480 {
+        @media only screen and (min-width: 480px) { @content; }
     }
 }
 
-@mixin button($color, $border, $background) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-left: 28px;
-    padding-right: 28px;
-    height: 40px;
+@mixin modal($width, $height) {
+    position: fixed;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: $width;
+    min-height: $height;
+    padding: 20px;
     box-sizing: border-box;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: $color;
-    border: $border;
-    background: $background;
-    border-radius: 100px;
-    cursor: pointer;
-    outline: none;
-    @extend %font;
-}
-
-.yellowButton {
-    @include button($blackColor, none, $yellowColor);
-}
-
-.yellowTransparentButton {
-    @include button($yellowColor, 1px solid $yellowColor, transparent);
-}
-
-.blueButton {
-    @include button($whiteColor, none, $blueColor);
-}
-
-.blueTransparentButton {
-    @include button($blueColor, 1px solid $blueColor, transparent);
-}
-
-.blueButtonWithArrow {
-    @include button($whiteColor, none, $blueColor);
-    &:after {
-        display: inline-block;
-        margin-left: 5px;
-        content: "";
-        width: 7px;
-        height: 11px;
-        background-color: $whiteColor;
-        mask-image: url('/public/images/svg/sprite.svg#button-arrow(viewBox(0, 0, 7, 11))');
-        mask-position: 0 -346px;
-    }
-}
-
-.blueButtonWithArrowDown {
-    @include button($whiteColor, none, $blueColor);
-    &:after {
-        display: inline-block;
-        margin-left: 5px;
-        content: "";
-        width: 7px;
-        height: 11px;
-        background-color: $whiteColor;
-        mask-image: url('/public/images/svg/sprite.svg#button-arrow(viewBox(0, 0, 7, 11))');
-        mask-position: 0 -346px;
-        transform: rotate(90deg);
-    }
-}
-
-.yellowTransparentButtonWithPhone {
-    &:before {
-        display: inline-block;
-        margin-right: 10px;
-        content: "";
-        width: 14px;
-        height: 15px;
-        background-color: $yellowColor;
-        mask-image: url('/public/images/svg/sprite.svg#phone(viewBox(0, 0, 14, 15))');
-        mask-position: 0 -1524px;
-    }
-}
-
-.whiteButton {
-    @include button($blackColor, 1px solid $whiteColor, (linear-gradient(270deg, rgba(255, 255, 255, 0.8) 32.56%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.5)));
-}
-
-.whiteButtonWithArrow {
-    &:after {
-        display: inline-block;
-        margin-left: 5px;
-        content: "";
-        width: 7px;
-        height: 11px;
-        background-color: $blackColor;
-        mask-image: url('/public/images/svg/sprite.svg#button-arrow(viewBox(0, 0, 7, 11))');
-        mask-position: 0 -346px;
-    }
-}
-
-.whiteButtonSavePhoto {
-    &:after {
-        display: inline-block;
-        margin-left: 5px;
-        content: "";
-        width: 18px;
-        height: 18px;
-        background-color: $blackColor;
-        mask-image: url('/public/images/svg/sprite.svg#save-photo(viewBox(0, 0, 7, 11))');
-        mask-position: 0 -2120px;
-    }
-}
-
-.disabledButton {
-    @include button($whiteColor, none, $bgSubColor);
-    cursor: default;
-    &:after {
-        background-color: $whiteColor;
-    }
-}
-
-.blueTransparentButtonWithBlackText {
-    @include button($blackColor, 1px solid $blueColor, transparent);
-}
-
-.greyTransparentButton {
-    @include button($greyColor, 1px solid $bgSubColor, transparent);
-}
-
-.greyTransparentButtonWithArrowBack {
-    &:before {
-        display: inline-block;
-        margin-right: 5px;
-        content: "";
-        width: 7px;
-        height: 11px;
-        transform: rotate(180deg);
-        background-color: $greyColor;
-        mask-image: url('/public/images/svg/sprite.svg#button-arrow(viewBox(0, 0, 7, 11))');
-        mask-position: 0 -346px;
-    }
-}
-
-.textButton {
-    @include button($blackColor, none, transparent);
-}
-
-.cancelButton {
-    @include button($whiteColor, 1px solid $whiteColor, transparent);
-}
-
-.deleteButton {
-    @include button($whiteColor, 1px solid $whiteColor, #34B4EA);
-    &:after {
-        display: inline-block;
-        margin-left: 5px;
-        content: "";
-        width: 10px;
-        height: 10px;
-        background-color: $whiteColor;
-        mask-image: url('/public/images/svg/sprite.svg#close(viewBox(0, 0, 10, 10))');
-        mask-position: 0 -387px;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-// tests
-
-.testBlock {
-     width: 288px;
-     height: 204px;
-     background: url("/public/images/temp/portfolio-image9@2x.jpg");
-     background-size: 288px 204px;
-     .testWrapper {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         width: inherit;
-         height: inherit;
-         background: rgba(97, 109, 123, 0.7);
-     }
- }
-
-.testPhoto {
-    width: 252px;
-    height: 252px;
-    background: url("/public/images/temp/ideas-image1@2x.jpg");
-    background-size: 252px 252px;
-    .testWrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: inherit;
-        height: inherit;
-        background: rgba(97, 109, 123, 0.7);
-    }
-}
-
-.buttonMargin {
-    margin-left: 3px;
-    margin-right: 3px;
+    background: $whiteColor;
+    border-radius: 5px;
+    box-shadow: 0 0 0 10000px rgba(97, 109, 123, 0.8),
+                5px 5px 12px rgba(0, 0, 0, 0.25);
 }

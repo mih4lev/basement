@@ -1,0 +1,186 @@
+%button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 26px;
+    box-sizing: border-box;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-radius: 100px;
+    cursor: pointer;
+    outline: none;
+    @extend %font;
+    @extend %animation;
+    &:before {
+        @extend %animation;
+    }
+    &:after {
+        @extend %animation;
+    }
+    @include minWidth(480) {
+        padding-left: 28px;
+        padding-right: 28px;
+        height: 40px;
+        font-size: 13px;
+    }
+}
+
+%yellowButton {
+    @extend %button;
+    color: $blackColor;
+    border: 1px solid $yellowColor;
+    background: $yellowColor;
+    &:hover, &:active {
+        background: darken($yellowColor, 10%);
+        border: 1px solid darken($yellowColor, 10%);
+    }
+}
+
+%yellowButton2 {
+    @extend %button;
+    color: $yellowColor;
+    border: 1px solid $yellowColor;
+    background: transparent;
+    &:hover, &:active {
+        color: $blackColor;
+        border: 1px solid darken($yellowColor, 10%);
+        background: darken($yellowColor, 10%);
+    }
+}
+
+%blueButton {
+    @extend %button;
+    color: $whiteColor;
+    border: 1px solid $blueColor;
+    background: $blueColor;
+    &:hover, &:active {
+        background: darken($blueColor, 10%);
+        border: 1px solid darken($blueColor, 10%);
+    }
+}
+
+%blueButton2 {
+    @extend %button;
+    color: $blueColor;
+    border: 1px solid $blueColor;
+    background: transparent;
+    &:hover, &:active {
+        color: $whiteColor;
+        border: 1px solid darken($blueColor, 10%);
+        background: darken($blueColor, 10%);
+    }
+}
+
+%blueButton {
+    @extend %button;
+    color: $whiteColor;
+    border: 1px solid $blueColor;
+    background: $blueColor;
+    &:hover, &:active {
+        background: darken($blueColor, 10%);
+        border: 1px solid darken($blueColor, 10%);
+    }
+}
+
+%disabledButton {
+    color: $whiteColor;
+    border: 1px solid $bgSubColor;
+    background: $bgSubColor;
+    cursor: default;
+    &:hover, &:active {
+        color: $whiteColor;
+        border: 1px solid $bgSubColor;
+        background: $bgSubColor;
+        cursor: default;
+    }
+}
+
+%whiteButton {
+    @extend %button;
+    color: $blackColor;
+    border: 1px solid $whiteColor;
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0.8) 32.56%, rgba(255, 255, 255, 0) 100%),
+    rgba(255, 255, 255, 0.5);
+}
+
+%menuButton {
+    @extend %button;
+    color: $greyColor;
+    border: 1px solid $bgSubColor;
+    background: transparent;
+    &:hover {
+        color: $blackColor;
+        border: 1px solid $bgSubColor;
+        background: $bgSubColor;
+    }
+}
+
+%activeButton {
+    @extend %button;
+    color: $blackColor;
+    border: 1px solid $blueColor;
+    background: transparent;
+    cursor: default;
+    &:hover {
+        color: $blackColor;
+        border: 1px solid $blueColor;
+        background: transparent;
+        cursor: default;
+    }
+}
+
+%textButton {
+    @extend %button;
+    color: $blackColor;
+    border: 1px solid transparent;
+    background: transparent;
+    &:hover {
+        border: 1px solid darken($blueColor, 10%);
+        color: darken($blueColor, 10%);
+    }
+}
+
+%cancelButton {
+    @extend %button;
+    color: $whiteColor;
+    border: 1px solid $whiteColor;
+    background: transparent;
+    &:hover {
+        color: darken($yellowColor, 10%);
+        border: 1px solid darken($yellowColor, 10%);
+    }
+}
+
+%deleteButton {
+    @extend %button;
+    color: $whiteColor;
+    border: 1px solid $whiteColor;
+    background: $blueColor;
+    &:hover {
+        background: darken($blueColor, 10%);
+    }
+}
+
+%buttonIconBefore {
+    margin-right: 5px;
+    content: "";
+    display: inline-block;
+    transform: scale(0.6);
+    @include minWidth(480) {
+        transform: scale(1);
+    }
+}
+
+%buttonIconAfter {
+    margin-left: 5px;
+    content: "";
+    display: inline-block;
+    transform: scale(0.6);
+    @include minWidth(480) {
+        transform: scale(1);
+    }
+}

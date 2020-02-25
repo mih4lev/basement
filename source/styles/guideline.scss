@@ -1,0 +1,209 @@
+// buttons
+
+.yellowButton {
+    @extend %yellowButton;
+}
+
+.yellowTransparentButton {
+    @extend %yellowButton2;
+}
+
+.blueButton {
+    @extend %blueButton;
+}
+
+.arrowButton {
+    &:after {
+        @extend %buttonIconAfter;
+        @extend %arrowIcon;
+        background: $whiteColor;
+    }
+}
+
+.arrowDownButton {
+    &:after {
+        @extend %buttonIconAfter;
+        @extend %arrowIcon;
+        background: $whiteColor;
+        transform: rotate(90deg) scale(0.6);
+        @include minWidth(480) {
+            transform: rotate(90deg) scale(1);
+        }
+    }
+}
+
+.phoneButton {
+    &:before {
+        @extend %buttonIconBefore;
+        @extend %phoneIcon;
+        background: $yellowColor;
+    }
+    &:hover {
+        &:before {
+            background: $blackColor;
+        }
+    }
+}
+
+.backArrowButton {
+    &:before {
+        @extend %buttonIconBefore;
+        @extend %arrowIcon;
+        background: $greyColor;
+        transform: rotate(180deg) scale(0.6);
+        @include minWidth(480) {
+            transform: rotate(180deg) scale(1);
+        }
+    }
+    &:hover {
+        &:before {
+            background: $blackColor;
+        }
+    }
+}
+
+.savePhotoButton {
+    &:after {
+        @extend %buttonIconAfter;
+        @extend %savePhotoIcon;
+        background: $blackColor;
+    }
+}
+
+.blueTransparentButton {
+    @extend %blueButton2;
+}
+
+.whiteButton {
+    @extend %whiteButton;
+}
+
+.disabledButton {
+    @extend %disabledButton;
+}
+
+.blueTransparentButtonWithBlackText {
+    @extend %activeButton;
+}
+
+.greyTransparentButton {
+    @extend %menuButton;
+}
+
+.textButton {
+    @extend %textButton;
+}
+
+.cancelButton {
+    @extend %cancelButton;
+}
+
+.deleteButton {
+    @extend %deleteButton;
+    &:after {
+        @extend %buttonIconAfter;
+        @extend %deleteIcon;
+        background: $whiteColor;
+    }
+}
+
+
+// svg sprite uses
+
+.advantageIcon {
+    opacity: 1;
+    width: 62px;
+    height: 54px;
+    fill: #FF0000;
+    &:hover {
+        opacity: 0.5;
+    }
+}
+
+.advantageIconMask {
+    @extend %advantageIcon;
+    background: $blueColor;
+    &:hover {
+        background: $yellowColor;
+    }
+}
+
+// round images
+
+.roundCategory {
+    @extend %circle;
+    @extend %shadow;
+    @extend %blackWhite;
+    @extend %animation;
+    @extend %center;
+    cursor: pointer;
+}
+
+.yellowCircle {
+    width: 147px;
+    height: 147px;
+    background-image: linear-gradient(56.42deg, #EFEFF0 14.82%, #FFFFFF 85.8%);
+    @extend %yellowCircle;
+    @extend %shadow;
+}
+
+
+
+// various
+
+.testBlock {
+    width: 288px;
+    height: 204px;
+    background: url("/public/images/temp/portfolio-image9@2x.jpg");
+    background-size: 288px 204px;
+    .testWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: inherit;
+        height: inherit;
+        background: rgba(97, 109, 123, 0.7);
+    }
+}
+
+.testPhoto {
+    width: 252px;
+    height: 252px;
+    background: url("/public/images/temp/ideas-image1@2x.jpg");
+    background-size: 252px 252px;
+    .testWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: inherit;
+        height: inherit;
+        background: rgba(97, 109, 123, 0.7);
+    }
+}
+
+.buttonMargin {
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.devicesTest {
+    width: 100px;
+    height: 100px;
+    background: green;
+    @include minWidth(480) {
+        background: blue;
+    }
+    @include minWidth(768) {
+        background: red;
+    }
+    @include minWidth(1000) {
+        background: yellow;
+    }
+    @include minWidth(1440) {
+        background: orange;
+    }
+}
+
+.modal {
+    @include modal(268px, 440px);
+}
