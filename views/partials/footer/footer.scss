@@ -1,8 +1,193 @@
 footer {
+
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: auto;
     width: 100%;
-    min-height: 306px;
     background: $bgMainColor;
+
+    .footerContent {
+        @extend %content;
+        color: $whiteColor;
+    }
+
+    .footerButtons {
+        @extend %content;
+        border-bottom: 1px solid $greyColor;
+
+        .footerButtonsHeader {
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 11px;
+            line-height: 125%;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            @include minWidth(480) {
+                font-size: 14px;
+            }
+            @include minWidth(1000) {
+                font-size: 16px;
+            }
+        }
+
+        .buttonList {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 0;
+            list-style-type: none;
+            @include minWidth(768) {
+                flex-direction: row;
+            }
+
+            .buttonWrapper {
+                margin-bottom: 10px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                @include minWidth(768) {
+                    margin-bottom: 0;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    &:first-child {
+                        order: 2;
+                    }
+                }
+
+                .consultationButton {
+                    @extend %yellowButton;
+                }
+
+                .onlineQuoteButton {
+                    @extend %blueButton;
+                }
+
+            }
+        }
+    }
+
+    .footer {
+        position: relative;
+
+        .footerLogoLink {
+            position: absolute;
+            top: 20px;
+            right: 0;
+
+            .footerLogo {
+                width: 94px;
+                height: 30px;
+                @include minWidth(480) {
+                    width: 138px;
+                    height: 44px;
+                }
+                @include minWidth(1000) {
+                    width: 169px;
+                    height: 54px;
+                }
+            }
+
+        }
+
+        .footerCopyright {
+            margin-bottom: 15px;
+        }
+
+        .footerSocialLinks {
+            margin-bottom: 15px;
+
+            .footerSocialList {
+                display: flex;
+                flex-direction: row;
+                margin-top: 0;
+                margin-bottom: 0;
+                padding-left: 0;
+                list-style-type: none;
+
+                .socialLinkWrapper {
+                    margin-right: 7px;
+                    font-size: 0;
+                    &:last-child {
+                        margin-right: 0;
+                    }
+
+                    .socialLink {
+                        display: block;
+
+                        &.instagram {
+                            @extend %instagramRoundIcon;
+                            background: $whiteColor;
+                        }
+
+                        &.facebook {
+                            @extend %facebookRoundIcon;
+                            background: $whiteColor;
+                        }
+
+                        &.pinterest {
+                            @extend %pinterestRoundIcon;
+                            background: $whiteColor;
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+
+
+        .footerHeader {
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-weight: 300;
+            @include minWidth(480) {
+                font-size: 12px;
+            }
+        }
+
+        .footerText {
+            margin-top: 0;
+            margin-bottom: 0;
+            width: 176px;
+            font-size: 7px;
+            @include minWidth(480) {
+                width: 280px;
+                font-size: 9px;
+            }
+        }
+
+        .address {
+            font-size: 9px;
+            font-weight: 500;
+            font-style: normal;
+            @include minWidth(480) {
+                font-size: 12px;
+            }
+        }
+
+        .footerContactButton {
+            @extend %blueButton;
+            position: absolute;
+            top: 110px;
+            right: 0;
+            @include minWidth(480) {
+                top: 158px;
+            }
+            &:after {
+                @extend %buttonIconAfter;
+                @extend %arrowIcon;
+                background: $whiteColor;
+            }
+
+        }
+
+    }
+
 }
