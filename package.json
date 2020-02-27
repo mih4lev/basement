@@ -1,6 +1,6 @@
 {
   "name": "basement",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "BasementRemodeling.com site",
   "main": "index.js",
   "scripts": {
