@@ -1,7 +1,9 @@
 .testContent {
     @extend %content;
+    background: $bgSubColor;
 }
 
 .testContent2 {
     @extend %content;
+    background: $whiteColor;
 }
