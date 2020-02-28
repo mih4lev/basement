@@ -77,6 +77,10 @@ footer {
             position: absolute;
             top: 20px;
             right: 0;
+            @include minWidth(768) {
+                left: 0;
+                right: auto;
+            }
 
             .footerLogo {
                 width: 94px;
@@ -95,10 +99,26 @@ footer {
 
         .footerCopyright {
             margin-bottom: 15px;
+            @include minWidth(768) {
+                margin-bottom: 0;
+                margin-top: 50px;
+            }
+            @include minWidth(1000) {
+                margin-bottom: 0;
+                margin-top: 60px;
+            }
         }
 
         .footerSocialLinks {
-            margin-bottom: 15px;
+            margin-top: 15px;
+            @include minWidth(768) {
+                position: absolute;
+                top: 30px;
+                right: 0;
+                display: flex;
+                align-items: center;
+                margin-top: 0;
+            }
 
             .footerSocialList {
                 display: flex;
@@ -141,7 +161,15 @@ footer {
 
         }
 
-
+        .footerAddress {
+            @include minWidth(768) {
+                position: absolute;
+                top: 60px;
+                right: 0;
+                display: flex;
+                align-items: center;
+            }
+        }
 
         .footerHeader {
             margin-top: 0;
@@ -149,6 +177,11 @@ footer {
             font-weight: 300;
             @include minWidth(480) {
                 font-size: 12px;
+            }
+            @include minWidth(768) {
+                margin-bottom: 0;
+                margin-right: 10px;
+                text-transform: uppercase;
             }
         }
 
@@ -161,6 +194,16 @@ footer {
                 width: 280px;
                 font-size: 9px;
             }
+            @include minWidth(768) {
+                margin-top: 5px;
+                width: 540px;
+                font-size: 12px;
+            }
+            @include minWidth(1000) {
+                margin-top: 5px;
+                width: 740px;
+                font-size: 12px;
+            }
         }
 
         .address {
@@ -170,22 +213,31 @@ footer {
             @include minWidth(480) {
                 font-size: 12px;
             }
+            @include minWidth(480) {
+                font-size: 12px;
+            }
+            @include minWidth(768) {
+                font-size: 13px;
+            }
         }
 
         .footerContactButton {
             @extend %blueButton;
             position: absolute;
-            top: 110px;
+            bottom: 20px;
             right: 0;
             @include minWidth(480) {
-                top: 158px;
+                bottom: 20px;
             }
+            @include minWidth(768) {
+                bottom: 30px;
+            }
+
             &:after {
                 @extend %buttonIconAfter;
                 @extend %arrowIcon;
                 background: $whiteColor;
             }
-
         }
 
     }
