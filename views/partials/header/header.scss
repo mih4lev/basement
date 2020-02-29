@@ -86,7 +86,12 @@ header {
             @extend %animation;
             &.activeLink {
                 color: $blueColor;
+                cursor: default;
+                &:hover {
+                    color: $whiteColor;
+                }
                 @include minWidth(1440) {
+                    color: $whiteColor;
                     border-bottom: 1px solid $blueColor;
                 }
             }
@@ -224,6 +229,9 @@ header {
                     padding-right: 40px;
                     &:hover {
                         background: $subMenuHoverColor;
+                        @include minWidth(1440) {
+                            color: $blueColor;
+                        }
                     }
                 }
                 .activeLink {
@@ -297,6 +305,7 @@ header {
         outline: none;
         &:before {
             @extend %avatarIcon;
+            @extend %animation;
             position: absolute;
             top: 20%;
             left: 50%;
