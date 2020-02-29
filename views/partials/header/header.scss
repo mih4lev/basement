@@ -54,6 +54,20 @@ header {
                 .menuLink {
                     &:after {
                         transform: scale(0.8) rotate(270deg);
+                        @include minWidth(1440) {
+                            transform: translateY(-50%);
+                        }
+                    }
+                }
+            }
+            @include minWidth(1440) {
+                &:hover {
+                    & .subMenuList {
+                        opacity: 1;
+                        z-index: 10;
+                        margin-top: 0;
+                        visibility: visible;
+                        pointer-events: auto;
                     }
                 }
             }
@@ -70,6 +84,12 @@ header {
             color: $whiteColor;
             cursor: pointer;
             @extend %animation;
+            &.activeLink {
+                color: $blueColor;
+                @include minWidth(1440) {
+                    border-bottom: 1px solid $blueColor;
+                }
+            }
             &:hover {
                 background: darken($bgMainColor, 5%)
             }
@@ -78,6 +98,7 @@ header {
                 padding-left: 0;
                 padding-right: 0;
                 height: auto;
+                overflow: hidden;
                 &:hover {
                     background: none;
                 }
@@ -154,12 +175,80 @@ header {
         margin-bottom: 0;
         padding-top: 0;
         padding-bottom: 0;
-        @include minWidth(1440) {
-            display: none;
-        }
         .menuLink {
             padding-left: 40px;
             color: $greyColor;
+        }
+        @include minWidth(1440) {
+            opacity: 0;
+            z-index: -10;
+            margin-top: 50px;
+            visibility: hidden;
+            position: absolute;
+            transform: translateY(10px);
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background: $whiteColor;
+            border-radius: 5px;
+            box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.25);
+            transition: all 0.15s ease-in;
+            pointer-events: none;
+            &:before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: -4px;
+                left: 20px;
+                width: 10px;
+                height: 10px;
+                background: $whiteColor;
+                transform: rotate(45deg);
+            }
+            .menuLinkWrapper {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 30px;
+                @include minWidth(1440) {
+                    height: auto;
+                }
+                .menuLink {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    width: 100%;
+                    height: 30px;
+                    margin-right: 0;
+                    padding-left: 20px;
+                    padding-right: 40px;
+                    &:hover {
+                        background: $subMenuHoverColor;
+                    }
+                }
+                .activeLink {
+                    color: $blueColor;
+                    border-bottom: none;
+                    cursor: default;
+                    &:hover {
+                        background: transparent;
+                    }
+                    &:after {
+                        content: "";
+                        opacity: 1;
+                        position: absolute;
+                        right: 20px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 7px;
+                        height: 7px;
+                        display: block;
+                        border-radius: 50%;
+                        background: $blueColor;
+                        transition: all 0.15s ease-in;
+                    }
+                }
+            }
         }
     }
 
@@ -205,6 +294,7 @@ header {
         background: $avatarColor;
         overflow: hidden;
         cursor: pointer;
+        outline: none;
         &:before {
             @extend %avatarIcon;
             position: absolute;
