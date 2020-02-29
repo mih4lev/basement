@@ -47,7 +47,6 @@ a {
 }
 
 .wrapper {
-    position: relative;
     margin-left: auto;
     margin-right: auto;
     padding-top: 20px;
@@ -69,6 +68,21 @@ a {
     @include minWidth(1440) {
         width: 1032px;
     }
+    &.headerWrapper {
+        width: 290px;
+        @include minWidth(480) {
+            width: 440px;
+        }
+        @include minWidth(768) {
+            width: 728px;
+        }
+        @include minWidth(1000) {
+            width: 894px;
+        }
+        @include minWidth(1440) {
+            width: 1032px;
+        }
+    }
     &.center {
         width: 290px;
         @include minWidth(480) {
@@ -84,9 +98,21 @@ a {
             width: 894px;
         }
     }
-    &.centerFlex {
+    &.columnCenterFlex {
         display: flex;
         flex-direction: column;
+        align-items: center;
+    }
+    &.rowSpaceFlex {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &.rowLeftFlex {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
         align-items: center;
     }
 }

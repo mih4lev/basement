@@ -42,3 +42,19 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+%responseMenu {
+    background: $bgMainColor;
+    right: 0;
+    &:before {
+        content: "";
+        z-index: -1;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 210px;
+        width: 100vh;
+        height: 100vh;
+        background: $modalBackground;
+    }
+}

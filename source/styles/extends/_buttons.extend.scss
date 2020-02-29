@@ -46,9 +46,8 @@
     border: 1px solid $yellowColor;
     background: transparent;
     &:hover, &:active {
-        color: $blackColor;
-        border: 1px solid darken($yellowColor, 10%);
-        background: darken($yellowColor, 10%);
+        color: $whiteColor;
+        border: 1px solid $whiteColor;
     }
 }
 
@@ -70,8 +69,7 @@
     background: transparent;
     &:hover, &:active {
         color: $whiteColor;
-        border: 1px solid darken($blueColor, 10%);
-        background: darken($blueColor, 10%);
+        border: 1px solid $whiteColor;
     }
 }
 
