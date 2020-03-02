@@ -2,8 +2,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 12px;
+    padding-right: 12px;
     height: 26px;
     box-sizing: border-box;
     font-size: 9px;
@@ -13,6 +13,7 @@
     border-radius: 100px;
     cursor: pointer;
     outline: none;
+    white-space: nowrap;
     @extend %font;
     @extend %animation;
     &:before {

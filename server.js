@@ -23,6 +23,8 @@ app.use(express.json({ extended: true }));
 app.use(cookieParser('secretKeyBasementRemodelingDotCom'));
 app.use('/api', cors(corsOptions));
 app.use('/', require('./routes/home.route'));
+app.use('/how-it-works', require('./routes/how-it-works.route'));
+app.use('/about-us', require('./routes/about-us.route'));
 app.use('/guideline', require('./routes/guideline.route'));
 // 404
 app.use((request, response, next) => {

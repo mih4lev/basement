@@ -1,0 +1,96 @@
+.pageHeader {
+    border-bottom: 1px solid $bgSubColor;
+    .contentWrapper {
+        position: relative;
+    }
+    .pageTitle {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 17px;
+        line-height: 125%;
+        font-weight: 800;
+        text-transform: uppercase;
+        @include minWidth(480) {
+            font-size: 25px;
+        }
+        @include minWidth(768) {
+            font-size: 35px;
+        }
+        @include minWidth(1000) {
+            font-size: 45px;
+        }
+    }
+    .breadcrumbs {
+        margin-top: 15px;
+        margin-bottom: -10px;
+        @include minWidth(768) {
+            margin-top: 20px;
+        }
+        @include minWidth(1440) {
+            margin-bottom: -20px;
+        }
+        .breadcrumbList {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: left;
+            align-items: center;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 0;
+            list-style-type: none;
+            .breadcrumbLinkWrapper {
+                display: flex;
+                align-items: center;
+                margin-top: 2px;
+                margin-bottom: 2px;
+                &:hover {
+                    &:after {
+                        background: $blueColor;
+                    }
+                    .breadcrumbLink {
+                        color: $blueColor;
+                    }
+                }
+                &:last-of-type {
+                    &:after {
+                        display: none;
+                    }
+                }
+                &:after {
+                    @extend %buttonIconAfter;
+                    @extend %arrowIcon;
+                    @extend %animation;
+                    content: "";
+                    display: inline-block;
+                    margin-left: 5px;
+                    margin-right: 5px;
+                    background: $greyColor;
+                    transform: scale(0.65);
+                    @include minWidth(768) {
+                        margin-left: 10px;
+                        margin-right: 10px;
+                        transform: scale(0.9);
+                    }
+                }
+                .breadcrumbLink {
+                    @extend %animation;
+                    font-size: 9px;
+                    color: $greyColor;
+                    @include minWidth(480) {
+                        font-size: 12px;
+                    }
+                    @include minWidth(768) {
+                        font-size: 15px;
+                    }
+                }
+                .breadcrumbActive {
+                    color: $blackColor;
+                    &:hover {
+                        color: $blackColor;
+                    }
+                }
+            }
+        }
+    }
+}

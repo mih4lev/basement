@@ -1,0 +1,111 @@
+.shareLinks {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style-type: none;
+    @include minWidth(1000) {
+        top: 10px;
+    }
+    .shareLinkWrapper {
+        @extend %animation;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 38px;
+        height: 38px;
+        transform: scale(0.55);
+        margin: -9px -6px;
+        cursor: pointer;
+        border-radius: 2px;
+        &:last-of-type {
+            margin: -9px -8px -9px -6px;
+        }
+        @include minWidth(480) {
+            transform: scale(0.7);
+            margin: -4px -3px;
+            &:last-of-type {
+                margin: -4px -6px -4px -3px;
+            }
+        }
+        @include minWidth(768) {
+            transform: scale(0.9);
+            margin: 2px 3px 2px 0;
+            &:last-of-type {
+                margin: 2px -1px 2px 0;
+            }
+        }
+        @include minWidth(1000) {
+            transform: scale(1);
+            margin: 0 0 0 7px;
+            &:first-of-type {
+                margin: 0;
+            }
+            &:last-of-type {
+                margin: 0 0 0 7px;
+            }
+        }
+        .shareLink {
+            @extend %animation;
+            display: block;
+            font-size: 0;
+            background: $whiteColor;
+            border: none;
+            cursor: pointer;
+        }
+        &.facebook {
+            align-items: flex-end;
+            background: #2D508A;
+            .shareLink {
+                @extend %facebookIcon;
+            }
+            &:hover {
+                background: $whiteColor;
+                .shareLink {
+                    background: #2D508A;
+                }
+            }
+        }
+        &.twitter {
+            background: #00A4E6;
+            .shareLink {
+                @extend %twitterIcon;
+            }
+            &:hover {
+                background: $whiteColor;
+                .shareLink {
+                    background: #00A4E6;
+                }
+            }
+        }
+        &.whatsapp {
+            background: #59B454;
+            .shareLink {
+                @extend %whatsappIcon;
+            }
+            &:hover {
+                background: $whiteColor;
+                .shareLink {
+                    background: #59B454;
+                }
+            }
+        }
+        &.pinterest {
+            background: #BF0021;
+            .shareLink {
+                @extend %pinterestIcon;
+            }
+            &:hover {
+                background: $whiteColor;
+                .shareLink {
+                    background: #BF0021;
+                }
+            }
+        }
+    }
+}
