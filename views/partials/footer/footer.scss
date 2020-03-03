@@ -238,17 +238,22 @@ footer {
             position: absolute;
             bottom: 20px;
             right: 0;
+            &:hover {
+                &:after {
+                    background: $whiteColor;
+                }
+            }
             @include minWidth(480) {
                 bottom: 20px;
             }
             @include minWidth(768) {
                 bottom: 30px;
             }
-
             &:after {
                 @extend %buttonIconAfter;
                 @extend %arrowIcon;
-                background: $whiteColor;
+                //background: $whiteColor;
+                background: $blackColor;
             }
         }
 

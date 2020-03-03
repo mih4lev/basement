@@ -18,6 +18,7 @@ app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 // static source path
 app.use(`/public`, express.static(__dirname + `/public`));
+app.use(`/robots.txt`, express.static(__dirname + `/robots.txt`));
 // middleware
 app.use(express.json({ extended: true }));
 app.use(cookieParser('secretKeyBasementRemodelingDotCom'));

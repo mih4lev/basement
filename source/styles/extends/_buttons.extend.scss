@@ -54,10 +54,12 @@
 
 %blueButton {
     @extend %button;
-    color: $whiteColor;
+    //color: $whiteColor;
+    color: $blackColor;
     border: 1px solid $blueColor;
     background: $blueColor;
     &:hover, &:active {
+        color: $whiteColor;
         background: darken($blueColor, 10%);
         border: 1px solid darken($blueColor, 10%);
     }
@@ -71,17 +73,6 @@
     &:hover, &:active {
         color: $whiteColor;
         border: 1px solid $whiteColor;
-    }
-}
-
-%blueButton {
-    @extend %button;
-    color: $whiteColor;
-    border: 1px solid $blueColor;
-    background: $blueColor;
-    &:hover, &:active {
-        background: darken($blueColor, 10%);
-        border: 1px solid darken($blueColor, 10%);
     }
 }
 
