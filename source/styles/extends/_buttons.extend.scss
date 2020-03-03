@@ -36,6 +36,7 @@
     border: 1px solid $yellowColor;
     background: $yellowColor;
     &:hover, &:active {
+        color: $whiteColor;
         background: darken($yellowColor, 10%);
         border: 1px solid darken($yellowColor, 10%);
     }
