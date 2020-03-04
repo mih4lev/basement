@@ -8,8 +8,8 @@ import { headerMenu } from "../../views/partials/header/header";
         canUseWebp = canvas.toDataURL(`image/webp`).indexOf(`data:image/webp`) === 0;
     }
     const htmlNode = document.querySelector(`html`);
-    const action = (canUseWebp) ? `add` : `remove`;
-    htmlNode.classList[action](`webp`);
+    const webpClass = (canUseWebp) ? `webp` : `no-webp`;
+    htmlNode.classList.add(webpClass);
 })();
 
 headerMenu();

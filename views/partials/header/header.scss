@@ -4,6 +4,7 @@ header {
     width: 100%;
     height: 96px;
     background: $bgMainColor;
+    border-bottom: 1px solid $bgMainColor;
     @extend %animation;
 
     .headerLogoLink {
