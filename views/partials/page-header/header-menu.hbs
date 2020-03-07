@@ -1,12 +1,23 @@
 <ul class="headerSubMenu">
     <li class="subLinkWrapper">
-        <a class="subLink" href="/how-it-works/our-process/">OUR PROCESS</a>
-<!--        <span class="subLink activeLink">OUR PROCESS</span>-->
+        {{# if isOurProcess }}
+            <span class="subLink activeLink">OUR PROCESS</span>
+        {{ else }}
+            <a class="subLink" href="/how-it-works/our-process/">OUR PROCESS</a>
+        {{/if}}
     </li>
     <li class="subLinkWrapper">
-        <a class="subLink" href="/how-it-works/contractor-faq/">CONTRACTOR FAQ</a>
+        {{# if isContractorFAQ }}
+            <span class="subLink activeLink">CONTRACTOR FAQ</span>
+        {{ else }}
+            <a class="subLink" href="/how-it-works/contractor-faq/">CONTRACTOR FAQ</a>
+        {{/if}}
     </li>
     <li class="subLinkWrapper">
-        <a class="subLink" href="/how-it-works/basement-tips/">BASEMENT TIPS</a>
+        {{# if isBasementTips }}
+            <span class="subLink activeLink">BASEMENT TIPS</span>
+        {{ else }}
+            <a class="subLink" href="/how-it-works/basement-tips/">BASEMENT TIPS</a>
+        {{/if}}
     </li>
 </ul>

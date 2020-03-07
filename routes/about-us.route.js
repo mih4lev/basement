@@ -1,32 +1,51 @@
 const { Router } = require(`express`);
 const router = new Router();
 
+router.use((request, response, next) => {
+    const isAboutUs = true;
+    request.data = Object.assign({ isAboutUs });
+    next();
+});
+
 router.get(`/`, async (request, response) => {
-    response.render(`pages/about-us/about-us`, {});
+    const data = Object.assign(request.data);
+    response.render(`pages/about-us/about-us`, data);
 });
 
 router.get(`/testimonials`, async (request, response) => {
-    response.render(`pages/about-us/testimonials/testimonials`, {});
+    const isTestimonials = true;
+    const data = Object.assign(request.data, { isTestimonials });
+    response.render(`pages/about-us/testimonials/testimonials`, data);
 });
 
 router.get(`/testimonials/:testimonialID`, async (request, response) => {
-    response.render(`pages/about-us/testimonials/testimonials-single`, {});
+    const isTestimonials = true;
+    const data = Object.assign(request.data, { isTestimonials });
+    response.render(`pages/about-us/testimonials/testimonials-single`, data);
 });
 
 router.get(`/in-the-press`, async (request, response) => {
-    response.render(`pages/about-us/press/press`, {});
+    const isTnThePress = true;
+    const data = Object.assign(request.data, { isTnThePress });
+    response.render(`pages/about-us/press/press`, data);
 });
 
 router.get(`/in-the-press/:pressID`, async (request, response) => {
-    response.render(`pages/about-us/press/press-single`, {});
+    const isTnThePress = true;
+    const data = Object.assign(request.data, { isTnThePress });
+    response.render(`pages/about-us/press/press-single`, data);
 });
 
 router.get(`/financing-offers`, async (request, response) => {
-    response.render(`pages/about-us/offers/offers`, {});
+    const isFinancingOffers = true;
+    const data = Object.assign(request.data, { isFinancingOffers });
+    response.render(`pages/about-us/offers/offers`, data);
 });
 
 router.get(`/contact-us`, async (request, response) => {
-    response.render(`pages/about-us/contact-us/contact-us`, {});
+    const isContactUs = true;
+    const data = Object.assign(request.data, { isContactUs });
+    response.render(`pages/about-us/contact-us/contact-us`, data);
 });
 
 module.exports = router;

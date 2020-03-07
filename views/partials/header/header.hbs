@@ -19,39 +19,52 @@
         <nav class="headerMenu">
             <ul class="menuList mainMenuList">
                 <li class="menuLinkWrapper">
-                    <a class="menuLink activeLink" href="/portfolio/">PORTFOLIO</a>
+                    <a class="menuLink{{# if isPortfolio }} activeLink{{/ if }}"
+                       href="/portfolio/">PORTFOLIO</a>
                 </li>
                 <li class="menuLinkWrapper">
-                    <a class="menuLink" href="/basement-ideas/">BASEMENT IDEAS</a>
+                    <a class="menuLink{{# if isBasementIdeas }} activeLink{{/ if }}"
+                       href="/basement-ideas/">BASEMENT IDEAS</a>
                 </li>
                 <li class="menuLinkWrapper">
-                    <span class="menuLink dropdownMenuLink">HOW IT WORKS</span>
+                    <span class="menuLink dropdownMenuLink{{# if isHowItWorks }} activeLink{{/ if }}">
+                        HOW IT WORKS
+                    </span>
                     <ul class="menuList subMenuList">
                         <li class="menuLinkWrapper">
-                            <a class="menuLink" href="/how-it-works/our-process/">OUR PROCESS</a>
+                            <a class="menuLink {{# if isOurProcess }} activeLink{{/ if }}"
+                               href="/how-it-works/our-process/">OUR PROCESS</a>
                         </li>
                         <li class="menuLinkWrapper">
-                            <a class="menuLink" href="/how-it-works/contractor-faq/">CONTRACTOR FAQ</a>
+                            <a class="menuLink{{# if isContractorFAQ }} activeLink{{/ if }}"
+                               href="/how-it-works/contractor-faq/">CONTRACTOR FAQ</a>
                         </li>
                         <li class="menuLinkWrapper">
-                            <a class="menuLink" href="/how-it-works/basement-tips/">BASEMENT TIPS (BLOG)</a>
+                            <a class="menuLink{{# if isBasementTips }} activeLink{{/ if }}"
+                               href="/how-it-works/basement-tips/">BASEMENT TIPS (BLOG)</a>
                         </li>
                     </ul>
                 </li>
                 <li class="menuLinkWrapper">
-                    <span class="menuLink dropdownMenuLink">ABOUT US</span>
+                    <span class="menuLink dropdownMenuLink{{# if isAboutUs }} activeLink{{/ if }}">
+                        ABOUT US
+                    </span>
                     <ul class="menuList subMenuList">
                         <li class="menuLinkWrapper">
-                            <a class="menuLink" href="/about-us/testimonials/">TESTIMONIALS</a>
+                            <a class="menuLink {{# if isTestimonials }} activeLink{{/ if }}"
+                               href="/about-us/testimonials/">TESTIMONIALS</a>
                         </li>
                         <li class="menuLinkWrapper">
-                            <a class="menuLink" href="/about-us/in-the-press/">IN THE PRESS</a>
+                            <a class="menuLink {{# if isTnThePress }} activeLink{{/ if }}"
+                               href="/about-us/in-the-press/">IN THE PRESS</a>
                         </li>
                         <li class="menuLinkWrapper">
-                            <a class="menuLink" href="/about-us/financing-offers/">FINANCING OFFERS</a>
+                            <a class="menuLink {{# if isFinancingOffers }} activeLink{{/ if }}"
+                               href="/about-us/financing-offers/">FINANCING OFFERS</a>
                         </li>
                         <li class="menuLinkWrapper">
-                            <a class="menuLink" href="/about-us/contact-us/">CONTACT US</a>
+                            <a class="menuLink {{# if isContactUs }} activeLink{{/ if }}"
+                               href="/about-us/contact-us/">CONTACT US</a>
                         </li>
                     </ul>
                 </li>

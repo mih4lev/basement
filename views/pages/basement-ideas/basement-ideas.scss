@@ -335,7 +335,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        margin: 25px auto 10px;
+        margin: 35px auto 20px;
         background-color: transparent;
         border: none;
         font-size: 9px;
@@ -345,7 +345,10 @@
         cursor: pointer;
         @include minWidth(480) {
             font-size: 13px;
-            margin-bottom: 20px;
+            margin: 45px auto 20px;
+        }
+        @include minWidth(768) {
+            margin: 60px auto 30px;
         }
         &:hover {
             color: $blueColor;
