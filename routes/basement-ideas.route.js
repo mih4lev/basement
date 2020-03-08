@@ -13,13 +13,15 @@ router.get(`/`, async (request, response) => {
 });
 
 router.get(`/:categoryTitle`, async (request, response) => {
+    const { params: { categoryTitle }} = request;
     const data = Object.assign(request.data);
-    response.render(`pages/basement-ideas/category`, data);
+    response.render(`pages/basement-ideas/basement-ideas`, data);
 });
 
 router.get(`/:categoryTitle/:subCategoryTitle`, async (request, response) => {
+    const { params: { categoryTitle, subCategoryTitle }} = request;
     const data = Object.assign(request.data);
-    response.render(`pages/basement-ideas/sub-category`, data);
+    response.render(`pages/basement-ideas/basement-ideas`, data);
 });
 
 module.exports = router;

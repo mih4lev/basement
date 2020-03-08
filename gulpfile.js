@@ -21,7 +21,6 @@ gulp.task(`browser-sync`, () => {
     gulp.watch(`./source/images/*.{png,jpg,jpeg}`, gulp.series(`bitmap`));
     gulp.watch(`./source/images/*.{png,jpg,jpeg}`, gulp.series(`webp`));
     gulp.watch(`./source/images/temp/*.{png,jpg,jpeg}`, gulp.series(`temp`));
-    gulp.watch(`./source/images/temp/*.{png,jpg,jpeg}`, gulp.series(`tempWebp`));
     gulp.watch(`./source/images/*.svg`, gulp.series(`vector`));
     gulp.watch(`./source/images/sprite/*.svg`, gulp.series(`sprite`));
     gulp.watch(`./source/fonts/*.{woff, woff2, ttf}`, gulp.series(`fonts`));
@@ -91,12 +90,6 @@ gulp.task('webp', () => {
         .pipe(gulp.dest('./public/images'));
 });
 
-gulp.task('tempWebp', () => {
-    return gulp.src('./source/images/temp/*.{png,jpg,jpeg}')
-        .pipe(webp())
-        .pipe(gulp.dest('./public/images/temp'));
-});
-
 // Fonts (Copy all fonts to public folder)
 gulp.task(`fonts`, () => {
     del.sync(`./public/fonts`);
@@ -110,6 +103,6 @@ gulp.task(`reload`, (done) => {
     done();
 });
 
-// const tasks = [`browser-sync`, `styles`, `fonts`, `bitmap`, `webp`, `temp`, `tempWebp`, `vector`, `sprite`];
+// const tasks = [`browser-sync`, `styles`, `fonts`, `bitmap`, `webp`, `temp`, `vector`, `sprite`];
 const tasks = [`browser-sync`, `styles`];
 gulp.task(`default`, gulp.parallel(...tasks));

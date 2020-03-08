@@ -1,0 +1,134 @@
+{
+    "home": {
+        "title": "BR / home",
+        "header": "Basement Remodeling Company",
+        "link": "/",
+        "keywords": "basement remodeling, basement finishing, basement remodeling va, basement finishing va, basement finishing md, basement remodeling md, basement remodeling dc, basement finishing dc, maryland, virginia, basement finishing company, basement remodeling company, remodel a basement, basement contractor, basement ideas, basement renovation, finished basement, basement refinish, basement waterproofing, dc, Washington dc, basement design ideas",
+        "description": "Complete Basement Finishing, Remodeling, and Waterproofing services in Maryland, Virginia, and DC. The most trusted company in the basement industry.",
+        "parent": false,
+        "pageLevel": 0,
+        "isHomePage": true,
+        "isMenuExist": false
+    },
+    "portfolio": {
+        "title": "BR / portfolio",
+        "header": "Portfolio",
+        "link": "/portfolio/",
+        "keywords": "basement remodeling, basement finishing, basement remodeling va, basement finishing va, basement finishing md, basement remodeling md, basement remodeling dc, basement finishing dc, maryland, virginia, basement finishing company, basement remodeling company, remodel a basement, basement contractor, basement ideas, basement renovation, finished basement, basement refinish, basement waterproofing, dc, Washington dc, basement design ideas",
+        "description": "Complete Basement Finishing, Remodeling, and Waterproofing services in Maryland, Virginia, and DC. The most trusted company in the basement industry.",
+        "parent": "home",
+        "pageLevel": 1,
+        "isPortfolioPage": true,
+        "isMenuExist": true
+    },
+    "basement-ideas": {
+        "title": "BR / basement-ideas",
+        "header": "Basement ideas",
+        "link": "/basement-ideas/",
+        "keywords": "basement remodeling, basement finishing, basement remodeling va, basement finishing va, basement finishing md, basement remodeling md, basement remodeling dc, basement finishing dc, maryland, virginia, basement finishing company, basement remodeling company, remodel a basement, basement contractor, basement ideas, basement renovation, finished basement, basement refinish, basement waterproofing, dc, Washington dc, basement design ideas",
+        "description": "Complete Basement Finishing, Remodeling, and Waterproofing services in Maryland, Virginia, and DC. The most trusted company in the basement industry.",
+        "parent": "home",
+        "pageLevel": 1,
+        "isBasementIdeasPage": true,
+        "isMenuExist": true
+    },
+    "how-it-works": {
+        "title": "BR / how-it-works",
+        "header": "How it works",
+        "link": false,
+        "keywords": "basement remodeling, basement finishing, basement remodeling va, basement finishing va, basement finishing md, basement remodeling md, basement remodeling dc, basement finishing dc, maryland, virginia, basement finishing company, basement remodeling company, remodel a basement, basement contractor, basement ideas, basement renovation, finished basement, basement refinish, basement waterproofing, dc, Washington dc, basement design ideas",
+        "description": "Complete Basement Finishing, Remodeling, and Waterproofing services in Maryland, Virginia, and DC. The most trusted company in the basement industry.",
+        "parent": "home",
+        "pageLevel": 1,
+        "isHowItWorksPage": true,
+        "isMenuExist": true
+    },
+    "our-process": {
+        "title": "BR / how-it-works / our-process",
+        "header": "Our process",
+        "link": "/how-it-works/our-process/",
+        "keywords": "basement remodeling, basement finishing, basement remodeling va, basement finishing va, basement finishing md, basement remodeling md, basement remodeling dc, basement finishing dc, maryland, virginia, basement finishing company, basement remodeling company, remodel a basement, basement contractor, basement ideas, basement renovation, finished basement, basement refinish, basement waterproofing, dc, Washington dc, basement design ideas",
+        "description": "Complete Basement Finishing, Remodeling, and Waterproofing services in Maryland, Virginia, and DC. The most trusted company in the basement industry.",
+        "parent": "how-it-works",
+        "pageLevel": 2,
+        "isHowItWorksPage": true,
+        "isMenuExist": true
+    },
+    "contractor-faq": {
+        "title": "BR / how-it-works / contractor-faq",
+        "header": "Contractor FAQ",
+        "link": "/how-it-works/contractor-faq/",
+        "keywords": "basement remodeling, basement finishing, basement remodeling va, basement finishing va, basement finishing md, basement remodeling md, basement remodeling dc, basement finishing dc, maryland, virginia, basement finishing company, basement remodeling company, remodel a basement, basement contractor, basement ideas, basement renovation, finished basement, basement refinish, basement waterproofing, dc, Washington dc, basement design ideas",
+        "description": "Complete Basement Finishing, Remodeling, and Waterproofing services in Maryland, Virginia, and DC. The most trusted company in the basement industry.",
+        "parent": "how-it-works",
+        "pageLevel": 2,
+        "isHowItWorksPage": true,
+        "isMenuExist": true
+    },
+    "basement-tips": {
+        "title": "BR / how-it-works / basement-tips",
+        "header": "Basement Tips (Blog)",
+        "link": "/how-it-works/basement-tips/",
+        "keywords": "basement remodeling, basement finishing, basement remodeling va, basement finishing va, basement finishing md, basement remodeling md, basement remodeling dc, basement finishing dc, maryland, virginia, basement finishing company, basement remodeling company, remodel a basement, basement contractor, basement ideas, basement renovation, finished basement, basement refinish, basement waterproofing, dc, Washington dc, basement design ideas",
+        "description": "Complete Basement Finishing, Remodeling, and Waterproofing services in Maryland, Virginia, and DC. The most trusted company in the basement industry.",
+        "parent": "how-it-works",
+        "pageLevel": 2,
+        "isHowItWorksPage": true,
+        "isMenuExist": true
+    },
+    "about-us": {
+        "title": "BR / about-us",
+        "header": "About us",
+        "link": false,
+        "keywords": "basement remodeling, basement finishing, basement remodeling va, basement finishing va, basement finishing md, basement remodeling md, basement remodeling dc, basement finishing dc, maryland, virginia, basement finishing company, basement remodeling company, remodel a basement, basement contractor, basement ideas, basement renovation, finished basement, basement refinish, basement waterproofing, dc, Washington dc, basement design ideas",
+        "description": "Complete Basement Finishing, Remodeling, and Waterproofing services in Maryland, Virginia, and DC. The most trusted company in the basement industry.",
+        "parent": "home",
+        "pageLevel": 1,
+        "isAboutUsPage": true,
+        "isMenuExist": true
+    },
+    "testimonials": {
+        "title": "BR / about-us / testimonials",
+        "header": "Testimonials",
+        "link": "/about-us/testimonials/",
+        "keywords": "basement remodeling, basement finishing, basement remodeling va, basement finishing va, basement finishing md, basement remodeling md, basement remodeling dc, basement finishing dc, maryland, virginia, basement finishing company, basement remodeling company, remodel a basement, basement contractor, basement ideas, basement renovation, finished basement, basement refinish, basement waterproofing, dc, Washington dc, basement design ideas",
+        "description": "Complete Basement Finishing, Remodeling, and Waterproofing services in Maryland, Virginia, and DC. The most trusted company in the basement industry.",
+        "parent": "about-us",
+        "pageLevel": 2,
+        "isHowItWorksPage": true,
+        "isMenuExist": true
+    },
+    "in-the-press": {
+        "title": "BR / about-us / in-the-press",
+        "header": "In the press",
+        "link": "/about-us/in-the-press/",
+        "keywords": "basement remodeling, basement finishing, basement remodeling va, basement finishing va, basement finishing md, basement remodeling md, basement remodeling dc, basement finishing dc, maryland, virginia, basement finishing company, basement remodeling company, remodel a basement, basement contractor, basement ideas, basement renovation, finished basement, basement refinish, basement waterproofing, dc, Washington dc, basement design ideas",
+        "description": "Complete Basement Finishing, Remodeling, and Waterproofing services in Maryland, Virginia, and DC. The most trusted company in the basement industry.",
+        "parent": "about-us",
+        "pageLevel": 2,
+        "isHowItWorksPage": true,
+        "isMenuExist": true
+    },
+    "financing-offers": {
+        "title": "BR / about-us / financing-offers",
+        "header": "Financing offers",
+        "link": "/about-us/financing-offers/",
+        "keywords": "basement remodeling, basement finishing, basement remodeling va, basement finishing va, basement finishing md, basement remodeling md, basement remodeling dc, basement finishing dc, maryland, virginia, basement finishing company, basement remodeling company, remodel a basement, basement contractor, basement ideas, basement renovation, finished basement, basement refinish, basement waterproofing, dc, Washington dc, basement design ideas",
+        "description": "Complete Basement Finishing, Remodeling, and Waterproofing services in Maryland, Virginia, and DC. The most trusted company in the basement industry.",
+        "parent": "about-us",
+        "pageLevel": 2,
+        "isHowItWorksPage": true,
+        "isMenuExist": true
+    },
+    "contact-us": {
+        "title": "BR / about-us / contact-us",
+        "header": "Contact us",
+        "link": "/about-us/contact-us/",
+        "keywords": "basement remodeling, basement finishing, basement remodeling va, basement finishing va, basement finishing md, basement remodeling md, basement remodeling dc, basement finishing dc, maryland, virginia, basement finishing company, basement remodeling company, remodel a basement, basement contractor, basement ideas, basement renovation, finished basement, basement refinish, basement waterproofing, dc, Washington dc, basement design ideas",
+        "description": "Complete Basement Finishing, Remodeling, and Waterproofing services in Maryland, Virginia, and DC. The most trusted company in the basement industry.",
+        "parent": "about-us",
+        "pageLevel": 2,
+        "isHowItWorksPage": true,
+        "isMenuExist": true
+    }
+}

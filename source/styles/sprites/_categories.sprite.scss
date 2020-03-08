@@ -46,71 +46,109 @@
 // spaces
 
 .spacesCategoriesSprite {
-    width: 130px;
-    height: 130px;
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-size: 520px 650px;
-    background-image: url('/public/images/spaces-sprite.jpg');
-    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-        background-image: url('/public/images/spaces-sprite@2x.jpg');
+    &:before {
+        width: 130px;
+        height: 130px;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-size: 520px 650px;
+        background-image: url('/public/images/spaces-sprite.jpg');
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url('/public/images/spaces-sprite@2x.jpg');
+        }
     }
     &.bathroomsBasic {
-        background-position: 0 0;
+        &:before {
+            background-position: 0 0;
+        }
     }
     &.bathroomsHalf {
-        background-position: -130px 0;
+        &:before {
+            background-position: -130px 0;
+        }
     }
     &.bathroomsUpgraded {
-        background-position: -260px 0;
+        &:before {
+            background-position: -260px 0;
+        }
     }
     &.familyRooms {
-        background-position: -390px 0;
+        &:before {
+            background-position: -390px 0;
+        }
     }
     &.gym {
-        background-position: 0 -130px;
+        &:before {
+            background-position: 0 -130px;
+        }
     }
     &.homeTheatre {
-        background-position: -130px -130px;
+        &:before {
+            background-position: -130px -130px;
+        }
     }
     &.kidsPlayrooms {
-        background-position: -260px -130px;
+        &:before {
+            background-position: -260px -130px;
+        }
     }
     &.laundry {
-        background-position: -390px -130px;
+        &:before {
+            background-position: -390px -130px;
+        }
     }
     &.mediaRoomsBasic {
-        background-position: 0 -260px;
+        &:before {
+            background-position: 0 -260px;
+        }
     }
     &.musicRooms {
-        background-position: -130px -260px;
+        &:before {
+            background-position: -130px -260px;
+        }
     }
     &.office {
-        background-position: -260px -260px;
+        &:before {
+            background-position: -260px -260px;
+        }
     }
     &.storageRooms  {
-        background-position: -390px -260px;
+        &:before {
+            background-position: -390px -260px;
+        }
     }
     &.wetBarsFullsize {
-        background-position: 0 -390px;
+        &:before {
+            background-position: 0 -390px;
+        }
     }
     &.wetBarsKitchenLike {
-        background-position: -130px -390px;
+        &:before {
+            background-position: -130px -390px;
+        }
     }
     &.wetBarsMedium {
-        background-position: -260px -390px;
+        &:before {
+            background-position: -260px -390px;
+        }
     }
     &.wetBarsSmall {
-        background-position: -390px -390px;
+        &:before {
+            background-position: -390px -390px;
+        }
     }
     &.wineCellars {
-        background-position: 0 -520px;
+        &:before {
+            background-position: 0 -520px;
+        }
     }
 }
 .webp .spacesCategoriesSprite {
-    background-image: url('/public/images/spaces-sprite.webp');
-    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-        background-image: url('/public/images/spaces-sprite@2x.webp');
+    &:before {
+        background-image: url('/public/images/spaces-sprite.webp');
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url('/public/images/spaces-sprite@2x.webp');
+        }
     }
 }
 
