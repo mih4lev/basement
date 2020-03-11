@@ -19,3 +19,87 @@
         </div>
     </div>
 </section>
+
+<section class="subBlock testimonialBlock">
+    <div class="wrapper headerWrapper">
+        <p class="textBlock">
+            Want to know what our previous clients have to say about their basement remodeling and basement finishing experiences with Basement Masters? Simply click on a logo to read the Basement Masters reviews on our company profile.
+        </p>
+        <p class="textBlock">
+            As our basement remodeling and basement finishing reviews show, Basement Masters is the best Maryland basement remodel company to service Washington DC, Maryland and Virginia. This definitely means something to us, and we think it should mean something to you, too! You can also scroll down to read Basement Masters reviews directly from this page.
+        </p>
+    </div>
+</section>
+
+<section class="contentBlock testimonialBlock">
+    <div class="wrapper">
+        <ul class="testimonialList">
+            {{#each testimonials}}
+                <li class="testimonialWrapper">
+                    <a class="testimonialImageLink" href="/testimonials/{{{ id }}}">
+                        {{# if image }}
+                        <picture class="testimonialImage">
+                            <source srcset="/public/images/temp/testimonials/{{{ image }}}_120x83.webp,
+                                        /public/images/temp/testimonials/{{{ image }}}_240x166.webp 2x"
+                                    media="(max-width: 479px)"
+                                    type="image/webp">
+                            <source srcset="/public/images/temp/testimonials/{{{ image }}}_120x83.jpg,
+                                        /public/images/temp/testimonials/{{{ image }}}_240x166.jpg 2x"
+                                    media="(max-width: 479px)"
+                                    type="image/jpeg">
+                            <source srcset="/public/images/temp/testimonials/{{{ image }}}_228x123.webp,
+                                        /public/images/temp/testimonials/{{{ image }}}_456x246.webp 2x"
+                                    media="(max-width: 767px)"
+                                    type="image/webp">
+                            <source srcset="/public/images/temp/testimonials/{{{ image }}}_228x123.jpg,
+                                        /public/images/temp/testimonials/{{{ image }}}_456x246.jpg 2x"
+                                    media="(max-width: 767px)"
+                                    type="image/jpeg">
+                            <source srcset="/public/images/temp/testimonials/{{{ image }}}_236x123.webp,
+                                        /public/images/temp/testimonials/{{{ image }}}_472x246.webp 2x"
+                                    media="(max-width: 999px)"
+                                    type="image/webp">
+                            <source srcset="/public/images/temp/testimonials/{{{ image }}}_236x123.jpg,
+                                        /public/images/temp/testimonials/{{{ image }}}_472x246.jpg 2x"
+                                    media="(max-width: 999px)"
+                                    type="image/jpeg">
+                            <source srcset="/public/images/temp/testimonials/{{{ image }}}_314x173.webp,
+                                        /public/images/temp/testimonials/{{{ image }}}_628x346.webp 2x"
+                                    media="(max-width: 1439px)"
+                                    type="image/webp">
+                            <source srcset="/public/images/temp/testimonials/{{{ image }}}_314x173.jpg,
+                                        /public/images/temp/testimonials/{{{ image }}}_628x346.jpg 2x"
+                                    media="(max-width: 1439px)"
+                                    type="image/jpeg">
+                            <source srcset="/public/images/temp/testimonials/{{{ image }}}_330x173.webp,
+                                        /public/images/temp/testimonials/{{{ image }}}_660x346.webp 2x"
+                                    media="(min-width: 1440px)"
+                                    type="image/webp">
+                            <source srcset="/public/images/temp/testimonials/{{{ image }}}_330x173.jpg,
+                                        /public/images/temp/testimonials/{{{ image }}}_660x346.jpg 2x"
+                                    media="(min-width: 1440px)"
+                                    type="image/jpeg">
+                            <img class="testimonialImage"
+                                 src="/public/images/temp/testimonials/{{{ image }}}_330x173.jpg"
+                                 srcset="/public/images/temp/testimonials/{{{ image }}}_330x173.jpg,
+                                     /public/images/temp/testimonials/{{{ image }}}_660x346.jpg 2x"
+                                 alt="{{{ name }}}'s testimonial">
+                        </picture>
+                        {{ else }}
+                            <div class="testimonialImage"></div>
+                        {{/ if }}
+                    </a>
+                    <div class="testimonialContent">
+                        <a class="testimonialAuthor" href="/testimonials/{{{ id }}}">{{{ name }}}</a>
+                        <div class="testimonialRating" data-rating="{{{ rating }}}"></div>
+                        <p class="testimonialAnnotation">{{{ announce }}}</p>
+                        <div class="testimonialData">
+                            <span class="testimonialDate">{{{ date }}}</span>
+                            <span class="testimonialState">{{{ state }}}</span>
+                        </div>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</section>

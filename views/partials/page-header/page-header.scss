@@ -433,6 +433,9 @@
         }
         .categoryLink {
             font-size: 7px;
+            &:hover {
+                color: $blueColor;
+            }
             @include minWidth(768) {
                 font-size: 10px;
             }

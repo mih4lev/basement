@@ -1,5 +1,6 @@
 const { Router } = require(`express`);
 const router = new Router();
+const fs = require(`fs`);
 
 router.use((request, response, next) => {
     const isAboutUs = true;
@@ -14,7 +15,9 @@ router.get(`/`, async (request, response) => {
 
 router.get(`/testimonials`, async (request, response) => {
     const isTestimonials = true;
-    const data = Object.assign(request.data, { isTestimonials });
+    const mockJSON = fs.readFileSync(`data-mock/testimonials.json`);
+    const mockData = JSON.parse(mockJSON);
+    const data = Object.assign(request.data, mockData,{ isTestimonials });
     response.render(`pages/about-us/testimonials/testimonials`, data);
 });
 
