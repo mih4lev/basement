@@ -26,6 +26,17 @@
     src: url('/public/fonts/Gilroy-Bold.eot?#iefix') format('embedded-opentype'),
     url('/public/fonts/Gilroy-Bold.woff') format('woff'),
     url('/public/fonts/Gilroy-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gilroy';
+    src: url('/public/fonts/Gilroy-ExtraBold.eot');
+    src: url('/public/fonts/Gilroy-ExtraBold.eot?#iefix') format('embedded-opentype'),
+    url('/public/fonts/Gilroy-ExtraBold.woff') format('woff'),
+    url('/public/fonts/Gilroy-ExtraBold.ttf') format('truetype');
     font-weight: 800;
     font-style: normal;
     font-display: swap;
