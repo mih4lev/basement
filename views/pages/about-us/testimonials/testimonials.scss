@@ -109,6 +109,12 @@
                 @include minWidth(1000) {
                     padding: 20px;
                 }
+                .testimonialData {
+                    margin-top: 2px;
+                    @include minWidth(480) {
+                        margin-top: 10px;
+                    }
+                }
                 .testimonialAuthor {
                     font-size: 9px;
                     line-height: 125%;
@@ -127,61 +133,6 @@
                     }
                     @include minWidth(1440) {
                         font-size: 18px;
-                    }
-                }
-                .testimonialRating {
-                    display: block;
-                    width: 45px;
-                    height: 8px;
-                    font-size: 0;
-                    background: url('/public/images/star-icon.svg') space;
-                    background-size: 8px;
-                    @include minWidth(480) {
-                        margin-top: 3px;
-                        background-size: 14px;
-                        width: 80px;
-                        height: 14px;
-                    }
-                    @include minWidth(1000) {
-                        width: 105px;
-                        height: 18px;
-                        background-size: 18px;
-                    }
-                    &[data-rating="1"] {
-                        width: 8px;
-                        @include minWidth(480) {
-                            width: 14px;
-                        }
-                        @include minWidth(1000) {
-                            width: 18px;
-                        }
-                    }
-                    &[data-rating="2"] {
-                        width: 18px;
-                        @include minWidth(480) {
-                            width: 32px;
-                        }
-                        @include minWidth(1000) {
-                            width: 42px;
-                        }
-                    }
-                    &[data-rating="3"] {
-                        width: 27px;
-                        @include minWidth(480) {
-                            width: 48px;
-                        }
-                        @include minWidth(1000) {
-                            width: 63px;
-                        }
-                    }
-                    &[data-rating="4"] {
-                        width: 36px;
-                        @include minWidth(480) {
-                            width: 64px;
-                        }
-                        @include minWidth(1000) {
-                            width: 84px;
-                        }
                     }
                 }
                 .testimonialAnnotation {
@@ -203,43 +154,148 @@
                         -webkit-line-clamp: 6;
                     }
                 }
-                .testimonialData {
-                    margin-top: 2px;
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    @include minWidth(480) {
-                        margin-top: 10px;
-                    }
-                    @include minWidth(1000) {
-                        margin-top: 20px;
-                    }
-                    .testimonialDate {
-                        font-size: 9px;
-                        line-height: 125%;
-                        color: $greyColor;
-                        @include minWidth(480) {
-                            font-size: 11px;
-                        }
-                        @include minWidth(1000) {
-                            font-size: 13px;
-                        }
-                    }
-                    .testimonialState {
-                        font-size: 9px;
-                        line-height: 125%;
-                        letter-spacing: 0.05em;
-                        font-weight: 700;
-                        text-transform: uppercase;
-                        color: $greyColor;
-                        @include minWidth(480) {
-                            font-size: 11px;
-                        }
-                        @include minWidth(1000) {
-                            font-size: 13px;
-                        }
-                    }
-                }
+            }
+        }
+    }
+    .testimonialData {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        @include minWidth(1000) {
+            margin-top: 20px;
+        }
+    }
+    .testimonialDate {
+        font-size: 9px;
+        line-height: 125%;
+        color: $greyColor;
+        @include minWidth(480) {
+            font-size: 11px;
+        }
+        @include minWidth(1000) {
+            font-size: 13px;
+        }
+    }
+    .testimonialState {
+        font-size: 9px;
+        line-height: 125%;
+        letter-spacing: 0.05em;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $greyColor;
+        @include minWidth(480) {
+            font-size: 11px;
+        }
+        @include minWidth(1000) {
+            font-size: 13px;
+        }
+    }
+    .testimonialRating {
+        display: block;
+        width: 45px;
+        height: 8px;
+        font-size: 0;
+        background: url('/public/images/star-icon.svg') space;
+        background-size: 8px;
+        @include minWidth(480) {
+            margin-top: 3px;
+            background-size: 14px;
+            width: 80px;
+            height: 14px;
+        }
+        @include minWidth(1000) {
+            width: 105px;
+            height: 18px;
+            background-size: 18px;
+        }
+        &[data-rating="1"] {
+            width: 8px;
+            @include minWidth(480) {
+                width: 14px;
+            }
+            @include minWidth(1000) {
+                width: 18px;
+            }
+        }
+        &[data-rating="2"] {
+            width: 18px;
+            @include minWidth(480) {
+                width: 32px;
+            }
+            @include minWidth(1000) {
+                width: 42px;
+            }
+        }
+        &[data-rating="3"] {
+            width: 27px;
+            @include minWidth(480) {
+                width: 48px;
+            }
+            @include minWidth(1000) {
+                width: 63px;
+            }
+        }
+        &[data-rating="4"] {
+            width: 36px;
+            @include minWidth(480) {
+                width: 64px;
+            }
+            @include minWidth(1000) {
+                width: 84px;
+            }
+        }
+    }
+    .testimonialTitle {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 19px;
+        line-height: 125%;
+        font-weight: 800;
+        color: $blackColor;
+        @include minWidth(480) {
+            font-size: 27px;
+        }
+        @include minWidth(1000) {
+            font-size: 34px;
+        }
+    }
+    .buttonsWrapper {
+        margin-top: 20px;
+    }
+    .backButton {
+        @extend %menuButton;
+        &:before {
+            @extend %buttonIconBefore;
+            @extend %arrowIcon;
+            background: $greyColor;
+            transform: rotate(180deg) scale(0.6);
+            @include minWidth(480) {
+                transform: rotate(180deg) scale(1);
+            }
+        }
+        &:hover {
+            &:before {
+                background: $blackColor;
+            }
+        }
+    }
+    .projectButton {
+        color: $whiteColor;
+        @extend %blueButton;
+        &:after {
+            @extend %buttonIconAfter;
+            @extend %arrowIcon;
+            background: $whiteColor;
+            transform: scale(0.6);
+            @include minWidth(480) {
+                transform: scale(1);
+            }
+        }
+        &:hover {
+            &:before {
+                background: $blackColor;
             }
         }
     }

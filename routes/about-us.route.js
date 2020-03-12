@@ -22,8 +22,13 @@ router.get(`/testimonials`, async (request, response) => {
 });
 
 router.get(`/testimonials/:testimonialID`, async (request, response) => {
+    const { params: { testimonialID }} = request;
     const isTestimonials = true;
-    const data = Object.assign(request.data, { isTestimonials });
+    const mockJSON = fs.readFileSync(`data-mock/testimonials.json`);
+    const { testimonials } = JSON.parse(mockJSON);
+    const filterFunc = ({ id }) => Number(testimonialID) === Number(id);
+    const testimonialMockData = testimonials.filter(filterFunc);
+    const data = Object.assign(request.data, testimonialMockData[0],{ isTestimonials });
     response.render(`pages/about-us/testimonials/testimonials-single`, data);
 });
 
