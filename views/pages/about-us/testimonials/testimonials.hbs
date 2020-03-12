@@ -36,7 +36,7 @@
         <ul class="testimonialList">
             {{#each testimonials}}
                 <li class="testimonialWrapper">
-                    <a class="testimonialImageLink" href="/testimonials/{{{ id }}}">
+                    <a class="testimonialImageLink" href="/about-us/testimonials/{{{ id }}}">
                         {{# if image }}
                         <picture class="testimonialImage">
                             <source srcset="/public/images/temp/testimonials/{{{ image }}}_120x83.webp,
@@ -86,12 +86,12 @@
                                  alt="{{{ name }}}'s testimonial">
                         </picture>
                         {{ else }}
-                            <div class="testimonialImage"></div>
+                            <div class="testimonialImage">{{{ name }}}'s testimonial</div>
                         {{/ if }}
                     </a>
                     <div class="testimonialContent">
-                        <a class="testimonialAuthor" href="/testimonials/{{{ id }}}">{{{ name }}}</a>
-                        <div class="testimonialRating" data-rating="{{{ rating }}}"></div>
+                        <a class="testimonialAuthor" href="/about-us/testimonials/{{{ id }}}">{{{ name }}}</a>
+                        <div class="testimonialRating" data-rating="{{{ rating }}}">Stars: {{{ rating }}}</div>
                         <p class="testimonialAnnotation">{{{ announce }}}</p>
                         <div class="testimonialData">
                             <span class="testimonialDate">{{{ date }}}</span>
@@ -101,5 +101,6 @@
                 </li>
             {{/each}}
         </ul>
+        <button class="showMoreButton">SHOW MORE</button>
     </div>
 </section>

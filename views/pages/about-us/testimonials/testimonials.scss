@@ -8,9 +8,28 @@
         flex-wrap: wrap;
         justify-content: flex-start;
         margin-top: 0;
-        margin-bottom: 0;
+        margin-bottom: -4px;
         padding-left: 0;
         list-style-type: none;
+        @include minWidth(480) {
+            margin-left: -4px;
+            margin-right: -4px;
+        }
+        @include minWidth(768) {
+            margin-left: -5px;
+            margin-right: -5px;
+            margin-bottom: -10px;
+        }
+        @include minWidth(1000) {
+            margin-left: -6px;
+            margin-right: -6px;
+            margin-bottom: -12px;
+        }
+        @include minWidth(1440) {
+            margin-left: -10px;
+            margin-right: -10px;
+            margin-bottom: -20px;
+        }
         .testimonialWrapper {
             display: flex;
             flex-direction: row;
@@ -19,16 +38,27 @@
             background: $whiteColor;
             @extend %shadow;
             @include minWidth(480) {
+                margin-left: 4px;
+                margin-right: 4px;
                 flex-direction: column;
                 width: 228px;
             }
             @include minWidth(768) {
+                margin-left: 5px;
+                margin-right: 5px;
+                margin-bottom: 10px;
                 width: 236px;
             }
             @include minWidth(1000) {
+                margin-left: 6px;
+                margin-right: 6px;
+                margin-bottom: 12px;
                 width: 314px;
             }
             @include minWidth(1440) {
+                margin-left: 10px;
+                margin-right: 10px;
+                margin-bottom: 18px;
                 width: 330px;
             }
             .testimonialImageLink {
@@ -38,6 +68,7 @@
                     display: block;
                     width: 120px;
                     height: 83px;
+                    font-size: 0;
                     background-color: $bgSubColor;
                     background-image: url('/public/images/default-image.svg');
                     background-repeat: no-repeat;
@@ -99,21 +130,58 @@
                     }
                 }
                 .testimonialRating {
-                    width: 44px;
-                    height: 10px;
-                    background-size: 8px;
+                    display: block;
+                    width: 45px;
+                    height: 8px;
+                    font-size: 0;
                     background: url('/public/images/star-icon.svg') space;
+                    background-size: 8px;
+                    @include minWidth(480) {
+                        margin-top: 3px;
+                        background-size: 14px;
+                        width: 80px;
+                        height: 14px;
+                    }
+                    @include minWidth(1000) {
+                        width: 105px;
+                        height: 18px;
+                        background-size: 18px;
+                    }
                     &[data-rating="1"] {
-                        width: 9px;
+                        width: 8px;
+                        @include minWidth(480) {
+                            width: 14px;
+                        }
+                        @include minWidth(1000) {
+                            width: 18px;
+                        }
                     }
                     &[data-rating="2"] {
                         width: 18px;
+                        @include minWidth(480) {
+                            width: 32px;
+                        }
+                        @include minWidth(1000) {
+                            width: 42px;
+                        }
                     }
                     &[data-rating="3"] {
                         width: 27px;
+                        @include minWidth(480) {
+                            width: 48px;
+                        }
+                        @include minWidth(1000) {
+                            width: 63px;
+                        }
                     }
                     &[data-rating="4"] {
                         width: 36px;
+                        @include minWidth(480) {
+                            width: 64px;
+                        }
+                        @include minWidth(1000) {
+                            width: 84px;
+                        }
                     }
                 }
                 .testimonialAnnotation {
@@ -126,6 +194,7 @@
                     -webkit-box-orient: vertical;
                     overflow-y: hidden;
                     @include minWidth(480) {
+                        margin-top: 5px;
                         font-size: 10px;
                         -webkit-line-clamp: 5;
                     }
@@ -139,6 +208,12 @@
                     display: flex;
                     flex-direction: row;
                     justify-content: space-between;
+                    @include minWidth(480) {
+                        margin-top: 10px;
+                    }
+                    @include minWidth(1000) {
+                        margin-top: 20px;
+                    }
                     .testimonialDate {
                         font-size: 9px;
                         line-height: 125%;

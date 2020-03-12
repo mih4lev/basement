@@ -118,3 +118,46 @@ a {
         align-items: center;
     }
 }
+
+.showMoreButton {
+    @extend %animation;
+    @extend %font;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 30px auto 15px;
+    background-color: transparent;
+    border: none;
+    font-size: 9px;
+    font-weight: 800;
+    color: $blackColor;
+    outline: none;
+    cursor: pointer;
+    @include minWidth(480) {
+        font-size: 13px;
+        margin: 40px auto 20px;
+    }
+    @include minWidth(768) {
+        margin: 40px auto 20px;
+    }
+    &:hover {
+        color: $blueColor;
+        &:after {
+            background: $blueColor;
+        }
+    }
+    &:after {
+        content: "";
+        @extend %buttonIconAfter;
+        @extend %arrowIcon;
+        @extend %animation;
+        background: $blackColor;
+        transform: scale(0.6) rotate(90deg);
+        @include minWidth(480) {
+            transform: scale(0.8) rotate(90deg);
+        }
+        @include minWidth(1000) {
+            transform: scale(1) rotate(90deg);
+        }
+    }
+}
