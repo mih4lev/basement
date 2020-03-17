@@ -33,14 +33,21 @@ router.get(`/testimonials/:testimonialID`, async (request, response) => {
 });
 
 router.get(`/in-the-press`, async (request, response) => {
-    const isTnThePress = true;
-    const data = Object.assign(request.data, { isTnThePress });
+    const isInThePress = true;
+    const mockJSON = fs.readFileSync(`data-mock/in-the-press.json`);
+    const mockData = JSON.parse(mockJSON);
+    const data = Object.assign(request.data, mockData,{ isInThePress });
     response.render(`pages/about-us/press/press`, data);
 });
 
 router.get(`/in-the-press/:pressID`, async (request, response) => {
-    const isTnThePress = true;
-    const data = Object.assign(request.data, { isTnThePress });
+    const { params: { pressID }} = request;
+    const isInThePress = true;
+    const mockJSON = fs.readFileSync(`data-mock/in-the-press.json`);
+    const { articles } = JSON.parse(mockJSON);
+    const filterFunc = ({ id }) => Number(pressID) === Number(id);
+    const inThePressMockData = articles.filter(filterFunc);
+    const data = Object.assign(request.data, inThePressMockData[0], { isInThePress });
     response.render(`pages/about-us/press/press-single`, data);
 });
 

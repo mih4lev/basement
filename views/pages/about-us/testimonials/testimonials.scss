@@ -1,302 +1,328 @@
-.testimonialBlock {
-    .textBlock {
-        margin: 15px 0 0;
+.textBlock {
+    margin: 15px 0 0;
+}
+
+.cardList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 0;
+    margin-bottom: -4px;
+    padding-left: 0;
+    list-style-type: none;
+    @include minWidth(480) {
+        margin-left: -4px;
+        margin-right: -4px;
     }
-    .testimonialList {
+    @include minWidth(768) {
+        margin-left: -5px;
+        margin-right: -5px;
+        margin-bottom: -10px;
+    }
+    @include minWidth(1000) {
+        margin-left: -6px;
+        margin-right: -6px;
+        margin-bottom: -12px;
+    }
+    @include minWidth(1440) {
+        margin-left: -10px;
+        margin-right: -10px;
+        margin-bottom: -20px;
+    }
+    .cardWrapper {
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        margin-top: 0;
-        margin-bottom: -4px;
-        padding-left: 0;
-        list-style-type: none;
+        margin-bottom: 8px;
+        width: 312px;
+        background: $whiteColor;
+        @extend %shadow;
         @include minWidth(480) {
-            margin-left: -4px;
-            margin-right: -4px;
+            margin-left: 4px;
+            margin-right: 4px;
+            flex-direction: column;
+            width: 228px;
         }
         @include minWidth(768) {
-            margin-left: -5px;
-            margin-right: -5px;
-            margin-bottom: -10px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 10px;
+            width: 236px;
         }
         @include minWidth(1000) {
-            margin-left: -6px;
-            margin-right: -6px;
-            margin-bottom: -12px;
+            margin-left: 6px;
+            margin-right: 6px;
+            margin-bottom: 12px;
+            width: 314px;
         }
         @include minWidth(1440) {
-            margin-left: -10px;
-            margin-right: -10px;
-            margin-bottom: -20px;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 18px;
+            width: 330px;
         }
-        .testimonialWrapper {
-            display: flex;
-            flex-direction: row;
-            margin-bottom: 8px;
-            width: 312px;
-            background: $whiteColor;
-            @extend %shadow;
-            @include minWidth(480) {
-                margin-left: 4px;
-                margin-right: 4px;
-                flex-direction: column;
-                width: 228px;
-            }
-            @include minWidth(768) {
-                margin-left: 5px;
-                margin-right: 5px;
-                margin-bottom: 10px;
-                width: 236px;
-            }
-            @include minWidth(1000) {
-                margin-left: 6px;
-                margin-right: 6px;
-                margin-bottom: 12px;
-                width: 314px;
-            }
-            @include minWidth(1440) {
-                margin-left: 10px;
-                margin-right: 10px;
-                margin-bottom: 18px;
-                width: 330px;
-            }
-            .testimonialImageLink {
+        .cardLink {
+            display: block;
+            .cardImage {
                 display: block;
-                width: 100%;
-                .testimonialImage {
-                    display: block;
-                    width: 120px;
-                    height: 83px;
-                    font-size: 0;
-                    background-color: $bgSubColor;
-                    background-image: url('/public/images/default-image.svg');
-                    background-repeat: no-repeat;
-                    background-position: center center;
-                    background-size: 105px;
-                    @include minWidth(480) {
-                        width: 228px;
-                        height: 123px;
-                        background-size: 200px;
-                    }
-                    @include minWidth(768) {
-                        width: 236px;
-                        height: 123px;
-                        background-size: 208px;
-                    }
-                    @include minWidth(1000) {
-                        width: 314px;
-                        height: 173px;
-                        background-size: 292px;
-                    }
-                    @include minWidth(1440) {
-                        width: 330px;
-                        height: 173px;
-                        background-size: 310px;
-                    }
-                }
-            }
-            .testimonialContent {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                padding: 8px;
-                box-sizing: border-box;
+                width: 120px;
+                height: 83px;
+                font-size: 0;
+                background-color: $bgSubColor;
+                background-image: url('/public/images/default-image.svg');
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: 105px;
                 @include minWidth(480) {
-                    justify-content: flex-start;
-                    padding: 15px;
+                    width: 228px;
+                    height: 123px;
+                    background-size: 200px;
+                }
+                @include minWidth(768) {
+                    width: 236px;
+                    height: 123px;
+                    background-size: 208px;
                 }
                 @include minWidth(1000) {
-                    padding: 20px;
+                    width: 314px;
+                    height: 173px;
+                    background-size: 292px;
                 }
-                .testimonialData {
-                    margin-top: 2px;
-                    @include minWidth(480) {
-                        margin-top: 10px;
-                    }
+                @include minWidth(1440) {
+                    width: 330px;
+                    height: 173px;
+                    background-size: 310px;
                 }
-                .testimonialAuthor {
-                    font-size: 9px;
-                    line-height: 125%;
-                    text-transform: uppercase;
-                    font-weight: 700;
-                    color: $blackColor;
-                    &:hover {
-                        color: $blueColor;
-                        text-decoration: underline;
-                    }
-                    @include minWidth(480) {
-                        font-size: 12px;
-                    }
-                    @include minWidth(1000) {
-                        font-size: 17px;
-                    }
-                    @include minWidth(1440) {
-                        font-size: 18px;
-                    }
+            }
+        }
+        .cardData {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 8px;
+            height: 100%;
+            box-sizing: border-box;
+            @include minWidth(480) {
+                justify-content: flex-start;
+                padding: 15px;
+            }
+            @include minWidth(1000) {
+                padding: 20px;
+            }
+            .testimonialData {
+                margin-top: 2px;
+                @include minWidth(480) {
+                    margin-top: 10px;
                 }
-                .testimonialAnnotation {
-                    margin-top: 2px;
-                    margin-bottom: 0;
-                    font-size: 8px;
-                    line-height: 125%;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 3;
-                    -webkit-box-orient: vertical;
-                    overflow-y: hidden;
-                    @include minWidth(480) {
-                        margin-top: 5px;
-                        font-size: 10px;
+            }
+            .cardHeader {
+                font-size: 9px;
+                line-height: 125%;
+                text-transform: uppercase;
+                font-weight: 700;
+                color: $blackColor;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow-y: hidden;
+                &:hover {
+                    color: $blueColor;
+                    text-decoration: underline;
+                }
+                @include minWidth(480) {
+                    display: inline-block;
+                    font-size: 12px;
+                }
+                @include minWidth(1000) {
+                    font-size: 17px;
+                }
+                @include minWidth(1440) {
+                    font-size: 18px;
+                }
+            }
+            .cardAnnounce {
+                margin-top: 5px;
+                margin-bottom: 0;
+                font-size: 8px;
+                line-height: 125%;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow-y: hidden;
+                @include minWidth(480) {
+                    margin-top: 15px;
+                    margin-bottom: 15px;
+                    font-size: 10px;
+                    -webkit-line-clamp: 5;
+                }
+                @include minWidth(1000) {
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                    font-size: 15px;
+                    -webkit-line-clamp: 6;
+                    &[data-rows="5"] {
                         -webkit-line-clamp: 5;
                     }
-                    @include minWidth(1000) {
-                        font-size: 15px;
+                    &[data-rows="6"] {
                         -webkit-line-clamp: 6;
                     }
                 }
             }
         }
     }
-    .testimonialData {
-        margin-top: 10px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-        @include minWidth(1000) {
-            margin-top: 20px;
-        }
+}
+
+.pageTitleWrapper {
+    margin-top: 10px;
+}
+
+.dataDate {
+    font-size: 9px;
+    line-height: 125%;
+    color: $greyColor;
+    @include minWidth(480) {
+        font-size: 11px;
     }
-    .testimonialDate {
-        font-size: 9px;
-        line-height: 125%;
-        color: $greyColor;
-        @include minWidth(480) {
-            font-size: 11px;
-        }
-        @include minWidth(1000) {
-            font-size: 13px;
-        }
+    @include minWidth(1000) {
+        font-size: 13px;
     }
-    .testimonialState {
-        font-size: 9px;
-        line-height: 125%;
-        letter-spacing: 0.05em;
-        font-weight: 700;
-        text-transform: uppercase;
-        color: $greyColor;
-        @include minWidth(480) {
-            font-size: 11px;
-        }
-        @include minWidth(1000) {
-            font-size: 13px;
-        }
+}
+
+.dataState {
+    font-size: 9px;
+    line-height: 125%;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $greyColor;
+    @include minWidth(480) {
+        font-size: 11px;
     }
-    .testimonialRating {
-        display: block;
-        width: 45px;
-        height: 8px;
-        font-size: 0;
-        background: url('/public/images/star-icon.svg') space;
-        background-size: 8px;
+    @include minWidth(1000) {
+        font-size: 13px;
+    }
+}
+
+.stars {
+    display: block;
+    margin-top: 5px;
+    width: 45px;
+    height: 8px;
+    font-size: 0;
+    background: url('/public/images/star-icon.svg') space;
+    background-size: 8px;
+    @include minWidth(480) {
+        margin-top: 3px;
+        background-size: 14px;
+        width: 80px;
+        height: 14px;
+    }
+    @include minWidth(1000) {
+        width: 105px;
+        height: 18px;
+        background-size: 18px;
+    }
+    &[data-rating="1"] {
+        width: 8px;
         @include minWidth(480) {
-            margin-top: 3px;
-            background-size: 14px;
-            width: 80px;
-            height: 14px;
+            width: 14px;
         }
         @include minWidth(1000) {
-            width: 105px;
-            height: 18px;
-            background-size: 18px;
-        }
-        &[data-rating="1"] {
-            width: 8px;
-            @include minWidth(480) {
-                width: 14px;
-            }
-            @include minWidth(1000) {
-                width: 18px;
-            }
-        }
-        &[data-rating="2"] {
             width: 18px;
-            @include minWidth(480) {
-                width: 32px;
-            }
-            @include minWidth(1000) {
-                width: 42px;
-            }
-        }
-        &[data-rating="3"] {
-            width: 27px;
-            @include minWidth(480) {
-                width: 48px;
-            }
-            @include minWidth(1000) {
-                width: 63px;
-            }
-        }
-        &[data-rating="4"] {
-            width: 36px;
-            @include minWidth(480) {
-                width: 64px;
-            }
-            @include minWidth(1000) {
-                width: 84px;
-            }
         }
     }
-    .testimonialTitle {
-        margin-top: 0;
-        margin-bottom: 0;
-        font-size: 19px;
-        line-height: 125%;
-        font-weight: 800;
-        color: $blackColor;
+    &[data-rating="2"] {
+        width: 18px;
         @include minWidth(480) {
-            font-size: 27px;
+            width: 32px;
         }
         @include minWidth(1000) {
-            font-size: 34px;
+            width: 42px;
         }
     }
-    .buttonsWrapper {
+    &[data-rating="3"] {
+        width: 27px;
+        @include minWidth(480) {
+            width: 48px;
+        }
+        @include minWidth(1000) {
+            width: 63px;
+        }
+    }
+    &[data-rating="4"] {
+        width: 36px;
+        @include minWidth(480) {
+            width: 64px;
+        }
+        @include minWidth(1000) {
+            width: 84px;
+        }
+    }
+}
+
+h1.contentHeader {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 19px;
+    line-height: 125%;
+    font-weight: 800;
+    color: $blackColor;
+    @include minWidth(480) {
+        font-size: 27px;
+    }
+    @include minWidth(1000) {
+        font-size: 34px;
+    }
+}
+
+h2.contentHeader {
+    margin-top: 15px;
+    margin-bottom: 0;
+    font-size: 15px;
+    line-height: 125%;
+    font-weight: 700;
+    color: $blackColor;
+    @include minWidth(480) {
+        font-size: 19px;
+    }
+    @include minWidth(1000) {
+        font-size: 22px;
+    }
+}
+
+h3.contentHeader {
+    margin-top: 15px;
+    margin-bottom: 0;
+    font-size: 12px;
+    line-height: 125%;
+    font-weight: 700;
+    color: $blackColor;
+    @include minWidth(480) {
+        font-size: 15px;
+    }
+    @include minWidth(1000) {
         margin-top: 20px;
+        font-size: 18px;
     }
-    .backButton {
-        @extend %menuButton;
-        &:before {
-            @extend %buttonIconBefore;
-            @extend %arrowIcon;
-            background: $greyColor;
-            transform: rotate(180deg) scale(0.6);
-            @include minWidth(480) {
-                transform: rotate(180deg) scale(1);
-            }
-        }
-        &:hover {
-            &:before {
-                background: $blackColor;
-            }
-        }
+}
+
+h4.contentHeader {
+    margin-top: 15px;
+    margin-bottom: 0;
+    font-size: 9px;
+    line-height: 125%;
+    font-weight: 700;
+    color: $blackColor;
+    @include minWidth(480) {
+        font-size: 12px;
     }
-    .projectButton {
-        color: $whiteColor;
-        @extend %blueButton;
-        &:after {
-            @extend %buttonIconAfter;
-            @extend %arrowIcon;
-            background: $whiteColor;
-            transform: scale(0.6);
-            @include minWidth(480) {
-                transform: scale(1);
-            }
-        }
-        &:hover {
-            &:before {
-                background: $blackColor;
-            }
-        }
+    @include minWidth(1000) {
+        margin-top: 20px;
+        font-size: 15px;
     }
+}
+
+.bottomCardWrapper {
+    margin-top: auto;
 }

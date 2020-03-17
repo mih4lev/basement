@@ -85,6 +85,21 @@ a {
             width: 1032px;
         }
     }
+    &.mainWrapper {
+        width: 290px;
+        @include minWidth(480) {
+            width: 440px;
+        }
+        @include minWidth(768) {
+            width: 728px;
+        }
+        @include minWidth(1000) {
+            width: 894px;
+        }
+        @include minWidth(1440) {
+            width: 1032px;
+        }
+    }
     &.center {
         width: 290px;
         @include minWidth(480) {
@@ -97,7 +112,8 @@ a {
             width: 894px;
         }
         @include minWidth(1440) {
-            width: 894px;
+            width: 960px;
+            //width: 894px;
         }
     }
     &.columnCenterFlex {
@@ -116,6 +132,173 @@ a {
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
+    }
+}
+
+.twoColumnsWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    @include minWidth(480) {
+        margin-top: 10px;
+    }
+    @include minWidth(1000) {
+        margin-top: 20px;
+    }
+}
+
+.contentImageWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    @include minWidth(768) {
+        margin-top: 20px;
+    }
+    .contentImage {
+        display: block;
+        @extend %shadow;
+    }
+    .imageDescription {
+        margin-top: 10px;
+        font-size: 9px;
+        line-height: 125%;
+        font-style: italic;
+        @include minWidth(480) {
+            font-size: 10px;
+        }
+        @include minWidth(1000) {
+            font-size: 13px;
+        }
+    }
+}
+
+.filtersWrapper {
+    background-color: $bgSubColor;
+    .filterList {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 0;
+        margin-bottom: -15px;
+        padding-left: 0;
+        list-style-type: none;
+        .filter {
+            @extend %shadow;
+            @extend %animation;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 8px;
+            margin-bottom: 15px;
+            height: 25px;
+            padding-left: 15px;
+            padding-right: 15px;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: $darkGreyColor;
+            background: $whiteColor;
+            border-radius: 100px;
+            cursor: pointer;
+            &:hover {
+                background: $blueColor;
+                color: $whiteColor;
+                &:after {
+                    background: $whiteColor;
+                }
+            }
+            @include minWidth(480) {
+                padding-left: 20px;
+                padding-right: 20px;
+                height: 37px;
+                font-size: 12px;
+            }
+            @include minWidth(1000) {
+                height: 41px;
+                font-size: 13px;
+            }
+            &.dropdownFilter {
+                &:after {
+                    @extend %buttonIconAfter;
+                    @extend %arrowIcon;
+                    @extend %animation;
+                    transform: scale(0.6) rotate(90deg);
+                    background: $blackColor;
+                    @include minWidth(480) {
+                        transform: scale(0.8) rotate(90deg);
+                    }
+                    @include minWidth(1000) {
+                        transform: scale(1) rotate(90deg);
+                    }
+                }
+            }
+            &.activeFilter {
+                color: $blueColor;
+                &:after {
+                    background: $blueColor;
+                }
+                &:hover {
+                    color: $whiteColor;
+                    &:after {
+                        background: $whiteColor;
+                    }
+                }
+            }
+            &.clickedFilter {
+                background: $blueColor;
+                color: $whiteColor;
+                &:after {
+                    background: $whiteColor;
+                    transform: scale(0.6) rotate(270deg);
+                    @include minWidth(480) {
+                        transform: scale(0.8) rotate(270deg);
+                    }
+                    @include minWidth(1000) {
+                        transform: scale(1) rotate(270deg);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.backButton {
+    @extend %menuButton;
+    &:before {
+        @extend %buttonIconBefore;
+        @extend %arrowIcon;
+        background: $greyColor;
+        transform: rotate(180deg) scale(0.6);
+        @include minWidth(480) {
+            transform: rotate(180deg) scale(1);
+        }
+    }
+    &:hover {
+        &:before {
+            background: $blackColor;
+        }
+    }
+}
+
+.sourceButton {
+    color: $whiteColor;
+    @extend %blueButton;
+    &:after {
+        @extend %buttonIconAfter;
+        @extend %arrowIcon;
+        background: $whiteColor;
+        transform: scale(0.6);
+        @include minWidth(480) {
+            transform: scale(1);
+        }
+    }
+    &:hover {
+        &:before {
+            background: $blackColor;
+        }
     }
 }
 
@@ -159,5 +342,32 @@ a {
         @include minWidth(1000) {
             transform: scale(1) rotate(90deg);
         }
+    }
+}
+
+.pageTitle {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 15px;
+    line-height: 125%;
+    @include minWidth(480) {
+        font-size: 20px;
+    }
+    @include minWidth(768) {
+        font-size: 30px;
+    }
+    @include minWidth(1000) {
+        font-size: 35px;
+    }
+    @include minWidth(1440) {
+        font-size: 37px;
+    }
+}
+
+.colorLink {
+    color: $blueColor;
+    text-decoration: underline;
+    &:hover {
+        color: $blackColor;
     }
 }

@@ -1,5 +1,5 @@
 <section class="pageHeader">
-    <div class="wrapper headerWrapper">
+    <div class="wrapper mainWrapper">
         <div class="contentWrapper">
             <h1 class="pageTitle">Testimonials</h1>
             <nav class="breadcrumbs">
@@ -20,8 +20,8 @@
     </div>
 </section>
 
-<section class="subBlock testimonialBlock">
-    <div class="wrapper headerWrapper">
+<section class="pageContent">
+    <div class="wrapper mainWrapper">
         <p class="textBlock">
             Want to know what our previous clients have to say about their basement remodeling and basement finishing experiences with Basement Masters? Simply click on a logo to read the Basement Masters reviews on our company profile.
         </p>
@@ -31,14 +31,14 @@
     </div>
 </section>
 
-<section class="contentBlock testimonialBlock">
+<section class="pageContent">
     <div class="wrapper">
-        <ul class="testimonialList">
+        <ul class="cardList">
             {{#each testimonials}}
-                <li class="testimonialWrapper">
-                    <a class="testimonialImageLink" href="/about-us/testimonials/{{{ id }}}">
+                <li class="cardWrapper">
+                    <a class="cardLink" href="/about-us/testimonials/{{{ id }}}">
                         {{# if image }}
-                        <picture class="testimonialImage">
+                        <picture class="cardImage">
                             <source srcset="/public/images/temp/testimonials/{{{ image }}}_120x83.webp,
                                         /public/images/temp/testimonials/{{{ image }}}_240x166.webp 2x"
                                     media="(max-width: 479px)"
@@ -79,23 +79,23 @@
                                         /public/images/temp/testimonials/{{{ image }}}_660x346.jpg 2x"
                                     media="(min-width: 1440px)"
                                     type="image/jpeg">
-                            <img class="testimonialImage"
+                            <img class="cardImage"
                                  src="/public/images/temp/testimonials/{{{ image }}}_330x173.jpg"
                                  srcset="/public/images/temp/testimonials/{{{ image }}}_330x173.jpg,
                                      /public/images/temp/testimonials/{{{ image }}}_660x346.jpg 2x"
                                  alt="{{{ name }}}'s testimonial">
                         </picture>
                         {{ else }}
-                            <div class="testimonialImage">{{{ name }}}'s testimonial</div>
+                            <div class="cardImage">{{{ name }}}'s testimonial</div>
                         {{/ if }}
                     </a>
-                    <div class="testimonialContent">
-                        <a class="testimonialAuthor" href="/about-us/testimonials/{{{ id }}}">{{{ name }}}</a>
-                        <div class="testimonialRating" data-rating="{{{ rating }}}">Stars: {{{ rating }}}</div>
-                        <p class="testimonialAnnotation">{{{ announce }}}</p>
-                        <div class="testimonialData">
-                            <span class="testimonialDate">{{{ date }}}</span>
-                            <span class="testimonialState">{{{ state }}}</span>
+                    <div class="cardData">
+                        <a class="cardHeader" href="/about-us/testimonials/{{{ id }}}">{{{ name }}}</a>
+                        <div class="stars" data-rating="{{{ rating }}}">Stars: {{{ rating }}}</div>
+                        <p class="cardAnnounce" data-rows="6">{{{ announce }}}</p>
+                        <div class="twoColumnsWrapper bottomCardWrapper">
+                            <span class="dataDate">{{{ date }}}</span>
+                            <span class="dataState">{{{ state }}}</span>
                         </div>
                     </div>
                 </li>

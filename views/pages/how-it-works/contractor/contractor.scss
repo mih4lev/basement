@@ -1,0 +1,334 @@
+.contractorContent {
+    @extend %content;
+    background: $bgSubColor;
+}
+
+.answerList {
+    margin-top: 15px;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style-type: none;
+    @include minWidth(480) {
+        margin-top: 20px;
+    }
+    .answerWrapper {
+        @extend %shadow;
+        position: relative;
+        margin-bottom: 8px;
+        padding: 15px;
+        border-radius: 5px;
+        box-sizing: border-box;
+        background: $whiteColor;
+        @include minWidth(480) {
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        .answerHeader {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            line-height: 125%;
+            text-transform: uppercase;
+            @include minWidth(480) {
+                padding-left: 100px;
+                font-size: 13px;
+            }
+            @include minWidth(768) {
+                font-size: 18px;
+            }
+            @include minWidth(1000) {
+                padding-left: 160px;
+            }
+        }
+        .answerText {
+            margin-top: 0;
+            margin-bottom: 5px;
+            padding-left: 52px;
+            font-size: 9px;
+            line-height: 125%;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            @include minWidth(480) {
+                padding-left: 100px;
+                font-size: 12px;
+            }
+            @include minWidth(1000) {
+                padding-left: 160px;
+                font-size: 15px;
+            }
+        }
+        &:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            display: block;
+            background: $blackColor;
+            @include minWidth(1000) {
+                margin-left: 30px;
+            }
+        }
+        &.faqIcon {
+            &:before {
+                transform: translateY(-50%) scale(0.675) translateX(-10px);
+                margin-top: 18px;
+                @extend %faqIcon;
+                @include minWidth(480) {
+                    margin-top: 0;
+                    transform: scale(1) translateY(-50%) translateX(15px);
+                }
+            }
+        }
+        &.faq2Icon {
+            &:before {
+                transform: translateY(-50%) scale(0.675) translateX(-3px);
+                margin-top: 15px;
+                @extend %faq2Icon;
+                @include minWidth(480) {
+                    margin-top: 0;
+                    transform: scale(1) translateY(-50%) translateX(20px);
+                }
+            }
+        }
+        &.faq3Icon {
+            &:before {
+                transform: translateY(-50%) scale(0.675) translateX(-10px);
+                margin-top: 17px;
+                @extend %faq3Icon;
+                @include minWidth(480) {
+                    margin-top: 0;
+                    transform: scale(1) translateY(-50%) translateX(15px);
+                }
+            }
+        }
+        &.faq4Icon {
+            &:before {
+                transform: translateY(-50%) scale(0.675) translateX(-3px);
+                margin-top: 17px;
+                @extend %faq4Icon;
+                @include minWidth(480) {
+                    margin-top: 0;
+                    transform: scale(1) translateY(-50%) translateX(20px);
+                }
+            }
+        }
+        &.faq5Icon {
+            &:before {
+                transform: translateY(-50%) scale(0.675) translateX(-7px);
+                margin-top: 17px;
+                @extend %faq5Icon;
+                @include minWidth(480) {
+                    margin-top: 0;
+                    transform: scale(1) translateY(-50%) translateX(15px);
+                }
+            }
+        }
+        &.faq6Icon {
+            &:before {
+                transform: translateY(-50%) scale(0.675) translateX(0);
+                margin-top: 17px;
+                @extend %faq6Icon;
+                @include minWidth(480) {
+                    margin-top: 0;
+                    transform: scale(1) translateY(-50%) translateX(20px);
+                }
+            }
+        }
+        &.faq7Icon {
+            &:before {
+                transform: translateY(-50%) scale(0.675) translateX(-13px);
+                margin-top: 18px;
+                @extend %faq7Icon;
+                @include minWidth(480) {
+                    margin-top: 0;
+                    transform: scale(1) translateY(-50%) translateX(10px);
+                }
+            }
+        }
+        &.faq8Icon {
+            &:before {
+                transform: translateY(-50%) scale(0.675) translateX(0);
+                margin-top: 10px;
+                @extend %faq8Icon;
+                @include minWidth(480) {
+                    margin-top: 0;
+                    transform: scale(1) translateY(-50%) translateX(20px);
+                }
+            }
+        }
+        &.faq9Icon {
+            &:before {
+                transform: translateY(-50%) scale(0.675) translateX(-2px);
+                margin-top: 10px;
+                @extend %faq9Icon;
+                @include minWidth(480) {
+                    margin-top: 0;
+                    transform: scale(1) translateY(-50%) translateX(20px);
+                }
+            }
+        }
+        &.faq10Icon {
+            &:before {
+                transform: translateY(-50%) scale(0.675) translateX(-6px);
+                margin-top: 12px;
+                @extend %faq10Icon;
+                @include minWidth(480) {
+                    margin-top: 0;
+                    transform: scale(1) translateY(-50%) translateX(17px);
+                }
+            }
+        }
+        &.faq11Icon {
+            &:before {
+                transform: translateY(-50%) scale(0.675) translateX(5px);
+                margin-top: 17px;
+                @extend %faq11Icon;
+                @include minWidth(480) {
+                    margin-top: 0;
+                    transform: scale(1) translateY(-50%) translateX(25px);
+                }
+            }
+        }
+        &.faq12Icon {
+            &:before {
+                transform: translateY(-50%) scale(0.675) translateX(-1px);
+                margin-top: 10px;
+                @extend %faq12Icon;
+                @include minWidth(480) {
+                    margin-top: 0;
+                    transform: scale(1) translateY(-50%) translateX(20px);
+                }
+            }
+        }
+        &.faq13Icon {
+            &:before {
+                transform: translateY(-50%) scale(0.675) translateX(-1px);
+                margin-top: 24px;
+                @extend %faq13Icon;
+                @include minWidth(480) {
+                    margin-top: 0;
+                    transform: scale(1) translateY(-50%) translateX(20px);
+                }
+            }
+        }
+        &.faq14Icon {
+            &:before {
+                transform: translateY(-50%) scale(0.675) translateX(-1px);
+                margin-top: 18px;
+                @extend %faq14Icon;
+                @include minWidth(480) {
+                    margin-top: 0;
+                    transform: scale(1) translateY(-50%) translateX(20px);
+                }
+            }
+        }
+        &.faq15Icon {
+            &:before {
+                transform: translateY(-50%) scale(0.675) translateX(-12px);
+                margin-top: 15px;
+                @extend %faq15Icon;
+                @include minWidth(480) {
+                    margin-top: 0;
+                    transform: scale(1) translateY(-50%) translateX(13px);
+                }
+            }
+        }
+        &.faq16Icon {
+            &:before {
+                transform: translateY(-50%) scale(0.675) translateX(0);
+                margin-top: 18px;
+                @extend %faq16Icon;
+                @include minWidth(480) {
+                    margin-top: 0;
+                    transform: scale(1) translateY(-50%) translateX(22px);
+                }
+            }
+        }
+        &.faq17Icon {
+            &:before {
+                transform: translateY(-50%) scale(0.675) translateX(-7px);
+                margin-top: 12px;
+                @extend %faq17Icon;
+                @include minWidth(480) {
+                    margin-top: 0;
+                    transform: scale(1) translateY(-50%) translateX(18px);
+                }
+            }
+        }
+        &.faq18Icon {
+            &:before {
+                transform: translateY(-50%) scale(0.675) translateX(-3px);
+                margin-top: 20px;
+                @extend %faq18Icon;
+                @include minWidth(480) {
+                    margin-top: 0;
+                    transform: scale(1) translateY(-50%) translateX(20px);
+                }
+            }
+        }
+        &.faq19Icon {
+            &:before {
+                transform: translateY(-50%) scale(0.675) translateX(-7px);
+                margin-top: 18px;
+                @extend %faq19Icon;
+                @include minWidth(480) {
+                    margin-top: 0;
+                    transform: scale(1) translateY(-50%) translateX(20px);
+                }
+            }
+        }
+        &.faq20Icon {
+            &:before {
+                transform: translateY(-50%) scale(0.675) translateX(-2px);
+                margin-top: 10px;
+                @extend %faq20Icon;
+                @include minWidth(480) {
+                    margin-top: 0;
+                    transform: scale(1) translateY(-50%) translateX(20px);
+                }
+            }
+        }
+    }
+}
+
+.downloadButton {
+    @extend %shadow;
+    @extend %font;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 7px 15px 7px 30px;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #FDFDFD 0%, #F8F5F5 101.15%);
+    border: 1px solid $bgMainColor;
+    border-radius: 100px;
+    cursor: pointer;
+    outline: none;
+    @include minWidth(480) {
+        margin-top: 20px;
+        padding: 13px 25px 13px 45px;
+        font-size: 12px;
+    }
+    @include minWidth(768) {
+        font-size: 13px;
+    }
+    &:before {
+        @extend %buttonIconBefore;
+        @extend %foldersIcon;
+        position: absolute;
+        top: 50%;
+        left: 7px;
+        transform: translateY(-50%) scale(0.6);
+        background: $bgMainColor;
+        @include minWidth(480) {
+            left: 17px;
+            transform: translateY(-50%) scale(0.8);
+        }
+    }
+}

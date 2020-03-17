@@ -18,9 +18,8 @@ gulp.task(`browser-sync`, () => {
         cors: true
     });
     gulp.watch(`./**/*.scss`, gulp.series(`styles`));
-    gulp.watch(`./source/images/*.{png,jpg,jpeg}`, gulp.series(`bitmap`));
-    gulp.watch(`./source/images/*.{png,jpg,jpeg}`, gulp.series(`webp`));
-    gulp.watch(`./source/images/temp/*.{png,jpg,jpeg}`, gulp.series(`temp`));
+    gulp.watch(`./source/images/**/*.{png,jpg,jpeg}`, gulp.series(`bitmap`));
+    gulp.watch(`./source/images/**/*.{png,jpg,jpeg}`, gulp.series(`webp`));
     gulp.watch(`./source/images/*.svg`, gulp.series(`vector`));
     gulp.watch(`./source/images/sprite/*.svg`, gulp.series(`sprite`));
     gulp.watch(`./source/fonts/*.{woff, woff2, ttf}`, gulp.series(`fonts`));
@@ -44,21 +43,7 @@ gulp.task(`styles`, () => {
 
 // Bitmap images => Tinypng service to optimize
 gulp.task(`bitmap`, () => {
-    return gulp.src(`./source/images/*.{png,jpg,jpeg}`)
-        .pipe(tinypng({
-            key: `TQsc1zc45QNBZBD6CC3JrhMTX8hWWW88`,
-            sigFile: `./source/images/.tinypng-sigs`,
-            summarize: true,
-            parallel: true,
-            log: true
-        }))
-        .pipe(gulp.dest(`./public/images`))
-        .pipe(browserSync.stream());
-});
-
-// Bitmap images => Tinypng service to optimize
-gulp.task(`temp`, () => {
-    return gulp.src(`./source/images/temp/*.{png,jpg,jpeg}`)
+    return gulp.src(`./source/images/**/*.{png,jpg,jpeg}`)
         .pipe(tinypng({
             key: `wNS29BVwd8BM7rkKHQxBKtnLgZHxbM81`,
             sigFile: `./source/images/.tinypng-sigs`,
@@ -66,7 +51,7 @@ gulp.task(`temp`, () => {
             parallel: true,
             log: true
         }))
-        .pipe(gulp.dest(`./public/images/temp`))
+        .pipe(gulp.dest(`./public/images`))
         .pipe(browserSync.stream());
 });
 
@@ -85,7 +70,7 @@ gulp.task('sprite', () => {
 });
 
 gulp.task('webp', () => {
-    return gulp.src('./source/images/*.{png,jpg,jpeg}')
+    return gulp.src('./source/images/**/*.{png,jpg,jpeg}')
         .pipe(webp())
         .pipe(gulp.dest('./public/images'));
 });
@@ -103,6 +88,6 @@ gulp.task(`reload`, (done) => {
     done();
 });
 
-// const tasks = [`browser-sync`, `styles`, `fonts`, `bitmap`, `webp`, `temp`, `vector`, `sprite`];
-const tasks = [`browser-sync`, `styles`];
+const tasks = [`browser-sync`, `styles`, `fonts`, `bitmap`, `webp`, `vector`, `sprite`];
+// const tasks = [`browser-sync`, `styles`];
 gulp.task(`default`, gulp.parallel(...tasks));

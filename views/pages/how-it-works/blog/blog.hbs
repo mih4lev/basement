@@ -19,3 +19,91 @@
         </div>
     </div>
 </section>
+
+<section class="filtersWrapper">
+    <div class="wrapper headerWrapper">
+        <ul class="filterList">
+            <li class="filter filterStyle">STYLE</li>
+            <li class="filter activeFilter filterPrice">PRICE</li>
+            <li class="filter filterSize">SIZE</li>
+            <li class="filter filterWallColor"> WALL COLOR</li>
+            <li class="filter filterFloorMaterial">FLOOR MATERIAL</li>
+            <li class="filter filterFeatures">FEATURES</li>
+        </ul>
+    </div>
+</section>
+
+<section class="pageContent">
+    <div class="wrapper">
+        <ul class="cardList">
+            {{#each tips}}
+                <li class="cardWrapper">
+                    <a class="cardLink"
+                       href="/how-it-works/basement-tips/{{{ category }}}/{{{ id }}}">
+                        {{# if image }}
+                            <picture class="cardImage">
+                                <source srcset="/public/images/temp/basement-tips/{{{ image }}}_120x83.webp,
+                                        /public/images/temp/basement-tips/{{{ image }}}_240x166.webp 2x"
+                                        media="(max-width: 479px)"
+                                        type="image/webp">
+                                <source srcset="/public/images/temp/basement-tips/{{{ image }}}_120x83.jpg,
+                                        /public/images/temp/basement-tips/{{{ image }}}_240x166.jpg 2x"
+                                        media="(max-width: 479px)"
+                                        type="image/jpeg">
+                                <source srcset="/public/images/temp/basement-tips/{{{ image }}}_228x123.webp,
+                                        /public/images/temp/basement-tips/{{{ image }}}_456x246.webp 2x"
+                                        media="(max-width: 767px)"
+                                        type="image/webp">
+                                <source srcset="/public/images/temp/basement-tips/{{{ image }}}_228x123.jpg,
+                                        /public/images/temp/basement-tips/{{{ image }}}_456x246.jpg 2x"
+                                        media="(max-width: 767px)"
+                                        type="image/jpeg">
+                                <source srcset="/public/images/temp/basement-tips/{{{ image }}}_236x123.webp,
+                                        /public/images/temp/basement-tips/{{{ image }}}_472x246.webp 2x"
+                                        media="(max-width: 999px)"
+                                        type="image/webp">
+                                <source srcset="/public/images/temp/basement-tips/{{{ image }}}_236x123.jpg,
+                                        /public/images/temp/basement-tips/{{{ image }}}_472x246.jpg 2x"
+                                        media="(max-width: 999px)"
+                                        type="image/jpeg">
+                                <source srcset="/public/images/temp/basement-tips/{{{ image }}}_314x173.webp,
+                                        /public/images/temp/basement-tips/{{{ image }}}_628x346.webp 2x"
+                                        media="(max-width: 1439px)"
+                                        type="image/webp">
+                                <source srcset="/public/images/temp/basement-tips/{{{ image }}}_314x173.jpg,
+                                        /public/images/temp/basement-tips/{{{ image }}}_628x346.jpg 2x"
+                                        media="(max-width: 1439px)"
+                                        type="image/jpeg">
+                                <source srcset="/public/images/temp/basement-tips/{{{ image }}}_330x173.webp,
+                                        /public/images/temp/basement-tips/{{{ image }}}_660x346.webp 2x"
+                                        media="(min-width: 1440px)"
+                                        type="image/webp">
+                                <source srcset="/public/images/temp/basement-tips/{{{ image }}}_330x173.jpg,
+                                        /public/images/temp/basement-tips/{{{ image }}}_660x346.jpg 2x"
+                                        media="(min-width: 1440px)"
+                                        type="image/jpeg">
+                                <img class="cardImage"
+                                     src="/public/images/temp/basement-tips/{{{ image }}}_330x173.jpg"
+                                     srcset="/public/images/temp/basement-tips/{{{ image }}}_330x173.jpg,
+                                     /public/images/temp/basement-tips/{{{ image }}}_660x346.jpg 2x"
+                                     alt="{{{ title }}}">
+                            </picture>
+                        {{ else }}
+                            <div class="cardImage">{{{ title }}}</div>
+                        {{/ if }}
+                    </a>
+                    <div class="cardData">
+                        <a class="cardHeader"
+                           href="/how-it-works/basement-tips/{{{ category }}}/{{{ id }}}">{{{ title }}}</a>
+                        <p class="cardAnnounce" data-rows="5">{{{ announce }}}</p>
+                        <div class="twoColumnsWrapper bottomCardWrapper">
+                            <span class="dataDate">{{{ date }}}</span>
+                            <span class="dataState">{{{ category }}}</span>
+                        </div>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+        <button class="showMoreButton">SHOW MORE</button>
+    </div>
+</section>
