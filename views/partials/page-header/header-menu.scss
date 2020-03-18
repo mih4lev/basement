@@ -5,14 +5,22 @@
     margin: 10px -8px 0;
     padding-left: 0;
     list-style-type: none;
+    @include minWidth(768) {
+        margin: 10px 0 0;
+        justify-content: flex-start;
+    }
     @include minWidth(1000) {
+        margin: 0;
         position: absolute;
         top: 8px;
         right: 0;
     }
     .subLinkWrapper {
-        @include minWidth(1000) {
+        @include minWidth(768) {
             margin-left: 10px;
+            &:first-of-type {
+                margin-left: 0;
+            }
         }
         .subLink {
             @extend %menuButton;

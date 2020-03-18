@@ -116,6 +116,15 @@ a {
             //width: 894px;
         }
     }
+    &.responseWrapper {
+        width: 100%;
+        @include minWidth(1000) {
+            width: 894px;
+        }
+        @include minWidth(1440) {
+            width: 1032px;
+        }
+    }
     &.columnCenterFlex {
         display: flex;
         flex-direction: column;

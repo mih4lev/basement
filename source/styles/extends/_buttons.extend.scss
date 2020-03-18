@@ -55,8 +55,8 @@
 
 %blueButton {
     @extend %button;
-    //color: $whiteColor;
-    color: $blackColor;
+    color: $whiteColor;
+    //color: $blackColor;
     border: 1px solid $blueColor;
     background: $blueColor;
     &:hover, &:active {

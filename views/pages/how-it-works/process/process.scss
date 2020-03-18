@@ -1,0 +1,203 @@
+.processContent {
+    margin: -15px 0;
+    @include minWidth(480) {
+        margin: -20px 0;
+    }
+}
+
+.processList {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    width: 100%;
+    list-style-type: none;
+}
+
+.processItem {
+    border-bottom: 1px solid $bgSubColor;
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.processWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 80px;
+    box-sizing: border-box;
+    position: relative;
+    @include minWidth(480) {
+        padding-left: 120px;
+    }
+    @include minWidth(768) {
+        padding-left: 160px;
+    }
+    &:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 40px;
+        margin-top: 14px;
+        transform: translateX(-50%) translateY(-50%) scale(0.5);
+        background: $blackColor;
+        @include minWidth(480) {
+            margin-top: 0;
+            transform: translateX(-50%) translateY(-50%) scale(0.7);
+            left: 60px;
+        }
+        @include minWidth(768) {
+            transform: translateX(-50%) translateY(-50%) scale(1);
+            left: 80px;
+        }
+    }
+    &:after {
+        position: absolute;
+        right: 0;
+        bottom: 15px;
+        display: block;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 90%;
+        text-transform: uppercase;
+        color: $bgSubColor;
+        @include minWidth(480) {
+            bottom: 20px;
+            font-size: 44px;
+            line-height: 85%;
+        }
+        @include minWidth(768) {
+            font-size: 54px;
+            line-height: 70%;
+        }
+    }
+    &.processIcon {
+        &:before {
+            @extend %processIcon;
+        }
+        &:after {
+            content: "STEP 1";
+        }
+    }
+    &.process2Icon {
+        &:before {
+            @extend %process2Icon;
+        }
+        &:after {
+            content: "STEP 2";
+        }
+    }
+    &.process3Icon {
+        &:before {
+            @extend %process3Icon;
+        }
+        &:after {
+            content: "STEP 3";
+        }
+    }
+    &.process4Icon {
+        &:before {
+            @extend %process4Icon;
+        }
+        &:after {
+            content: "STEP 4";
+        }
+    }
+    &.process5Icon {
+        &:before {
+            @extend %process5Icon;
+        }
+        &:after {
+            content: "STEP 5";
+        }
+    }
+    &.process6Icon {
+        &:before {
+            @extend %process6Icon;
+        }
+        &:after {
+            content: "STEP 6";
+        }
+    }
+    &.process7Icon {
+        &:before {
+            @extend %process7Icon;
+        }
+        &:after {
+            content: "STEP 7";
+        }
+    }
+}
+
+.processHeader {
+    margin: 0 0 15px -80px;
+    font-size: 11px;
+    line-height: 125%;
+    font-weight: 700;
+    text-transform: uppercase;
+    @include minWidth(480) {
+        margin: 0 0 20px 0;
+        font-size: 13px;
+    }
+    @include minWidth(768) {
+        font-size: 18px;
+    }
+}
+
+.processText {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 9px;
+    line-height: 125%;
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+    @include minWidth(480) {
+        font-size: 12px;
+    }
+    @include minWidth(1000) {
+        font-size: 15px;
+    }
+}
+
+.processButton {
+    margin-top: 15px;
+    @extend %button;
+    @extend %disabledButton;
+    &:after {
+        @extend %buttonIconAfter;
+        @extend %arrowIcon;
+        transform: scale(0.6) rotate(90deg);
+        background: $whiteColor;
+        @include minWidth(480) {
+            transform: scale(1) rotate(90deg);
+        }
+    }
+}
+
+.activeProcessButton {
+    margin-top: 15px;
+    @extend %button;
+    @extend %blueButton;
+    &:after {
+        @extend %buttonIconAfter;
+        @extend %arrowIcon;
+        transform: scale(0.6) rotate(90deg);
+        background: $whiteColor;
+        @include minWidth(480) {
+            transform: scale(1) rotate(90deg);
+        }
+    }
+}
+
+.contactButton {
+    margin-top: 15px;
+    @extend %button;
+    @extend %blueButton;
+    &:after {
+        @extend %buttonIconAfter;
+        @extend %arrowIcon;
+        transform: scale(0.6);
+        background: $whiteColor;
+    }
+}

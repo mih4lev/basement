@@ -252,8 +252,8 @@ footer {
             &:after {
                 @extend %buttonIconAfter;
                 @extend %arrowIcon;
-                //background: $whiteColor;
-                background: $blackColor;
+                background: $whiteColor;
+                //background: $blackColor;
             }
         }
 
