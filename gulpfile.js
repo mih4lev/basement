@@ -45,7 +45,8 @@ gulp.task(`styles`, () => {
 gulp.task(`bitmap`, () => {
     return gulp.src(`./source/images/**/*.{png,jpg,jpeg}`)
         .pipe(tinypng({
-            key: `wNS29BVwd8BM7rkKHQxBKtnLgZHxbM81`,
+            // key: `wNS29BVwd8BM7rkKHQxBKtnLgZHxbM81`,
+            key: `k82WT7tDXGyVvxQbGxGc1TpJ740BzV3d`,
             sigFile: `./source/images/.tinypng-sigs`,
             summarize: true,
             parallel: true,

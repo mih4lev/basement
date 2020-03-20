@@ -1,5 +1,6 @@
 const { Router } = require(`express`);
 const router = new Router();
+const fs = require(`fs`);
 
 router.use((request, response, next) => {
     const isPortfolio = true;
@@ -8,7 +9,9 @@ router.use((request, response, next) => {
 });
 
 router.get(`/`, async (request, response) => {
-    const data = Object.assign(request.data);
+    const mockJSON = fs.readFileSync(`data-mock/portfolio.json`);
+    const mockData = JSON.parse(mockJSON);
+    const data = Object.assign(request.data, mockData);
     response.render(`pages/portfolio/portfolio`, data);
 });
 

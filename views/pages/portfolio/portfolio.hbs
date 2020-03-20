@@ -15,3 +15,110 @@
         </div>
     </div>
 </section>
+
+<section class="filtersWrapper">
+    <div class="wrapper headerWrapper">
+        <ul class="filterList">
+            <li class="filter dropdownFilter activeFilter filterStyle">STYLE</li>
+            <li class="filter dropdownFilter activeFilter filterPrice">PRICE</li>
+            <li class="filter dropdownFilter activeFilter filterWallColor"> WALL COLOR</li>
+            <li class="filter dropdownFilter activeFilter filterFloorMaterial">FLOOR MATERIAL</li>
+        </ul>
+    </div>
+</section>
+
+<section class="portfolioActiveFilters">
+    <div class="wrapper headerWrapper">
+        <ul class="activeFilterList">
+            <li class="activeFilter">CONTEMPORARY
+                <button class="removeFilterButton">X</button>
+            </li>
+            <li class="activeFilter">$$
+                <button class="removeFilterButton">X</button>
+            </li>
+            <li class="activeFilter">LVT
+                <button class="removeFilterButton">X</button>
+            </li>
+            <li class="activeFilter">WHITE
+                <button class="removeFilterButton">X</button>
+            </li>
+            <li class="activeFilter">GRAY
+                <button class="removeFilterButton">X</button>
+            </li>
+            <li class="activeFilter">BEIGE
+                <button class="removeFilterButton">X</button>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="portfolioMap">
+    <div class="mapPicture">
+        <a class="mapButton" href="#">PROJECTS ON THE MAP</a>
+    </div>
+</section>
+
+<section class="portfolioContent">
+    <div class="wrapper">
+        <ul class="portfolioList">
+            {{# each portfolio }}
+                <li class="portfolioWrapper">
+                    <picture class="portfolioImage">
+                        <source srcset="/public/images/temp/portfolio/{{{ image }}}_154x154.webp,
+                                            /public/images/temp/portfolio/{{{ image }}}_308x308.webp 2x"
+                                media="(max-width: 479px)"
+                                type="image/webp">
+                        <source srcset="/public/images/temp/portfolio/{{{ image }}}_154x154.jpg,
+                                            /public/images/temp/portfolio/{{{ image }}}_308x308.jpg 2x"
+                                media="(max-width: 479px)"
+                                type="image/jpeg">
+                        <source srcset="/public/images/temp/portfolio/{{{ image }}}_228x228.webp,
+                                            /public/images/temp/portfolio/{{{ image }}}_456x456.webp 2x"
+                                media="(max-width: 767px)"
+                                type="image/webp">
+                        <source srcset="/public/images/temp/portfolio/{{{ image }}}_228x228.jpg,
+                                            /public/images/temp/portfolio/{{{ image }}}_456x456.jpg 2x"
+                                media="(max-width: 767px)"
+                                type="image/jpeg">
+                        <source srcset="/public/images/temp/portfolio/{{{ image }}}_236x236.webp,
+                                            /public/images/temp/portfolio/{{{ image }}}_472x472.webp 2x"
+                                media="(max-width: 999px)"
+                                type="image/webp">
+                        <source srcset="/public/images/temp/portfolio/{{{ image }}}_236x236.jpg,
+                                            /public/images/temp/portfolio/{{{ image }}}_472x472.jpg 2x"
+                                media="(max-width: 999px)"
+                                type="image/jpeg">
+                        <source srcset="/public/images/temp/portfolio/{{{ image }}}_236x236.webp,
+                                            /public/images/temp/portfolio/{{{ image }}}_472x472.webp 2x"
+                                media="(max-width: 1439px)"
+                                type="image/webp">
+                        <source srcset="/public/images/temp/portfolio/{{{ image }}}_236x236.jpg,
+                                            /public/images/temp/portfolio/{{{ image }}}_472x472.jpg 2x"
+                                media="(max-width: 1439px)"
+                                type="image/jpeg">
+                        <source srcset="/public/images/temp/portfolio/{{{ image }}}_252x252.webp,
+                                            /public/images/temp/portfolio/{{{ image }}}_504x504.webp 2x"
+                                media="(min-width: 1440px)"
+                                type="image/webp">
+                        <source srcset="/public/images/temp/portfolio/{{{ image }}}_252x252.jpg,
+                                            /public/images/temp/portfolio/{{{ image }}}_504x504.jpg 2x"
+                                media="(min-width: 1440px)"
+                                type="image/jpeg">
+                        <img class="portfolioImage"
+                             src="/public/images/temp/portfolio/{{{ image }}}_252x252.jpg"
+                             srcset="/public/images/temp/portfolio/{{{ image }}}_252x252.jpg,
+                                         /public/images/temp/portfolio/{{{ image }}}_504x504.jpg 2x"
+                             alt="{{{ title }}}">
+                    </picture>
+                    <div class="portfolioHiddenBlock">
+                        <strong class="portfolioHeader">{{{ work }}}</strong>
+                        <span class="portfolioCity">{{{ city }}}</span>
+                        <span class="portfolioSquare">{{{ square }}}</span>
+                        <button class="portfolioButton">VIEW PROJECT</button>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+        <button class="showMoreButton">SHOW MORE</button>
+    </div>
+</section>

@@ -322,7 +322,7 @@ a {
     border: none;
     font-size: 9px;
     font-weight: 800;
-    color: $blackColor;
+    color: $darkGreyColor;
     outline: none;
     cursor: pointer;
     @include minWidth(480) {
@@ -343,7 +343,7 @@ a {
         @extend %buttonIconAfter;
         @extend %arrowIcon;
         @extend %animation;
-        background: $blackColor;
+        background: $darkGreyColor;
         transform: scale(0.6) rotate(90deg);
         @include minWidth(480) {
             transform: scale(0.8) rotate(90deg);
@@ -378,5 +378,101 @@ a {
     text-decoration: underline;
     &:hover {
         color: $blackColor;
+    }
+}
+
+.activeFilterList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 0;
+    margin-bottom: -8px;
+    padding-left: 0;
+    list-style-type: none;
+    .activeFilter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        height: 22px;
+        padding-left: 10px;
+        padding-right: 24px;
+        font-size: 9px;
+        line-height: 125%;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: $whiteColor;
+        background: $blueColor;
+        border-radius: 100px;
+        @include minWidth(480) {
+            padding-right: 30px;
+            height: 28px;
+            font-size: 12px;
+        }
+        .removeFilterButton {
+            content: "";
+            position: absolute;
+            right: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 15px;
+            height: 15px;
+            padding-left: 0;
+            box-sizing: border-box;
+            border-radius: 50%;
+            border: none;
+            font-size: 0;
+            background: $whiteColor;
+            cursor: pointer;
+            outline: none;
+            @include minWidth(480) {
+                right: 6px;
+                width: 17px;
+                height: 17px;
+            }
+            &:hover {
+                &:before {
+                    transform: translateY(-50%) rotate(-45deg);
+                }
+                &:after {
+                    transform: translateY(-50%) rotate(45deg);
+                }
+            }
+            &:before {
+                @extend %animation;
+                content: "";
+                position: absolute;
+                top: 50%;
+                right: 3px;
+                border: 1.5px solid $blueColor;
+                width: 6px;
+                transform: translateY(-50%) rotate(45deg);
+                @include minWidth(480) {
+                    width: 8px;
+                }
+                &:hover {
+                    border-color: darken($blueColor, 20%);
+                }
+            }
+            &:after {
+                @extend %animation;
+                content: "";
+                position: absolute;
+                top: 50%;
+                right: 3px;
+                border: 1.5px solid $blueColor;
+                width: 6px;
+                transform: translateY(-50%) rotate(135deg);
+                @include minWidth(480) {
+                    width: 8px;
+                }
+                &:hover {
+                    border-color: darken($blueColor, 20%);
+                }
+            }
+        }
     }
 }
