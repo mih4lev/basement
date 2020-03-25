@@ -20,8 +20,13 @@ router.get(`/map`, async (request, response) => {
     response.render(`pages/portfolio/map`, data);
 });
 
-router.get(`/:title`, async (request, response) => {
-    const data = Object.assign(request.data);
+router.get(`/:requestID`, async (request, response) => {
+    const { params: { requestID }} = request;
+    const mockJSON = fs.readFileSync(`data-mock/portfolio.json`);
+    const { portfolio } = JSON.parse(mockJSON);
+    const filterFunc = ({ id }) => Number(requestID) === Number(id);
+    const portfolioData = portfolio.filter(filterFunc);
+    const data = Object.assign(request.data, portfolioData[0]);
     response.render(`pages/portfolio/portfolio-single`, data);
 });
 

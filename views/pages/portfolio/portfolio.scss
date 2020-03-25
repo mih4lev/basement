@@ -238,4 +238,9 @@
     @include minWidth(768) {
         margin-top: 20px;
     }
+    &:after {
+        @extend %buttonIconAfter;
+        @extend %arrowIcon;
+        background: $blackColor;
+    }
 }

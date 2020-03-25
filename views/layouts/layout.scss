@@ -358,7 +358,9 @@ a {
     margin-top: 0;
     margin-bottom: 0;
     font-size: 15px;
+    font-weight: 700;
     line-height: 125%;
+    color: $blackColor;
     @include minWidth(480) {
         font-size: 20px;
     }
@@ -370,6 +372,21 @@ a {
     }
     @include minWidth(1440) {
         font-size: 37px;
+    }
+}
+
+.sectionTitle {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 19px;
+    font-weight: 800;
+    line-height: 125%;
+    color: $blackColor;
+    @include minWidth(480){
+        font-size: 27px;
+    }
+    @include minWidth(1000) {
+        font-size: 34px;
     }
 }
 
