@@ -85,6 +85,21 @@ a {
             width: 1032px;
         }
     }
+    &.blockWrapper {
+        width: 290px;
+        @include minWidth(480) {
+            width: 440px;
+        }
+        @include minWidth(768) {
+            width: 728px;
+        }
+        @include minWidth(1000) {
+            width: 762px;
+        }
+        @include minWidth(1440) {
+            width: 762px;
+        }
+    }
     &.mainWrapper {
         width: 290px;
         @include minWidth(480) {
@@ -375,6 +390,22 @@ a {
     }
 }
 
+.inputTitle {
+    margin-top: 15px;
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 125%;
+    text-transform: uppercase;
+    color: $blackColor;
+    @include minWidth(480) {
+        margin-top: 20px;
+    }
+    @include minWidth(768) {
+        font-size: 18px;
+    }
+}
+
 .sectionTitle {
     margin-top: 0;
     margin-bottom: 0;
@@ -491,5 +522,224 @@ a {
                 }
             }
         }
+    }
+}
+
+// forms
+
+// input[type="text"] && textarea
+
+.fieldLabel {
+    position: absolute;
+    line-height: 26px;
+    font-size: 9px;
+    font-weight: 700;
+    color: $greyColor;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transform: translateX(13px);
+    @include minWidth(480) {
+        height: 41px;
+        line-height: 41px;
+        font-size: 12px;
+    }
+    @include minWidth(768) {
+        font-size: 13px;
+    }
+}
+
+.fieldInput {
+    @extend %animation;
+    @extend %font;
+    padding: 0 12px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 26px;
+    line-height: 26px;
+    border: 1px solid $lightGreyColor;
+    border-radius: 5px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $blackColor;
+    outline: none;
+    &:focus {
+        border-color: $blueColor;
+    }
+    @include minWidth(480) {
+        height: 41px;
+        line-height: 41px;
+        font-size: 12px;
+    }
+    @include minWidth(768) {
+        font-size: 13px;
+    }
+}
+
+.fieldTextarea {
+    @extend %animation;
+    @extend %font;
+    width: 100%;
+    padding: 6px 12px;
+    box-sizing: border-box;
+    border: 1px solid $lightGreyColor;
+    border-radius: 5px;
+    font-size: 9px;
+    line-height: 125%;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    resize: none;
+    outline: none;
+    height: 113px;
+    &:focus {
+        border: 1px solid $blueColor;
+    }
+    @include minWidth(480) {
+        height: 129px;
+        padding: 12px;
+        font-size: 12px;
+    }
+    @include minWidth(768) {
+        height: 84px;
+        font-size: 13px;
+    }
+}
+
+// checkbox && radio buttons
+
+.checkboxLabel {
+    @extend %animation;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 9px;
+    line-height: 125%;
+    letter-spacing: 0.05em;
+    color: $greyColor;
+    cursor: pointer;
+    &:before {
+        @extend %animation;
+        content: "";
+        display: inline-block;
+        margin: -1px 15px 0 0;
+        width: 8px;
+        height: 8px;
+        box-sizing: border-box;
+        border: 1px solid $greyColor;
+        border-radius: 50%;
+    }
+    @include minWidth(480) {
+        font-size: 12px;
+    }
+    @include minWidth(768) {
+        font-size: 13px;
+    }
+}
+
+.checkboxInput {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    &:checked + .checkboxLabel {
+        color: $blackColor;
+        &:before {
+            border: 1px solid $blackColor;
+            background: $blackColor;
+        }
+    }
+}
+
+// custom selects
+
+.selectLabel {
+    font-size: 9px;
+    line-height: 125%;
+    letter-spacing: 0.05em;
+    color: $greyColor;
+    @include minWidth(480) {
+        font-size: 12px;
+    }
+    @include minWidth(768) {
+        font-size: 13px;
+    }
+}
+
+.selectElement {
+    @extend %animation;
+    position: relative;
+    padding: 0 12px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 26px;
+    line-height: 26px;
+    border: 1px solid $lightGreyColor;
+    border-radius: 5px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $blackColor;
+    outline: none;
+    cursor: pointer;
+    &:hover {
+        border-color: $blueColor;
+        &:after {
+            background: $blueColor;
+        }
+    }
+    &:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        display: block;
+        background: $lightGreyColor;
+        transform: translateY(-50%) rotate(90deg);
+        @extend %arrowIcon;
+    }
+    @include minWidth(480) {
+        height: 41px;
+        line-height: 41px;
+        font-size: 12px;
+    }
+}
+
+// submit buttons
+
+.submitButton {
+    @extend %animation;
+    @extend %font;
+    display: block;
+    margin: 15px auto 0;
+    width: 220px;
+    height: 26px;
+    background: $blueColor;
+    border-radius: 5px;
+    border: 1px solid $blueColor;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $whiteColor;
+    cursor: pointer;
+    outline: none;
+    &:hover {
+        background: $blackColor;
+        border-color: $blackColor;
+    }
+    @include minWidth(480) {
+        width: 220px;
+        height: 41px;
+        font-size: 12px;
+    }
+    @include minWidth(768) {
+        font-size: 13px;
+    }
+    &:disabled {
+        background: $bgSubColor;
+        border-color: $bgSubColor;
     }
 }

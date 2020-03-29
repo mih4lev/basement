@@ -1,0 +1,279 @@
+.contactUsContent {
+    background: linear-gradient(90deg, #FDFDFD 0%, #F8F5F5 101.15%);
+}
+
+.roundBlock {
+    @extend %shadow;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    min-height: 100px;
+    background: $whiteColor;
+    border-radius: 5px;
+    @include minWidth(480) {
+        padding: 20px;
+    }
+    .splitBlock {
+        @include minWidth(768) {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    .instantQuoteButton {
+        @extend %blueButton;
+        margin: 15px auto;
+        @include minWidth(480) {
+            margin: 20px auto;
+        }
+        @include minWidth(768) {
+            margin: 15px 0 0 50px;
+        }
+    }
+    .officeWrapper {
+        box-sizing: border-box;
+        border-top: 1px solid $bgSubColor;
+        @include minWidth(768) {
+            display: flex;
+            flex-direction: row;
+        }
+        .contactsWrapper {
+            @include minWidth(768) {
+                width: 50%;
+            }
+        }
+        .hoursWrapper {
+            @include minWidth(768) {
+                width: 50%;
+            }
+        }
+    }
+    .locationWrapper {
+        @include minWidth(768) {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+        .locationDescription {
+            @include minWidth(768) {
+                width: 280px;
+                .strongText {
+                    margin-top: 10px;
+                }
+            }
+        }
+        .locationMap {
+            @include minWidth(768) {
+                margin-top: 0;
+                width: 337px;
+            }
+        }
+    }
+}
+
+.blockHeader {
+    margin: 15px 0 0;
+    font-size: 12px;
+    line-height: 125%;
+    font-weight: 400;
+    color: $blackColor;
+    @include minWidth(480) {
+        margin: 20px 0 0;
+        font-size: 15px;
+    }
+    @include minWidth(768) {
+        margin: 20px 0 0;
+    }
+}
+
+.strongText {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 125%;
+    color: $blackColor;
+    text-transform: uppercase;
+    @include minWidth(480) {
+        font-size: 18px;
+    }
+}
+
+.disabledText {
+    margin-top: 15px;
+    color: $greyColor;
+}
+
+.similarLink {
+    color: $blackColor;
+    &:hover {
+        color: $blueColor;
+    }
+}
+
+.textLink {
+    color: $blueColor;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.locationMap {
+    @extend %shadow2;
+    position: relative;
+    width: 100%;
+    margin-top: 5px;
+    display: block;
+    border-radius: 5px;
+    &:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-55%, -60%);
+        display: block;
+        width: 42px;
+        height: 53px;
+        background-size: 42px 53px;
+    }
+}
+
+.no-webp .locationMap {
+    &:after {
+        background-image: url('/public/images/location-pin.png');
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url('/public/images/location-pin@2x.png');
+        }
+    }
+}
+
+.webp .locationMap {
+    &:after {
+        background-image: url('/public/images/location-pin.webp');
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url('/public/images/location-pin@2x.webp');
+        }
+    }
+}
+
+.progressBar {
+    margin: 10px 0 0;
+    padding: 1px;
+    width: 100%;
+    height: 12px;
+    border: 1px solid $blueColor;
+    border-radius: 100px;
+    box-sizing: border-box;
+}
+
+.progressLine {
+    height: 8px;
+    border-radius: 100px;
+    background: $blueColor;
+}
+
+.formWrapper {
+    position: relative;
+    margin-top: 15px;
+}
+
+.fieldWrapper {
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.oneColumnFieldset {
+    margin: 0 0 8px;
+    padding: 7px 15px;
+    border: 1px solid $lightGreyColor;
+    border-radius: 5px;
+    @include minWidth(768) {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+.findUsWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 0 8px;
+    padding: 0 16px;
+    border: none;
+    .twoColumnWrapper {
+        width: 50%;
+    }
+    @include minWidth(768) {
+        .twoColumnWrapper {
+            width: 25%;
+        }
+    }
+}
+
+.checkboxWrapper {
+    margin: 5px 0;
+    width: 100%;
+    @include minWidth(768) {
+        width: 50%;
+    }
+}
+
+.twoColumnWrapper {
+    margin: 3px 0;
+    width: 100%;
+    @include minWidth(768) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .fieldWrapper {
+            width: 49%;
+        }
+    }
+}
+
+.threeColumnWrapper {
+    @include minWidth(768) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .selectWrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 32%;
+        }
+        .fieldWrapper {
+            width: 32%;
+        }
+    }
+}
+
+.submitWrapper {
+    @include minWidth(768) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        .textBlock {
+            font-size: 13px;
+            margin: 0;
+        }
+        .submitButton {
+            margin: 0;
+        }
+    }
+}
+
+input:not([type=checkbox]):not([type=radio]),
+textarea,
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}

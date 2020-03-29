@@ -1,0 +1,22 @@
+{
+    "locations": [
+        {
+            "id": 1,
+            "officeName": "MONTGOMERY COUNTY SHOWROOM",
+            "address": "1680 East Gude dr, STE 313, Rockville, MD 20850",
+            "image": "location-map1"
+        },
+        {
+            "id": 2,
+            "officeName": "PRINCE GEORGE'S AND ANNE ARUNDEL COUNTIES WAREHOUSE",
+            "address": "6802 Industrial Dr, Unit 212, Beltsville, MD 20705",
+            "image": "location-map2"
+        },
+        {
+            "id": 3,
+            "officeName": "NORTHERN VIRGINIA OFFICE",
+            "address": "6711 Lee Hwy #201, Arlington, VA 22205",
+            "image": "location-map3"
+        }
+    ]
+}

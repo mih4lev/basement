@@ -59,7 +59,9 @@ router.get(`/financing-offers`, async (request, response) => {
 
 router.get(`/contact-us`, async (request, response) => {
     const isContactUs = true;
-    const data = Object.assign(request.data, { isContactUs });
+    const mockJSON = fs.readFileSync(`data-mock/contact-us.json`);
+    const mockData = JSON.parse(mockJSON);
+    const data = Object.assign(request.data, mockData,{ isContactUs });
     response.render(`pages/about-us/contact-us/contact-us`, data);
 });
 

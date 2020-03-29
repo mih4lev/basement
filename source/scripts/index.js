@@ -12,4 +12,12 @@ import { headerMenu } from "../../views/partials/header/header";
     htmlNode.classList.add(webpClass);
 })();
 
+// temp func for title width
+(function(){
+    const titleNode = document.querySelector(`title`);
+    const checkWidth = () => titleNode.innerText = `DEV ${window.innerWidth}`;
+    window.addEventListener(`resize`, checkWidth);
+    checkWidth();
+})();
+
 headerMenu();
