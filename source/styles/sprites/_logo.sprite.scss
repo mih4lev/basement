@@ -2,10 +2,6 @@
     background-color: transparent;
     background-repeat: no-repeat;
     background-size: 229px 119px;
-    background-image: url('/public/images/logo-sprite.png');
-    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-        background-image: url('/public/images/logo-sprite@2x.png');
-    }
     &.greenskyLogo {
         width: 229px;
         height: 60px;
@@ -52,6 +48,14 @@
         background-position: -176px -94px;
     }
 }
+
+.no-webp .logoSprite {
+    background-image: url('/public/images/logo-sprite.png');
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url('/public/images/logo-sprite@2x.png');
+    }
+}
+
 .webp .logoSprite {
     background-image: url('/public/images/logo-sprite.webp');
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {

@@ -4,10 +4,6 @@
     background-color: transparent;
     background-repeat: no-repeat;
     background-size: 390px 520px;
-    background-image: url('/public/images/table-sprite.jpg');
-    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-        background-image: url('/public/images/table-sprite@2x.jpg');
-    }
     &.table1 {
         background-position: 0 0;
     }
@@ -45,6 +41,14 @@
         background-position: -260px -390px;
     }
 }
+
+.no-webp .tableSprite {
+    background-image: url('/public/images/table-sprite.jpg');
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url('/public/images/table-sprite@2x.jpg');
+    }
+}
+
 .webp .tableSprite {
     background-image: url('/public/images/table-sprite.webp');
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {

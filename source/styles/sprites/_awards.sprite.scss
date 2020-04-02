@@ -2,10 +2,6 @@
     background-color: transparent;
     background-repeat: no-repeat;
     background-size: 98px 1950px;
-    background-image: url('/public/images/awards-sprite.png');
-    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-        background-image: url('/public/images/awards-sprite@2x.png');
-    }
     &.angiesList2011 {
         width: 97px;
         height: 97px;
@@ -107,6 +103,14 @@
         background-position: 0 -1853px;
     }
 }
+
+.no-webp .awardsSprite {
+    background-image: url('/public/images/awards-sprite.png');
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url('/public/images/awards-sprite@2x.png');
+    }
+}
+
 .webp .awardsSprite {
     background-image: url('/public/images/awards-sprite.webp');
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {

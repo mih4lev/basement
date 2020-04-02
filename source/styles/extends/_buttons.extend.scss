@@ -77,6 +77,21 @@
     }
 }
 
+%blackButton {
+    @extend %button;
+    display: block;
+    height: auto;
+    padding: 8px 10px 6px;
+    box-sizing: border-box;
+    color: $blackColor;
+    font-size: 10px;
+    line-height: 100%;
+    text-align: center;
+    letter-spacing: 0;
+    white-space: normal;
+    border: 1px solid $darkGreyColor;
+}
+
 %disabledButton {
     color: $whiteColor;
     border: 1px solid $bgSubColor;
