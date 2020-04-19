@@ -15,6 +15,70 @@
             }
         }
     }
+    .formHint {
+        margin-top: 15px;
+        margin-bottom: 0;
+        font-size: 12px;
+        line-height: 125%;
+        color: $darkGreyColor;
+        @include minWidth(480) {
+            margin-top: 20px;
+        }
+        @include minWidth(1000) {
+            font-size: 15px;
+        }
+    }
+    .fieldWrapper {
+        position: relative;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        .formLabel {
+            position: absolute;
+            top: 14px;
+            left: 17px;
+            font-size: 12px;
+            line-height: 12px;
+            text-transform: uppercase;
+            color: $blackColor;
+        }
+        .formField {
+            padding: 0 15px;
+            width: 290px;
+            height: 41px;
+            font-size: 12px;
+            line-height: 41px;
+            color: $blackColor;
+            border: 1px solid #D1D1D3;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background: $whiteColor;
+        }
+    }
+    .checkboxWrapper {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        .formCheckbox {
+
+        }
+        .formLabel {
+            margin-left: 15px;
+        }
+    }
+    .offersButton {
+        @extend %blueButton;
+        margin-left: auto;
+        &:after {
+            @extend %buttonIconAfter;
+            @extend %arrowIcon;
+            background: $whiteColor;
+        }
+        &:disabled {
+            @extend %disabledButton;
+        }
+    }
 }
 
 .offerList {
@@ -146,73 +210,5 @@
     }
     @include minWidth(768) {
         font-size: 18px;
-    }
-}
-
-.formHint {
-    margin-top: 15px;
-    margin-bottom: 0;
-    font-size: 12px;
-    line-height: 125%;
-    color: $darkGreyColor;
-    @include minWidth(480) {
-        margin-top: 20px;
-    }
-    @include minWidth(1000) {
-        font-size: 15px;
-    }
-}
-
-.fieldWrapper {
-    position: relative;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    .formLabel {
-        position: absolute;
-        top: 14px;
-        left: 17px;
-        font-size: 12px;
-        line-height: 12px;
-        text-transform: uppercase;
-        color: $blackColor;
-    }
-    .formField {
-        padding: 0 15px;
-        width: 290px;
-        height: 41px;
-        font-size: 12px;
-        line-height: 41px;
-        color: $blackColor;
-        border: 1px solid #D1D1D3;
-        border-radius: 5px;
-        box-sizing: border-box;
-        background: $whiteColor;
-    }
-}
-
-.checkboxWrapper {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    .formCheckbox {
-
-    }
-    .formLabel {
-        margin-left: 15px;
-    }
-}
-
-.offersButton {
-    @extend %blueButton;
-    margin-left: auto;
-    &:after {
-        @extend %buttonIconAfter;
-        @extend %arrowIcon;
-        background: $whiteColor;
-    }
-    &:disabled {
-        @extend %disabledButton;
     }
 }

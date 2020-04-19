@@ -1,53 +1,52 @@
 .schemesSprite {
-    @extend %animation;
     width: 200px;
     height: 200px;
     background-color: transparent;
     background-repeat: no-repeat;
     background-size: 800px 800px;
-    &.scheme1 {
+    &.unfinishedBasement {
         background-position: -200px 0;
         &.active {
             background-position: 0 0;
         }
     }
-    &.scheme2 {
+    &.completeBasementRemodeling {
         background-position: -600px 0;
         &.active {
             background-position: -400px 0;
         }
     }
-    &.scheme3 {
+    &.partialBasementRemodeling {
         background-position: -200px -200px;
         &.active {
             background-position: 0 -200px;
         }
     }
-    &.scheme4 {
+    &.basementRenovation {
         background-position: -600px -200px;
         &.active {
             background-position: -400px -200px;
         }
     }
-    &.scheme5 {
+    &.addBathroom {
         background-position: -200px -400px;
         &.active {
             background-position: 0 -400px;
         }
     }
-    &.scheme6 {
+    &.addEgressWindow {
         background-position: -600px -400px;
         &.active {
             background-position: -400px -400px;
         }
     }
-    &.scheme7 {
+    &.foundationRepairs {
         background-position: -200px -600px;
         &.active {
             background-position: 0 -600px;
         }
     }
-    &.scheme8 {
+    &.basementWaterproofing {
         background-position: -600px -600px;
         &.active {
             background-position: -400px -600px;

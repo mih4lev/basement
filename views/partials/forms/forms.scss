@@ -1,0 +1,165 @@
+.progressBar {
+    margin: 5px 0 15px;
+    padding: 1px;
+    width: 100%;
+    height: 12px;
+    border: 1px solid $blueColor;
+    border-radius: 100px;
+    box-sizing: border-box;
+}
+
+.progressLine {
+    height: 8px;
+    border-radius: 100px;
+    background: $blueColor;
+}
+
+.formWrapper {
+    position: relative;
+}
+
+.fieldWrapper {
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.oneColumnFieldset {
+    margin: 0 0 8px;
+    padding: 7px 15px;
+    border: 1px solid $lightGreyColor;
+    border-radius: 5px;
+    @include minWidth(768) {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+.findUsWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 0 8px;
+    padding: 0 16px;
+    border: none;
+    .twoColumnWrapper {
+        width: 50%;
+    }
+    @include minWidth(768) {
+        .twoColumnWrapper {
+            width: 25%;
+        }
+    }
+}
+
+.checkboxWrapper {
+    margin: 5px 0;
+    width: 100%;
+    @include minWidth(768) {
+        width: 50%;
+    }
+}
+
+.twoColumnWrapper {
+    margin: 3px 0;
+    width: 100%;
+    @include minWidth(768) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .fieldWrapper {
+            width: 49%;
+        }
+    }
+}
+
+.threeColumnWrapper {
+    @include minWidth(768) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .selectWrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 32%;
+        }
+        .fieldWrapper {
+            width: 32%;
+        }
+    }
+}
+
+.radioButtonsBlock {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    @include minWidth(768) {
+        flex-direction: row;
+        justify-content: space-between;
+        .twoColumnWrapper {
+            display: flex;
+            flex-direction: column;
+            width: 48%;
+        }
+    }
+}
+
+.radioButtonsWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .buttonWrapper {
+        position: relative;
+        overflow: hidden;
+        width: 49%;
+        .radioInput {
+            display: none;
+            margin-top: -100%;
+        }
+        .radioLabel {
+            @extend %animation;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 28px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: $darkGreyColor;
+            background: $bgSubColor;
+            border-radius: 5px;
+            cursor: pointer;
+            outline: none;
+        }
+        .radioInput:checked + .radioLabel {
+            color: $whiteColor;
+            background: $blueColor;
+        }
+    }
+}
+
+.submitWrapper {
+    @include minWidth(768) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        .textBlock {
+            font-size: 13px;
+            margin: 0;
+        }
+        .submitButton {
+            margin: 0;
+        }
+    }
+}
+
+input:not([type=checkbox]):not([type=radio]),
+textarea,
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}

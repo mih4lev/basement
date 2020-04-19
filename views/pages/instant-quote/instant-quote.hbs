@@ -20,51 +20,16 @@
     <div class="wrapper mainWrapper">
         <p class="descriptionBlock">If you are not sure what kind of services you would like to talk about during your in-home consultation, please use our help tool below.</p>
         <ul class="fourColumnList">
-            <li class="listWrapper unfinishedBasement">
-                <div class="instantQuoteScheme schemesSprite scheme1 active"></div>
-                <a class="blackButton" href="/instant-quote/finish-an-unfinished-basement/">FINISH AN UNFINISHED BASEMENT</a>
-                <p class="textBlock">Finish an unfinished basement (full or part).</p>
-                <em class="minPriceText">Minimum project cost $10,000.</em>
-            </li>
-            <li class="listWrapper completeBasementRemodeling">
-                <div class="instantQuoteScheme schemesSprite scheme2"></div>
-                <a class="blackButton" href="/instant-quote/complete-basement-remodeling/">COMPLETE BASEMENT REMODELING</a>
-                <p class="textBlock">Complete remodeling of an existing basement (with removal of all existing structures).</p>
-                <em class="minPriceText">Minimum project cost $15,000.</em>
-            </li>
-            <li class="listWrapper partialBasementRemodeling">
-                <div class="instantQuoteScheme schemesSprite scheme3"></div>
-                <a class="blackButton" href="/instant-quote/partial-basement-remodeling/">PARTIAL BASEMENT REMODELING</a>
-                <p class="textBlock">Reconfigure existing basement without taking down all of the existing structures.</p>
-                <em class="minPriceText">Minimum project cost $12,500.</em>
-            </li>
-            <li class="listWrapper basementRenovation">
-                <div class="instantQuoteScheme schemesSprite scheme4"></div>
-                <a class="blackButton" href="/instant-quote/flooded-basement-renovation/">FLOODED BASEMENT RENOVATION</a>
-                <p class="textBlock">Restore basement after a flood.</p>
-                <em class="minPriceText">Minimum project cost $10,000.</em>
-            </li>
-            <li class="listWrapper addBathroom">
-                <div class="instantQuoteScheme schemesSprite scheme5"></div>
-                <a class="blackButton" href="/instant-quote/add-bathroom-or-wet-bar/">ADD BATHROOM OR WET BAR</a>
-                <p class="textBlock">Add a bathroom or a wet bar to a finished or an unfinished basement.</p>
-                <em class="minPriceText">Minimum project cost: $12,500.</em>
-            </li>
-            <li class="listWrapper addEgressWindow">
-                <div class="instantQuoteScheme schemesSprite scheme6"></div>
-                <a class="blackButton" href="/instant-quote/add-egress-window-or-walkout/">ADD EGRESS WINDOW OR WALKOUT</a>
-                <p class="textBlock">Add an egress window or a walkout to a finished or an unfinished basement.</p>
-            </li>
-            <li class="listWrapper foundationRepairs">
-                <div class="instantQuoteScheme schemesSprite scheme7"></div>
-                <a class="blackButton" href="/instant-quote/foundation-repairs/">FOUNDATION REPAIRS</a>
-                <p class="textBlock">To address issues with cracking foundation walls (including crack seepage) and other structural foundation issues.</p>
-            </li>
-            <li class="listWrapper basementWaterproofing">
-                <div class="instantQuoteScheme schemesSprite scheme8"></div>
-                <a class="blackButton" href="/instant-quote/basement-waterproofing/">BASEMENT WATERPROOFING</a>
-                <p class="textBlock">Perimeter interior drainage systems installations, crawl space drainage systems and encapsulation, and basement sump pump as well as back-up pump (battery or water-powered) installations.</p>
-            </li>
+            {{# each quotes }}
+                <li class="listWrapper">
+                    <div class="instantQuoteScheme schemesSprite {{{ image }}}"></div>
+                    <a class="blackButton" href="/instant-quote/{{{ name }}}/">{{{ header }}}</a>
+                    <p class="textBlock">{{{ annotation }}}</p>
+                    {{# if minimumPrice }}
+                        <em class="minPriceText">{{{ minimumPrice }}}</em>
+                    {{/ if }}
+                </li>
+            {{/each}}
         </ul>
     </div>
 </div>

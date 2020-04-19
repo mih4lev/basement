@@ -1,0 +1,57 @@
+<section class="pageHeader">
+    <div class="wrapper headerWrapper">
+        <div class="contentWrapper">
+            <h1 class="pageTitle">{{{ header }}}</h1>
+            <nav class="breadcrumbs">
+                <ul class="breadcrumbList">
+                    <li class="breadcrumbLinkWrapper">
+                        <a class="breadcrumbLink" href="/">Basement Remodeling Company</a>
+                    </li>
+                    <li class="breadcrumbLinkWrapper">
+                        <a class="breadcrumbLink" href="/instant-quote/">Get an instant quote online</a>
+                    </li>
+                    <li class="breadcrumbLinkWrapper">
+                        <span class="breadcrumbLink breadcrumbActive">{{{ header }}}</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<div class="instantQuoteContent">
+    <div class="wrapper mainWrapper">
+        <div class="instantQuoteWrapper">
+            <div class="instantQuoteImage schemesSprite {{{ image }}}"></div>
+            <em class="instantQuotePrice">{{{ price }}}</em>
+            <div class="instantQuoteDescription">{{{ description }}}</div>
+            <a href="/instant-quote/" class="instantQuoteBackButton backButton">Go back to choosing a service</a>
+        </div>
+    </div>
+</div>
+
+<section class="contactUsForm">
+    <div class="wrapper blockWrapper">
+        <p class="formAnnotation">
+            {{# if isContactForm }}
+                ONLINE QUOTE IS NOT AVAILABLE FOR THIS TYPE OF SERVICE
+            {{ else }}
+                Once you fill out the form our automated tool will email you an online quote within 60 seconds.
+            {{/if}}
+        </p>
+        <div class="roundBlock">
+            {{# if isContactForm }}
+                {{> forms/contact-us.form }}
+            {{ else }}
+                {{> forms/instant-quote.form }}
+            {{/if}}
+        </div>
+        <div class="roundBlock">
+            <div class="greenSkyWrapper">
+                <a class="logoSprite greenskyLogo" href="#">GreenSky</a>
+                <a class="financingOffersLink" href="">CLICK HERE TO REVIEW OUR FINANCING OFFERS AND APPLY ONLINE</a>
+                <p class="financingOffersText">Approval rate of over 90% and decision in under 60 seconds.</p>
+            </div>
+        </div>
+    </div>
+</section>

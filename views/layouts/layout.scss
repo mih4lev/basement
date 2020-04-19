@@ -12,7 +12,7 @@ body {
     font-family: "Gilroy", Arial, sans-serif;
     font-size: 9px;
     line-height: 125%;
-    font-weight: 300;
+    font-weight: 400;
     font-style: normal;
     color: $blackColor;
     background: $bgMainColor;
@@ -42,8 +42,20 @@ main {
     }
 }
 
+p {
+    margin: 0 0 15px;
+    @include minWidth(480) {
+        margin: 0 0 20px;
+    }
+}
+
 a {
     text-decoration: none;
+    color: $blueColor;
+}
+
+strong {
+    text-transform: uppercase;
 }
 
 .wrapper {
@@ -156,6 +168,19 @@ a {
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
+    }
+}
+
+.roundBlock {
+    @extend %shadow2;
+    position: relative;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    background: $whiteColor;
+    border-radius: 5px;
+    @include minWidth(480) {
+        padding: 20px;
     }
 }
 
@@ -655,6 +680,7 @@ a {
 // custom selects
 
 .selectLabel {
+    margin: 10px 0;
     font-size: 9px;
     line-height: 125%;
     letter-spacing: 0.05em;

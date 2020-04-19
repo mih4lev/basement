@@ -112,3 +112,149 @@
         }
     }
 }
+
+.instantQuoteWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    @include minWidth(768) {
+        min-height: 173px;
+    }
+    @include minWidth(1000) {
+        justify-content: space-between;
+        min-height: 200px;
+    }
+    .instantQuoteImage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: -45px 0 0 -45px;
+        transform: scale(0.55);
+        @include minWidth(480) {
+            margin: -30px 0 0 -30px;
+            transform: scale(0.7);
+        }
+        @include minWidth(768) {
+            margin: -14px 0 0 -14px;
+            transform: scale(0.865);
+        }
+        @include minWidth(1000) {
+            margin: 0;
+            transform: scale(1);
+        }
+    }
+    .instantQuotePrice {
+        position: absolute;
+        padding-left: 130px;
+        font-style: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        @include minWidth(480) {
+            padding-left: 160px;
+        }
+        @include minWidth(768) {
+            order: 3;
+            position: relative;
+            margin-bottom: 20px;
+            padding-left: 193px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        @include minWidth(1000) {
+            margin-bottom: 0;
+            padding: 0 300px 0 220px;
+            font-size: 13px;
+        }
+        @include minWidth(1440) {
+            padding: 0 460px 0 220px;
+        }
+    }
+    .instantQuoteDescription {
+        margin-top: 130px;
+        @include minWidth(480) {
+            margin-top: 160px;
+        }
+        @include minWidth(768) {
+            order: 1;
+            margin-top: 0;
+            padding-left: 193px;
+            font-size: 12px;
+        }
+        @include minWidth(1000) {
+            padding-left: 220px;
+            font-size: 15px;
+        }
+    }
+    .instantQuoteBackButton {
+        @include minWidth(768) {
+            margin: auto 0 0 auto;
+            order: 4;
+        }
+        @include minWidth(1000) {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            margin: 0;
+        }
+    }
+}
+
+.contactUsForm {
+    .formAnnotation {
+        paddinf: 0 30px;
+        text-align: center;
+    }
+    .greenSkyWrapper {
+        position: relative;
+        .greenskyLogo {
+            position: absolute;
+            display: block;
+            transform: scale(0.37);
+            margin: -5px -72px;
+            font-size: 0;
+            @include minWidth(480) {
+                margin: 5px -37px;
+                transform: scale(0.68);
+            }
+            @include minWidth(768) {
+                margin: -7px -22px;
+            }
+            @include minWidth(1000) {
+                margin: -7px -10px;
+            }
+        }
+        .financingOffersLink {
+            display: block;
+            padding-left: 95px;
+            color: $blueColor;
+            text-transform: uppercase;
+            text-decoration: underline;
+            &:hover {
+                text-decoration: none;
+            }
+            @include minWidth(480) {
+                padding-left: 175px;
+            }
+            @include minWidth(768) {
+                padding-left: 205px;
+            }
+            @include minWidth(1000) {
+                padding-left: 225px;
+            }
+        }
+        .financingOffersText {
+            margin: 10px 0 0;
+            padding-left: 95px;
+            @include minWidth(480) {
+                padding-left: 175px;
+            }
+            @include minWidth(768) {
+                padding-left: 205px;
+            }
+            @include minWidth(1000) {
+                padding-left: 225px;
+            }
+        }
+    }
+}
