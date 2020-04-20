@@ -1,0 +1,161 @@
+.closeModal {
+    @include modal(304px, 190px);
+    background: $bgMainColor;
+    @include minWidth(480) {
+        @include modal(450px, 303px);
+        background: $bgMainColor;
+    }
+    @include minWidth(768) {
+        @include modal(549px, 320px);
+        background: $bgMainColor;
+    }
+    @include minWidth(1000) {
+        @include modal(966px, 202px);
+        background: $bgMainColor;
+    }
+}
+
+.modalContentWrapper {
+    &.closeModalWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 26px auto 0;
+        width: 288px;
+        height: 154px;
+        background: url("/public/images/close-modal-arrows320.svg");
+        background-size: 288px 154px;
+        @include minWidth(480) {
+            margin: 47px auto 0;
+            width: 434px;
+            height: 246px;
+            background: url("/public/images/close-modal-arrows480.svg");
+            background-size: 434px 246px;
+        }
+        @include minWidth(768) {
+            margin: 50px auto 0;
+            width: 507px;
+            height: 250px;
+            background: url("/public/images/close-modal-arrows768.svg");
+            background-size: 507px 250px;
+        }
+        @include minWidth(1000) {
+            margin: 50px auto 0;
+            width: 925px;
+            height: 123px;
+            background: url("/public/images/close-modal-arrows1000.svg");
+            background-size: 925px 123px;
+        }
+        .closeButton {
+            top: 8px;
+            right: 8px;
+            @include minWidth(480) {
+                top: 10px;
+                right: 13px;
+            }
+            @include minWidth(768) {
+                top: 22px;
+                right: 28px;
+            }
+            @include minWidth(768) {
+                top: 20px;
+                right: 30px;
+            }
+            &:before, &:after {
+                background: #616D7B;
+            }
+        }
+    }
+}
+
+.closeModalHeader {
+    position: absolute;
+    left: 50%;
+    margin-top: -3px;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 15px;
+    line-height: 125%;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: $whiteColor;
+    @include minWidth(480) {
+        margin-top: -10px;
+        font-size: 23px;
+    }
+    @include minWidth(768) {
+        margin-top: -14px;
+        font-size: 27px;
+    }
+    @include minWidth(1000) {
+        width: 900px;
+        margin-top: -17px;
+        font-size: 33px;
+    }
+    .wrap {
+        white-space: nowrap;
+        @include minWidth(1000) {
+            white-space: pre-wrap;
+        }
+    }
+}
+
+.closeModalButtons {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include minWidth(768) {
+        margin-bottom: 5px;
+    }
+    @include minWidth(1000) {
+        flex-direction: row;
+        margin-bottom: 30px;
+    }
+    button {
+        margin-bottom: 10px;
+        @include minWidth(480) {
+            margin-bottom: 15px;
+        }
+        @include minWidth(1000) {
+            margin-bottom: 0;
+            margin-right: 20px;
+            &:last-of-type {
+                margin-right: 0;
+            }
+        }
+    }
+    .instantQuoteButton {
+        @extend %blueButton;
+    }
+    .consultationButton {
+        @extend %yellowButton;
+    }
+    .questionButton {
+        @extend %menuButton;
+        color: $whiteColor;
+    }
+}
+
+.closeModalArrows {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 44px;
+    height: 13px;
+    background: url("/public/images/close-window_arrow.svg") space;
+    background-size: auto 13px;
+    @include minWidth(480) {
+        width: 52px;
+        height: 16px;
+        background-size: auto 16px;
+    }
+    @include minWidth(768) {
+        top: 20px;
+        left: 24px;
+    }
+    @include minWidth(1000) {
+        top: 15px;
+        left: 28px;
+    }
+}

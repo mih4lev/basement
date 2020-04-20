@@ -28,4 +28,31 @@
     border-radius: 5px;
     box-shadow: 0 0 0 10000px $modalBackground,
                 5px 5px 12px rgba(0, 0, 0, 0.25);
+    &:after {
+        display: none;
+    }
+}
+
+@mixin scrollModal($width, $height) {
+    position: absolute;
+    z-index: 1;
+    top: 40px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: $width;
+    min-height: $height;
+    padding: 20px;
+    box-sizing: border-box;
+    background: $whiteColor;
+    border-radius: 5px;
+    box-shadow: 0 0 0 10000px $modalBackground,
+    5px 5px 12px rgba(0, 0, 0, 0.25);
+    &:after {
+        position: absolute;
+        bottom: -40px;
+        content: "";
+        display: block;
+        height: 40px;
+        width: 100%;
+    }
 }

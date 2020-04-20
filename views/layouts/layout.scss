@@ -143,6 +143,15 @@ strong {
             //width: 894px;
         }
     }
+    &.formWrapper {
+        width: 290px;
+        @include minWidth(480) {
+            width: 440px;
+        }
+        @include minWidth(768) {
+            width: 470px;
+        }
+    }
     &.responseWrapper {
         width: 100%;
         @include minWidth(1000) {
@@ -446,6 +455,20 @@ strong {
     }
 }
 
+.modalTitle {
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    @include minWidth(480) {
+        font-size: 19px;
+    }
+}
+
+.centerText {
+    text-align: center;
+}
+
 .colorLink {
     color: $blueColor;
     text-decoration: underline;
@@ -680,7 +703,7 @@ strong {
 // custom selects
 
 .selectLabel {
-    margin: 10px 0;
+    margin: 10px 0 5px 0;
     font-size: 9px;
     line-height: 125%;
     letter-spacing: 0.05em;
@@ -767,5 +790,108 @@ strong {
     &:disabled {
         background: $bgSubColor;
         border-color: $bgSubColor;
+    }
+}
+
+// facebook && google buttons
+
+.networkButtonsWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+
+.networkButton {
+    @extend %font;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0;
+    width: 49%;
+    height: 26px;
+    font-size: 9px;
+    line-height: 125%;
+    white-space: nowrap;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    @include minWidth(480) {
+        height: 41px;
+        font-size: 14px;
+    }
+    @include minWidth(768) {
+        font-size: 15px;
+    }
+    &.facebookButton {
+        color: $whiteColor;
+        background: $facebookColor;
+        border: 1px solid $facebookColor;
+        &:before {
+            content: "";
+            margin: 0 8px 0 4px;
+            display: block;
+            width: 18px;
+            height: 18px;
+            background-size: 18px 18px;
+            border-radius: 2px;
+            @include minWidth(480) {
+                margin: 0 10px;
+                width: 24px;
+                height: 24px;
+                background-size: 24px 24px;
+            }
+        }
+    }
+    &.googleButton {
+        color: $blackColor;
+        background: $whiteColor;
+        border: 1px solid $lightGreyColor;
+        &:before {
+            content: "";
+            margin: 0 8px 0 4px;
+            display: block;
+            width: 17px;
+            height: 17px;
+            background-size: 17px 17px;
+            @include minWidth(480) {
+                margin: 0 10px;
+                width: 24px;
+                height: 24px;
+                background-size: 24px 24px;
+            }
+        }
+    }
+}
+.no-webp .facebookButton {
+    &:before {
+        background-image: url('/public/images/facebook-signup.png');
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url('/public/images/facebook-signup@2x.png');
+        }
+    }
+}
+.webp .facebookButton {
+    &:before {
+        background-image: url('/public/images/facebook-signup.webp');
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url('/public/images/facebook-signup@2x.webp');
+        }
+    }
+}
+.no-webp .googleButton {
+    &:before {
+        background-image: url('/public/images/google-signup.png');
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url('/public/images/google-signup@2x.png');
+        }
+    }
+}
+.webp .googleButton {
+    &:before {
+        background-image: url('/public/images/google-signup.webp');
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url('/public/images/google-signup@2x.webp');
+        }
     }
 }

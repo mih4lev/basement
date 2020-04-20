@@ -30,6 +30,7 @@ app.use('/basement-ideas', require('./routes/basement-ideas.route'));
 app.use('/how-it-works', require('./routes/how-it-works.route'));
 app.use('/about-us', require('./routes/about-us.route'));
 app.use('/instant-quote', require('./routes/instant-quote.route'));
+app.use('/sign-up', require('./routes/sign-up.route'));
 app.use('/instagram', require('./routes/instagram.route'));
 // 404
 app.use((request, response, next) => {

@@ -1,0 +1,12 @@
+.contactUsModal {
+    @include scrollModal(290px, 10px);
+    @include minWidth(480) {
+        @include scrollModal(438px, 10px);
+    }
+    @include minWidth(768) {
+        @include modal(704px, 10px);
+    }
+    @include minWidth(1000) {
+        @include modal(762px, 10px);
+    }
+}
