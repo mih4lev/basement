@@ -1,0 +1,11 @@
+.createAlbumModal {
+    @include modal(251px, 40px);
+    .inputPhotoField.albumField {
+        margin: 20px 0;
+    }
+}
+
+.albumField {
+    width: 209px;
+    height: 209px;
+}

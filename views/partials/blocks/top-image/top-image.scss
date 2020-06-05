@@ -1,0 +1,588 @@
+.topImageSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    margin-top: -97px;
+    padding-top: 97px;
+    box-sizing: border-box;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    &:after {
+        content: "";
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba(97, 109, 123, 0.6) 16.58%, rgba(97, 109, 123, 0) 69.86%),
+                    rgba(97, 109, 123, 0.7);
+        background-blend-mode: multiply, normal;
+    }
+    .topImageWrapper {
+        z-index: 2;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+        box-sizing: border-box;
+        width: 290px;
+        @include minWidth(480) {
+            width: 410px;
+        }
+        @include minWidth(768) {
+            width: 680px;
+        }
+        @include minWidth(1000) {
+            width: 800px;
+        }
+        @include minWidth(1440) {
+            width: 900px;
+        }
+        .topImageHeader {
+            margin: 0;
+            font-size: 17px;
+            line-height: 125%;
+            text-transform: uppercase;
+            color: $whiteColor;
+            text-align: center;
+            @include minWidth(480) {
+                font-size: 25px;
+            }
+            @include minWidth(768) {
+                font-size: 35px;
+                text-align: left;
+            }
+            @include minWidth(1000) {
+                font-size: 45px;
+            }
+            .nobr {
+                white-space: nowrap;
+            }
+        }
+        .topImageText {
+            margin-bottom: 20px;
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 125%;
+            color: $whiteColor;
+            letter-spacing: 0.05em;
+            @include minWidth(480) {
+                font-size: 12px;
+            }
+            @include minWidth(768) {
+                font-size: 15px;
+            }
+            @include minWidth(1000) {
+                font-size: 18px;
+            }
+        }
+        .topImageButtonsWrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: inherit;
+            @include minWidth(768) {
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+            .consultationButton {
+                @extend %yellowButton;
+                @include minWidth(768) {
+                    margin-right: 20px;
+                }
+            }
+            .instantQuoteButton {
+                margin: 8px 0 0;
+                @include minWidth(480) {
+                    margin-top: 20px;
+                }
+                @include minWidth(768) {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}
+
+.topImageSection.homeSection {
+    height: 420px;
+    @include minWidth(480) {
+        height: 560px;
+    }
+    @include minWidth(1000) {
+        height: 720px;
+    }
+    .topImageWrapper {
+        padding: 60px 0;
+        @include minWidth(480) {
+            padding: 75px 0;
+        }
+        @include minWidth(768) {
+            padding: 110px 0;
+        }
+        @include minWidth(1000) {
+            padding: 170px 0;
+        }
+    }
+    .topImageText {
+        @include minWidth(480) {
+            margin-bottom: 40px;
+        }
+    }
+}
+
+.topImageSection.localSection {
+    height: 722px;
+    @include minWidth(480) {
+        height: 726px;
+    }
+    @include minWidth(768) {
+        height: 618px;
+    }
+    @include minWidth(1000) {
+        height: 721px;
+    }
+    @include minWidth(1440) {
+        height: 877px;
+    }
+    .topImageWrapper {
+        padding: 40px 0 0;
+        @include minWidth(768) {
+            padding-top: 60px;
+        }
+        @include minWidth(1440) {
+            padding: 130px 0 90px;
+        }
+    }
+    .topImageText {
+        @include minWidth(480) {
+            margin-bottom: 20px;
+        }
+        @include minWidth(1000) {
+            margin-bottom: 40px;
+        }
+        @include minWidth(1440) {
+            margin-bottom: 60px;
+            padding-right: 80px;
+        }
+    }
+    .localContent {
+        z-index: 2;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 30px 0;
+        width: 100%;
+        height: auto;
+        background-size: cover;
+        @include minWidth(480) {
+            padding: 40px 0;
+        }
+        @include minWidth(768) {
+            padding-top: 60px;
+        }
+        .plusWrapper {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            @include minWidth(768) {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-end;
+                margin: 0 auto;
+                width: 680px;
+            }
+            @include minWidth(1000) {
+                width: 936px;
+            }
+        }
+        .plusList {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin: 0 auto;
+            padding-left: 0;
+            width: 240px;
+            list-style-type: none;
+            @include minWidth(480) {
+                justify-content: space-between;
+                width: 450px;
+            }
+            @include minWidth(768) {
+                margin: 0;
+                width: 440px;
+            }
+            @include minWidth(1000) {
+                width: 580px;
+            }
+            .plusItem {
+                margin: 0 0 20px;
+                width: 120px;
+                text-align: center;
+                color: $whiteColor;
+                &:nth-of-type(3n),
+                &:nth-of-type(4n) {
+                    margin-bottom: 0;
+                }
+                @include minWidth(480) {
+                    width: 110px;
+                    margin-bottom: 0;
+                }
+                @include minWidth(1000) {
+                    width: 145px;
+                }
+                .plusIcon {
+                    @extend %animation;
+                    @extend %shadow;
+                    position: relative;
+                    margin: 0 auto;
+                    width: 80px;
+                    height: 80px;
+                    box-sizing: border-box;
+                    background-color: rgba(161, 171, 181, 0.4);
+                    border: 1px solid $whiteColor;
+                    border-radius: 100px;
+                    @include minWidth(480) {
+                        width: 100px;
+                        height: 100px;
+                        backdrop-filter: blur(2px);
+                    }
+                    @include minWidth(1000) {
+                        width: 125px;
+                        height: 125px;
+                    }
+                    &:hover {
+                        border-color: $yellowColor;
+                        .iconLogo {
+                            background-color: $yellowColor;
+                        }
+                        .iconText {
+                            color: $yellowColor;
+                        }
+                    }
+                    &:hover + .plusAdditional {
+                        color: $yellowColor;
+                    }
+                    .iconLogo {
+                        @extend %animation;
+                        @extend %shadow2;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        display: block;
+                        background-color: $whiteColor;
+                    }
+                    .iconText {
+                        @extend %animation;
+                        @extend %textShadow;
+                        display: block;
+                        font-weight: 600;
+                        font-size: 9px;
+                        line-height: 100%;
+                        @include minWidth(480) {
+                            font-size: 12px;
+                        }
+                        @include minWidth(1000) {
+                            font-size: 15px;
+                        }
+                    }
+                    &.topRated {
+                        .iconLogo {
+                            @extend %faq4Icon;
+                            transform: translate(-50%, -50%) scale(0.69);
+                            margin-top: 8px;
+                            @include minWidth(480) {
+                                margin-top: 12px;
+                                transform: translate(-50%, -50%) scale(0.83);
+                            }
+                            @include minWidth(1000) {
+                                margin-top: 18px;
+                                transform: translate(-50%, -50%) scale(1);
+                            }
+                        }
+                        .iconText {
+                            margin-top: 26px;
+                            @include minWidth(480) {
+                                margin-top: 32px;
+                            }
+                            @include minWidth(1000) {
+                                margin-top: 43px;
+                            }
+                        }
+                    }
+                    &.experience {
+                        .iconLogo {
+                            @extend %faq15Icon;
+                            transform: translate(-50%, -50%) scale(0.59);
+                            margin-top: -15px;
+                            @include minWidth(480) {
+                                margin-top: -18px;
+                                transform: translate(-50%, -50%) scale(0.74);
+                            }
+                            @include minWidth(1000) {
+                                margin-top: -25px;
+                                transform: translate(-50%, -50%) scale(1);
+                            }
+                        }
+                        .iconText {
+                            margin-top: 40px;
+                            padding: 0 10px;
+                            @include minWidth(480) {
+                                margin-top: 50px;
+                            }
+                            @include minWidth(1000) {
+                                margin-top: 65px;
+                            }
+                        }
+                    }
+                    &.uniqueManagement {
+                        .iconLogo {
+                            @extend %faq17Icon;
+                            transform: translate(-50%, -50%) scale(0.58);
+                            margin-top: 18px;
+                            margin-left: 3px;
+                            @include minWidth(480) {
+                                transform: translate(-50%, -50%) scale(0.7);
+                                margin-top: 22px;
+                                margin-left: 4px;
+                            }
+                            @include minWidth(1000) {
+                                margin-top: 28px;
+                                transform: translate(-50%, -50%) scale(1);
+                            }
+                        }
+                        .iconText {
+                            margin-top: 13px;
+                            padding: 0 10px;
+                            @include minWidth(480) {
+                                margin-top: 13px;
+                            }
+                        }
+                    }
+                    &.financing {
+                        .iconLogo {
+                            @extend %faq9Icon;
+                            transform: translate(-50%, -50%) scale(0.58);
+                            margin-top: -15px;
+                            @include minWidth(480) {
+                                margin-top: -20px;
+                                transform: translate(-50%, -50%) scale(0.83);
+                            }
+                            @include minWidth(1000) {
+                                margin-top: -25px;
+                                transform: translate(-50%, -50%) scale(1);
+                            }
+                        }
+                        .iconText {
+                            margin-top: 40px;
+                            padding: 0 10px;
+                            @include minWidth(480) {
+                                margin-top: 52px;
+                            }
+                            @include minWidth(1000) {
+                                margin-top: 65px;
+                            }
+                        }
+                    }
+                }
+                .plusAdditional {
+                    @extend %textShadow2;
+                    margin: 10px 0 0;
+                    font-weight: 500;
+                    @include minWidth(480) {
+                        font-size: 9px;
+                        line-height: 125%;
+                    }
+                    @include minWidth(1000) {
+                        margin-top: 15px;
+                        font-size: 12px;
+                    }
+                    .nobr {
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+        .companyAnnounce {
+            @extend %textSpacing;
+            @extend %textShadow;
+            margin: 20px auto 0;
+            width: 286px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            text-align: center;
+            color: $whiteColor;
+            @include minWidth(480) {
+                margin-top: 40px;
+                width: 100%;
+                font-size: 15px;
+                line-height: 125%;
+            }
+            @include minWidth(768) {
+                position: absolute;
+                right: 0;
+                bottom: 60px;
+                margin: 0;
+                width: 240px;
+                text-align: right;
+                letter-spacing: 0;
+            }
+            @include minWidth(1000) {
+                bottom: 75px;
+                width: 340px;
+                font-size: 21px;
+                line-height: 125%;
+                letter-spacing: 0.05em;
+            }
+            .nobr {
+                white-space: nowrap;
+            }
+        }
+        .learnMoreButton {
+            @extend %whiteButton3;
+            @extend %shadow;
+            margin: 20px auto 0;
+            padding: 0 20px;
+            &:after {
+                @extend %buttonIconAfter;
+                @extend %arrowIcon;
+                background-color: $blackColor;
+            }
+            @include minWidth(768) {
+                margin: 0;
+            }
+        }
+    }
+}
+
+.webp .topImageSection {
+    background-image: url("/public/images/top-image_320.webp");
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url("/public/images/top-image_320@2x.webp");
+    }
+    @include minWidth(480) {
+        background-image: url("/public/images/top-image_480.webp");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/top-image_480@2x.webp");
+        }
+    }
+    @include minWidth(768) {
+        background-image: url("/public/images/top-image_768.webp");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/top-image_768@2x.webp");
+        }
+    }
+    @include minWidth(1000) {
+        background-image: url("/public/images/top-image_1000.webp");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/top-image_1000@2x.webp");
+        }
+    }
+    @include minWidth(1440) {
+        background-image: url("/public/images/top-image_1440.webp");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/top-image_1440@2x.webp");
+        }
+    }
+}
+
+.no-webp .topImageSection {
+    background-image: url("/public/images/top-image_320.jpg");
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url("/public/images/top-image_320@2x.jpg");
+    }
+    @include minWidth(480) {
+        background-image: url("/public/images/top-image_480.jpg");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/top-image_480@2x.jpg");
+        }
+    }
+    @include minWidth(768) {
+        background-image: url("/public/images/top-image_768.jpg");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/top-image_768@2x.jpg");
+        }
+    }
+    @include minWidth(1000) {
+        background-image: url("/public/images/top-image_1000.jpg");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/top-image_1000@2x.jpg");
+        }
+    }
+    @include minWidth(1440) {
+        background-image: url("/public/images/top-image_1440.jpg");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/top-image_1440@2x.jpg");
+        }
+    }
+}
+
+.webp .localSection .localContent {
+    background-image: url("/public/images/local-top_image_320.webp");
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url("/public/images/local-top_image_320@2x.webp");
+    }
+    @include minWidth(480) {
+        background-image: url("/public/images/local-top_image_480.webp");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-top_image_480@2x.webp");
+        }
+    }
+    @include minWidth(768) {
+        background-image: url("/public/images/local-top_image_768.webp");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-top_image_768@2x.webp");
+        }
+    }
+    @include minWidth(1000) {
+        background-image: url("/public/images/local-top_image_1000.webp");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-top_image_1000@2x.webp");
+        }
+    }
+    @include minWidth(1440) {
+        background-image: url("/public/images/local-top_image_1440.webp");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-top_image_1440@2x.webp");
+        }
+    }
+}
+
+.no-webp .localSection .localContent {
+    background-image: url("/public/images/local-top_image_320.png");
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url("/public/images/local-top_image_320@2x.png");
+    }
+    @include minWidth(480) {
+        background-image: url("/public/images/local-top_image_480.png");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-top_image_480@2x.png");
+        }
+    }
+    @include minWidth(768) {
+        background-image: url("/public/images/local-top_image_768.png");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-top_image_768@2x.png");
+        }
+    }
+    @include minWidth(1000) {
+        background-image: url("/public/images/local-top_image_1000.png");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-top_image_1000@2x.png");
+        }
+    }
+    @include minWidth(1440) {
+        background-image: url("/public/images/local-top_image_1440.png");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-top_image_1440@2x.png");
+        }
+    }
+}

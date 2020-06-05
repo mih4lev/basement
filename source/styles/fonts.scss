@@ -209,7 +209,7 @@
     url('/public/fonts/Gilroy-Bold.eot?#iefix') format('embedded-opentype'),
     url('/public/fonts/Gilroy-Bold.woff') format('woff'),
     url('/public/fonts/Gilroy-Bold.ttf') format('truetype');
-    font-weight: bold;
+    font-weight: 800;
     font-style: normal;
     font-display: swap;
 }
@@ -234,6 +234,17 @@
     url('/public/fonts/Gilroy-Black.woff') format('woff'),
     url('/public/fonts/Gilroy-Black.ttf') format('truetype');
     font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DIN Alternate';
+    src: url('/public/fonts/DIN-Bold.eot');
+    src: url('/public/fonts/DIN-Bold.eot?#iefix') format('embedded-opentype'),
+    url('/public/fonts/DIN-Bold.woff') format('woff'),
+    url('/public/fonts/DIN-Bold.ttf') format('truetype');
+    font-weight: 800;
     font-style: normal;
     font-display: swap;
 }

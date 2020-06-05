@@ -1,0 +1,54 @@
+.asideButtons {
+    @extend %content;
+    color: $whiteColor;
+    background: $bgMainColor;
+    .asideButtonsHeader {
+        margin-top: 0;
+        margin-bottom: 15px;
+        text-align: center;
+        font-size: 11px;
+        line-height: 125%;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        @include minWidth(480) {
+            font-size: 14px;
+        }
+        @include minWidth(1000) {
+            font-size: 16px;
+        }
+    }
+    .buttonList {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 0;
+        list-style-type: none;
+        @include minWidth(768) {
+            flex-direction: row;
+            justify-content: center;
+        }
+        .buttonWrapper {
+            margin-bottom: 10px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            @include minWidth(768) {
+                margin-bottom: 0;
+                margin-left: 10px;
+                margin-right: 10px;
+                &:first-child {
+                    order: 2;
+                }
+            }
+            .consultationButton {
+                @extend %yellowButton;
+            }
+            .onlineQuoteButton {
+                @extend %blueButton;
+            }
+        }
+    }
+}

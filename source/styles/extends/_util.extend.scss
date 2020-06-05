@@ -2,12 +2,23 @@
     font-family: "Gilroy", Arial, sans-serif;
 }
 
+%textSpacing {
+    letter-spacing: 0.05em;
+}
+
 %content {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     width: 100%;
+}
+
+%widthContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 %circle {
@@ -30,6 +41,14 @@
 
 %shadow2 {
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+%textShadow {
+    text-shadow: 5px 5px 12px rgba(0, 0, 0, 0.25);
+}
+
+%textShadow2 {
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
 }
 
 %blackWhite {

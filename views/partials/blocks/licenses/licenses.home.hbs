@@ -1,0 +1,29 @@
+<section class="licensesSection homeSection">
+    <div class="wrapper contentWrapper maxPadding">
+        <h2 class="sectionTitle">Licenses and Insurance</h2>
+        <p class="textBlock">Basement Masters is fully licensed and insured basement contractor in Maryland, Washington DC and Virginia. Our Virginia Class A Contractor License (VA Class A) number is 2705159425, our Maryland Home Improvement Commission License (MHIC) number is 129172 and our DC Class A Contractor License (DC Class A) number is 410516000631. We have posted copies of our basement remodeling licenses and insurance certificates below. Please note: any basement finishing or remodeling project requires a separate set of permits which should be pulled by a licensed contractor/electrician/plumber etc. You can easily check any contractors license here:</p>
+        <p class="textBlock stateData">MARYLAND, VIRGINIA, WASHINGTON, DC</p>
+    </div>
+    <div class="wrapper maxPadding">
+        <ul class="licenseList">
+            {{# each licenses }}
+                <li class="licenseWrapper">
+                    <picture class="licenseImage">
+                        <source srcset="/public/images/temp/{{{ image }}}.webp,
+                                        /public/images/temp/{{{ image }}}@2x.webp 2x"
+                                type="image/webp">
+                        <source srcset="/public/images/temp/{{{ image }}}.png,
+                                        /public/images/temp/{{{ image }}}@2x.png 2x"
+                                type="image/jpeg">
+                        <img class="licenseImage"
+                             src="/public/images/temp/{{{ image }}}.png"
+                             srcset="/public/images/temp/{{{ image }}}.png,
+                                     /public/images/temp/{{{ image }}}@2x.png 2x"
+                             alt="{{{ alt }}}">
+                    </picture>
+                </li>
+            {{/ each }}
+        </ul>
+        <button class="consultationButton" type="button">CONSULTATION</button>
+    </div>
+</section>

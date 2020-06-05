@@ -1,0 +1,25 @@
+<section class="faqSection homeSection">
+    <div class="wrapper maxPadding">
+        <h2 class="sectionTitle">Why Choose Basement Remodeling Company</h2>
+        <p class="textBlock">We are different than other Maryland basement remodeling companies:</p>
+        <div class="faqTitles">
+            <span class="faqTitle ourCompanyTitle">OUR COMPANY</span>
+            <span class="faqTitle otherCompanyTitle">UNRELIABLE COMPANIES</span>
+        </div>
+        {{# each faq }}
+        <div class="faqWrapper">
+            <div class="faqIcon {{{ icon }}}"></div>
+            <div class="faqDescription ourCompany">
+                <h3 class="wrapperTitle">{{{ ourTitle }}}</h3>
+                <p class="textBlock">{{{ ourText }}}</p>
+            </div>
+            <div class="faqDescription otherCompany">
+                <h3 class="wrapperTitle">{{{ otherTitle }}}</h3>
+                <p class="textBlock">{{{ otherText }}}</p>
+            </div>
+        </div>
+        {{/ each }}
+        <p class="textBlock">Want to learn more about how to find a contractor?</p>
+        <a class="faqButton" href="/how-it-works/contractor-faq/">Check our Contractor FAQ</a>
+    </div>
+</section>

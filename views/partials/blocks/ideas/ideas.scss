@@ -1,0 +1,54 @@
+.ideasSection.homeSection {
+    background: linear-gradient(90deg, #FDFDFD 0%, #F8F5F5 101.15%);
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .sectionTitle {
+        text-align: center;
+        padding: 0 40px;
+        @include minWidth(480) {
+            padding: 0 70px;
+        }
+        @include minWidth(768) {
+            padding: 0;
+        }
+    }
+    .textBlock {
+        margin-bottom: 20px;
+        padding: 0 30px;
+        text-align: center;
+        @include minWidth(480) {
+            margin-bottom: 30px;
+            padding: 0;
+        }
+    }
+    .ideaList {
+        margin-top: 20px;
+        @include minWidth(480) {
+            margin-top: 30px;
+        }
+        .ideaWrapper {
+            @include minWidth(768) {
+                &:nth-of-type(4n) {
+                    display: none;
+                }
+            }
+            @include minWidth(1000) {
+                &:nth-of-type(4n) {
+                    display: block;
+                }
+            }
+        }
+    }
+    .ideasButton {
+        margin-top: 20px;
+        @extend %blueButton;
+        &:after {
+            @extend %buttonIconAfter;
+            @extend %arrowIcon;
+            background: $whiteColor;
+        }
+    }
+}

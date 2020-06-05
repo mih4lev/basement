@@ -4,75 +4,14 @@ footer {
     flex-basis: auto;
     width: 100%;
     background: $bgMainColor;
-
     .footerContent {
         @extend %content;
         color: $whiteColor;
     }
-
-    .footerButtons {
-        @extend %content;
-        border-bottom: 1px solid $greyColor;
-
-        .footerButtonsHeader {
-            margin-top: 0;
-            margin-bottom: 15px;
-            text-align: center;
-            font-size: 11px;
-            line-height: 125%;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            @include minWidth(480) {
-                font-size: 14px;
-            }
-            @include minWidth(1000) {
-                font-size: 16px;
-            }
-        }
-
-        .buttonList {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 0;
-            margin-bottom: 0;
-            padding-left: 0;
-            list-style-type: none;
-            @include minWidth(768) {
-                flex-direction: row;
-                justify-content: center;
-            }
-
-            .buttonWrapper {
-                margin-bottom: 10px;
-                &:last-child {
-                    margin-bottom: 0;
-                }
-                @include minWidth(768) {
-                    margin-bottom: 0;
-                    margin-left: 10px;
-                    margin-right: 10px;
-                    &:first-child {
-                        order: 2;
-                    }
-                }
-
-                .consultationButton {
-                    @extend %yellowButton;
-                }
-
-                .onlineQuoteButton {
-                    @extend %blueButton;
-                }
-
-            }
-        }
-    }
-
     .footer {
         position: relative;
-
+        width: 100%;
+        border-top: 1px solid $greyColor;
         .footerLogoLink {
             position: absolute;
             top: 20px;
@@ -81,7 +20,6 @@ footer {
                 left: 0;
                 right: auto;
             }
-
             .footerLogo {
                 width: 94px;
                 height: 30px;
@@ -94,9 +32,7 @@ footer {
                     height: 54px;
                 }
             }
-
         }
-
         .footerCopyright {
             margin-bottom: 15px;
             @include minWidth(768) {
@@ -108,7 +44,6 @@ footer {
                 margin-top: 70px;
             }
         }
-
         .footerSocialLinks {
             margin-top: 15px;
             @include minWidth(768) {
@@ -119,7 +54,6 @@ footer {
                 align-items: center;
                 margin-top: 0;
             }
-
             .footerSocialList {
                 display: flex;
                 flex-direction: row;
@@ -127,19 +61,16 @@ footer {
                 margin-bottom: 0;
                 padding-left: 0;
                 list-style-type: none;
-
                 .socialLinkWrapper {
                     margin-right: 7px;
                     font-size: 0;
                     &:last-child {
                         margin-right: 0;
                     }
-
                     .socialLink {
                         display: block;
                         background: $whiteColor;
                         @extend %animation;
-
                         &.instagram {
                             @extend %instagramRoundIcon;
                             &:hover {
@@ -150,29 +81,22 @@ footer {
                                 );
                             }
                         }
-
                         &.facebook {
                             @extend %facebookRoundIcon;
                             &:hover {
                                 background: #3B5998;
                             }
                         }
-
                         &.pinterest {
                             @extend %pinterestRoundIcon;
                             &:hover {
                                 background: #E60023;
                             }
                         }
-
                     }
-
                 }
-
             }
-
         }
-
         .footerAddress {
             @include minWidth(768) {
                 position: absolute;
@@ -182,7 +106,6 @@ footer {
                 align-items: center;
             }
         }
-
         .footerHeader {
             margin-top: 0;
             margin-bottom: 5px;
@@ -196,7 +119,6 @@ footer {
                 text-transform: uppercase;
             }
         }
-
         .footerText {
             margin-top: 0;
             margin-bottom: 0;
@@ -217,7 +139,6 @@ footer {
                 font-size: 12px;
             }
         }
-
         .address {
             font-size: 9px;
             font-weight: 500;
@@ -232,7 +153,6 @@ footer {
                 font-size: 13px;
             }
         }
-
         .footerContactButton {
             @extend %blueButton;
             position: absolute;
@@ -256,7 +176,5 @@ footer {
                 //background: $blackColor;
             }
         }
-
     }
-
 }

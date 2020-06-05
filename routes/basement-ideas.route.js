@@ -1,9 +1,17 @@
 const { Router } = require(`express`);
 const router = new Router();
+const fs = require(`fs`);
 
 router.use((request, response, next) => {
     const isBasementIdeas = true;
-    request.data = { ...request.data, isBasementIdeas };
+    // basement-ideas
+    const mockJSON = fs.readFileSync(`data-mock/basement-ideas.json`);
+    const ideas = JSON.parse(mockJSON);
+    // categories
+    const mockJSONCategories = fs.readFileSync(`data-mock/ideas-categories.json`);
+    const mockDataCategories = JSON.parse(mockJSONCategories);
+    // return data to template rendering
+    request.data = { ...request.data, isBasementIdeas, ...ideas, ...mockDataCategories };
     next();
 });
 

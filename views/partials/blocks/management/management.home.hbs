@@ -1,0 +1,86 @@
+<section class="managementSection homeSection">
+    <h2 class="sectionTitle managementTitle">Our Professional Project Management Approach</h2>
+    <div class="stepsWrapper">
+        <ul class="managementSteps">
+            <li class="managementStep step1">
+                <span class="stepTitle">Get an estimated cost to finish the basement</span>
+            </li>
+            <li class="managementStep step2">
+                <span class="stepTitle">Initial an in-home consultation</span>
+            </li>
+            <li class="managementStep step3">
+                <span class="stepTitle">Visit our showroom</span>
+            </li>
+            <li class="managementStep step4">
+                <span class="stepTitle">Design & final <span class="nobr">costs consultation</span></span>
+            </li>
+            <li class="managementStep step5">
+                <span class="stepTitle">Project preparation & <span class="nobr">pre-construction</span> meeting</span>
+            </li>
+        </ul>
+        <p class="managementAnnounce">At BasementRemodeling.com, we have a unique project management approach to make sure every basement remodel is completed in a timely fashion with quality results. Our highly organized timeline is the reason why we know exactly what is going on at the job site each and every day without fail. Unlike other basement remodeling companies in Maryland, we aren’t afraid to show it to you! Take a look at our basement remodeling timeline and find out why you are going to stay informed every step of the way.</p>
+    </div>
+    <div class="daysWrapper">
+        <ul class="workList">
+            {{# each management }}
+                <li class="workWrapper {{# if isMainWork }}mainWork{{/ if }} work{{{ id }}}">
+                    <span class="workTitle">{{{ work }}}</span>
+                    {{# if isHasArrow }}
+                        <div class="workPictureWrapper">
+                            <picture>
+                                <source srcset="/public/images/{{{ image }}}_320.webp,
+                                                /public/images/{{{ image }}}_320@2x.webp 2x"
+                                        media="(max-width: 479px)"
+                                        type="image/webp">
+                                <source srcset="/public/images/{{{ image }}}_320.jpg,
+                                                /public/images/{{{ image }}}_320@2x.jpg 2x"
+                                        media="(max-width: 479px)"
+                                        type="image/jpeg">
+                                <source srcset="/public/images/{{{ image }}}_480.webp,
+                                                /public/images/{{{ image }}}_480@2x.webp 2x"
+                                        media="(max-width: 767px)"
+                                        type="image/webp">
+                                <source srcset="/public/images/{{{ image }}}_480.jpg,
+                                                /public/images/{{{ image }}}_480@2x.jpg 2x"
+                                        media="(max-width: 767px)"
+                                        type="image/jpeg">
+                                <source srcset="/public/images/{{{ image }}}_768.webp,
+                                                /public/images/{{{ image }}}_768@2x.webp 2x"
+                                        media="(max-width: 999px)"
+                                        type="image/webp">
+                                <source srcset="/public/images/{{{ image }}}_768.jpg,
+                                                /public/images/{{{ image }}}_768@2x.jpg 2x"
+                                        media="(max-width: 999px)"
+                                        type="image/jpeg">
+                                <source srcset="/public/images/{{{ image }}}_1000.webp,
+                                                /public/images/{{{ image }}}_1000@2x.webp 2x"
+                                        media="(max-width: 1439px)"
+                                        type="image/webp">
+                                <source srcset="/public/images/{{{ image }}}_1000.jpg,
+                                                /public/images/{{{ image }}}_1000@2x.jpg 2x"
+                                        media="(max-width: 1439px)"
+                                        type="image/jpeg">
+                                <source srcset="/public/images/{{{ image }}}_1440.webp,
+                                                /public/images/{{{ image }}}_1440@2x.webp 2x"
+                                        media="(min-width: 1440px)"
+                                        type="image/webp">
+                                <source srcset="/public/images/{{{ image }}}_1440.jpg,
+                                                /public/images/{{{ image }}}_1440@2x.jpg 2x"
+                                        media="(min-width: 1440px)"
+                                        type="image/jpeg">
+                                <img class="workPicture"
+                                     src="/public/images/{{{ image }}}_1440.jpg"
+                                     srcset="/public/images/{{{ image }}}_1440.jpg,
+                                             /public/images/{{{ image }}}_1440@2x.jpg 2x"
+                                     alt="{{{ title }}}">
+                            </picture>
+                        </div>
+                    {{/ if }}
+                </li>
+            {{/ each }}
+        </ul>
+    </div>
+    <div class="buttonWrapper">
+        <a class="learnMoreButton" href="#">LEARN MORE ABOUT OUR PROCESS</a>
+    </div>
+</section>

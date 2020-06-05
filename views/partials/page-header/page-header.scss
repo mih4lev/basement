@@ -237,129 +237,22 @@
         }
     }
     &.middleCategories {
-        .contentWrapper {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px;
-            @include minWidth(480) {
-                margin-top: 20px;
-            }
-        }
-        .sliderArrow {
-            @extend %sliderArrowIcon;
-            margin-top: -15px;
-            font-size: 0;
-            border: none;
-            background: $darkGreyColor;
-            transform: scale(0.45);
-            cursor: pointer;
-            outline: none;
-            @include minWidth(480) {
-                margin-top: -20px;
-                transform: scale(0.8);
-            }
-            @include minWidth(768) {
-                transform: scale(1);
-            }
+        .categoriesCarousel {
+            margin-top: 20px;
             @include minWidth(1000) {
-                display: none;
-            }
-            &.nextSlide {
-                transform: scale(0.45) rotate(180deg);
-                @include minWidth(480) {
-                    transform: scale(0.8) rotate(180deg);
-                }
-                @include minWidth(768) {
-                    transform: scale(1) rotate(180deg);
-                }
-            }
-        }
-        .categoryList {
-            width: 255px;
-            overflow: hidden;
-            @include minWidth(480) {
-                width: 390px;
-            }
-            @include minWidth(768) {
-                width: 656px;
-            }
-            @include minWidth(1000) {
-                width: 100%;
-                overflow: visible;
-            }
-        }
-        .categoryWrapper {
-            margin-left: 2px;
-            margin-right: 2px;
-            width: 47px;
-            @include minWidth(480) {
-                width: 74px;
-            }
-            @include minWidth(768) {
-                margin-left: 4px;
-                margin-right: 4px;
+                width: 878px;
             }
             @include minWidth(1440) {
-                width: 79px;
+                width: 1032px;
             }
-            @include minWidth(1000) {
-                &:first-of-type {
-                    margin-left: 0;
-                }
-                &:last-of-type {
-                    margin-right: 0;
-                }
-            }
-            @include minWidth(1440) {
-                margin-left: 5px;
-                margin-right: 5px;
-                &:first-of-type {
-                    margin-left: 0;
-                }
-                &:last-of-type {
-                    margin-right: 0;
-                }
-            }
-            .categoryLink {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                width: inherit;
-                font-size: 6px;
-                @include minWidth(480) {
-                    font-size: 10px;
+            .categoriesActionWrapper {
+                @include minWidth(1000) {
+                    width: 820px;
                 }
                 @include minWidth(1440) {
-                    font-size: 11px;
-                }
-                &:hover {
-                    color: $blueColor;
-                }
-                .categoryImage {
-                    margin-bottom: 6px;
-                    width: inherit;
-                    height: 47px;
-                    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-                    border: 1px solid $whiteColor;
-                    box-sizing: border-box;
-                    @include minWidth(480) {
-                        margin-bottom: 10px;
-                        height: 74px;
-                    }
-                    @include minWidth(1000) {
-                        box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.25);
-                    }
-                    @include minWidth(1440) {
-                        margin-bottom: 15px;
-                        height: 79px;
-                    }
+                    width: 979px;
                 }
             }
-        }
-        .categoryLink {
-            font-size: 7px;
         }
     }
     &.subCategories {

@@ -1,0 +1,156 @@
+.categoriesCarousel {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 0 auto;
+    width: 290px;
+    @include minWidth(480) {
+        width: 440px;
+    }
+    @include minWidth(768) {
+        width: 728px;
+    }
+    @include minWidth(1000) {
+        width: 960px;
+    }
+    @include minWidth(1440) {
+        width: 1032px;
+    }
+    .sliderArrow {
+        @extend %sliderArrowIcon;
+        opacity: 0.5;
+        margin-top: 12px;
+        transform: scale(0.45);
+        font-size: 0;
+        border: none;
+        background: $darkGreyColor;
+        cursor: pointer;
+        outline: none;
+        &:hover {
+            opacity: 1;
+        }
+        @include minWidth(480) {
+            margin-top: 25px;
+            transform: scale(0.8);
+        }
+        @include minWidth(768) {
+            transform: scale(1);
+        }
+        @include minWidth(1000) {
+            //visibility: hidden;
+        }
+        @include minWidth(1440) {
+            margin-top: 28px;
+            //visibility: hidden;
+        }
+        &.nextSlide {
+            transform: scale(0.45) rotate(180deg);
+            @include minWidth(480) {
+                transform: scale(0.8) rotate(180deg);
+            }
+            @include minWidth(768) {
+                transform: scale(1) rotate(180deg);
+            }
+        }
+    }
+    .categoriesActionWrapper {
+        overflow: hidden;
+        width: 255px;
+        @include minWidth(480) {
+            width: 390px;
+        }
+        @include minWidth(768) {
+            width: 656px;
+        }
+        @include minWidth(1000) {
+            width: 902px;
+        }
+        @include minWidth(1440) {
+            width: 979px;
+        }
+    }
+    .categoryList {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 0;
+        list-style-type: none;
+        //margin-left: -51px; margin to scroll
+        @include minWidth(480) {
+            //margin-left: -78px; // margin to scroll
+        }
+        @include minWidth(768) {
+            //margin-left: -82px; // margin to scroll
+        }
+        @include minWidth(1000) {
+            //margin-left: -82px; // margin to scroll
+        }
+        @include minWidth(1440) {
+            //margin-left: -89px; // margin to scroll
+        }
+    }
+    .categoryWrapper {
+        margin-left: 2px;
+        margin-right: 2px;
+        width: 47px;
+        @include minWidth(480) {
+            width: 74px;
+        }
+        @include minWidth(768) {
+            margin-left: 4px;
+            margin-right: 4px;
+        }
+        @include minWidth(1440) {
+            margin-left: 5px;
+            margin-right: 5px;
+            width: 79px;
+        }
+        .categoryLink {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: inherit;
+            font-size: 6px;
+            color: $blackColor;
+            @include minWidth(480) {
+                font-size: 10px;
+            }
+            @include minWidth(1440) {
+                font-size: 11px;
+            }
+            &:hover {
+                color: $blueColor;
+            }
+            .categoryImage {
+                @extend %circle;
+                @extend %shadow;
+                margin-bottom: 6px;
+                width: inherit;
+                height: 47px;
+                box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+                border: 1px solid $whiteColor;
+                box-sizing: border-box;
+                @include minWidth(480) {
+                    margin-bottom: 10px;
+                    height: 74px;
+                }
+                @include minWidth(1440) {
+                    margin-bottom: 15px;
+                    height: 79px;
+                }
+            }
+            .categoryLabel {
+                line-height: 125%;
+                text-align: center;
+            }
+        }
+    }
+    .categoryLink {
+        font-size: 7px;
+    }
+}

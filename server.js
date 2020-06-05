@@ -25,12 +25,14 @@ app.use(express.json({ extended: true }));
 app.use(cookieParser('secretKeyBasementRemodelingDotCom'));
 app.use('/api', cors(corsOptions));
 app.use('/', require('./routes/home.route'));
+app.use('/local', require('./routes/local.route'));
 app.use('/portfolio', require('./routes/portfolio.route'));
 app.use('/basement-ideas', require('./routes/basement-ideas.route'));
 app.use('/how-it-works', require('./routes/how-it-works.route'));
 app.use('/about-us', require('./routes/about-us.route'));
 app.use('/instant-quote', require('./routes/instant-quote.route'));
 app.use('/sign-up', require('./routes/sign-up.route'));
+app.use('/profile', require('./routes/profile.route'));
 app.use('/instagram', require('./routes/instagram.route'));
 // 404
 app.use((request, response, next) => {

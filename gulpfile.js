@@ -18,8 +18,8 @@ gulp.task(`browser-sync`, () => {
         cors: true
     });
     gulp.watch(`./**/*.scss`, gulp.series(`styles`));
-    gulp.watch(`./source/images/**/*.{png,jpg,jpeg}`, gulp.series(`bitmap`));
-    gulp.watch(`./source/images/**/*.{png,jpg,jpeg}`, gulp.series(`webp`));
+    // gulp.watch(`./source/images/**/*.{png,jpg,jpeg}`, gulp.series(`bitmap`));
+    // gulp.watch(`./source/images/**/*.{png,jpg,jpeg}`, gulp.series(`webp`));
     gulp.watch(`./source/images/*.svg`, gulp.series(`vector`));
     gulp.watch(`./source/images/sprite/*.svg`, gulp.series(`sprite`));
     gulp.watch(`./source/fonts/*.{woff, woff2, ttf}`, gulp.series(`fonts`));
@@ -63,17 +63,17 @@ gulp.task(`vector`, () => {
         .pipe(gulp.dest(`./public/images`));
 });
 
-gulp.task('sprite', () => {
+gulp.task(`sprite`, () => {
     return gulp.src(`./source/images/sprite/*.svg`)
         .pipe(plumber())
         .pipe(svgSprite())
         .pipe(gulp.dest(`./public/images/`));
 });
 
-gulp.task('webp', () => {
-    return gulp.src('./source/images/**/*.{png,jpg,jpeg}')
+gulp.task(`webp`, () => {
+    return gulp.src(`./source/images/**/*.{png,jpg,jpeg}`)
         .pipe(webp())
-        .pipe(gulp.dest('./public/images'));
+        .pipe(gulp.dest(`./public/images`));
 });
 
 // Fonts (Copy all fonts to public folder)
@@ -89,6 +89,29 @@ gulp.task(`reload`, (done) => {
     done();
 });
 
-const tasks = [`browser-sync`, `styles`, `fonts`, `bitmap`, `webp`, `vector`, `sprite`];
+// Bitmap images => Tinypng service to optimize
+gulp.task(`bitmapTemp`, () => {
+    return gulp.src(`./source/images/transfer/*.{png,jpg,jpeg}`)
+        .pipe(tinypng({
+            // key: `wNS29BVwd8BM7rkKHQxBKtnLgZHxbM81`,
+            key: `k82WT7tDXGyVvxQbGxGc1TpJ740BzV3d`,
+            sigFile: `./source/images/.tinypng-sigs`,
+            summarize: true,
+            parallel: true,
+            log: true
+        }))
+        .pipe(gulp.dest(`./public/images`))
+        .pipe(browserSync.stream());
+});
+
+gulp.task(`webpTemp`, () => {
+    return gulp.src(`./source/images/transfer/*.{png,jpg,jpeg}`)
+        .pipe(webp())
+        .pipe(gulp.dest(`./public/images`));
+});
+
+// const tasks = [`browser-sync`, `styles`, `fonts`, `bitmap`, `webp`, `vector`, `sprite`];
+const tasks = [`browser-sync`, `styles`, `bitmapTemp`, `webpTemp`];
+// const tasks = [`browser-sync`, `styles`, `webpTemp`];
 // const tasks = [`browser-sync`, `styles`];
 gulp.task(`default`, gulp.parallel(...tasks));

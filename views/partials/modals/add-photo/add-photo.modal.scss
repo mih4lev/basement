@@ -1,0 +1,190 @@
+.addPhotoModal {
+    @include modal(293px, 40px);
+    @include minWidth(768) {
+        @include modal(644px, 40px);
+    }
+    .formPhotoWrapper {
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 20px;
+        width: 100%;
+        height: 257px;
+        background: $bgSubColor;
+        @include minWidth(768) {
+            height: 297px;
+        }
+        .photoField {
+            transform: translateY(-200%);
+            outline: none;
+        }
+        .photoLabel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            width: inherit;
+            height: inherit;
+            font-size: 11px;
+            color: $darkGreyColor;
+            cursor: pointer;
+            &:before {
+                content: "+";
+                position: absolute;
+                margin-top: -25px;
+                font-size: 48px;
+                color: $darkGreyColor;
+            }
+            &:hover {
+                color: $blueColor;
+                &:before {
+                    color: $blueColor;
+                }
+            }
+        }
+    }
+    .uploadPhotosList {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        margin-top: 0;
+        margin-bottom: 20px;
+        padding-left: 0;
+        list-style-type: none;
+        .uploadPhotoWrapper {
+            position: relative;
+            overflow: hidden;
+            margin: 1px;
+            width: 83px;
+            height: 83px;
+            &:nth-of-type(3n + 1) {
+                margin-left: 0;
+            }
+            &:nth-of-type(3n + 3) {
+                margin-right: 0;
+            }
+            @include minWidth(768) {
+                margin: 4px;
+                width: 94px;
+                height: 94px;
+                &:nth-of-type(3n + 1) {
+                    margin-left: 4px;
+                }
+                &:nth-of-type(3n + 3) {
+                    margin-right: 4px;
+                }
+                &:nth-of-type(6n + 1) {
+                    margin-left: 0;
+                }
+                &:nth-of-type(6n + 6) {
+                    margin-right: 0;
+                }
+            }
+            .photoField {
+                transform: translateY(-200%);
+                outline: none;
+            }
+            .photoLabel {
+                @extend %animation;
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding-top: 15px;
+                width: inherit;
+                height: inherit;
+                font-size: 9px;
+                background: $bgSubColor;
+                cursor: pointer;
+                &:before {
+                    @extend %animation;
+                    content: "+";
+                    position: absolute;
+                    margin-top: -20px;
+                    font-size: 48px;
+                    color: $darkGreyColor;
+                }
+                &:hover {
+                    color: $blueColor;
+                    &:before {
+                        color: $blueColor;
+                    }
+                }
+            }
+            .uploadedPhoto {
+                position: relative;
+                width: inherit;
+                height: inherit;
+            }
+            .removeButton {
+                @extend %animation;
+                opacity: 0;
+                position: absolute;
+                top: 3px;
+                right: 3px;
+                width: 18px;
+                height: 18px;
+                border: none;
+                border-radius: 50%;
+                font-size: 0;
+                background: $blackColor;
+                cursor: pointer;
+                overflow: hidden;
+                &:hover {
+                    &:before {
+                        background: $blueColor;
+                        transform: rotate(135deg);
+                    }
+                    &:after {
+                        background: $blueColor;
+                        transform: rotate(45deg);
+                    }
+                }
+                &:before, &:after {
+                    @extend %animation;
+                    position: absolute;
+                    top: 8px;
+                    left: 3px;
+                    content: "";
+                    display: block;
+                    width: 12px;
+                    height: 2px;
+                    background: $whiteColor;
+                }
+                &:before {
+                    transform: rotate(45deg);
+                    @include minWidth(480) {
+                        transform: rotate(45deg);
+                    }
+                }
+                &:after {
+                    transform: rotate(-45deg);
+                }
+            }
+            &:hover {
+                .removeButton {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .uploadAnnotation {
+        font-size: 9px;
+        line-height: 125%;
+        @include minWidth(768) {
+            font-size: 15px;
+        }
+    }
+    .submitWrapper {
+        margin-left: auto;
+        width: 106px !important;
+    }
+    .submitButton.disabledButton {
+        @extend %disabledButton;
+    }
+}

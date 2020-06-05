@@ -127,8 +127,8 @@
     flex-direction: column;
     position: relative;
     margin: 2px;
-    width: 154px;
-    height: 154px;
+    width: 143px;
+    height: 143px;
     overflow: hidden;
     &:hover {
         .portfolioHiddenBlock {
@@ -142,8 +142,8 @@
         margin: 2px 0 2px 2px;
     }
     @include minWidth(480) {
-        width: 228px;
-        height: 228px;
+        width: 216px;
+        height: 216px;
         &:nth-of-type(1n) {
             margin: 4px 4px 4px 0;
         }

@@ -1,0 +1,28 @@
+.designSection.homeSection {
+    background: linear-gradient(108.69deg, #F3F3F5 3.69%, #D1D1D3 95.61%);
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .sectionTitle {
+        text-align: center;
+    }
+    .textBlock {
+        @include minWidth(768) {
+            font-size: 12px;
+        }
+        @include minWidth(1000) {
+            font-size: 15px;
+        }
+    }
+    .designButton {
+        @extend %blueButton;
+        margin-top: 20px;
+        &:after {
+            @extend %buttonIconAfter;
+            @extend %arrowIcon;
+            background: $whiteColor;
+        }
+    }
+}

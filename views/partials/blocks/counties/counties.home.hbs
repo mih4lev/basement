@@ -1,0 +1,50 @@
+<section class="countiesSection homeSection">
+    <div class="countiesMap">
+        <div class="map"></div>
+        <div class="mapBackground"></div>
+        <div class="mapBorders"></div>
+        <div class="mapCorners"></div>
+        <div class="arrowToMap"></div>
+        <div class="countyPin mainPin"></div>
+        <div class="countyPin pin1"></div>
+        <div class="countyPin pin2"></div>
+        <div class="countyPin pin3"></div>
+    </div>
+    <div class="countiesContent">
+        <h2 class="sectionTitle">Capable and Reliable Basement Remodeling and Finishing</h2>
+        <p class="textBlock">Come visit our showroom and office in Rockville, MD to see our full flooring and cabinet selections! We want talk to you in person about your next project and show you around, so be sure to schedule an appointment in advance.</p>
+        <ul class="countiesList">
+            <li class="countyWrapper">
+                Montgomery county showroom:
+                <address class="countyAddress">1680 E Gude dr, STE 313, Rockville, MD, 20850</address>
+            </li>
+            <li class="countyWrapper">
+                Prince George's and Anne Arundel counties warehouse:
+                <address class="countyAddress">6802 Industrial Dr, Unit 212, Beltsville, MD 20705</address>
+            </li>
+            <li class="countyWrapper">
+                Northern Virginia office:
+                <address class="countyAddress">6711 Lee Hwy #201, Arlington, VA 22205</address>
+            </li>
+        </ul>
+        <button class="consultationButton">CONSULTATION</button>
+    </div>
+    <div class="serviceAreaWrapper">
+        <h2 class="sectionTitle areaTitle">Service area</h2>
+        <p class="areaAnnounce textBlock">BasementRemodeling.com is a licensed and insured full service design-and-build remodeling company serving Washington DC, Maryland, and Virginia. Our headquarters and showroom are located in Rockville, MD, with warehouses located in Beltsville, MD, Baltimore, MD, and Arlington VA.</p>
+        {{# each map }}
+            <h3 class="areaHeader">{{{ state }}} counties we service:</h3>
+            <ul class="areaList">
+                {{# each counties }}
+                    <li class="areaWrapper">
+                        <h4 class="areaLabel">{{{ label }}}</h4>
+                        {{# if hasCities }}
+                            <p class="citiesText textBlock">{{{ cities }}}</p>
+                        {{/ if }}
+                    </li>
+                {{/ each }}
+            </ul>
+        {{/ each }}
+        <h3 class="areaHeader">We also service most parts of Washington DC</h3>
+    </div>
+</section>

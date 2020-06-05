@@ -1,0 +1,38 @@
+.editAlbumModal {
+    @include modal(251px, 40px);
+    .inputPhotoField.albumField {
+        margin: 20px 0;
+    }
+    .submitWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .deleteButton {
+            @extend %font;
+            width: 49%;
+            height: 41px;
+            line-height: 41px;
+            padding: 0;
+            background: transparent;
+            border: 1px solid $whiteColor;
+            border-radius: 5px;
+            white-space: nowrap;
+            color: $blueColor;
+            outline: none;
+            cursor: pointer;
+            &:hover {
+                color: $blackColor;
+                border-color: $blackColor;
+            }
+        }
+        .submitButton {
+            margin: 0;
+            width: 49%;
+        }
+    }
+}
+
+.albumField {
+    width: 209px;
+    height: 209px;
+}

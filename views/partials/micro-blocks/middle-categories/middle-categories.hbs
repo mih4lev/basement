@@ -1,0 +1,27 @@
+<div class="categoriesCarousel">
+    <button class="sliderArrow previousSlide">Previous</button>
+    <nav class="headerMiddleCategories">
+        <div class="categoriesActionWrapper">
+            <ul class="categoryList">
+                {{# each ideas-categories }}
+                    <li class="categoryWrapper">
+                        <a class="categoryLink" href="{{{ link }}}">
+                            <picture class="categoryImage">
+                                <source srcset="/public/images/categories/{{{ image }}}_85x85.webp,
+                                                    /public/images/categories/{{{ image }}}_170x170.webp 2x"
+                                        type="image/webp">
+                                <img class="categoryImage"
+                                     src="/public/images/temp/{{{ image }}}_85x85.jpg"
+                                     srcset="/public/images/temp/{{{ image }}}_85x85.jpg,
+                                                 /public/images/temp/{{{ image }}}_170x170.jpg 2x"
+                                     alt="{{{ title }}}">
+                            </picture>
+                            <span class="categoryLabel">{{{ title }}}</span>
+                        </a>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    </nav>
+    <button class="sliderArrow nextSlide">Next</button>
+</div>

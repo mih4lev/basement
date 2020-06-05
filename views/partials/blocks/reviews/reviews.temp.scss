@@ -1,0 +1,58 @@
+.reviewsSection {
+    background: linear-gradient(to bottom, $whiteColor 60%, $bgSubColor 40%);
+    .sectionTitle {
+        margin: 0 auto;
+        width: 290px;
+        font-size: 26px;
+        text-transform: uppercase;
+        @include minWidth(480) {
+            width: 440px;
+            font-size: 35px;
+        }
+        @include minWidth(768) {
+            margin: 0;
+            width: 400px;
+        }
+        @include minWidth(1000) {
+            font-size: 45px;
+        }
+    }
+    .textBlock1 {
+        margin: 0 auto;
+        width: 290px;
+        @include minWidth(480) {
+            width: 440px;
+        }
+        @include minWidth(768) {
+            margin: 0;
+            width: 400px;
+            font-size: 12px;
+        }
+        @include minWidth(1000) {
+            font-size: 15px;
+        }
+    }
+    .textBlock2 {
+        margin: 0 auto;
+        width: 290px;
+        @include minWidth(480) {
+            width: 440px;
+        }
+        @include minWidth(768) {
+            width: auto;
+            padding-right: 500px;
+            font-size: 12px;
+        }
+        @include minWidth(1000) {
+            font-size: 15px;
+        }
+    }
+}
+
+.reviewsSection.homeSection {
+
+}
+
+.reviewsSection.localSection {
+
+}

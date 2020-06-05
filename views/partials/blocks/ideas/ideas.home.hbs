@@ -1,0 +1,27 @@
+<section class="ideasSection homeSection">
+    <div class="wrapper listWrapper maxPadding">
+        <h2 class="sectionTitle">Look what you can have in your basement</h2>
+        <p class="textBlock">Get inspired our Basement Ideas and save the best of them to your own collection.</p>
+        {{> micro-blocks/middle-categories/middle-categories }}
+        <ul class="ideaList">
+            {{# each ideas }}
+                <li class="ideaWrapper">
+                    <picture class="ideaPhoto">
+                        <source srcset="/public/images/temp/{{{ image }}}.webp,
+                                /public/images/temp/{{{ image }}}@2x.webp 2x"
+                                type="image/webp">
+                        <img class="ideaPhoto"
+                             src="/public/images/temp/{{{ image }}}.jpg"
+                             srcset="/public/images/temp/{{{ image }}}.jpg,
+                             /public/images/temp/{{{ image }}}@2x.jpg 2x"
+                             alt="{{{ title }}}">
+                    </picture>
+                    <button class="saveIdea">SAVE TO COLLECTION</button>
+                    <h3 class="ideaTitle">{{{ title }}}</h3>
+                    <strong class="ideaAuthor">{{{ author }}}</strong>
+                </li>
+            {{/each}}
+        </ul>
+        <a class="ideasButton" href="/basement-ideas/">GO TO BASEMENT IDEAS</a>
+    </div>
+</section>

@@ -1,0 +1,94 @@
+.editPhotoModal {
+    @include modal(293px, 40px);
+    .formPhotoWrapper {
+        position: relative;
+        margin-bottom: 20px;
+        width: 252px;
+        height: 252px;
+    }
+    .removePhotoWrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: inherit;
+        height: inherit;
+        background: rgba(97, 109, 123, 0.7);
+        .removePhotoAnnotation {
+            padding: 0 40px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 125%;
+            color: $whiteColor;
+        }
+        .removePhotoButtons {
+            display: flex;
+            .removePhotoButton {
+                @extend %font;
+                margin: 0 3px;
+                padding: 0;
+                width: 114px;
+                height: 41px;
+                font-size: 13px;
+                text-transform: uppercase;
+                background: transparent;
+                color: $whiteColor;
+                border: 1px solid $whiteColor;
+                border-radius: 100px;
+                cursor: pointer;
+                &.cancelButton {
+                    &:hover {
+                        background: $blackColor;
+                        border-color: $blackColor;
+                    }
+                }
+                &.deleteButton {
+                    background: $blueColor;
+                    &:hover {
+                        background: $blackColor;
+                        border-color: $blackColor;
+                    }
+                }
+            }
+        }
+    }
+    .submitWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .deleteButton {
+            @extend %font;
+            width: 49%;
+            height: 41px;
+            line-height: 41px;
+            padding: 0;
+            background: transparent;
+            border: 1px solid $whiteColor;
+            border-radius: 5px;
+            white-space: nowrap;
+            color: $blueColor;
+            outline: none;
+            cursor: pointer;
+            &:hover {
+                color: $blackColor;
+                border-color: $blackColor;
+            }
+        }
+        .submitButton {
+            margin: 0;
+            width: 49%;
+            &.disabledButton {
+                @extend %disabledButton;
+            }
+        }
+    }
+}
+
+.albumField {
+    width: 209px;
+    height: 209px;
+}

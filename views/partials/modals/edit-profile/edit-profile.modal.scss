@@ -1,0 +1,33 @@
+.editProfileModal {
+    @include modal(268px, 40px);
+    @include minWidth(768) {
+        @include modal(657px, 40px);
+    }
+    .formFieldsWrapper .twoColumnWrapper {
+        @include minWidth(768) {
+            &:nth-child(3n) {
+                margin: 3px 0 0;
+                .fieldWrapper {
+                    margin: 0;
+                }
+            }
+        }
+    }
+    .submitWrapper {
+        margin: 0;
+    }
+    .submitButton {
+        width: 100%;
+        @include minWidth(768) {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 110px !important;
+        }
+    }
+}
+
+.avatarField {
+    width: 130px;
+    height: 130px;
+}

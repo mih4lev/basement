@@ -1,0 +1,147 @@
+.cardSection {
+    background: $bgSubColor;
+    .cardWrapper {
+        @extend %shadow2;
+        display: flex;
+        position: relative;
+        padding: 15px;
+        box-sizing: border-box;
+        background: $whiteColor;
+        border-radius: 5px;
+        @include minWidth(480) {
+            padding: 20px;
+        }
+        .userWrapper {
+            display: flex;
+            align-items: center;
+            .userAvatar {
+                @extend %shadow2;
+                flex-shrink: 0;
+                flex-grow: 1;
+                overflow: hidden;
+                position: relative;
+                width: 70px;
+                height: 70px;
+                background: $bgSubColor;
+                border: 2px solid #FFF;
+                border-radius: 50%;
+                &:after {
+                    @extend %avatarIcon;
+                    content: "";
+                    z-index: 2;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -20%) scale(3);
+                    background: $darkGreyColor;
+                }
+                .avatarPicture {
+                    z-index: 3;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 70px;
+                    height: 70px;
+                }
+            }
+            .userInfoWrapper {
+                display: flex;
+                flex-direction: column;
+                margin-left: 15px;
+                padding-right: 40px;
+                box-sizing: border-box;
+                .userName {
+                    font-weight: 800;
+                    font-size: 16px;
+                    line-height: 100%;
+                }
+                .userMembership {
+                    margin-top: 5px;
+                }
+            }
+        }
+        .cardButtonsWrapper {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            right: 15px;
+            bottom: 15px;
+            margin: auto 0 0 auto;
+            .cardButton {
+                margin-bottom: 5px;
+                padding: 0;
+                font-size: 0;
+                border: 0;
+                background: transparent;
+                cursor: pointer;
+                outline: none;
+                @include minWidth(480) {
+                    margin-left: 10px;
+                }
+                @include minWidth(768) {
+                    display: flex;
+                    flex-direction: column;
+                    font-size: 11px;
+                    margin-left: 17px;
+                    color: $darkGreyColor;
+                }
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+                .cardIcon {
+                    position: relative;
+                    overflow: hidden;
+                    display: block;
+                    width: 34px;
+                    height: 34px;
+                    border-radius: 50%;
+                    background: $bgSubColor;
+                    @include minWidth(768) {
+                        margin-bottom: 10px;
+                        width: 54px;
+                        height: 54px;
+                    }
+                }
+                &.editProfileButton {
+                    .cardIcon {
+                        &:after {
+                            @extend %avatarIcon;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            content: "";
+                            background: $darkGreyColor;
+                            transform: translate(-50%, -20%) scale(1.5);
+                            @include minWidth(768) {
+                                transform: translate(-50%, -20%) scale(2);
+                            }
+                        }
+                    }
+                }
+                &.addPhotoButton {
+                    .cardIcon {
+                        &:after {
+                            @extend %plusIcon;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            content: "";
+                            background: $darkGreyColor;
+                            transform: translate(-50%, -50%) scale(0.6);
+                            @include minWidth(768) {
+                                transform: translate(-50%, -50%) scale(0.9);
+                            }
+                        }
+                    }
+                }
+                &:hover {
+                    .cardIcon {
+                        &:after {
+                            background: $yellowColor;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

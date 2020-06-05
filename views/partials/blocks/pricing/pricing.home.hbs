@@ -1,0 +1,70 @@
+<section class="pricingSection homeSection">
+    <div class="wrapper headerWrapper">
+        <h2 class="sectionTitle">Upfront transparent pre-determined pricing for every client</h2>
+        <p class="textBlock">Most recent basement remodeling projects below and visit our portfolio to review many more of the recent basement finishing and remodeling projects. Most recent basement remodeling projects below and visit our portfolio to review many more of the recent basement finishing and remodeling projects.</p>
+    </div>
+    <div class="wrapper">
+        <div class="pricingTable">
+            {{# each pricing }}
+            <div class="pricingWrapper">
+                <picture class="officeImage">
+                    <source srcset="/public/images/temp/{{{ image }}}_320.webp,
+                                    /public/images/temp/{{{ image }}}_320@2x.webp 2x"
+                            media="(max-width: 479px)"
+                            type="image/webp">
+                    <source srcset="/public/images/temp/{{{ image }}}_320.jpg,
+                                    /public/images/temp/{{{ image }}}_320@2x.jpg 2x"
+                            media="(max-width: 479px)"
+                            type="image/jpeg">
+                    <source srcset="/public/images/temp/{{{ image }}}_480.webp,
+                                    /public/images/temp/{{{ image }}}_480@2x.webp 2x"
+                            media="(max-width: 767px)"
+                            type="image/webp">
+                    <source srcset="/public/images/temp/{{{ image }}}_480.jpg,
+                                    /public/images/temp/{{{ image }}}_480@2x.jpg 2x"
+                            media="(max-width: 767px)"
+                            type="image/jpeg">
+                    <source srcset="/public/images/temp/{{{ image }}}_768.webp,
+                                    /public/images/temp/{{{ image }}}_768@2x.webp 2x"
+                            media="(max-width: 999px)"
+                            type="image/webp">
+                    <source srcset="/public/images/temp/{{{ image }}}_768.jpg,
+                                    /public/images/temp/{{{ image }}}_768@2x.jpg 2x"
+                            media="(max-width: 999px)"
+                            type="image/jpeg">
+                    <source srcset="/public/images/temp/{{{ image }}}_1000.webp,
+                                    /public/images/temp/{{{ image }}}_1000@2x.webp 2x"
+                            media="(max-width: 1439px)"
+                            type="image/webp">
+                    <source srcset="/public/images/temp/{{{ image }}}_1000.jpg,
+                                    /public/images/temp/{{{ image }}}_1000@2x.jpg 2x"
+                            media="(max-width: 1439px)"
+                            type="image/jpeg">
+                    <source srcset="/public/images/temp/{{{ image }}}_1440.webp,
+                                    /public/images/temp/{{{ image }}}_1440@2x.webp 2x"
+                            media="(min-width: 1440px)"
+                            type="image/webp">
+                    <source srcset="/public/images/temp/{{{ image }}}_1440.jpg,
+                                    /public/images/temp/{{{ image }}}_1440@2x.jpg 2x"
+                            media="(min-width: 1440px)"
+                            type="image/jpeg">
+                    <img class="officeImage"
+                         src="/public/images/temp/{{{ image }}}_1440.jpg"
+                         srcset="/public/images/temp/{{{ image }}}_1440.jpg,
+                                 /public/images/temp/{{{ image }}}_1440@2x.jpg 2x"
+                         alt="{{{ title }}}">
+                </picture>
+                <div class="pricingData">
+                    <h3 class="pricingHeader">{{{ title }}}</h3>
+                    <ul class="priceList">
+                        {{# each fields }}
+                        <li class="priceField">{{{ this }}}</li>
+                        {{/ each }}
+                    </ul>
+                    <em class="pricingPrice">{{{ price }}}</em>
+                </div>
+            </div>
+            {{/ each }}
+        </div>
+    </div>
+</section>

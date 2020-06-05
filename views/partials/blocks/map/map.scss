@@ -1,0 +1,223 @@
+.mapSection.localSection {
+    position: relative;
+    min-height: 536px;
+    background-size: cover;
+    background-position: center center;
+    @include minWidth(480) {
+        min-height: 637px;
+    }
+    @include minWidth(768) {
+        min-height: 536px;
+    }
+    @include minWidth(1000) {
+        min-height: 536px;
+    }
+    @include minWidth(1440) {
+        min-height: 536px;
+    }
+    .mapWrapper {
+        @extend %shadow2;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        border-radius: 5px;
+        min-height: 108px;
+        background-color: $whiteColor;
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        background-size: 238px 108px;
+        padding: 15px 15px 108px;
+        box-sizing: border-box;
+        @include minWidth(480) {
+            min-height: 144px;
+            padding: 20px 20px 144px;
+            background-size: 316px 144px;
+        }
+        @include minWidth(768) {
+            justify-content: space-between;
+            min-height: 373px;
+            padding: 25px 300px 25px 25px;
+            background-size: 274px 373px;
+            background-position: right center;
+        }
+        @include minWidth(1000) {
+            min-height: 366px;
+            padding: 35px 420px 35px 40px;
+            background-size: 376px 366px;
+        }
+        @include minWidth(1440) {
+            width: 1042px;
+            padding: 35px 469px 35px 40px;
+            background-size: 429px 366px;
+        }
+    }
+    .sectionTitle {
+        font-size: 10px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        @include minWidth(480) {
+            font-size: 15px;
+        }
+        @include minWidth(1000) {
+            font-size: 21px;
+        }
+    }
+    .textBlock {
+        @include minWidth(768) {
+            font-size: 12px;
+        }
+        @include minWidth(1000) {
+            font-size: 15px;
+        }
+    }
+    .mapLearnMoreButton {
+        margin: 15px 0;
+        padding: 0 20px;
+        @extend %blueButton;
+        &:after {
+            @extend %buttonIconAfter;
+            @extend %arrowIcon;
+            background: $whiteColor;
+        }
+        @include minWidth(480) {
+            margin: 20px;
+            padding: 0 50px;
+        }
+        @include minWidth(768) {
+            margin-bottom: 0;
+            padding: 0 60px;
+        }
+        @include minWidth(1440) {
+            padding: 0 80px;
+        }
+    }
+}
+
+.webp .mapSection.localSection {
+    background-image: url("/public/images/local-map_480.webp");
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url("/public/images/local-map_480@2x.webp");
+    }
+    @include minWidth(480) {
+        background-image: url("/public/images/local-map_768.webp");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-map_768@2x.webp");
+        }
+    }
+    @include minWidth(768) {
+        background-image: url("/public/images/local-map_1000.webp");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-map_1000@2x.webp");
+        }
+    }
+    @include minWidth(1000) {
+        background-image: url("/public/images/local-map_1440.webp");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-map_1440@2x.webp");
+        }
+    }
+    @include minWidth(1440) {
+        background-image: url("/public/images/local-map_1800.webp");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-map_1800@2x.webp");
+        }
+    }
+}
+
+.no-webp .mapSection.localSection {
+    background-image: url("/public/images/local-map_480.jpg");
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url("/public/images/local-map_480@2x.jpg");
+    }
+    @include minWidth(480) {
+        background-image: url("/public/images/local-map_768.jpg");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-map_768@2x.jpg");
+        }
+    }
+    @include minWidth(768) {
+        background-image: url("/public/images/local-map_1000.jpg");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-map_1000@2x.jpg");
+        }
+    }
+    @include minWidth(1000) {
+        background-image: url("/public/images/local-map_1440.jpg");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-map_1440@2x.jpg");
+        }
+    }
+    @include minWidth(1440) {
+        background-image: url("/public/images/local-map_1800.jpg");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-map_1800@2x.jpg");
+        }
+    }
+}
+
+.webp .mapWrapper {
+    background-image: url("/public/images/local-scheme_320.webp");
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url("/public/images/local-scheme_320@2x.webp");
+    }
+    @include minWidth(480) {
+        background-image: url("/public/images/local-scheme_480.webp");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-scheme_480@2x.webp");
+        }
+    }
+    @include minWidth(768) {
+        background-image: url("/public/images/local-scheme_768.webp");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-scheme_768@2x.webp");
+        }
+    }
+    @include minWidth(1000) {
+        background-image: url("/public/images/local-scheme_1000.webp");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-scheme_1000@2x.webp");
+        }
+    }
+    @include minWidth(1440) {
+        background-image: url("/public/images/local-scheme_1440.webp");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-scheme_1440@2x.webp");
+        }
+    }
+}
+
+.no-webp .mapWrapper {
+    background-image: url("/public/images/local-scheme_320.png");
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url("/public/images/local-scheme_320@2x.png");
+    }
+    @include minWidth(480) {
+        background-image: url("/public/images/local-scheme_480.png");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-scheme_480@2x.png");
+        }
+    }
+    @include minWidth(768) {
+        background-image: url("/public/images/local-scheme_768.png");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-scheme_768@2x.png");
+        }
+    }
+    @include minWidth(1000) {
+        background-image: url("/public/images/local-scheme_1000.png");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-scheme_1000@2x.png");
+        }
+    }
+    @include minWidth(1440) {
+        background-image: url("/public/images/local-scheme_1440.png");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/local-scheme_1440@2x.png");
+        }
+    }
+}

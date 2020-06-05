@@ -1,0 +1,135 @@
+.pricingSection.homeSection {
+    .wrapper {
+        padding-top: 40px;
+        padding-bottom: 0;
+    }
+    .wrapper + .wrapper {
+        padding-top: 0;
+        padding-bottom: 40px;
+    }
+    .sectionTitle {
+        padding: 0 40px;
+        box-sizing: border-box;
+        text-align: center;
+        @include minWidth(480) {
+            padding: 0 70px;
+        }
+        @include minWidth(768) {
+            padding: 0 90px;
+        }
+        @include minWidth(1000) {
+            padding: 0 120px;
+        }
+        @include minWidth(1440) {
+            padding: 0;
+        }
+    }
+    .pricingTable {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        @include minWidth(768) {
+            flex-direction: row;
+            align-items: stretch;
+            justify-content: space-between;
+        }
+        .pricingWrapper {
+            @extend %shadow2;
+            position: relative;
+            display: flex;
+            margin-bottom: 8px;
+            width: inherit;
+            @include minWidth(768) {
+                flex-direction: column;
+                margin-bottom: 0;
+                width: 236px;
+            }
+            @include minWidth(1000) {
+                width: 315px;
+            }
+            @include minWidth(1440) {
+                width: 331px;
+            }
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+            .officeImage {
+                display: block;
+            }
+            .pricingData {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: space-between;
+                padding: 15px;
+                box-sizing: border-box;
+                @include minWidth(1000) {
+                    padding: 20px;
+                }
+                .pricingHeader {
+                    text-transform: uppercase;
+                    margin-top: 0;
+                    margin-bottom: 5px;
+                    font-size: 12px;
+                    @include minWidth(480) {
+                        font-size: 14px;
+                    }
+                    @include minWidth(768) {
+                        margin-bottom: 15px;
+                    }
+                    @include minWidth(1000) {
+                        margin-bottom: 20px;
+                        font-size: 18px;
+                    }
+                }
+                .priceList {
+                    margin-top: 0;
+                    margin-bottom: 0;
+                    padding-left: 0;
+                    list-style-type: none;
+                    .priceField {
+                        display: flex;
+                        flex-direction: row;
+                        font-size: 9px;
+                        @include minWidth(480) {
+                            font-size: 11px;
+                        }
+                        @include minWidth(1000) {
+                            margin-bottom: 5px;
+                            font-size: 15px;
+                            &:last-of-type {
+                                margin-bottom: 0;
+                            }
+                        }
+                        &:before {
+                            content: "-";
+                            margin-right: 5px;
+                        }
+                    }
+                }
+                .pricingPrice {
+                    position: absolute;
+                    bottom: 8px;
+                    right: 8px;
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: 800;
+                    @include minWidth(480) {
+                        position: relative;
+                        bottom: auto;
+                        right: auto;
+                        margin: 5px 0 0 auto;
+                        font-size: 14px;
+                    }
+                    @include minWidth(768) {
+                        margin-top: 15px;
+                        font-size: 20px;
+                    }
+                    @include minWidth(1000) {
+                        margin-top: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

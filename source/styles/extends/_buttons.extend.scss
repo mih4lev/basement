@@ -113,6 +113,35 @@
     rgba(255, 255, 255, 0.5);
 }
 
+%whiteButton2 {
+    @extend %button;
+    color: $blueColor;
+    //color: $blackColor;
+    border: 1px solid $blueColor;
+    background: $whiteColor;
+    &:hover, &:active {
+        color: $whiteColor;
+        background: darken($blueColor, 10%);
+        border: 1px solid darken($blueColor, 10%);
+    }
+}
+
+%whiteButton3 {
+    @extend %button;
+    @extend %animation;
+    color: $blackColor;
+    border: 1px solid $whiteColor;
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0.8) 32.56%, rgba(255, 255, 255, 0) 100%),
+                rgba(255, 255, 255, 0);
+    &:hover {
+        color: $whiteColor;
+        background: rgba(255, 255, 255, 0);
+        &:after {
+            background-color: $whiteColor;
+        }
+    }
+}
+
 %menuButton {
     @extend %button;
     color: $greyColor;

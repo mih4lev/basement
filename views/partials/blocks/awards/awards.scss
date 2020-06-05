@@ -1,0 +1,87 @@
+.awardsSection.homeSection {
+    background: linear-gradient(90deg, #FDFDFD 0%, #F8F5F5 101.15%);
+    .headerWrapper {
+        @include minWidth(768) {
+            display: flex;
+        }
+        @include minWidth(1000) {
+            width: 866px;
+        }
+    }
+    .awardsData {
+        @include minWidth(768) {
+            padding-left: 40px;
+            padding-right: 40px;
+            box-sizing: border-box;
+        }
+        @include minWidth(1000) {
+            padding-left: 40px;
+            padding-right: 40px;
+            box-sizing: border-box;
+        }
+        @include minWidth(1440) {
+            padding-left: 0;
+            padding-right: 80px;
+        }
+        .textBlock {
+            @include minWidth(768) {
+                font-size: 12px;
+            }
+            @include minWidth(1000) {
+                font-size: 15px;
+            }
+        }
+    }
+    .awardList {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        flex-shrink: 0;
+        justify-content: space-between;
+        margin-top: 15px;
+        margin-bottom: -5px;
+        padding-left: 0;
+        list-style-type: none;
+        @include minWidth(480) {
+            margin: 20px auto -8px auto;
+            width: 100%;
+            max-width: 408px;
+        }
+        @include minWidth(768) {
+            margin: -180px auto -8px auto;
+            max-width: 462px;
+        }
+        @include minWidth(1000) {
+            margin: -190px auto -10px auto;
+            max-width: 512px;
+        }
+        @include minWidth(1440) {
+            margin: -170px auto -10px auto;
+        }
+        .awardWrapper {
+            margin-bottom: 5px;
+            width: 54px;
+            height: 54px;
+            @include minWidth(480) {
+                margin-bottom: 8px;
+                width: 76px;
+                height: 76px;
+            }
+            @include minWidth(768) {
+                margin-bottom: 8px;
+                width: 86px;
+                height: 86px;
+            }
+            @include minWidth(1000) {
+                margin-bottom: 10px;
+                width: 97px;
+                height: 97px;
+            }
+            .awardImage {
+                width: 100%;
+                height: 100%;
+                filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.15));
+            }
+        }
+    }
+}

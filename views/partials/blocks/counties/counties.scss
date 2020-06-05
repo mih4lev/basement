@@ -1,0 +1,624 @@
+.countiesSection {
+    position: relative;
+    margin: 0 auto;
+    padding: 30px 0;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 320px;
+    min-height: 613px;
+    @include minWidth(480) {
+        padding: 40px 0;
+        max-width: 480px;
+        min-height: 822px;
+    }
+    @include minWidth(768) {
+        max-width: 768px;
+        min-height: 594px;
+    }
+    @include minWidth(1000) {
+        max-width: 1000px;
+        min-height: 721px;
+    }
+    @include minWidth(1440) {
+        max-width: 1440px;
+        min-height: 733px;
+    }
+    .countiesMap {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 320px;
+        height: 613px;
+        @include minWidth(480) {
+            max-width: 480px;
+            height: 822px;
+        }
+        @include minWidth(768) {
+            max-width: 768px;
+            height: 594px;
+        }
+        @include minWidth(1000) {
+            max-width: 1000px;
+            height: 721px;
+        }
+        @include minWidth(1440) {
+            max-width: 1440px;
+            height: 733px;
+        }
+        .map {
+            z-index: 1;
+            position: absolute;
+            top: 277px;
+            width: 100%;
+            max-width: 320px;
+            height: 336px;
+            background-size: 320px 336px;
+            @include minWidth(480) {
+                top: 317px;
+                max-width: 480px;
+                height: 505px;
+                background-size: 480px 505px;
+            }
+            @include minWidth(768) {
+                top: 46px;
+                max-width: 768px;
+                height: 548px;
+                background-size: 768px 548px;
+            }
+            @include minWidth(1000) {
+                top: 0;
+                max-width: 1000px;
+                height: 721px;
+                background-size: 1000px 721px;
+            }
+            @include minWidth(1440) {
+                top: 0;
+                max-width: 1440px;
+                height: 733px;
+                background-size: 1440px 733px;
+            }
+        }
+        .mapBackground {
+            z-index: 2;
+            position: absolute;
+            width: 100%;
+            max-width: 320px;
+            height: 613px;
+            background: url("/public/images/home-map/map-opacity_320.svg");
+            @include minWidth(480) {
+                max-width: 480px;
+                height: 822px;
+                background: url("/public/images/home-map/map-opacity_480.svg");
+            }
+            @include minWidth(768) {
+                max-width: 768px;
+                height: 594px;
+                background: url("/public/images/home-map/map-opacity_768.svg");
+            }
+            @include minWidth(1000) {
+                max-width: 1000px;
+                height: 721px;
+                background: url("/public/images/home-map/map-opacity_1000.svg");
+            }
+            @include minWidth(1440) {
+                max-width: 1440px;
+                height: 733px;
+                background: url("/public/images/home-map/map-opacity_1440.svg");
+            }
+        }
+        .mapBorders {
+            z-index: 3;
+            position: absolute;
+            top: 327px;
+            left: 8px;
+            width: 302px;
+            height: 266px;
+            background: url("/public/images/home-map/map-border_320.svg");
+            @include minWidth(480) {
+                top: 391px;
+                left: 12px;
+                width: 452px;
+                height: 399px;
+                background: url("/public/images/home-map/map-border_480.svg");
+            }
+            @include minWidth(768) {
+                top: 127px;
+                left: 272px;
+                width: 484px;
+                height: 426px;
+                background: url("/public/images/home-map/map-border_768.svg");
+            }
+            @include minWidth(1000) {
+                top: 107px;
+                left: 348px;
+                width: 636px;
+                height: 561px;
+                background: url("/public/images/home-map/map-border_1000.svg");
+            }
+            @include minWidth(1440) {
+                top: 110px;
+                left: 600px;
+                width: 645px;
+                height: 568px;
+                background: url("/public/images/home-map/map-border_1440.svg");
+            }
+        }
+        .mapCorners {
+            z-index: 4;
+            position: absolute;
+            width: inherit;
+            height: inherit;
+            background: linear-gradient(to right, #FFFFFF 0, rgba(255, 255, 255, 0) 15px),
+                        linear-gradient(to left, #FFFFFF 0, rgba(255, 255, 255, 0) 15px);
+            @include minWidth(1000) {
+                background: linear-gradient(to right, #FFFFFF 0, rgba(255, 255, 255, 0) 30px),
+                            linear-gradient(to left, #FFFFFF 0, rgba(255, 255, 255, 0) 30px);
+            }
+            @include minWidth(1440) {
+                background: linear-gradient(to right, #FFFFFF 0, rgba(255, 255, 255, 0) 200px),
+                linear-gradient(to left, #FFFFFF 0, rgba(255, 255, 255, 0) 200px);
+            }
+        }
+        .arrowToMap {
+            z-index: 5;
+            position: absolute;
+            right: 15px;
+            width: 165px;
+            height: 436px;
+            background: url("/public/images/home-map/arrow-to_map_320.svg");
+            @include minWidth(480) {
+                right: 21px;
+                width: 246px;
+                height: 555px;
+                background: url("/public/images/home-map/arrow-to_map_480.svg");
+            }
+            @include minWidth(768) {
+                right: 271px;
+                width: 10px;
+                height: 301px;
+                background: url("/public/images/home-map/arrow-to_map_768.svg");
+            }
+            @include minWidth(1000) {
+                right: 358px;
+                width: 10px;
+                height: 339px;
+                background: url("/public/images/home-map/arrow-to_map_1000.svg");
+            }
+            @include minWidth(1440) {
+                right: 542px;
+                width: 10px;
+                height: 344px;
+                background: url("/public/images/home-map/arrow-to_map_1440.svg");
+            }
+        }
+        .countyPin {
+            z-index: 6;
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background-size: 14px 14px;
+            background: url("/public/images/home-map/map-pin_320.svg");
+            @include minWidth(480) {
+                width: 22px;
+                height: 21px;
+                background-size: 22px 21px;
+                background: url("/public/images/home-map/map-pin_480.svg");
+            }
+            @include minWidth(768) {
+                width: 23px;
+                height: 23px;
+                background-size: 23px 23px;
+                background: url("/public/images/home-map/map-pin_768.svg");
+            }
+            @include minWidth(1000) {
+                width: 30px;
+                height: 29px;
+                background-size: 30px 29px;
+                background: url("/public/images/home-map/map-pin_1000.svg");
+            }
+            &.pin1 {
+                top: 384px;
+                right: 95px;
+                @include minWidth(480) {
+                    top: 478px;
+                    right: 141px;
+                }
+                @include minWidth(768) {
+                    top: 219px;
+                    right: 149px;
+                }
+                @include minWidth(1000) {
+                    top: 227px;
+                    right: 195px;
+                }
+                @include minWidth(1440) {
+                    top: 231px;
+                    right: 376px;
+                }
+            }
+            &.pin2 {
+                top: 449px;
+                right: 130px;
+                @include minWidth(480) {
+                    top: 576px;
+                    right: 195px;
+                }
+                @include minWidth(768) {
+                    top: 323px;
+                    right: 205px;
+                }
+                @include minWidth(1000) {
+                    top: 364px;
+                    right: 270px;
+                }
+                @include minWidth(1440) {
+                    top: 370px;
+                    right: 452px;
+                }
+            }
+            &.pin3 {
+                top: 482px;
+                right: 169px;
+                @include minWidth(480) {
+                    top: 625px;
+                    right: 253px;
+                }
+                @include minWidth(768) {
+                    top: 376px;
+                    right: 268px;
+                }
+                @include minWidth(1000) {
+                    top: 434px;
+                    right: 351px;
+                }
+                @include minWidth(1440) {
+                    top: 441px;
+                    right: 535px;
+                }
+            }
+            &.mainPin {
+                top: 442px;
+                right: 167px;
+                background: url("/public/images/home-map/map-main_pin_320.svg");
+                @include minWidth(480) {
+                    top: 566px;
+                    right: 250px;
+                    background: url("/public/images/home-map/map-main_pin_480.svg");
+                }
+                @include minWidth(768) {
+                    top: 312px;
+                    right: 265px;
+                    background: url("/public/images/home-map/map-main_pin_768.svg");
+                }
+                @include minWidth(1000) {
+                    top: 350px;
+                    right: 347px;
+                    background: url("/public/images/home-map/map-main_pin_1000.svg");
+                }
+                @include minWidth(1440) {
+                    top: 356px;
+                    right: 531px;
+                }
+            }
+        }
+    }
+    .countiesContent {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        z-index: 6;
+        margin: 0 15px;
+        padding-right: 23px;
+        box-sizing: border-box;
+        width: 290px;
+        @include minWidth(480) {
+            width: 440px;
+            padding-right: 25px;
+        }
+        @include minWidth(768) {
+            margin: 0 32px;
+            width: 704px;
+        }
+        @include minWidth(1000) {
+            margin: 0 36px;
+            width: 928px;
+        }
+        @include minWidth(1440) {
+            margin: 0 240px;
+        }
+        .sectionTitle {
+            margin: 0 auto;
+            padding-right: 65px;
+            box-sizing: border-box;
+            width: inherit;
+            @include minWidth(480) {
+                padding-right: 0;
+            }
+            @include minWidth(768) {
+                padding-right: 290px;
+            }
+            @include minWidth(1000) {
+                padding-right: 415px;
+            }
+        }
+        .textBlock {
+            margin-bottom: 20px;
+            @include minWidth(768) {
+                padding-right: 350px;
+                font-size: 12px;
+            }
+            @include minWidth(1000) {
+                padding-right: 500px;
+                font-size: 15px;
+            }
+        }
+        .countiesList {
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding-left: 0;
+            list-style-type: none;
+            @include minWidth(768) {
+                margin-bottom: 30px;
+            }
+            .countyWrapper {
+                margin-bottom: 10px;
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+                @include minWidth(768) {
+                    font-size: 12px;
+                }
+                @include minWidth(1000) {
+                    margin-bottom: 15px;
+                    font-size: 15px;
+                }
+                .countyAddress {
+                    font-weight: 800;
+                    font-style: normal;
+                    @include minWidth(1000) {
+                        margin-top: 3px;
+                        display: block;
+                    }
+                }
+            }
+        }
+        .consultationButton {
+            @extend %blueButton;
+            &:after {
+                @extend %buttonIconAfter;
+                @extend %arrowIcon;
+                background-color: $whiteColor;
+            }
+        }
+    }
+    .serviceAreaWrapper {
+        margin: 583px auto 0; // 613 - 30
+        width: 290px;
+        @include minWidth(480) {
+            margin-top: 782px; // 822 - 40
+            width: 440px;
+        }
+        @include minWidth(768) {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            margin: 405px auto -23px;
+            padding: 0 32px;
+            box-sizing: border-box;
+            width: 768px;
+            height: 835px;
+            background-image: url("/public/images/home-map/arrow-from-service_768.svg");
+            background-repeat: no-repeat;
+            background-size: 738px 825px;
+            background-position: 15px 10px;
+        }
+        @include minWidth(1000) {
+            margin-top: 500px;
+            padding: 0 36px;
+            width: 1000px;
+            height: 813px;
+            background-image: url("/public/images/home-map/arrow-from-service_1000.svg");
+            background-size: 972px 798px;
+            background-position: 15px 15px;
+        }
+        @include minWidth(1440) {
+            margin: 500px auto -23px;
+            padding: 0 26px;
+            width: 1014px;
+            height: 813px;
+            background-image: url("/public/images/home-map/arrow-from-service_1440.svg");
+            background-size: 1014px 798px;
+            background-position: 0 15px;
+            //background-position: 15px 15px;
+        }
+        .areaTitle {
+            position: relative;
+            @include minWidth(768) {
+                margin-bottom: 15px;
+            }
+            &:after {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                display: block;
+                margin-top: -91px;
+                width: 175px;
+                height: 105px;
+                background-image: url("/public/images/home-map/arrow-from-service_320.svg");
+                @include minWidth(480) {
+                    margin-top: -120px;
+                    width: 271px;
+                    height: 140px;
+                    background-image: url("/public/images/home-map/arrow-from-service_480.svg");
+                }
+                @include minWidth(768) {
+                    display: none;
+                }
+            }
+        }
+        .areaAnnounce {
+            margin-bottom: 20px;
+            @include minWidth(768) {
+                margin-top: 0;
+                margin-bottom: 15px;
+                padding-right: 366px;
+                font-size: 12px;
+            }
+            @include minWidth(1000) {
+                padding-right: 0;
+                width: 387px;
+                font-size: 15px;
+            }
+        }
+        .areaHeader {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 13px;
+            line-height: 125%;
+            @include minWidth(480) {
+                font-size: 20px;
+            }
+            @include minWidth(768) {
+                margin-bottom: 13px;
+            }
+            @include minWidth(1000) {
+                font-size: 26px;
+            }
+        }
+        .areaList {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 0;
+            margin-bottom: 15px;
+            padding-left: 0;
+            width: inherit;
+            list-style-type: none;
+            @include minWidth(768) {
+                justify-content: flex-start;
+                width: 704px;
+                margin-bottom: 0;
+            }
+            @include minWidth(1000) {
+                width: 928px;
+            }
+            @include minWidth(1440) {
+                width: 100%;
+            }
+            .areaWrapper {
+                width: 137px;
+                @include minWidth(480) {
+                    width: 207px;
+                }
+                @include minWidth(768) {
+                    margin-right: 20px;
+                    width: 161px;
+                    &:nth-of-type(4n) {
+                        margin-right: 0;
+                    }
+                }
+                @include minWidth(1000) {
+                    margin-right: 26px;
+                    width: 212px;
+                }
+                @include minWidth(1440) {
+                    margin-right: 38px;
+                }
+                .areaLabel {
+                    margin-top: 0;
+                    margin-bottom: 10px;
+                    padding-bottom: 5px;
+                    font-size: 12px;
+                    font-weight: 500;
+                    line-height: 125%;
+                    border-bottom: 1px solid $yellowColor;
+                    @include minWidth(480) {
+                        padding-bottom: 10px;
+                        font-size: 15px;
+                    }
+                    @include minWidth(768) {
+                        //margin-bottom: 0;
+                        //padding-bottom: 0;
+                    }
+                }
+                .citiesText {
+                    margin-top: 0;
+                    margin-bottom: 15px;
+                    @include minWidth(768) {
+                        margin-bottom: 20px;
+                        //margin-bottom: 0;
+                        font-size: 9px;
+                        line-height: 125%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.webp .countiesMap .map {
+    background-image: url("/public/images/home-map/map_background_320.webp");
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url("/public/images/home-map/map_background_320@2x.webp");
+    }
+    @include minWidth(480) {
+        background-image: url("/public/images/home-map/map_background_480.webp");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/home-map/map_background_480@2x.webp");
+        }
+    }
+    @include minWidth(768) {
+        background-image: url("/public/images/home-map/map_background_768.webp");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/home-map/map_background_768@2x.webp");
+        }
+    }
+    @include minWidth(1000) {
+        background-image: url("/public/images/home-map/map_background_1000.webp");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/home-map/map_background_1000@2x.webp");
+        }
+    }
+    @include minWidth(1440) {
+        background-image: url("/public/images/home-map/map_background_1440.webp");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/home-map/map_background_1440@2x.webp");
+        }
+    }
+}
+.no-webp .countiesMap .map {
+    background-image: url("/public/images/home-map/map_background_320.png");
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url("/public/images/home-map/map_background_320@2x.png");
+    }
+    @include minWidth(480) {
+        background-image: url("/public/images/home-map/map_background_480.png");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/home-map/map_background_480@2x.png");
+        }
+    }
+    @include minWidth(768) {
+        background-image: url("/public/images/home-map/map_background_768.png");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/home-map/map_background_768@2x.png");
+        }
+    }
+    @include minWidth(1000) {
+        background-image: url("/public/images/home-map/map_background_1000.png");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/home-map/map_background_1000@2x.png");
+        }
+    }
+    @include minWidth(1440) {
+        background-image: url("/public/images/home-map/map_background_1440.png");
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url("/public/images/home-map/map_background_1440@2x.png");
+        }
+    }
+}

@@ -1,0 +1,137 @@
+.basementTipsSection.homeSection {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: linear-gradient(90deg, #FDFDFD 0%, #F8F5F5 101.15%);
+    .wrapper {
+        padding-top: 30px;
+        padding-bottom: 20px;
+        @include minWidth(480) {
+            padding-top: 40px;
+        }
+    }
+    .wrapper + .wrapper {
+        padding-top: 0;
+        padding-bottom: 30px;
+        @include minWidth(480) {
+            padding-bottom: 40px;
+        }
+    }
+    .sectionTitle {
+        margin-bottom: 0;
+    }
+    .cardList {
+        @include minWidth(1000) {
+            margin-left: 0;
+            margin-right: 0;
+            .cardWrapper {
+                width: 233px;
+                .cardImage {
+                    width: 233px;
+                    height: 122px;
+                }
+                .cardHeader {
+                    font-size: 12px;
+                }
+                .cardAnnounce {
+                    font-size: 10px;
+                }
+                .dataDate {
+                    font-size: 11px;
+                }
+                .dataState {
+                    font-size: 11px;
+                }
+            }
+        }
+        @include minWidth(1440) {
+            .cardWrapper {
+                width: 249px;
+                margin-left: 6px;
+                margin-right: 6px;
+                .cardImage {
+                    width: 249px;
+                    height: 130px;
+                }
+            }
+        }
+        .cardWrapper:last-of-type {
+            display: none;
+            @include minWidth(1000) {
+                display: flex;
+                .cardWrapper {
+                    margin-right: 0;
+                }
+            }
+        }
+        .cardWrapper:first-of-type {
+            @include minWidth(768) {
+                width: 100%;
+                flex-direction: row;
+                .cardData {
+                    order: 1;
+                    .cardHeader {
+                        font-size: 15px;
+                    }
+                    .cardAnnounce {
+                        font-size: 13px;
+                    }
+                    .dataDate {
+                        font-size: 13px;
+                    }
+                    .dataState {
+                        font-size: 13px;
+                    }
+                }
+                .cardLink {
+                    order: 2;
+                }
+                .cardImage {
+                    width: 482px;
+                    height: 251px;
+                }
+            }
+            @include minWidth(1000) {
+                margin-left: 0;
+                margin-right: 0;
+                .cardImage {
+                    width: 722px;
+                    height: 271px;
+                }
+            }
+            @include minWidth(1440) {
+                .cardImage {
+                    width: 770px;
+                    height: 293px;
+                }
+            }
+        }
+        .cardWrapper:nth-of-type(2) {
+            @include minWidth(1000) {
+                margin-left: 0;
+            }
+        }
+        .cardWrapper:nth-of-type(5) {
+            @include minWidth(1000) {
+                margin-right: 0;
+            }
+        }
+    }
+    .viewAllButton {
+        @extend %blueButton;
+        position: absolute;
+        top: 30px;
+        right: 0;
+        @include minWidth(480) {
+            top: 36px;
+        }
+        @include minWidth(768) {
+            height: 40px;
+        }
+        &:after {
+            @extend %buttonIconAfter;
+            @extend %arrowIcon;
+            background: $whiteColor;
+        }
+    }
+}

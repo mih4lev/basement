@@ -1,0 +1,130 @@
+.licensesSection {
+    display: flex;
+    flex-direction: column;
+    .sectionTitle {
+        color: $whiteColor;
+    }
+    .textBlock {
+        color: $whiteColor;
+        a {
+            color: $whiteColor;
+        }
+        @include minWidth(768) {
+            font-size: 12px;
+        }
+        @include minWidth(1000) {
+            font-size: 15px;
+        }
+    }
+    .stateData {
+        margin-top: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+}
+
+.licensesSection.homeSection {
+    background: $blueColor;
+    .maxPadding:nth-of-type(1) {
+        @include minWidth(480) {
+            padding-bottom: 30px;
+        }
+        @include minWidth(768) {
+            padding-bottom: 20px;
+        }
+    }
+    .sectionTitle {
+        text-align: center;
+    }
+    .licenseList {
+        column-count: 2;
+        column-gap: 8px;
+        margin: 0 0 10px 0;
+        padding-left: 0;
+        list-style-type: none;
+        @include minWidth(480) {
+            column-count: 3;
+            column-gap: 7px;
+            margin-bottom: 20px;
+        }
+        @include minWidth(768) {
+            column-count: auto;
+            column-gap: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        @include minWidth(1440) {
+            margin: 0 32px;
+        }
+        .licenseWrapper {
+            @extend %shadow2;
+            display: inline-block;
+            margin-bottom: 8px;
+            padding: 8px;
+            box-sizing: border-box;
+            background: $whiteColor;
+            @include minWidth(480) {
+                margin-bottom: 7px;
+                padding: 7px;
+            }
+            @include minWidth(768) {
+                margin-bottom: 0;
+                padding: 5px;
+                &:nth-of-type(1) {
+                    order: 1;
+                    margin-top: 70px;
+                }
+                &:nth-of-type(2) {
+                    order: 3;
+                    margin-top: 80px;
+                }
+                &:nth-of-type(3) {
+                    order: 5;
+                    margin-top: 50px;
+                }
+                &:nth-of-type(4) {
+                    order: 2;
+                    margin-top: 40px;
+                }
+                &:nth-of-type(5) {
+                    order: 4;
+                    margin-top: 40px;
+                }
+                &:nth-of-type(6) {
+                    order: 6;
+                    margin-top: 0;
+                }
+            }
+        }
+        .licenseImage {
+            display: flex;
+            width: 136px;
+            @include minWidth(768) {
+                width: 107px;
+            }
+            @include minWidth(1000) {
+                width: 143px;
+            }
+        }
+    }
+    .consultationButton {
+        @extend %whiteButton2;
+        margin: 0 auto;
+        &:after {
+            @extend %buttonIconAfter;
+            @extend %arrowIcon;
+            background: $blueColor;
+        }
+    }
+}
+
+.licensesSection.localSection {
+    background: linear-gradient(118.4deg, rgba(97, 109, 123, 0) 25.21%, rgba(66, 75, 85, 0.41) 94%),
+                url("/public/images/licenses-background.jpg"), #616D7B;
+    background-blend-mode: multiply, screen, normal;
+    background-size: cover;
+    background-position: center bottom;
+}

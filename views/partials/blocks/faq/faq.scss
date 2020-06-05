@@ -1,0 +1,226 @@
+.faqSection.homeSection {
+    background: linear-gradient(117.03deg, #F3F3F5 3.69%, #D1D1D3 95.61%);
+    .wrapper {
+       @extend %widthContent;
+    }
+    .sectionTitle {
+        padding: 0 20px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .textBlock {
+        margin-bottom: 15px;
+        text-align: center;
+        @include minWidth(480) {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    }
+    .faqTitles {
+        display: flex;
+        width: 100%;
+        box-sizing: border-box;
+        @include minWidth(768) {
+            margin-top: 20px;
+            padding-left: 80px;
+        }
+        @include minWidth(1000) {
+            padding-left: 170px;
+        }
+        .faqTitle {
+            padding: 0 15px 10px;
+            width: 50%;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            @include minWidth(480) {
+                padding-bottom: 15px;
+                font-size: 14px;
+            }
+            @include minWidth(768) {
+                padding-bottom: 20px;
+                font-size: 16px;
+            }
+        }
+    }
+    .faqWrapper {
+        @extend %shadow2;
+        display: flex;
+        position: relative;
+        margin-bottom: 8px;
+        background: $bgSubColor2;
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+        .faqIcon {
+            z-index: 2;
+            position: absolute;
+            top: 17px;
+            left: 15px;
+            background-position: center center;
+            background-repeat: no-repeat;
+            width: 30px;
+            height: 30px;
+            @include minWidth(768) {
+                flex-shrink: 0;
+                flex-grow: 1;
+                position: relative;
+                top: auto;
+                left: auto;
+                width: 80px;
+                height: auto;
+            }
+            @include minWidth(1000) {
+                width: 170px;
+            }
+            &.home_faq1 {
+                background-image: url("/public/images/home_faq1.svg");
+                @include minWidth(768) {
+                    background-size: 46px 40px;
+                }
+                @include minWidth(1000) {
+                    background-size: 62px 54px;
+                }
+            }
+            &.home_faq2 {
+                background-image: url("/public/images/home_faq2.svg");
+                @include minWidth(768) {
+                    background-size: 36px 40px;
+                }
+                @include minWidth(1000) {
+                    background-size: 50px 54px;
+                }
+            }
+            &.home_faq3 {
+                background-image: url("/public/images/home_faq3.svg");
+                @include minWidth(768) {
+                    background-size: 35px 40px;
+                }
+                @include minWidth(1000) {
+                    background-size: 47px 54px;
+                }
+            }
+            &.home_faq4 {
+                background-image: url("/public/images/home_faq4.svg");
+                @include minWidth(768) {
+                    background-size: 41px 40px;
+                }
+                @include minWidth(1000) {
+                    background-size: 56px 54px;
+                }
+            }
+            &.home_faq5 {
+                background-image: url("/public/images/home_faq5.svg");
+                @include minWidth(768) {
+                    background-size: 39px 40px;
+                }
+                @include minWidth(1000) {
+                    background-size: 53px 54px;
+                }
+            }
+            &.home_faq6 {
+                background-image: url("/public/images/home_faq6.svg");
+                @include minWidth(768) {
+                    background-size: 30px 40px;
+                }
+                @include minWidth(1000) {
+                    background-size: 40px 54px;
+                }
+            }
+        }
+        .faqDescription {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 15px;
+            box-sizing: border-box;
+            width: 50%;
+            &:after {
+                content: "";
+                position: absolute;
+                z-index: 1;
+                right: 10px;
+                bottom: 10px;
+                display: block;
+                width: 32px;
+                height: 32px;
+                background-image: url("/public/images/home_faq_other_320.svg");
+                background-size: 32px 32px;
+                @include minWidth(480) {
+                    right: 15px;
+                    bottom: 15px;
+                    width: 42px;
+                    height: 42px;
+                    background-image: url("/public/images/home_faq_other_480.svg");
+                    background-size: 42px 42px;
+                }
+                @include minWidth(1000) {
+                    right: 15px;
+                    bottom: 15px;
+                    width: 53px;
+                    height: 53px;
+                    background-image: url("/public/images/home_faq_other_1000.svg");
+                    background-size: 53px 53px;
+                }
+            }
+            .wrapperTitle {
+                z-index: 2;
+                display: flex;
+                align-items: center;
+                margin: 0;
+                height: 35px;
+                text-align: left;
+                font-size: 9px;
+                text-transform: uppercase;
+                @include minWidth(480) {
+                    font-size: 12px;
+                }
+                @include minWidth(1000) {
+                    font-size: 13px;
+                }
+            }
+            .textBlock {
+                z-index: 2;
+                margin: 5px 0 0;
+                text-align: left;
+                font-size: 9px;
+                @include minWidth(480) {
+                    font-size: 10px;
+                }
+                @include minWidth(768) {
+                    font-size: 12px;
+                }
+                @include minWidth(1000) {
+                    padding-right: 60px;
+                    box-sizing: border-box;
+                }
+            }
+            &.ourCompany {
+                background: $whiteColor;
+                &:after {
+                    background-image: url("/public/images/home_faq_our_320.svg");
+                    @include minWidth(480) {
+                        background-image: url("/public/images/home_faq_our_480.svg");
+                    }
+                    @include minWidth(1000) {
+                        background-image: url("/public/images/home_faq_our_1000.svg");
+                    }
+                }
+                .wrapperTitle {
+                    padding-left: 35px;
+                    @include minWidth(768) {
+                        padding-left: 0;
+                    }
+                }
+            }
+        }
+    }
+    .faqButton {
+        @extend %blueButton;
+        &:after {
+            @extend %buttonIconAfter;
+            @extend %arrowIcon;
+            background: $whiteColor;
+        }
+    }
+}

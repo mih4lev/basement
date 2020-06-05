@@ -1,0 +1,27 @@
+<section class="awardsSection homeSection">
+    <div class="wrapper headerWrapper maxPadding">
+        <div class="awardsData">
+            <h2 class="sectionTitle">Awards</h2>
+            <p class="textBlock">BasementRemodeling.com is an award-winning basement remodeling and finishing company and one of the top remodeling companies in Maryland, DC Virginia. Click on the award badge to be transferred to our profile and learn more.</p>
+        </div>
+        <ul class="awardList">
+            {{# each awards }}
+                <li class="awardWrapper">
+                    <picture class="awardImage">
+                        <source srcset="/public/images/temp/awards/{{{ image }}}.webp,
+                                    /public/images/temp/awards/{{{ image }}}@2x.webp 2x"
+                                type="image/webp">
+                        <source srcset="/public/images/temp/awards/{{{ image }}}.png,
+                                    /public/images/temp/awards/{{{ image }}}@2x.png 2x"
+                                type="image/jpeg">
+                        <img class="awardImage"
+                             src="/public/images/temp/awards/{{{ image }}}.png"
+                             srcset="/public/images/temp/awards/{{{ image }}}.png,
+                                 /public/images/temp/awards/{{{ image }}}@2x.png 2x"
+                             alt="{{{ title }}}">
+                    </picture>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</section>

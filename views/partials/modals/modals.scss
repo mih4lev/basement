@@ -1,6 +1,12 @@
-@import "close.modal";
-@import "contact-us.modal";
-@import "sign-in.modal";
+@import "close-site/close-site.modal";
+@import "contact-us/contact-us.modal";
+@import "sign-in/sign-in.modal";
+@import "edit-profile/edit-profile.modal";
+@import "create-album/create-album.modal";
+@import "edit-album/edit-album.modal";
+@import "add-photo/add-photo.modal";
+@import "edit-photo/edit-photo.modal";
+@import "booking-tool/booking-tool.modal";
 
 .modalSection {
     display: none;
@@ -97,5 +103,105 @@
     }
     &:after {
         transform: rotate(-45deg);
+    }
+}
+
+.modalContentWrapper2 {
+    margin: 20px;
+    .closeButton {
+        top: 20px;
+        right: 20px;
+        &:before, &:after {
+            width: 14px;
+            height: 2px;
+        }
+    }
+}
+
+.modalContentWrapper2 {
+    .fieldWrapper {
+        margin-bottom: 20px;
+    }
+    .fieldLabel {
+        position: relative;
+        height: auto;
+        line-height: 125%;
+        font-size: 15px;
+        text-transform: inherit;
+        font-weight: 400;
+        letter-spacing: 0;
+        color: $lightGreyColor;
+    }
+    .fieldInput {
+        height: 41px;
+        font-size: 15px;
+        font-weight: 400;
+        text-transform: inherit;
+        color: $blackColor;
+    }
+    .submitButton {
+        width: 100%;
+        height: 41px;
+        font-size: 13px;
+    }
+}
+
+.inputPhotoField {
+    @extend %shadow;
+    margin: 20px auto;
+    position: relative;
+    box-sizing: border-box;
+    border: 5px solid #FFFFFF;
+    border-radius: 50%;
+    overflow: hidden;
+    @include minWidth(768) {
+        margin: 5px 35px 0 0;
+    }
+    .photoField {
+        transform: translateY(-400%);
+        outline: none;
+    }
+    .photoLabel, .photoLabelEmpty {
+        z-index: 5;
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: inherit;
+        height: inherit;
+        border-radius: 50%;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $whiteColor;
+        letter-spacing: 0.05em;
+        background: linear-gradient(0deg, rgba(97, 109, 123, 0.7), rgba(97, 109, 123, 0.7));
+        cursor: pointer;
+        &:hover {
+            color: $yellowColor;
+        }
+        &.photoLabelEmpty {
+            padding: 0 50px;
+            box-sizing: border-box;
+            font-size: 11px;
+            line-height: 125%;
+            font-weight: 400;
+            color: $darkGreyColor;
+            text-transform: inherit;
+            text-align: center;
+            letter-spacing: 0;
+            background: $bgSubColor;
+        }
+    }
+    .inputFieldPicture {
+        z-index: 1;
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        display: block;
+        width: inherit;
+        height: inherit;
     }
 }
