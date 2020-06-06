@@ -1,0 +1,79 @@
+<section class="pageHeader">
+    <div class="wrapper headerWrapper">
+        <div class="contentWrapper">
+            <h1 class="pageTitle">Portfolio</h1>
+            <nav class="breadcrumbs">
+                <ul class="breadcrumbList">
+                    <li class="breadcrumbLinkWrapper">
+                        <a class="breadcrumbLink" href="/">Basement Remodeling Company</a>
+                    </li>
+                    <li class="breadcrumbLinkWrapper">
+                        <a class="breadcrumbLink" href="/portfolio/">Portfolio</a>
+                    </li>
+                    <li class="breadcrumbLinkWrapper">
+                        <span class="breadcrumbLink breadcrumbActive">{{{ city }}} {{{ work }}}</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="portfolioWork">
+    <div class="wrapper slimWrapper">
+        <h1 class="sectionTitle">{{{ city }}} {{{ work }}}</h1>
+        <div class="headerArrows">
+            <button title="View previous portfolio work"
+                    class="headerArrow leftArrow">View previous portfolio work</button>
+            <button title="View next portfolio work"
+                    class="headerArrow rightArrow">View next portfolio work</button>
+        </div>
+        <div class="squareData">{{{ square }}} SQ. FT.</div>
+        <div class="picturesWrapper">
+            <div class="pictureFull">
+                <picture>
+                    <source srcset="/public/images/work_1_1440.webp,
+                                    /public/images/work_1_1440@2x.webp 2x"
+                            type="image/webp">
+                    <source srcset="/public/images/work_1_1440.jpg,
+                                    /public/images/work_1_1440@2x.jpg 2x"
+                            type="image/jpeg">
+                    <img class="fullsizePicture"
+                         data-picture="/public/images/work_1_1440.jpg"
+                         src="/public/images/work_1_1440.jpg"
+                         srcset="/public/images/work_1_1440.jpg,
+                                 /public/images/work_1_1440@2x.jpg 2x"
+                         alt="{{{ city }}} {{{ work }}}">
+                </picture>
+            </div>
+            <div class="portfolioPreviews">
+                <ul class="previewList">
+                    {{# each previews }}
+                        <li class="previewWrapper">
+                            <picture>
+                                <source srcset="/public/images/{{{ preview }}}_1440.webp,
+                                                /public/images/{{{ preview }}}_1440@2x.webp 2x"
+                                        type="image/webp">
+                                <source srcset="/public/images/{{{ preview }}}_1440.jpg,
+                                                /public/images/{{{ preview }}}_1440@2x.jpg 2x"
+                                        type="image/jpeg">
+                                <img class="previewImage"
+                                     data-picture="/public/images/{{{ picture }}}_1440.jpg"
+                                     src="/public/images/{{{ preview }}}_1440.jpg"
+                                     srcset="/public/images/{{{ preview }}}_1440.jpg,
+                                             /public/images/{{{ preview }}}_1440@2x.jpg 2x"
+                                     alt="{{{ title }}}">
+                            </picture>
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        <p class="textBlock">A dazzling new home in Rockville, MD with a gently sloping backyard features an amazing sky blue exterior with white trimming, balcony walkway, rowed windows and a spectacular stone accent wall denoting the entrance. Inside, a heavily recessed, darkened door frame with dramatic side windows creates a striking impression against a neutral backdrop of soft grays, LVT flooring and recessed row lighting. The neutral motif extends into the kitchen and dining room (complete with wraparound countertops, cabinets, and a center island), varying only slightly in the living room area by incorporating crisp white-on-white walls, ceiling and trim in contrast to darker LVT flooring. An accent wall with artificial fireplace masterfully draws the eye.</p>
+        <p class="textBlock">The laundry room has a stacked washer and dryer tucked away neatly across from a stairway with clean white railings and banisters that match the light tones of the LVT flooring. Four bedrooms each have an abundance of natural lighting while maintaining a distinct look and feel through sweeping architectural curves and strategic window placing. The master bathroom has separate toilets, matching extra-wide countertops with twin vanity mirrors and lighted frames, recessed lighting, and a tiled shower with a retractable wand and pull-open glass doors.</p>
+        <p class="textBlock">Finally, the half-submerged ground floor boasts great acoustics and fun games in the music room, with LVT flooring and neutral gray colors. A giant metallic gray garage with white trimming has enough room for any car collector. Overall, a beautiful new home with a uniform look that’s bold and inviting.</p>
+        <div class="buttonWrapper">
+            <a href="/portfolio/" title="Return to portfolio" class="backButton">GO BACK</a>
+        </div>
+    </div>
+</section>

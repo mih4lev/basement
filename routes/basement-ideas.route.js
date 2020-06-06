@@ -23,13 +23,13 @@ router.get(`/`, async (request, response) => {
 router.get(`/:categoryTitle`, async (request, response) => {
     const { params: { categoryTitle }} = request;
     const data = { ...request.data };
-    response.render(`pages/basement-ideas/basement-ideas`, data);
+    response.render(`pages/basement-ideas/categories/main-categories`, data);
 });
 
 router.get(`/:categoryTitle/:subCategoryTitle`, async (request, response) => {
     const { params: { categoryTitle, subCategoryTitle }} = request;
     const data = { ...request.data };
-    response.render(`pages/basement-ideas/basement-ideas`, data);
+    response.render(`pages/basement-ideas/categories/sub-categories`, data);
 });
 
 module.exports = router;

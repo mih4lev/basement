@@ -6,7 +6,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-1"
+            "image": "portfolio-1",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 2,
@@ -14,7 +136,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-2"
+            "image": "portfolio-2",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 3,
@@ -22,7 +266,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-3"
+            "image": "portfolio-3",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 4,
@@ -30,7 +396,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-4"
+            "image": "portfolio-4",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 5,
@@ -38,7 +526,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-5"
+            "image": "portfolio-5",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 6,
@@ -46,7 +656,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-6"
+            "image": "portfolio-6",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 7,
@@ -54,7 +786,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-7"
+            "image": "portfolio-7",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 8,
@@ -62,7 +916,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-8"
+            "image": "portfolio-8",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 9,
@@ -70,7 +1046,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-9"
+            "image": "portfolio-9",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 10,
@@ -78,7 +1176,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-10"
+            "image": "portfolio-10",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 11,
@@ -86,7 +1306,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-11"
+            "image": "portfolio-11",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 12,
@@ -94,7 +1436,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-12"
+            "image": "portfolio-12",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 13,
@@ -102,7 +1566,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-13"
+            "image": "portfolio-13",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 14,
@@ -110,7 +1696,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-14"
+            "image": "portfolio-14",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 15,
@@ -118,7 +1826,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-15"
+            "image": "portfolio-15",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 16,
@@ -126,7 +1956,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-16"
+            "image": "portfolio-16",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 17,
@@ -134,7 +2086,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-17"
+            "image": "portfolio-17",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 18,
@@ -142,7 +2216,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-18"
+            "image": "portfolio-18",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 19,
@@ -150,7 +2346,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-19"
+            "image": "portfolio-19",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 20,
@@ -158,7 +2476,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-20"
+            "image": "portfolio-20",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 21,
@@ -166,7 +2606,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-21"
+            "image": "portfolio-21",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 22,
@@ -174,7 +2736,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-22"
+            "image": "portfolio-22",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 23,
@@ -182,7 +2866,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-23"
+            "image": "portfolio-23",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 24,
@@ -190,7 +2996,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-24"
+            "image": "portfolio-24",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 25,
@@ -198,7 +3126,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-25"
+            "image": "portfolio-25",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 26,
@@ -206,7 +3256,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-26"
+            "image": "portfolio-26",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 27,
@@ -214,7 +3386,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-27"
+            "image": "portfolio-27",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         },
         {
             "id": 28,
@@ -222,7 +3516,129 @@
             "city": "Ellicott City, MD",
             "square": 1420,
             "projectURL": false,
-            "image": "portfolio-28"
+            "image": "portfolio-28",
+            "previews": [
+                {
+                    "preview": "work_1-thumb",
+                    "picture": "work_1",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_2-thumb",
+                    "picture": "work_2",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_3-thumb",
+                    "picture": "work_3",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_4-thumb",
+                    "picture": "work_4",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_5-thumb",
+                    "picture": "work_5",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_6-thumb",
+                    "picture": "work_6",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_7-thumb",
+                    "picture": "work_7",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_8-thumb",
+                    "picture": "work_8",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_9-thumb",
+                    "picture": "work_9",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_10-thumb",
+                    "picture": "work_10",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_11-thumb",
+                    "picture": "work_11",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_12-thumb",
+                    "picture": "work_12",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_13-thumb",
+                    "picture": "work_13",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_14-thumb",
+                    "picture": "work_14",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_15-thumb",
+                    "picture": "work_15",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_16-thumb",
+                    "picture": "work_16",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_17-thumb",
+                    "picture": "work_17",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_18-thumb",
+                    "picture": "work_18",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_19-thumb",
+                    "picture": "work_19",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_20-thumb",
+                    "picture": "work_20",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_21-thumb",
+                    "picture": "work_21",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_22-thumb",
+                    "picture": "work_22",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_23-thumb",
+                    "picture": "work_23",
+                    "title": "Preview"
+                },
+                {
+                    "preview": "work_24-thumb",
+                    "picture": "work_24",
+                    "title": "Preview"
+                }
+            ]
         }
     ]
 }

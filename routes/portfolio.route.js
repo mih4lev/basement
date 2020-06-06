@@ -17,7 +17,7 @@ router.get(`/`, async (request, response) => {
 
 router.get(`/map`, async (request, response) => {
     const data = Object.assign(request.data);
-    response.render(`pages/portfolio/map`, data);
+    response.render(`pages/portfolio/map/map`, data);
 });
 
 router.get(`/:requestID`, async (request, response) => {
@@ -27,7 +27,7 @@ router.get(`/:requestID`, async (request, response) => {
     const filterFunc = ({ id }) => Number(requestID) === Number(id);
     const portfolioData = portfolio.filter(filterFunc);
     const data = Object.assign(request.data, portfolioData[0]);
-    response.render(`pages/portfolio/portfolio-single`, data);
+    response.render(`pages/portfolio/work/work`, data);
 });
 
 module.exports = router;

@@ -1,0 +1,130 @@
+<section class="pageHeader subCategories">
+    <div class="wrapper headerWrapper">
+        <div class="subCategoriesWrapper">
+            <div class="pageTitleWrapper">
+                <img class="pageTitleImage"
+                     src="/public/images/categories/cat-1-2_131x131.jpg"
+                     alt="Bathrooms">
+                <h1 class="pageTitle">Bathrooms</h1>
+            </div>
+            <div class="categoriesListWrapper">
+                <p class="subCategoriesHeader">Available subcategories:</p>
+                <ul class="categoryList">
+                    <li class="categoryWrapper activeCategory">
+                        <a class="categoryLink" href="#">
+                            <img class="categoryImage"
+                                 src="/public/images/categories/cat-1-2-1_85x85.jpg"
+                                 alt="Half">
+                            Half
+                        </a>
+                    </li>
+                    <li class="categoryWrapper">
+                        <a class="categoryLink" href="#">
+                            <img class="categoryImage"
+                                 src="/public/images/categories/cat-1-2-2_85x85.jpg"
+                                 alt="Basic">
+                            Basic
+                        </a>
+                    </li>
+                    <li class="categoryWrapper">
+                        <a class="categoryLink" href="#">
+                            <img class="categoryImage"
+                                 src="/public/images/categories/cat-1-2-3_85x85.jpg"
+                                 alt="Upgraded">
+                            Upgraded
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <nav class="breadcrumbs">
+            <ul class="breadcrumbList">
+                <li class="breadcrumbLinkWrapper">
+                    <a class="breadcrumbLink" href="/">Basement Remodeling Company</a>
+                </li>
+                <li class="breadcrumbLinkWrapper">
+                    <a class="breadcrumbLink" href="/basement-ideas/">Basement ideas</a>
+                </li>
+                <li class="breadcrumbLinkWrapper">
+                    <a class="breadcrumbLink" href="/basement-ideas/spaces/">Spaces</a>
+                </li>
+                <li class="breadcrumbLinkWrapper">
+                    <span class="breadcrumbLink breadcrumbActive">Bathrooms</span>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>
+
+<section class="filtersWrapper">
+    <div class="wrapper headerWrapper">
+        <ul class="filterList">
+            <li class="filter dropdownFilter filterStyle">STYLE</li>
+            <li class="filter dropdownFilter activeFilter filterPrice">PRICE</li>
+            <li class="filter dropdownFilter filterSize">SIZE</li>
+            <li class="filter dropdownFilter clickedFilter filterWallColor"> WALL COLOR</li>
+            <li class="filter dropdownFilter filterFloorMaterial">FLOOR MATERIAL</li>
+            <li class="filter dropdownFilter filterFeatures">FEATURES</li>
+        </ul>
+    </div>
+</section>
+
+<section class="ideasActiveFilters">
+    <div class="wrapper headerWrapper">
+        <ul class="activeFilterList">
+            <li class="activeFilter">CONTEMPORARY
+                <button class="removeFilterButton">X</button>
+            </li>
+            <li class="activeFilter">$$
+                <button class="removeFilterButton">X</button>
+            </li>
+            <li class="activeFilter">LVT
+                <button class="removeFilterButton">X</button>
+            </li>
+            <li class="activeFilter">WHITE
+                <button class="removeFilterButton">X</button>
+            </li>
+            <li class="activeFilter">GRAY
+                <button class="removeFilterButton">X</button>
+            </li>
+            <li class="activeFilter">BEIGE
+                <button class="removeFilterButton">X</button>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="ideasMain">
+    <div class="wrapper listWrapper">
+        <button class="ideasSortWrapper">WHAT’S NEW</button>
+        <ul class="ideaList">
+            {{# each ideas }}
+                <li class="ideaWrapper">
+                    <picture class="ideaPhoto">
+                        <source srcset="/public/images/temp/{{{ image }}}.webp,
+                                        /public/images/temp/{{{ image }}}@2x.webp 2x"
+                                type="image/webp">
+                        <img class="ideaPhoto"
+                             src="/public/images/temp/{{{ image }}}.jpg"
+                             srcset="/public/images/temp/{{{ image }}}.jpg,
+                                     /public/images/temp/{{{ image }}}@2x.jpg 2x"
+                             alt="{{{ title }}}">
+                    </picture>
+                    <button class="saveIdea">SAVE TO COLLECTION</button>
+                    <h3 class="ideaTitle">{{{ title }}}</h3>
+                    <strong class="ideaAuthor">{{{ author }}}</strong>
+                </li>
+            {{/each}}
+        </ul>
+        <button class="showMoreButton">SHOW MORE</button>
+    </div>
+</section>
+
+<section class="ideasFooter">
+    <div class="wrapper headerWrapper">
+        <h2>Basement Remodeling Ideas</h2>
+        <p>For the ultimate in entertainment, consider installing a premium home theater! With authentic movie seats, theater-style carpet, walls, and a recessed ceiling to hold your deluxe sound system, you and your family will feel like you are out for a night on the town.</p>
+        <p>Like pocket doors, interior sliding barn doors are a rustic alternative to the traditional swinging door format. Interior barn style doors are made of virtually any material you can think of, from iron to steel, but most prefer the timeless look of a weathered set of double barn doors. Barn doors make great focal points by framing the beautiful room behind them on both sides, lending geometrical symmetry to the overall floorplan.</p>
+        <p>Or, perhaps you would like to convey a more family-oriented design with soft lighting, modern furniture and casual artwork? Either way, our design experts can make all of your home theater basement ideas come true! Plus, you’ll always have the best seat!</p>
+    </div>
+</section>
