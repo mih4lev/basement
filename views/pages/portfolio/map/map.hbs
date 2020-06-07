@@ -18,3 +18,69 @@
         </div>
     </div>
 </section>
+
+<section class="filtersWrapper">
+    <div class="wrapper headerWrapper">
+        <ul class="filterList">
+            <li class="filter dropdownFilter activeFilter filterStyle">STYLE</li>
+            <li class="filter dropdownFilter activeFilter filterPrice">PRICE</li>
+            <li class="filter dropdownFilter activeFilter filterWallColor"> WALL COLOR</li>
+            <li class="filter dropdownFilter activeFilter filterFloorMaterial">FLOOR MATERIAL</li>
+        </ul>
+    </div>
+</section>
+
+<section class="portfolioActiveFilters">
+    <div class="wrapper headerWrapper">
+        <ul class="activeFilterList">
+            <li class="activeFilter">CONTEMPORARY
+                <button class="removeFilterButton">X</button>
+            </li>
+            <li class="activeFilter">$$
+                <button class="removeFilterButton">X</button>
+            </li>
+            <li class="activeFilter">LVT
+                <button class="removeFilterButton">X</button>
+            </li>
+            <li class="activeFilter">WHITE
+                <button class="removeFilterButton">X</button>
+            </li>
+            <li class="activeFilter">GRAY
+                <button class="removeFilterButton">X</button>
+            </li>
+            <li class="activeFilter">BEIGE
+                <button class="removeFilterButton">X</button>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="mapSection">
+    <div class="mapBlock">
+        <div class="mapBlockWrapper"></div>
+        <div class="mapViewChanger">
+            <button class="mapViewButton activeButton" type="button" title="Switch to map">MAP</button>
+            <button class="mapViewButton" type="button" title="Switch to satellite">SATELLITE</button>
+        </div>
+        <a class="mapBackButton" href="/portfolio/">BACK TO PORTFOLIO</a>
+        <div class="mapControlBlock">
+            <button class="locationFindButton" type="button" title="Show my location">Show my location</button>
+            <div class="locationZoomButtons">
+                <button class="zoomButton zoomInButton" type="button" title="Zoom in">Zoom in</button>
+                <button class="zoomButton zoomOutButton" type="button" title="Zoom out">Zoom out</button>
+            </div>
+        </div>
+        <div class="mapPin tempPin"></div>
+        <div class="pinCard">
+            <h2 class="cardHeader">Rockville, MD New Construction</h2>
+            <div class="cardPictureWrapper">
+                <img class="cardPicture"
+                     src="/public/images/temp/portfolio/portfolio-1_252x252.jpg"
+                     alt="Rockville, MD New Construction">
+                <a class="cardButton" href="/portfolio/1">VIEW PROJECT</a>
+            </div>
+            <button class="closeButton" title="Close pin">Close pin</button>
+        </div>
+    </div>
+    <p class="mapNotification">All map markers are approximate and does not reflect exact location of the project.</p>
+</section>
