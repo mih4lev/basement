@@ -154,6 +154,17 @@
     }
 }
 
+%textButton {
+    @extend %button;
+    color: $blackColor;
+    border: 1px solid transparent;
+    background: transparent;
+    &:hover {
+        border: 1px solid darken($blueColor, 10%);
+        color: darken($blueColor, 10%);
+    }
+}
+
 %activeButton {
     @extend %button;
     color: $blackColor;
@@ -165,17 +176,6 @@
         border: 1px solid $blueColor;
         background: transparent;
         cursor: default;
-    }
-}
-
-%textButton {
-    @extend %button;
-    color: $blackColor;
-    border: 1px solid transparent;
-    background: transparent;
-    &:hover {
-        border: 1px solid darken($blueColor, 10%);
-        color: darken($blueColor, 10%);
     }
 }
 

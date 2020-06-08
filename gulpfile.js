@@ -111,7 +111,7 @@ gulp.task(`webpTemp`, () => {
 });
 
 // const tasks = [`browser-sync`, `styles`, `fonts`, `bitmap`, `webp`, `vector`, `sprite`];
-const tasks = [`browser-sync`, `styles`, `bitmapTemp`, `webpTemp`];
+// const tasks = [`browser-sync`, `styles`, `bitmapTemp`, `webpTemp`];
 // const tasks = [`browser-sync`, `styles`, `webpTemp`];
-// const tasks = [`browser-sync`, `styles`];
+const tasks = [`browser-sync`, `styles`];
 gulp.task(`default`, gulp.parallel(...tasks));

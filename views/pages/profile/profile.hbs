@@ -14,7 +14,7 @@
                              src="/public/images/temp/avatar_130x130.jpg"
                              srcset="/public/images/temp/avatar_130x130.jpg,
                                      /public/images/temp/avatar_130x130@x2.jpg 2x"
-                             alt="avatar photo">
+                             alt="Avatar photo">
                     </picture>
                 </div>
                 <div class="userInfoWrapper">
@@ -23,13 +23,157 @@
                 </div>
             </div>
             <div class="cardButtonsWrapper">
-                <button class="cardButton editProfileButton" type="button">
-                    <span class="cardIcon"></span> Edit profile
+                <button class="cardButton editProfileButton" type="button" title="Edit profile">
+                    <span class="cardIcon">EDIT</span> Edit profile
                 </button>
-                <button class="cardButton addPhotoButton" type="button">
-                    <span class="cardIcon"></span> Add photo
+                <button class="cardButton addPhotoButton" type="button" title="Add photo">
+                    <span class="cardIcon">ADD</span> Add photo
                 </button>
             </div>
         </div>
+    </div>
+</section>
+
+<section class="userSavedPhotos">
+    <div class="wrapper center">
+        <div class="sectionHeader">
+            <h2 class="sectionTitle">My collection</h2>
+            <button class="createAlbumButton" type="button" title="Create album">CREATE ALBUM</button>
+        </div>
+        {{> page-header/profile-menu }}
+        <ul class="albumList">
+            <li class="albumWrapper">
+                <a class="albumLink" href="#">
+                    <div class="albumCoverWrapper">
+                        <picture>
+                            <source srcset="/public/images/temp/ideas_page-image8.webp,
+                                            /public/images/temp/ideas_page-image8@2x.webp 2x"
+                                    type="image/webp">
+                            <source srcset="/public/images/temp/ideas_page-image8.jpg,
+                                            /public/images/temp/ideas_page-image8@2x.jpg 2x"
+                                    type="image/jpeg">
+                            <img class="albumCoverPicture"
+                                 src="/public/images/temp/ideas_page-image8.jpg"
+                                 srcset="/public/images/temp/ideas_page-image8.jpg,
+                                         /public/images/temp/ideas_page-image8@2x.jpg 2x"
+                                 alt="My Bathrooms">
+                        </picture>
+                        <div class="albumPicturesCount">16</div>
+                    </div>
+                </a>
+                <button class="editAlbumButton" type="button" title="Edit album">Edit album</button>
+                <h3 class="albumTitle">My Bathrooms</h3>
+            </li>
+            <li class="albumWrapper">
+                <a class="albumLink" href="#">
+                    <div class="albumCoverWrapper">
+                        <picture>
+                            <source srcset="/public/images/temp/album_130x130.webp,
+                                            /public/images/temp/album_130x130@x2.webp 2x"
+                                    type="image/webp">
+                            <source srcset="/public/images/temp/album_130x130.jpg,
+                                            /public/images/temp/album_130x130@x2.jpg 2x"
+                                    type="image/jpeg">
+                            <img class="albumCoverPicture"
+                                 src="/public/images/temp/album_130x130.jpg"
+                                 srcset="/public/images/temp/album_130x130.jpg,
+                                         /public/images/temp/album_130x130@x2.jpg 2x"
+                                 alt="Fireplaces">
+                        </picture>
+                        <div class="albumPicturesCount">4</div>
+                    </div>
+                </a>
+                <button class="editAlbumButton" type="button" title="Edit album">Edit album</button>
+                <h3 class="albumTitle">Fireplaces</h3>
+            </li>
+            <li class="albumWrapper">
+                <a class="albumLink" href="#">
+                    <div class="albumCoverWrapper">
+                        <picture>
+                            <source srcset="/public/images/temp/album_add-image9.webp,
+                                            /public/images/temp/album_add-image9@2x.webp 2x"
+                                    type="image/webp">
+                            <source srcset="/public/images/temp/album_add-image9.jpg,
+                                            /public/images/temp/album_add-image9@2x.jpg 2x"
+                                    type="image/jpeg">
+                            <img class="albumCoverPicture"
+                                 src="/public/images/temp/album_add-image9.jpg"
+                                 srcset="/public/images/temp/album_add-image9.jpg,
+                                         /public/images/temp/album_add-image9@2x.jpg 2x"
+                                 alt="My Bathrooms">
+                        </picture>
+                        <div class="albumPicturesCount">231</div>
+                    </div>
+                </a>
+                <button class="editAlbumButton" type="button" title="Edit album">Edit album</button>
+                <h3 class="albumTitle">My Offices</h3>
+            </li>
+            <li class="albumWrapper">
+                <a class="albumLink" href="#">
+                    <div class="albumCoverWrapper">
+                        <picture>
+                            <source srcset="/public/images/temp/album_add-image6.webp,
+                                        /public/images/temp/album_add-image6@2x.webp 2x"
+                                    type="image/webp">
+                            <source srcset="/public/images/temp/album_add-image6.jpg,
+                                        /public/images/temp/album_add-image6@2x.jpg 2x"
+                                    type="image/jpeg">
+                            <img class="albumCoverPicture"
+                                 src="/public/images/temp/album_add-image6.jpg"
+                                 srcset="/public/images/temp/album_add-image6.jpg,
+                                     /public/images/temp/album_add-image6@2x.jpg 2x"
+                                 alt="My Bathrooms">
+                        </picture>
+                        <div class="albumPicturesCount">28</div>
+                    </div>
+                </a>
+                <button class="editAlbumButton" type="button" title="Edit album">Edit album</button>
+                <h3 class="albumTitle">Awesome stairs</h3>
+            </li>
+            <li class="albumWrapper">
+                <div class="albumCoverWrapper">
+                    <div class="albumAddCover"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="ideasMain">
+    <div class="wrapper listWrapper">
+        <ul class="ideaList">
+            <li class="ideaWrapper">
+                <button class="addPhotoButton" title="Add a new photo" type="button">Add a new photo</button>
+            </li>
+            {{# each ideas }}
+                <li class="ideaWrapper">
+                    <div class="ideaPhotoWrapper">
+                        <picture class="ideaPhoto">
+                            <source srcset="/public/images/temp/{{{ image }}}.webp,
+                                        /public/images/temp/{{{ image }}}@2x.webp 2x"
+                                    type="image/webp">
+                            <img class="ideaPhoto"
+                                 src="/public/images/temp/{{{ image }}}.jpg"
+                                 srcset="/public/images/temp/{{{ image }}}.jpg,
+                                     /public/images/temp/{{{ image }}}@2x.jpg 2x"
+                                 alt="{{{ title }}}">
+                        </picture>
+                        <button class="deleteCardButton" title="Delete picture" type="button">DELETE</button>
+                        <div class="hoverCardWrapper">
+                            <div class="deleteWrapper">
+                                <p class="deleteAnnotation">Are you sure you want to remove this photo?</p>
+                                <div class="deleteButtonsWrapper">
+                                    <button class="cancelButton" title="Cancel" type="button">CANCEL</button>
+                                    <button class="deleteButton" title="Delete" type="button">DELETE</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="ideaTitle">{{{ title }}}</h3>
+                    <strong class="ideaAuthor">{{{ author }}}</strong>
+                </li>
+            {{/each}}
+        </ul>
+        <button class="showMoreButton">SHOW MORE</button>
     </div>
 </section>

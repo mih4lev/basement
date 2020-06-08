@@ -1,0 +1,26 @@
+.profileMenu {
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style-type: none;
+    @include minWidth(480) {
+        margin-top: 20px;
+    }
+    .profileLinkWrapper {
+        margin-right: 5px;
+        @include minWidth(480) {
+            margin-right: 10px;
+        }
+        &:last-of-type {
+            margin-left: 0;
+        }
+        .subLink {
+            @extend %textButton;
+        }
+        .activeLink {
+            @extend %activeButton;
+        }
+    }
+}
