@@ -2,6 +2,12 @@ const { Router } = require(`express`);
 const router = new Router();
 const fs = require(`fs`);
 
+router.use((request, response, next) => {
+    const isProfile = true;
+    request.data = { ...request.data, isProfile };
+    next();
+});
+
 router.get(`/`, async (request, response) => {
     // basement-ideas
     const mockJSON = fs.readFileSync(`data-mock/basement-ideas.json`);

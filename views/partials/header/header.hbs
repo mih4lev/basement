@@ -3,28 +3,32 @@
         <a class="headerLogoLink" href="/">
             <picture class="headerLogo">
                 <source srcset="/public/images/logo.webp,
-                                        /public/images/logo@2x.webp 2x,
-                                        /public/images/logo@3x.webp 3x,
-                                        /public/images/logo@4x.webp 4x"
+                                /public/images/logo@2x.webp 2x,
+                                /public/images/logo@3x.webp 3x,
+                                /public/images/logo@4x.webp 4x"
                         type="image/webp">
                 <img class="headerLogo"
                      src="/public/images/logo.png"
                      srcset="/public/images/logo.png,
-                                     /public/images/logo@2x.png 2x,
-                                     /public/images/logo@3x.png 3x,
-                                     /public/images/logo@4x.png 4x"
+                             /public/images/logo@2x.png 2x,
+                             /public/images/logo@3x.png 3x,
+                             /public/images/logo@4x.png 4x"
                      alt="Basement remodeling Logo">
             </picture>
         </a>
         <nav class="headerMenu">
             <ul class="menuList mainMenuList">
                 <li class="menuLinkWrapper">
+                    <a class="menuLink{{# if isBasementIdeas }} activeLink{{/ if }}"
+                       href="/basement-ideas/">BASEMENT IDEAS</a>
+                </li>
+                <li class="menuLinkWrapper">
                     <a class="menuLink{{# if isPortfolio }} activeLink{{/ if }}"
                        href="/portfolio/">PORTFOLIO</a>
                 </li>
                 <li class="menuLinkWrapper">
-                    <a class="menuLink{{# if isBasementIdeas }} activeLink{{/ if }}"
-                       href="/basement-ideas/">BASEMENT IDEAS</a>
+                    <a class="menuLink{{# if isServices }} activeLink{{/ if }}"
+                       href="#">SERVICES</a>
                 </li>
                 <li class="menuLinkWrapper">
                     <span class="menuLink dropdownMenuLink{{# if isHowItWorks }} activeLink{{/ if }}">
@@ -69,12 +73,51 @@
                     </ul>
                 </li>
             </ul>
-            <div class="headerButtons">
-                <a href="/instant-quote/" class="onlineQuoteButton">GET ONLINE QUOTE</a>
-                <button class="phoneButton">301-798-4444</button>
+            <div class="topSection">
+                <div class="topWrapper">
+                    <div class="menuPhones">
+                        <div class="phoneWrapper">
+                            <span class="stateLabel">MD</span>
+                            <div class="statePhones">
+                                <a class="menuPhone" href="tel:+13017984444">301-798-4444</a>
+                                <a class="menuPhone" href="tel:+14434242425">443-424-2425</a>
+                            </div>
+                        </div>
+                        <div class="phoneWrapper">
+                            <span class="stateLabel">VA</span>
+                            <div class="statePhones">
+                                <a class="menuPhone" href="tel:+17032700141">703-270-0141</a>
+                            </div>
+                        </div>
+                        <div class="phoneWrapper">
+                            <span class="stateLabel">DC</span>
+                            <div class="statePhones">
+                                <a class="menuPhone" href="tel:+17032700141">202-410-0111</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="serviceLinks">
+                        <a class="serviceLink scheduleLink" href="#">
+                            SCHEDULE YOUR <span class="nowrap">IN-HOME</span> CONSULTATION
+                        </a>
+                        <a class="serviceLink quoteLink" href="#">GET ONLINE QUOTE</a>
+                    </div>
+                </div>
+            </div>
+            <div class="socialButtons">
+                <button class="socialButton instagramButton" type="button" title="Instagram">Instagram</button>
+                <button class="socialButton facebookButton" type="button" title="Facebook">Facebook</button>
             </div>
         </nav>
-        <button class="headerLoginButton">SIGN IN</button>
-        <button class="headerSandwichButton">SHOW MENU</button>
+        <a class="mainPhone" href="tel:+18772242434">877-224-2434</a>
+        {{# if isLogin }}
+            <a class="headerLoginButton" href="/profile/">
+                <img class="avatarPicture" src="/public/images/temp/avatar_130x130.jpg" alt="George Washington">
+                George Washington
+            </a>
+        {{ else }}
+            <button class="headerLoginButton userLogin" type="button" title="Log in">LOG IN</button>
+        {{/ if }}
+        <button class="headerSandwichButton" title="Show menu">SHOW MENU</button>
     </div>
 </header>

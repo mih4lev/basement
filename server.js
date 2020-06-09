@@ -5,6 +5,7 @@ const hbs = require(`hbs`);
 const cookieParser = require(`cookie-parser`);
 const cors = require(`cors`);
 const corsOptions = require("./middlewares/cors.middleware");
+const loginMiddleware = require("./middlewares/login.middleware");
 const app = express();
 // compress response
 app.use(compression());
@@ -23,6 +24,7 @@ app.use(`/data-mock`, express.static(__dirname + `/data-mock`));
 // middleware
 app.use(express.json({ extended: true }));
 app.use(cookieParser('secretKeyBasementRemodelingDotCom'));
+app.use(loginMiddleware);
 app.use('/api', cors(corsOptions));
 app.use('/', require('./routes/home.route'));
 app.use('/local', require('./routes/local.route'));

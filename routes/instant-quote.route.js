@@ -4,7 +4,7 @@ const fs = require(`fs`);
 
 router.use((request, response, next) => {
     const isInstantQuote = true;
-    request.data = Object.assign({ isInstantQuote });
+    request.data = { ...request.data, isInstantQuote };
     next();
 });
 

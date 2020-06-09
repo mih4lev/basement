@@ -4,7 +4,7 @@ const fs = require(`fs`);
 
 router.use((request, response, next) => {
     const isHowItWorks = true;
-    request.data = Object.assign({ isHowItWorks });
+    request.data = { ...request.data, isHowItWorks };
     next();
 });
 

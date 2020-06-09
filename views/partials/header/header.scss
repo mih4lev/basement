@@ -1,25 +1,56 @@
 header {
+    @extend %animation;
     z-index: 11;
     position: fixed;
     width: 100%;
-    height: 96px;
+    height: 66px;
     background: $bgMainColor;
     border-bottom: 1px solid $bgMainColor;
-    @extend %animation;
+    @include minWidth(480) {
+        height: 96px;
+    }
+    @include minWidth(1000) {
+        height: 137px;
+    }
+
+    .wrapper {
+        @include minWidth(1000) {
+            position: static;
+            margin-top: 41px;
+            padding: 0;
+            height: 96px;
+        }
+    }
 
     .headerLogoLink {
         margin-right: auto;
+        .headerLogo {
+            margin-top: -7px;
+            width: 93px;
+            height: 30px;
+            @include minWidth(480) {
+                margin-top: 0;
+                width: 169px;
+                height: 54px;
+            }
+        }
     }
 
     .headerMenu {
+        @extend %animation;
         position: fixed;
-        top: 97px;
+        top: 67px;
         right: -210px;
         height: 100vh;
         width: 210px;
         background: $bgMainColor;
-        @extend %animation;
-        @include minWidth(768) {
+        @include minWidth(480) {
+            top: 97px;
+        }
+        @include minWidth(1000) {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
             position: static;
             top: auto;
             right: auto;
@@ -27,10 +58,30 @@ header {
             width: auto;
             background: transparent;
         }
-        @include minWidth(1440) {
-            display: flex;
-            flex-direction: row;
-            align-items: baseline;
+        .topSection {
+            @include minWidth(1000) {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 40px;
+                background-color: $bgMainColor;
+                border-bottom: 1px solid $darkGreyColor;
+            }
+            .topWrapper {
+                @include minWidth(1000) {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin: 0 auto;
+                    width: 894px;
+                    height: inherit;
+                }
+                @include minWidth(1440) {
+                    width: 1032px;
+                }
+            }
         }
     }
 
@@ -47,21 +98,34 @@ header {
         padding-left: 0;
         list-style-type: none;
         .menuLinkWrapper {
+            @extend %animation;
             height: 30px;
             overflow: hidden;
-            @extend %animation;
+            @include minWidth(1000) {
+                &:hover {
+                    .menuLink {
+                        color: $blueColor;
+                    }
+                    .subMenuList .menuLink {
+                        color: $greyColor;
+                        &:hover {
+                            color: $blueColor;
+                        }
+                    }
+                }
+            }
             &.activeDropdownLink {
                 height: auto;
                 .menuLink {
                     &:after {
                         transform: scale(0.8) rotate(270deg);
-                        @include minWidth(1440) {
+                        @include minWidth(1000) {
                             transform: translateY(-50%);
                         }
                     }
                 }
             }
-            @include minWidth(1440) {
+            @include minWidth(1000) {
                 &:hover {
                     & .subMenuList {
                         opacity: 1;
@@ -82,24 +146,23 @@ header {
             height: 30px;
             font-size: 13px;
             font-weight: 700;
-            color: $whiteColor;
+            color: $greyColor;
             cursor: pointer;
             @extend %animation;
             &.activeLink {
                 color: $blueColor;
                 cursor: default;
-                &:hover {
+                @include minWidth(1000) {
                     color: $whiteColor;
                 }
-                @include minWidth(1440) {
-                    color: $whiteColor;
-                    border-bottom: 1px solid $blueColor;
+                &:hover {
+                    color: $blueColor;
                 }
             }
             &:hover {
                 background: darken($bgMainColor, 5%)
             }
-            @include minWidth(1440) {
+            @include minWidth(1000) {
                 margin-right: 15px;
                 padding-left: 0;
                 padding-right: 0;
@@ -120,7 +183,7 @@ header {
                 @extend %animation;
                 transform: scale(0.8) rotate(90deg);
                 background: $whiteColor;
-                @include minWidth(1440) {
+                @include minWidth(1000) {
                     display: none;
                 }
             }
@@ -133,21 +196,22 @@ header {
 
     .mainMenuList {
         @extend %animation;
-        @include minWidth(768) {
-            margin-top: 0;
-            margin-bottom: 0;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            position: fixed;
-            top: 97px;
-            right: -210px;
-            height: 100vh;
-            width: 210px;
-            background: $bgMainColor, 5%;
-        }
-        @include minWidth(1440) {
+        //@include minWidth(1000) {
+        //    margin-top: 0;
+        //    margin-bottom: 0;
+        //    padding-top: 10px;
+        //    padding-bottom: 10px;
+        //    position: fixed;
+        //    top: 97px;
+        //    right: -210px;
+        //    height: 100vh;
+        //    width: 210px;
+        //    background: $bgMainColor, 5%;
+        //}
+        @include minWidth(1000) {
             display: flex;
-            margin-top: 0;
+            margin-top: 12px;
+            margin-bottom: 0;
             padding-top: 0;
             padding-bottom: 0;
             position: static;
@@ -169,7 +233,7 @@ header {
                 display: block;
             }
         }
-        @include minWidth(1440) {
+        @include minWidth(1000) {
             &:before {
                 display: none;
             }
@@ -184,8 +248,12 @@ header {
         .menuLink {
             padding-left: 40px;
             color: $greyColor;
+            white-space: nowrap;
+            &:hover {
+                color: $blueColor;
+            }
         }
-        @include minWidth(1440) {
+        @include minWidth(1000) {
             opacity: 0;
             z-index: -10;
             margin-top: 50px;
@@ -215,9 +283,6 @@ header {
                 align-items: center;
                 justify-content: center;
                 height: 30px;
-                @include minWidth(1440) {
-                    height: auto;
-                }
                 .menuLink {
                     position: relative;
                     display: flex;
@@ -230,7 +295,7 @@ header {
                     padding-right: 40px;
                     &:hover {
                         background: $subMenuHoverColor;
-                        @include minWidth(1440) {
+                        @include minWidth(1000) {
                             color: $blueColor;
                         }
                     }
@@ -261,63 +326,306 @@ header {
         }
     }
 
-    .headerButtons {
+    .menuPhones {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        .onlineQuoteButton {
-            @extend %blueButton2;
-            margin-bottom: 10px;
+        margin-top: 40px;
+        padding: 0 20px;
+        @include minWidth(1000) {
+            flex-direction: row;
+            margin-top: 0;
+            padding: 0;
+            display: none;
         }
-        .phoneButton {
-            @extend %yellowButton2;
-            &:before {
-                @extend %buttonIconBefore;
-                @extend %phoneIcon;
-                background: $yellowColor;
+        @include minWidth(1440) {
+            display: flex;
+        }
+        //border-top: 1px solid $greyColor;
+        .phoneWrapper {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            &:last-of-type {
+                margin-bottom: 0;
             }
-            &:hover {
-                &:before {
-                    background: $whiteColor;
+            @include minWidth(1000) {
+                margin-bottom: 0;
+                margin-left: 20px;
+                &:first-of-type {
+                    margin-left: 0;
                 }
             }
-        }
-        @include minWidth(768) {
-            flex-direction: row;
-            .onlineQuoteButton {
-                margin-bottom: 0;
-                margin-right: 15px;
+            @include minWidth(1440) {
+
+            }
+            .stateLabel {
+                display: flex;
+                flex-direction: row;
+                width: 40px;
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                color: $whiteColor;
+                &:before {
+                    @extend %phoneIcon;
+                    content: "";
+                    margin-top: -2px;
+                    margin-right: 5px;
+                    background-color: $blueColor;
+                    @include minWidth(480) {
+                        margin-top: 0;
+                    }
+                }
+            }
+            .statePhones {
+                display: flex;
+                flex-direction: column;
+                margin-left: 5px;
+                font-size: 13px;
+                font-weight: 700;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                color: $blueColor;
+                @include minWidth(1000) {
+                    flex-direction: row;
+                }
+                .menuPhone {
+                    @extend %animation;
+                    margin-bottom: 5px;
+                    &:hover {
+                        color: $whiteColor;
+                    }
+                    @include minWidth(1000) {
+                        margin-bottom: 0;
+                        &:not(:first-of-type) {
+                            &:before {
+                                content: "/";
+                                color: $whiteColor;
+                                margin: 0 5px;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
 
+    .serviceLinks {
+        display: flex;
+        flex-direction: column;
+        margin: 40px auto 0;
+        padding: 0 20px;
+        box-sizing: border-box;
+        //border-top: 1px solid $greyColor;
+        @include minWidth(1000) {
+            flex-direction: row;
+            display: block;
+            margin: 0 0 0 auto;
+            padding: 0;
+        }
+        .serviceLink {
+            @extend %animation;
+            margin-bottom: 15px;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 125%;
+            letter-spacing: 0.05em;
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+            @include minWidth(1000) {
+                margin-left: 15px;
+                margin-bottom: 0;
+                &:first-of-type {
+                    margin-left: 0;
+                }
+            }
+            &.scheduleLink {
+                color: $yellowColor;
+                &:hover {
+                    color: $whiteColor;
+                }
+            }
+            &.quoteLink {
+                color: $blueColor;
+                &:hover {
+                    color: $whiteColor;
+                }
+            }
+            .nowrap {
+                white-space: nowrap;
+            }
+        }
+    }
+
+    .socialButtons {
+        display: flex;
+        flex-direction: row;
+        margin: 15px 20px 0;
+        @include minWidth(1000) {
+            display: none;
+        }
+        .socialButton {
+            margin-right: 10px;
+            width: 27px;
+            height: 27px;
+            font-size: 0;
+            border: 1px solid $bgSubColor;
+            border-radius: 50%;
+            background-color: transparent;
+            cursor: pointer;
+            outline: none;
+            &:hover {
+                opacity: 0.75;
+            }
+            &:last-of-type {
+                margin-right: 0;
+            }
+            &.instagramButton {
+                background-image: url("/public/images/instagram-icon.svg");
+                background-size: 13px 13px;
+                background-position: center center;
+                background-repeat: no-repeat;
+            }
+            &.facebookButton {
+                background-image: url("/public/images/facebook-icon.svg");
+                background-size: 7px 12px;
+                background-position: center center;
+                background-repeat: no-repeat;
+            }
+        }
+    }
+
+    //.headerButtons {
+    //    display: flex;
+    //    flex-direction: column;
+    //    justify-content: center;
+    //    align-items: center;
+    //    .onlineQuoteButton {
+    //        @extend %blueButton2;
+    //        margin-bottom: 10px;
+    //    }
+    //    .phoneButton {
+    //        @extend %yellowButton2;
+    //        &:before {
+    //            @extend %buttonIconBefore;
+    //            @extend %phoneIcon;
+    //            background: $yellowColor;
+    //        }
+    //        &:hover {
+    //            &:before {
+    //                background: $whiteColor;
+    //            }
+    //        }
+    //    }
+    //    @include minWidth(768) {
+    //        flex-direction: row;
+    //        .onlineQuoteButton {
+    //            margin-bottom: 0;
+    //            margin-right: 15px;
+    //        }
+    //    }
+    //}
+
+    .mainPhone {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 125%;
+        color: $whiteColor;
+        &:before {
+            @extend %phoneIcon;
+            content: "";
+            margin-right: 5px;
+            background-color: $blueColor;
+        }
+        @include minWidth(1000) {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 140px;
+            transform: translate(-445px, 13px);
+            color: $blueColor;
+        }
+        @include minWidth(1440) {
+            display: none;
+        }
+    }
+
     .headerLoginButton {
+        @extend %animation;
+        @extend %font;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
         position: relative;
-        margin-left: 15px;
-        width: 27px;
-        height: 27px;
-        border: 2px solid $whiteColor;
-        border-radius: 50%;
+        margin: 0 0 0 15px;
+        padding: 0;
         font-size: 0;
-        background: $avatarColor;
-        overflow: hidden;
+        font-weight: 700;
+        line-height: 125%;
+        color: $whiteColor;
+        text-transform: uppercase;
+        border: none;
+        background-color: transparent;
         cursor: pointer;
         outline: none;
-        &:before {
-            @extend %avatarIcon;
-            @extend %animation;
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-            content: "";
-            display: block;
-            background: $darkGreyColor;
-        }
+        text-align: left;
         &:hover {
+            color: $yellowColor;
+            .avatarPicture {
+                border-color: $yellowColor;
+            }
+        }
+        @include minWidth(1440) {
+            font-size: 13px;
+        }
+        .avatarPicture {
+            @extend %animation;
+            width: 21px;
+            height: 21px;
+            border: 1px solid #FFFFFF;
+            border-radius: 50%;
+            @include minWidth(480) {
+                width: 27px;
+                height: 27px;
+            }
+            @include minWidth(1440) {
+                margin-right: 10px;
+                width: 32px;
+                height: 32px;
+                border: 2px solid #FFFFFF;
+            }
+        }
+        &.userLogin {
             &:before {
-                background: $blackColor;
+                @extend %animation;
+                content: "";
+                width: 21px;
+                height: 21px;
+                background-image: url("/public/images/login-icon.svg");
+                background-size: 21px 21px;
+                background-repeat: no-repeat;
+                @include minWidth(480) {
+                    width: 27px;
+                    height: 27px;
+                    background-size: 27px 27px;
+                }
+                @include minWidth(1440) {
+                    margin-right: 10px;
+                    width: 32px;
+                    height: 32px;
+                    background-size: 32px 32px;
+                }
+            }
+            &:hover {
+                &:before {
+                    opacity: 0.75;
+                }
             }
         }
     }
@@ -356,7 +664,7 @@ header {
             box-shadow: 0 7px 0 0 $whiteColor, 0 14px 0 0 $whiteColor;
             @extend %animation;
         }
-        @include minWidth(1440) {
+        @include minWidth(1000) {
             display: none;
         }
     }
