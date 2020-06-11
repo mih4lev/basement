@@ -4,7 +4,7 @@ header {
     position: fixed;
     width: 100%;
     height: 66px;
-    background: $bgMainColor;
+    background-color: $bgMainColor;
     border-bottom: 1px solid $bgMainColor;
     @include minWidth(480) {
         height: 96px;
@@ -335,7 +335,6 @@ header {
             flex-direction: row;
             margin-top: 0;
             padding: 0;
-            display: none;
         }
         @include minWidth(1440) {
             display: flex;
@@ -351,13 +350,13 @@ header {
             }
             @include minWidth(1000) {
                 margin-bottom: 0;
-                margin-left: 20px;
+                margin-left: 10px;
                 &:first-of-type {
                     margin-left: 0;
                 }
             }
             @include minWidth(1440) {
-
+                margin-left: 20px;
             }
             .stateLabel {
                 display: flex;
@@ -405,6 +404,12 @@ header {
                                 color: $whiteColor;
                                 margin: 0 5px;
                             }
+                            @include minWidth(1000) {
+                                display: none;
+                            }
+                            @include minWidth(1440) {
+                                display: block;
+                            }
                         }
                     }
                 }
@@ -436,11 +441,14 @@ header {
                 margin-bottom: 0;
             }
             @include minWidth(1000) {
-                margin-left: 15px;
+                margin-left: 10px;
                 margin-bottom: 0;
                 &:first-of-type {
                     margin-left: 0;
                 }
+            }
+            @include minWidth(1440) {
+                margin-left: 15px;
             }
             &.scheduleLink {
                 color: $yellowColor;
@@ -498,37 +506,6 @@ header {
         }
     }
 
-    //.headerButtons {
-    //    display: flex;
-    //    flex-direction: column;
-    //    justify-content: center;
-    //    align-items: center;
-    //    .onlineQuoteButton {
-    //        @extend %blueButton2;
-    //        margin-bottom: 10px;
-    //    }
-    //    .phoneButton {
-    //        @extend %yellowButton2;
-    //        &:before {
-    //            @extend %buttonIconBefore;
-    //            @extend %phoneIcon;
-    //            background: $yellowColor;
-    //        }
-    //        &:hover {
-    //            &:before {
-    //                background: $whiteColor;
-    //            }
-    //        }
-    //    }
-    //    @include minWidth(768) {
-    //        flex-direction: row;
-    //        .onlineQuoteButton {
-    //            margin-bottom: 0;
-    //            margin-right: 15px;
-    //        }
-    //    }
-    //}
-
     .mainPhone {
         display: flex;
         flex-direction: row;
@@ -544,14 +521,6 @@ header {
             background-color: $blueColor;
         }
         @include minWidth(1000) {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 140px;
-            transform: translate(-445px, 13px);
-            color: $blueColor;
-        }
-        @include minWidth(1440) {
             display: none;
         }
     }
@@ -667,6 +636,15 @@ header {
         @include minWidth(1000) {
             display: none;
         }
+    }
+
+    &.transparentMenu {
+        background-color: transparent;
+        border-bottom: 1px solid #A1ABB5;
+    }
+
+    &.activeMenu {
+        border-bottom: 1px solid #A1ABB5;
     }
 
     &.activeMenu .headerSandwichButton {

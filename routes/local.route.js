@@ -15,7 +15,9 @@ router.get(`/`, async (request, response) => {
     const mockJSONTestimonials = fs.readFileSync(`data-mock/testimonials.json`);
     const mockDataTestimonials = JSON.parse(mockJSONTestimonials);
     // return data to template rendering
-    const data = { ...request.data, ...homeData, ...mockDataTestimonials };
+    // variables
+    const isAdaptiveHeader = true;
+    const data = { ...request.data, ...homeData, ...mockDataTestimonials, isAdaptiveHeader };
     response.render(`pages/local/local`, data);
 
 });

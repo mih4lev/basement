@@ -26,9 +26,12 @@ router.get(`/`, async (request, response) => {
     const mockJSONCategories = fs.readFileSync(`data-mock/ideas-categories.json`);
     const mockDataCategories = JSON.parse(mockJSONCategories);
     // return data to template rendering
+    // variables
+    const isAdaptiveHeader = true;
     const data = {
         ...request.data, tips, ...mockDataIdeas,
-        ...homeData, ...mockDataTestimonials, ...mockDataCategories
+        ...homeData, ...mockDataTestimonials, ...mockDataCategories,
+        isAdaptiveHeader
     };
     response.render(`pages/home/home`, data);
 });

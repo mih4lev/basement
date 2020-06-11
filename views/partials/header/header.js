@@ -1,25 +1,41 @@
 export const headerMenu = () => {
 
     const headerNode = document.querySelector(`header`);
+    const sandwichButton = document.querySelector(`.headerSandwichButton`);
+
     if (!headerNode) return false;
 
-    const sandwichButton = headerNode.querySelector(`.headerSandwichButton`);
-    if (!sandwichButton) return false;
-    sandwichButton.addEventListener(`click`, () => {
-        const isMenuActive = headerNode.classList.contains(`activeMenu`);
-        const classAction = (isMenuActive) ? `remove` : `add`;
-        headerNode.classList[classAction](`activeMenu`);
+    // update page header on scroll
+    window.addEventListener(`scroll`, () => {
+        if (!headerNode.dataset.page) return false;
+        const classAction = (window.pageYOffset > 0) ? `remove` : `add`;
+        headerNode.classList[classAction](`transparentMenu`);
     });
 
+    // sandwich button on <= 768px viewport
+    if (sandwichButton) {
+        sandwichButton.addEventListener(`click`, () => {
+            const isMenuActive = headerNode.classList.contains(`activeMenu`);
+            const classAction = (isMenuActive) ? `remove` : `add`;
+            headerNode.classList[classAction](`activeMenu`);
+            if (!isMenuActive) {
+                headerNode.classList.remove(`transparentMenu`)
+            } else {
+                const classAction = (window.pageYOffset > 0) ? `remove` : `add`;
+                headerNode.classList[classAction](`transparentMenu`);
+            }
+        });
+    }
+
+    // links on <= 768px viewport
     const dropdownLinks = [...headerNode.querySelectorAll(`.dropdownMenuLink`)];
-    if (!dropdownLinks.length) return false;
-    dropdownLinks.forEach((link) => {
-        const linkWrapper =  link.parentNode;
+    const linkHandler = (link) => {
         link.addEventListener(`click`, () => {
-            const isActive = linkWrapper.classList.contains(`activeDropdownLink`);
+            const isActive = link.parentNode.classList.contains(`activeDropdownLink`);
             const classAction = (isActive) ? `remove` : `add`;
             link.parentNode.classList[classAction](`activeDropdownLink`);
         });
-    });
+    };
+    dropdownLinks.forEach(linkHandler);
 
 };
