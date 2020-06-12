@@ -1,0 +1,603 @@
+.testModalSection {
+    display: none;
+    z-index: 11;
+    top: 0;
+    left: 0;
+    .testBlueWrapper {
+        z-index: 1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(97, 109, 123, 0.4);
+        mix-blend-mode: normal;
+        backdrop-filter: blur(3px);
+    }
+    .testContentWrapper {
+        position: fixed;
+        z-index: 999;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin-top: 160px;
+        width: 100%;
+        box-shadow: 0 0 0 10000px $modalBackground,
+                    5px 5px 12px rgba(0, 0, 0, 0.25);
+        @include minWidth(480) {
+            margin-top: 240px;
+        }
+        @include minWidth(1000) {
+            margin-top: 0;
+            margin-left: -15px;
+            top: 0;
+            transform: translate(0, 0);
+            width: 445px;
+            height: 100%;
+        }
+        @include minWidth(1440) {
+            margin-left: 0;
+            width: 520px;
+        }
+    }
+    .ideaPhotoSection {
+        position: absolute;
+        top: -320px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 320px;
+        @include minWidth(480) {
+            top: -480px;
+        }
+        @include minWidth(1000) {
+            top: 50%;
+            left: 0;
+            transform: translate(-420px, -50%);
+            width: 598px;
+            height: 598px;
+        }
+        @include minWidth(1440) {
+            top: 50%;
+            left: 0;
+            transform: translate(-525px, -50%);
+            width: 704px;
+            height: 704px;
+        }
+        .ideaPhotoWrapper {
+            @extend %shadow2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            width: 320px;
+            height: 320px;
+            background-color: $darkGreyColor;
+            @include minWidth(480) {
+                width: 480px;
+                height: 480px;
+            }
+            @include minWidth(768) {
+                width: 592px;
+                height: 592px;
+            }
+            @include minWidth(1000) {
+                width: 598px;
+                height: 598px;
+            }
+            @include minWidth(1440) {
+                width: 704px;
+                height: 704px;
+            }
+            .ideaPhoto {
+                display: block;
+            }
+        }
+    }
+    .ideaDataSection {
+        width: 100%;
+        background-color: $whiteColor;
+        margin-top: -100px;
+        padding-top: 100px;
+        box-sizing: border-box;
+        @include minWidth(480) {
+            margin-top: -160px;
+            padding-top: 160px;
+        }
+        @include minWidth(768) {
+            margin-top: -100px;
+            padding-top: 210px;
+        }
+        @include minWidth(1000) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0;
+            padding-top: 0;
+            height: 100%;
+            width: 445px;
+        }
+        @include minWidth(1440) {
+            width: 520px;
+        }
+        .ideaDataWrapper {
+            display: flex;
+            flex-direction: column;
+            width: 290px;
+            margin: 0 auto;
+            padding: 15px 0;
+            box-sizing: border-box;
+            @include minWidth(480) {
+                flex-direction: row;
+                padding: 20px 0;
+                width: 440px;
+            }
+            @include minWidth(768) {
+                width: 592px;
+            }
+            @include minWidth(1000) {
+                margin: 0 20px 0 auto;
+                width: 228px;
+                flex-direction: column;
+            }
+            @include minWidth(1440) {
+                margin: 0 20px 0 auto;
+                width: 302px;
+                flex-direction: column;
+            }
+            .ideaData {
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                @include minWidth(480) {
+                    order: 2;
+                    margin-left: 30px;
+                    justify-content: space-between;
+                    @include minWidth(480) {
+                        margin-left: 20px;
+                    }
+                    @include minWidth(1000) {
+                        order: 1;
+                        margin-left: 0;
+                    }
+                }
+                .sectionTitle {
+                    padding-right: 70px;
+                    box-sizing: border-box;
+                    font-size: 13px;
+                    font-weight: 800;
+                    @include minWidth(480) {
+                        padding-right: 0;
+                        font-size: 15px;
+                    }
+                    @include minWidth(768) {
+                        font-size: 18px;
+                    }
+                    @include minWidth(1000) {
+                        font-size: 22px;
+                    }
+                }
+                .ideaAuthor {
+                    margin-top: 5px;
+                    margin-bottom: 0;
+                    padding-right: 70px;
+                    box-sizing: border-box;
+                    font-size: 9px;
+                    @include minWidth(480) {
+                        padding-right: 0;
+                        font-size: 10px;
+                    }
+                    @include minWidth(768) {
+                        font-size: 12px;
+                    }
+                    @include minWidth(1440) {
+                        font-size: 15px;
+                    }
+                }
+                .ideaLabelList {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    margin: 5px -5px -2px;
+                    padding-left: 0;
+                    list-style-type: none;
+                    @include minWidth(480) {
+                        margin-bottom: -5px;
+                    }
+                    @include minWidth(1000) {
+                        margin-top: 20px;
+                    }
+                    .ideaLabel {
+                        margin-bottom: 2px;
+                        padding: 0 5px;
+                        height: 9px;
+                        border-right: 1px solid $lightGreyColor;
+                        font-size: 9px;
+                        line-height: 9px;
+                        font-weight: 800;
+                        text-transform: uppercase;
+                        letter-spacing: 0.05em;
+                        color: $blueColor;
+                        @include minWidth(480) {
+                            margin-bottom: 5px;
+                            height: 10px;
+                            font-size: 10px;
+                            line-height: 10px;
+                        }
+                        @include minWidth(768) {
+                            height: 11px;
+                            font-size: 11px;
+                            line-height: 11px;
+                        }
+                        @include minWidth(1440) {
+                            height: 13px;
+                            font-size: 13px;
+                            line-height: 13px;
+                        }
+                        &:last-of-type {
+                            border-right: none;
+                        }
+                    }
+                }
+                .saveButtonWrapper {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    @include minWidth(480) {
+                        align-items: flex-start;
+                        position: relative;
+                        top: auto;
+                        right: auto;
+                    }
+                    @include minWidth(1000) {
+                        margin-top: 10px;
+                    }
+                    @include minWidth(1440) {
+                        flex-direction: row;
+                        align-items: center;
+                        margin-top: 20px;
+                    }
+                    .saveCollectionButton {
+                        @extend %font;
+                        @extend %animation;
+                        position: relative;
+                        width: 26px;
+                        height: 26px;
+                        font-size: 0;
+                        background-color: $blueColor;
+                        border: none;
+                        border-radius: 50%;
+                        cursor: pointer;
+                        outline: none;
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            width: 12px;
+                            height: 12px;
+                            background-image: url("/public/images/save-icon.svg");
+                            background-repeat: no-repeat;
+                            background-size: 12px 12px;
+                            @include minWidth(480) {
+                                position: relative;
+                                top: auto;
+                                left: auto;
+                                transform: none;
+                                margin-left: 10px;
+                                width: 18px;
+                                height: 18px;
+                                background-size: 18px 18px;
+                            }
+                        }
+                        @include minWidth(480) {
+                            order: 2;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            width: auto;
+                            height: 40px;
+                            padding: 0 20px;
+                            border-radius: 100px;
+                            font-size: 13px;
+                            font-weight: 600;
+                            letter-spacing: 0.05em;
+                            text-transform: uppercase;
+                            white-space: nowrap;
+                            color: $whiteColor;
+                        }
+                        @include minWidth(1440) {
+                            order: 1;
+                        }
+                        &:hover {
+                            opacity: 0.75;
+                        }
+                    }
+                    .saveCount {
+                        margin-top: 5px;
+                        font-size: 9px;
+                        color: $greyColor;
+                        @include minWidth(480) {
+                            order: 1;
+                            margin-bottom: 5px;
+                            font-size: 10px;
+                        }
+                        @include minWidth(768) {
+                            font-size: 12px;
+                        }
+                        @include minWidth(1440) {
+                            order: 2;
+                            margin: 0 0 0 10px;
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
+            .ideaOtherPhotos {
+                flex-grow: 1;
+                flex-shrink: 0;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin-top: 5px;
+                @include minWidth(480) {
+                    order: 1;
+                    flex-direction: column;
+                    margin-top: 0;
+                    width: 142px;
+                }
+                @include minWidth(768) {
+                    width: 208px;
+                }
+                @include minWidth(1000) {
+                    order: 2;
+                    margin-top: 20px;
+                    width: 100%;
+                }
+                @include minWidth(1440) {
+                    margin-top: 40px;
+                }
+                .ideaOtherWrapper {
+                    .ideaOtherTitle {
+                        margin-top: 0;
+                        margin-bottom: 0;
+                        font-size: 9px;
+                        @include minWidth(480) {
+                            font-size: 10px;
+                        }
+                        @include minWidth(768) {
+                            font-size: 12px;
+                        }
+                        @include minWidth(1000) {
+                            margin-bottom: 3px;
+                        }
+                        @include minWidth(1440) {
+                            margin-bottom: 5px;
+                            font-size: 15px;
+                        }
+                        .ideaLink {
+                            color: $blueColor;
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                    .otherPreviewList {
+                        display: flex;
+                        flex-direction: row;
+                        margin: 2px -1px -1px;
+                        padding-left: 0;
+                        list-style-type: none;
+                        @include minWidth(1000) {
+                            margin:  0 -2px -2px;
+                        }
+                        @include minWidth(1000) {
+                            margin:  0 -3px -3px;
+                        }
+                        .otherPreviewWrapper {
+                            margin: 1px;
+                            @include minWidth(1000) {
+                                margin: 2px;
+                            }
+                            @include minWidth(1440) {
+                                margin: 3px;
+                            }
+                            .otherPreview {
+                                @extend %animation;
+                                display: block;
+                                width: 40px;
+                                height: 40px;
+                                &:hover {
+                                    opacity: 0.75;
+                                }
+                                @include minWidth(480) {
+                                    width: 46px;
+                                    height: 46px;
+                                }
+                                @include minWidth(768) {
+                                    width: 50px;
+                                    height: 50px;
+                                }
+                                @include minWidth(1000) {
+                                    width: 54px;
+                                    height: 54px;
+                                }
+                                @include minWidth(1440) {
+                                    width: 71px;
+                                    height: 71px;
+                                }
+                            }
+                            &:nth-child(1n + 4) {
+                                display: none;
+                            }
+                            @include minWidth(768) {
+                                &:nth-child(1n + 4) {
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+                    &.projectPreviews {
+                        .otherPreviewList {
+                            @include minWidth(480) {
+                                margin-bottom: 10px;
+                            }
+                            @include minWidth(1000) {
+                                margin-bottom: 20px;
+                            }
+                        }
+                    }
+                    &.otherIdeasPreviews {
+                        .otherPreviewList {
+                            flex-wrap: wrap;
+                            .otherPreviewWrapper {
+                                @include minWidth(480) {
+                                    &:nth-child(1n + 4) {
+                                        display: block;
+                                    }
+                                    &:nth-child(1n + 6) {
+                                        display: none;
+                                    }
+                                }
+                                @include minWidth(768) {
+                                    &:nth-child(1n + 6) {
+                                        display: block;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &.allIdeasPreview {
+                        .otherPreviewList {
+                            flex-wrap: wrap;
+                            .otherPreviewWrapper {
+                                &:nth-child(1n + 4) {
+                                    display: block;
+                                }
+                                &:nth-child(1n + 7) {
+                                    display: none;
+                                }
+                                @include minWidth(480) {
+                                    &:nth-child(1n + 7) {
+                                        display: block;
+                                    }
+                                    &:nth-child(1n + 10) {
+                                        display: none;
+                                    }
+                                }
+                                @include minWidth(768) {
+                                    &:nth-child(1n + 9) {
+                                        display: block;
+                                    }
+                                    &:nth-child(1n + 13) {
+                                        display: none;
+                                    }
+                                }
+                                @include minWidth(1000) {
+                                    &:nth-child(1n + 13) {
+                                        display: block;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .closeButton {
+        position: absolute;
+        top: -345px;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        transform: translateX(135px);
+        &:before, &:after {
+            width: 20px;
+            background-color: $whiteColor;
+        }
+        @include minWidth(480) {
+            top: -505px;
+            transform: translateX(210px);
+        }
+        @include minWidth(768) {
+            transform: translateX(270px);
+        }
+        @include minWidth(1000) {
+            top: 50%;
+            left: 100%;
+            transform: translate(20px, -290px);
+            width: 28px;
+            height: 28px;
+            &:before, &:after {
+                width: 28px;
+            }
+        }
+        @include minWidth(1440) {
+            transform: translate(20px, -340px);
+        }
+    }
+    .ideaArrow {
+        display: none;
+        position: absolute;
+        top: -220px;
+        left: 50%;
+        width: 72px;
+        height: 72px;
+        transform: translateX(-50%);
+        font-size: 0;
+        border-radius: 50%;
+        border: none;
+        background: rgba(231, 231, 232, 0.175);
+        cursor: pointer;
+        outline: none;
+        @include minWidth(1000) {
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        &:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 14px;
+            height: 26px;
+            background-image: $arrowFillIcon;
+            background-size: 14px 26px;
+        }
+        @include minWidth(768) {
+            display: block;
+        }
+        &:hover {
+            opacity: 0.75;
+        }
+        &.prevArrow {
+            margin-left: -340px;
+            &:after {
+                transform: translate(-50%, -50%) rotate(180deg);
+            }
+            @include minWidth(1000) {
+                margin-left: -665px;
+            }
+            @include minWidth(1440) {
+                margin-left: -850px;
+            }
+        }
+        &.nextArrow {
+            margin-left: 340px;
+            @include minWidth(1000) {
+                margin-left: 248px;
+            }
+            @include minWidth(1440) {
+                margin-left: 328px;
+            }
+        }
+    }
+}

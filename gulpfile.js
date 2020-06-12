@@ -91,7 +91,7 @@ gulp.task(`reload`, (done) => {
 
 // Bitmap images => Tinypng service to optimize
 gulp.task(`bitmapTemp`, () => {
-    return gulp.src(`./source/images/temp/transfer/*.{png,jpg,jpeg}`)
+    return gulp.src(`./source/images/temp/idea-modal/*.{png,jpg,jpeg}`)
         .pipe(tinypng({
             // key: `wNS29BVwd8BM7rkKHQxBKtnLgZHxbM81`,
             key: `k82WT7tDXGyVvxQbGxGc1TpJ740BzV3d`,
@@ -105,7 +105,7 @@ gulp.task(`bitmapTemp`, () => {
 });
 
 gulp.task(`webpTemp`, () => {
-    return gulp.src(`./source/images/temp/transfer/*.{png,jpg,jpeg}`)
+    return gulp.src(`./source/images/temp/idea-modal/*.{png,jpg,jpeg}`)
         .pipe(webp())
         .pipe(gulp.dest(`./public/images/temp`));
 });

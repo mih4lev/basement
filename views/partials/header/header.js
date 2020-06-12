@@ -21,6 +21,7 @@ export const headerMenu = () => {
             if (!isMenuActive) {
                 headerNode.classList.remove(`transparentMenu`)
             } else {
+                if (!headerNode.dataset.page) return false;
                 const classAction = (window.pageYOffset > 0) ? `remove` : `add`;
                 headerNode.classList[classAction](`transparentMenu`);
             }

@@ -7,9 +7,10 @@
 @import "add-photo/add-photo.modal";
 @import "edit-photo/edit-photo.modal";
 @import "booking-tool/booking-tool.modal";
+@import "view-idea/view-idea.modal";
 
 .modalSection {
-    display: none;
+    //display: none;
     &.modalActive {
         display: block;
     }
