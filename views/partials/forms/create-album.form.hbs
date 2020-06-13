@@ -1,10 +1,15 @@
 <form class="formWrapper">
     <h2 class="modalTitle">CREATE ALBUM</h2>
-    <div class=oneColumnWrapper">
+    <div class="oneColumnWrapper">
         <div class="formPhotoWrapper">
             <div class="inputPhotoField albumField">
+
                 <input type="file" class="photoField" id="avatarPhoto" name="avatarPhoto">
                 <label class="photoLabelEmpty" for="avatarPhoto">You haven't saved anything yet</label>
+                <img class="inputFieldPicture"
+                     src="/public/images/categories/cat-2-6_209x209.jpg"
+                     alt="category image">
+
             </div>
         </div>
         <div class="formFieldsWrapper">
@@ -15,7 +20,7 @@
                 </div>
             </div>
             <div class="submitWrapper">
-                <button class="submitButton" type="submit">CREATE</button>
+                <button class="submitButton" disabled type="submit">CREATE</button>
             </div>
         </div>
     </div>

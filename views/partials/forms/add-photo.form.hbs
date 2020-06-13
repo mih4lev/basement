@@ -1,25 +1,3 @@
-<form class="formWrapper" style="display: none;">
-    <h2 class="modalTitle">ADD PHOTO</h2>
-    <div class=oneColumnWrapper">
-        <div class="formPhotoWrapper">
-            <input type="file" class="photoField" id="albumPhoto" name="albumPhoto" multiple>
-            <label class="photoLabel" for="albumPhoto">Drop files here or click to upload</label>
-        </div>
-        <div class="formFieldsWrapper">
-            <div class="oneColumnWrapper">
-                <div class="fieldWrapper">
-                    <label class="fieldLabel" for="albumTitle">Title of photo(s)</label>
-                    <input class="fieldInput" id="albumTitle" type="text">
-                </div>
-            </div>
-            <p class="uploadAnnotation">By uploading photos, you are approving their display by Basement Remodeling Company, saying that you either own the rights to the image or that you have permission or a license to do so from the copyright holder, and agreeing to abide by Basement Remodeling Company's terms of use.</p>
-            <div class="submitWrapper">
-                <button class="submitButton disabledButton" type="submit">UPDATE</button>
-            </div>
-        </div>
-    </div>
-</form>
-
 <form class="formWrapper">
     <h2 class="modalTitle">ADD PHOTO</h2>
     <ul class="uploadPhotosList hiddenList">
@@ -32,7 +10,7 @@
         <input type="file" multiple class="photoDropField" name="albumDrop" id="albumDrop">
         <label for="albumDrop" class="photoDropTitle">Drop files here</label>
     </div>
-    <div class=oneColumnWrapper">
+    <div class="oneColumnWrapper">
         <div class="formFieldsWrapper">
             <div class="oneColumnWrapper uploadTitleWrapper hiddenTitle">
                 <div class="fieldWrapper">
@@ -42,7 +20,7 @@
             </div>
             <p class="uploadAnnotation">By uploading photos, you are approving their display by Basement Remodeling Company, saying that you either own the rights to the image or that you have permission or a license to do so from the copyright holder, and agreeing to abide by Basement Remodeling Company's terms of use.</p>
             <div class="submitWrapper">
-                <button class="submitButton" type="submit">UPDATE</button>
+                <button class="submitButton" disabled type="submit">UPDATE</button>
             </div>
         </div>
     </div>

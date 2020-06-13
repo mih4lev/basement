@@ -173,13 +173,25 @@ import { headerMenu } from "../../views/partials/header/header";
 (function(){
     const addPhotoModal = document.querySelector(`.addPhotoModal`);
     const dropZone = document.querySelector(`.photoDropWrapper`);
+    const addedDropZone = document.querySelector(`.uploadPhotoWrapper`);
     const dropField = document.querySelector(`.photoDropField`);
     const uploadList = document.querySelector(`.uploadPhotosList`);
     const uploadTitle = document.querySelector(`.uploadTitleWrapper`);
     const uploadPhotoButton = addPhotoModal.querySelector(`.photoField`);
+    const submitButton = addPhotoModal.querySelector(`.submitButton`);
+    const titleField = uploadTitle.querySelector(`.fieldInput`);
     const dropEvents = [`dragenter`, `dragover`, `dragleave`, `drop`];
     const removeBrowserAPI = (event) => event.preventDefault();
-    dropEvents.forEach((eventName) => dropZone.addEventListener(eventName, removeBrowserAPI));
+    dropEvents.forEach((eventName) => {
+        dropZone.addEventListener(eventName, removeBrowserAPI);
+        addedDropZone.addEventListener(eventName, removeBrowserAPI);
+    });
+    const checkButtonStatus = () => {
+        const isTitleValid = !!titleField.value.length;
+        const isFilesValid = uploadList.children.length > 1;
+        if (isTitleValid && isFilesValid) submitButton.removeAttribute(`disabled`);
+        else submitButton.setAttribute(`disabled`, `disabled`);
+    };
     const createUploadPicture = (URL, title) => {
         const wrapper = document.createElement(`li`);
         wrapper.classList.add(`uploadPhotoWrapper`);
@@ -194,9 +206,16 @@ import { headerMenu } from "../../views/partials/header/header";
         button.innerText = `REMOVE PHOTO`;
         button.addEventListener(`click`, () => {
             uploadList.removeChild(wrapper);
+            checkButtonStatus();
+            if (uploadList.children.length <= 1) {
+                uploadList.classList.add(`hiddenList`);
+                uploadTitle.classList.add(`hiddenTitle`);
+                dropZone.classList.remove(`hiddenWrapper`);
+            }
         });
         wrapper.appendChild(button);
         uploadList.appendChild(wrapper);
+        checkButtonStatus();
     };
     const showUploadFiles = (files) => {
         files.forEach((file) => {
@@ -213,6 +232,9 @@ import { headerMenu } from "../../views/partials/header/header";
             dropZone.classList.add(`hiddenWrapper`);
         });
     };
+    titleField.addEventListener(`input`, () => {
+        checkButtonStatus();
+    });
     dropZone.addEventListener(`dragenter`, () => {
         dropZone.classList.add(`dropOver`);
     });
@@ -224,6 +246,19 @@ import { headerMenu } from "../../views/partials/header/header";
         if (!event.dataTransfer || !event.dataTransfer.files.length) return false;
         showUploadFiles([...event.dataTransfer.files]);
     });
+    // 
+    addedDropZone.addEventListener(`dragenter`, () => {
+        addedDropZone.classList.add(`dropOver`);
+    });
+    addedDropZone.addEventListener(`dragleave`, () => {
+        addedDropZone.classList.remove(`dropOver`);
+    });
+    addedDropZone.addEventListener(`drop`, () => {
+        addedDropZone.classList.remove(`dropOver`);
+        if (!event.dataTransfer || !event.dataTransfer.files.length) return false;
+        showUploadFiles([...event.dataTransfer.files]);
+    });
+    // button click upload
     dropField.addEventListener(`change`, () => {
         if (!dropField.files || !dropField.files.length) return false;
         showUploadFiles([...dropField.files]);
@@ -231,6 +266,148 @@ import { headerMenu } from "../../views/partials/header/header";
     uploadPhotoButton.addEventListener(`change`, () => {
         if (!uploadPhotoButton.files || !uploadPhotoButton.files.length) return false;
         showUploadFiles([...uploadPhotoButton.files]);
+    });
+})();
+
+// create album modal
+// (function(){
+//     const createAlbumModal = document.querySelector(`.createAlbumWrapper`);
+//     const titleField = createAlbumModal.querySelector(`.fieldInput`);
+//     const submitButton = createAlbumModal.querySelector(`.submitButton`);
+//     const dropZone = createAlbumModal.querySelector(`.photoLabelEmpty`);
+//     const addedDropZone = createAlbumModal.querySelector(`.inputFieldPicture`);
+//     const photoField = createAlbumModal.querySelector(`.photoField`);
+//     // remove default drag && drop browser API
+//     const dropEvents = [`dragenter`, `dragover`, `dragleave`, `drop`];
+//     const removeBrowserAPI = (event) => event.preventDefault();
+//     dropEvents.forEach((eventName) => {
+//         dropZone.addEventListener(eventName, removeBrowserAPI);
+//     });
+//     // update image by drag & drop && unload
+//     const showUploadFiles = (files) => {
+//         files.forEach((file) => {
+//             const reader = new FileReader();
+//             reader.addEventListener(`load`, () => {
+//                 addedDropZone.src = reader.result;
+//                 addedDropZone.setAttribute(`alt`, file.name);
+//                 checkButtonStatus();
+//             });
+//             reader.addEventListener(`error`, () => {
+//                 console.log(`error`);
+//             });
+//             reader.readAsDataURL(file);
+//         });
+//     };
+//     photoField.addEventListener(`change`, () => {
+//         if (!photoField.files || !photoField.files.length) return false;
+//         showUploadFiles([...photoField.files]);
+//     });
+//     dropZone.addEventListener(`drop`, () => {
+//         if (!event.dataTransfer || !event.dataTransfer.files.length) return false;
+//         showUploadFiles([...event.dataTransfer.files]);
+//     });
+//     // check button status
+//     const checkButtonStatus = () => {
+//         const isFieldValid = !!titleField.value;
+//         const isFilesValid = addedDropZone && addedDropZone.src;
+//         if (isFieldValid && isFilesValid) submitButton.removeAttribute(`disabled`);
+//         else submitButton.setAttribute(`disabled`, `disabled`);
+//     };
+//     titleField.addEventListener(`input`, () => checkButtonStatus());
+// })();
+
+// edit album modal 
+(function(){
+    const editAlbumModal = document.querySelector(`.editAlbumWrapper`);
+    const photoField = document.querySelector(`.photoField`);
+    const dropZone = editAlbumModal.querySelector(`.photoLabel`);
+    const albumPhoto = editAlbumModal.querySelector(`.inputFieldPicture`);
+    const updateButton = editAlbumModal.querySelector(`.submitButton`);
+    const albumTitle = editAlbumModal.querySelector(`.fieldInput`);
+    // remove default drag && drop browser API
+    const dropEvents = [`dragenter`, `dragover`, `dragleave`, `drop`];
+    const removeBrowserAPI = (event) => event.preventDefault();
+    dropEvents.forEach((eventName) => {
+        dropZone.addEventListener(eventName, removeBrowserAPI);
+    });
+    const checkButtonStatus = () => {
+        const isTitleValid = !!albumTitle.value.length;
+        const isFilesValid = albumPhoto && albumPhoto.src;
+        if (isTitleValid && isFilesValid) updateButton.removeAttribute(`disabled`);
+        else updateButton.setAttribute(`disabled`, `disabled`);
+    };
+    const showUploadFiles = (files) => {
+        files.forEach((file) => {
+            const reader = new FileReader();
+            reader.addEventListener(`load`, () => {
+                albumPhoto.src = reader.result;
+                albumPhoto.setAttribute(`alt`, file.name);
+                checkButtonStatus();
+            });
+            reader.addEventListener(`error`, () => {
+                console.log(`error`);
+            });
+            reader.readAsDataURL(file);
+        });
+    };
+    photoField.addEventListener(`change`, () => {
+        if (!photoField.files || !photoField.files.length) return false;
+        showUploadFiles([...photoField.files]);
+    });
+    dropZone.addEventListener(`drop`, () => {
+        if (!event.dataTransfer || !event.dataTransfer.files.length) return false;
+        showUploadFiles([...event.dataTransfer.files]);
+    });
+    albumTitle.addEventListener(`input`, () => {
+        checkButtonStatus();
+    });
+})();
+
+// edit profile modal
+(function(){
+    const editProfileModal = document.querySelector(`.editProfileWrapper`);
+    const dropZone = editProfileModal.querySelector(`.photoLabel`);
+    const photoField = editProfileModal.querySelector(`.photoField`);
+    const photoNode = editProfileModal.querySelector(`.inputFieldPicture`);
+    const textFields = [...editProfileModal.querySelectorAll(`.fieldInput`)];
+    const updateButton = editProfileModal.querySelector(`.submitButton`);
+    const dropEvents = [`dragenter`, `dragover`, `dragleave`, `drop`];
+    const removeBrowserAPI = (event) => event.preventDefault();
+    const showUploadFiles = (files) => {
+        files.forEach((file) => {
+            const reader = new FileReader();
+            reader.addEventListener(`load`, () => {
+                photoNode.src = reader.result;
+                photoNode.setAttribute(`alt`, file.name);
+            });
+            reader.addEventListener(`error`, () => {
+                console.log(`error`);
+            });
+            reader.readAsDataURL(file);
+        });
+    };
+    dropEvents.forEach((eventName) => {
+        dropZone.addEventListener(eventName, removeBrowserAPI);
+    });
+    // update image by drag & drop && unload
+    photoField.addEventListener(`change`, () => {
+        if (!photoField.files || !photoField.files.length) return false;
+        showUploadFiles([...photoField.files]);
+    });
+    dropZone.addEventListener(`drop`, () => {
+        if (!event.dataTransfer || !event.dataTransfer.files.length) return false;
+        showUploadFiles([...event.dataTransfer.files]);
+    });
+    // check button status
+    const checkButtonStatus = () => {
+        const filter = (field) => !!field.value;
+        const isFieldsValid = textFields.filter(filter).length === textFields.length;
+        const isFilesValid = photoNode && photoNode.src;
+        if (isFieldsValid && isFilesValid) updateButton.removeAttribute(`disabled`);
+        else updateButton.setAttribute(`disabled`, `disabled`);
+    };
+    textFields.forEach((field) => {
+        field.addEventListener(`input`, () => checkButtonStatus());
     });
 })();
 

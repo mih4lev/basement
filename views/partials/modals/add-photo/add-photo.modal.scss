@@ -176,6 +176,15 @@
                     opacity: 1;
                 }
             }
+            &.dropOver {
+                .photoLabel {
+                    background: darken($bgSubColor, 10%);
+                    color: $blueColor;
+                    &:before {
+                        color: $blueColor;
+                    }
+                }
+            }
         }
         &.hiddenList {
             display: none;
