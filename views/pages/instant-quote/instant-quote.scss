@@ -93,6 +93,10 @@
     }
     .blackButton {
         @extend %blackButton;
+        &:hover {
+            background-color: $darkGreyColor;
+            color: $whiteColor;
+        }
     }
     .textBlock {
         font-size: 10px;

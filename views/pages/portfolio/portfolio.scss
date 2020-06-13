@@ -243,4 +243,7 @@
         @extend %arrowIcon;
         background: $blackColor;
     }
+    &:hover {
+        background-color: $whiteColor;
+    }
 }

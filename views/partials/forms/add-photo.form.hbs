@@ -22,73 +22,22 @@
 
 <form class="formWrapper">
     <h2 class="modalTitle">ADD PHOTO</h2>
-    <ul class="uploadPhotosList">
+    <ul class="uploadPhotosList hiddenList">
         <li class="uploadPhotoWrapper">
             <input type="file" class="photoField" id="albumPhoto" name="albumPhoto" multiple>
             <label class="photoLabel" for="albumPhoto">Add photo</label>
         </li>
-        <li class="uploadPhotoWrapper">
-            <img class="uploadedPhoto"
-                 src="/public/images/categories/cat-1-4_131x131.jpg"
-                 alt="uploaded photo">
-            <button class="removeButton" type="button">REMOVE PHOTO</button>
-        </li>
-        <li class="uploadPhotoWrapper">
-            <img class="uploadedPhoto"
-                 src="/public/images/categories/cat-1-7_131x131.jpg"
-                 alt="uploaded photo">
-            <button class="removeButton" type="button">REMOVE PHOTO</button>
-        </li>
-        <li class="uploadPhotoWrapper">
-            <img class="uploadedPhoto"
-                 src="/public/images/categories/cat-2-8-2_131x131.jpg"
-                 alt="uploaded photo">
-            <button class="removeButton" type="button">REMOVE PHOTO</button>
-        </li>
-        <li class="uploadPhotoWrapper">
-            <img class="uploadedPhoto"
-                 src="/public/images/categories/cat-1_131x131.jpg"
-                 alt="uploaded photo">
-            <button class="removeButton" type="button">REMOVE PHOTO</button>
-        </li>
-        <li class="uploadPhotoWrapper">
-            <img class="uploadedPhoto"
-                 src="/public/images/categories/cat-1-8_131x131.jpg"
-                 alt="uploaded photo">
-            <button class="removeButton" type="button">REMOVE PHOTO</button>
-        </li>
-
-        <li class="uploadPhotoWrapper">
-            <img class="uploadedPhoto"
-                 src="/public/images/categories/cat-2-1_131x131.jpg"
-                 alt="uploaded photo">
-            <button class="removeButton" type="button">REMOVE PHOTO</button>
-        </li>
-        <li class="uploadPhotoWrapper">
-            <img class="uploadedPhoto"
-                 src="/public/images/categories/cat-2-1-4_131x131.jpg"
-                 alt="uploaded photo">
-            <button class="removeButton" type="button">REMOVE PHOTO</button>
-        </li>
-        <li class="uploadPhotoWrapper">
-            <img class="uploadedPhoto"
-                 src="/public/images/categories/cat-2-8-1_131x131.jpg"
-                 alt="uploaded photo">
-            <button class="removeButton" type="button">REMOVE PHOTO</button>
-        </li>
-        <li class="uploadPhotoWrapper">
-            <img class="uploadedPhoto"
-                 src="/public/images/categories/cat-1-11_131x131.jpg"
-                 alt="uploaded photo">
-            <button class="removeButton" type="button">REMOVE PHOTO</button>
-        </li>
     </ul>
+    <div class="photoDropWrapper">
+        <input type="file" multiple class="photoDropField" name="albumDrop" id="albumDrop">
+        <label for="albumDrop" class="photoDropTitle">Drop files here</label>
+    </div>
     <div class=oneColumnWrapper">
         <div class="formFieldsWrapper">
-            <div class="oneColumnWrapper">
+            <div class="oneColumnWrapper uploadTitleWrapper hiddenTitle">
                 <div class="fieldWrapper">
                     <label class="fieldLabel" for="albumTitle2">Title of photo(s)</label>
-                    <input class="fieldInput" id="albumTitle2" type="text" value="Rockville, MD">
+                    <input class="fieldInput" id="albumTitle2" type="text">
                 </div>
             </div>
             <p class="uploadAnnotation">By uploading photos, you are approving their display by Basement Remodeling Company, saying that you either own the rights to the image or that you have permission or a license to do so from the copyright holder, and agreeing to abide by Basement Remodeling Company's terms of use.</p>

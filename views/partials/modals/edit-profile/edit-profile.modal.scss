@@ -1,4 +1,4 @@
-.editProfileModal {
+.editProfileWrapper {
     @include modal(268px, 40px);
     @include minWidth(768) {
         @include modal(657px, 40px);

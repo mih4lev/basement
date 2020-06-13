@@ -32,4 +32,10 @@ router.get(`/:categoryTitle/:subCategoryTitle`, async (request, response) => {
     response.render(`pages/basement-ideas/categories/sub-categories`, data);
 });
 
+router.get(`/:categoryTitle/:subCategoryTitle/:childCategory`, async (request, response) => {
+    const { params: { categoryTitle, subCategoryTitle, childCategory }} = request;
+    const data = { ...request.data };
+    response.render(`pages/basement-ideas/categories/sub-categories`, data);
+});
+
 module.exports = router;

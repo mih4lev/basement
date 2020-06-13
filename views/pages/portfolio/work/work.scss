@@ -21,6 +21,7 @@
             display: block;
         }
         .headerArrow {
+            @extend %animation;
             position: absolute;
             top: 23px;
             font-size: 0;
@@ -155,6 +156,7 @@
                         margin: 0 2px 2px;
                     }
                     .previewImage {
+                        @extend %animation;
                         width: 38px;
                         height: 38px;
                         cursor: pointer;

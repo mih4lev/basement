@@ -311,14 +311,17 @@
                 .albumAddCover {
                     @extend %animation;
                     @extend %shadow2;
+                    @extend %font;
                     position: relative;
                     width: 100%;
                     height: 100%;
                     box-sizing: border-box;
+                    font-size: 0;
                     background-color: $bgSubColor;
                     border: 3px solid #FFFFFF;
                     border-radius: 50%;
                     cursor: pointer;
+                    outline: none;
                     @include minWidth(768) {
                         border-width: 5px;
                     }
@@ -533,6 +536,9 @@
                     transform: rotate(90deg) scale(1.35);
                 }
             }
+            &.hiddenButton {
+                opacity: 0;
+            }
         }
         .hoverCardWrapper {
             @extend %animation;
@@ -584,6 +590,9 @@
                         }
                     }
                 }
+            }
+            &.activeHover {
+                margin-top: 0;
             }
         }
     }

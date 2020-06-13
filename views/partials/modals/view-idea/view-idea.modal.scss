@@ -1,9 +1,9 @@
-.testModalSection {
+.viewModalSection {
     display: none;
     z-index: 11;
     top: 0;
     left: 0;
-    .testBlueWrapper {
+    .modalBlurWrapper {
         z-index: 1;
         position: fixed;
         top: 0;
@@ -14,7 +14,7 @@
         mix-blend-mode: normal;
         backdrop-filter: blur(3px);
     }
-    .testContentWrapper {
+    .contentWrapper {
         position: fixed;
         z-index: 999;
         top: 50%;
@@ -599,5 +599,8 @@
                 margin-left: 328px;
             }
         }
+    }
+    &.activeModal {
+        display: block;
     }
 }

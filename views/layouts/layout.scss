@@ -793,6 +793,12 @@ strong {
     @include minWidth(768) {
         font-size: 13px;
     }
+    &:hover {
+        color: $blueColor;
+        &:before {
+            border-color: $blueColor;
+        }
+    }
 }
 
 .checkboxInput {
@@ -886,8 +892,8 @@ strong {
     cursor: pointer;
     outline: none;
     &:hover {
-        background: $blackColor;
-        border-color: $blackColor;
+        background: darken($blueColor, 15%);
+        border-color: darken($blueColor, 15%);
     }
     @include minWidth(480) {
         width: 220px;
@@ -900,6 +906,7 @@ strong {
     &:disabled {
         background: $bgSubColor;
         border-color: $bgSubColor;
+        cursor: default;
     }
 }
 
@@ -1282,25 +1289,31 @@ strong {
     .ideaWrapper {
         position: relative;
         width: 143px;
+        height: 143px;
         margin: 0 2px 8px;
+        overflow: hidden;
         @include minWidth(480) {
             margin: 0 4px 10px;
             width: 216px;
+            height: 216px;
         }
         @include minWidth(768) {
             margin: 0 5px 15px;
             width: 236px;
+            height: 236px;
         }
         @include minWidth(1000) {
             margin: 0 4px 15px;
         }
         @include minWidth(1440) {
             width: 252px;
+            height: 252px;
             margin: 0 4px 20px;
         }
         .ideaPhoto {
             width: 143px;
             height: 143px;
+            cursor: pointer;
             @include minWidth(480) {
                 width: 216px;
                 height: 216px;
@@ -1313,6 +1326,9 @@ strong {
                 width: 252px;
                 height: 252px;
             }
+            &:hover {
+                //filter: saturate(200%);
+            }
         }
         .saveIdea {
             @extend %whiteButton;
@@ -1323,6 +1339,9 @@ strong {
             margin-top: -40px;
             @include minWidth(480) {
                 margin-top: -60px;
+            }
+            &:hover {
+                background-color: $whiteColor;
             }
         }
         .ideaTitle {

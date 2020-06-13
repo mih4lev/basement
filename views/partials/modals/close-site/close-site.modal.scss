@@ -110,7 +110,7 @@
     }
     @include minWidth(1000) {
         flex-direction: row;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
     }
     button {
         margin-bottom: 10px;
@@ -127,6 +127,13 @@
     }
     .instantQuoteButton {
         @extend %blueButton;
+        margin: 10px 0;
+        @include minWidth(480) {
+            margin: 15px 0;
+        }
+        @include minWidth(1000) {
+            margin-right: 20px;
+        }
     }
     .consultationButton {
         @extend %yellowButton;
