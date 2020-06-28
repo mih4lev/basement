@@ -45,8 +45,14 @@
                     position: absolute;
                     top: 50%;
                     left: 50%;
-                    transform: translate(-50%, -20%) scale(3);
+                    transform: translate(-50%, -10%) scale(2.7);
                     background: $darkGreyColor;
+                    @include minWidth(480) {
+                        transform: translate(-50%, -5%) scale(3);
+                    }
+                    @include minWidth(768) {
+                        transform: translate(-50%, 10%) scale(4.5);
+                    }
                 }
                 .avatarPicture {
                     z-index: 3;
@@ -55,6 +61,7 @@
                     left: 0;
                     width: 76px;
                     height: 76px;
+                    object-fit: cover;
                     @include minWidth(480) {
                         width: 86px;
                         height: 86px;
@@ -71,7 +78,8 @@
                 margin-left: 15px;
                 padding-right: 40px;
                 box-sizing: border-box;
-                .userName {
+                .userNameWrapper {
+                    margin-bottom: 0;
                     font-weight: 800;
                     font-size: 16px;
                     line-height: 100%;
@@ -83,6 +91,12 @@
                     }
                     @include minWidth(1000) {
                         font-size: 45px;
+                    }
+                    .mail {
+                        display: none;
+                    }
+                    .username {
+                        display: none;
                     }
                 }
                 .userMembership {
@@ -236,6 +250,9 @@
             @include minWidth(1440) {
                 width: 150px;
             }
+            .albumLink {
+                display: block;
+            }
             .albumCoverWrapper {
                 position: relative;
                 width: 90px;
@@ -270,6 +287,7 @@
                     width: 100%;
                     height: 100%;
                     box-sizing: border-box;
+                    object-fit: cover;
                     border: 3px solid #FFFFFF;
                     border-radius: 50%;
                     @include minWidth(768) {
@@ -306,6 +324,9 @@
                         width: 29px;
                         height: 29px;
                         font-size: 13px;
+                    }
+                    @include minWidth(1440) {
+                        transform: translate(37px, 37px);
                     }
                 }
                 .albumAddCover {
@@ -428,7 +449,8 @@
         .addPhotoButton {
             @extend %font;
             @extend %animation;
-            padding-top: 20px;
+            position: relative;
+            padding-top: 25px;
             width: 143px;
             height: 143px;
             box-sizing: border-box;
@@ -440,13 +462,20 @@
             border: 1px dashed $bgSubColor;
             cursor: pointer;
             outline: none;
+            &.dropOver {
+                color: $blueColor;
+                border-color: $blueColor;
+                &:before {
+                    background-color: $blueColor;
+                }
+            }
             @include minWidth(480) {
+                padding-top: 35px;
                 width: 216px;
                 height: 216px;
                 font-size: 11px;
             }
             @include minWidth(768) {
-                padding-top: 35px;
                 width: 236px;
                 height: 236px;
                 font-size: 13px;
@@ -464,15 +493,15 @@
                 left: 50%;
                 transform: translate(-50%, -50%) scale(0.6);
                 display: block;
-                margin-top: -30px;
+                margin-top: -10px;
                 background-color: $darkGreyColor;
                 @include minWidth(480) {
                     transform: translate(-50%, -50%) scale(0.75);
-                    margin-top: -35px;
+                    margin-top: -15px;
                 }
                 @include minWidth(768) {
                     transform: translate(-50%, -50%) scale(0.9);
-                    margin-top: -45px;
+                    margin-top: -20px;
                 }
             }
             &:hover {
@@ -536,6 +565,7 @@
             }
             &.hiddenButton {
                 opacity: 0;
+                cursor: default;
             }
         }
         .hoverCardWrapper {
@@ -580,11 +610,28 @@
                         margin: 0 2px;
                         border: 1px solid $whiteColor;
                         @extend %blueButton;
-                        &:after {
-                            @extend %buttonIconAfter;
-                            @extend %closeIcon;
-                            background-color: $whiteColor;
-                            margin-right: -3px;
+                        //&:after {
+                        //    @extend %buttonIconAfter;
+                        //    @extend %closeIcon;
+                        //    background-color: $whiteColor;
+                        //    margin-right: -3px;
+                        //}
+                        &.loadButton {
+                            &:after {
+                                content: "";
+                                margin-left: 0;
+                                margin-right: -5px;
+                                width: 20px;
+                                height: 20px;
+                                background-color: transparent;
+                                background-image: url("/public/images/load-icon.svg");
+                                background-size: 20px 20px;
+                                -webkit-mask-image: none;
+                                mask-image: none;
+                                @include minWidth(480) {
+                                    margin-left: 5px;
+                                }
+                            }
                         }
                     }
                 }

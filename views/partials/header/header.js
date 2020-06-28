@@ -5,12 +5,15 @@ export const headerMenu = () => {
 
     if (!headerNode) return false;
 
-    // update page header on scroll
-    window.addEventListener(`scroll`, () => {
+    const checkScrollVisible = () => {
         if (!headerNode.dataset.page) return false;
         const classAction = (window.pageYOffset > 0) ? `remove` : `add`;
         headerNode.classList[classAction](`transparentMenu`);
-    });
+    };
+
+    // update page header on scroll
+    window.addEventListener(`scroll`, checkScrollVisible);
+    checkScrollVisible();
 
     // sandwich button on <= 768px viewport
     if (sandwichButton) {

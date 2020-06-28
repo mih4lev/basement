@@ -24,6 +24,20 @@
                 color: $blackColor;
                 border-color: $blackColor;
             }
+            &.loadButton {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-color: $blackColor;
+                font-size: 0;
+                &:after {
+                    content: "";
+                    display: block;
+                    width: 24px;
+                    height: 24px;
+                    background-image: url("/public/images/load-icon_black.svg");
+                }
+            }
         }
         .submitButton {
             margin: 0;
@@ -32,6 +46,8 @@
     }
     .inputFieldPicture {
         object-fit: cover;
+        width: 100%;
+        height: 100%;
     }
 }
 

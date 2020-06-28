@@ -3,24 +3,19 @@
     <div class="oneColumnWrapper">
         <div class="formPhotoWrapper">
             <div class="inputPhotoField albumField">
-
-                <input type="file" class="photoField" id="avatarPhoto" name="avatarPhoto">
-                <label class="photoLabelEmpty" for="avatarPhoto">You haven't saved anything yet</label>
-                <img class="inputFieldPicture"
-                     src="/public/images/categories/cat-2-6_209x209.jpg"
-                     alt="category image">
-
+                <input type="file" class="photoField" id="albumCover" name="albumCover">
+                <label class="photoLabel" for="albumCover"></label>
             </div>
         </div>
         <div class="formFieldsWrapper">
             <div class="oneColumnWrapper">
                 <div class="fieldWrapper">
                     <label class="fieldLabel" for="albumTitle">Title</label>
-                    <input class="fieldInput" id="albumTitle" type="text">
+                    <input class="fieldInput" name="albumTitle" id="albumTitle" type="text">
                 </div>
             </div>
             <div class="submitWrapper">
-                <button class="submitButton" disabled type="submit">CREATE</button>
+                <button class="submitButton" disabled type="submit" title="Create album">CREATE</button>
             </div>
         </div>
     </div>

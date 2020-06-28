@@ -2,13 +2,8 @@ const { Router } = require(`express`);
 const router = new Router();
 const fs = require(`fs`);
 
-router.use((request, response, next) => {
-    const isHomepage = true;
-    request.data = { ...request.data, isHomepage };
-    next();
-});
-
 router.get(`/`, async (request, response) => {
+    const isHomepage = true;
     const mockJSON1 = fs.readFileSync(`data-mock/basement-tips.json`);
     const { tips } = JSON.parse(mockJSON1);
     tips.length = 5;
@@ -31,7 +26,7 @@ router.get(`/`, async (request, response) => {
     const data = {
         ...request.data, tips, ...mockDataIdeas,
         ...homeData, ...mockDataTestimonials, ...mockDataCategories,
-        isAdaptiveHeader
+        isAdaptiveHeader, isHomepage
     };
     response.render(`pages/home/home`, data);
 });

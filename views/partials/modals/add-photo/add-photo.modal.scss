@@ -48,6 +48,9 @@
             }
         }
     }
+    .hiddenField {
+        display: none;
+    }
     .uploadPhotosList {
         display: flex;
         flex-direction: row;
@@ -58,8 +61,11 @@
         padding-left: 0;
         list-style-type: none;
         .uploadPhotoWrapper {
+            flex-shrink: 1;
+            flex-grow: 0;
             position: relative;
-            overflow: hidden;
+            display: block;
+            //overflow: hidden;
             margin: 1px;
             width: 83px;
             height: 83px;
@@ -121,9 +127,14 @@
             }
             .uploadedPhoto {
                 position: relative;
-                width: inherit;
-                height: inherit;
+                display: block;
+                width: 83px;
+                height: 83px;
                 object-fit: cover;
+                @include minWidth(768) {
+                    width: 94px;
+                    height: 94px;
+                }
             }
             .removeButton {
                 @extend %animation;
@@ -184,6 +195,9 @@
                         color: $blueColor;
                     }
                 }
+            }
+            &.addPhotoButton {
+                overflow: hidden;
             }
         }
         &.hiddenList {

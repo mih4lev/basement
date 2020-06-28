@@ -3,23 +3,22 @@
     <div class="oneColumnWrapper">
         <div class="formPhotoWrapper">
             <div class="inputPhotoField albumField">
-                <input type="file" class="photoField" id="avatarPhoto" name="avatarPhoto">
-                <label class="photoLabel" for="avatarPhoto">EDIT PHOTO</label>
-                <img class="inputFieldPicture"
-                     src="/public/images/categories/cat-2-6_209x209.jpg"
-                     alt="category image">
+                <input type="hidden" class="hiddenField" name="albumID" id="editAlbumID">
+                <input type="file" class="photoField" name="albumCover" id="editAlbumCover">
+                <label class="photoLabel" for="editAlbumCover">EDIT PHOTO</label>
+                <img class="inputFieldPicture" src="" alt="album picture">
             </div>
         </div>
         <div class="formFieldsWrapper">
             <div class="oneColumnWrapper">
                 <div class="fieldWrapper">
-                    <label class="fieldLabel" for="albumTitle">Title</label>
-                    <input class="fieldInput" id="albumTitle" type="text" value="My Fireplace">
+                    <label class="fieldLabel" for="editAlbumTitle">Title</label>
+                    <input class="fieldInput" name="albumTitle" id="editAlbumTitle" type="text">
                 </div>
             </div>
             <div class="submitWrapper">
-                <button class="deleteButton" type="button">Delete album</button>
-                <button class="submitButton" type="submit">UPDATE</button>
+                <button class="deleteButton" title="Delete album" type="button">Delete album</button>
+                <button class="submitButton" title="Update album" type="submit">UPDATE</button>
             </div>
         </div>
     </div>

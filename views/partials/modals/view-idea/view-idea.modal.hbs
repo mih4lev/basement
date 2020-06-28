@@ -1,149 +1,31 @@
-<section class="viewModalSection">
+<section class="viewIdeaModal" data-modal="view-idea">
     <div class="modalBlurWrapper"></div>
-    <div class="contentWrapper">
+    <div class="contentWrapper showLoadStatus">
         <div class="ideaPhotoSection">
             <div class="ideaPhotoWrapper">
-                <picture>
-                    <source srcset="/public/images/temp/modal-idea1_320.webp"
-                            media="(max-width: 479px)"
-                            type="image/webp">
-                    <source srcset="/public/images/temp/modal-idea1_320.jpg"
-                            media="(max-width: 479px)"
-                            type="image/jpeg">
-                    <source srcset="/public/images/temp/modal-idea1_480.webp"
-                            media="(max-width: 767px)"
-                            type="image/webp">
-                    <source srcset="/public/images/temp/modal-idea1_480.jpg"
-                            media="(max-width: 767px)"
-                            type="image/jpeg">
-                    <source srcset="/public/images/temp/modal-idea1_768.webp"
-                            media="(max-width: 999px)"
-                            type="image/webp">
-                    <source srcset="/public/images/temp/modal-idea1_768.jpg"
-                            media="(max-width: 999px)"
-                            type="image/jpeg">
-                    <source srcset="/public/images/temp/modal-idea1_1000.webp"
-                            media="(max-width: 1439px)"
-                            type="image/webp">
-                    <source srcset="/public/images/temp/modal-idea1_1000.jpg"
-                            media="(max-width: 1439px)"
-                            type="image/jpeg">
-                    <source srcset="/public/images/temp/modal-idea1_1440.webp"
-                            media="(min-width: 1440px)"
-                            type="image/webp">
-                    <source srcset="/public/images/temp/modal-idea1_1440.jpg"
-                            media="(min-width: 1440px)"
-                            type="image/jpeg">
-                    <img class="ideaPhoto"
-                         src="/public/images/temp/modal-idea1_1440.jpg"
-                         srcset="/public/images/temp/modal-idea1_1440.jpg"
-                         alt="Idea photo">
-                </picture>
+                <img class="ideaModalPhoto" src="" alt="">
             </div>
         </div>
         <div class="ideaDataSection">
             <div class="ideaDataWrapper">
                 <div class="ideaData">
-                    <h2 class="sectionTitle">Basement Bathroom Remodel in Silver Spring, MD</h2>
-                    <span class="ideaAuthor">By Basement Remodeling Company</span>
-                    <ul class="ideaLabelList">
-                        <li class="ideaLabel">Turquoise</li>
-                        <li class="ideaLabel">White</li>
-                        <li class="ideaLabel">Gray</li>
-                        <li class="ideaLabel">Modern</li>
-                        <li class="ideaLabel">Family room</li>
-                        <li class="ideaLabel">Wood Wall Panelling</li>
-                    </ul>
-                    <div class="saveButtonWrapper">
-                        <button class="saveCollectionButton" type="button">SAVE TO COLLECTION</button>
-                        <span class="saveCount">12 Saves</span>
-                    </div>
+                    <h2 class="sectionTitle"></h2>
+                    <span class="ideaAuthor"></span>
+                    <ul class="ideaLabelList"></ul>
+                    <form class="saveButtonWrapper">
+                        <input class="hiddenField" type="hidden" name="ideaID" id="ideaID">
+                        <button class="saveCollectionButton"
+                                title="Save to collection"
+                                type="submit">SAVE TO COLLECTION</button>
+                        <span class="saveCount">
+                            <span class="countWrapper"></span> Saves
+                        </span>
+                    </form>
                 </div>
                 <div class="ideaOtherPhotos">
                     <div class="ideaOtherWrapper allIdeasPreview">
-                        <p class="ideaOtherTitle">
-                            Other ideas of
-                            <a class="ideaLink" href="/basement-ideas/spaces/family-rooms/">Family Rooms</a>
-                        </p>
-                        <ul class="otherPreviewList">
-                            <li class="otherPreviewWrapper">
-                                <a class="otherPreviewLink" href="/basement-ideas/spaces/family-rooms/">
-                                    <img class="otherPreview"
-                                         src="/public/images/temp/portfolio_photo-image1.jpg"
-                                         alt="Idea 1 of Family Rooms">
-                                </a>
-                            </li>
-                            <li class="otherPreviewWrapper">
-                                <a class="otherPreviewLink" href="/basement-ideas/spaces/family-rooms/">
-                                    <img class="otherPreview"
-                                         src="/public/images/temp/portfolio_photo-image2.jpg"
-                                         alt="Idea 2 of Family Rooms">
-                                </a>
-                            </li>
-                            <li class="otherPreviewWrapper">
-                                <a class="otherPreviewLink" href="/basement-ideas/spaces/family-rooms/">
-                                    <img class="otherPreview"
-                                         src="/public/images/temp/portfolio_photo-image3.jpg"
-                                         alt="Idea 3 of Family Rooms">
-                                </a>
-                            </li>
-                            <li class="otherPreviewWrapper">
-                                <a class="otherPreviewLink" href="/basement-ideas/spaces/family-rooms/">
-                                    <img class="otherPreview"
-                                         src="/public/images/temp/portfolio_photo-image4.jpg"
-                                         alt="Idea 4 of Family Rooms">
-                                </a>
-                            </li>
-                            <li class="otherPreviewWrapper">
-                                <a class="otherPreviewLink" href="/basement-ideas/spaces/family-rooms/">
-                                    <img class="otherPreview"
-                                         src="/public/images/temp/portfolio_photo-image5.jpg"
-                                         alt="Idea 5 of Family Rooms">
-                                </a>
-                            </li>
-                            <li class="otherPreviewWrapper">
-                                <a class="otherPreviewLink" href="/basement-ideas/spaces/family-rooms/">
-                                    <img class="otherPreview"
-                                         src="/public/images/temp/portfolio_photo-image6.jpg"
-                                         alt="Idea 6 of Family Rooms">
-                                </a>
-                            </li>
-                            <li class="otherPreviewWrapper">
-                                <a class="otherPreviewLink" href="/basement-ideas/spaces/family-rooms/">
-                                    <img class="otherPreview"
-                                         src="/public/images/temp/portfolio_photo-image7.jpg"
-                                         alt="Idea 7 of Family Rooms">
-                                </a>
-                            </li>
-                            <li class="otherPreviewWrapper">
-                                <a class="otherPreviewLink" href="/basement-ideas/spaces/family-rooms/">
-                                    <img class="otherPreview"
-                                         src="/public/images/temp/portfolio_photo-image8.jpg"
-                                         alt="Idea 8 of Family Rooms">
-                                </a>
-                            </li>
-                            <li class="otherPreviewWrapper">
-                                <a class="otherPreviewLink" href="/basement-ideas/spaces/family-rooms/">
-                                    <img class="otherPreview"
-                                         src="/public/images/temp/portfolio_photo-image9.jpg"
-                                         alt="Idea 9 of Family Rooms">
-                                </a>
-                            </li>
-                            <li class="otherPreviewWrapper">
-                                <a class="otherPreviewLink" href="/basement-ideas/spaces/family-rooms/">
-                                    <img class="otherPreview"
-                                         src="/public/images/temp/portfolio_photo-image10.jpg"
-                                         alt="Idea 10 of Family Rooms">
-                                </a>
-                            </li>
-                            <li class="otherPreviewWrapper">
-                                <a class="otherPreviewLink" href="/basement-ideas/spaces/family-rooms/">
-                                    <img class="otherPreview"
-                                         src="/public/images/temp/portfolio_photo-image11.jpg"
-                                         alt="Idea 11 of Family Rooms">
-                                </a>
-                            </li>
-                        </ul>
+                        <p class="ideaOtherTitle">Other ideas of <a class="ideaLink" href=""></a></p>
+                        <ul class="otherPreviewList"></ul>
                     </div>
                 </div>
             </div>

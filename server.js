@@ -1,14 +1,16 @@
 const express = require(`express`);
 const compression = require('compression');
 const expressHbs = require(`express-handlebars`);
+const app = express();
 const hbs = require(`hbs`);
 const cookieParser = require(`cookie-parser`);
-const cors = require(`cors`);
-const corsOptions = require("./middlewares/cors.middleware");
 const loginMiddleware = require("./middlewares/login.middleware");
-const app = express();
+const createPageRoutes = require("./routes/pages.route");
+const createAPIRoutes = require("./routes/api.route")
+
 // compress response
 app.use(compression());
+
 // handlebars options
 app.engine(`hbs`, expressHbs({
     layoutsDir: `views/layouts`,
@@ -17,35 +19,34 @@ app.engine(`hbs`, expressHbs({
 }));
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
+
 // static source path
 app.use(`/public`, express.static(__dirname + `/public`));
 app.use(`/robots.txt`, express.static(__dirname + `/robots.txt`));
 app.use(`/data-mock`, express.static(__dirname + `/data-mock`));
+
 // middleware
 app.use(express.json({ extended: true }));
 app.use(cookieParser('secretKeyBasementRemodelingDotCom'));
 app.use(loginMiddleware);
-app.use('/api', cors(corsOptions));
-app.use('/', require('./routes/home.route'));
-app.use('/local', require('./routes/local.route'));
-app.use('/portfolio', require('./routes/portfolio.route'));
-app.use('/basement-ideas', require('./routes/basement-ideas.route'));
-app.use('/how-it-works', require('./routes/how-it-works.route'));
-app.use('/about-us', require('./routes/about-us.route'));
-app.use('/instant-quote', require('./routes/instant-quote.route'));
-app.use('/sign-up', require('./routes/sign-up.route'));
-app.use('/profile', require('./routes/profile.route'));
-app.use('/instagram', require('./routes/instagram.route'));
+
+// pages routes
+createPageRoutes(app);
+
+// API routes
+createAPIRoutes(app);
+
 // 404
 app.use((request, response, next) => {
     const { url } = request;
-    if (url.indexOf(`favicon`) !== -1) {
-        response.status(404);
-        return next();
-    }
-    response.status(404).redirect(`/404`);
+    console.log(url);
+    // if (url.indexOf(`favicon`) !== -1) {
+    //     response.status(404);
+    //     return next();
+    // }
+    // response.status(404).redirect(`/404`);
     next();
 });
-// end
+
 const PORT = process.env.PORT || 8888;
 app.listen(PORT);

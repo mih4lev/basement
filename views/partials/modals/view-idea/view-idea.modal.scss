@@ -1,4 +1,4 @@
-.viewModalSection {
+.viewIdeaModal {
     display: none;
     z-index: 11;
     top: 0;
@@ -15,6 +15,7 @@
         backdrop-filter: blur(3px);
     }
     .contentWrapper {
+        @extend %animation;
         position: fixed;
         z-index: 999;
         top: 50%;
@@ -38,6 +39,9 @@
         @include minWidth(1440) {
             margin-left: 0;
             width: 520px;
+        }
+        &.loadWrapper {
+            opacity: 0;
         }
     }
     .ideaPhotoSection {
@@ -69,6 +73,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
             margin: 0 auto;
             width: 320px;
             height: 320px;
@@ -89,12 +94,49 @@
                 width: 704px;
                 height: 704px;
             }
-            .ideaPhoto {
+            .ideaModalPhoto {
+                @extend %animation;
                 display: block;
+                max-width: 320px;
+                max-height: 320px;
+                @include minWidth(480) {
+                    max-width: 480px;
+                    max-height: 480px;
+                }
+                @include minWidth(768) {
+                    max-width: 592px;
+                    max-height: 592px;
+                }
+                @include minWidth(1000) {
+                    max-width: 598px;
+                    max-height: 598px;
+                }
+                @include minWidth(1440) {
+                    max-width: 704px;
+                    max-height: 704px;
+                }
+            }
+            &.loadWrapper {
+                &:after {
+                    @extend %animation;
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 40px;
+                    height: 40px;
+                    transform: translate(-50%, -50%);
+                    background-image: url("/public/images/load-icon.svg");
+                    background-size: 40px 40px;
+                }
+                .ideaModalPhoto {
+                    opacity: 0;
+                }
             }
         }
     }
     .ideaDataSection {
+        @extend %animation;
         width: 100%;
         background-color: $whiteColor;
         margin-top: -100px;
@@ -122,6 +164,7 @@
             width: 520px;
         }
         .ideaDataWrapper {
+            @extend %animation;
             display: flex;
             flex-direction: column;
             width: 290px;
@@ -147,6 +190,7 @@
                 flex-direction: column;
             }
             .ideaData {
+                @extend %animation;
                 display: flex;
                 flex-direction: column;
                 position: relative;
@@ -274,6 +318,13 @@
                         border-radius: 50%;
                         cursor: pointer;
                         outline: none;
+                        &:before {
+                            content: "SAVE TO COLLECTION";
+                            font-size: 0;
+                            @include minWidth(480) {
+                                font-size: 13px;
+                            }
+                        }
                         &:after {
                             content: "";
                             position: absolute;
@@ -305,7 +356,7 @@
                             height: 40px;
                             padding: 0 20px;
                             border-radius: 100px;
-                            font-size: 13px;
+                            //font-size: 13px;
                             font-weight: 600;
                             letter-spacing: 0.05em;
                             text-transform: uppercase;
@@ -317,6 +368,51 @@
                         }
                         &:hover {
                             opacity: 0.75;
+                        }
+                        &.loadButton {
+                            background-color: darken($blueColor, 15%);
+                            &:hover {
+                                background-color: darken($blueColor, 15%);
+                            }
+                            &:after {
+                                content: "";
+                                margin-left: 0;
+                                margin-right: -5px;
+                                width: 16px;
+                                height: 16px;
+                                background-color: transparent;
+                                background-image: url("/public/images/load-icon.svg");
+                                background-size: 16px 16px;
+                                -webkit-mask-image: none;
+                                mask-image: none;
+                                @include minWidth(480) {
+                                    width: 20px;
+                                    height: 20px;
+                                    background-size: 20px 20px;
+                                }
+                                @include minWidth(480) {
+                                    margin-left: 5px;
+                                }
+                            }
+                        }
+                        &.savedButton {
+                            background-color: $bgSubColor;
+                            cursor: default;
+                            font-size: 0;
+                            &:before {
+                                content: "SAVED TO COLLECTION";
+                                flex-shrink: 0;
+                                flex-grow: 1;
+                                display: block;
+                                color: $greyColor;
+                                font-size: 0;
+                                @include minWidth(480) {
+                                    font-size: 13px;
+                                }
+                            }
+                            &:after {
+                                background-image: url("/public/images/save-icon_black.svg");
+                            }
                         }
                     }
                     .saveCount {
@@ -340,6 +436,7 @@
                 }
             }
             .ideaOtherPhotos {
+                @extend %animation;
                 flex-grow: 1;
                 flex-shrink: 0;
                 display: flex;
@@ -413,6 +510,7 @@
                                 display: block;
                                 width: 40px;
                                 height: 40px;
+                                cursor: pointer;
                                 &:hover {
                                     opacity: 0.75;
                                 }
@@ -511,7 +609,41 @@
             }
         }
     }
+    .contentWrapper.showLoadStatus {
+        .ideaPhotoWrapper {
+            &:after {
+                @extend %animation;
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 40px;
+                height: 40px;
+                transform: translate(-50%, -50%);
+                background-image: url("/public/images/load-icon.svg");
+                background-size: 40px 40px;
+            }
+        }
+        .ideaModalPhoto {
+            opacity: 0;
+        }
+        .ideaData {
+            opacity: 0;
+        }
+        .ideaOtherPhotos {
+            opacity: 0;
+        }
+        .closeButton {
+            opacity: 0;
+            cursor: default;
+        }
+        .ideaArrow {
+            opacity: 0;
+            cursor: default;
+        }
+    }
     .closeButton {
+        @extend %animation;
         position: absolute;
         top: -345px;
         left: 50%;
@@ -544,6 +676,7 @@
         }
     }
     .ideaArrow {
+        @extend %animation;
         display: none;
         position: absolute;
         top: -220px;
@@ -598,6 +731,10 @@
             @include minWidth(1440) {
                 margin-left: 328px;
             }
+        }
+        &.hiddenArrow {
+            opacity: 0;
+            cursor: default;
         }
     }
     &.activeModal {

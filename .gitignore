@@ -11,6 +11,8 @@
 /public/images/sprite.html
 /public/images/css/
 /public/images/css/sprite.css
+# ignore upload files
+/public/upload/
 # ignore DS files
 .DS_Store
 /client/.DS_Store
