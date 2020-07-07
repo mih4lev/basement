@@ -2,7 +2,7 @@ const { Router } = require(`express`);
 const router = new Router();
 const fs = require(`fs`);
 const multer = require('multer');
-const ideaUpload = multer({ dest: "./public/upload/ideas/" });
+const ideaUpload = multer({ dest: "public/upload/ideas/" });
 const formParser = multer();
 
 // API /api/ideas - POST | add ideas (multiple)

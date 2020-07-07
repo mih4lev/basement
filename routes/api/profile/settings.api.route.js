@@ -1,7 +1,7 @@
 const { Router } = require(`express`);
 const router = new Router();
 const multer = require('multer');
-const avatarUpload = multer({ dest: "./public/upload/avatars/" });
+const avatarUpload = multer({ dest: "public/upload/avatars/" });
 const formParser = multer();
 
 // CRUD API /api/profile/settings

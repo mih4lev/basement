@@ -2,7 +2,7 @@ const { Router } = require(`express`);
 const router = new Router();
 const fs = require(`fs`);
 const multer = require('multer');
-const albumUpload = multer({ dest: "./public/upload/albums/" });
+const albumUpload = multer({ dest: "public/upload/albums/" });
 const formParser = multer();
 
 // API /api/profile/albums GET
