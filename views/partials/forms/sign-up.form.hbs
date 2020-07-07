@@ -1,4 +1,4 @@
-<form class="formWrapper" action="/profile/">
+<form class="formNode" action="/profile/">
     <h1 class="sectionTitle centerText">Sign up to become a member</h1>
     <div class="networkButtonsWrapper">
         <button class="networkButton facebookButton" type="button">Continue with Facebook</button>
@@ -8,46 +8,46 @@
         <div class="fieldWrapper">
             <p class="selectLabel">First name</p>
             <label class="fieldLabel" for="firstName">First name</label>
-            <input class="fieldInput" id="firstName" type="text">
+            <input class="fieldInput" name="firstName" id="firstName" type="text">
         </div>
     </div>
     <div class="oneColumnWrapper">
         <div class="fieldWrapper">
             <p class="selectLabel">Last name</p>
             <label class="fieldLabel" for="lastName">Last name</label>
-            <input class="fieldInput" id="lastName" type="text">
+            <input class="fieldInput" name="lastName" id="lastName" type="text">
         </div>
     </div>
     <div class="oneColumnWrapper">
         <div class="fieldWrapper">
             <p class="selectLabel">User name</p>
             <label class="fieldLabel" for="userName">User name</label>
-            <input class="fieldInput" id="userName" type="text">
+            <input class="fieldInput" name="userName" id="userName" type="text">
         </div>
     </div>
     <div class="oneColumnWrapper">
         <div class="fieldWrapper">
             <p class="selectLabel">E-mail</p>
-            <label class="fieldLabel" for="userName">E-mail</label>
-            <input class="fieldInput" id="userName" type="text">
+            <label class="fieldLabel" for="userMail">E-mail</label>
+            <input class="fieldInput" name="userMail" id="userMail" type="text">
         </div>
     </div>
     <div class="oneColumnWrapper">
         <div class="fieldWrapper">
             <p class="selectLabel">Password</p>
-            <label class="fieldLabel" for="userName">Create a password</label>
-            <input class="fieldInput" id="userName" type="text">
+            <label class="fieldLabel" for="userPassword">Create a password</label>
+            <input class="fieldInput passwordField" name="userPassword" id="userPassword" type="password">
         </div>
     </div>
     <div class="oneColumnWrapper">
         <div class="fieldWrapper">
             <p class="selectLabel">Password</p>
-            <label class="fieldLabel" for="userName">Confirm your password</label>
-            <input class="fieldInput" id="userName" type="text">
+            <label class="fieldLabel" for="repeatPassword">Confirm your password</label>
+            <input class="fieldInput passwordField" id="repeatPassword" type="password">
         </div>
     </div>
     <div class="submitWrapper">
-        <button class="submitButton" type="submit">SIGN UP with e-mail</button>
+        <button class="submitButton" disabled type="submit">SIGN UP with e-mail</button>
         <p class="textBlock centerText">
             Already have an account?
             <a class="userLogin textLink" href="#">SIGN IN</a>

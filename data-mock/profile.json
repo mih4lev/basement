@@ -1,9 +1,12 @@
 {
+    "userID": 1,
     "name": "Janet",
     "surname": "Boyd",
     "mail": "janet_boyd@gmail.com",
     "username": "janet_boyd",
     "membership": "Member since 2019",
     "avatar": "/public/images/temp/avatar_130x130.jpg",
-    "isAvatarExist": false
+    "isAvatarExist": false,
+    "memberTimestamp": 1593528925,
+    "memberYear": 2019
 }

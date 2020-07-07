@@ -19,19 +19,28 @@ export const showDeleteWrappers = () => {
             deleteCardButton.classList[modalClassAction](`hiddenButton`);
         };
 
+        const removeFromAlbum = (albumID) => {
+            const albumSelector = `.albumWrapper[data-album="${albumID}"]`;
+            const albumWrapper = document.querySelector(albumSelector);
+            if (!albumWrapper) return false;
+            const albumCountNode = albumWrapper.querySelector(`.albumPicturesCount`);
+            const albumCountPrevious = Number(albumCountNode.innerText);
+            const newCountValue = albumCountPrevious - 1;
+            if (newCountValue !== 0) return albumCountNode.innerText = albumCountPrevious - 1;
+            const albumCoverWrapper = albumWrapper.querySelector(`.albumCoverWrapper`);
+            albumCoverWrapper.removeChild(albumCountNode);
+        };
+
         const deleteHandler = async () => {
             const parentWrapper = deleteButton.closest(`.ideaWrapper`);
-            const ideaID = parentWrapper.dataset.idea;
+            const formNode = parentWrapper.querySelector(`.formWrapper`);
+            const formData = new FormData(formNode);
             const responseOptions = {
-                URL: `/api/ideas`,
-                method: `DELETE`,
-                isJSON: true,
-                body: { ideaID },
-                button: deleteButton
-            }
+                URL: `/api/ideas`, method: `DELETE`, body: formData, button: deleteButton
+            };
             const responseData = await saveAction(responseOptions);
             if (responseData.code !== 200) return false; // show error
-            // hide delete wrapper
+            removeFromAlbum(parentWrapper.dataset.album);
             parentWrapper.parentNode.removeChild(parentWrapper);
         };
 
@@ -57,5 +66,20 @@ export const showDeleteWrappers = () => {
     };
     const observer = new MutationObserver(observerCallback);
     if (ideaList) observer.observe(ideaList, observerOptions);
+
+};
+
+export const showMoreIdeas = () => {
+
+    const showMoreButton = document.querySelector(`.showMoreButton`);
+
+    const clickHandler = async (event) => {
+        event.preventDefault();
+        const response = await fetch(`/api/ideas/sort/count/page/2`);
+        const responseData = await response.json();
+        console.log(responseData);
+    };
+
+    if (showMoreButton) showMoreButton.addEventListener(`click`, clickHandler);
 
 };

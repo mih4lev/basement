@@ -25,6 +25,9 @@
             width: 110px !important;
         }
     }
+    .inputFieldPicture {
+        object-fit: cover;
+    }
 }
 
 .avatarField {

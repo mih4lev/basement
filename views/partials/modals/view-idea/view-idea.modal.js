@@ -4,7 +4,7 @@ export const viewIdeaModal = () => {
 
     const animationTimeout = 250;
 
-    const modalNode = setModal(`view-idea`)
+    const modalNode = setModal(`view-idea`);
     const modalContent = modalNode.querySelector(`.contentWrapper`);
     const ideaList = document.querySelector(`.ideaList`);
     const ideaPhotos = [...document.querySelectorAll(`.ideaPhoto`)];

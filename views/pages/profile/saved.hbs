@@ -39,29 +39,6 @@
             <button class="createAlbumButton" type="button" title="Create album">CREATE ALBUM</button>
         </div>
         {{> page-header/profile-menu }}
-        <ul class="albumList">
-            {{# each albums }}
-                <li class="albumWrapper" data-album="{{{ id }}}">
-                    <a class="albumLink" href="/profile/saved/{{{ id }}}">
-                        <div class="albumCoverWrapper">
-                            <img class="albumCoverPicture"
-                                 src="/public/images/temp/{{{ image }}}.jpg"
-                                 alt="{{{ title }}}">
-                            <div class="albumPicturesCount">{{{ albumCount }}}</div>
-                        </div>
-                    </a>
-                    <button class="editAlbumButton" type="button" title="Edit album">Edit album</button>
-                    <h3 class="albumTitle">{{{ title }}}</h3>
-                </li>
-            {{/each}}
-            <li class="albumWrapper">
-                <div class="albumCoverWrapper">
-                    <button class="albumAddCover createAlbumButton"
-                            type="button"
-                            title="Create album">Create album</button>
-                </div>
-            </li>
-        </ul>
     </div>
 </section>
 
@@ -92,7 +69,9 @@
                 </li>
             {{/each}}
         </ul>
-        <button class="showMoreButton">SHOW MORE</button>
+        {{# if isMoreButtonVisible }}
+            <button class="showMoreButton">SHOW MORE</button>
+        {{/ if }}
     </div>
 </section>
 
@@ -117,7 +96,7 @@
                 <div class="deleteWrapper">
                     <p class="deleteAnnotation">Are you sure you want to remove this photo?</p>
                     <form class="deleteButtonsWrapper formWrapper">
-                        <input class="hiddenField" type="hidden" name="ideaID">
+                        <input class="hiddenField" type="hidden" name="ideaID" value="{{{ id }}}">
                         <button class="cancelButton" title="Cancel" type="button">CANCEL</button>
                         <button class="deleteButton" title="Delete" type="button">DELETE</button>
                     </form>

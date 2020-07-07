@@ -2,6 +2,8 @@
     "id": 1,
     "header": "Basement Bathroom Remodel in Silver Spring, MD",
     "author": "By Basement Remodeling Company",
+    "authorID": 1,
+    "moderated": true,
     "saveCount": 12,
     "tagList": [
         "TURQUOISE",

@@ -15,7 +15,6 @@
                         <span class="surname">{{{ userData.surname }}}</span>
                         <span class="mail">{{{ userData.mail }}}</span>
                         <span class="username">{{{ userData.username }}}</span>
-                        <span class="userID">{{{ userData.userID }}}</span>
                     </p>
                     <span class="userMembership">{{{ userData.membership }}}</span>
                 </div>
@@ -40,20 +39,54 @@
         </div>
         {{> page-header/profile-menu }}
         <ul class="albumList">
-            {{# each albums }}
-                <li class="albumWrapper" data-album="{{{ id }}}">
-                    <a class="albumLink" href="/profile/saved/{{{ id }}}">
-                        <div class="albumCoverWrapper">
-                            <img class="albumCoverPicture"
-                                 src="/public/images/temp/{{{ image }}}.jpg"
-                                 alt="{{{ title }}}">
-                            <div class="albumPicturesCount">{{{ albumCount }}}</div>
-                        </div>
-                    </a>
-                    <button class="editAlbumButton" type="button" title="Edit album">Edit album</button>
-                    <h3 class="albumTitle">{{{ title }}}</h3>
-                </li>
-            {{/each}}
+            <li class="albumWrapper" data-album="0">
+                <a class="albumLink" href="#">
+                    <div class="albumCoverWrapper">
+                        <img class="albumCoverPicture"
+                             src="/public/images/temp/ideas_page-image8.jpg"
+                             alt="My Bathrooms">
+                        <div class="albumPicturesCount">16</div>
+                    </div>
+                </a>
+                <button class="editAlbumButton" type="button" title="Edit album">Edit album</button>
+                <h3 class="albumTitle">My Bathrooms</h3>
+            </li>
+            <li class="albumWrapper" data-album="1">
+                <a class="albumLink" href="#">
+                    <div class="albumCoverWrapper">
+                        <img class="albumCoverPicture"
+                             src="/public/images/temp/album_130x130.jpg"
+                             alt="Fireplaces">
+                        <div class="albumPicturesCount">4</div>
+                    </div>
+                </a>
+                <button class="editAlbumButton" type="button" title="Edit album">Edit album</button>
+                <h3 class="albumTitle">Fireplaces</h3>
+            </li>
+            <li class="albumWrapper" data-album="2">
+                <a class="albumLink" href="#">
+                    <div class="albumCoverWrapper">
+                        <img class="albumCoverPicture"
+                             src="/public/images/temp/album_add-image9.jpg"
+                             alt="My Bathrooms">
+                        <div class="albumPicturesCount">231</div>
+                    </div>
+                </a>
+                <button class="editAlbumButton" type="button" title="Edit album">Edit album</button>
+                <h3 class="albumTitle">My Offices</h3>
+            </li>
+            <li class="albumWrapper" data-album="3">
+                <a class="albumLink" href="#">
+                    <div class="albumCoverWrapper">
+                        <img class="albumCoverPicture"
+                             src="/public/images/temp/album_add-image6.jpg"
+                             alt="My Bathrooms">
+                        <div class="albumPicturesCount">28</div>
+                    </div>
+                </a>
+                <button class="editAlbumButton" type="button" title="Edit album">Edit album</button>
+                <h3 class="albumTitle">Awesome stairs</h3>
+            </li>
             <li class="albumWrapper">
                 <div class="albumCoverWrapper">
                     <button class="albumAddCover createAlbumButton"
@@ -67,9 +100,12 @@
 
 <section class="ideasMain">
     <div class="wrapper listWrapper">
-        <ul class="ideaList savedList">
+        <ul class="ideaList">
+            <li class="ideaWrapper buttonWrapper">
+                <button class="addPhotoButton" title="Add a new photo" type="button">Add a new photo</button>
+            </li>
             {{# each ideas }}
-                <li class="ideaWrapper" data-album="{{{ albumID }}}">
+                <li class="ideaWrapper">
                     <div class="ideaPhotoWrapper">
                         <img class="ideaPhoto"
                              data-idea="{{{ id }}}"
@@ -79,11 +115,10 @@
                         <div class="hoverCardWrapper">
                             <div class="deleteWrapper">
                                 <p class="deleteAnnotation">Are you sure you want to remove this photo?</p>
-                                <form class="deleteButtonsWrapper formWrapper">
-                                    <input class="hiddenField" type="hidden" name="ideaID" value="{{{ id }}}">
+                                <div class="deleteButtonsWrapper">
                                     <button class="cancelButton" title="Cancel" type="button">CANCEL</button>
                                     <button class="deleteButton" title="Delete" type="button">DELETE</button>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -116,11 +151,10 @@
             <div class="hoverCardWrapper">
                 <div class="deleteWrapper">
                     <p class="deleteAnnotation">Are you sure you want to remove this photo?</p>
-                    <form class="deleteButtonsWrapper formWrapper">
-                        <input class="hiddenField" type="hidden" name="ideaID">
+                    <div class="deleteButtonsWrapper">
                         <button class="cancelButton" title="Cancel" type="button">CANCEL</button>
                         <button class="deleteButton" title="Delete" type="button">DELETE</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

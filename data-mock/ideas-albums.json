@@ -1,0 +1,32 @@
+{
+    "albums": [
+        {
+            "id": 1,
+            "image": "ideas_page-image8",
+            "title": "My Bathrooms",
+            "albumCount": 22,
+            "addedTimestamp": 1593528907
+        },
+        {
+            "id": 2,
+            "image": "album_130x130",
+            "title": "Fireplaces",
+            "albumCount": 20,
+            "addedTimestamp": 1593528925
+        },
+        {
+            "id": 3,
+            "image": "album_add-image9",
+            "title": "My Offices",
+            "albumCount": 8,
+            "addedTimestamp": 1593528937
+        },
+        {
+            "id": 4,
+            "image": "album_add-image6",
+            "title": "Awesome stairs",
+            "albumCount": 10,
+            "addedTimestamp": 1593528965
+        }
+    ]
+}

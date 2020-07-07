@@ -688,6 +688,7 @@ strong {
 // input[type="text"] && textarea
 
 .fieldLabel {
+    @extend %animation;
     position: absolute;
     line-height: 26px;
     font-size: 9px;
@@ -695,6 +696,7 @@ strong {
     color: $greyColor;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    cursor: text;
     transform: translateX(13px);
     @include minWidth(480) {
         height: 41px;
@@ -703,6 +705,10 @@ strong {
     }
     @include minWidth(768) {
         font-size: 13px;
+    }
+    &.hiddenLabel {
+        opacity: 0;
+        z-index: -10;
     }
 }
 
@@ -719,7 +725,7 @@ strong {
     font-size: 9px;
     font-weight: 700;
     letter-spacing: 0.05em;
-    text-transform: uppercase;
+    //text-transform: uppercase;
     color: $blackColor;
     outline: none;
     &:focus {
@@ -732,6 +738,9 @@ strong {
     }
     @include minWidth(768) {
         font-size: 13px;
+    }
+    &.errorField {
+        border-color: $errorColor;
     }
 }
 
@@ -819,6 +828,7 @@ strong {
 // custom selects
 
 .selectLabel {
+    @extend %animation;
     margin: 10px 0 5px 0;
     font-size: 9px;
     line-height: 125%;
@@ -829,6 +839,12 @@ strong {
     }
     @include minWidth(768) {
         font-size: 13px;
+    }
+    &.activeLabel {
+        color: $blueColor;
+    }
+    &.errorLabel {
+        color: $errorColor;
     }
 }
 

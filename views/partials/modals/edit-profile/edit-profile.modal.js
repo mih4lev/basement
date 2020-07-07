@@ -15,6 +15,7 @@ export const editProfileModal = () => {
     const surnameField = document.querySelector(`.userNameWrapper .surname`);
     const usernameField = document.querySelector(`.userNameWrapper .username`);
     const mailField = document.querySelector(`.userNameWrapper .mail`);
+    const userIDField = document.querySelector(`.userNameWrapper .userID`);
     const avatarWrapper = document.querySelector(`.cardSection .userAvatar`);
     let avatar = avatarWrapper.querySelector(`.avatarPicture`);
 
@@ -23,6 +24,7 @@ export const editProfileModal = () => {
     const modalSurnameField = modalNode.querySelector(`#lastName`);
     const modalUsernameField = modalNode.querySelector(`#userName`);
     const modalMailField = modalNode.querySelector(`#userMail`);
+    const modalUserIDField = modalNode.querySelector(`#userID`);
     const modalAvatarWrapper = modalNode.querySelector(`.avatarField`);
     let avatarNode = modalNode.querySelector(`.inputFieldPicture`);
 
@@ -43,8 +45,10 @@ export const editProfileModal = () => {
 
     // synchronize data from profile to modal
     const synchronizeData = ({ toModal = true }) => {
-        const modalData = [ modalNameField, modalSurnameField, modalUsernameField, modalMailField ];
-        const profileData = [ nameField, surnameField, usernameField, mailField ];
+        const modalData = [
+            modalNameField, modalSurnameField, modalUsernameField, modalMailField, modalUserIDField
+        ];
+        const profileData = [ nameField, surnameField, usernameField, mailField, userIDField ];
         modalData.forEach((data, index) => {
             if (toModal) modalData[index].value = profileData[index].innerText;
             else profileData[index].innerText = modalData[index].value;
@@ -133,9 +137,10 @@ export const editProfileModal = () => {
     updateButton.addEventListener(`click`, async (event) => {
         event.preventDefault();
         // change button && fetch data
-        const formData = new FormData(formNode);
-        const responseOptions = { URL: `/api/profile/settings`, body: formData, button: updateButton };
-        const responseData = await saveAction(responseOptions);
+        const URL = `/api/profile/settings`;
+        const method = `PUT`;
+        const body = new FormData(formNode);
+        const responseData = await saveAction({ URL, method, body, button: updateButton });
         if (responseData.code !== 200) return false; // need show error
         // change profile data
         changeProfileData();

@@ -51,7 +51,7 @@
                         transform: translate(-50%, -5%) scale(3);
                     }
                     @include minWidth(768) {
-                        transform: translate(-50%, 10%) scale(4.5);
+                        transform: translate(-50%, 10%) scale(4.6);
                     }
                 }
                 .avatarPicture {
@@ -98,6 +98,9 @@
                     .username {
                         display: none;
                     }
+                    .userID {
+                        display: none;
+                    }
                 }
                 .userMembership {
                     margin-top: 5px;
@@ -113,6 +116,7 @@
                 margin-top: auto;
             }
             .cardButton {
+                @extend %font;
                 @extend %animation;
                 margin: 0;
                 padding: 0;

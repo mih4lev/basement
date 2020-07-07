@@ -36,40 +36,22 @@
     <div class="wrapper center">
         <div class="sectionHeader">
             <h2 class="sectionTitle">My collection</h2>
-            <button class="createAlbumButton" type="button" title="Create album">CREATE ALBUM</button>
+            {{# if isSavedPhoto }}
+                <button class="createAlbumButton" type="button" title="Create album">CREATE ALBUM</button>
+            {{/ if }}
         </div>
         {{> page-header/profile-menu }}
-        <ul class="albumList">
-            {{# each albums }}
-                <li class="albumWrapper" data-album="{{{ id }}}">
-                    <a class="albumLink" href="/profile/saved/{{{ id }}}">
-                        <div class="albumCoverWrapper">
-                            <img class="albumCoverPicture"
-                                 src="/public/images/temp/{{{ image }}}.jpg"
-                                 alt="{{{ title }}}">
-                            <div class="albumPicturesCount">{{{ albumCount }}}</div>
-                        </div>
-                    </a>
-                    <button class="editAlbumButton" type="button" title="Edit album">Edit album</button>
-                    <h3 class="albumTitle">{{{ title }}}</h3>
-                </li>
-            {{/each}}
-            <li class="albumWrapper">
-                <div class="albumCoverWrapper">
-                    <button class="albumAddCover createAlbumButton"
-                            type="button"
-                            title="Create album">Create album</button>
-                </div>
-            </li>
-        </ul>
     </div>
 </section>
 
 <section class="ideasMain">
     <div class="wrapper listWrapper">
-        <ul class="ideaList savedList">
+        <ul class="ideaList uploadList">
+            <li class="ideaWrapper buttonWrapper">
+                <button class="addPhotoButton" title="Add a new photo" type="button">Add a new photo</button>
+            </li>
             {{# each ideas }}
-                <li class="ideaWrapper" data-album="{{{ albumID }}}">
+                <li class="ideaWrapper">
                     <div class="ideaPhotoWrapper">
                         <img class="ideaPhoto"
                              data-idea="{{{ id }}}"

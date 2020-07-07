@@ -135,15 +135,18 @@ export const addPhotoModal = () => {
         const ideaClone = ideaTemplate.querySelector(`li`).cloneNode(true);
         const ideaPhoto = ideaClone.querySelector(`.ideaPhoto`);
         const ideaTitle = ideaClone.querySelector(`.ideaTitle`);
+        const hiddenIdeaID = ideaClone.querySelector(`.formWrapper .hiddenField`);
         ideaPhoto.src = generatedURL;
         ideaPhoto.dataset.idea = ideaID;
         ideaPhoto.setAttribute(`alt`, title);
+        hiddenIdeaID.value = ideaID;
         ideaTitle.innerText = title;
         ideaList.appendChild(ideaClone);
         ideaList.insertBefore(ideaClone, ideaList.children[1]);
     }
 
     const saveIdeas = (title, addedIDArray) => {
+        if (ideaList.classList.contains(`savedList`)) return false;
         let arrayIndex = 0;
         for (const fileName in customFiles) {
             const ideaID = addedIDArray[arrayIndex] || 10; // delete defaultID
@@ -166,8 +169,7 @@ export const addPhotoModal = () => {
         const responseOptions = { URL: `/api/ideas`, body: formData, button: event.target };
         const responseData = await saveAction(responseOptions);
         if (responseData.code !== 200) return false; // show error
-        const addedIDArray = [ 286, 287, 288, 289, 290 ]; // update to response added id
-        saveIdeas(photosTitle.value, addedIDArray);
+        saveIdeas(photosTitle.value, responseData.addedIDArray);
         changeModalVisible(modalNode)();
         clearModalData();
     };

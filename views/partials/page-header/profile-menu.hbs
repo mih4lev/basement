@@ -1,8 +1,20 @@
 <ul class="profileMenu">
-    <li class="profileLinkWrapper">
-        <span class="subLink activeLink">SAVED PHOTOS</span>
-    </li>
-    <li class="profileLinkWrapper">
-        <a class="subLink" href="#">UPLOADED PHOTOS</a>
-    </li>
+    {{# if isSavedPhoto }}
+        <li class="profileLinkWrapper">
+            <span class="subLink activeLink">SAVED PHOTOS</span>
+        </li>
+    {{ else }}
+        <li class="profileLinkWrapper">
+            <a class="subLink" href="/profile">SAVED PHOTOS</a>
+        </li>
+    {{/ if }}
+    {{# if isLoadedPhoto }}
+        <li class="profileLinkWrapper">
+            <span class="subLink activeLink">UPLOADED PHOTOS</span>
+        </li>
+    {{ else }}
+        <li class="profileLinkWrapper">
+            <a class="subLink" href="/profile/uploaded">UPLOADED PHOTOS</a>
+        </li>
+    {{/ if }}
 </ul>

@@ -1,33 +1,20 @@
-import { setButtonStatus } from "../modals";
+import {changeModalVisible, resetDropEvents, saveAction, setModal} from "../modals";
 
 export const createAlbumModal = () => {
 
-    // show modal
+    const albumList = document.querySelector(`.albumList`);
     const createButtons = [...document.querySelectorAll(`.createAlbumButton`)];
-    const createModal = document.querySelector(`.createAlbumModal`);
-    const closeModalButton = createModal.querySelector(`.closeButton`);
-    const changeModalVisible = () => {
-        const isModalActive = createModal.classList.contains(`activeModal`);
-        const modalClassAction = (isModalActive) ? `remove` : `add`;
-        createModal.classList[modalClassAction](`activeModal`);
-    };
-    createButtons.forEach((button) => {
-        button.addEventListener(`click`, changeModalVisible);
-    })
-    closeModalButton.addEventListener(`click`, changeModalVisible);
+    // set modal
+    const modalNode = setModal(`create-album`);
+    const formNode = modalNode.querySelector(`.formWrapper`);
     // edit modal data
-    const createAlbumModal = document.querySelector(`.createAlbumWrapper`);
-    const photoField = createAlbumModal.querySelector(`.photoField`);
-    const photoLabel = createAlbumModal.querySelector(`.photoLabel`);
-    const coverWrapper = createAlbumModal.querySelector(`.albumField`);
-    const albumTitle = createAlbumModal.querySelector(`.fieldInput`);
-    const createButton = createAlbumModal.querySelector(`.submitButton`);
-    // remove default drag && drop browser API
-    const dropEvents = [`dragenter`, `dragover`, `dragleave`, `drop`];
-    const removeBrowserAPI = (event) => event.preventDefault();
-    dropEvents.forEach((eventName) => {
-        photoLabel.addEventListener(eventName, removeBrowserAPI);
-    });
+    const modalPhotoField = modalNode.querySelector(`.photoField`);
+    const modalDropZone = modalNode.querySelector(`.photoLabel`);
+    const modalCoverWrapper = modalNode.querySelector(`.albumField`);
+    const modalAlbumTitle = modalNode.querySelector(`.fieldInput`);
+    const modalCreateButton = modalNode.querySelector(`.submitButton`);
+
+    // show upload files
     const showUploadFiles = (files) => {
         files.forEach((file) => {
             const reader = new FileReader();
@@ -36,57 +23,35 @@ export const createAlbumModal = () => {
                 coverNode.src = reader.result;
                 coverNode.classList.add(`inputFieldPicture`);
                 coverNode.setAttribute(`alt`, file.name);
-                coverWrapper.appendChild(coverNode);
-                photoLabel.classList.add(`editLabel`);
+                modalCoverWrapper.appendChild(coverNode);
+                modalDropZone.classList.add(`editLabel`);
                 checkButtonStatus();
-            });
-            reader.addEventListener(`error`, () => {
-                console.log(`error`);
             });
             reader.readAsDataURL(file);
         });
     };
-    photoField.addEventListener(`change`, () => {
-        if (!photoField.files || !photoField.files.length) return false;
-        showUploadFiles([...photoField.files]);
-    });
-    photoLabel.addEventListener(`dragenter`, () => {
-        photoLabel.classList.add(`dropOver`);
-    });
-    photoLabel.addEventListener(`dragleave`, () => {
-        photoLabel.classList.remove(`dropOver`);
-    });
-    photoLabel.addEventListener(`drop`, (event) => {
+
+    // change handler
+    const changeHandler = () => {
+        if (!modalPhotoField.files || !modalPhotoField.files.length) return false;
+        showUploadFiles([...modalPhotoField.files]);
+    }
+    if (modalPhotoField) modalPhotoField.addEventListener(`change`, changeHandler);
+
+    // remove default drag && drop browser API
+    const dropHandler = (event) => {
         if (!event.dataTransfer || !event.dataTransfer.files.length) return false;
         showUploadFiles([...event.dataTransfer.files]);
-        photoLabel.classList.remove(`dropOver`);
-    });
-    // check button status
-    const checkButtonStatus = () => {
-        const isFieldValid = !!albumTitle.value.length;
-        const albumCover = createAlbumModal.querySelector(`.inputFieldPicture`);
-        const isCoverValid = albumCover && albumCover.src;
-        if (isFieldValid && isCoverValid) createButton.removeAttribute(`disabled`);
-        else createButton.setAttribute(`disabled`, `disabled`);
+        modalDropZone.classList.remove(`dropOver`);
     };
-    albumTitle.addEventListener(`input`, () => checkButtonStatus());
-    // create button functions
-    createButton.addEventListener(`click`, async (event) => {
-        event.preventDefault();
-        // fetch && change button
-        setButtonStatus({ button: createButton, isLoaded: false });
-        const formNode = createModal.querySelector(`.formWrapper`);
-        const responseOptions = { method: `POST`, body: new FormData(formNode) };
-        const response = await fetch(`/api/ideas/albums`, responseOptions);
-        const responseData = await response.json();
-        setButtonStatus({ button: createButton, isLoaded: true });
-        if (responseData.code !== 200) return false; // need show error
-        // hide modal && change album data on profile
-        const albumCover = createAlbumModal.querySelector(`.inputFieldPicture`);
+    if (modalDropZone) resetDropEvents([modalDropZone]);
+    if (modalDropZone) modalDropZone.addEventListener(`drop`, dropHandler);
+
+    // create album
+    const createAlbumNode = (albumCover, responseData) => {
         const albumSource = albumCover.src;
-        const albumName = albumTitle.value;
+        const albumName = modalAlbumTitle.value;
         // create new album && add it to list
-        const albumList = document.querySelector(`.albumList`);
         const albumTemplate = document.querySelector(`.albumTemplate`).content;
         const albumClone = albumTemplate.querySelector(`li`).cloneNode(true);
         albumClone.querySelector(`.albumTitle`).innerText = albumName;
@@ -94,14 +59,52 @@ export const createAlbumModal = () => {
         const templateCover = albumClone.querySelector(`.albumCoverPicture`);
         templateCover.src = albumSource;
         templateCover.setAttribute(`alt`, albumName);
-        const albumModal = document.querySelector(`.createAlbumModal`);
+        const albumLink = albumClone.querySelector(`.albumLink`);
+        albumLink.setAttribute(`href`, `profile/saved/${responseData.albumID}`);
         albumList.insertBefore(albumClone, albumList.children[albumList.children.length -1]);
-        albumModal.classList.remove(`activeModal`);
+    }
+
+    // clear data on save
+    const clearModalData = (albumCover) => {
+        modalAlbumTitle.value = ``;
+        modalPhotoField.value = ``;
+        modalCoverWrapper.removeChild(albumCover);
+        modalDropZone.classList.remove(`editLabel`);
+    };
+
+    // check button status
+    const checkButtonStatus = () => {
+        const isFieldValid = !!modalAlbumTitle.value.length;
+        const albumCover = modalNode.querySelector(`.inputFieldPicture`);
+        const isCoverValid = albumCover && albumCover.src;
+        if (isFieldValid && isCoverValid) modalCreateButton.removeAttribute(`disabled`);
+        else modalCreateButton.setAttribute(`disabled`, `disabled`);
+    };
+
+    // create album
+    const createAlbum = async (event) => {
+        event.preventDefault();
+        const formData = new FormData(formNode);
+        const responseOptions = { URL: `/api/profile/albums`, body: formData, button: modalCreateButton };
+        const responseData = await saveAction(responseOptions);
+        if (responseData.code !== 200) return false; // show error
+        // hide modal && change album data on profile
+        const albumCover = modalNode.querySelector(`.inputFieldPicture`);
+        createAlbumNode(albumCover, responseData);
+        changeModalVisible(modalNode)();
         // clear modal
-        albumTitle.value = ``;
-        photoField.value = ``;
-        coverWrapper.removeChild(albumCover);
-        photoLabel.classList.remove(`editLabel`);
-    });
+        clearModalData(albumCover);
+    }
+
+    // add listeners to show modal
+    createButtons.forEach((button) => {
+        button.addEventListener(`click`, changeModalVisible(modalNode));
+    })
+
+    // check title length && button status
+    modalAlbumTitle.addEventListener(`input`, () => checkButtonStatus());
+
+    // create button functions
+    modalCreateButton.addEventListener(`click`, createAlbum);
 
 };
