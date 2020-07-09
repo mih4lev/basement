@@ -3,21 +3,21 @@
         <div class="cardWrapper">
             <div class="userWrapper">
                 <div class="userAvatar">
-                    {{# if userData.isAvatarExist }}
+                    {{# if profileData.isAvatarExist }}
                         <img class="avatarPicture"
-                             src="{{{ userData.avatar }}}"
+                             src="{{{ profileData.avatar }}}"
                              alt="Avatar photo">
                     {{/ if }}
                 </div>
                 <div class="userInfoWrapper">
                     <p class="userNameWrapper">
-                        <span class="name">{{{ userData.name }}}</span>
-                        <span class="surname">{{{ userData.surname }}}</span>
-                        <span class="mail">{{{ userData.mail }}}</span>
-                        <span class="username">{{{ userData.username }}}</span>
-                        <span class="userID">{{{ userData.userID }}}</span>
+                        <span class="name">{{{ profileData.name }}}</span>
+                        <span class="surname">{{{ profileData.surname }}}</span>
+                        <span class="mail">{{{ profileData.mail }}}</span>
+                        <span class="username">{{{ profileData.username }}}</span>
+                        <span class="userID">{{{ profileData.userID }}}</span>
                     </p>
-                    <span class="userMembership">{{{ userData.membership }}}</span>
+                    <span class="userMembership">{{{ profileData.membership }}}</span>
                 </div>
             </div>
             <div class="cardButtonsWrapper">
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <h3 class="ideaTitle">{{{ title }}}</h3>
-                    <strong class="ideaAuthor">{{{ author }}}</strong>
+                    <strong class="ideaAuthor">By you</strong>
                 </li>
             {{/each}}
         </ul>
@@ -107,6 +107,6 @@
             </div>
         </div>
         <h3 class="ideaTitle"></h3>
-        <strong class="ideaAuthor"></strong>
+        <strong class="ideaAuthor">By you</strong>
     </li>
 </template>

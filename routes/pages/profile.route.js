@@ -9,7 +9,7 @@ router.use(`/`, (request, response, next) => {
 });
 
 router.get(`/`, async (request, response) => {
-    const isSavedPhoto = true;
+    const isSavedIdeas = true;
     // profile data
     const userDataJSON = fs.readFileSync(`data-mock/profile.json`);
     const userData = JSON.parse(String(userDataJSON));
@@ -21,13 +21,13 @@ router.get(`/`, async (request, response) => {
     const ideasData = JSON.parse(String(mockJSON));
     ideasData.ideas.length = 20;
     // return data to template rendering
-    const data = { ...request.data, ...ideasData, ...ideasAlbumsData, userData, isSavedPhoto };
+    const data = { ...request.data, ...ideasData, ...ideasAlbumsData, userData, isSavedIdeas };
     response.render(`pages/profile/profile`, data);
 });
 
 router.get(`/saved/:albumID`, async (request, response) => {
     const { params: { albumID: requestedAlbumID }} = request;
-    const isSavedPhoto = true;
+    const isSavedIdeas = true;
     // profile data
     const userDataJSON = fs.readFileSync(`data-mock/profile.json`);
     const userData = JSON.parse(String(userDataJSON));
@@ -39,20 +39,20 @@ router.get(`/saved/:albumID`, async (request, response) => {
     const isMoreButtonVisible = (filterData.length > 20);
     if (filterData.length > 20) filterData.length = 20;
     // return data to template rendering
-    const data = { ...request.data, ideas: filterData, userData, isSavedPhoto, isMoreButtonVisible };
+    const data = { ...request.data, ideas: filterData, userData, isSavedIdeas, isMoreButtonVisible };
     response.render(`pages/profile/saved`, data);
 });
 
 router.get(`/uploaded`, async (request, response) => {
-    const isLoadedPhoto = true;
+    const isUploadedIdeas = true;
     // profile data
-    const userDataJSON = fs.readFileSync(`data-mock/profile.json`);
-    const userData = JSON.parse(String(userDataJSON));
+    const profileDataJSON = fs.readFileSync(`data-mock/profile.json`);
+    const profileData = JSON.parse(String(profileDataJSON));
     // basement-ideas
-    const mockJSON = fs.readFileSync(`data-mock/basement-ideas.json`);
-    const ideas = JSON.parse(String(mockJSON));
+    const ideasMockJSON = fs.readFileSync(`data-mock/uploaded-ideas.json`);
+    const ideas = JSON.parse(String(ideasMockJSON));
     // return data to template rendering
-    const data = { ...request.data, ...ideas, userData, isLoadedPhoto };
+    const data = { ...request.data, ...ideas, profileData, isUploadedIdeas };
     response.render(`pages/profile/uploaded`, data);
 });
 

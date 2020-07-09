@@ -520,6 +520,7 @@
     .ideaPhotoWrapper {
         position: relative;
         overflow: hidden;
+        margin-bottom: 5px;
         width: 143px;
         height: 143px;
         @include minWidth(480) {
@@ -527,6 +528,7 @@
             height: 216px;
         }
         @include minWidth(768) {
+            margin-bottom: 10px;
             width: 236px;
             height: 236px;
         }

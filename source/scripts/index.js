@@ -1,5 +1,5 @@
 import { headerMenu } from "../../views/partials/header/header";
-import { titleWidth, webpCheck } from "./utils";
+import { contactForm, selectElements, titleWidth, webpCheck } from "./utils";
 import { showDeleteWrappers, showMoreIdeas } from "../../views/pages/profile/profile";
 import { addPhotoModal } from "../../views/partials/modals/add-photo/add-photo.modal";
 import { editProfileModal } from "../../views/partials/modals/edit-profile/edit-profile.modal";
@@ -28,6 +28,10 @@ signInModal();
 
 // add contact us modal show
 contactUsModal();
+
+// contact us form
+selectElements();
+contactForm();
 
 if (location.href.includes(`sign-up`)) {
     signUpForm();

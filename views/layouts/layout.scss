@@ -689,6 +689,7 @@ strong {
 
 .fieldLabel {
     @extend %animation;
+    z-index: -1;
     position: absolute;
     line-height: 26px;
     font-size: 9px;
@@ -721,6 +722,7 @@ strong {
     height: 26px;
     line-height: 26px;
     border: 1px solid $lightGreyColor;
+    background-color: transparent;
     border-radius: 5px;
     font-size: 9px;
     font-weight: 700;
@@ -750,6 +752,7 @@ strong {
     width: 100%;
     padding: 6px 12px;
     box-sizing: border-box;
+    background-color: transparent;
     border: 1px solid $lightGreyColor;
     border-radius: 5px;
     font-size: 9px;
@@ -849,7 +852,10 @@ strong {
 }
 
 .selectElement {
-    @extend %animation;
+    //@extend %animation;
+    transition: border 0.2s ease-in;
+    z-index: 1;
+    overflow: hidden;
     position: relative;
     padding: 0 12px;
     box-sizing: border-box;
@@ -885,6 +891,69 @@ strong {
         height: 41px;
         line-height: 41px;
         font-size: 12px;
+    }
+    .emptyData {
+        color: $lightGreyColor;
+    }
+    .hiddenSelectWrapper {
+        opacity: 0;
+        position: absolute;
+        top: 32px;
+        left: -1px;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 8px 0;
+        box-sizing: content-box;
+        list-style-type: none;
+        background-color: $whiteColor;
+        border: 1px solid $blueColor;
+        border-radius: 5px;
+        @include minWidth(480) {
+            top: 52px;
+        }
+        .selectData {
+            padding: 0 18px;
+            line-height: 28px;
+            color: $greyColor;
+            &:hover {
+                color: $blackColor;
+            }
+            @include minWidth(480) {
+                line-height: 34px;
+            }
+            &.selectedData {
+                position: relative;
+                color: $blueColor;
+                background-color: $subMenuHoverColor;
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    right: 18px;
+                    transform: translateY(-50%);
+                    width: 7px;
+                    height: 7px;
+                    border-radius: 50%;
+                    background-color: $blueColor;
+                }
+                &:hover {
+                    cursor: default;
+                }
+            }
+        }
+    }
+    &.activeSelectElement {
+        z-index: 2;
+        overflow: unset;
+        color: $blueColor;
+        border-color: $blueColor;
+        &:after {
+            background: $blueColor;
+        }
+        .hiddenSelectWrapper {
+            opacity: 1;
+        }
     }
 }
 
@@ -1373,11 +1442,13 @@ strong {
             }
         }
         .ideaTitle {
-            margin-top: 5px;
-            margin-bottom: 5px;
+            display: inline-block;
+            margin-top: 0;
+            margin-bottom: 0;
             font-size: 9px;
             font-weight: 600;
             @include minWidth(480) {
+                margin-bottom: 2px;
                 font-size: 12px;
             }
             @include minWidth(768) {
@@ -1385,20 +1456,25 @@ strong {
             }
             @include minWidth(1440) {
                 font-size: 15px;
+            }
+            &.addTitle {
+                color: $greyColor;
+                cursor: pointer;
+                &:hover {
+                    text-decoration: underline;
+                }
             }
         }
         .ideaAuthor {
             display: block;
             font-size: 9px;
             font-weight: 300;
+            text-transform: initial;
             @include minWidth(480) {
                 font-size: 12px;
             }
             @include minWidth(768) {
                 font-size: 14px;
-            }
-            @include minWidth(1440) {
-                font-size: 15px;
             }
         }
         &:hover {
