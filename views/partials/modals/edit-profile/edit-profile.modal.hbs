@@ -2,7 +2,45 @@
     <div class="modalBlurWrapper"></div>
     <div class="modalMainWrapper editProfileWrapper">
         <div class="modalContentWrapper2">
-            {{> forms/edit-profile.form }}
+            <form class="formWrapper">
+                <h2 class="modalTitle">EDIT PROFILE</h2>
+                <div class="twoColumnWrapper">
+                    <div class="formPhotoWrapper">
+                        <div class="inputPhotoField avatarField">
+                            <input class="photoField" name="avatarPhoto" id="avatarPhoto" type="file">
+                            <label class="photoLabel" for="avatarPhoto">EDIT PHOTO</label>
+                        </div>
+                    </div>
+                    <div class="formFieldsWrapper">
+                        <div class="twoColumnWrapper">
+                            <div class="fieldWrapper">
+                                <label class="fieldLabel" for="firstName">First name</label>
+                                <input class="fieldInput" name="firstName" id="firstName" type="text">
+                            </div>
+                            <div class="fieldWrapper">
+                                <label class="fieldLabel" for="lastName">Last name</label>
+                                <input class="fieldInput" name="lastName" id="lastName" type="text">
+                            </div>
+                        </div>
+                        <div class="twoColumnWrapper">
+                            <div class="fieldWrapper">
+                                <label class="fieldLabel" for="userName">User name</label>
+                                <input class="fieldInput" name="userName" id="userName" type="text">
+                            </div>
+                        </div>
+                        <div class="twoColumnWrapper">
+                            <div class="fieldWrapper">
+                                <label class="fieldLabel" for="userMail">E-mail</label>
+                                <input class="fieldInput" name="userMail" id="userMail" type="text">
+                            </div>
+                        </div>
+                        <div class="submitWrapper">
+                            <input class="hiddenField" type="hidden" id="userID" name="userID">
+                            <button class="submitButton" disabled type="submit">UPDATE</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
             <button class="closeButton">CLOSE MODAL</button>
         </div>
     </div>

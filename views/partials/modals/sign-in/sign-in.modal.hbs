@@ -2,7 +2,30 @@
     <div class="modalBlurWrapper"></div>
     <div class="modalMainWrapper signInWrapper">
         <div class="modalContentWrapper2">
-            {{> forms/sign-in.form }}
+            <form class="formWrapper" action="/profile/">
+                <h2 class="modalTitle">SIGN IN</h2>
+                <div class="networkButtonsWrapper">
+                    <button class="networkButton facebookButton" type="button">Continue with Facebook</button>
+                    <button class="networkButton googleButton" type="button">Continue with Google</button>
+                </div>
+                <div class="oneColumnWrapper">
+                    <div class="fieldWrapper">
+                        <label class="fieldLabel" for="modalEmail">E-mail</label>
+                        <input class="fieldInput" id="modalEmail" type="text">
+                    </div>
+                </div>
+                <div class="oneColumnWrapper">
+                    <div class="fieldWrapper">
+                        <label class="fieldLabel" for="modalPassword">Password</label>
+                        <input class="fieldInput" id="modalPassword" type="text">
+                    </div>
+                </div>
+                <button class="submitButton" type="submit">SIGN IN</button>
+                <div class="signUpTextWrapper">
+                    <p class="signUpText">Don’t have an account yet?</p>
+                    <a href="/sign-up/" class="signUpButton">Sign up</a>
+                </div>
+            </form>
             <button class="closeButton">CLOSE MODAL</button>
         </div>
     </div>

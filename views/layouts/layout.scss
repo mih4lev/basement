@@ -358,6 +358,7 @@ strong {
         .filter {
             @extend %shadow;
             @extend %animation;
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -374,13 +375,7 @@ strong {
             background: $whiteColor;
             border-radius: 100px;
             cursor: pointer;
-            &:hover {
-                background: $blueColor;
-                color: $whiteColor;
-                &:after {
-                    background: $whiteColor;
-                }
-            }
+            overflow: hidden;
             @include minWidth(480) {
                 padding-left: 20px;
                 padding-right: 20px;
@@ -407,20 +402,9 @@ strong {
                 }
             }
             &.activeFilter {
-                color: $blueColor;
-                &:after {
-                    background: $blueColor;
-                }
-                &:hover {
-                    color: $whiteColor;
-                    &:after {
-                        background: $whiteColor;
-                    }
-                }
-            }
-            &.clickedFilter {
-                background: $blueColor;
                 color: $whiteColor;
+                background-color: $blueColor;
+                overflow: initial;
                 &:after {
                     background: $whiteColor;
                     transform: scale(0.6) rotate(270deg);
@@ -430,6 +414,122 @@ strong {
                     @include minWidth(1000) {
                         transform: scale(1) rotate(270deg);
                     }
+                }
+                .dropdownFilters {
+                    opacity: 1;
+                    margin-top: 0;
+                }
+            }
+            &:hover {
+                background: $blueColor;
+                color: $whiteColor;
+                &:after {
+                    background: $whiteColor;
+                }
+            }
+        }
+    }
+}
+
+.dropdownFilters {
+    @extend %animation;
+    @extend %shadow2;
+    opacity: 0;
+    position: absolute;
+    z-index: 2;
+    top: 52px;
+    left: 0;
+    margin-top: 30px;
+    margin-bottom: 0;
+    padding: 0;
+    background-color: $whiteColor;
+    border-radius: 5px;
+    list-style-type: none;
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: -4px;
+        left: 20px;
+        width: 10px;
+        height: 10px;
+        background: #fff;
+        transform: rotate(45deg);
+    }
+    .dropdownFiltersWrapper {
+        position: relative;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        overflow: hidden;
+        .scrollLine {
+            @extend %animation;
+            position: absolute;
+            top: 0;
+            opacity: 0.75;
+            right: 5px;
+            width: 3px;
+            background-color: $blueColor;
+            border-radius: 30px;
+        }
+    }
+    .hiddenFilters {
+        @extend %animation;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 0;
+        list-style-type: none;
+        .hiddenFilter {
+            padding: 8px 52px 8px 22px;
+            white-space: nowrap;
+            color: $greyColor;
+            &:hover {
+                color: $blueColor;
+                background-color: $subMenuHoverColor;
+            }
+            &.colorFilter {
+                position: relative;
+                padding-right: 72px;
+                &:after {
+                    display: none;
+                }
+                .colorBorder {
+                    position: absolute;
+                    top: 50%;
+                    right: 22px;
+                    transform: translateY(-50%);
+                    width: 18px;
+                    height: 18px;
+                    border-radius: 50%;
+                    background-color: #FFF;
+                    border: 1px solid $bgSubColor;
+                    .colorFill {
+                        display: block;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        width: 15px;
+                        height: 15px;
+                        border-radius: 50%;
+                    }
+                }
+            }
+            &.activeHiddenFilter {
+                position: relative;
+                color: $blueColor;
+                .colorBorder {
+                    border-color: $blueColor;
+                }
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    right: 22px;
+                    transform: translateY(-50%);
+                    width: 7px;
+                    height: 7px;
+                    background-color: $blueColor;
+                    border-radius: 50%;
                 }
             }
         }
@@ -896,6 +996,7 @@ strong {
         color: $lightGreyColor;
     }
     .hiddenSelectWrapper {
+        @extend %shadow2;
         opacity: 0;
         position: absolute;
         top: 32px;
