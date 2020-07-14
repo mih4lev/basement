@@ -13,4 +13,4 @@ const requestData = async () => {
     }
 };
 
-setInterval(requestData, 15 * 1000);
+setInterval(requestData, 60 * 60 * 1000);
