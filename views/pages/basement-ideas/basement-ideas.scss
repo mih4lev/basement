@@ -1,5 +1,8 @@
 .ideasActiveFilters {
     border-bottom: 1px solid $bgSubColor;
+    .emptyChosenFilters {
+        padding: 0;
+    }
 }
 
 .ideasMain {

@@ -14,6 +14,14 @@ router.post(`/`, ideaUpload.array(`ideaPhotos`), async (request, response) => {
     setTimeout(() => response.json(data), 1000);
 });
 
+// API /api/ideas/filter - GET ELEMENTS with filter body
+router.post(`/filter`, formParser.none(), async (request, response) => {
+    const formData = { ...request.body };
+    console.log(formData);
+    const data = { code: 200 };
+    setTimeout(() => response.json(data), 1000);
+});
+
 // API /api/ideas - DELETE | delete ideas (single)
 router.delete(`/`, formParser.none(), async (request, response) => {
     const formData = { ...request.body };

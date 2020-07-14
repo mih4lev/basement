@@ -49,39 +49,15 @@
 
 <section class="filtersWrapper">
     <div class="wrapper headerWrapper">
-        <ul class="filterList">
-            <li class="filter dropdownFilter filterStyle">STYLE</li>
-            <li class="filter dropdownFilter activeFilter filterPrice">PRICE</li>
-            <li class="filter dropdownFilter filterSize">SIZE</li>
-            <li class="filter dropdownFilter clickedFilter filterWallColor"> WALL COLOR</li>
-            <li class="filter dropdownFilter filterFloorMaterial">FLOOR MATERIAL</li>
-            <li class="filter dropdownFilter filterFeatures">FEATURES</li>
-        </ul>
+        {{> micro-blocks/filters/ideas.filters }}
     </div>
 </section>
 
-<section class="ideasActiveFilters">
-    <div class="wrapper headerWrapper">
-        <ul class="activeFilterList">
-            <li class="activeFilter">CONTEMPORARY
-                <button class="removeFilterButton">X</button>
-            </li>
-            <li class="activeFilter">$$
-                <button class="removeFilterButton">X</button>
-            </li>
-            <li class="activeFilter">LVT
-                <button class="removeFilterButton">X</button>
-            </li>
-            <li class="activeFilter">WHITE
-                <button class="removeFilterButton">X</button>
-            </li>
-            <li class="activeFilter">GRAY
-                <button class="removeFilterButton">X</button>
-            </li>
-            <li class="activeFilter">BEIGE
-                <button class="removeFilterButton">X</button>
-            </li>
-        </ul>
+<section class="chosenFiltersWrapper ideasActiveFilters">
+    <div class="wrapper headerWrapper emptyChosenFilters">
+        <form class="filtersForm" action="/api/ideas/filter">
+            <ul class="activeFilterList"></ul>
+        </form>
     </div>
 </section>
 

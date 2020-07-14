@@ -31,39 +31,21 @@
         <div class="squareData">{{{ square }}} SQ. FT.</div>
         <div class="picturesWrapper">
             <div class="pictureFull">
-                <picture>
-                    <source srcset="/public/images/temp/work_1_1440.webp,
-                                    /public/images/temp/work_1_1440@2x.webp 2x"
-                            type="image/webp">
-                    <source srcset="/public/images/temp/work_1_1440.jpg,
-                                    /public/images/temp/work_1_1440@2x.jpg 2x"
-                            type="image/jpeg">
-                    <img class="fullsizePicture"
-                         data-picture="/public/images/work_1_1440.jpg"
-                         src="/public/images/temp/work_1_1440.jpg"
-                         srcset="/public/images/temp/work_1_1440.jpg,
-                                 /public/images/temp/work_1_1440@2x.jpg 2x"
-                         alt="{{{ city }}} {{{ work }}}">
-                </picture>
+                <img class="fullsizePicture"
+                     data-picture="/public/images/work_1_1440.jpg"
+                     src="/public/images/temp/work_1_1440.jpg"
+                     alt="{{{ city }}} {{{ work }}}">
             </div>
             <div class="portfolioPreviews">
                 <ul class="previewList">
                     {{# each previews }}
-                        <li class="previewWrapper">
-                            <picture>
-                                <source srcset="/public/images/temp/{{{ preview }}}_1440.webp,
-                                                /public/images/temp/{{{ preview }}}_1440@2x.webp 2x"
-                                        type="image/webp">
-                                <source srcset="/public/images/temp/{{{ preview }}}_1440.jpg,
-                                                /public/images/temp/{{{ preview }}}_1440@2x.jpg 2x"
-                                        type="image/jpeg">
-                                <img class="previewImage"
-                                     data-picture="/public/images/temp/{{{ picture }}}_1440.jpg"
-                                     src="/public/images/temp/{{{ preview }}}_1440.jpg"
-                                     srcset="/public/images/temp/{{{ preview }}}_1440.jpg,
-                                             /public/images/temp/{{{ preview }}}_1440@2x.jpg 2x"
-                                     alt="{{{ title }}}">
-                            </picture>
+                        <li class="previewWrapper"
+                            data-picture="/public/images/temp/{{{ picture }}}_1440.jpg"
+                            data-title="{{{ title }}}">
+                            <img class="previewImage"
+                                 data-picture="/public/images/temp/{{{ picture }}}_1440.jpg"
+                                 src="/public/images/temp/{{{ preview }}}_1440.jpg"
+                                 alt="{{{ title }}}">
                         </li>
                     {{/each}}
                 </ul>
