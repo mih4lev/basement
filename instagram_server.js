@@ -12,5 +12,5 @@ const requestData = async () => {
         console.log(error);
     }
 };
-
+requestData();
 setInterval(requestData, 60 * 60 * 1000);
