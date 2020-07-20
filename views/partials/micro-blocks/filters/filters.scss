@@ -84,6 +84,19 @@
                 background: $whiteColor;
             }
         }
+        &.rangeFilter {
+            margin-right: 8px;
+            overflow: initial;
+            @include minWidth(1000) {
+                margin-left: auto;
+                margin-right: 0;
+            }
+            &:hover {
+                background-color: $whiteColor;
+                color: $darkGreyColor;
+                cursor: default;
+            }
+        }
     }
 }
 
@@ -115,7 +128,7 @@
         left: 20px;
         width: 10px;
         height: 10px;
-        background: #fff;
+        background: $whiteColor;
         transform: rotate(45deg);
     }
     .dropdownFiltersWrapper {
@@ -193,6 +206,90 @@
                     background-color: $blueColor;
                     border-radius: 50%;
                 }
+            }
+        }
+    }
+}
+
+.rangeWrapper {
+    position: relative;
+    margin-right: 8px;
+    width: 75px;
+    height: 1px;
+    background-color: $bgSubColor;
+    @include minWidth(480) {
+        width: 115px;
+    }
+    @include minWidth(1000) {
+        width: 150px;
+    }
+    .rangeLine {
+        position: relative;
+        margin-top: -1px;
+        width: 80px;
+        height: 3px;
+        .rangeColored {
+            width: 100%;
+            height: 100%;
+            background-color: $blueColor;
+            border-radius: 3px;
+        }
+        .rangeButton {
+            opacity: 0.5;
+            position: absolute;
+            top: -5px;
+            width: 13px;
+            height: 13px;
+            padding: 0;
+            font-size: 0;
+            border: none;
+            background-color: $blueColor;
+            cursor: pointer;
+            outline: none;
+            &.rangeMinValue {
+                left: -5px;
+            }
+            &.rangeMaxValue {
+                right: -5px;
+            }
+        }
+        .rangeTitle {
+            @extend %animation;
+            position: absolute;
+            top: 0;
+            margin-top: 12px;
+            padding: 5px 10px;
+            color: $whiteColor;
+            border-radius: 5px;
+            background-color: $blueColor;
+            cursor: pointer;
+            &:before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: -4px;
+                left: 50%;
+                width: 10px;
+                height: 10px;
+                background: $blueColor;
+                transform: translateX(-50%) rotate(45deg);
+            }
+            &.rangeMinTitle {
+                left: 0;
+                transform: translateX(-50%);
+            }
+            &.rangeMaxTitle {
+                right: 0;
+                transform: translateX(50%);
+            }
+            &.rangeSingleTitle {
+                //opacity: 0;
+            }
+            &.rangeTwinTitle {
+                opacity: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                white-space: nowrap;
             }
         }
     }

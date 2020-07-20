@@ -136,7 +136,7 @@ const createHiddenField = (clickLink) => {
 };
 
 export const filters = () => {
-    // show/hide filters
+    // show/hide dropdown filters
     const dropdownLinks = [...document.querySelectorAll(`.dropdownFilter`)];
     dropdownLinks.forEach((dropdownLink) => {
         dropdownLink.addEventListener(`click`, () => {
@@ -147,22 +147,124 @@ export const filters = () => {
             dropdownLink.classList[classAction](`activeFilter`);
         });
     });
-    const clickLinks = [...document.querySelectorAll(`.clickFilter`)];
-    clickLinks.forEach((clickLink) => {
-        clickLink.addEventListener(`click`, () => {
-            const isActive = clickLink.classList.contains(`activeFilter`);
+    // create dropdown filter windows
+    const filterWrappers = [...document.querySelectorAll(`.hiddenFilters`)];
+    filterWrappers.forEach(createDropdownFilters);
+    // click filters
+    const clickFilters = [...document.querySelectorAll(`.clickFilter`)];
+    clickFilters.forEach((clickFilter) => {
+        clickFilter.addEventListener(`click`, () => {
+            const isActive = clickFilter.classList.contains(`activeFilter`);
             const classAction = (isActive) ? `remove` : `add`;
-            clickLink.classList[classAction](`activeFilter`);
+            clickFilter.classList[classAction](`activeFilter`);
             // add hidden value
-            let hiddenFieldNode = clickLink.querySelector(`.hiddenField`);
-            if (!hiddenFieldNode) hiddenFieldNode = createHiddenField(clickLink);
+            let hiddenFieldNode = clickFilter.querySelector(`.hiddenField`);
+            if (!hiddenFieldNode) hiddenFieldNode = createHiddenField(clickFilter);
             const childAction = (!isActive) ? `appendChild` : `removeChild`;
-            clickLink[childAction](hiddenFieldNode);
+            clickFilter[childAction](hiddenFieldNode);
             // send data
             collectFiltersData();
         });
     });
-    // create dropdown filter windows
-    const filterWrappers = [...document.querySelectorAll(`.hiddenFilters`)];
-    filterWrappers.forEach(createDropdownFilters);
+    // range filter
+    const rangeFilters = [...document.querySelectorAll(`.rangeFilter`)];
+    rangeFilters.forEach((rangeFilter) => {
+        const rangeWrapper = rangeFilter.querySelector(`.rangeWrapper`);
+        const rangeLine = rangeFilter.querySelector(`.rangeLine`);
+        const rangeButtons = [...rangeFilter.querySelectorAll(`.rangeButton`)];
+        const rangeSingleTitles = [...rangeFilter.querySelectorAll(`.rangeSingleTitle`)];
+        const minValueNodes = [...rangeFilter.querySelectorAll(`.minValue`)];
+        const maxValueNodes = [...rangeFilter.querySelectorAll(`.maxValue`)];
+        const rangeTwinTitles = rangeFilter.querySelector(`.rangeTwinTitle`);
+        const formNode = document.querySelector(`.filtersForm`);
+        const wrapperWidth = rangeWrapper.offsetWidth;
+        const rangeStep = rangeLine.dataset.max / wrapperWidth;
+        const setTitlesVisible = () => {
+            const minTitleOffset = rangeSingleTitles[0].getBoundingClientRect().left;
+            const minTitleWidth = rangeSingleTitles[0].clientWidth;
+            const maxTitleOffset = rangeSingleTitles[1].getBoundingClientRect().left;
+            const isSinglesVisible = (minTitleOffset + minTitleWidth) < maxTitleOffset;
+            const showSingles = (title) => title.style.opacity = String((isSinglesVisible) ? 1 : 0);
+            rangeSingleTitles.forEach(showSingles);
+            rangeTwinTitles.style.opacity = String((!isSinglesVisible) ? 1 : 0);
+        };
+        const createField = (fieldSelector) => {
+            const createdNode = document.createElement(`input`);
+            createdNode.classList.add(fieldSelector);
+            createdNode.setAttribute(`name`, `square`);
+            createdNode.setAttribute(`type`, `hidden`);
+            formNode.appendChild(createdNode);
+            return createdNode;
+        };
+        const updateHiddenField = (currentMin, currentMax) => {
+            // check hidden value exist
+            const minField = formNode.querySelector(`.minHiddenField`) ||
+                             createField(`minHiddenField`);
+            const maxField = formNode.querySelector(`.maxHiddenField`) ||
+                             createField(`maxHiddenField`);
+            minField.setAttribute(`value`, currentMin);
+            maxField.setAttribute(`value`, currentMax);
+        };
+        const setRange = () => {
+            const { dataset: { min, max, currentMin, currentMax }} = rangeLine;
+            const lineOffset = (currentMin === min) ? 0 : wrapperWidth * (currentMin / max);
+            const lineWidth = (wrapperWidth * (currentMax / max)) - lineOffset;
+            rangeLine.style.left = `${ lineOffset }px`;
+            rangeLine.style.width = `${ lineWidth }px`;
+            // set titles visible
+            setTitlesVisible();
+            // add || update filters
+            updateHiddenField(currentMin, currentMax);
+        };
+        setRange();
+        const rangeHandler = (rangeNode) => {
+            const isMinButton = rangeNode.classList.contains(`rangeMinValue`);
+            let startValue;
+            const mouseMoveHandler = (event) => {
+                const eventValue = event.pageX || event.targetTouches[0].pageX;
+                const { dataset: { min, max, currentMin, currentMax }} = rangeLine;
+                // check offset
+                const oldValue = (isMinButton) ? Number(currentMin) : Number(currentMax);
+                const rangeMove = eventValue - startValue;
+                const newValue = oldValue + (rangeMove * rangeStep);
+                //
+                if (isMinButton && newValue >= currentMax) return false;
+                if (!isMinButton && newValue <= currentMin) return false;
+                // change button visible
+                const changeValue = (newValue <= min) ? min : (newValue >= max) ? max : newValue;
+                const currentValue = (isMinButton) ? `currentMin` : `currentMax`;
+                rangeLine.dataset[currentValue] = String(Math.floor(changeValue));
+                startValue = eventValue;
+                // set values
+                const setValue = (valueNode) => valueNode.innerText = Math.floor(changeValue);
+                const valuesNode = (isMinButton) ? minValueNodes : maxValueNodes;
+                valuesNode.forEach(setValue);
+                setRange();
+            };
+            const mouseUpHandler = () => {
+                document.removeEventListener(`mousemove`, mouseMoveHandler);
+                document.removeEventListener(`mouseup`, mouseUpHandler);
+                collectFiltersData();
+            };
+            const mouseDownHandler = (event) => {
+                startValue = event.pageX;
+                document.addEventListener(`mousemove`, mouseMoveHandler);
+                document.addEventListener(`mouseup`, mouseUpHandler);
+            };
+            rangeNode.addEventListener(`mousedown`, mouseDownHandler);
+            //
+            const touchEndHandler = () => {
+                document.removeEventListener(`touchmove`, mouseMoveHandler);
+                document.removeEventListener(`touchend`, mouseUpHandler);
+                collectFiltersData();
+            };
+            const touchStartHandler = (event) => {
+                startValue = event.targetTouches[0].pageX;
+                document.addEventListener(`touchmove`, mouseMoveHandler);
+                document.addEventListener(`touchend`, touchEndHandler);
+            };
+            rangeNode.addEventListener(`touchstart`, touchStartHandler, false);
+        };
+        rangeButtons.forEach(rangeHandler);
+    });
 };
