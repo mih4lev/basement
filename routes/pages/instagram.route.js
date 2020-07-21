@@ -5,18 +5,19 @@ const FS = require(`fs`);
 router.get(`/`, async (request, response) => {
 
     const instagramJSON = FS.readFileSync(`data-mock/instagram.json`);
-    const {
-        graphql: { user: { edge_owner_to_timeline_media: { edges: posts }}}
-    } = await JSON.parse(instagramJSON);
-    const filter = ({ node: { thumbnail_src, shortcode }}) => {
-        return { thumb: thumbnail_src, link: `https://instagram.com/p/${shortcode}/` };
-    };
-    let instagramPosts = posts.map(filter);
-    instagramPosts.length = 6;
+    const instagramData = await JSON.parse(instagramJSON);
+
+    // const {
+    //     graphql: { user: { edge_owner_to_timeline_media: { edges: posts }}}
+    // } = await JSON.parse(instagramJSON);
+    // const filter = ({ node: { thumbnail_src, shortcode }}) => {
+    //     return { thumb: thumbnail_src, link: `https://instagram.com/p/${shortcode}/` };
+    // };
+    // let instagramPosts = posts.map(filter);
 
     const body = {
         layout: `instagram`,
-        instagramPosts
+        instagramData
     };
 
     response.render('layouts/instagram', body);

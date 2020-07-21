@@ -1,12 +1,17 @@
+import { createCustomEvent } from "../../../../source/scripts/utils";
+
 // collect data from filters and send them to API
 const collectFiltersData = async () => {
     const formNode = document.querySelector(`.filtersForm`);
     const URL = formNode.getAttribute(`action`);
     const formData = new FormData(formNode);
     const sendOptions = { method: `POST`, body: formData };
+    createCustomEvent(`listRequest`);
     const response = await fetch(URL, sendOptions);
     const responseData = await response.json();
-    console.log(responseData);
+    // console.log(responseData);
+    // create customEvent
+    createCustomEvent(`listResponse`, responseData.data);
 };
 
 // check chosen filter && set them wrapper .emptyChosenFilters class
@@ -82,6 +87,17 @@ const filterClickHandler = (selectNode) => {
     }
 };
 
+const changeDropdownVisible = (dropdownLink) => {
+    return () => {
+        const dropdownLinks = [...document.querySelectorAll(`.dropdownFilter`)];
+        const isActive = dropdownLink.classList.contains(`activeFilter`);
+        const classAction = (isActive) ? `remove` : `add`;
+        // unset active dropdown menu
+        dropdownLinks.forEach((link) => link.classList.remove(`activeFilter`));
+        dropdownLink.classList[classAction](`activeFilter`);
+    }
+};
+
 const maxFiltersValue = 8;
 const createDropdownFilters = (filterWrapper) => {
     const filtersParent = filterWrapper.parentNode;
@@ -98,9 +114,8 @@ const createDropdownFilters = (filterWrapper) => {
         // set max wrapper height
         filtersParent.style.height = `${ childHeight * maxFiltersValue }px`;
         // add scrollListeners
-        const dropdownScrollHandler = (event) => {
-            event.preventDefault();
-            const isNext = event.deltaY > 0;
+        const dropdownScrollHandler = (isNext, movedValue) => {
+            // movedValue for check touch range
             const previousValue = filterWrapper.offset || 0;
             const newValue = (isNext) ? previousValue + childHeight : previousValue - childHeight;
             const maxScroll = (filtersCount - maxFiltersValue) * childHeight;
@@ -116,12 +131,43 @@ const createDropdownFilters = (filterWrapper) => {
             scrollNode.style.marginTop = `${scrollValue}px`;
             scrollNode.offset = (scrollValue < 0) ? 0 : scrollValue;
         };
-        filtersParent.addEventListener(`wheel`, dropdownScrollHandler);
+        filtersParent.addEventListener(`wheel`, (event) => {
+            event.preventDefault();
+            const isNext = event.deltaY > 0;
+            dropdownScrollHandler(isNext);
+        });
+        // add touch events
+        let startValue;
+        const touchEndHandler = (event) => {
+            const endedValue = event.changedTouches[0].pageY;
+            const isNext = endedValue < startValue;
+            const movedValue = endedValue - startValue;
+            dropdownScrollHandler(isNext, movedValue);
+            filterWrapper.removeEventListener(`touchend`, touchEndHandler);
+        };
+        const touchStartHandler = (event) => {
+            event.preventDefault();
+            startValue = event.changedTouches[0].pageY;
+            filterWrapper.addEventListener(`touchend`, touchEndHandler);
+        };
+        filterWrapper.addEventListener(`touchstart`, touchStartHandler);
     }
     // filter click
     const selectNodes = [...filterWrapper.querySelectorAll(`.hiddenFilter`)];
     selectNodes.forEach((selectNode) => {
         selectNode.addEventListener(`click`, filterClickHandler(selectNode));
+        selectNode.addEventListener(`touchstart`, (event) => {
+            const startValue = event.changedTouches[0].pageY;
+            const touchEndHandler = (event) => {
+                const endedValue = event.changedTouches[0].pageY;
+                if (startValue - endedValue >= 5 || endedValue - startValue >= 5) return false;
+                const dropdownFilter = selectNode.closest(`.dropdownFilter`);
+                filterClickHandler(selectNode)();
+                changeDropdownVisible(dropdownFilter)();
+                selectNode.removeEventListener(`touchend`, touchEndHandler);
+            };
+            selectNode.addEventListener(`touchend`, touchEndHandler);
+        });
     });
 };
 
@@ -139,13 +185,7 @@ export const filters = () => {
     // show/hide dropdown filters
     const dropdownLinks = [...document.querySelectorAll(`.dropdownFilter`)];
     dropdownLinks.forEach((dropdownLink) => {
-        dropdownLink.addEventListener(`click`, () => {
-            const isActive = dropdownLink.classList.contains(`activeFilter`);
-            const classAction = (isActive) ? `remove` : `add`;
-            // unset active dropdown menu
-            dropdownLinks.forEach((link) => link.classList.remove(`activeFilter`));
-            dropdownLink.classList[classAction](`activeFilter`);
-        });
+        dropdownLink.addEventListener(`click`, changeDropdownVisible(dropdownLink));
     });
     // create dropdown filter windows
     const filterWrappers = [...document.querySelectorAll(`.hiddenFilters`)];
@@ -177,8 +217,6 @@ export const filters = () => {
         const maxValueNodes = [...rangeFilter.querySelectorAll(`.maxValue`)];
         const rangeTwinTitles = rangeFilter.querySelector(`.rangeTwinTitle`);
         const formNode = document.querySelector(`.filtersForm`);
-        const wrapperWidth = rangeWrapper.offsetWidth;
-        const rangeStep = rangeLine.dataset.max / wrapperWidth;
         const setTitlesVisible = () => {
             const minTitleOffset = rangeSingleTitles[0].getBoundingClientRect().left;
             const minTitleWidth = rangeSingleTitles[0].clientWidth;
@@ -207,6 +245,7 @@ export const filters = () => {
         };
         const setRange = () => {
             const { dataset: { min, max, currentMin, currentMax }} = rangeLine;
+            const wrapperWidth = rangeWrapper.offsetWidth;
             const lineOffset = (currentMin === min) ? 0 : wrapperWidth * (currentMin / max);
             const lineWidth = (wrapperWidth * (currentMax / max)) - lineOffset;
             rangeLine.style.left = `${ lineOffset }px`;
@@ -223,6 +262,8 @@ export const filters = () => {
             const mouseMoveHandler = (event) => {
                 const eventValue = event.pageX || event.targetTouches[0].pageX;
                 const { dataset: { min, max, currentMin, currentMax }} = rangeLine;
+                const wrapperWidth = rangeWrapper.offsetWidth;
+                const rangeStep = rangeLine.dataset.max / wrapperWidth;
                 // check offset
                 const oldValue = (isMinButton) ? Number(currentMin) : Number(currentMax);
                 const rangeMove = eventValue - startValue;
@@ -265,6 +306,7 @@ export const filters = () => {
             };
             rangeNode.addEventListener(`touchstart`, touchStartHandler, false);
         };
+        window.addEventListener(`resize`, setRange);
         rangeButtons.forEach(rangeHandler);
     });
 };

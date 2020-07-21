@@ -45,7 +45,6 @@ if (location.href.includes(`sign-up`)) {
 if (location.href.includes(`profile`)) { // temp
     addPhotoModal();
     showDeleteWrappers();
-    showMoreIdeas();
     editProfileModal();
     createAlbumModal();
     editAlbumModal();

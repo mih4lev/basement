@@ -34,6 +34,7 @@
             width: 100%;
             height: 100%;
             border: none;
+            object-fit: cover;
         }
         @media screen and (max-width: 959px) {
             .instagramPosts {
@@ -70,9 +71,9 @@
 <body>
 
 <main class="instagramPosts">
-    {{# each instagramPosts }}
+    {{# each instagramData }}
         <a href="{{{ link }}}" target="_blank">
-            <img src="{{{ thumb }}}" alt="BasementRemodeling.com">
+            <img src="{{{ thumbnail }}}" alt="BasementRemodeling.com">
         </a>
     {{/each}}
 </main>

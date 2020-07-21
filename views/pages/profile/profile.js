@@ -68,18 +68,3 @@ export const showDeleteWrappers = () => {
     if (ideaList) observer.observe(ideaList, observerOptions);
 
 };
-
-export const showMoreIdeas = () => {
-
-    const showMoreButton = document.querySelector(`.showMoreButton`);
-
-    const clickHandler = async (event) => {
-        event.preventDefault();
-        const response = await fetch(`/api/ideas/sort/count/page/2`);
-        const responseData = await response.json();
-        console.log(responseData);
-    };
-
-    if (showMoreButton) showMoreButton.addEventListener(`click`, clickHandler);
-
-};

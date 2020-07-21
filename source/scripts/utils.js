@@ -99,6 +99,12 @@ export const contactForm = () => {
     });
 };
 
+export const createCustomEvent = (eventName, eventData = {}) => {
+    const sendData = { detail: { data: eventData }};
+    const customEvent = new CustomEvent(eventName, sendData);
+    document.dispatchEvent(customEvent);
+};
+
 export const instantQuoteForm = () => {
 
 };
