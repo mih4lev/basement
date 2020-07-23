@@ -14,10 +14,13 @@ router.get(`/`, async (request, response) => {
     // testimonials
     const mockJSONTestimonials = fs.readFileSync(`data-mock/testimonials.json`);
     const mockDataTestimonials = JSON.parse(mockJSONTestimonials);
+    // instagram
+    const instagramJSON = fs.readFileSync(`data-mock/instagram.json`);
+    const instagramData = JSON.parse(instagramJSON);
     // return data to template rendering
     // variables
     const isAdaptiveHeader = true;
-    const data = { ...request.data, ...homeData, ...mockDataTestimonials, isAdaptiveHeader };
+    const data = { ...request.data, ...homeData, ...mockDataTestimonials, isAdaptiveHeader, instagramData };
     response.render(`pages/local/local`, data);
 
 });

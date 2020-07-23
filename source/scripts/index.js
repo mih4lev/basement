@@ -12,6 +12,7 @@ import { processSteps } from "../../views/pages/how-it-works/process/process";
 import { signUpForm } from "../../views/pages/sign-up/sign-up";
 import { filters } from "../../views/partials/micro-blocks/filters/filters";
 import { reviewsCarousel } from "../../views/partials/blocks/reviews/reviews";
+import { middleCategories } from "../../views/partials/micro-blocks/middle-categories/middle-categories";
 
 // webp checker
 webpCheck();
@@ -38,12 +39,12 @@ contactForm();
 // filters
 filters();
 
-if (location.href.includes(`sign-up`)) {
+if (location.pathname.includes(`sign-up`)) {
     signUpForm();
 }
 
 // need worked only on profile page (made custom loading JS)
-if (location.href.includes(`profile`)) { // temp
+if (location.pathname.includes(`profile`)) { // temp
     addPhotoModal();
     showDeleteWrappers();
     editProfileModal();
@@ -53,6 +54,15 @@ if (location.href.includes(`profile`)) { // temp
 
 if (location.pathname === `/`) {
     reviewsCarousel();
+    middleCategories();
+}
+
+if (location.pathname.includes(`local`)) {
+    reviewsCarousel();
+}
+
+if (location.pathname.includes(`basement-ideas`)) {
+    middleCategories();
 }
 
 // temp func for title width

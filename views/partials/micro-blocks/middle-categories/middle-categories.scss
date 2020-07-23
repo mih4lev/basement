@@ -54,6 +54,10 @@
                 transform: scale(1) rotate(180deg);
             }
         }
+        &.hiddenArrow {
+            opacity: 0;
+            cursor: default;
+        }
     }
     .categoriesActionWrapper {
         overflow: hidden;
@@ -72,6 +76,7 @@
         }
     }
     .categoryList {
+        @extend %animation;
         display: flex;
         flex-direction: row;
         align-items: flex-start;

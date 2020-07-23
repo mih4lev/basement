@@ -54,6 +54,7 @@ export const reviewsCarousel = () => {
             slideCards(isNextArrow);
         });
     });
+    // touch actions
     let touchValue;
     const touchendHandler = (event) => {
         const offsetValue = touchValue - event.changedTouches[0].pageX;
