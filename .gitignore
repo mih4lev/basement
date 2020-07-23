@@ -13,6 +13,7 @@
 /public/images/css/sprite.css
 # ignore upload files
 /public/upload/
+/data-mock/instagram.json
 # ignore DS files
 .DS_Store
 /client/.DS_Store

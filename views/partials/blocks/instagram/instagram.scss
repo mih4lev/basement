@@ -83,14 +83,19 @@
                 position: relative;
                 display: block;
                 width: 94px;
+                height: 94px;
+                object-fit: cover;
                 @include minWidth(480) {
                     width: 144px;
+                    height: 144px;
                 }
                 @include minWidth(768) {
                     width: 126px;
+                    height: 126px;
                 }
                 @include minWidth(1000) {
                     width: 175px;
+                    height: 175px;
                 }
             }
         }

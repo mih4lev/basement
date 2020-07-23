@@ -13,6 +13,9 @@ router.get(`/`, async (request, response) => {
     // testimonials
     const mockJSONTestimonials = fs.readFileSync(`data-mock/testimonials.json`);
     const mockDataTestimonials = JSON.parse(mockJSONTestimonials);
+    // instagram
+    const instagramJSON = fs.readFileSync(`data-mock/instagram.json`);
+    const instagramData = JSON.parse(instagramJSON);
     // basement-ideas
     const mockJSONIdeas = fs.readFileSync(`data-mock/basement-ideas.json`);
     const mockDataIdeas = JSON.parse(mockJSONIdeas);
@@ -24,7 +27,7 @@ router.get(`/`, async (request, response) => {
     // variables
     const isAdaptiveHeader = true;
     const data = {
-        ...request.data, tips, ...mockDataIdeas,
+        ...request.data, tips, ...mockDataIdeas, instagramData,
         ...homeData, ...mockDataTestimonials, ...mockDataCategories,
         isAdaptiveHeader, isHomepage
     };

@@ -179,6 +179,7 @@
                 width: 1262px;
             }
             .carouselArrow {
+                @extend %animation;
                 position: absolute;
                 top: 50%;
                 z-index: 1;
@@ -236,7 +237,6 @@
                     }
                 }
                 &.carouselLeftArrow {
-                    display: none;
                     left: 15px;
                     &:after {
                         transform: translate(-50%, -50%) rotate(180deg);
@@ -244,15 +244,16 @@
                     @include minWidth(480) {
                         left: 20px;
                     }
-                    @include minWidth(1000) {
-                        display: none;
-                    }
                 }
                 &.carouselRightArrow {
                     right: 15px;
                     @include minWidth(480) {
                         right: 20px;
                     }
+                }
+                &.hiddenArrow {
+                    opacity: 0;
+                    cursor: default;
                 }
             }
             .carouselActionWrapper {
@@ -267,6 +268,7 @@
                 }
             }
             .carouselWrapper {
+                @extend %animation;
                 width: 100%;
                 @include minWidth(1000) {
                     //margin-left: 0;
@@ -278,6 +280,7 @@
                 }
             }
             .cardList {
+                @extend %animation;
                 flex-wrap: nowrap;
                 margin: 0 auto;
                 width: 100%;
@@ -292,6 +295,7 @@
                     height: 439px;
                 }
                 .cardWrapper {
+                    @extend %animation;
                     @extend %shadow2;
                     flex-shrink: 0;
                     flex-direction: column;
@@ -328,23 +332,13 @@
                             margin-left: 10px;
                         }
                     }
-                    // temp show full visible cards
-                    &:nth-of-type(2n) {
-                        &:after {
-                            content: "";
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: inherit;
-                            height: inherit;
-                            background: rgba(255, 255, 255, 0.75);
-                            @include minWidth(768) {
-                                display: none;
-                            }
-                        }
+                    &:after {
+                        @extend %animation;
+                        opacity: 0;
                     }
-                    &:nth-of-type(3n) {
+                    &.hiddenCard {
                         &:after {
+                            opacity: 1;
                             content: "";
                             position: absolute;
                             top: 0;
@@ -426,6 +420,7 @@
         }
     }
     .sectionTitle {
+        @extend %animation;
         @include minWidth(768) {
             margin: 40px auto 20px;
             padding-right: 300px;
@@ -436,6 +431,9 @@
             top: 260px;
             padding: 0;
             margin: 0 0 0 -330px;
+        }
+        &.hiddenTitle {
+            opacity: 0;
         }
     }
     .reviewsTextWrapper {

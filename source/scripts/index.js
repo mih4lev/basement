@@ -1,6 +1,6 @@
 import { headerMenu } from "../../views/partials/header/header";
 import { contactForm, selectElements, titleWidth, webpCheck } from "./utils";
-import { showDeleteWrappers, showMoreIdeas } from "../../views/pages/profile/profile";
+import { showDeleteWrappers } from "../../views/pages/profile/profile";
 import { addPhotoModal } from "../../views/partials/modals/add-photo/add-photo.modal";
 import { editProfileModal } from "../../views/partials/modals/edit-profile/edit-profile.modal";
 import { editAlbumModal } from "../../views/partials/modals/edit-album/edit-album.modal";
@@ -11,6 +11,7 @@ import { contactUsModal } from "../../views/partials/modals/contact-us/contact-u
 import { processSteps } from "../../views/pages/how-it-works/process/process";
 import { signUpForm } from "../../views/pages/sign-up/sign-up";
 import { filters } from "../../views/partials/micro-blocks/filters/filters";
+import { reviewsCarousel } from "../../views/partials/blocks/reviews/reviews";
 
 // webp checker
 webpCheck();
@@ -48,6 +49,10 @@ if (location.href.includes(`profile`)) { // temp
     editProfileModal();
     createAlbumModal();
     editAlbumModal();
+}
+
+if (location.pathname === `/`) {
+    reviewsCarousel();
 }
 
 // temp func for title width
