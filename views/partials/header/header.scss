@@ -426,31 +426,33 @@ header {
         //border-top: 1px solid $greyColor;
         @include minWidth(1000) {
             flex-direction: row;
-            display: block;
+            align-items: center;
+            display: flex;
             margin: 0 0 0 auto;
             padding: 0;
         }
+        .scheduleWrapper {
+            font-size: 13px;
+            line-height: 125%;
+            margin-bottom: 15px;
+            @include minWidth(1000) {
+                margin-right: 10px;
+                margin-bottom: 0;
+                @include minWidth(1440) {
+                    margin-right: 15px;
+                }
+            }
+        }
         .serviceLink {
             @extend %animation;
-            margin-bottom: 15px;
             font-size: 13px;
             font-weight: 700;
             line-height: 125%;
             letter-spacing: 0.05em;
-            &:last-of-type {
-                margin-bottom: 0;
-            }
             @include minWidth(1000) {
-                margin-left: 10px;
                 margin-bottom: 0;
-                &:first-of-type {
-                    margin-left: 0;
-                }
             }
-            @include minWidth(1440) {
-                margin-left: 15px;
-            }
-            &.scheduleLink {
+            &.consultationButton {
                 color: $yellowColor;
                 &:hover {
                     color: $whiteColor;

@@ -1,0 +1,112 @@
+.offerList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style-type: none;
+    @include minWidth(480) {
+        justify-content: space-around;
+        width: 378px;
+        height: 378px;
+        margin: 0 auto;
+    }
+    @include minWidth(768) {
+        justify-content: space-between;
+        width: 100%;
+        height: 157px;
+    }
+    @include minWidth(1000) {
+        width: 700px;
+        margin: 0;
+    }
+    .offerWrapper {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 0 4px 8px;
+        width: 141px;
+        height: 141px;
+        background: linear-gradient(56.42deg, #EFEFF0 14.82%, #FFFFFF 85.8%);
+        border: 5px solid $yellowColor;
+        box-sizing: border-box;
+        border-radius: 50%;
+        cursor: pointer;
+        &:after {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: 157px;
+            height: 157px;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        &:nth-of-type(odd) {
+            margin-left: 0;
+        }
+        &:nth-of-type(even) {
+            margin-right: 0;
+        }
+        &.activeOffer {
+            @extend %shadow;
+            &:after {
+                display: none;
+            }
+        }
+        @include minWidth(480) {
+            margin: 0 0 32px;
+            width: 157px;
+            height: 157px;
+        }
+        .offerPercent {
+            margin-top: 15px;
+            margin-right: -10px;
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+            font-size: 38px;
+            font-weight: 400;
+            @include minWidth(480) {
+                font-size: 41px;
+            }
+            .percentNum {
+                font-style: normal;
+                font-size: 55px;
+                line-height: 125%;
+                font-weight: 700;
+                @include minWidth(480) {
+                    font-size: 65px;
+                }
+            }
+            .percentDot {
+                margin-left: -4px;
+                font-style: normal;
+                font-weight: 700;
+                letter-spacing: -2px;
+            }
+        }
+        .offerPeriod {
+            margin-top: -3px;
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: $greenColor;
+            text-transform: uppercase;
+            @include minWidth(480) {
+                margin-top: -7px;
+                margin-bottom: 10px;
+                font-size: 19px;
+            }
+        }
+        .offerAdditional {
+            font-size: 6px;
+            line-height: 8px;
+            text-transform: uppercase;
+            @include minWidth(480) {
+                font-size: 7px;
+            }
+        }
+    }
+}

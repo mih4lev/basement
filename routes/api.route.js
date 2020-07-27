@@ -8,6 +8,8 @@ const createAPIRoutes = (app) => {
         { URL: `/api/portfolio`, route: `portfolio.api.route` },
         { URL: `/api/tips`, route: `tips.api.route` },
         { URL: `/api/contact`, route: `contact.api.route` },
+        { URL: `/api/offer`, route: `offer.api.route` },
+        { URL: `/api/zip-code`, route: `zip-code.api.route` },
         { URL: `/api/profile/ideas`, route: `profile/ideas.api.route` },
         { URL: `/api/profile/albums`, route: `profile/albums.api.route` },
         { URL: `/api/profile/settings`, route: `profile/settings.api.route` },

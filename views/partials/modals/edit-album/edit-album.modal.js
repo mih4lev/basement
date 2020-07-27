@@ -1,4 +1,4 @@
-import {changeModalVisible, resetDropEvents, saveAction, setModal} from "../modals";
+import { changeModalVisible, resetDropEvents, saveAction, setModal } from "../modals";
 
 export const editAlbumModal = () => {
 

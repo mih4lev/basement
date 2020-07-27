@@ -11,7 +11,7 @@ export const middleCategories = () => {
     const wrapperOffset = () => {
         return Number((categoryList.style.marginLeft).replace(`px`, ``));
     };
-    const checkElementsVisible = (offsetValue) => {
+    const checkElementsVisible = (offsetValue = 0) => {
         const previousAction = (offsetValue >= 0) ? `add` : `remove`;
         const nextAction = (offsetValue + (categoriesCount * categoryWidth) - wrapperWidth <= 0) ? `add` : `remove`;
         categoriesArrows[0].classList[previousAction](`hiddenArrow`);
@@ -31,6 +31,7 @@ export const middleCategories = () => {
             slideCategories(isNext);
         });
     });
+    checkElementsVisible();
     // touch actions
     let touchValue;
     const touchendHandler = (event) => {

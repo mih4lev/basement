@@ -92,14 +92,17 @@
                         <div class="phoneWrapper">
                             <span class="stateLabel">DC</span>
                             <div class="statePhones">
-                                <a class="menuPhone" href="tel:+17032700141">202-410-0111</a>
+                                <a class="menuPhone" href="tel:+12024100111">202-410-0111</a>
                             </div>
                         </div>
                     </div>
                     <div class="serviceLinks">
-                        <a class="serviceLink scheduleLink" href="#">
-                            SCHEDULE YOUR <span class="nowrap">IN-HOME</span> CONSULTATION
-                        </a>
+                        <div class="scheduleWrapper menuZipCode">
+                            <a class="serviceLink consultationButton" href="#">
+                                SCHEDULE YOUR <span class="nowrap">IN-HOME</span> CONSULTATION
+                            </a>
+                            {{> micro-blocks/zip-code/zip-code }}
+                        </div>
                         <a class="serviceLink quoteLink" href="/instant-quote/">GET ONLINE QUOTE</a>
                     </div>
                 </div>

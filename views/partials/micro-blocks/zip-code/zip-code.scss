@@ -1,0 +1,139 @@
+.consultationButton.hiddenButton {
+    display: none !important;
+}
+
+.zipCodeForm {
+    position: relative;
+    width: 100%;
+    height: 26px;
+    @include minWidth(480) {
+        height: 40px;
+    }
+    &.hiddenWrapper {
+        display: none;
+    }
+    .zipCodeField {
+        @extend %font;
+        width: inherit;
+        height: inherit;
+        padding: 0 55px 0 10px;
+        font-size: 11px;
+        font-weight: 800;
+        color: $blackColor;
+        box-sizing: border-box;
+        background-color: #FFF;
+        border-radius: 100px;
+        border: none;
+        outline: none;
+        @include minWidth(480) {
+            font-size: 13px;
+            padding: 0 75px 0 15px;
+        }
+        @include minWidth(768) {
+            font-size: 13px;
+            padding: 0 75px 0 20px;
+        }
+    }
+    .zipCodeLabel {
+        display: none;
+        position: absolute;
+        left: 10px;
+        align-items: center;
+        height: inherit;
+        font-size: 11px;
+    }
+    .zipCodeButton {
+        @extend %animation;
+        @extend %font;
+        position: absolute;
+        top: 50%;
+        right: 4px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        transform: translateY(-50%);
+        padding: 3px 7px;
+        font-size: 11px;
+        line-height: 100%;
+        font-weight: 800;
+        background-color: $yellowColor;
+        border-radius: 100px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        &.loadButton {
+            opacity: 0;
+            cursor: default;
+        }
+        &:hover {
+            background-color: darken($yellowColor, 15%);
+        }
+        @include minWidth(480) {
+            right: 5px;
+            padding: 9px 15px;
+            font-size: 13px;
+        }
+        &:after {
+            @extend %buttonIconAfter;
+            @extend %arrowIcon;
+            transform: scale(0.8);
+            margin-left: 3px;
+            background-color: $blackColor;
+            @include minWidth(480) {
+                transform: scale(1);
+                margin-left: 5px;
+            }
+        }
+    }
+    .zipCodeLoader {
+        @extend %animation;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 16px;
+        height: 16px;
+        background-color: transparent;
+        background-image: url("/public/images/load-icon_black.svg");
+        background-size: 16px 16px;
+        @include minWidth(480) {
+            top: 8px;
+            right: 8px;
+            width: 24px;
+            height: 24px;
+            background-size: 24px 24px;
+        }
+        &.hiddenLoader {
+            opacity: 0;
+        }
+    }
+}
+
+.menuZipCode {
+    .zipCodeForm {
+        @include minWidth(480) {
+            height: 26px;
+        }
+        .zipCodeField {
+            @include minWidth(480) {
+                padding: 0 55px 0 10px;
+                font-size: 11px;
+            }
+        }
+        .zipCodeButton {
+            @include minWidth(480) {
+                padding: 3px 7px;
+                font-size: 11px;
+                &:after {
+                    transform: scale(0.8);
+                }
+            }
+        }
+        .zipCodeLoader {
+            top: 5px;
+            right: 5px;
+            width: 16px;
+            height: 16px;
+            background-size: 16px 16px;
+        }
+    }
+}
