@@ -14,8 +14,8 @@ body {
     line-height: 125%;
     font-weight: 400;
     font-style: normal;
-    color: $blackColor;
-    background: $bgMainColor;
+    color: $black;
+    background: $main;
     @include minWidth(480) {
         font-size: 12px;
     }
@@ -31,7 +31,7 @@ main {
     flex-shrink: 0;
     flex-basis: auto;
     width: 100%;
-    background: $whiteColor;
+    background: $white;
     &:before {
         display: block;
         content: "";
@@ -57,7 +57,7 @@ p {
 
 a {
     text-decoration: none;
-    color: $blueColor;
+    color: $blue;
 }
 
 strong {
@@ -299,7 +299,7 @@ strong {
     margin: 0 0 15px;
     padding: 15px;
     box-sizing: border-box;
-    background: $whiteColor;
+    background: $white;
     border-radius: 5px;
     @include minWidth(480) {
         padding: 20px;
@@ -346,7 +346,7 @@ strong {
 }
 
 .filtersWrapper {
-    background-color: $bgSubColor;
+    background-color: $sub;
 }
 
 .backButton {
@@ -354,7 +354,7 @@ strong {
     &:before {
         @extend %buttonIconBefore;
         @extend %arrowIcon;
-        background: $greyColor;
+        background: $grey;
         transform: rotate(180deg) scale(0.6);
         @include minWidth(480) {
             transform: rotate(180deg) scale(1);
@@ -362,18 +362,18 @@ strong {
     }
     &:hover {
         &:before {
-            background: $blackColor;
+            background: $black;
         }
     }
 }
 
 .sourceButton {
-    color: $whiteColor;
+    color: $white;
     @extend %blueButton;
     &:after {
         @extend %buttonIconAfter;
         @extend %arrowIcon;
-        background: $whiteColor;
+        background: $white;
         transform: scale(0.6);
         @include minWidth(480) {
             transform: scale(1);
@@ -381,7 +381,7 @@ strong {
     }
     &:hover {
         &:before {
-            background: $blackColor;
+            background: $black;
         }
     }
 }
@@ -397,7 +397,7 @@ strong {
     border: none;
     font-size: 9px;
     font-weight: 800;
-    color: $darkGreyColor;
+    color: $raven;
     outline: none;
     cursor: pointer;
     @include minWidth(480) {
@@ -408,9 +408,9 @@ strong {
         margin: 40px auto 20px;
     }
     &:hover {
-        color: $blueColor;
+        color: $blue;
         &:after {
-            background: $blueColor;
+            background: $blue;
         }
     }
     &:after {
@@ -418,7 +418,7 @@ strong {
         @extend %buttonIconAfter;
         @extend %arrowIcon;
         @extend %animation;
-        background: $darkGreyColor;
+        background: $raven;
         transform: scale(0.6) rotate(90deg);
         @include minWidth(480) {
             transform: scale(0.8) rotate(90deg);
@@ -435,7 +435,7 @@ strong {
     font-size: 15px;
     font-weight: 700;
     line-height: 125%;
-    color: $blackColor;
+    color: $black;
     @include minWidth(480) {
         font-size: 20px;
     }
@@ -457,7 +457,7 @@ strong {
     font-weight: 700;
     line-height: 125%;
     text-transform: uppercase;
-    color: $blackColor;
+    color: $black;
     @include minWidth(480) {
         margin-top: 20px;
     }
@@ -472,7 +472,7 @@ strong {
     font-size: 19px;
     font-weight: 800;
     line-height: 125%;
-    color: $blackColor;
+    color: $black;
     @include minWidth(480){
         font-size: 27px;
     }
@@ -493,10 +493,10 @@ strong {
 }
 
 .colorLink {
-    color: $blueColor;
+    color: $blue;
     text-decoration: underline;
     &:hover {
-        color: $blackColor;
+        color: $black;
     }
 }
 
@@ -513,7 +513,7 @@ strong {
     line-height: 26px;
     font-size: 9px;
     font-weight: 700;
-    color: $greyColor;
+    color: $grey;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     cursor: text;
@@ -540,17 +540,17 @@ strong {
     width: 100%;
     height: 26px;
     line-height: 26px;
-    border: 1px solid $lightGreyColor;
+    border: 1px solid $ghost;
     background-color: transparent;
     border-radius: 5px;
     font-size: 9px;
     font-weight: 700;
     letter-spacing: 0.05em;
     //text-transform: uppercase;
-    color: $blackColor;
+    color: $black;
     outline: none;
     &:focus {
-        border-color: $blueColor;
+        border-color: $blue;
     }
     @include minWidth(480) {
         height: 41px;
@@ -561,7 +561,7 @@ strong {
         font-size: 13px;
     }
     &.errorField {
-        border-color: $errorColor;
+        border-color: darken($red, 10%);
     }
 }
 
@@ -572,7 +572,7 @@ strong {
     padding: 6px 12px;
     box-sizing: border-box;
     background-color: transparent;
-    border: 1px solid $lightGreyColor;
+    border: 1px solid $ghost;
     border-radius: 5px;
     font-size: 9px;
     line-height: 125%;
@@ -582,7 +582,7 @@ strong {
     outline: none;
     height: 113px;
     &:focus {
-        border: 1px solid $blueColor;
+        border: 1px solid $blue;
     }
     @include minWidth(480) {
         height: 129px;
@@ -605,7 +605,7 @@ strong {
     font-size: 9px;
     line-height: 125%;
     letter-spacing: 0.05em;
-    color: $greyColor;
+    color: $grey;
     cursor: pointer;
     &:before {
         @extend %animation;
@@ -615,7 +615,7 @@ strong {
         width: 8px;
         height: 8px;
         box-sizing: border-box;
-        border: 1px solid $greyColor;
+        border: 1px solid $grey;
         border-radius: 50%;
     }
     @include minWidth(480) {
@@ -625,9 +625,9 @@ strong {
         font-size: 13px;
     }
     &:hover {
-        color: $blueColor;
+        color: $blue;
         &:before {
-            border-color: $blueColor;
+            border-color: $blue;
         }
     }
 }
@@ -639,10 +639,10 @@ strong {
     height: 0;
     width: 0;
     &:checked + .checkboxLabel {
-        color: $blackColor;
+        color: $black;
         &:before {
-            border: 1px solid $blackColor;
-            background: $blackColor;
+            border: 1px solid $black;
+            background: $black;
         }
     }
 }
@@ -655,7 +655,7 @@ strong {
     font-size: 9px;
     line-height: 125%;
     letter-spacing: 0.05em;
-    color: $greyColor;
+    color: $grey;
     @include minWidth(480) {
         font-size: 12px;
     }
@@ -663,10 +663,10 @@ strong {
         font-size: 13px;
     }
     &.activeLabel {
-        color: $blueColor;
+        color: $blue;
     }
     &.errorLabel {
-        color: $errorColor;
+        color: darken($red, 10%);
     }
 }
 
@@ -681,19 +681,19 @@ strong {
     width: 100%;
     height: 26px;
     line-height: 26px;
-    border: 1px solid $lightGreyColor;
+    border: 1px solid $ghost;
     border-radius: 5px;
     font-size: 9px;
     font-weight: 700;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: $blackColor;
+    color: $black;
     outline: none;
     cursor: pointer;
     &:hover {
-        border-color: $blueColor;
+        border-color: $blue;
         &:after {
-            background: $blueColor;
+            background: $blue;
         }
     }
     &:after {
@@ -702,7 +702,7 @@ strong {
         top: 50%;
         right: 12px;
         display: block;
-        background: $lightGreyColor;
+        background: $ghost;
         transform: translateY(-50%) rotate(90deg);
         @extend %arrowIcon;
     }
@@ -712,7 +712,7 @@ strong {
         font-size: 12px;
     }
     .emptyData {
-        color: $lightGreyColor;
+        color: $ghost;
     }
     .hiddenSelectWrapper {
         @extend %shadow2;
@@ -726,8 +726,8 @@ strong {
         padding: 8px 0;
         box-sizing: content-box;
         list-style-type: none;
-        background-color: $whiteColor;
-        border: 1px solid $blueColor;
+        background-color: $white;
+        border: 1px solid $blue;
         border-radius: 5px;
         @include minWidth(480) {
             top: 52px;
@@ -735,17 +735,17 @@ strong {
         .selectData {
             padding: 0 18px;
             line-height: 28px;
-            color: $greyColor;
+            color: $grey;
             &:hover {
-                color: $blackColor;
+                color: $black;
             }
             @include minWidth(480) {
                 line-height: 34px;
             }
             &.selectedData {
                 position: relative;
-                color: $blueColor;
-                background-color: $subMenuHoverColor;
+                color: $blue;
+                background-color: $menuHover;
                 &:after {
                     content: "";
                     position: absolute;
@@ -755,7 +755,7 @@ strong {
                     width: 7px;
                     height: 7px;
                     border-radius: 50%;
-                    background-color: $blueColor;
+                    background-color: $blue;
                 }
                 &:hover {
                     cursor: default;
@@ -766,10 +766,10 @@ strong {
     &.activeSelectElement {
         z-index: 2;
         overflow: unset;
-        color: $blueColor;
-        border-color: $blueColor;
+        color: $blue;
+        border-color: $blue;
         &:after {
-            background: $blueColor;
+            background: $blue;
         }
         .hiddenSelectWrapper {
             opacity: 1;
@@ -786,19 +786,19 @@ strong {
     margin: 15px auto 0;
     width: 220px;
     height: 26px;
-    background: $blueColor;
+    background: $blue;
     border-radius: 5px;
-    border: 1px solid $blueColor;
+    border: 1px solid $blue;
     font-size: 9px;
     font-weight: 700;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: $whiteColor;
+    color: $white;
     cursor: pointer;
     outline: none;
     &:hover {
-        background: darken($blueColor, 15%);
-        border-color: darken($blueColor, 15%);
+        background: darken($blue, 15%);
+        border-color: darken($blue, 15%);
     }
     @include minWidth(480) {
         width: 220px;
@@ -809,16 +809,16 @@ strong {
         font-size: 13px;
     }
     &:disabled {
-        background: $bgSubColor;
-        border-color: $bgSubColor;
+        background: $sub;
+        border-color: $sub;
         cursor: default;
     }
     &.loadButton:disabled {
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: darken($blueColor, 15%);
-        border-color: darken($blueColor, 15%);
+        background-color: darken($blue, 15%);
+        border-color: darken($blue, 15%);
         &:after {
             content: "";
             display: block;
@@ -875,9 +875,9 @@ strong {
         }
     }
     &.facebookButton {
-        color: $whiteColor;
-        background: $facebookColor;
-        border: 1px solid $facebookColor;
+        color: $white;
+        background: #315DA5;
+        border: 1px solid #315DA5;
         &:before {
             width: 18px;
             height: 18px;
@@ -886,9 +886,9 @@ strong {
         }
     }
     &.googleButton {
-        color: $blackColor;
-        background: $whiteColor;
-        border: 1px solid $lightGreyColor;
+        color: $black;
+        background: $white;
+        border: 1px solid $ghost;
         &:before {
             width: 17px;
             height: 17px;
@@ -964,7 +964,7 @@ strong {
         flex-direction: row;
         margin-bottom: 8px;
         width: 312px;
-        background: $whiteColor;
+        background: $white;
         @extend %shadow;
         @include minWidth(480) {
             margin-left: 4px;
@@ -997,7 +997,7 @@ strong {
                 width: 120px;
                 height: 83px;
                 font-size: 0;
-                background-color: $bgSubColor;
+                background-color: $sub;
                 background-image: url('/public/images/default-image.svg');
                 background-repeat: no-repeat;
                 background-position: center center;
@@ -1050,13 +1050,13 @@ strong {
                 line-height: 125%;
                 text-transform: uppercase;
                 font-weight: 700;
-                color: $blackColor;
+                color: $black;
                 display: -webkit-box;
                 -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
                 overflow-y: hidden;
                 &:hover {
-                    color: $blueColor;
+                    color: $blue;
                     text-decoration: underline;
                 }
                 @include minWidth(480) {
@@ -1105,7 +1105,7 @@ strong {
 .dataDate {
     font-size: 9px;
     line-height: 125%;
-    color: $greyColor;
+    color: $grey;
     @include minWidth(480) {
         font-size: 11px;
     }
@@ -1120,7 +1120,7 @@ strong {
     letter-spacing: 0.05em;
     font-weight: 700;
     text-transform: uppercase;
-    color: $greyColor;
+    color: $grey;
     @include minWidth(480) {
         font-size: 11px;
     }
@@ -1258,7 +1258,7 @@ strong {
                 margin-top: -60px;
             }
             &:hover {
-                background-color: $whiteColor;
+                background-color: $white;
             }
         }
         .ideaTitle {
@@ -1278,7 +1278,7 @@ strong {
                 font-size: 15px;
             }
             &.addTitle {
-                color: $greyColor;
+                color: $grey;
                 cursor: pointer;
                 &:hover {
                     text-decoration: underline;

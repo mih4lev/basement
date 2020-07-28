@@ -32,7 +32,7 @@
             height: 26px;
             line-height: 24px;
             font-size: 9px;
-            border: 1px solid $bgSubColor;
+            border: 1px solid $sub;
             border-radius: 5px;
             background: transparent;
             box-sizing: border-box;
@@ -48,10 +48,10 @@
                 top: 50%;
                 right: 7px;
                 transform: translateY(-50%) rotate(90deg) scale(0.7);
-                background: $bgSubColor;
+                background: $sub;
             }
             &.activeButton {
-                border-color: $blueColor;
+                border-color: $blue;
                 .prevMonth {
                     @extend %arrowIcon;
                     position: absolute;
@@ -61,7 +61,7 @@
                     display: block;
                     font-size: 0;
                     border: none;
-                    background: $blackColor;
+                    background: $black;
                 }
                 .nextMonth {
                     @extend %arrowIcon;
@@ -72,7 +72,7 @@
                     display: block;
                     font-size: 0;
                     border: none;
-                    background: $blackColor;
+                    background: $black;
                 }
                 &:after {
                     display: none;

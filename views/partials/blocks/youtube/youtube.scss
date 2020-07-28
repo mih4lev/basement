@@ -1,6 +1,6 @@
 .youtubeSection {
     z-index: 1;
-    background: $bgMainColor;
+    background: $main;
     .fullWrapper {
         padding: 0;
         @include minWidth(768) {
@@ -20,7 +20,7 @@
     .textBlock {
         margin: 15px auto;
         width: 290px;
-        color: $whiteColor;
+        color: $white;
         @include minWidth(480) {
             margin: 20px auto;
             width: 440px;
@@ -47,12 +47,4 @@
             width: 480px;
         }
     }
-}
-
-.youtubeSection.homeSection {
-
-}
-
-.youtubeSection.localSection {
-
 }

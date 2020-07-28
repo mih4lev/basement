@@ -54,7 +54,7 @@
             @extend %animation;
             display: block;
             font-size: 0;
-            background: $whiteColor;
+            background: $white;
             border: none;
             cursor: pointer;
         }
@@ -65,7 +65,7 @@
                 @extend %facebookIcon;
             }
             &:hover {
-                background: $whiteColor;
+                background: $white;
                 .shareLink {
                     background: #2D508A;
                 }
@@ -77,7 +77,7 @@
                 @extend %twitterIcon;
             }
             &:hover {
-                background: $whiteColor;
+                background: $white;
                 .shareLink {
                     background: #00A4E6;
                 }
@@ -89,7 +89,7 @@
                 @extend %whatsappIcon;
             }
             &:hover {
-                background: $whiteColor;
+                background: $white;
                 .shareLink {
                     background: #59B454;
                 }
@@ -101,7 +101,7 @@
                 @extend %pinterestIcon;
             }
             &:hover {
-                background: $whiteColor;
+                background: $white;
                 .shareLink {
                     background: #BF0021;
                 }

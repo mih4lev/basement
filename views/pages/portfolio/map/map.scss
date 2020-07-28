@@ -5,7 +5,7 @@
         width: 100%;
         height: 480px;
         overflow: hidden;
-        background-color: #DDD;
+        background-color: $sub;
         @include minWidth(480) {
             height: 540px;
         }
@@ -47,7 +47,7 @@
             padding-left: 10px;
             padding-right: 10px;
             height: 41px;
-            background-color: $whiteColor;
+            background-color: $white;
             border-radius: 5px;
             @include minWidth(480) {
                 display: flex;
@@ -60,16 +60,16 @@
                 font-weight: 800;
                 letter-spacing: 0.05em;
                 text-transform: uppercase;
-                color: $lightGreyColor;
+                color: $ghost;
                 background-color: transparent;
                 border: none;
                 cursor: pointer;
                 outline: none;
                 &:hover {
-                    color: $blueColor;
+                    color: $blue;
                 }
                 &.activeButton {
-                    color: $blackColor;
+                    color: $black;
                 }
             }
         }
@@ -97,7 +97,7 @@
             width: 294px;
             padding: 0 21px 21px;
             box-sizing: border-box;
-            background-color: $whiteColor;
+            background-color: $white;
             border-radius: 5px;
             .cardHeader {
                 margin: 17px 0 21px;
@@ -129,11 +129,11 @@
                     &:after {
                         @extend %buttonIconAfter;
                         @extend %arrowIcon;
-                        background-color: $blackColor;
+                        background-color: $black;
                         transform: scale(1);
                     }
                     &:hover {
-                        background-color: $whiteColor;
+                        background-color: $white;
                     }
                 }
             }
@@ -154,9 +154,9 @@
             letter-spacing: 0.05em;
             text-transform: uppercase;
             padding: 7px 40px;
-            background-color: $whiteColor;
+            background-color: $white;
             border-radius: 5px;
-            color: $darkGreyColor;
+            color: $raven;
             white-space: nowrap;
             @include minWidth(480) {
                 left: 20px;
@@ -165,7 +165,7 @@
                 transform: none;
             }
             &:hover {
-                color: $blueColor;
+                color: $blue;
             }
         }
     }
@@ -184,14 +184,14 @@
             width: 41px;
             height: 41px;
             font-size: 0;
-            background-color: $whiteColor;
+            background-color: $white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             outline: none;
             &:hover {
                 &:after {
-                    background-color: $blueColor;
+                    background-color: $blue;
                 }
             }
             &:after {
@@ -204,7 +204,7 @@
                 transform: translate(-50%, -50%);
                 width: 18px;
                 height: 21px;
-                background-color: $darkGreyColor;
+                background-color: $raven;
             }
         }
         .locationZoomButtons {
@@ -214,7 +214,7 @@
             width: 41px;
             height: 82px;
             margin-top: 10px;
-            background-color: $whiteColor;
+            background-color: $white;
             border-radius: 5px;
             overflow: hidden;
             .zoomButton {
@@ -236,7 +236,7 @@
                         transform: translateX(-50%);
                         width: 17px;
                         height: 3px;
-                        background-color: $darkGreyColor;
+                        background-color: $raven;
                     }
                     &:after {
                         @extend %animation;
@@ -248,7 +248,7 @@
                         transform: translateX(-50%) rotate(90deg);
                         width: 17px;
                         height: 3px;
-                        background-color: $darkGreyColor;
+                        background-color: $raven;
                     }
                 }
                 &.zoomOutButton {
@@ -262,12 +262,12 @@
                         transform: translateX(-50%);
                         width: 17px;
                         height: 3px;
-                        background-color: $darkGreyColor;
+                        background-color: $raven;
                     }
                 }
                 &:hover {
                     &:before, &:after {
-                        background-color: $blueColor;
+                        background-color: $blue;
                     }
                 }
             }

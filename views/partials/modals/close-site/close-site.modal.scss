@@ -1,17 +1,17 @@
 .closeModal {
     @include modal(304px, 190px);
-    background: $bgMainColor;
+    background: $main;
     @include minWidth(480) {
         @include modal(450px, 303px);
-        background: $bgMainColor;
+        background: $main;
     }
     @include minWidth(768) {
         @include modal(549px, 320px);
-        background: $bgMainColor;
+        background: $main;
     }
     @include minWidth(1000) {
         @include modal(966px, 202px);
-        background: $bgMainColor;
+        background: $main;
     }
 }
 
@@ -62,7 +62,7 @@
                 right: 30px;
             }
             &:before, &:after {
-                background: #616D7B;
+                background: $raven;
             }
         }
     }
@@ -78,7 +78,7 @@
     line-height: 125%;
     font-weight: 800;
     letter-spacing: 0.05em;
-    color: $whiteColor;
+    color: $white;
     @include minWidth(480) {
         margin-top: -10px;
         font-size: 23px;
@@ -140,7 +140,7 @@
     }
     .questionButton {
         @extend %menuButton;
-        color: $whiteColor;
+        color: $white;
     }
 }
 

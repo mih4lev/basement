@@ -1,5 +1,5 @@
 .faqSection.homeSection {
-    background: linear-gradient(117.03deg, #F3F3F5 3.69%, #D1D1D3 95.61%);
+    background: $gradient3;
     .wrapper {
        @extend %widthContent;
     }
@@ -48,7 +48,7 @@
         display: flex;
         position: relative;
         margin-bottom: 8px;
-        background: $bgSubColor2;
+        background: $ghostWhite;
         &:last-of-type {
             margin-bottom: 0;
         }
@@ -196,7 +196,7 @@
                 }
             }
             &.ourCompany {
-                background: $whiteColor;
+                background: $white;
                 &:after {
                     background-image: url("/public/images/home_faq_our_320.svg");
                     @include minWidth(480) {
@@ -220,7 +220,7 @@
         &:after {
             @extend %buttonIconAfter;
             @extend %arrowIcon;
-            background: $whiteColor;
+            background: $white;
         }
     }
 }

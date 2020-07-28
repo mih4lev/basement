@@ -1,5 +1,5 @@
 .pageHeader {
-    border-bottom: 1px solid $bgSubColor;
+    border-bottom: 1px solid $sub;
     .contentWrapper {
         position: relative;
     }
@@ -47,10 +47,10 @@
                 margin-bottom: 2px;
                 &:hover {
                     &:after {
-                        background: $blueColor;
+                        background: $blue;
                     }
                     .breadcrumbLink {
-                        color: $blueColor;
+                        color: $blue;
                     }
                 }
                 &:last-of-type {
@@ -66,7 +66,7 @@
                     display: inline-block;
                     margin-left: 5px;
                     margin-right: 5px;
-                    background: $greyColor;
+                    background: $grey;
                     transform: scale(0.65);
                     @include minWidth(768) {
                         margin-left: 10px;
@@ -77,7 +77,7 @@
                 .breadcrumbLink {
                     @extend %animation;
                     font-size: 9px;
-                    color: $greyColor;
+                    color: $grey;
                     @include minWidth(480) {
                         font-size: 12px;
                     }
@@ -86,9 +86,9 @@
                     }
                 }
                 .breadcrumbActive {
-                    color: $blackColor;
+                    color: $black;
                     &:hover {
-                        color: $blackColor;
+                        color: $black;
                     }
                 }
             }
@@ -105,7 +105,7 @@
         background-position: center center;
         background-repeat: no-repeat;
         background-size: 100% auto;
-        color: $whiteColor;
+        color: $white;
         font-size: 17px;
         font-weight: 800;
         text-transform: uppercase;
@@ -128,7 +128,7 @@
     .picturePageTitle {
         margin-top: 35px;
         margin-bottom: 0;
-        color: $whiteColor;
+        color: $white;
     }
     .categoryList {
         display: flex;
@@ -143,7 +143,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            color: $blackColor;
+            color: $black;
             .categoryImage {
                 @extend %circle;
                 @extend %shadow;
@@ -162,7 +162,7 @@
             .subCategoriesHeader {
                 margin-top: 0;
                 margin-bottom: 0;
-                color: $greyColor;
+                color: $grey;
                 font-size: 7px;
                 @include minWidth(480) {
                     margin-bottom: 5px;
@@ -217,21 +217,21 @@
                 font-size: 30px;
             }
             &:hover {
-                color: $blueColor;
+                color: $blue;
             }
             .categoryImage {
                 width: inherit;
                 height: 85px;
-                border: 2px solid $whiteColor;
+                border: 2px solid $white;
                 @include minWidth(480) {
                     width: inherit;
                     height: 131px;
-                    border: 3px solid $whiteColor;
+                    border: 3px solid $white;
                 }
                 @include minWidth(768) {
                     width: inherit;
                     height: 209px;
-                    border: 5px solid $whiteColor;
+                    border: 5px solid $white;
                 }
             }
         }
@@ -273,7 +273,7 @@
                 margin-right: 15px;
                 width: 70px;
                 height: 70px;
-                border: 2px solid $whiteColor;
+                border: 2px solid $white;
                 @include minWidth(480) {
                     margin-right: 20px;
                     width: 76px;
@@ -282,7 +282,7 @@
                 @include minWidth(768) {
                     width: 120px;
                     height: 120px;
-                    border: 5px solid $whiteColor;
+                    border: 5px solid $white;
                 }
                 @include minWidth(1440) {
                     width: 130px;
@@ -312,7 +312,7 @@
         .categoryLink {
             font-size: 7px;
             &:hover {
-                color: $blueColor;
+                color: $blue;
             }
             @include minWidth(768) {
                 font-size: 10px;
@@ -320,7 +320,7 @@
             .categoryImage {
                 width: 47px;
                 height: 47px;
-                border: 1px solid $whiteColor;
+                border: 1px solid $white;
                 @include minWidth(768) {
                     width: 74px;
                     height: 74px;
@@ -335,86 +335,66 @@
 }
 
 .webp .headerPicture {
-    background-image: linear-gradient(0deg, rgba(97, 109, 123, 0.65), rgba(97, 109, 123, 0.65)),
-    url('/public/images/ideas_page-header_480.webp');
+    background-image: $headerGradient, url('/public/images/ideas_page-header_480.webp');
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-        background-image: linear-gradient(0deg, rgba(97, 109, 123, 0.65), rgba(97, 109, 123, 0.65)),
-        url('/public/images/ideas_page-header_480@2x.webp');
+        background-image: $headerGradient, url('/public/images/ideas_page-header_480@2x.webp');
     }
     @include minWidth(480) {
-        background-image: linear-gradient(0deg, rgba(97, 109, 123, 0.65), rgba(97, 109, 123, 0.65)),
-        url('/public/images/ideas_page-header_768.webp');
+        background-image: $headerGradient, url('/public/images/ideas_page-header_768.webp');
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: linear-gradient(0deg, rgba(97, 109, 123, 0.65), rgba(97, 109, 123, 0.65)),
-            url('/public/images/ideas_page-header_768@2x.webp');
+            background-image: $headerGradient, url('/public/images/ideas_page-header_768@2x.webp');
         }
     }
     @include minWidth(768) {
-        background-image: linear-gradient(0deg, rgba(97, 109, 123, 0.65), rgba(97, 109, 123, 0.65)),
-        url('/public/images/ideas_page-header_1000.webp');
+        background-image: $headerGradient, url('/public/images/ideas_page-header_1000.webp');
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: linear-gradient(0deg, rgba(97, 109, 123, 0.65), rgba(97, 109, 123, 0.65)),
-            url('/public/images/ideas_page-header_1000@2x.webp');
+            background-image: $headerGradient, url('/public/images/ideas_page-header_1000@2x.webp');
         }
     }
     @include minWidth(1000) {
-        background-image: linear-gradient(0deg, rgba(97, 109, 123, 0.65), rgba(97, 109, 123, 0.65)),
-        url('/public/images/ideas_page-header_1440.webp');
+        background-image: $headerGradient, url('/public/images/ideas_page-header_1440.webp');
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: linear-gradient(0deg, rgba(97, 109, 123, 0.65), rgba(97, 109, 123, 0.65)),
-            url('/public/images/ideas_page-header_1440@2x.webp');
+            background-image: $headerGradient, url('/public/images/ideas_page-header_1440@2x.webp');
         }
     }
     @include minWidth(1440) {
-        background-image: linear-gradient(0deg, rgba(97, 109, 123, 0.65), rgba(97, 109, 123, 0.65)),
-        url('/public/images/ideas_page-header.webp');
+        background-image: $headerGradient, url('/public/images/ideas_page-header.webp');
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: linear-gradient(0deg, rgba(97, 109, 123, 0.65), rgba(97, 109, 123, 0.65)),
-            url('/public/images/ideas_page-header@2x.webp');
+            background-image: $headerGradient, url('/public/images/ideas_page-header@2x.webp');
         }
     }
 }
 
 .no-webp .headerPicture {
-    background-image: linear-gradient(0deg, rgba(97, 109, 123, 0.65), rgba(97, 109, 123, 0.65)),
-    url('/public/images/ideas_page-header_480.jpg');
+    background-image: $headerGradient, url('/public/images/ideas_page-header_480.jpg');
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-        background-image: linear-gradient(0deg, rgba(97, 109, 123, 0.65), rgba(97, 109, 123, 0.65)),
-        url('/public/images/ideas_page-header_480@2x.jpg');
+        background-image: $headerGradient, url('/public/images/ideas_page-header_480@2x.jpg');
     }
     @include minWidth(480) {
         min-height: 181px;
-        background-image: linear-gradient(0deg, rgba(97, 109, 123, 0.65), rgba(97, 109, 123, 0.65)),
-        url('/public/images/ideas_page-header_768.jpg');
+        background-image: $headerGradient, url('/public/images/ideas_page-header_768.jpg');
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: linear-gradient(0deg, rgba(97, 109, 123, 0.65), rgba(97, 109, 123, 0.65)),
-            url('/public/images/ideas_page-header_768@2x.jpg');
+            background-image: $headerGradient, url('/public/images/ideas_page-header_768@2x.jpg');
         }
     }
     @include minWidth(768) {
         min-height: 234px;
-        background-image: linear-gradient(0deg, rgba(97, 109, 123, 0.65), rgba(97, 109, 123, 0.65)),
-        url('/public/images/ideas_page-header_1000.jpg');
+        background-image: $headerGradient, url('/public/images/ideas_page-header_1000.jpg');
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: linear-gradient(0deg, rgba(97, 109, 123, 0.65), rgba(97, 109, 123, 0.65)),
-            url('/public/images/ideas_page-header_1000@2x.jpg');
+            background-image: $headerGradient, url('/public/images/ideas_page-header_1000@2x.jpg');
         }
     }
     @include minWidth(1000) {
         min-height: 283px;
-        background-image: linear-gradient(0deg, rgba(97, 109, 123, 0.65), rgba(97, 109, 123, 0.65)),
-        url('/public/images/ideas_page-header_1440.jpg');
+        background-image: $headerGradient, url('/public/images/ideas_page-header_1440.jpg');
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: linear-gradient(0deg, rgba(97, 109, 123, 0.65), rgba(97, 109, 123, 0.65)),
-            url('/public/images/ideas_page-header_1440@2x.jpg');
+            background-image: $headerGradient, url('/public/images/ideas_page-header_1440@2x.jpg');
         }
     }
     @include minWidth(1440) {
-        background-image: linear-gradient(0deg, rgba(97, 109, 123, 0.65), rgba(97, 109, 123, 0.65)),
-        url('/public/images/ideas_page-header.jpg');
+        background-image: $headerGradient, url('/public/images/ideas_page-header.jpg');
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: linear-gradient(0deg, rgba(97, 109, 123, 0.65), rgba(97, 109, 123, 0.65)),
-            url('/public/images/ideas_page-header@2x.jpg');
+            background-image: $headerGradient, url('/public/images/ideas_page-header@2x.jpg');
         }
     }
 }

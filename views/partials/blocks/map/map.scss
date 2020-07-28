@@ -27,7 +27,7 @@
         height: auto;
         border-radius: 5px;
         min-height: 108px;
-        background-color: $whiteColor;
+        background-color: $white;
         background-position: center bottom;
         background-repeat: no-repeat;
         background-size: 238px 108px;
@@ -82,7 +82,7 @@
         &:after {
             @extend %buttonIconAfter;
             @extend %arrowIcon;
-            background: $whiteColor;
+            background: $white;
         }
         @include minWidth(480) {
             margin: 20px;

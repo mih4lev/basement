@@ -72,7 +72,7 @@
         font-size: 13px;
         text-transform: uppercase;
         text-align: right;
-        color: $lightGreyColor;
+        color: $ghost;
         @include minWidth(1000) {
             position: absolute;
             right: 0;
@@ -88,7 +88,7 @@
             justify-content: space-between;
             margin-top: 20px;
             padding-bottom: 20px;
-            border-bottom: 1px solid $bgSubColor;
+            border-bottom: 1px solid $sub;
         }
         .pictureFull {
             display: flex;

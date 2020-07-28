@@ -617,7 +617,7 @@
                     font-weight: 600;
                     text-transform: uppercase;
                     border-radius: 100px;
-                    color: $whiteColor;
+                    color: $white;
                     white-space: nowrap;
                     cursor: pointer;
                     @include minWidth(480) {
@@ -654,7 +654,7 @@
                         line-height: 10px;
                         font-weight: 800;
                         text-align: right;
-                        color: $blackColor;
+                        color: $black;
                         @include minWidth(480) {
                             font-size: 15px;
                         }
@@ -705,14 +705,14 @@
                         z-index: 1;
                         width: inherit;
                         height: inherit;
-                        border: 2px solid #FFFFFF;
+                        border: 2px solid $white;
                         box-sizing: border-box;
                         box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.25);
                         border-radius: 100px;
-                        background-color: $whiteColor;
+                        background-color: $white;
                         filter: grayscale(100);
                         @include minWidth(1000) {
-                            border: 5px solid #FFFFFF;
+                            border: 5px solid $white;
                         }
                     }
                 }
@@ -2347,7 +2347,7 @@
             &:after {
                 @extend %buttonIconAfter;
                 @extend %arrowIcon;
-                background: $whiteColor;
+                background: $white;
             }
         }
     }

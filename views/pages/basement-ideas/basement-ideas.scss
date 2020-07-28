@@ -1,5 +1,5 @@
 .ideasActiveFilters {
-    border-bottom: 1px solid $bgSubColor;
+    border-bottom: 1px solid $sub;
     .emptyChosenFilters {
         padding: 0;
     }
@@ -18,7 +18,7 @@
         border: none;
         font-size: 9px;
         font-weight: 800;
-        color: $blackColor;
+        color: $black;
         outline: none;
         cursor: pointer;
         @include minWidth(480) {
@@ -26,12 +26,12 @@
             margin-bottom: 20px;
         }
         &:hover {
-            color: $blueColor;
+            color: $blue;
             &:before {
-                color: $blackColor;
+                color: $black;
             }
             &:after {
-                background: $blueColor;
+                background: $blue;
             }
         }
         &:before {
@@ -44,11 +44,11 @@
             @extend %buttonIconAfter;
             @extend %arrowIcon;
             @extend %animation;
-            background: $blackColor;
+            background: $black;
         }
     }
 }
 
 .ideasFooter {
-    background: $bgSubColor;
+    background: $sub;
 }

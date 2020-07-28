@@ -19,7 +19,7 @@
         padding: 0 55px 0 10px;
         font-size: 11px;
         font-weight: 800;
-        color: $blackColor;
+        color: $black;
         box-sizing: border-box;
         background-color: #FFF;
         border-radius: 100px;
@@ -56,7 +56,7 @@
         font-size: 11px;
         line-height: 100%;
         font-weight: 800;
-        background-color: $yellowColor;
+        background-color: $yellow;
         border-radius: 100px;
         border: none;
         outline: none;
@@ -66,7 +66,7 @@
             cursor: default;
         }
         &:hover {
-            background-color: darken($yellowColor, 15%);
+            background-color: darken($yellow, 15%);
         }
         @include minWidth(480) {
             right: 5px;
@@ -78,7 +78,7 @@
             @extend %arrowIcon;
             transform: scale(0.8);
             margin-left: 3px;
-            background-color: $blackColor;
+            background-color: $black;
             @include minWidth(480) {
                 transform: scale(1);
                 margin-left: 5px;

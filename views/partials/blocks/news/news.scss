@@ -1,6 +1,6 @@
 .newsSection.homeSection {
     margin-top: 20px;
-    background: linear-gradient(to right, $bgMainColor 20%, $bgSubColor 20%);
+    background: $gradient5;
     @include minWidth(768) {
         margin-top: 40px;
     }
@@ -79,7 +79,7 @@
         line-height: 90px;
         font-weight: 800;
         letter-spacing: -8px;
-        color: #D1D1D3;
+        color: $ghost;
         @include minWidth(480) {
             right: 20px;
             bottom: -35px;
@@ -174,7 +174,7 @@
                 font-size: 0;
                 &.instagramLink {
                     @extend %instagramRoundIcon;
-                    background: $blackColor;
+                    background: $black;
                     @include minWidth(480) {
                         transform: scale(1.3);
                     }
@@ -182,12 +182,12 @@
                         transform: scale(2.47) translate(4px, 6px);
                     }
                     &:hover {
-                        background: $blueColor;
+                        background: $blue;
                     }
                 }
                 &.facebookLink {
                     @extend %facebookRoundIcon;
-                    background: $blackColor;
+                    background: $black;
                     @include minWidth(480) {
                         transform: scale(1.3);
                     }
@@ -195,12 +195,12 @@
                         transform: scale(2.47) translate(4px, 6px);
                     }
                     &:hover {
-                        background: $blueColor;
+                        background: $blue;
                     }
                 }
                 &.pinterestLink {
                     @extend %pinterestRoundIcon;
-                    background: $blackColor;
+                    background: $black;
                     @include minWidth(480) {
                         transform: scale(1.3);
                     }
@@ -208,7 +208,7 @@
                         transform: scale(2.47) translate(4px, 6px);
                     }
                     &:hover {
-                        background: $blueColor;
+                        background: $blue;
                     }
                 }
             }

@@ -1,5 +1,5 @@
 .cardSection {
-    background: $bgSubColor;
+    background: $sub;
     .cardWrapper {
         @extend %shadow2;
         display: flex;
@@ -9,7 +9,7 @@
         position: relative;
         padding: 15px;
         box-sizing: border-box;
-        background: $whiteColor;
+        background: $white;
         border-radius: 5px;
         @include minWidth(480) {
             padding: 20px;
@@ -26,8 +26,8 @@
                 width: 76px;
                 height: 76px;
                 box-sizing: border-box;
-                background: $bgSubColor;
-                border: 2px solid #FFF;
+                background: $sub;
+                border: 2px solid $white;
                 border-radius: 50%;
                 @include minWidth(480) {
                     width: 86px;
@@ -36,7 +36,7 @@
                 @include minWidth(768) {
                     width: 130px;
                     height: 130px;
-                    border: 5px solid #FFF;
+                    border: 5px solid $white;
                 }
                 &:after {
                     @extend %avatarIcon;
@@ -46,7 +46,7 @@
                     top: 50%;
                     left: 50%;
                     transform: translate(-50%, -10%) scale(2.7);
-                    background: $darkGreyColor;
+                    background: $raven;
                     @include minWidth(480) {
                         transform: translate(-50%, -5%) scale(3);
                     }
@@ -133,7 +133,7 @@
                     flex-direction: column;
                     font-size: 11px;
                     margin-left: 17px;
-                    color: $darkGreyColor;
+                    color: $raven;
                 }
                 &:last-of-type {
                     margin-bottom: 0;
@@ -147,7 +147,7 @@
                     height: 34px;
                     font-size: 0;
                     border-radius: 50%;
-                    background: $bgSubColor;
+                    background: $sub;
                     @include minWidth(768) {
                         margin-bottom: 10px;
                         width: 54px;
@@ -159,7 +159,7 @@
                         top: 50%;
                         left: 50%;
                         content: "";
-                        background: $darkGreyColor;
+                        background: $raven;
                     }
                 }
                 &.editProfileButton {
@@ -187,7 +187,7 @@
                 &:hover {
                     .cardIcon {
                         &:after {
-                            background: $yellowColor;
+                            background: $yellow;
                         }
                     }
                 }
@@ -197,7 +197,7 @@
 }
 
 .userSavedPhotos {
-    background-color: $whiteColor;
+    background-color: $white;
     .sectionHeader {
         display: flex;
         flex-direction: row;
@@ -209,13 +209,13 @@
             font-weight: 800;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            color: $darkGreyColor;
+            color: $raven;
             background-color: transparent;
             border: none;
             outline: none;
             cursor: pointer;
             &:hover {
-                color: $blueColor;
+                color: $blue;
                 text-decoration: underline;
             }
             @include minWidth(480) {
@@ -292,7 +292,7 @@
                     height: 100%;
                     box-sizing: border-box;
                     object-fit: cover;
-                    border: 3px solid #FFFFFF;
+                    border: 3px solid $white;
                     border-radius: 50%;
                     @include minWidth(768) {
                         border-width: 5px;
@@ -314,8 +314,8 @@
                     font-weight: 600;
                     line-height: 100%;
                     letter-spacing: 0.05em;
-                    color: $whiteColor;
-                    background-color: $blueColor;
+                    color: $white;
+                    background-color: $blue;
                     border-radius: 50%;
                     @include minWidth(480) {
                         transform: translate(20px, 20px);
@@ -342,8 +342,8 @@
                     height: 100%;
                     box-sizing: border-box;
                     font-size: 0;
-                    background-color: $bgSubColor;
-                    border: 3px solid #FFFFFF;
+                    background-color: $sub;
+                    border: 3px solid $white;
                     border-radius: 50%;
                     cursor: pointer;
                     outline: none;
@@ -352,7 +352,7 @@
                     }
                     &:hover {
                         &:after {
-                            color: $blueColor;
+                            color: $blue;
                         }
                     }
                     &:before {
@@ -414,12 +414,12 @@
                 height: 25px;
                 font-size: 0;
                 border: none;
-                background-color: $darkGreyColor;
+                background-color: $raven;
                 transform: scale(0.65);
                 outline: none;
                 cursor: pointer;
                 &:hover {
-                    background-color: $blueColor;
+                    background-color: $blue;
                 }
             }
             .albumTitle {
@@ -461,16 +461,16 @@
             font-size: 9px;
             font-weight: 600;
             text-transform: uppercase;
-            color: $darkGreyColor;
+            color: $raven;
             background-color: transparent;
-            border: 1px dashed $bgSubColor;
+            border: 1px dashed $sub;
             cursor: pointer;
             outline: none;
             &.dropOver {
-                color: $blueColor;
-                border-color: $blueColor;
+                color: $blue;
+                border-color: $blue;
                 &:before {
-                    background-color: $blueColor;
+                    background-color: $blue;
                 }
             }
             @include minWidth(480) {
@@ -498,7 +498,7 @@
                 transform: translate(-50%, -50%) scale(0.6);
                 display: block;
                 margin-top: -10px;
-                background-color: $darkGreyColor;
+                background-color: $raven;
                 @include minWidth(480) {
                     transform: translate(-50%, -50%) scale(0.75);
                     margin-top: -15px;
@@ -509,10 +509,10 @@
                 }
             }
             &:hover {
-                color: $blueColor;
-                border-color: $blueColor;
+                color: $blue;
+                border-color: $blue;
                 &:before {
-                    background-color: $blueColor;
+                    background-color: $blue;
                 }
             }
         }
@@ -549,7 +549,7 @@
             top: 10px;
             right: 10px;
             font-size: 0;
-            background-color: $whiteColor;
+            background-color: $white;
             cursor: pointer;
             outline: none;
             border: none;
@@ -561,7 +561,7 @@
             }
             &:hover {
                 transform: rotate(90deg);
-                background-color: $yellowColor;
+                background-color: $yellow;
                 @include minWidth(480) {
                     transform: rotate(90deg) scale(1.25);
                 }
@@ -582,7 +582,7 @@
             margin-top: 100%;
             width: 100%;
             height: inherit;
-            background: $imageHoverBackground;
+            background: $imageHover;
             .deleteWrapper {
                 position: absolute;
                 top: 50%;
@@ -594,7 +594,7 @@
                     font-size: 10px;
                     font-weight: 500;
                     line-height: 125%;
-                    color: $whiteColor;
+                    color: $white;
                     @include minWidth(480) {
                         margin-bottom: 20px;
                         width: 160px;
@@ -607,21 +607,15 @@
                     .cancelButton {
                         margin: 0 2px;
                         @extend %menuButton;
-                        color: $whiteColor;
-                        border-color: $whiteColor;
+                        color: $white;
+                        border-color: $white;
                     }
                     .deleteButton {
                         display: flex;
                         align-items: center;
                         margin: 0 2px;
-                        border: 1px solid $whiteColor;
+                        border: 1px solid $white;
                         @extend %blueButton;
-                        //&:after {
-                        //    @extend %buttonIconAfter;
-                        //    @extend %closeIcon;
-                        //    background-color: $whiteColor;
-                        //    margin-right: -3px;
-                        //}
                         &.loadButton {
                             &:after {
                                 content: "";

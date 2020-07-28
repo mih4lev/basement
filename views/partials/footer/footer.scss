@@ -3,15 +3,15 @@ footer {
     flex-shrink: 0;
     flex-basis: auto;
     width: 100%;
-    background: $bgMainColor;
+    background: $main;
     .footerContent {
         @extend %content;
-        color: $whiteColor;
+        color: $white;
     }
     .footer {
         position: relative;
         width: 100%;
-        border-top: 1px solid $greyColor;
+        border-top: 1px solid $grey;
         .footerLogoLink {
             position: absolute;
             top: 20px;
@@ -69,7 +69,7 @@ footer {
                     }
                     .socialLink {
                         display: block;
-                        background: $whiteColor;
+                        background: $white;
                         @extend %animation;
                         &.instagram {
                             @extend %instagramRoundIcon;
@@ -160,7 +160,7 @@ footer {
             right: 0;
             &:hover {
                 &:after {
-                    background: $whiteColor;
+                    background: $white;
                 }
             }
             @include minWidth(480) {
@@ -172,8 +172,7 @@ footer {
             &:after {
                 @extend %buttonIconAfter;
                 @extend %arrowIcon;
-                background: $whiteColor;
-                //background: $blackColor;
+                background: $white;
             }
         }
     }

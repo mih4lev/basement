@@ -94,8 +94,8 @@
     .blackButton {
         @extend %blackButton;
         &:hover {
-            background-color: $darkGreyColor;
-            color: $whiteColor;
+            background-color: $raven;
+            color: $white;
         }
     }
     .textBlock {
@@ -110,7 +110,7 @@
         font-size: 9px;
         line-height: 125%;
         font-style: italic;
-        color: $darkGreyColor;
+        color: $raven;
         @include minWidth(1000) {
             font-size: 12px;
         }
@@ -231,7 +231,7 @@
         .financingOffersLink {
             display: block;
             padding-left: 95px;
-            color: $blueColor;
+            color: $blue;
             text-transform: uppercase;
             text-decoration: underline;
             &:hover {

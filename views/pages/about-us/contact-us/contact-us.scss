@@ -1,5 +1,5 @@
 .contactUsContent {
-    background: linear-gradient(90deg, #FDFDFD 0%, #F8F5F5 101.15%);
+    background: $gradient1;
 }
 
 
@@ -24,7 +24,7 @@
 }
 .officeWrapper {
     box-sizing: border-box;
-    border-top: 1px solid $bgSubColor;
+    border-top: 1px solid $sub;
     @include minWidth(768) {
         display: flex;
         flex-direction: row;
@@ -70,7 +70,7 @@
     font-size: 12px;
     line-height: 125%;
     font-weight: 400;
-    color: $blackColor;
+    color: $black;
     @include minWidth(480) {
         margin: 20px 0 0;
         font-size: 15px;
@@ -86,7 +86,7 @@
     font-weight: 700;
     font-style: normal;
     line-height: 125%;
-    color: $blackColor;
+    color: $black;
     text-transform: uppercase;
     @include minWidth(480) {
         font-size: 18px;
@@ -95,18 +95,18 @@
 
 .disabledText {
     margin-top: 15px;
-    color: $greyColor;
+    color: $grey;
 }
 
 .similarLink {
-    color: $blackColor;
+    color: $black;
     &:hover {
-        color: $blueColor;
+        color: $blue;
     }
 }
 
 .textLink {
-    color: $blueColor;
+    color: $blue;
     &:hover {
         text-decoration: underline;
     }

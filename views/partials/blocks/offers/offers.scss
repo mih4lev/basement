@@ -30,7 +30,7 @@
         &:after {
             @extend %buttonIconAfter;
             @extend %arrowIcon;
-            background: $whiteColor;
+            background: $white;
         }
         @include minWidth(480) {
             margin-top: 20px;

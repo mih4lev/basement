@@ -25,7 +25,7 @@
         transform: scale(0.45);
         font-size: 0;
         border: none;
-        background: $darkGreyColor;
+        background: $raven;
         cursor: pointer;
         outline: none;
         &:hover {
@@ -38,12 +38,8 @@
         @include minWidth(768) {
             transform: scale(1);
         }
-        @include minWidth(1000) {
-            //visibility: hidden;
-        }
         @include minWidth(1440) {
             margin-top: 28px;
-            //visibility: hidden;
         }
         &.nextSlide {
             transform: scale(0.45) rotate(180deg);
@@ -85,19 +81,6 @@
         margin-bottom: 0;
         padding-left: 0;
         list-style-type: none;
-        //margin-left: -51px; margin to scroll
-        @include minWidth(480) {
-            //margin-left: -78px; // margin to scroll
-        }
-        @include minWidth(768) {
-            //margin-left: -82px; // margin to scroll
-        }
-        @include minWidth(1000) {
-            //margin-left: -82px; // margin to scroll
-        }
-        @include minWidth(1440) {
-            //margin-left: -89px; // margin to scroll
-        }
     }
     .categoryWrapper {
         margin-left: 2px;
@@ -121,7 +104,7 @@
             align-items: center;
             width: inherit;
             font-size: 6px;
-            color: $blackColor;
+            color: $black;
             @include minWidth(480) {
                 font-size: 10px;
             }
@@ -129,7 +112,7 @@
                 font-size: 11px;
             }
             &:hover {
-                color: $blueColor;
+                color: $blue;
             }
             .categoryImage {
                 @extend %circle;
@@ -138,7 +121,7 @@
                 width: inherit;
                 height: 47px;
                 box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-                border: 1px solid $whiteColor;
+                border: 1px solid $white;
                 box-sizing: border-box;
                 @include minWidth(480) {
                     margin-bottom: 10px;

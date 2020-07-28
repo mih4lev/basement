@@ -30,8 +30,8 @@
         margin: 0 4px 8px;
         width: 141px;
         height: 141px;
-        background: linear-gradient(56.42deg, #EFEFF0 14.82%, #FFFFFF 85.8%);
-        border: 5px solid $yellowColor;
+        background: $gradient7;
+        border: 5px solid $yellow;
         box-sizing: border-box;
         border-radius: 50%;
         cursor: pointer;
@@ -92,7 +92,7 @@
             margin-top: -3px;
             margin-bottom: 8px;
             font-size: 16px;
-            color: $greenColor;
+            color: $green;
             text-transform: uppercase;
             @include minWidth(480) {
                 margin-top: -7px;

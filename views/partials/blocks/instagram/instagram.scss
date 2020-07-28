@@ -1,5 +1,5 @@
 .instagramSection {
-    background: linear-gradient(109.06deg, #F3F3F5 3.69%, #D1D1D3 95.61%);
+    background: $gradient2;
     .contentWrapper {
         @include minWidth(768) {
             display: flex;
@@ -34,7 +34,7 @@
             font-size: 9px;
             font-weight: 800;
             text-transform: uppercase;
-            color: $darkGreyColor;
+            color: $raven;
             @include minWidth(480) {
                 margin-bottom: 20px;
                 font-size: 12px;
@@ -44,7 +44,7 @@
                 font-size: 18px;
             }
             &:hover {
-                color: $blueColor;
+                color: $blue;
             }
         }
     }

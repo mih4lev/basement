@@ -14,21 +14,21 @@
             line-height: 41px;
             padding: 0;
             background: transparent;
-            border: 1px solid $whiteColor;
+            border: 1px solid $white;
             border-radius: 5px;
             white-space: nowrap;
-            color: $blueColor;
+            color: $blue;
             outline: none;
             cursor: pointer;
             &:hover {
-                color: $blackColor;
-                border-color: $blackColor;
+                color: $black;
+                border-color: $black;
             }
             &.loadButton {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                border-color: $blackColor;
+                border-color: $black;
                 font-size: 0;
                 &:after {
                     content: "";

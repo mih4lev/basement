@@ -89,11 +89,11 @@
     letter-spacing: 0.05em;
     text-transform: uppercase;
     text-align: center;
-    color: $darkGreyColor;
-    background: $whiteColor;
+    color: $raven;
+    background: $white;
     border-radius: 5px;
     &:hover {
-        color: $blueColor;
+        color: $blue;
     }
     @include minWidth(480) {
         width: 235px;
@@ -208,8 +208,8 @@
     line-height: 125%;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: $whiteColor;
-    background: $imageHoverBackground;
+    color: $white;
+    background: $imageHover;
     @include minWidth(480) {
         font-size: 16px;
     }
@@ -241,9 +241,9 @@
     &:after {
         @extend %buttonIconAfter;
         @extend %arrowIcon;
-        background: $blackColor;
+        background: $black;
     }
     &:hover {
-        background-color: $whiteColor;
+        background-color: $white;
     }
 }

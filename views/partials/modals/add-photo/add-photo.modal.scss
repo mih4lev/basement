@@ -9,7 +9,7 @@
         margin-bottom: 20px;
         width: 100%;
         height: 257px;
-        background: $bgSubColor;
+        background: $sub;
         @include minWidth(768) {
             height: 297px;
         }
@@ -28,7 +28,7 @@
             width: inherit;
             height: inherit;
             font-size: 11px;
-            color: $darkGreyColor;
+            color: $raven;
             cursor: pointer;
             &:before {
                 content: "+";
@@ -38,12 +38,12 @@
                 transform: translate(-50%, -50%);
                 margin-top: -25px;
                 font-size: 48px;
-                color: $darkGreyColor;
+                color: $raven;
             }
             &:hover {
-                color: $blueColor;
+                color: $blue;
                 &:before {
-                    color: $blueColor;
+                    color: $blue;
                 }
             }
         }
@@ -65,7 +65,6 @@
             flex-grow: 0;
             position: relative;
             display: block;
-            //overflow: hidden;
             margin: 1px;
             width: 83px;
             height: 83px;
@@ -108,7 +107,7 @@
                 width: inherit;
                 height: inherit;
                 font-size: 9px;
-                background: $bgSubColor;
+                background: $sub;
                 cursor: pointer;
                 &:before {
                     @extend %animation;
@@ -116,12 +115,12 @@
                     position: absolute;
                     margin-top: -20px;
                     font-size: 48px;
-                    color: $darkGreyColor;
+                    color: $raven;
                 }
                 &:hover {
-                    color: $blueColor;
+                    color: $blue;
                     &:before {
-                        color: $blueColor;
+                        color: $blue;
                     }
                 }
             }
@@ -147,17 +146,17 @@
                 border: none;
                 border-radius: 50%;
                 font-size: 0;
-                background: $blackColor;
+                background: $black;
                 cursor: pointer;
                 outline: none;
                 overflow: hidden;
                 &:hover {
                     &:before {
-                        background: $blueColor;
+                        background: $blue;
                         transform: rotate(135deg);
                     }
                     &:after {
-                        background: $blueColor;
+                        background: $blue;
                         transform: rotate(45deg);
                     }
                 }
@@ -170,7 +169,7 @@
                     display: block;
                     width: 12px;
                     height: 2px;
-                    background: $whiteColor;
+                    background: $white;
                 }
                 &:before {
                     transform: rotate(45deg);
@@ -189,10 +188,10 @@
             }
             &.dropOver {
                 .photoLabel {
-                    background: darken($bgSubColor, 10%);
-                    color: $blueColor;
+                    background: darken($sub, 10%);
+                    color: $blue;
                     &:before {
-                        color: $blueColor;
+                        color: $blue;
                     }
                 }
             }
@@ -219,7 +218,7 @@
             display: block;
             width: 100%;
             height: inherit;
-            background-color: $bgSubColor;
+            background-color: $sub;
             cursor: pointer;
             &:before {
                 content: "";
@@ -252,18 +251,18 @@
                     background-image: $plusIconBlue;
                 }
                 &:after {
-                    color: $blueColor;
+                    color: $blue;
                 }
             }
         }
         &.dropOver {
             .photoDropTitle {
-                background-color: darken($bgSubColor, 10%);
+                background-color: darken($sub, 10%);
                 &:before {
                     background-image: $plusIconBlue;
                 }
                 &:after {
-                    color: $blueColor;
+                    color: $blue;
                 }
             }
         }

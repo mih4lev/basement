@@ -12,7 +12,7 @@ h1.contentHeader {
     font-size: 19px;
     line-height: 125%;
     font-weight: 800;
-    color: $blackColor;
+    color: $black;
     @include minWidth(480) {
         font-size: 27px;
     }
@@ -27,7 +27,7 @@ h2.contentHeader {
     font-size: 15px;
     line-height: 125%;
     font-weight: 700;
-    color: $blackColor;
+    color: $black;
     @include minWidth(480) {
         font-size: 19px;
     }
@@ -42,7 +42,7 @@ h3.contentHeader {
     font-size: 12px;
     line-height: 125%;
     font-weight: 700;
-    color: $blackColor;
+    color: $black;
     @include minWidth(480) {
         font-size: 15px;
     }
@@ -58,7 +58,7 @@ h4.contentHeader {
     font-size: 9px;
     line-height: 125%;
     font-weight: 700;
-    color: $blackColor;
+    color: $black;
     @include minWidth(480) {
         font-size: 12px;
     }

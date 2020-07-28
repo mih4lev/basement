@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    background: linear-gradient(90deg, #FDFDFD 0%, #F8F5F5 101.15%);
+    background: $gradient1;
     .wrapper {
         padding-top: 30px;
         padding-bottom: 20px;
@@ -131,7 +131,7 @@
         &:after {
             @extend %buttonIconAfter;
             @extend %arrowIcon;
-            background: $whiteColor;
+            background: $white;
         }
     }
 }

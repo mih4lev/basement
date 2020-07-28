@@ -23,7 +23,7 @@
         transform: translate(-50%, -50%);
         margin-top: 160px;
         width: 100%;
-        box-shadow: 0 0 0 10000px $modalBackground,
+        box-shadow: 0 0 0 10000px $modal,
                     5px 5px 12px rgba(0, 0, 0, 0.25);
         @include minWidth(480) {
             margin-top: 240px;
@@ -77,7 +77,7 @@
             margin: 0 auto;
             width: 320px;
             height: 320px;
-            background-color: $darkGreyColor;
+            background-color: $raven;
             @include minWidth(480) {
                 width: 480px;
                 height: 480px;
@@ -138,7 +138,7 @@
     .ideaDataSection {
         @extend %animation;
         width: 100%;
-        background-color: $whiteColor;
+        background-color: $white;
         margin-top: -100px;
         padding-top: 100px;
         box-sizing: border-box;
@@ -257,13 +257,13 @@
                         margin-bottom: 2px;
                         padding: 0 5px;
                         height: 9px;
-                        border-right: 1px solid $lightGreyColor;
+                        border-right: 1px solid $ghost;
                         font-size: 9px;
                         line-height: 9px;
                         font-weight: 800;
                         text-transform: uppercase;
                         letter-spacing: 0.05em;
-                        color: $blueColor;
+                        color: $blue;
                         @include minWidth(480) {
                             margin-bottom: 5px;
                             height: 10px;
@@ -313,7 +313,7 @@
                         width: 26px;
                         height: 26px;
                         font-size: 0;
-                        background-color: $blueColor;
+                        background-color: $blue;
                         border: none;
                         border-radius: 50%;
                         cursor: pointer;
@@ -356,12 +356,11 @@
                             height: 40px;
                             padding: 0 20px;
                             border-radius: 100px;
-                            //font-size: 13px;
                             font-weight: 600;
                             letter-spacing: 0.05em;
                             text-transform: uppercase;
                             white-space: nowrap;
-                            color: $whiteColor;
+                            color: $white;
                         }
                         @include minWidth(1440) {
                             order: 1;
@@ -370,9 +369,9 @@
                             opacity: 0.75;
                         }
                         &.loadButton {
-                            background-color: darken($blueColor, 15%);
+                            background-color: darken($blue, 15%);
                             &:hover {
-                                background-color: darken($blueColor, 15%);
+                                background-color: darken($blue, 15%);
                             }
                             &:after {
                                 content: "";
@@ -396,7 +395,7 @@
                             }
                         }
                         &.savedButton {
-                            background-color: $bgSubColor;
+                            background-color: $sub;
                             cursor: default;
                             font-size: 0;
                             &:before {
@@ -404,7 +403,7 @@
                                 flex-shrink: 0;
                                 flex-grow: 1;
                                 display: block;
-                                color: $greyColor;
+                                color: $grey;
                                 font-size: 0;
                                 @include minWidth(480) {
                                     font-size: 13px;
@@ -418,7 +417,7 @@
                     .saveCount {
                         margin-top: 5px;
                         font-size: 9px;
-                        color: $greyColor;
+                        color: $grey;
                         @include minWidth(480) {
                             order: 1;
                             margin-bottom: 5px;
@@ -479,7 +478,7 @@
                             font-size: 15px;
                         }
                         .ideaLink {
-                            color: $blueColor;
+                            color: $blue;
                             &:hover {
                                 text-decoration: underline;
                             }
@@ -652,7 +651,7 @@
         transform: translateX(135px);
         &:before, &:after {
             width: 20px;
-            background-color: $whiteColor;
+            background-color: $white;
         }
         @include minWidth(480) {
             top: -505px;

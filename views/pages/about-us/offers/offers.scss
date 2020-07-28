@@ -20,7 +20,7 @@
         margin-bottom: 0;
         font-size: 12px;
         line-height: 125%;
-        color: $darkGreyColor;
+        color: $raven;
         @include minWidth(480) {
             margin-top: 10px;
         }
@@ -39,7 +39,7 @@
             font-size: 12px;
             line-height: 12px;
             text-transform: uppercase;
-            color: $blackColor;
+            color: $black;
             &.hiddenLabel {
                 opacity: 0;
                 z-index: -10;
@@ -52,11 +52,15 @@
             height: 41px;
             font-size: 12px;
             line-height: 41px;
-            color: $blackColor;
-            border: 1px solid #D1D1D3;
+            color: $black;
+            border: 1px solid $ghost;
             border-radius: 5px;
             box-sizing: border-box;
-            background: $whiteColor;
+            background: $white;
+            outline: none;
+            &:focus {
+                border-color: $blue;
+            }
         }
     }
     .checkboxWrapper {
@@ -84,13 +88,13 @@
         &:after {
             @extend %buttonIconAfter;
             @extend %arrowIcon;
-            background: $whiteColor;
+            background: $white;
         }
         &:disabled {
             @extend %disabledButton;
         }
         &.loadButton {
-            background-color: darken($blueColor, 10%);
+            background-color: darken($blue, 10%);
             &:after {
                 content: "";
                 margin-left: 0;
@@ -107,7 +111,7 @@
                 }
             }
             &:disabled {
-                background-color: darken($blueColor, 10%);
+                background-color: darken($blue, 10%);
             }
         }
         &.loadedButton {
@@ -128,7 +132,7 @@
     &:before {
         padding-right: 3px;
         content: "*";
-        color: $blueColor;
+        color: $blue;
     }
     @include minWidth(480) {
         margin-top: 20px;

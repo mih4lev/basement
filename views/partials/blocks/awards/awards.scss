@@ -1,5 +1,5 @@
 .awardsSection.homeSection {
-    background: linear-gradient(90deg, #FDFDFD 0%, #F8F5F5 101.15%);
+    background: $gradient1;
     .headerWrapper {
         @include minWidth(768) {
             display: flex;

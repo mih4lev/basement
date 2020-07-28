@@ -1,23 +1,41 @@
-// font color
-$blueColor: #57A7D7;
-$yellowColor: #FAC04B;
-$greenColor: #4EA748;
-$blackColor: #212C30;
-$lightGreyColor: #D1D1D3;
-$greyColor: #A1ABB5;
-$darkGreyColor: #616D7B;
-$avatarColor: #C4C4C4;
-$whiteColor: #FFFFFF;
-$errorColor: darken(#FF0000, 10%);
+// COLORS
 
-// background color
-$bgMainColor: #212C30;
-$bgSubColor: #E7E7E8;
-$bgSubColor2: #F4F4F5;
-$facebookColor: #315DA5;
-$subMenuHoverColor: rgba(52, 180, 234, 0.2);
-$modalBackground: rgba(97, 109, 123, 0.5);
-$imageHoverBackground: rgba(97, 109, 123, 0.7);
+$main: #212C30;
+$sub: #E7E7E8;
+$ghost: #D1D1D3;
+$ghostWhite: #F4F4F5;
+$grey: #A1ABB5;
+$raven: #616D7B;
+
+$white: #FFFFFF;
+$black: #212C30;
+$blue: #57A7D7;
+$yellow: #FAC04B;
+$green: #4EA748;
+$red: #FF0000;
+
+// RGBA
+
+$menuHover: rgba(52, 180, 234, 0.2);
+$imageHover: rgba(97, 109, 123, 0.7);
+$modal: rgba(97, 109, 123, 0.5);
+$transparent: rgba(255, 255, 255, 0);
+
+// Gradients
+
+$gradient1: linear-gradient(90deg, #FDFDFD 0%, #F8F5F5 101.15%);
+$gradient2: linear-gradient(108.69deg, #F3F3F5 3.69%, #D1D1D3 95.61%);
+$gradient3: linear-gradient(117.03deg, #F3F3F5 3.69%, #D1D1D3 95.61%);
+$gradient4: linear-gradient(128.9deg, #F3F3F5 3.69%, #D1D1D3 95.61%);
+$gradient5: linear-gradient(to right, #212C30 20%, #E7E7E8 20%);
+$gradient6: linear-gradient(to bottom, #FFFFFF 200px, #E7E7E8 200px);
+$gradient7: linear-gradient(56.42deg, #EFEFF0 14.82%, #FFFFFF 85.8%);
+
+$buttonGradient: linear-gradient(270deg, rgba(255, 255, 255, 0.8) 32.56%, rgba(255, 255, 255, 0) 100%);
+$topGradient: linear-gradient(180deg, rgba(97, 109, 123, 0.6) 16.58%, rgba(97, 109, 123, 0) 69.86%);
+$headerGradient: linear-gradient(0deg, rgba(97, 109, 123, 0.65), rgba(97, 109, 123, 0.65));
+
+// SVG
 
 $arrowFillIcon: url("data:image/svg+xml,%3Csvg width='8' height='13' viewBox='0 0 8 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.966797 12.7119V0.130859L7.93475 6.42138L0.966797 12.7119L7.93475 6.42138L0.966797 12.7119Z' fill='white'/%3E%3C/svg%3E%0A");
 

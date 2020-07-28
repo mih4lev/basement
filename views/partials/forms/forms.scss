@@ -3,7 +3,7 @@
     padding: 1px;
     width: 100%;
     height: 12px;
-    border: 1px solid $blueColor;
+    border: 1px solid $blue;
     border-radius: 100px;
     box-sizing: border-box;
 }
@@ -12,7 +12,7 @@
     transition: width 0.5s ease-out;
     height: 8px;
     border-radius: 100px;
-    background: $blueColor;
+    background: $blue;
 }
 
 .formWrapper {
@@ -29,7 +29,7 @@
 .oneColumnFieldset {
     margin: 0 0 8px;
     padding: 7px 15px;
-    border: 1px solid $lightGreyColor;
+    border: 1px solid $ghost;
     border-radius: 5px;
     @include minWidth(768) {
         display: flex;
@@ -130,20 +130,20 @@
             font-size: 12px;
             font-weight: 700;
             letter-spacing: 0.05em;
-            color: $darkGreyColor;
-            background: $bgSubColor;
+            color: $raven;
+            background: $sub;
             border-radius: 5px;
             cursor: pointer;
             outline: none;
             &:hover {
-                background-color: darken($bgSubColor, 15%);
+                background-color: darken($sub, 15%);
             }
         }
         .radioInput:checked + .radioLabel {
-            color: $whiteColor;
-            background: $blueColor;
+            color: $white;
+            background: $blue;
             &:hover {
-                background-color: darken($blueColor, 15%);
+                background-color: darken($blue, 15%);
             }
         }
     }

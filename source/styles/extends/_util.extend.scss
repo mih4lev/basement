@@ -22,14 +22,14 @@
 }
 
 %circle {
-    border: 2px solid $whiteColor;
+    border: 2px solid $white;
     border-radius: 50%;
     box-sizing: border-box;
 }
 
 %yellowCircle {
     @extend %circle;
-    border: 5px solid $yellowColor;
+    border: 5px solid $yellow;
 }
 
 %shadow {
@@ -70,7 +70,7 @@
 }
 
 %responseMenu {
-    background: $bgMainColor;
+    background: $main;
     right: 0;
     &:before {
         content: "";
@@ -81,6 +81,6 @@
         right: 210px;
         width: 200vh;
         height: 100vh;
-        background: $modalBackground;
+        background: $modal;
     }
 }

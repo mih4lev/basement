@@ -21,7 +21,7 @@
 .processItem {
     @extend %animation;
     opacity: 1;
-    border-top: 1px solid $bgSubColor;
+    border-top: 1px solid $sub;
     margin-right: 0;
     &:first-child {
         border-top: none;
@@ -52,7 +52,7 @@
         left: 40px;
         margin-top: 14px;
         transform: translateX(-50%) translateY(-50%) scale(0.5);
-        background: $blackColor;
+        background: $black;
         @include minWidth(480) {
             margin-top: 0;
             transform: translateX(-50%) translateY(-50%) scale(0.7);
@@ -72,7 +72,7 @@
         font-weight: 700;
         line-height: 90%;
         text-transform: uppercase;
-        color: $bgSubColor;
+        color: $sub;
         @include minWidth(480) {
             bottom: 20px;
             font-size: 44px;
@@ -180,7 +180,7 @@
         @extend %buttonIconAfter;
         @extend %arrowIcon;
         transform: scale(0.6) rotate(90deg);
-        background: $whiteColor;
+        background: $white;
         @include minWidth(480) {
             transform: scale(1) rotate(90deg);
         }
@@ -195,7 +195,7 @@
         @extend %buttonIconAfter;
         @extend %arrowIcon;
         transform: scale(0.6) rotate(90deg);
-        background: $whiteColor;
+        background: $white;
         @include minWidth(480) {
             transform: scale(1) rotate(90deg);
         }
@@ -210,6 +210,6 @@
         @extend %buttonIconAfter;
         @extend %arrowIcon;
         transform: scale(0.6);
-        background: $whiteColor;
+        background: $white;
     }
 }

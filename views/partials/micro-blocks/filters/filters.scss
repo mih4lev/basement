@@ -22,8 +22,8 @@
         font-weight: 800;
         letter-spacing: 0.05em;
         text-transform: uppercase;
-        color: $darkGreyColor;
-        background: $whiteColor;
+        color: $raven;
+        background: $white;
         border-radius: 100px;
         cursor: pointer;
         overflow: hidden;
@@ -43,7 +43,7 @@
                 @extend %arrowIcon;
                 @extend %animation;
                 transform: scale(0.6) rotate(90deg);
-                background: $blackColor;
+                background: $black;
                 @include minWidth(480) {
                     transform: scale(0.8) rotate(90deg);
                 }
@@ -53,17 +53,17 @@
             }
         }
         &.chosenFilter {
-            color: $blueColor;
+            color: $blue;
             &:after {
-                background: $blueColor;
+                background: $blue;
             }
         }
         &.activeFilter {
-            color: $whiteColor;
-            background-color: $blueColor;
+            color: $white;
+            background-color: $blue;
             overflow: initial;
             &:after {
-                background: $whiteColor;
+                background: $white;
                 transform: scale(0.6) rotate(270deg);
                 @include minWidth(480) {
                     transform: scale(0.8) rotate(270deg);
@@ -78,10 +78,10 @@
             }
         }
         &:hover {
-            background: darken($blueColor, 10%);
-            color: $whiteColor;
+            background: darken($blue, 10%);
+            color: $white;
             &:after {
-                background: $whiteColor;
+                background: $white;
             }
         }
         &.rangeFilter {
@@ -92,8 +92,8 @@
                 margin-right: 0;
             }
             &:hover {
-                background-color: $whiteColor;
-                color: $darkGreyColor;
+                background-color: $white;
+                color: $raven;
                 cursor: default;
             }
         }
@@ -111,7 +111,7 @@
     margin-top: 30px;
     margin-bottom: 0;
     padding: 0;
-    background-color: $whiteColor;
+    background-color: $white;
     border-radius: 5px;
     list-style-type: none;
     @include minWidth(480) {
@@ -128,7 +128,7 @@
         left: 20px;
         width: 10px;
         height: 10px;
-        background: $whiteColor;
+        background: $white;
         transform: rotate(45deg);
     }
     .dropdownFiltersWrapper {
@@ -143,7 +143,7 @@
             opacity: 0.75;
             right: 5px;
             width: 3px;
-            background-color: $blueColor;
+            background-color: $blue;
             border-radius: 30px;
         }
     }
@@ -156,10 +156,10 @@
         .hiddenFilter {
             padding: 8px 52px 8px 22px;
             white-space: nowrap;
-            color: $greyColor;
+            color: $grey;
             &:hover {
-                color: $blueColor;
-                background-color: $subMenuHoverColor;
+                color: $blue;
+                background-color: $menuHover;
             }
             &.colorFilter {
                 position: relative;
@@ -175,8 +175,8 @@
                     width: 18px;
                     height: 18px;
                     border-radius: 50%;
-                    background-color: #FFF;
-                    border: 1px solid $bgSubColor;
+                    background-color: $white;
+                    border: 1px solid $sub;
                     .colorFill {
                         display: block;
                         position: absolute;
@@ -191,9 +191,9 @@
             }
             &.activeHiddenFilter {
                 position: relative;
-                color: $blueColor;
+                color: $blue;
                 .colorBorder {
-                    border-color: $blueColor;
+                    border-color: $blue;
                 }
                 &:after {
                     content: "";
@@ -203,7 +203,7 @@
                     transform: translateY(-50%);
                     width: 7px;
                     height: 7px;
-                    background-color: $blueColor;
+                    background-color: $blue;
                     border-radius: 50%;
                 }
             }
@@ -216,7 +216,7 @@
     margin-right: 8px;
     width: 75px;
     height: 1px;
-    background-color: $bgSubColor;
+    background-color: $sub;
     @include minWidth(480) {
         width: 115px;
     }
@@ -231,7 +231,7 @@
         .rangeColored {
             width: 100%;
             height: 100%;
-            background-color: $blueColor;
+            background-color: $blue;
             border-radius: 3px;
         }
         .rangeButton {
@@ -242,7 +242,7 @@
             padding: 0;
             font-size: 0;
             border: none;
-            background-color: $blueColor;
+            background-color: $blue;
             cursor: pointer;
             outline: none;
             border-radius: 50%;
@@ -259,9 +259,9 @@
             top: 0;
             margin-top: 12px;
             padding: 5px 10px;
-            color: $whiteColor;
+            color: $white;
             border-radius: 5px;
-            background-color: $blueColor;
+            background-color: $blue;
             cursor: pointer;
             &:before {
                 content: "";
@@ -271,7 +271,7 @@
                 left: 50%;
                 width: 10px;
                 height: 10px;
-                background: $blueColor;
+                background: $blue;
                 transform: translateX(-50%) rotate(45deg);
             }
             &.rangeMinTitle {
@@ -318,8 +318,8 @@
         font-weight: 800;
         letter-spacing: 0.05em;
         text-transform: uppercase;
-        color: $whiteColor;
-        background: $blueColor;
+        color: $white;
+        background: $blue;
         border-radius: 100px;
         @include minWidth(480) {
             padding-right: 30px;
@@ -339,7 +339,7 @@
             border-radius: 50%;
             border: none;
             font-size: 0;
-            background: $whiteColor;
+            background: $white;
             cursor: pointer;
             outline: none;
             @include minWidth(480) {
@@ -361,14 +361,14 @@
                 position: absolute;
                 top: 50%;
                 right: 3px;
-                border: 1.5px solid $blueColor;
+                border: 1.5px solid $blue;
                 width: 6px;
                 transform: translateY(-50%) rotate(45deg);
                 @include minWidth(480) {
                     width: 8px;
                 }
                 &:hover {
-                    border-color: darken($blueColor, 20%);
+                    border-color: darken($blue, 20%);
                 }
             }
             &:after {
@@ -377,14 +377,14 @@
                 position: absolute;
                 top: 50%;
                 right: 3px;
-                border: 1.5px solid $blueColor;
+                border: 1.5px solid $blue;
                 width: 6px;
                 transform: translateY(-50%) rotate(135deg);
                 @include minWidth(480) {
                     width: 8px;
                 }
                 &:hover {
-                    border-color: darken($blueColor, 20%);
+                    border-color: darken($blue, 20%);
                 }
             }
         }

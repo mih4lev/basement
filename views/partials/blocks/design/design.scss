@@ -1,5 +1,5 @@
 .designSection.homeSection {
-    background: linear-gradient(108.69deg, #F3F3F5 3.69%, #D1D1D3 95.61%);
+    background: $gradient2;
     .wrapper {
         display: flex;
         flex-direction: column;
@@ -22,7 +22,7 @@
         &:after {
             @extend %buttonIconAfter;
             @extend %arrowIcon;
-            background: $whiteColor;
+            background: $white;
         }
     }
 }

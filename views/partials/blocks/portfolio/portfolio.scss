@@ -1,5 +1,5 @@
 .portfolioSection.homeSection {
-    background: $whiteColor;
+    background: $white;
     .fullWrapper {
         padding-top: 0;
         margin-bottom: 30px;
@@ -130,7 +130,7 @@
         &:after {
             @extend %buttonIconAfter;
             @extend %arrowIcon;
-            background: $whiteColor;
+            background: $white;
         }
         @include minWidth(768) {
             position: absolute;

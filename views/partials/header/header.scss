@@ -4,8 +4,8 @@ header {
     position: fixed;
     width: 100%;
     height: 66px;
-    background-color: $bgMainColor;
-    border-bottom: 1px solid $bgMainColor;
+    background-color: $main;
+    border-bottom: 1px solid $main;
     @include minWidth(480) {
         height: 96px;
     }
@@ -43,7 +43,7 @@ header {
         right: -210px;
         height: 100vh;
         width: 210px;
-        background: $bgMainColor;
+        background: $main;
         @include minWidth(480) {
             top: 97px;
         }
@@ -65,8 +65,8 @@ header {
                 left: 0;
                 width: 100%;
                 height: 40px;
-                background-color: $bgMainColor;
-                border-bottom: 1px solid $darkGreyColor;
+                background-color: $main;
+                border-bottom: 1px solid $raven;
             }
             .topWrapper {
                 @include minWidth(1000) {
@@ -104,12 +104,12 @@ header {
             @include minWidth(1000) {
                 &:hover {
                     .menuLink {
-                        color: $blueColor;
+                        color: $blue;
                     }
                     .subMenuList .menuLink {
-                        color: $greyColor;
+                        color: $grey;
                         &:hover {
-                            color: $blueColor;
+                            color: $blue;
                         }
                     }
                 }
@@ -146,21 +146,21 @@ header {
             height: 30px;
             font-size: 13px;
             font-weight: 700;
-            color: $greyColor;
+            color: $grey;
             cursor: pointer;
             @extend %animation;
             &.activeLink {
-                color: $blueColor;
+                color: $blue;
                 cursor: default;
                 @include minWidth(1000) {
-                    color: $whiteColor;
+                    color: $white;
                 }
                 &:hover {
-                    color: $blueColor;
+                    color: $blue;
                 }
             }
             &:hover {
-                background: darken($bgMainColor, 5%)
+                background: darken($main, 5%)
             }
             @include minWidth(1000) {
                 margin-right: 15px;
@@ -173,7 +173,7 @@ header {
                 }
             }
             &:hover {
-                color: $blueColor;
+                color: $blue;
             }
         }
         .dropdownMenuLink {
@@ -182,13 +182,13 @@ header {
                 @extend %arrowIcon;
                 @extend %animation;
                 transform: scale(0.8) rotate(90deg);
-                background: $whiteColor;
+                background: $white;
                 @include minWidth(1000) {
                     display: none;
                 }
             }
             &:hover {
-                color: $whiteColor;
+                color: $white;
                 background: transparent;
             }
         }
@@ -196,18 +196,6 @@ header {
 
     .mainMenuList {
         @extend %animation;
-        //@include minWidth(1000) {
-        //    margin-top: 0;
-        //    margin-bottom: 0;
-        //    padding-top: 10px;
-        //    padding-bottom: 10px;
-        //    position: fixed;
-        //    top: 97px;
-        //    right: -210px;
-        //    height: 100vh;
-        //    width: 210px;
-        //    background: $bgMainColor, 5%;
-        //}
         @include minWidth(1000) {
             display: flex;
             margin-top: 12px;
@@ -247,10 +235,10 @@ header {
         padding-bottom: 0;
         .menuLink {
             padding-left: 40px;
-            color: $greyColor;
+            color: $grey;
             white-space: nowrap;
             &:hover {
-                color: $blueColor;
+                color: $blue;
             }
         }
         @include minWidth(1000) {
@@ -262,7 +250,7 @@ header {
             transform: translateY(10px);
             padding-top: 10px;
             padding-bottom: 10px;
-            background: $whiteColor;
+            background: $white;
             border-radius: 5px;
             box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.25);
             transition: all 0.15s ease-in;
@@ -275,7 +263,7 @@ header {
                 left: 20px;
                 width: 10px;
                 height: 10px;
-                background: $whiteColor;
+                background: $white;
                 transform: rotate(45deg);
             }
             .menuLinkWrapper {
@@ -294,14 +282,14 @@ header {
                     padding-left: 20px;
                     padding-right: 40px;
                     &:hover {
-                        background: $subMenuHoverColor;
+                        background: $menuHover;
                         @include minWidth(1000) {
-                            color: $blueColor;
+                            color: $blue;
                         }
                     }
                 }
                 .activeLink {
-                    color: $blueColor;
+                    color: $blue;
                     border-bottom: none;
                     cursor: default;
                     &:hover {
@@ -318,7 +306,7 @@ header {
                         height: 7px;
                         display: block;
                         border-radius: 50%;
-                        background: $blueColor;
+                        background: $blue;
                         transition: all 0.15s ease-in;
                     }
                 }
@@ -339,7 +327,6 @@ header {
         @include minWidth(1440) {
             display: flex;
         }
-        //border-top: 1px solid $greyColor;
         .phoneWrapper {
             display: flex;
             flex-direction: row;
@@ -366,13 +353,13 @@ header {
                 font-weight: 700;
                 letter-spacing: 0.05em;
                 text-transform: uppercase;
-                color: $whiteColor;
+                color: $white;
                 &:before {
                     @extend %phoneIcon;
                     content: "";
                     margin-top: -2px;
                     margin-right: 5px;
-                    background-color: $blueColor;
+                    background-color: $blue;
                     @include minWidth(480) {
                         margin-top: 0;
                     }
@@ -386,7 +373,7 @@ header {
                 font-weight: 700;
                 letter-spacing: 0.05em;
                 text-transform: uppercase;
-                color: $blueColor;
+                color: $blue;
                 @include minWidth(1000) {
                     flex-direction: row;
                 }
@@ -394,14 +381,14 @@ header {
                     @extend %animation;
                     margin-bottom: 5px;
                     &:hover {
-                        color: $whiteColor;
+                        color: $white;
                     }
                     @include minWidth(1000) {
                         margin-bottom: 0;
                         &:not(:first-of-type) {
                             &:before {
                                 content: "/";
-                                color: $whiteColor;
+                                color: $white;
                                 margin: 0 5px;
                             }
                             @include minWidth(1000) {
@@ -423,7 +410,6 @@ header {
         margin: 40px auto 0;
         padding: 0 20px;
         box-sizing: border-box;
-        //border-top: 1px solid $greyColor;
         @include minWidth(1000) {
             flex-direction: row;
             align-items: center;
@@ -453,15 +439,15 @@ header {
                 margin-bottom: 0;
             }
             &.consultationButton {
-                color: $yellowColor;
+                color: $yellow;
                 &:hover {
-                    color: $whiteColor;
+                    color: $white;
                 }
             }
             &.quoteLink {
-                color: $blueColor;
+                color: $blue;
                 &:hover {
-                    color: $whiteColor;
+                    color: $white;
                 }
             }
             .nowrap {
@@ -482,7 +468,7 @@ header {
             width: 27px;
             height: 27px;
             font-size: 0;
-            border: 1px solid $bgSubColor;
+            border: 1px solid $sub;
             border-radius: 50%;
             background-color: transparent;
             cursor: pointer;
@@ -515,12 +501,12 @@ header {
         font-size: 13px;
         font-weight: 700;
         line-height: 125%;
-        color: $whiteColor;
+        color: $white;
         &:before {
             @extend %phoneIcon;
             content: "";
             margin-right: 5px;
-            background-color: $blueColor;
+            background-color: $blue;
         }
         @include minWidth(1000) {
             display: none;
@@ -539,7 +525,7 @@ header {
         font-size: 0;
         font-weight: 700;
         line-height: 125%;
-        color: $whiteColor;
+        color: $white;
         text-transform: uppercase;
         border: none;
         background-color: transparent;
@@ -547,9 +533,9 @@ header {
         outline: none;
         text-align: left;
         &:hover {
-            color: $yellowColor;
+            color: $yellow;
             .avatarPicture {
-                border-color: $yellowColor;
+                border-color: $yellow;
             }
         }
         @include minWidth(1440) {
@@ -559,7 +545,7 @@ header {
             @extend %animation;
             width: 21px;
             height: 21px;
-            border: 1px solid #FFFFFF;
+            border: 1px solid $white;
             border-radius: 50%;
             @include minWidth(480) {
                 width: 27px;
@@ -569,7 +555,7 @@ header {
                 margin-right: 10px;
                 width: 32px;
                 height: 32px;
-                border: 2px solid #FFFFFF;
+                border: 2px solid $white;
             }
         }
         &.userLogin {
@@ -619,8 +605,8 @@ header {
             display: block;
             width: 20px;
             height: 2px;
-            background: $whiteColor;
-            box-shadow: 0 7px 0 0 $whiteColor, 0 14px 0 0 $whiteColor;
+            background: $white;
+            box-shadow: 0 7px 0 0 $white, 0 14px 0 0 $white;
             @extend %animation;
         }
         &:after {
@@ -631,8 +617,8 @@ header {
             display: block;
             width: 20px;
             height: 2px;
-            background: $whiteColor;
-            box-shadow: 0 7px 0 0 $whiteColor, 0 14px 0 0 $whiteColor;
+            background: $white;
+            box-shadow: 0 7px 0 0 $white, 0 14px 0 0 $white;
             @extend %animation;
         }
         @include minWidth(1000) {
@@ -642,11 +628,11 @@ header {
 
     &.transparentMenu {
         background-color: transparent;
-        border-bottom: 1px solid #A1ABB5;
+        border-bottom: 1px solid $grey;
     }
 
     &.activeMenu {
-        border-bottom: 1px solid #A1ABB5;
+        border-bottom: 1px solid $grey;
     }
 
     &.activeMenu .headerSandwichButton {

@@ -150,15 +150,15 @@
             position: absolute;
             width: inherit;
             height: inherit;
-            background: linear-gradient(to right, #FFFFFF 0, rgba(255, 255, 255, 0) 15px),
-                        linear-gradient(to left, #FFFFFF 0, rgba(255, 255, 255, 0) 15px);
+            background: linear-gradient(to right, $white 0, $transparent 15px),
+                        linear-gradient(to left, $white 0, $transparent 15px);
             @include minWidth(1000) {
-                background: linear-gradient(to right, #FFFFFF 0, rgba(255, 255, 255, 0) 30px),
-                            linear-gradient(to left, #FFFFFF 0, rgba(255, 255, 255, 0) 30px);
+                background: linear-gradient(to right, $white 0, $transparent 30px),
+                            linear-gradient(to left, $white 0, $transparent 30px);
             }
             @include minWidth(1440) {
-                background: linear-gradient(to right, #FFFFFF 0, rgba(255, 255, 255, 0) 200px),
-                linear-gradient(to left, #FFFFFF 0, rgba(255, 255, 255, 0) 200px);
+                background: linear-gradient(to right, $white 0, $transparent 200px),
+                linear-gradient(to left, $white 0, $transparent 200px);
             }
         }
         .arrowToMap {
@@ -390,7 +390,7 @@
             &:after {
                 @extend %buttonIconAfter;
                 @extend %arrowIcon;
-                background-color: $whiteColor;
+                background-color: $white;
             }
         }
     }
@@ -537,7 +537,7 @@
                     font-size: 12px;
                     font-weight: 500;
                     line-height: 125%;
-                    border-bottom: 1px solid $yellowColor;
+                    border-bottom: 1px solid $yellow;
                     @include minWidth(480) {
                         padding-bottom: 10px;
                         font-size: 15px;
