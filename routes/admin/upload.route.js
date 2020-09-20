@@ -36,10 +36,10 @@ router.post(`/`, imagesParser.fields(uploadImages), async (request, response, ne
         const imageType = (fileType === `jpeg`) ? `jpg` : `png`;
         const link = files['uploadImage'] + `_${imageWidth}x${imageHeight}.${imageType}`;
         await updateUploadImage(filesData);
-        setTimeout(() => response.json({ ...responseData, link }), 1000);
+        setTimeout(() => response.json({ ...responseData, link }), 0);
     } catch (error) {
         const responseData = { status: 0 };
-        setTimeout(() => response.json(responseData), 1000);
+        setTimeout(() => response.json(responseData), 0);
     }
 });
 

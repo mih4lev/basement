@@ -64,7 +64,7 @@ router.post(`/home`, formParser.none(), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     const formData = { ...request.body };
     const responseData = await updateMeta(formData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // ADD
@@ -89,7 +89,7 @@ router.post(`/add`, imagesParser.fields(landingsImages), async (request, respons
     const files = await saveImages(landingsImages, request.files, requestID);
     const filesData = { ...files, ...{ landingID: requestID }};
     await updateLanding(filesData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // EDIT
@@ -113,7 +113,7 @@ router.post(`/edit`, imagesParser.fields(landingsImages), async (request, respon
     const files = await saveImages(landingsImages, request.files, landingID);
     const formData = { ...request.body, ...files };
     const responseData = await updateLanding(formData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // DELETE
@@ -123,7 +123,7 @@ router.delete(`/:landingID`, formParser.none(), async (request, response, next) 
     const { params: { landingID }} = request;
     const responseData = await deleteLanding(landingID);
     await deleteImages(landingID, uploadDir);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 module.exports = router;

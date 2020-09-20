@@ -54,7 +54,7 @@ router.post(`/our-process`, formParser.none(), async (request, response, next) =
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     const formData = { ...request.body };
     const responseData = await updateMeta(formData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // FAQ
@@ -76,7 +76,7 @@ router.post(`/faq`, formParser.none(), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     const formData = { ...request.body };
     const responseData = await updateMeta(formData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // TIPS LIST
@@ -98,7 +98,7 @@ router.post(`/basement-tips`, formParser.none(), async (request, response, next)
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     const formData = { ...request.body };
     const responseData = await updateMeta(formData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // TIPS ADD
@@ -123,13 +123,13 @@ router.post(`/basement-tips/add`, imagesParser.fields(tipImages), async (request
     const files = await saveImages(tipImages, request.files, requestID);
     const filesData = { ...files, ...{ tipID: requestID }};
     await updateTip(filesData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 router.post(`/basement-tips/categories`, formParser.none(), async (request, response, next) =>  {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     const responseData = await createCategory(request.body);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // TIPS EDIT
@@ -156,7 +156,7 @@ router.post(`/basement-tips/edit`, imagesParser.fields(tipImages), async (reques
     const files = await saveImages(tipImages, request.files, tipID);
     const formData = { ...request.body, ...files };
     const responseData = await updateTip(formData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 router.post(`/basement-tips/categories/edit`, formParser.none(), async (request, response, next) => {
@@ -164,7 +164,7 @@ router.post(`/basement-tips/categories/edit`, formParser.none(), async (request,
     const { body: { categoryName }} = request;
     const actionFunc = (categoryName.length) ? updateCategory : deleteCategory;
     const responseData = await actionFunc(request.body);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // TIPS DELETE
@@ -174,7 +174,7 @@ router.delete(`/basement-tips/:tipID`, formParser.none(), async (request, respon
     const { params: { tipID }} = request;
     const responseData = await deleteTip(tipID);
     await deleteImages(tipID, uploadDir);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 module.exports = router;

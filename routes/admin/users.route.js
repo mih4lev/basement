@@ -66,7 +66,7 @@ router.post(`/edit`, imagesParser.fields(usersImages), async (request, response,
     const files = await saveImages(usersImages, request.files, userID);
     const formData = { userID, isAdmin, ...userData, ...files };
     const responseData = await updateUser(formData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 router.delete(`/:userID`, async (request, response, next) => {
@@ -74,7 +74,7 @@ router.delete(`/:userID`, async (request, response, next) => {
     const { params: { userID }} = request;
     const responseData = await deleteUser(userID);
     await deleteImages(userID, uploadDir);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 module.exports = router;

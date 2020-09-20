@@ -92,14 +92,14 @@ router.delete(`/`, formParser.none(), async (request, response) => {
     const { ideaID } = request.body;
     const responseData = await deleteIdea(ideaID);
     await deleteImages(ideaID, uploadDir);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // API /api/ideas/relation - DELETE | delete ideas (single)
 router.delete(`/relation`, formParser.none(), async (request, response) => {
     const { body: { ideaID, albumID }, data: { userID }} = request;
     const responseData = await deleteRelations(userID, ideaID, albumID);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // API /api/ideas/:ideaID - GET data for :ideaID idea (single)

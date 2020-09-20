@@ -22,13 +22,6 @@ const albumsImages = [
     }
 ];
 
-// // API /api/profile/albums GET
-// router.get(`/`, async (request, response) => {
-//     const albumsMockJSON = fs.readFileSync(`data-mock/ideas-albums.json`);
-//     const { albums } = await JSON.parse(albumsMockJSON);
-//     await response.json(albums);
-// });
-
 // API /api/profile/albums POST
 router.post(`/`, imagesParser.fields(albumsImages), async (request, response) => {
     const formData = { ...request.body };
@@ -37,7 +30,7 @@ router.post(`/`, imagesParser.fields(albumsImages), async (request, response) =>
     const files = await saveImages(albumsImages, request.files, requestID);
     const filesData = { ...files, ...{ albumID: requestID }};
     await updateAlbum(filesData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // API /api/profile/albums/edit POST
@@ -46,7 +39,7 @@ router.post(`/edit`, imagesParser.fields(albumsImages), async (request, response
     const files = await saveImages(albumsImages, request.files, albumID);
     const formData = { ...request.body, ...files };
     const responseData = await updateAlbum(formData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // API /api/profile/albums DELETE
@@ -54,7 +47,7 @@ router.delete(`/`, formParser.none(), async (request, response) => {
     const { albumID } = request.body;
     const responseData = await deleteAlbum(albumID);
     await deleteImages(albumID, uploadDir);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 module.exports = router;

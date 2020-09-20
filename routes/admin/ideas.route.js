@@ -77,7 +77,7 @@ router.post(`/`, formParser.none(), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     const formData = { ...request.body };
     const responseData = await updateMeta(formData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 router.get(`/user`, async (request, response, next) => {
@@ -144,13 +144,13 @@ router.post(`/add`, imagesParser.fields(ideasImages), async (request, response, 
     const files = await saveImages(ideasImages, request.files, requestID);
     const filesData = { ...files, ...{ ideaID: requestID }};
     await updateIdea(filesData, false);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 router.post(`/creators`, formParser.none(), async (request, response, next) =>  {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     const responseData = await addCreator(request.body);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 router.post(`/categories`, categoriesParser.fields(categoriesImages), async (request, response, next) => {
@@ -161,13 +161,13 @@ router.post(`/categories`, categoriesParser.fields(categoriesImages), async (req
     const files = await saveImages(categoriesImages, request.files, requestID);
     const filesData = { ...files, ...{ categoryID: requestID }};
     await updateCategory(filesData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 router.post(`/filters`, formParser.none(), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     const responseData = await createIdeasFilter(request.body);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // EDIT
@@ -196,7 +196,7 @@ router.post(`/edit`, imagesParser.fields(ideasImages), async (request, response,
     const files = await saveImages(ideasImages, request.files, ideaID);
     const formData = { ...request.body, isModerated, isHomeIdea, ...files };
     const responseData = await updateIdea(formData, true, true);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 router.post(`/creators/edit`, formParser.none(), async (request, response, next) =>  {
@@ -204,7 +204,7 @@ router.post(`/creators/edit`, formParser.none(), async (request, response, next)
     const { body: { creatorName }} = request;
     const actionFunc = (creatorName.length) ? updateCreator : deleteCreator;
     const responseData = await actionFunc(request.body);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 router.post(`/categories/edit`, categoriesParser.fields(categoriesImages), async (request, response, next) => {
@@ -213,13 +213,13 @@ router.post(`/categories/edit`, categoriesParser.fields(categoriesImages), async
     const files = await saveImages(categoriesImages, request.files, categoryID);
     const formData = { ...request.body, ...files };
     const responseData = await updateCategory(formData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 router.post(`/filters/edit`, formParser.none(), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     const responseData = await updateIdeasFilter(request.body);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // DELETE
@@ -229,7 +229,7 @@ router.delete(`/:ideaID`, formParser.none(), async (request, response, next) => 
     const { params: { ideaID }} = request;
     const responseData = await deleteIdea(ideaID);
     await deleteImages(ideaID, uploadDir);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 router.delete(`/categories/edit`, formParser.none(), async (request, response, next) => {
@@ -237,14 +237,14 @@ router.delete(`/categories/edit`, formParser.none(), async (request, response, n
     const { categoryID } = request.body;
     const responseData = await deleteCategory(categoryID);
     await deleteImages(categoryID, categoriesUploadDir);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 router.delete(`/filters/edit`, formParser.none(), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     const { filterID } = request.body;
     const responseData = await deleteIdeasFilter(filterID);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 module.exports = router;

@@ -90,7 +90,7 @@ router.post(`/testimonials/add`, testimonialsImagesParser.fields(testimonialImag
     const files = await saveImages(testimonialImages, request.files, requestID);
     const filesData = { ...files, ...{ testimonialID: requestID }};
     await updateTestimonial(filesData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // TESTIMONIALS EDIT
@@ -120,7 +120,7 @@ router.post(`/testimonials/edit`, testimonialsImagesParser.fields(testimonialIma
     const files = await saveImages(testimonialImages, request.files, testimonialID);
     const formData = { ...request.body, ...files };
     const responseData = await updateTestimonial(formData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // TESTIMONIALS DELETE
@@ -130,7 +130,7 @@ router.delete(`/testimonials/:testimonialID`, formParser.none(), async (request,
     const { params: { testimonialID }} = request;
     const responseData = await deleteTestimonial(testimonialID);
     await deleteImages(testimonialID, testimonialsDir);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // PRESS REQUEST
@@ -170,7 +170,7 @@ router.post(`/press/add`, pressImagesParser.fields(pressImages), async (request,
     const files = await saveImages(pressImages, request.files, requestID);
     const filesData = { ...files, ...{ pressID: requestID }};
     await updatePress(filesData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // PRESS EDIT
@@ -199,7 +199,7 @@ router.post(`/press/edit`, pressImagesParser.fields(pressImages), async (request
     const files = await saveImages(pressImages, request.files, pressID);
     const formData = { ...request.body, ...files };
     const responseData = await updatePress(formData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // PRESS DELETE
@@ -209,7 +209,7 @@ router.delete(`/press/:pressID`, formParser.none(), async (request, response, ne
     const { params: { pressID }} = request;
     const responseData = await deletePress(pressID);
     await deleteImages(pressID, pressDir);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // FINANCING OFFERS
@@ -231,7 +231,7 @@ router.post(`/offers`, formParser.none(), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     const formData = { ...request.body };
     const responseData = await updateMeta(formData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // CONTACT US
@@ -253,7 +253,7 @@ router.post(`/contact-us`, formParser.none(), async (request, response, next) =>
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     const formData = { ...request.body };
     const responseData = await updateMeta(formData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // INSTANT QUOTES
@@ -275,7 +275,7 @@ router.post(`/instant-quotes`, formParser.none(), async (request, response, next
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     const formData = { ...request.body };
     const responseData = await updateMeta(formData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // THANK YOU
@@ -297,7 +297,7 @@ router.post(`/thank-you`, formParser.none(), async (request, response, next) => 
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     const formData = { ...request.body };
     const responseData = await updateMeta(formData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // LEAVE REVIEW
@@ -319,7 +319,7 @@ router.post(`/leave-review`, formParser.none(), async (request, response, next) 
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     const formData = { ...request.body };
     const responseData = await updateMeta(formData);
-    setTimeout(() => response.json(responseData), 1000);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 module.exports = router;
