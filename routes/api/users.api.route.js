@@ -18,10 +18,11 @@ router.post(`/login`, formParser.none(), async (request, response) => {
     const formData = { ...request.body };
     if (!formData.mail) return response.json({ status: 0, code: 1401, error: `Empty mail` });
     if (!formData.password) return response.json({ status: 0, code: 1402, error: `Empty password` });
+    const defaultError = `Incorrect user data`;
     const { userID, password, salt } = await requestAuthorize(formData.mail);
-    if (!userID) return response.json({ status: 0, code: 1401, error: `Incorrect user data` });
+    if (!userID || !password || !salt) return response.json({ status: 0, code: 1401, error: defaultError });
     const { password: requestPassword } = getCryptoPassword(formData.password, salt);
-    if (password !== requestPassword) return response.json({ status: 0, code: 1403, error: `Incorrect user data` });
+    if (password !== requestPassword) return response.json({ status: 0, code: 1403, error: defaultError });
     const token = jwt.sign({ id: userID }, JWTOKEN);
     const data = { status: 1 };
     response.cookie(`auth_token`, token, { maxAge: session, httpOnly: true, sameSite: `strict` }).json(data);
