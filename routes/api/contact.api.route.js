@@ -8,7 +8,7 @@ router.post(`/`, formParser.none(), async (request, response) => {
     const formData = { ...request.body };
     console.log(formData);
     const data = { code: 200 };
-    setTimeout(() => response.json(data), 1000);
+    setTimeout(() => response.json(data), 0);
 });
 
 module.exports = router;

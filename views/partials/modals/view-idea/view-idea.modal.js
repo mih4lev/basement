@@ -3,7 +3,7 @@ import { saveAction } from "../../../../source/scripts/utils";
 
 export const viewIdeaModal = () => {
 
-    const animationTimeout = 250;
+    const animationTimeout = 0;
 
     const modalNode = setModal(`view-idea`);
     const modalContent = modalNode.querySelector(`.contentWrapper`);

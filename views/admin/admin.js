@@ -146,7 +146,7 @@ uploadButtons.forEach((button) => {
         errorWrapper.classList.remove(`hiddenWrapper`);
         uploadFieldWrapper.classList.add(`hiddenWrapper`);
         uploadForm.classList.add(`errorForm`);
-        setTimeout(changeFormVisible, 1500);
+        setTimeout(changeFormVisible, 0);
     };
     const resetForm = () => {
         uploadForm.classList.remove(`successForm`);
@@ -199,7 +199,7 @@ uploadButtons.forEach((button) => {
         uploadFieldWrapper.classList.add(`hiddenWrapper`);
         uploadForm.classList.add(`successForm`);
         await navigator.clipboard.writeText(response.link);
-        setTimeout(changeFormVisible, 1500);
+        setTimeout(changeFormVisible, 0);
     }
     uploadField.addEventListener(`change`, selectImage);
     button.addEventListener(`click`, changeFormVisible);

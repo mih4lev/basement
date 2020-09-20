@@ -6,7 +6,7 @@ const formParser = multer();
 const uploadDir = `public/upload/portfolio/`;
 const imagesParser = multer({ dest: uploadDir });
 
-const responseTimeout = 1000;
+const responseTimeout = 0;
 
 const { requestContent } = require("../../models/utils.model");
 const { saveImages, deleteImages } = require("../../models/images.model");

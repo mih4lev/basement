@@ -53,7 +53,7 @@ router.post(`/save`, imagesParser.fields(albumsImages), async (request, response
     }
     const status = (savedRelations.length === albumsArray.length) ? 1 : 0;
     const data = { status, savedRelations };
-    setTimeout(() => response.json(data), 1000);
+    setTimeout(() => response.json(data), 0);
 });
 
 // API /api/profile/ideas/ POST
@@ -61,7 +61,7 @@ router.post(`/`, formParser.none(), async (request, response) => {
     const formData = { ...request.body };
     console.log(formData);
     const data = { code: 200 };
-    setTimeout(() => response.json(data), 1000);
+    setTimeout(() => response.json(data), 0);
 });
 
 // API /api/profile/ideas/ DELETE
@@ -69,7 +69,7 @@ router.delete(`/`, formParser.none(), async (request, response) => {
     const formData = { ...request.body };
     console.log(formData);
     const data = { code: 200 };
-    setTimeout(() => response.json(data), 1000);
+    setTimeout(() => response.json(data), 0);
 });
 
 module.exports = router;
