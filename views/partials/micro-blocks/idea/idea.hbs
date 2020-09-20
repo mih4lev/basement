@@ -1,0 +1,24 @@
+<li class="ideaWrapper">
+    <div class="imageWrapper">
+        <picture>
+            <source srcset="{{{ ideaImage }}}_154x154.jpg, {{{ ideaImage }}}_308x308.jpg 2x"
+                    media="(max-width: 479px)">
+            <source srcset="{{{ ideaImage }}}_252x252.jpg, {{{ ideaImage }}}_504x504.jpg 2x"
+                    media="(min-width: 480px)">
+            <img class="ideaPhoto" data-idea="{{{ ideaID }}}" src="{{{ ideaImage }}}_252x252.jpg"
+                 srcset="{{{ ideaImage }}}_252x252.jpg, {{{ ideaImage }}}_504x504.jpg 2x"
+                 alt="{{{ ideaTitle }}}">
+        </picture>
+    </div>
+    {{# if isVisible }}
+        {{# if isLogin }}
+            <button class="saveIdea" data-idea="{{{ ideaID }}}">SAVE TO COLLECTION</button>
+        {{ else }}
+            <button class="userCreated">SIGN IN TO SAVE</button>
+        {{/ if }}
+    {{ else }}
+        <button class="userCreated">CREATED BY YOU</button>
+    {{/ if }}
+    <h3 class="ideaTitle">{{{ ideaTitle }}}</h3>
+    <strong class="ideaAuthor">{{{ ideaAuthor }}}</strong>
+</li>

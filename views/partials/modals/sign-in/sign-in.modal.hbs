@@ -2,25 +2,26 @@
     <div class="modalBlurWrapper"></div>
     <div class="modalMainWrapper signInWrapper">
         <div class="modalContentWrapper2">
-            <form class="formWrapper" action="/profile/">
+            <form class="formWrapper" action="/login" method="post">
                 <h2 class="modalTitle">SIGN IN</h2>
                 <div class="networkButtonsWrapper">
-                    <button class="networkButton facebookButton" type="button">Continue with Facebook</button>
-                    <button class="networkButton googleButton" type="button">Continue with Google</button>
+                    <button type="button" class="networkButton facebookButton">Continue with Facebook</button>
+                    <button type="button" class="networkButton googleButton">Continue with Google</button>
                 </div>
                 <div class="oneColumnWrapper">
                     <div class="fieldWrapper">
                         <label class="fieldLabel" for="modalEmail">E-mail</label>
-                        <input class="fieldInput" id="modalEmail" type="text">
+                        <input class="fieldInput" name="mail" id="modalEmail" type="text">
                     </div>
                 </div>
                 <div class="oneColumnWrapper">
                     <div class="fieldWrapper">
                         <label class="fieldLabel" for="modalPassword">Password</label>
-                        <input class="fieldInput" id="modalPassword" type="text">
+                        <input class="fieldInput" name="password" id="modalPassword" type="password">
                     </div>
                 </div>
-                <button class="submitButton" type="submit">SIGN IN</button>
+                <div class="errorMessage hiddenMessage"></div>
+                <button class="submitButton" type="submit" disabled>SIGN IN</button>
                 <div class="signUpTextWrapper">
                     <p class="signUpText">Don’t have an account yet?</p>
                     <a href="/sign-up/" class="signUpButton">Sign up</a>

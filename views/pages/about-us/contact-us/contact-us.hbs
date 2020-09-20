@@ -59,45 +59,32 @@
         </div>
         <div class="roundBlock">
             <h2 class="sectionTitle">Locations</h2>
-            {{# each locations }}
+            {{# each offices }}
                 <div class="locationWrapper">
                     <div class="locationDescription">
-                        <p class="blockHeader">{{{ officeName }}}</p>
-                        <em class="strongText">{{{ address }}}</em>
+                        <p class="blockHeader">{{{ officeTitle }}}</p>
+                        <em class="strongText">{{{ officeAddress }}}</em>
                     </div>
-                    <picture class="locationMap">
-                        <source srcset="/public/images/{{{ image }}}_260x99.webp,
-                                        /public/images/{{{ image }}}_520x198.webp 2x"
-                                media="(max-width: 479px)"
-                                type="image/webp">
-                        <source srcset="/public/images/{{{ image }}}_260x99.png,
-                                        /public/images/{{{ image }}}_520x198.png 2x"
-                                media="(max-width: 479px)"
-                                type="image/jpeg">
-                        <source srcset="/public/images/{{{ image }}}_396x99.webp,
-                                        /public/images/{{{ image }}}_792x198.webp 2x"
-                                media="(max-width: 767px)"
-                                type="image/webp">
-                        <source srcset="/public/images/{{{ image }}}_396x99.png,
-                                        /public/images/{{{ image }}}_792x198.png 2x"
-                                media="(max-width: 767px)"
-                                type="image/jpeg">
-                        <source srcset="/public/images/{{{ image }}}_337x153.webp,
-                                        /public/images/{{{ image }}}_674x306.webp 2x"
-                                media="(min-width: 768px)"
-                                type="image/webp">
-                        <source srcset="/public/images/{{{ image }}}_337x153.png,
-                                        /public/images/{{{ image }}}_674x306.png 2x"
-                                media="(min-width: 768px)"
-                                type="image/jpeg">
-                        <img class="locationMap"
-                             src="/public/images/{{{ image }}}_337x153.png"
-                             srcset="/public/images/{{{ image }}}_337x153.png,
-                                     /public/images/{{{ image }}}_674x306.png 2x"
-                             alt="{{{ officeName }}}">
-                    </picture>
+                    <div class="locationMap" data-lat="{{{ lat }}}"
+                         data-lng="{{{ lng }}}" data-zoom="{{{ zoom }}}"></div>
                 </div>
             {{/ each }}
         </div>
     </div>
 </section>
+
+<script>
+    const mapNodes = [...document.querySelectorAll(`.locationMap`)];
+    function initMap() {
+        mapNodes.forEach((mapNode) => {
+            const { dataset: { lat, lng, zoom }} = mapNode;
+            const position = { lat: (lat) ? Number(lat) : 38.89511, lng: (lng) ? Number(lng) : -77.03637 };
+            const map = new google.maps.Map(mapNode, { zoom: (zoom) ? Number(zoom) : 8, center: position });
+            const icon = `/public/images/vector/pin-image.svg`;
+            const pinOptions = { map, position, icon };
+            new google.maps.Marker(pinOptions);
+        });
+    }
+</script>
+
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUZcbipHbHCXwp6PdXIFGhExytbzvh7Tk&callback=initMap"></script>

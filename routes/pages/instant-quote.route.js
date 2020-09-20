@@ -1,29 +1,36 @@
 const { Router } = require(`express`);
 const router = new Router();
-const fs = require(`fs`);
+
+const { requestMeta } = require("../../models/pages.model");
+const { requestContent } = require("../../models/utils.model");
+const { requestQuotes, requestQuote } = require("../../models/quotes.model");
 
 router.use((request, response, next) => {
-    const isInstantQuote = true;
-    request.data = { ...request.data, isInstantQuote };
+    request.data['isAdaptiveHeader'] = false;
+    request.data['isInstantQuote'] = true;
+    request.data['scripts'] = [];
     next();
 });
 
-router.get(`/`, async (request, response) => {
-    const mockJSON = fs.readFileSync(`data-mock/instant-quote.json`);
-    const mockData = JSON.parse(mockJSON);
-    const data = Object.assign(request.data, mockData);
-    response.render(`pages/instant-quote/instant-quote`, data);
+router.get(`/`, async (request, response, next) => {
+    const pageID = 10;
+    const content = requestContent(await Promise.all([
+        requestMeta(pageID),
+        requestQuotes()
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `pages/instant-quote/instant-quote`;
+    return (content.page) ? response.render(template, data) : next();
 });
 
-router.get(`/:pageTitle`, async (request, response) => {
-    const { params: { pageTitle }} = request;
-    const mockJSON = fs.readFileSync(`data-mock/instant-quote.json`);
-    const { quotes } = JSON.parse(mockJSON);
-    const filterFunc = ({ name }) => pageTitle === name;
-    const quotesData = quotes.filter(filterFunc);
-    if (!quotesData[0]) return response.status(404).redirect(`/404`);
-    const data = Object.assign(request.data, quotesData[0]);
-    response.render(`pages/instant-quote/instant-quote-single`, data);
+router.get(`/:pageURL`, async (request, response, next) => {
+    const { params: { pageURL }} = request;
+    const content = requestContent(await Promise.all([
+        requestQuote(pageURL)
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `pages/instant-quote/instant-quote-single`;
+    return (content.page) ? response.render(template, data) : next();
 });
 
 module.exports = router;

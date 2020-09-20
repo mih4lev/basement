@@ -21,6 +21,19 @@
         margin-bottom: 0;
     }
     .cardList {
+        .cardImage {
+            background-size: 100px;
+        }
+        @include minWidth(480) {
+            .cardImage {
+                background-size: 200px;
+            }
+        }
+        @include minWidth(768) {
+            .cardImage {
+                background-size: 200px;
+            }
+        }
         @include minWidth(1000) {
             margin-left: 0;
             margin-right: 0;
@@ -29,12 +42,13 @@
                 .cardImage {
                     width: 233px;
                     height: 122px;
+                    background-size: 220px;
                 }
                 .cardHeader {
                     font-size: 12px;
                 }
                 .cardAnnounce {
-                    font-size: 10px;
+                    font-size: 11px;
                 }
                 .dataDate {
                     font-size: 11px;
@@ -52,6 +66,7 @@
                 .cardImage {
                     width: 249px;
                     height: 130px;
+                    background-size: 220px;
                 }
             }
         }
@@ -89,6 +104,7 @@
                 .cardImage {
                     width: 482px;
                     height: 251px;
+                    background-size: 440px;
                 }
             }
             @include minWidth(1000) {
@@ -97,12 +113,14 @@
                 .cardImage {
                     width: 722px;
                     height: 271px;
+                    background-size: 460px;
                 }
             }
             @include minWidth(1440) {
                 .cardImage {
                     width: 770px;
                     height: 293px;
+                    background-size: 540px;
                 }
             }
         }
@@ -127,6 +145,9 @@
         }
         @include minWidth(768) {
             height: 40px;
+        }
+        @include minWidth(1000) {
+            top: 41px;
         }
         &:after {
             @extend %buttonIconAfter;

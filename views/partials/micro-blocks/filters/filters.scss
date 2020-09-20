@@ -38,23 +38,28 @@
             font-size: 13px;
         }
         &.dropdownFilter {
-            &:after {
-                @extend %buttonIconAfter;
-                @extend %arrowIcon;
+            padding-right: 30px;
+            &:before, &:after {
                 @extend %animation;
-                transform: scale(0.6) rotate(90deg);
-                background: $black;
-                @include minWidth(480) {
-                    transform: scale(0.8) rotate(90deg);
-                }
-                @include minWidth(1000) {
-                    transform: scale(1) rotate(90deg);
-                }
+                content: "";
+                position: absolute;
+                top: 50%;
+                width: 7px;
+                height: 2px;
+                background-color: $raven;
+            }
+            &:before {
+                right: 17px;
+                transform: translateY(-50%) rotate(45deg);
+            }
+            &:after {
+                right: 13px;
+                transform: translateY(-50%) rotate(-45deg);
             }
         }
         &.chosenFilter {
             color: $blue;
-            &:after {
+            &:before, &:after {
                 background: $blue;
             }
         }
@@ -62,26 +67,37 @@
             color: $white;
             background-color: $blue;
             overflow: initial;
+            &:before {
+                background-color: $white;
+                transform: translateY(-50%) rotate(-45deg);
+            }
             &:after {
-                background: $white;
-                transform: scale(0.6) rotate(270deg);
-                @include minWidth(480) {
-                    transform: scale(0.8) rotate(270deg);
-                }
-                @include minWidth(1000) {
-                    transform: scale(1) rotate(270deg);
-                }
+                background-color: $white;
+                transform: translateY(-50%) rotate(45deg);
             }
             .dropdownFilters {
                 opacity: 1;
                 margin-top: 0;
             }
+            &:hover {
+                color: $white;
+                background-color: $blue;
+                &:before {
+                    background-color: $white;
+                }
+                &:after {
+                    background-color: $white;
+                }
+            }
         }
         &:hover {
-            background: darken($blue, 10%);
-            color: $white;
+            background: $sub;
+            color: $black;
+            &:before {
+                background-color: $black;
+            }
             &:after {
-                background: $white;
+                background-color: $black;
             }
         }
         &.rangeFilter {
@@ -361,9 +377,10 @@
                 position: absolute;
                 top: 50%;
                 right: 3px;
-                border: 1.5px solid $blue;
                 width: 6px;
                 transform: translateY(-50%) rotate(45deg);
+                border: 1.5px solid $blue;
+                background-color: $blue;
                 @include minWidth(480) {
                     width: 8px;
                 }
@@ -377,9 +394,10 @@
                 position: absolute;
                 top: 50%;
                 right: 3px;
-                border: 1.5px solid $blue;
                 width: 6px;
                 transform: translateY(-50%) rotate(135deg);
+                border: 1.5px solid $blue;
+                background-color: $blue;
                 @include minWidth(480) {
                     width: 8px;
                 }

@@ -22,11 +22,11 @@
         <ul class="fourColumnList">
             {{# each quotes }}
                 <li class="listWrapper">
-                    <div class="instantQuoteScheme schemesSprite {{{ image }}}"></div>
-                    <a class="blackButton" href="/instant-quote/{{{ name }}}/">{{{ header }}}</a>
-                    <p class="textBlock">{{{ annotation }}}</p>
-                    {{# if minimumPrice }}
-                        <em class="minPriceText">{{{ minimumPrice }}}</em>
+                    <div class="instantQuoteScheme schemesSprite {{{ quoteCover }}}"></div>
+                    <a class="blackButton" href="/instant-quote/{{{ pageURL }}}/">{{{ quoteTitle }}}</a>
+                    <p class="textBlock">{{{ quoteAnnotation }}}</p>
+                    {{# if quoteMinPrice }}
+                        <em class="minPriceText">{{{ quoteMinPrice }}}</em>
                     {{/ if }}
                 </li>
             {{/each}}

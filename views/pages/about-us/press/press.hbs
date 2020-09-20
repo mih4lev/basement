@@ -21,73 +21,57 @@
 
 <section class="pageContent">
     <div class="wrapper">
-        <ul class="cardList">
-            {{#each articles}}
+        <ul class="cardList elementsWrapper" data-page="9"">
+            {{# each press }}
                 <li class="cardWrapper">
-                    <a class="cardLink" href="/about-us/in-the-press/{{{ id }}}">
-                        {{# if image }}
+                    <a class="cardLink" href="/about-us/in-the-press/{{{ pressID }}}">
+                        {{# if pressImage }}
                             <picture class="cardImage">
-                                <source srcset="/public/images/temp/in-the-press/{{{ image }}}_120x83.webp,
-                                        /public/images/temp/in-the-press/{{{ image }}}_240x166.webp 2x"
-                                        media="(max-width: 479px)"
-                                        type="image/webp">
-                                <source srcset="/public/images/temp/in-the-press/{{{ image }}}_120x83.jpg,
-                                        /public/images/temp/in-the-press/{{{ image }}}_240x166.jpg 2x"
-                                        media="(max-width: 479px)"
-                                        type="image/jpeg">
-                                <source srcset="/public/images/temp/in-the-press/{{{ image }}}_228x123.webp,
-                                        /public/images/temp/in-the-press/{{{ image }}}_456x246.webp 2x"
-                                        media="(max-width: 767px)"
-                                        type="image/webp">
-                                <source srcset="/public/images/temp/in-the-press/{{{ image }}}_228x123.jpg,
-                                        /public/images/temp/in-the-press/{{{ image }}}_456x246.jpg 2x"
-                                        media="(max-width: 767px)"
-                                        type="image/jpeg">
-                                <source srcset="/public/images/temp/in-the-press/{{{ image }}}_236x123.webp,
-                                        /public/images/temp/in-the-press/{{{ image }}}_472x246.webp 2x"
-                                        media="(max-width: 999px)"
-                                        type="image/webp">
-                                <source srcset="/public/images/temp/in-the-press/{{{ image }}}_236x123.jpg,
-                                        /public/images/temp/in-the-press/{{{ image }}}_472x246.jpg 2x"
-                                        media="(max-width: 999px)"
-                                        type="image/jpeg">
-                                <source srcset="/public/images/temp/in-the-press/{{{ image }}}_314x173.webp,
-                                        /public/images/temp/in-the-press/{{{ image }}}_628x346.webp 2x"
-                                        media="(max-width: 1439px)"
-                                        type="image/webp">
-                                <source srcset="/public/images/temp/in-the-press/{{{ image }}}_314x173.jpg,
-                                        /public/images/temp/in-the-press/{{{ image }}}_628x346.jpg 2x"
-                                        media="(max-width: 1439px)"
-                                        type="image/jpeg">
-                                <source srcset="/public/images/temp/in-the-press/{{{ image }}}_330x173.webp,
-                                        /public/images/temp/in-the-press/{{{ image }}}_660x346.webp 2x"
-                                        media="(min-width: 1440px)"
-                                        type="image/webp">
-                                <source srcset="/public/images/temp/in-the-press/{{{ image }}}_330x173.jpg,
-                                        /public/images/temp/in-the-press/{{{ image }}}_660x346.jpg 2x"
-                                        media="(min-width: 1440px)"
-                                        type="image/jpeg">
-                                <img class="cardImage"
-                                     src="/public/images/temp/in-the-press/{{{ image }}}_330x173.jpg"
-                                     srcset="/public/images/temp/in-the-press/{{{ image }}}_330x173.jpg,
-                                     /public/images/temp/in-the-press/{{{ image }}}_660x346.jpg 2x"
-                                     alt="{{{ title }}}">
+                                <source srcset="{{{ pressImage }}}_120x83.jpg, {{{ pressImage }}}_240x166.jpg 2x"
+                                        media="(max-width: 479px)" type="image/jpeg">
+                                <source srcset="{{{ pressImage }}}_228x123.jpg, {{{ pressImage }}}_456x246.jpg 2x"
+                                        media="(max-width: 767px)" type="image/jpeg">
+                                <source srcset="{{{ pressImage }}}_236x123.jpg, {{{ pressImage }}}_472x246.jpg 2x"
+                                        media="(max-width: 999px)" type="image/jpeg">
+                                <source srcset="{{{ pressImage }}}_314x173.jpg, {{{ pressImage }}}_628x346.jpg 2x"
+                                        media="(max-width: 1439px)" type="image/jpeg">
+                                <source srcset="{{{ pressImage }}}_330x173.jpg, {{{ pressImage }}}_660x346.jpg 2x"
+                                        media="(min-width: 1440px)" type="image/jpeg">
+                                <img class="cardImage" src="{{{ pressImage }}}_330x173.jpg" alt="{{{ pressTitle }}}"
+                                     srcset="{{{ pressImage }}}_330x173.jpg, {{{ pressImage }}}_660x346.jpg 2x">
                             </picture>
                         {{ else }}
-                            <div class="cardImage">{{{ title }}}'s testimonial</div>
+                            <div class="cardImage">{{{ pressTitle }}}</div>
                         {{/ if }}
                     </a>
                     <div class="cardData">
-                        <a class="cardHeader" href="/about-us/in-the-press/{{{ id }}}">{{{ title }}}</a>
-                        <p class="cardAnnounce" data-rows="5">{{{ announce }}}</p>
+                        <a class="cardHeader" href="/about-us/in-the-press/{{{ pressID }}}">
+                            {{{ pressTitle }}}
+                        </a>
+                        <p class="cardAnnounce" data-rows="5">{{{ pressAnnounce }}}</p>
                         <div class="twoColumnsWrapper bottomCardWrapper">
-                            <span class="dataDate">{{{ date }}}</span>
-                            <span class="dataState">{{{ magazine }}}</span>
+                            <span class="dataDate">{{{ pressDate }}}</span>
+                            <span class="dataState">{{{ pressMagazine }}}</span>
                         </div>
                     </div>
                 </li>
             {{/each}}
         </ul>
-        <button class="showMoreButton">SHOW MORE</button>
+        <button class="showMoreButton {{# if pressData.hiddenButton }}hiddenButton{{/if}}"
+                data-scroll="1">SHOW MORE</button>
     </div>
 </section>
+
+<template class="elementTemplate">
+    <li class="cardWrapper">
+        <a class="cardLink" href=""></a>
+        <div class="cardData">
+            <a class="cardHeader" href=""></a>
+            <p class="cardAnnounce" data-rows="5"></p>
+            <div class="twoColumnsWrapper bottomCardWrapper">
+                <span class="dataDate"></span>
+                <span class="dataState"></span>
+            </div>
+        </div>
+    </li>
+</template>

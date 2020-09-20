@@ -74,7 +74,7 @@
                 width: 170px;
             }
             &.home_faq1 {
-                background-image: url("/public/images/home_faq1.svg");
+                background-image: url("/public/images/vector/home_faq1.svg");
                 @include minWidth(768) {
                     background-size: 46px 40px;
                 }
@@ -83,7 +83,7 @@
                 }
             }
             &.home_faq2 {
-                background-image: url("/public/images/home_faq2.svg");
+                background-image: url("/public/images/vector/home_faq2.svg");
                 @include minWidth(768) {
                     background-size: 36px 40px;
                 }
@@ -92,7 +92,7 @@
                 }
             }
             &.home_faq3 {
-                background-image: url("/public/images/home_faq3.svg");
+                background-image: url("/public/images/vector/home_faq3.svg");
                 @include minWidth(768) {
                     background-size: 35px 40px;
                 }
@@ -101,7 +101,7 @@
                 }
             }
             &.home_faq4 {
-                background-image: url("/public/images/home_faq4.svg");
+                background-image: url("/public/images/vector/home_faq4.svg");
                 @include minWidth(768) {
                     background-size: 41px 40px;
                 }
@@ -110,7 +110,7 @@
                 }
             }
             &.home_faq5 {
-                background-image: url("/public/images/home_faq5.svg");
+                background-image: url("/public/images/vector/home_faq5.svg");
                 @include minWidth(768) {
                     background-size: 39px 40px;
                 }
@@ -119,7 +119,7 @@
                 }
             }
             &.home_faq6 {
-                background-image: url("/public/images/home_faq6.svg");
+                background-image: url("/public/images/vector/home_faq6.svg");
                 @include minWidth(768) {
                     background-size: 30px 40px;
                 }
@@ -144,14 +144,14 @@
                 display: block;
                 width: 32px;
                 height: 32px;
-                background-image: url("/public/images/home_faq_other_320.svg");
+                background-image: url("/public/images/vector/home_faq_other_320.svg");
                 background-size: 32px 32px;
                 @include minWidth(480) {
                     right: 15px;
                     bottom: 15px;
                     width: 42px;
                     height: 42px;
-                    background-image: url("/public/images/home_faq_other_480.svg");
+                    background-image: url("/public/images/vector/home_faq_other_480.svg");
                     background-size: 42px 42px;
                 }
                 @include minWidth(1000) {
@@ -159,7 +159,7 @@
                     bottom: 15px;
                     width: 53px;
                     height: 53px;
-                    background-image: url("/public/images/home_faq_other_1000.svg");
+                    background-image: url("/public/images/vector/home_faq_other_1000.svg");
                     background-size: 53px 53px;
                 }
             }
@@ -198,12 +198,12 @@
             &.ourCompany {
                 background: $white;
                 &:after {
-                    background-image: url("/public/images/home_faq_our_320.svg");
+                    background-image: url("/public/images/vector/home_faq_our_320.svg");
                     @include minWidth(480) {
-                        background-image: url("/public/images/home_faq_our_480.svg");
+                        background-image: url("/public/images/vector/home_faq_our_480.svg");
                     }
                     @include minWidth(1000) {
-                        background-image: url("/public/images/home_faq_our_1000.svg");
+                        background-image: url("/public/images/vector/home_faq_our_1000.svg");
                     }
                 }
                 .wrapperTitle {

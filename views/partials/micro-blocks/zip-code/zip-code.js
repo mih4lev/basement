@@ -1,4 +1,4 @@
-import { saveAction } from "../../modals/modals";
+import { saveAction } from "../../../../source/scripts/utils";
 
 export const zipCodeButtons = () => {
     const scheduleButtons = [...document.querySelectorAll(`.consultationButton`)];
@@ -26,9 +26,14 @@ export const zipCodeButtons = () => {
             zipCodeLoader.classList.remove(`hiddenLoader`);
             const responseData = await saveAction(responseOptions);
             if (responseData.code !== 200) return false; // show error
-            zipCodeLoader.classList.add(`hiddenLoader`);
             console.log(responseData);
+            // hide loader && show go button
+            zipCodeLoader.classList.add(`hiddenLoader`);
             zipCodeButton.classList.add(`loadedButton`);
+            // reset schedule button view to default
+            zipCodeField.value = ``;
+            scheduleButton.classList.remove(`hiddenButton`);
+            zipCodeForm.classList.add(`hiddenWrapper`);
         }
         zipCodeButton.addEventListener(`click`, sendZipCodeData);
         zipCodeForm.addEventListener(`submit`, sendZipCodeData);

@@ -1,37 +1,69 @@
 const { Router } = require(`express`);
 const router = new Router();
-const fs = require(`fs`);
 
-router.get(`/`, async (request, response) => {
-    const isHomepage = true;
-    const mockJSON1 = fs.readFileSync(`data-mock/basement-tips.json`);
-    const { tips } = JSON.parse(mockJSON1);
-    tips.length = 5;
-    tips[0].isFirstCard = true;
-    const mockJSON2 = fs.readFileSync(`data-mock/home.json`);
-    const homeData = JSON.parse(mockJSON2);
-    // testimonials
-    const mockJSONTestimonials = fs.readFileSync(`data-mock/testimonials.json`);
-    const mockDataTestimonials = JSON.parse(mockJSONTestimonials);
-    // instagram
-    const instagramJSON = fs.readFileSync(`data-mock/instagram.json`);
-    const instagramData = JSON.parse(instagramJSON);
-    // basement-ideas
-    const mockJSONIdeas = fs.readFileSync(`data-mock/basement-ideas.json`);
-    const mockDataIdeas = JSON.parse(mockJSONIdeas);
-    mockDataIdeas.ideas.length = 4;
-    // categories
-    const mockJSONCategories = fs.readFileSync(`data-mock/ideas-categories.json`);
-    const mockDataCategories = JSON.parse(mockJSONCategories);
-    // return data to template rendering
-    // variables
-    const isAdaptiveHeader = true;
-    const data = {
-        ...request.data, tips, ...mockDataIdeas, instagramData,
-        ...homeData, ...mockDataTestimonials, ...mockDataCategories,
-        isAdaptiveHeader, isHomepage
-    };
-    response.render(`pages/home/home`, data);
+const { requestContent } = require("../../models/utils.model");
+const { requestMeta } = require("../../models/pages.model");
+const { requestHomePortfolio } = require("../../models/portfolio.model");
+const { requestNews } = require("../../models/news.model");
+const { requestTestimonials } = require("../../models/testimonials.model");
+const { requestAwards } = require("../../models/awards.model");
+const { requestInstagram } = require("../../models/instagram.model");
+const { requestSubCategories } = require("../../models/categories.model");
+const { requestHomeIdeas } = require("../../models/ideas.model");
+const { requestSteps } = require("../../models/steps.model");
+const { requestPrice } = require("../../models/price.model");
+const { requestOffices } = require("../../models/offices.model");
+const { requestLocation } = require("../../models/location.model");
+const { requestFAQ } = require("../../models/faq.model");
+const { requestLicenses } = require("../../models/licenses.model");
+const { requestTips } = require("../../models/tips.model");
+const { requestLanding } = require("../../models/landings.model");
+
+router.get(`/`, async (request, response, next) => {
+    request.data['isHomepage'] = true;
+    request.data['isAdaptiveHeader'] = true;
+    request.data['scripts'] = [`home`];
+    const ideasURL = `spaces`;
+    const userID = request.data['userID'];
+    const content = requestContent(await Promise.all([
+        requestMeta(1),
+        requestHomePortfolio(10),
+        requestNews(),
+        requestTestimonials({ limit: 6 }),
+        requestAwards(),
+        requestInstagram(),
+        requestSubCategories(ideasURL, true),
+        requestHomeIdeas({ userID }),
+        requestSteps(),
+        requestPrice(),
+        requestOffices(),
+        requestLocation(),
+        requestFAQ(),
+        requestLicenses(),
+        requestTips({ limit: 5 })
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `pages/home/home`;
+    return (content.page) ? response.render(template, data) : next();
+});
+
+router.get(`/:landingURL`, async (request, response, next) => {
+    request.data[`isAdaptiveHeader`] = true;
+    request.data['scripts'] = [`landing`];
+    const { params: { landingURL }} = request;
+    const content = requestContent(await Promise.all([
+        requestLanding(landingURL),
+        requestHomePortfolio(10),
+        requestTestimonials({ limit: 6 }),
+        requestInstagram()
+    ]));
+    if (!content.page) return next();
+    // replace quotes for tinyMCE
+    content.page.headerText =  content.page.headerText.replace(/"/g, "&quot;");
+    content.page.footerText =  content.page.footerText.replace(/"/g, "&quot;");
+    const data = { ...request.data, ...content };
+    const template = `pages/landing/landing`;
+    return (content.page) ? response.render(template, data) : next();
 });
 
 module.exports = router;

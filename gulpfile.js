@@ -18,8 +18,9 @@ gulp.task(`browser-sync`, () => {
         cors: true
     });
     gulp.watch(`./**/*.scss`, gulp.series(`styles`));
-    // gulp.watch(`./source/images/**/*.{png,jpg,jpeg}`, gulp.series(`bitmap`));
-    // gulp.watch(`./source/images/**/*.{png,jpg,jpeg}`, gulp.series(`webp`));
+    gulp.watch(`./**/admin.scss`, gulp.series(`admin`));
+    gulp.watch(`./source/images/**/*.{png,jpg,jpeg}`, gulp.series(`bitmap`));
+    gulp.watch(`./source/images/**/*.{png,jpg,jpeg}`, gulp.series(`webp`));
     gulp.watch(`./source/images/*.svg`, gulp.series(`vector`));
     gulp.watch(`./source/images/sprite/*.svg`, gulp.series(`sprite`));
     gulp.watch(`./source/fonts/*.{woff, woff2, ttf}`, gulp.series(`fonts`));
@@ -41,6 +42,20 @@ gulp.task(`styles`, () => {
         .pipe(browserSync.stream());
 });
 
+// SASS -> CSS (Check .scss changes in all folder && compile css)
+gulp.task(`admin`, () => {
+    return gulp.src(`./source/styles/admin.scss`)
+        .pipe(plumber())
+        .pipe(sass())
+        .pipe(postcss([
+            autoprefixer()
+        ]))
+        .pipe(csso())
+        .pipe(rename(`admin.min.css`))
+        .pipe(gulp.dest(`./public/styles`))
+        .pipe(browserSync.stream());
+});
+
 // Bitmap images => Tinypng service to optimize
 gulp.task(`bitmap`, () => {
     return gulp.src(`./source/images/**/*.{png,jpg,jpeg}`)
@@ -58,9 +73,9 @@ gulp.task(`bitmap`, () => {
 
 // Vector images sync
 gulp.task(`vector`, () => {
-    del.sync(`./public/images/*.svg`);
-    return gulp.src(`./source/images/*.svg`)
-        .pipe(gulp.dest(`./public/images`));
+    del.sync(`./public/images/vector/*.svg`);
+    return gulp.src(`./source/images/vector/*.svg`)
+        .pipe(gulp.dest(`./public/images/vector`));
 });
 
 gulp.task(`sprite`, () => {
@@ -89,29 +104,6 @@ gulp.task(`reload`, (done) => {
     done();
 });
 
-// Bitmap images => Tinypng service to optimize
-gulp.task(`bitmapTemp`, () => {
-    return gulp.src(`./source/images/temp/idea-modal/*.{png,jpg,jpeg}`)
-        .pipe(tinypng({
-            // key: `wNS29BVwd8BM7rkKHQxBKtnLgZHxbM81`,
-            key: `k82WT7tDXGyVvxQbGxGc1TpJ740BzV3d`,
-            // sigFile: `./source/images/.tinypng-sigs`,
-            summarize: true,
-            parallel: true,
-            log: true
-        }))
-        .pipe(gulp.dest(`./public/images/temp`))
-        .pipe(browserSync.stream());
-});
-
-gulp.task(`webpTemp`, () => {
-    return gulp.src(`./source/images/temp/idea-modal/*.{png,jpg,jpeg}`)
-        .pipe(webp())
-        .pipe(gulp.dest(`./public/images/temp`));
-});
-
-// const tasks = [`browser-sync`, `styles`, `fonts`, `bitmap`, `webp`, `vector`, `sprite`];
-// const tasks = [`browser-sync`, `styles`, `bitmapTemp`, `webpTemp`];
-// const tasks = [`browser-sync`, `styles`, `webpTemp`];
-const tasks = [`browser-sync`, `styles`];
+// const tasks = [`browser-sync`, `styles`, `admin`, `fonts`, `bitmap`, `webp`, `vector`, `sprite`];
+const tasks = [`browser-sync`, `styles`, `admin`];
 gulp.task(`default`, gulp.parallel(...tasks));

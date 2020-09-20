@@ -26,6 +26,39 @@
     margin-bottom: 8px;
 }
 
+.errorMessage {
+    text-align: center;
+    color: $red;
+    &.hiddenMessage {
+        display: none;
+    }
+    &.signUpMessage {
+        text-align: left;
+        margin-top: 20px;
+    }
+}
+
+.tipWrapper {
+    display: none;
+    margin-bottom: 10px;
+    font-size: 12px;
+    p {
+        margin: 0;
+        padding: 0;
+    }
+    ul {
+        margin: 0 0 0 20px;
+        padding: 0;
+        list-style-type: none;
+        li {
+
+        }
+    }
+    &.visibleWrapper {
+        display: block;
+    }
+}
+
 .oneColumnFieldset {
     margin: 0 0 8px;
     padding: 7px 15px;

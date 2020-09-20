@@ -34,31 +34,65 @@
 </section>
 
 <section class="mapSection">
-    <div class="mapBlock">
-        <div class="mapBlockWrapper"></div>
-        <div class="mapViewChanger">
-            <button class="mapViewButton activeButton" type="button" title="Switch to map">MAP</button>
-            <button class="mapViewButton" type="button" title="Switch to satellite">SATELLITE</button>
-        </div>
-        <a class="mapBackButton" href="/portfolio/">BACK TO PORTFOLIO</a>
-        <div class="mapControlBlock">
-            <button class="locationFindButton" type="button" title="Show my location">Show my location</button>
-            <div class="locationZoomButtons">
-                <button class="zoomButton zoomInButton" type="button" title="Zoom in">Zoom in</button>
-                <button class="zoomButton zoomOutButton" type="button" title="Zoom out">Zoom out</button>
-            </div>
-        </div>
-        <div class="mapPin tempPin"></div>
-        <div class="pinCard">
-            <h2 class="cardHeader">Rockville, MD New Construction</h2>
-            <div class="cardPictureWrapper">
-                <img class="cardPicture"
-                     src="/public/images/temp/portfolio/portfolio-1_252x252.jpg"
-                     alt="Rockville, MD New Construction">
-                <a class="cardButton" href="/portfolio/1">VIEW PROJECT</a>
-            </div>
-            <button class="closeButton" title="Close pin">Close pin</button>
-        </div>
+    <div class="mapWrapper">
+        <div class="mapBlock"></div>
+        <a class="mapBackButton" href="/portfolio/">Back to portfolio</a>
+        <div class="pageLoader hiddenLoader"></div>
     </div>
     <p class="mapNotification">All map markers are approximate and does not reflect exact location of the project.</p>
 </section>
+
+<script>
+
+    const markers = [];
+
+    const showPins = (map) => {
+        return async () => {
+            const modals = [];
+            markers.forEach((marker) => marker.setMap(null));
+            markers.length = 0;
+            window.responseData.forEach((work) => {
+                const { lat, lng, portfolioID, workTitle, workCity, workImage } = work;
+                const position = { lat: Number(lat), lng: Number(lng) };
+                const icon = `/public/images/vector/pin-image.svg`;
+                const pinOptions = { map, position, icon };
+                const contentString = `
+                    <h2 class="cardHeader">${workTitle}, ${workCity}</h2>
+                    <div class="cardPictureWrapper">
+                        <picture>
+                            <source srcset="${workImage}_154x154.jpg, ${workImage}_308x308.jpg 2x"
+                                    media="(max-width: 479px)">
+                            <source srcset="${workImage}_252x252.jpg, ${workImage}_504x504.jpg 2x"
+                                    media="(min-width: 480px)">
+                            <img class="cardPicture" src="${workImage}_252x252.jpg"
+                                 srcset="${workImage}_252x252.jpg, ${workImage}_504x504.jpg 2x"
+                                 alt="${workCity}">
+                        </picture>
+                        <a class="cardButton" href="/portfolio/${portfolioID}">VIEW PROJECT</a>
+                    </div>
+                `;
+                const infoWindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+                modals.push(infoWindow);
+                const marker = new google.maps.Marker(pinOptions);
+                marker.addListener(`click`, () => {
+                    modals.forEach((infoWindow) => infoWindow.close());
+                    infoWindow.open(map, marker);
+                });
+                markers.push(marker);
+            });
+        };
+    };
+
+    const mapNode = document.querySelector(`.mapBlock`);
+    function initMap() {
+        const startPosition = { lat: 39.081067, lng: -76.9890973 };
+        const map = new google.maps.Map(mapNode, { zoom: 9, center: startPosition });
+        document.addEventListener(`dataLoaded`, showPins(map));
+        document.addEventListener(`listResponse`, showPins(map));
+        if (window.responseData) showPins(map)();
+    }
+</script>
+
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUZcbipHbHCXwp6PdXIFGhExytbzvh7Tk&callback=initMap"></script>

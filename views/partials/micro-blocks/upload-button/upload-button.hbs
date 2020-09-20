@@ -1,0 +1,30 @@
+<div class="uploadWrapper">
+    <button class="formButton uploadButton" type="button" title="Upload image">UPLOAD IMAGE</button>
+    <div class="uploadForm hiddenForm">
+        <div class="wrapperTitle">Please select image to upload</div>
+        <div class="uploadFieldWrapper">
+            <input type="file" class="uploadField" data-upload="uploadImage" id="uploadField">
+            <img class="uploadPreview hiddenPreview" alt="Uploaded image preview">
+            <label for="uploadField" class="uploadLabel">Upload image</label>
+        </div>
+        <div class="selectWrapper hiddenWrapper">
+            <div class="uploadSizes">
+                <span class="uploadFieldsTitle">Size</span>
+                <label class="fieldLabel" for="imageWidth">width</label>
+                <input type="text" class="imageSize imageWidth" id="imageWidth"
+                       maxlength="4" data-upload="imageWidth">
+                x
+                <label class="fieldLabel" for="imageHeight">height</label>
+                <input type="text" class="imageSize imageHeight" id="imageHeight"
+                       maxlength="4" data-upload="imageHeight">
+            </div>
+            <button class="sendButton" type="button" title="Upload image">Upload</button>
+        </div>
+        <div class="responseWrapper hiddenWrapper">
+            <div class="wrapperTitle">Success! Link saved to your clipboard</div>
+        </div>
+        <div class="errorWrapper hiddenWrapper">
+            <div class="wrapperTitle">An error occurred during download, please try again</div>
+        </div>
+    </div>
+</div>

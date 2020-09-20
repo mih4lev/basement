@@ -1,4 +1,4 @@
-import {saveAction} from "../../partials/modals/modals";
+import { saveAction } from "../../../source/scripts/utils";
 
 export const signUpForm = () => {
 
@@ -6,14 +6,15 @@ export const signUpForm = () => {
     const formFields = [...formNode.querySelectorAll(`input`)];
     const passwordFields = [...formNode.querySelectorAll(`.passwordField`)];
     const submitButton = formNode.querySelector(`.submitButton`);
+    const errorMessage = formNode.querySelector(`.errorMessage`);
 
     const validateMAP = {
-        firstName: /^[a-zA-Z\s]+$/,
-        lastName: /^[a-zA-Z\s]+$/,
-        userName: /^[a-zA-Z\s]+$/,
-        userMail: /\S+@\S+\.\S+/,
-        userPassword: /^[a-zA-Z\s]+$/,
-        repeatPassword: /^[a-zA-Z\s]+$/
+        name: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
+        surname: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
+        username: /^[a-z0-9_-]{3,15}$/,
+        mail: /\S+@\S+\.\S+/,
+        password: /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})/,
+        repeatPassword: /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})/
     };
 
     const checkButtonStatus = () => {
@@ -21,7 +22,6 @@ export const signUpForm = () => {
             return (field.value && !field.classList.contains(`errorField`));
         };
         let isFieldsValid = formFields.filter((filterFunc)).length === formFields.length;
-        // if (passwordField.value !== passwordRepeatField.value) isFieldsValid = false;
         submitButton.disabled = !isFieldsValid;
     };
 
@@ -47,11 +47,22 @@ export const signUpForm = () => {
         field.addEventListener(`input`, inputHandler);
     });
 
+    const passwordsValid = () => {
+        const passwordValid = validateMAP['password'].test(passwordFields[0].value);
+        const repeatValid = validateMAP['password'].test(passwordFields[1].value);
+        return passwordValid && repeatValid;
+    };
+
     // check password === repeat password
     passwordFields.forEach((field) => {
-        field.addEventListener(`input`, () => {
+        const tip = field.closest(`.oneColumnWrapper`).querySelector(`.tipWrapper`);
+        field.addEventListener(`focus`, () => {
+            tip.classList.add(`visibleWrapper`);
+        });
+        field.addEventListener(`focusout`, () => {
+            tip.classList.remove(`visibleWrapper`);
             const isValidRepeat = (passwordFields[0].value === passwordFields[1].value);
-            const classAction = (isValidRepeat) ? `remove` : `add`;
+            const classAction = (isValidRepeat && passwordsValid()) ? `remove` : `add`;
             passwordFields.forEach((field) => {
                 const fieldLabel = field.parentNode.querySelector(`.selectLabel`);
                 field.classList[classAction](`errorField`);
@@ -68,15 +79,13 @@ export const signUpForm = () => {
 
     const sendFormData = async (event) => {
         event.preventDefault();
-        // const requestURL = `/api/profile/settings`;
-        // const body = new FormData(formNode);
-        // const response = await fetch(requestURL, { method: `POST`, body });
-        // const responseData = await response.json();
-        const responseOptions = { URL: `/api/profile/settings`, body: new FormData(formNode), button: submitButton };
-        const responseData = await saveAction(responseOptions);
-        if (responseData.code !== 200) return false; // show error
-        location.href = `/profile/`;
-        console.log(responseData);
+        const body = new FormData(formNode);
+        const responseOptions = { URL: `/api/users/signup`, body, button: submitButton };
+        const defaultError = `Connection error, try again.`;
+        const { status, error = defaultError } = await saveAction(responseOptions);
+        if (status === 1) return location.href = `/profile/`;
+        errorMessage.classList.remove(`hiddenMessage`);
+        errorMessage.innerText = error;
     };
 
     submitButton.addEventListener(`click`, sendFormData);

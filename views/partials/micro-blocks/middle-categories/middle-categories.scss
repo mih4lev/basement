@@ -99,6 +99,7 @@
             width: 79px;
         }
         .categoryLink {
+            @extend %animation;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -117,6 +118,7 @@
             .categoryImage {
                 @extend %circle;
                 @extend %shadow;
+                display: block;
                 margin-bottom: 6px;
                 width: inherit;
                 height: 47px;
@@ -130,6 +132,19 @@
                 @include minWidth(1440) {
                     margin-bottom: 15px;
                     height: 79px;
+                }
+                &.coverImage {
+                    background-color: $ghostWhite;
+                    background-image: url("/public/images/vector/default-image.svg");
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-size: 80px;
+                    @include minWidth(480) {
+                        background-size: 100px;
+                    }
+                    @include minWidth(768) {
+                        background-size: 120px;
+                    }
                 }
             }
             .categoryLabel {

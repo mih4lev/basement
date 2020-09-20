@@ -1,56 +1,60 @@
 const { Router } = require(`express`);
 const router = new Router();
-const fs = require(`fs`);
 
-router.use(`/`, (request, response, next) => {
-    const isProfile = true;
-    // profile data
-    const profileDataJSON = fs.readFileSync(`data-mock/profile.json`);
-    const profileData = JSON.parse(String(profileDataJSON));
-    //
-    request.data = { ...request.data, isProfile, profileData };
+const { requestContent } = require("../../models/utils.model");
+const { requestUser } = require("../../models/users.model");
+const { requestUserAlbums } = require("../../models/albums.model");
+const { requestUserIdeas, requestUploadIdeas, requestAlbumIdeas } = require("../../models/ideas.model");
+
+router.use(async (request, response, next) => {
+    request.data['isAdaptiveHeader'] = false;
+    request.data['scripts'] = ['profile'];
+    const userID = request.data['userID'];
+    const content = requestContent(await Promise.all([
+        requestUser(userID)
+    ]));
+    request.data = { ...request.data, ...content };
     next();
 });
 
 router.get(`/`, async (request, response) => {
-    const options = { isSavedIdeas: true, isAlbumsVisible: true };
-    // basement ideas albums
-    const albumsDataJSON = fs.readFileSync(`data-mock/ideas-albums.json`);
-    const ideasAlbumsData = JSON.parse(String(albumsDataJSON));
-    // basement-ideas
-    const ideasMockJSON = fs.readFileSync(`data-mock/basement-ideas.json`);
-    const ideasData = JSON.parse(String(ideasMockJSON));
-    ideasData.ideas.length = 20;
-    // return data to template rendering
-    const data = { ...request.data, ...ideasData, ...ideasAlbumsData, ...options };
+    if (!request.data['userID']) return response.status(401).redirect(`/`);
+    request.data['isSavedIdeas'] = true;
+    request.data['isAlbumsVisible'] = true;
+    const userID = request.data['userID'];
+    const content = requestContent(await Promise.all([
+        requestUserAlbums(userID),
+        requestUserIdeas(userID)
+    ]));
+    const data = { ...request.data, ...content };
     response.render(`pages/profile/profile`, data);
 });
 
 router.get(`/saved/:albumID`, async (request, response) => {
-    const { params: { albumID: requestedAlbumID }} = request;
-    const options = { isSavedIdeas: true };
-    // basement-ideas
-    const mockJSON = fs.readFileSync(`data-mock/basement-ideas.json`);
-    const ideasData = JSON.parse(String(mockJSON));
-    const filterFunc = ({ albumID }) => Number(albumID) === Number(requestedAlbumID);
-    const filterData = ideasData.ideas.filter(filterFunc);
-    const isMoreButtonVisible = (filterData.length > 20);
-    if (filterData.length > 20) filterData.length = 20;
-    // return data to template rendering
-    const data = { ...request.data, ideas: filterData, ...options, isMoreButtonVisible };
+    if (!request.data['userID']) return response.status(401).redirect(`/`);
+    const { params: { albumID }} = request;
+    request.data['isSavedIdeas'] = true;
+    const content = requestContent(await Promise.all([
+        requestAlbumIdeas(albumID)
+    ]));
+    const data = { ...request.data, ...content };
     response.render(`pages/profile/profile`, data);
 });
 
 router.get(`/uploaded`, async (request, response) => {
-    console.log(request.data);
-    const options = { isUploadedIdeas: true };
-    // basement-ideas
-    const ideasMockJSON = fs.readFileSync(`data-mock/uploaded-ideas.json`);
-    const ideasData = JSON.parse(String(ideasMockJSON));
-    ideasData.ideas.forEach((idea) => idea.author = `By you`);
-    // return data to template rendering
-    const data = { ...request.data, ...ideasData, ...options };
+    if (!request.data['userID']) return response.status(401).redirect(`/`);
+    request.data['isUploadedIdeas'] = true;
+    const userID = request.data['userID'];
+    const content = requestContent(await Promise.all([
+        requestUploadIdeas(userID)
+    ]));
+    const data = { ...request.data, ...content };
     response.render(`pages/profile/profile`, data);
+});
+
+router.get(`/logout`, async (request, response) => {
+    if (!request.data['userID']) return response.status(401).redirect(`/`);
+    response.cookie('auth_token', { expires: Date.now() }).redirect(`/`);
 });
 
 module.exports = router;

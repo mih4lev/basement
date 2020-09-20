@@ -1,0 +1,12 @@
+<section class="listSection">
+    <ul class="listNode">
+        {{# each ideas }}
+            <li class="listWrapper">
+                <a class="wrapperLink" href="/admin/basement-ideas/edit/{{{ ideaID }}}">
+                    <img class="listImage" src="{{{ ideaImage }}}_252x252.jpg" alt="">
+                    <span class="listTitle">{{{ ideaTitle }}}</span>
+                </a>
+            </li>
+        {{/ each }}
+    </ul>
+</section>

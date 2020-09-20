@@ -1,4 +1,5 @@
-import {changeModalVisible, resetDropEvents, saveAction, setModal} from "../modals";
+import { changeModalVisible, setModal } from "../modals";
+import { resetDropEvents, saveAction } from "../../../../source/scripts/utils";
 
 export const createAlbumModal = () => {
 
@@ -55,12 +56,12 @@ export const createAlbumModal = () => {
         const albumTemplate = document.querySelector(`.albumTemplate`).content;
         const albumClone = albumTemplate.querySelector(`li`).cloneNode(true);
         albumClone.querySelector(`.albumTitle`).innerText = albumName;
-        albumClone.dataset.album = String(responseData.albumID);
+        albumClone.dataset.album = String(responseData.requestID);
         const templateCover = albumClone.querySelector(`.albumCoverPicture`);
         templateCover.src = albumSource;
         templateCover.setAttribute(`alt`, albumName);
         const albumLink = albumClone.querySelector(`.albumLink`);
-        albumLink.setAttribute(`href`, `profile/saved/${responseData.albumID}`);
+        albumLink.setAttribute(`href`, `profile/saved/${responseData.requestID}`);
         albumList.insertBefore(albumClone, albumList.children[albumList.children.length -1]);
     }
 
@@ -87,11 +88,13 @@ export const createAlbumModal = () => {
         const formData = new FormData(formNode);
         const responseOptions = { URL: `/api/profile/albums`, body: formData, button: modalCreateButton };
         const responseData = await saveAction(responseOptions);
-        if (responseData.code !== 200) return false; // show error
+        if (responseData.status !== 1) return false; // show error
         // hide modal && change album data on profile
         const albumCover = modalNode.querySelector(`.inputFieldPicture`);
         createAlbumNode(albumCover, responseData);
         changeModalVisible(modalNode)();
+        const addButton = document.querySelector(`.albumAddCover`);
+        addButton.classList.add(`alreadyAdded`);
         // clear modal
         clearModalData(albumCover);
     }

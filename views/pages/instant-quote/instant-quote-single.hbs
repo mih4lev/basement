@@ -1,7 +1,7 @@
 <section class="pageHeader">
     <div class="wrapper headerWrapper">
         <div class="contentWrapper">
-            <h1 class="pageTitle">{{{ header }}}</h1>
+            <h1 class="pageTitle">{{{ page.quoteTitle }}}</h1>
             <nav class="breadcrumbs">
                 <ul class="breadcrumbList">
                     <li class="breadcrumbLinkWrapper">
@@ -11,7 +11,7 @@
                         <a class="breadcrumbLink" href="/instant-quote/">Get an instant quote online</a>
                     </li>
                     <li class="breadcrumbLinkWrapper">
-                        <span class="breadcrumbLink breadcrumbActive">{{{ header }}}</span>
+                        <span class="breadcrumbLink breadcrumbActive">{{{ page.quoteTitle }}}</span>
                     </li>
                 </ul>
             </nav>
@@ -22,9 +22,9 @@
 <div class="instantQuoteContent">
     <div class="wrapper mainWrapper">
         <div class="instantQuoteWrapper">
-            <div class="instantQuoteImage schemesSprite {{{ image }}}"></div>
-            <em class="instantQuotePrice">{{{ price }}}</em>
-            <div class="instantQuoteDescription">{{{ description }}}</div>
+            <div class="instantQuoteImage schemesSprite {{{ page.quoteCover }}}"></div>
+            <em class="instantQuotePrice">{{{ page.quotePrice }}}</em>
+            <div class="instantQuoteDescription">{{{ page.quoteText }}}</div>
             <a href="/instant-quote/" class="instantQuoteBackButton backButton">Go back to choosing a service</a>
         </div>
     </div>
@@ -33,18 +33,18 @@
 <section class="contactUsForm">
     <div class="wrapper blockWrapper">
         <p class="formAnnotation">
-            {{# if isContactForm }}
+            {{# if page.hasContactForm }}
                 ONLINE QUOTE IS NOT AVAILABLE FOR THIS TYPE OF SERVICE
             {{ else }}
                 Once you fill out the form our automated tool will email you an online quote within 60 seconds.
-            {{/if}}
+            {{/ if }}
         </p>
         <div class="roundBlock">
-            {{# if isContactForm }}
+            {{# if page.hasContactForm }}
                 {{> forms/contact-us/contact-us.form }}
             {{ else }}
                 {{> forms/instant-quote/instant-quote.form }}
-            {{/if}}
+            {{/ if }}
         </div>
         <div class="roundBlock">
             <div class="greenSkyWrapper">

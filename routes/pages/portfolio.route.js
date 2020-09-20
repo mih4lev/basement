@@ -1,33 +1,55 @@
 const { Router } = require(`express`);
 const router = new Router();
-const fs = require(`fs`);
+
+const { requestContent } = require("../../models/utils.model");
+const {
+    requestPortfolio, requestWork
+} = require("../../models/portfolio.model");
+const {
+    requestPortfolioFilters
+} = require("../../models/filters.model");
+const { requestMeta } = require("../../models/pages.model");
 
 router.use((request, response, next) => {
-    const isPortfolio = true;
-    request.data = { ...request.data, isPortfolio };
+    request.data['isAdaptiveHeader'] = false;
+    request.data['isPortfolio'] = true;
+    request.data['scripts'] = [`portfolio`];
     next();
 });
 
 router.get(`/`, async (request, response) => {
-    const mockJSON = fs.readFileSync(`data-mock/portfolio.json`);
-    const mockData = JSON.parse(mockJSON);
-    const data = Object.assign(request.data, mockData);
-    response.render(`pages/portfolio/portfolio`, data);
+    const pageID = 2;
+    const content = requestContent(await Promise.all([
+        requestMeta(pageID),
+        requestPortfolio(16),
+        requestPortfolioFilters()
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `pages/portfolio/portfolio`;
+    response.render(template, data);
 });
 
 router.get(`/map`, async (request, response) => {
-    const data = Object.assign(request.data);
-    response.render(`pages/portfolio/map/map`, data);
+    const pageID = 2;
+    const content = requestContent(await Promise.all([
+        requestMeta(pageID),
+        requestPortfolio(),
+        requestPortfolioFilters()
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `pages/portfolio/map/map`;
+    response.render(template, data);
 });
 
-router.get(`/:requestID`, async (request, response) => {
-    const { params: { requestID }} = request;
-    const mockJSON = fs.readFileSync(`data-mock/portfolio.json`);
-    const { portfolio } = JSON.parse(mockJSON);
-    const filterFunc = ({ id }) => Number(requestID) === Number(id);
-    const portfolioData = portfolio.filter(filterFunc);
-    const data = Object.assign(request.data, portfolioData[0]);
-    response.render(`pages/portfolio/work/work`, data);
+router.get(`/:portfolioID`, async (request, response, next) => {
+    const { params: { portfolioID }} = request;
+    const content = requestContent(await Promise.all([
+        requestWork(portfolioID)
+    ]));
+    if (!content.page) return next();
+    const data = { ...request.data, ...content };
+    const template = `pages/portfolio/work/work`;
+    response.render(template, data);
 });
 
 module.exports = router;

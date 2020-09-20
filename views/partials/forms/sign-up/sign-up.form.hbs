@@ -7,45 +7,64 @@
     <div class="oneColumnWrapper">
         <div class="fieldWrapper">
             <p class="selectLabel">First name</p>
-            <label class="fieldLabel" for="firstName">First name</label>
-            <input class="fieldInput" name="firstName" id="firstName" type="text">
+            <label class="fieldLabel" for="name">First name</label>
+            <input class="fieldInput" name="name" id="name" type="text">
         </div>
     </div>
     <div class="oneColumnWrapper">
         <div class="fieldWrapper">
             <p class="selectLabel">Last name</p>
-            <label class="fieldLabel" for="lastName">Last name</label>
-            <input class="fieldInput" name="lastName" id="lastName" type="text">
+            <label class="fieldLabel" for="surname">Last name</label>
+            <input class="fieldInput" name="surname" id="surname" type="text">
         </div>
     </div>
     <div class="oneColumnWrapper">
         <div class="fieldWrapper">
             <p class="selectLabel">User name</p>
-            <label class="fieldLabel" for="userName">User name</label>
-            <input class="fieldInput" name="userName" id="userName" type="text">
+            <label class="fieldLabel" for="username">User name</label>
+            <input class="fieldInput" name="username" id="username" type="text">
         </div>
     </div>
     <div class="oneColumnWrapper">
         <div class="fieldWrapper">
             <p class="selectLabel">E-mail</p>
-            <label class="fieldLabel" for="userMail">E-mail</label>
-            <input class="fieldInput" name="userMail" id="userMail" type="text">
+            <label class="fieldLabel" for="mail">E-mail</label>
+            <input class="fieldInput" name="mail" id="mail" type="text">
         </div>
     </div>
     <div class="oneColumnWrapper">
         <div class="fieldWrapper">
             <p class="selectLabel">Password</p>
-            <label class="fieldLabel" for="userPassword">Create a password</label>
-            <input class="fieldInput passwordField" name="userPassword" id="userPassword" type="password">
+            <label class="fieldLabel" for="password">Create a password</label>
+            <input class="fieldInput passwordField" name="password" id="password" type="password">
+        </div>
+        <div class="tipWrapper">
+            <p>Length at least 6 characters and maximum of 20</p>
+            <ul>
+                <li>must contains one digit from 0-9</li>
+                <li>must contains one lowercase characters</li>
+                <li>must contains one uppercase characters</li>
+                <li>must contains one special symbols in the list "@#$%"</li>
+            </ul>
         </div>
     </div>
     <div class="oneColumnWrapper">
         <div class="fieldWrapper">
-            <p class="selectLabel">Password</p>
+            <p class="selectLabel">Confirm password</p>
             <label class="fieldLabel" for="repeatPassword">Confirm your password</label>
             <input class="fieldInput passwordField" id="repeatPassword" type="password">
         </div>
+        <div class="tipWrapper">
+            <p>Length at least 6 characters and maximum of 20</p>
+            <ul>
+                <li>must contains one digit from 0-9</li>
+                <li>must contains one lowercase characters</li>
+                <li>must contains one uppercase characters</li>
+                <li>must contains one special symbols in the list "@#$%"</li>
+            </ul>
+        </div>
     </div>
+    <div class="errorMessage signUpMessage hiddenMessage"></div>
     <div class="submitWrapper">
         <button class="submitButton" disabled type="submit">SIGN UP with e-mail</button>
         <p class="textBlock centerText">

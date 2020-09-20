@@ -32,27 +32,88 @@
 
 <section class="portfolioMap">
     <div class="mapPicture">
+        <div class="mapBlock"></div>
         <a class="mapButton" href="/portfolio/map/">PROJECTS ON THE MAP</a>
     </div>
 </section>
 
 <section class="portfolioContent">
     <div class="wrapper listWrapper">
-        <ul class="portfolioList">
+        <ul class="portfolioList elementsWrapper" data-page="16">
             {{# each portfolio }}
                 <li class="portfolioWrapper">
-                    <img class="portfolioImage"
-                         src="/public/images/temp/portfolio/{{{ image }}}_252x252.jpg"
-                         alt="{{{ title }}}">
+                    <div class="imageWrapper">
+                        {{# if workImage }}
+                            <picture>
+                                <source srcset="{{{ workImage }}}_154x154.jpg,
+                                                {{{ workImage }}}_308x308.jpg 2x"
+                                        media="(max-width: 479px)">
+                                <source srcset="{{{ workImage }}}_252x252.jpg,
+                                                {{{ workImage }}}_504x504.jpg 2x"
+                                        media="(min-width: 480px)">
+                                <img class="portfolioPhoto" src="{{{ workImage }}}_252x252.jpg"
+                                     srcset="{{{ workImage }}}_252x252.jpg,
+                                             {{{ workImage }}}_504x504.jpg 2x"
+                                     alt="{{{ workTitle }}}">
+                            </picture>
+                        {{ else }}
+                            <div class="portfolioImage defaultImage"></div>
+                        {{/ if }}
+                    </div>
                     <div class="portfolioHiddenBlock">
-                        <strong class="portfolioHeader">{{{ work }}}</strong>
-                        <span class="portfolioCity">{{{ city }}}</span>
-                        <span class="portfolioSquare">{{{ square }}}</span>
-                        <a class="portfolioButton" href="/portfolio/{{{ id }}}">VIEW PROJECT</a>
+                        <strong class="portfolioHeader">{{{ workTitle }}}</strong>
+                        <span class="portfolioCity">{{{ workCity }}}</span>
+                        <span class="portfolioSquare">{{{ workSquare }}}</span>
+                        <a class="portfolioButton" href="/portfolio/{{{ portfolioID }}}">VIEW PROJECT</a>
                     </div>
                 </li>
             {{/each}}
         </ul>
-        <button class="showMoreButton" title="Show more" type="button">SHOW MORE</button>
+        <button class="showMoreButton" title="Show more" data-scroll="1"
+                type="button">SHOW MORE</button>
     </div>
+    <div class="pageLoader hiddenLoader"></div>
 </section>
+
+<template class="elementTemplate">
+    <li class="portfolioWrapper">
+        <div class="imageWrapper"></div>
+        <div class="portfolioHiddenBlock">
+            <strong class="portfolioHeader"></strong>
+            <span class="portfolioCity"></span>
+            <span class="portfolioSquare"></span>
+            <a class="portfolioButton" href="">VIEW PROJECT</a>
+        </div>
+    </li>
+</template>
+
+<script>
+
+    const markers = [];
+
+    const showPins = (map) => {
+        return async () => {
+            markers.forEach((marker) => marker.setMap(null));
+            markers.length = 0;
+            window.responseData.forEach((work) => {
+                const { lat, lng } = work;
+                const position = { lat: Number(lat), lng: Number(lng) };
+                const icon = `/public/images/vector/pin-image.svg`;
+                const pinOptions = { map, position, icon };
+                const marker = new google.maps.Marker(pinOptions);
+                markers.push(marker);
+            });
+        };
+    };
+
+    const mapNode = document.querySelector(`.mapBlock`);
+    function initMap() {
+        const startPosition = { lat: 39.081067, lng: -76.9890973 };
+        const map = new google.maps.Map(mapNode, { zoom: 10, center: startPosition });
+        document.addEventListener(`dataLoaded`, showPins(map));
+        document.addEventListener(`listResponse`, showPins(map));
+        if (window.responseData) showPins(map)();
+    }
+</script>
+
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUZcbipHbHCXwp6PdXIFGhExytbzvh7Tk&callback=initMap"></script>

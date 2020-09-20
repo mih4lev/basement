@@ -126,7 +126,7 @@
                     width: 40px;
                     height: 40px;
                     transform: translate(-50%, -50%);
-                    background-image: url("/public/images/load-icon.svg");
+                    background-image: url("/public/images/vector/load-icon.svg");
                     background-size: 40px 40px;
                 }
                 .ideaModalPhoto {
@@ -333,7 +333,7 @@
                             transform: translate(-50%, -50%);
                             width: 12px;
                             height: 12px;
-                            background-image: url("/public/images/save-icon.svg");
+                            background-image: url("/public/images/vector/save-icon.svg");
                             background-repeat: no-repeat;
                             background-size: 12px 12px;
                             @include minWidth(480) {
@@ -380,7 +380,7 @@
                                 width: 16px;
                                 height: 16px;
                                 background-color: transparent;
-                                background-image: url("/public/images/load-icon.svg");
+                                background-image: url("/public/images/vector/load-icon.svg");
                                 background-size: 16px 16px;
                                 -webkit-mask-image: none;
                                 mask-image: none;
@@ -410,7 +410,25 @@
                                 }
                             }
                             &:after {
-                                background-image: url("/public/images/save-icon_black.svg");
+                                background-image: url("/public/images/vector/save-icon_black.svg");
+                            }
+                        }
+                        &.userIdea {
+                            @extend %disabledButton;
+                            &:before {
+                                content: "CREATED BY YOU";
+                            }
+                            &:after {
+                                display: none;
+                            }
+                        }
+                        &.unLoginIdea {
+                            @extend %disabledButton;
+                            &:before {
+                                content: "SIGN IN TO SAVE";
+                            }
+                            &:after {
+                                display: none;
                             }
                         }
                     }
@@ -619,7 +637,7 @@
                 width: 40px;
                 height: 40px;
                 transform: translate(-50%, -50%);
-                background-image: url("/public/images/load-icon.svg");
+                background-image: url("/public/images/vector/load-icon.svg");
                 background-size: 40px 40px;
             }
         }

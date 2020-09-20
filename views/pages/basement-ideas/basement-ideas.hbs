@@ -4,33 +4,30 @@
         <div class="contentWrapper">
             <nav class="headerCategories">
                 <ul class="categoryList">
-                    <li class="categoryWrapper">
-                        <a class="categoryLink"
-                           href="/basement-ideas/spaces/">
-                            <img class="categoryImage"
-                                 src="/public/images/categories/cat-1_209x209.jpg"
-                                 alt="Spaces">
-                            Spaces
-                        </a>
-                    </li>
-                    <li class="categoryWrapper">
-                        <a class="categoryLink"
-                           href="/basement-ideas/features/">
-                            <img class="categoryImage"
-                                 src="/public/images/categories/cat-2_209x209.jpg"
-                                 alt="Features">
-                            Features
-                        </a>
-                    </li>
-                    <li class="categoryWrapper">
-                        <a class="categoryLink"
-                           href="/basement-ideas/engineering-features/">
-                            <img class="categoryImage"
-                                 src="/public/images/categories/cat-3_209x209.jpg"
-                                 alt="Engineering Features">
-                            Engineering Features
-                        </a>
-                    </li>
+                    {{# each categories }}
+                        <li class="categoryWrapper">
+                            <a class="categoryLink"
+                               href="/basement-ideas/{{{ categoryLink }}}/">
+                                <picture>
+                                    <source srcset="{{{ categoryImage }}}_79x79.jpg,
+                                                {{{ categoryImage }}}_158x158.jpg 2x"
+                                            media="(max-width: 479px)">
+                                    <source srcset="{{{ categoryImage }}}_137x137.jpg,
+                                                {{{ categoryImage }}}_274x274.jpg 2x"
+                                            media="(max-width: 767px)">
+                                    <source srcset="{{{ categoryImage }}}_209x209.jpg,
+                                                {{{ categoryImage }}}_418x418.jpg 2x"
+                                            media="(min-width: 768px)">
+                                    <img class="categoryImage"
+                                         src="{{{ categoryImage }}}_209x209.jpg"
+                                         srcset="{{{ categoryImage }}}_209x209.jpg,
+                                             {{{ categoryImage }}}_418x418.jpg 2x"
+                                         alt="{{{ title }}}">
+                                </picture>
+                                {{{ categoryTitle }}}
+                            </a>
+                        </li>
+                    {{/ each }}
                 </ul>
             </nav>
             <nav class="breadcrumbs">
@@ -57,28 +54,23 @@
     <div class="wrapper headerWrapper emptyChosenFilters">
         <form class="filtersForm" action="/api/ideas/filter">
             <ul class="activeFilterList"></ul>
+            <input type="hidden" class="hiddenField orderField" name="order" value="ideaID">
         </form>
     </div>
 </section>
 
 <section class="ideasMain">
     <div class="wrapper listWrapper">
-        <button class="ideasSortWrapper">WHAT’S NEW</button>
-        <ul class="ideaList">
+        <button class="ideasSortWrapper" data-order="ideaID">WHAT’S NEW</button>
+        <ul class="ideaList elementsWrapper" data-page="12" data-api="/api/ideas/all" data-login="{{{ isLogin }}}">
             {{# each ideas }}
-                <li class="ideaWrapper">
-                    <img class="ideaPhoto"
-                         data-idea="{{{ id }}}"
-                         src="/public/images/temp/{{{ image }}}.jpg"
-                         alt="{{{ title }}}">
-                    <button class="saveIdea">SAVE TO COLLECTION</button>
-                    <h3 class="ideaTitle">{{{ title }}}</h3>
-                    <strong class="ideaAuthor">{{{ author }}}</strong>
-                </li>
-            {{/each}}
+                {{> micro-blocks/idea/idea }}
+            {{/ each }}
         </ul>
-        <button class="showMoreButton">SHOW MORE</button>
+        <button title="Show more" data-scroll="1"
+                class="showMoreButton {{# if ideasData.hiddenButton }}hiddenButton{{/ if }}">SHOW MORE</button>
     </div>
+    <div class="pageLoader hiddenLoader"></div>
 </section>
 
 <section class="ideasFooter">
@@ -89,3 +81,12 @@
         <p>Or, perhaps you would like to convey a more family-oriented design with soft lighting, modern furniture and casual artwork? Either way, our design experts can make all of your home theater basement ideas come true! Plus, you’ll always have the best seat!</p>
     </div>
 </section>
+
+<template class="elementTemplate">
+    <li class="ideaWrapper">
+        <div class="imageWrapper"></div>
+        <button class="saveIdea" data-idea="">SAVE TO COLLECTION</button>
+        <h3 class="ideaTitle"></h3>
+        <strong class="ideaAuthor"></strong>
+    </li>
+</template>

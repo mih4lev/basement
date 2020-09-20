@@ -1,4 +1,5 @@
-import { changeModalVisible, resetDropEvents, saveAction, setModal } from "../modals";
+import { changeModalVisible, setModal } from "../modals";
+import { resetDropEvents, saveAction } from "../../../../source/scripts/utils";
 
 export const editProfileModal = () => {
 
@@ -20,10 +21,10 @@ export const editProfileModal = () => {
     let avatar = avatarWrapper.querySelector(`.avatarPicture`);
 
     // modal fields
-    const modalNameField = modalNode.querySelector(`#firstName`);
-    const modalSurnameField = modalNode.querySelector(`#lastName`);
-    const modalUsernameField = modalNode.querySelector(`#userName`);
-    const modalMailField = modalNode.querySelector(`#userMail`);
+    const modalNameField = modalNode.querySelector(`#name`);
+    const modalSurnameField = modalNode.querySelector(`#surname`);
+    const modalUsernameField = modalNode.querySelector(`#username`);
+    const modalMailField = modalNode.querySelector(`#mail`);
     const modalUserIDField = modalNode.querySelector(`#userID`);
     const modalAvatarWrapper = modalNode.querySelector(`.avatarField`);
     let avatarNode = modalNode.querySelector(`.inputFieldPicture`);
@@ -98,7 +99,7 @@ export const editProfileModal = () => {
     const showUploadFiles = () => {
         [...photoField.files].forEach((file) => {
             const reader = new FileReader();
-            reader.addEventListener(`load`, uploadSuccessHandler(file.name))
+            reader.addEventListener(`load`, uploadSuccessHandler(file.name));
             reader.addEventListener(`error`, uploadErrorHandler);
             reader.readAsDataURL(file);
         });
@@ -137,15 +138,16 @@ export const editProfileModal = () => {
     updateButton.addEventListener(`click`, async (event) => {
         event.preventDefault();
         // change button && fetch data
-        const URL = `/api/profile/settings`;
-        const method = `PUT`;
+        const URL = `/api/profile/settings/edit`;
+        const method = `POST`;
         const body = new FormData(formNode);
         const responseData = await saveAction({ URL, method, body, button: updateButton });
-        if (responseData.code !== 200) return false; // need show error
+        if (responseData.status !== 1) return false; // need show error
         // change profile data
         changeProfileData();
         // hide edit modal
         changeModalVisible(modalNode)();
+        location.reload();
     });
 
 };

@@ -1,0 +1,176 @@
+<form class="formNode" action="/admin/basement-ideas/edit">
+
+    <input class="hiddenField" name="ideaID" type="hidden" value="{{{ page.ideaID }}}">
+
+    <section class="fileSection">
+        <div class="fileWrapper" style="width: 252px; height: 252px;">
+            <input type="file" class="fileField" id="ideaImage" name="ideaImage">
+            <label class="fileLabel" for="ideaImage">Idea image</label>
+            {{# if page.ideaImage }}
+                <img class="fieldPreview" src="{{{ page.ideaImage }}}_252x252.jpg" alt="Idea image">
+            {{/ if }}
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="ideaTitle">Idea title</label>
+            <input class="textField" type="text" id="ideaTitle" name="ideaTitle" value="{{{ page.ideaTitle }}}">
+        </div>
+        <div class="buttonWrapper">
+            <button class="deleteButton" type="button" data-redirect="/admin/basement-ideas/"
+                    data-action="/admin/basement-ideas/{{{ page.ideaID }}}">
+                Delete idea
+            </button>
+            <div class="buttonHiddenWrapper hiddenWrapper">
+                <div class="wrapperTitle">Are you sure you want to remove this project?</div>
+                <div class="wrapperButtons">
+                    <button class="cancelButton" type="button">Cancel</button>
+                    <button class="confirmButton" type="button">Delete</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        By:
+        <div class="selectWrapper" data-id="creatorID" data-name="creatorName" style="margin: 0 10px;">
+            <div class="currentSelect">{{{ page.creatorName }}}</div>
+            <input class="hiddenField" type="hidden" name="creatorID"
+                   value="{{# if page.creatorID }}{{{ page.creatorID }}}{{ else }}0{{/ if }}">
+            <div class="dropdownWrapper hiddenWrapper">
+                {{# each creators }}
+                    <div class="dropdownElement">
+                        <div class="elementWrapper">
+                            <span class="selectElement" data-request="{{{ creatorID }}}">{{{ creatorName }}}</span>
+                            <button class="editButton" type="button" title="Edit author">Edit author</button>
+                        </div>
+                        <div class="editWrapper hiddenWrapper">
+                            <input class="editField" type="text" value="{{{ creatorName }}}">
+                            <button class="saveButton" data-api="/admin/basement-ideas/creators/edit"
+                                    type="button" title="Save author">Save author</button>
+                        </div>
+                    </div>
+                {{/ each }}
+                <div class="newElement">
+                    <div class="createWrapper">+ Add new</div>
+                    <div class="editWrapper hiddenWrapper">
+                        <input class="editField" type="text">
+                        <button class="saveButton" data-api="/admin/basement-ideas/creators"
+                                type="button" title="Save author">Save author</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fieldWrapper" style="width: 20%;">
+            <label class="fieldLabel" for="portfolioID">Portfolio ID</label>
+            <input class="textField" type="text" id="portfolioID" name="portfolioID" value="{{{ portfolioID }}}">
+        </div>
+        <div class="selectWrapper autoWrapper">
+            <div class="toggleButtonWrapper">
+                <input class="toggleButton" type="checkbox" {{# if page.isModerated }}checked{{/if}}
+                       name="isModerated" id="isModerated" value="1">
+                <label class="buttonLabel" for="isModerated">Moderate</label>
+            </div>
+        </div>
+        <div class="selectWrapper autoWrapper">
+            <div class="toggleButtonWrapper">
+                <input class="toggleButton" type="checkbox" {{# if page.isHomeIdea }}checked{{/if}}
+                       name="isHomeIdea" id="isHomeIdea" value="1">
+                <label class="buttonLabel" for="isHomeIdea">Home idea</label>
+            </div>
+        </div>
+    </section>
+
+    <section class="filtersSection">
+        Categories:
+        <div class="categoriesWrapper">
+            {{# each categories }}
+                <ul>
+                    <li>{{{ categoryTitle }}}</li>
+                    {{# if children }}
+                        <ul>
+                            {{# each children }}
+                                {{# if isActive }}
+                                    <li class="activeFilter">
+                                        <input type="checkbox" name="categoryArray"
+                                               {{# if isChosen }}checked{{/if}}
+                                               value="{{{ categoryID }}}" id="category{{{ categoryID }}}">
+                                        <label for="category{{{ categoryID }}}">
+                                            {{{ categoryTitle }}}
+                                        </label>
+                                    </li>
+                                {{ else }}
+                                    <li>{{{ categoryTitle }}}</li>
+                                {{/ if }}
+                                {{# if children }}
+                                    <ul>
+                                        {{# each children }}
+                                            {{# if isActive }}
+                                                <li class="activeFilter">
+                                                    <input type="checkbox" name="categoryArray"
+                                                           {{# if isChosen }}checked{{/if}}
+                                                           value="{{{ categoryID }}}" id="category{{{ categoryID }}}">
+                                                    <label for="category{{{ categoryID }}}">
+                                                        {{{ categoryTitle }}}
+                                                    </label>
+                                                </li>
+                                            {{ else }}
+                                                <li>{{{ categoryTitle }}}</li>
+                                            {{/ if }}
+                                        {{/ each }}
+                                    </ul>
+                                {{/ if }}
+                            {{/ each }}
+                        </ul>
+                    {{/ if }}
+                </ul>
+            {{/ each }}
+        </div>
+    </section>
+
+    <section class="filtersSection">
+        Filters:
+        <div class="filtersWrapper">
+            {{# each filters }}
+                <ul>
+                    <li>{{{ filterTitle }}}</li>
+                    {{# if children }}
+                        <ul>
+                            {{# each children }}
+                                <li class="activeFilter">
+                                    <input type="checkbox" name="filterArray"
+                                           {{# if isChosen }}checked{{/if}}
+                                           value="{{{ filterID }}}" id="filter{{{ filterID }}}">
+                                    <label for="filter{{{ filterID }}}">
+                                        {{{ filterTitle }}}
+                                    </label>
+                                </li>
+                            {{/ each }}
+                        </ul>
+                    {{/ if }}
+                </ul>
+            {{/ each }}
+        </div>
+    </section>
+
+    <div class="formButtons">
+        <button class="submitButton" type="button" title="Update"
+                data-action="update" data-api="">Update</button>
+    </div>
+
+</form>
+
+<template class="dropdownTemplate">
+    <div class="dropdownElement">
+        <div class="elementWrapper">
+            <span class="selectElement" data-request=""></span>
+            <button class="editButton" type="button" title="Edit author">Edit author</button>
+        </div>
+        <div class="editWrapper hiddenWrapper">
+            <input class="editField" type="text" value="">
+            <button class="saveButton" data-api="/admin/basement-ideas/creators/edit"
+                    type="button" title="Save author">Save author</button>
+        </div>
+    </div>
+</template>

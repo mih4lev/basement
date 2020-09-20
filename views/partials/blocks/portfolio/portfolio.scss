@@ -82,9 +82,27 @@
             .portfolioHomeImage {
                 display: block;
                 width: 100%;
-                height: inherit;
+                height: 100%;
                 object-fit: cover;
+                object-position: center center;
+                &.defaultImage {
+                    background-color: $sub;
+                    background-image: url("/public/images/vector/default-image.svg");
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-size: 120px;
+                    @include minWidth(480) {
+                        background-size: 180px;
+                    }
+                    @include minWidth(768) {
+                        background-size: 150px;
+                    }
+                    @include minWidth(1440) {
+                        background-size: 220px;
+                    }
+                }
             }
+
             .portfolioHiddenBlock {
                 @extend %animation;
                 position: absolute;
@@ -136,6 +154,25 @@
             position: absolute;
             right: 0;
             bottom: 40px;
+        }
+    }
+}
+
+.portfolioContent {
+    position: relative;
+    .pageLoader {
+        transition: all 0.1s ease-in;
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.75;
+        width: 100%;
+        height: 100%;
+        background-color: $white;
+        &.hiddenLoader {
+            opacity: 0;
+            z-index: -1;
         }
     }
 }

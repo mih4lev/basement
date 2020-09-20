@@ -1,0 +1,41 @@
+<template class="saveIdeaTemplate">
+    <section class="modalSection saveIdeaModal" data-modal="save-idea">
+        <div class="modalBlurWrapper"></div>
+        <div class="modalMainWrapper saveIdeaWrapper">
+            <div class="modalContentWrapper">
+                <h2 class="modalTitle">SAVE TO COLLECTION</h2>
+                <form class="formWrapper">
+                    <div class="photoWrapper">
+                        <img class="ideaPhoto" src="" alt="">
+                    </div>
+                    <div class="albumsWrapper">
+                        <div class="createWrapper">
+                            <div class="coverWrapper">
+                                <label class="coverLabel" for="uploadAlbumCover">Add album cover</label>
+                                <input class="coverField" type="file" name="albumCover" id="uploadAlbumCover">
+                            </div>
+                            <div class="titleWrapper">
+                                <input class="titleField" type="text" name="albumTitle" id="albumTitle">
+                                <label class="titleLabel" for="albumTitle">Create a new album</label>
+                            </div>
+                        </div>
+                        <div class="albumsListWrapper">
+                            <ul class="albumList">
+                                <li class="album hiddenAlbum" data-album="">
+                                    <img class="albumCover" alt="" src="">
+                                    <span class="albumTitle"></span>
+                                </li>
+                            </ul>
+                            <div class="loaderWrapper"></div>
+                        </div>
+                        <input class="hiddenField" type="hidden" name="ideaID">
+                        <div class="submitWrapper">
+                            <button class="submitButton" disabled type="submit">SAVE</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <button class="closeButton" title="Close modal" type="button">Close modal</button>
+        </div>
+    </section>
+</template>

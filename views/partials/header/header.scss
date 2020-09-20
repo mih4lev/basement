@@ -480,13 +480,13 @@ header {
                 margin-right: 0;
             }
             &.instagramButton {
-                background-image: url("/public/images/instagram-icon.svg");
+                background-image: url("/public/images/vector/instagram-icon.svg");
                 background-size: 13px 13px;
                 background-position: center center;
                 background-repeat: no-repeat;
             }
             &.facebookButton {
-                background-image: url("/public/images/facebook-icon.svg");
+                background-image: url("/public/images/vector/facebook-icon.svg");
                 background-size: 7px 12px;
                 background-position: center center;
                 background-repeat: no-repeat;
@@ -512,59 +512,60 @@ header {
             display: none;
         }
     }
-
-    .headerLoginButton {
-        @extend %animation;
-        @extend %font;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        position: relative;
+    .headerLoginWrapper {
         margin: 0 0 0 15px;
-        padding: 0;
-        font-size: 0;
-        font-weight: 700;
-        line-height: 125%;
-        color: $white;
-        text-transform: uppercase;
-        border: none;
-        background-color: transparent;
-        cursor: pointer;
-        outline: none;
-        text-align: left;
-        &:hover {
-            color: $yellow;
-            .avatarPicture {
-                border-color: $yellow;
-            }
-        }
-        @include minWidth(1440) {
-            font-size: 13px;
-        }
-        .avatarPicture {
+        position: relative;
+        .headerLoginButton {
             @extend %animation;
-            width: 21px;
-            height: 21px;
-            border: 1px solid $white;
-            border-radius: 50%;
-            @include minWidth(480) {
-                width: 27px;
-                height: 27px;
+            @extend %font;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            height: 40px;
+            font-size: 0;
+            width: 100%;
+            font-weight: 700;
+            line-height: 125%;
+            color: $white;
+            text-transform: uppercase;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            outline: none;
+            text-align: left;
+            &:hover {
+                color: $yellow;
+                .avatarPicture {
+                    border-color: $yellow;
+                }
             }
             @include minWidth(1440) {
-                margin-right: 10px;
-                width: 32px;
-                height: 32px;
-                border: 2px solid $white;
+                font-size: 13px;
             }
-        }
-        &.userLogin {
-            &:before {
+            .avatarPicture {
                 @extend %animation;
-                content: "";
                 width: 21px;
                 height: 21px;
-                background-image: url("/public/images/login-icon.svg");
+                border: 1px solid $white;
+                border-radius: 50%;
+                @include minWidth(480) {
+                    width: 27px;
+                    height: 27px;
+                }
+                @include minWidth(1440) {
+                    margin-right: 10px;
+                    width: 32px;
+                    height: 32px;
+                    border: 2px solid $white;
+                }
+            }
+            .avatarIcon {
+                width: 21px;
+                height: 21px;
+                background-image: url("/public/images/vector/login-icon.svg");
                 background-size: 21px 21px;
                 background-repeat: no-repeat;
                 @include minWidth(480) {
@@ -578,15 +579,147 @@ header {
                     height: 32px;
                     background-size: 32px 32px;
                 }
+                &:hover {
+                    opacity: 0.5;
+                }
             }
-            &:hover {
-                &:before {
-                    opacity: 0.75;
+        }
+        .headerLoginButton:hover .avatarWrapper {
+            z-index: 1;
+            margin-top: 0;
+            opacity: 1;
+            visibility: visible;
+        }
+        .avatarWrapper {
+            @extend %shadow;
+            @extend %animation;
+            opacity: 0;
+            z-index: -10;
+            margin-top: 50px;
+            margin-bottom: 0;
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 6px 0;
+            list-style-type: none;
+            background-color: $white;
+            border-radius: 5px;
+            pointer-events: auto;
+            visibility: hidden;
+            @include minWidth(480) {
+                top: 45px;
+                padding: 10px 0;
+            }
+            @include minWidth(1440) {
+                left: auto;
+                right: 0;
+                transform: none;
+                top: 37px;
+            }
+            &:before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: -3px;
+                left: 50%;
+                width: 6px;
+                height: 6px;
+                background: #fff;
+                transform: translateX(-50%) rotate(45deg);
+                @include minWidth(480) {
+                    top: -4px;
+                    width: 10px;
+                    height: 10px;
+                }
+                @include minWidth(1440) {
+                    left: auto;
+                    right: 10px;
+                }
+            }
+            .avatarLinkWrapper {
+                @extend %animation;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 24px;
+                @include minWidth(480) {
+                    height: 30px;
+                }
+                .avatarLink {
+                    @extend %animation;
+                    display: flex;
+                    align-items: center;
+                    padding: 0 15px;
+                    height: inherit;
+                    font-size: 12px;
+                    font-weight: 700;
+                    white-space: nowrap;
+                    color: $grey;
+                    @include minWidth(480) {
+                        font-size: 13px;
+                        padding: 0 20px;
+                    }
+                }
+                &:hover {
+                    background-color: $menuHover;
+                    .avatarLink {
+                        color: $blue;
+                    }
                 }
             }
         }
     }
-
+    .userLogin {
+        @extend %animation;
+        @extend %font;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+        margin: 0 0 0 15px;
+        padding: 0;
+        height: 30px;
+        font-weight: 700;
+        line-height: 125%;
+        font-size: 0;
+        color: $white;
+        text-transform: uppercase;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        outline: none;
+        text-align: left;
+        @include minWidth(1440) {
+            font-size: 13px;
+        }
+        &:before {
+            @extend %animation;
+            content: "";
+            width: 21px;
+            height: 21px;
+            background-image: url("/public/images/vector/login-icon.svg");
+            background-size: 21px 21px;
+            background-repeat: no-repeat;
+            @include minWidth(480) {
+                width: 27px;
+                height: 27px;
+                background-size: 27px 27px;
+            }
+            @include minWidth(1440) {
+                margin-right: 10px;
+                width: 32px;
+                height: 32px;
+                background-size: 32px 32px;
+            }
+        }
+        &:hover {
+            color: $blue;
+            &:before {
+                opacity: 0.75;
+            }
+        }
+    }
     .headerSandwichButton {
         position: relative;
         margin-left: 15px;

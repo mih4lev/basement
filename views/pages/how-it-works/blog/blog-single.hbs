@@ -1,7 +1,7 @@
 <section class="pageHeader">
     <div class="wrapper headerWrapper">
         <div class="contentWrapper">
-            <h1 class="pageTitle">{{{ category }}}</h1>
+            <h1 class="pageTitle">{{{ page.categoryName }}}</h1>
             <nav class="breadcrumbs">
                 <ul class="breadcrumbList">
                     <li class="breadcrumbLinkWrapper">
@@ -14,10 +14,7 @@
                         <a class="breadcrumbLink" href="/how-it-works/basement-tips/">Basement tips</a>
                     </li>
                     <li class="breadcrumbLinkWrapper">
-                        <a class="breadcrumbLink" href="/how-it-works/basement-tips/design/">Design</a>
-                    </li>
-                    <li class="breadcrumbLinkWrapper">
-                        <span class="breadcrumbLink breadcrumbActive">{{{ title }}}</span>
+                        <span class="breadcrumbLink breadcrumbActive">{{{ page.tipTitle }}}</span>
                     </li>
                 </ul>
             </nav>
@@ -29,138 +26,22 @@
 <section class="pageContent">
     <div class="wrapper center">
         <div class="twoColumnsWrapper">
-            <span class="dataDate">{{{ date }}}</span>
-            <span class="dataState">{{{ category }}}</span>
+            <span class="dataDate">{{{ page.tipDate }}}</span>
+            <span class="dataState">{{{ page.tipCategory }}}</span>
         </div>
         <div class="twoColumnsWrapper pageTitleWrapper">
-            <h1 class="contentHeader">{{{ title }}}</h1>
+            <h1 class="contentHeader">{{{ page.tipTitle }}}</h1>
         </div>
-        <p class="textBlock">Minimalism is taking over basement remodeling in 2019. A basement with a minimalist touch will still look warm and cozy when done properly. Use these basement design ideas and pictures to tastefully incorporate minimalism into your next luxury basement renovation.</p>
-        <h4 class="contentHeader">Minimalist Furniture</h4>
-        <p class="textBlock">Minimalism does not mean getting rid of all of the furniture. In fact, oversized furniture with soft and round edges is the ideal minimalist basement design. Chairs and couches with an angled pitch are in vogue; straight-back furniture, not so much. Coffee tables and basement entertaintment centers are still in-style, though they are condensed and no longer the centerpiece of the room.</p>
-
-        <div class="contentImageWrapper">
-            <picture class="contentImage">
-                <source srcset="/public/images/temp/basement-tips/basement-tips-single-1_290x152.webp,
-                                        /public/images/temp/basement-tips/basement-tips-single-1_580x304.webp 2x"
-                        media="(max-width: 479px)"
-                        type="image/webp">
-                <source srcset="/public/images/temp/basement-tips/basement-tips-single-1_290x152.jpg,
-                                        /public/images/temp/basement-tips/basement-tips-single-1_580x304.jpg 2x"
-                        media="(max-width: 479px)"
-                        type="image/jpeg">
-                <source srcset="/public/images/temp/basement-tips/basement-tips-single-1_440x230.webp,
-                                        /public/images/temp/basement-tips/basement-tips-single-1_880x460.webp 2x"
-                        media="(max-width: 767px)"
-                        type="image/webp">
-                <source srcset="/public/images/temp/basement-tips/basement-tips-single-1_440x230.jpg,
-                                        /public/images/temp/basement-tips/basement-tips-single-1_880x460.jpg 2x"
-                        media="(max-width: 767px)"
-                        type="image/jpeg">
-                <source srcset="/public/images/temp/basement-tips/basement-tips-single-1_728x380.webp,
-                                        /public/images/temp/basement-tips/basement-tips-single-1_1456x760.webp 2x"
-                        media="(max-width: 999px)"
-                        type="image/webp">
-                <source srcset="/public/images/temp/basement-tips/basement-tips-single-1_728x380.jpg,
-                                        /public/images/temp/basement-tips/basement-tips-single-1_1456x760.jpg 2x"
-                        media="(max-width: 999px)"
-                        type="image/jpeg">
-                <source srcset="/public/images/temp/basement-tips/basement-tips-single-1_894x466.webp,
-                                        /public/images/temp/basement-tips/basement-tips-single-1_1788x932.webp 2x"
-                        media="(max-width: 1439px)"
-                        type="image/webp">
-                <source srcset="/public/images/temp/basement-tips/basement-tips-single-1_894x466.jpg,
-                                        /public/images/temp/basement-tips/basement-tips-single-1_1788x932.jpg 2x"
-                        media="(max-width: 1439px)"
-                        type="image/jpeg">
-                <source srcset="/public/images/temp/basement-tips/basement-tips-single-1_960x500.webp,
-                                        /public/images/temp/basement-tips/basement-tips-single-1_1920x1000.webp 2x"
-                        media="(min-width: 1440px)"
-                        type="image/webp">
-                <source srcset="/public/images/temp/basement-tips/basement-tips-single-1_960x500.jpg,
-                                        /public/images/temp/basement-tips/basement-tips-single-1_1920x1000.jpg 2x"
-                        media="(min-width: 1440px)"
-                        type="image/jpeg">
-                <img class="contentImage"
-                     src="/public/images/temp/basement-tips/basement-tips-single-1_960x500.jpg"
-                     srcset="/public/images/temp/basement-tips/basement-tips-single-1_960x500.jpg,
-                                     /public/images/temp/basement-tips/basement-tips-single-1_1920x1000.jpg 2x"
-                     alt="Minimalist Furniture">
-            </picture>
-            <span class="imageDescription">Angled minimalist furniture with soft, round edges in a Columbia, MD basement remodel. The basement entertainment center has been condensed into a two-level miniature table.</span>
+        <div class="contentTextarea">
+            {{{ page.tipText }}}
         </div>
-
-        <h4 class="contentHeader">Natural Colors</h4>
-        <p class="textBlock">Minimalism emphasizes texture over color. A natural palette consisting primarily of white, beige and brown will make subtle textural design choices more noticeable from up-close and at a distance. LVT flooring can show off earthy minimalist tones; rugs will add texture.</p>
-
-        <!-- image-->
-        <div class="contentImageWrapper">
-            <picture class="contentImage">
-                <source srcset="/public/images/temp/basement-tips/basement-tips-single-2_290x152.webp,
-                                        /public/images/temp/basement-tips/basement-tips-single-2_580x304.webp 2x"
-                        media="(max-width: 479px)"
-                        type="image/webp">
-                <source srcset="/public/images/temp/basement-tips/basement-tips-single-2_290x152.jpg,
-                                        /public/images/temp/basement-tips/basement-tips-single-2_580x304.jpg 2x"
-                        media="(max-width: 479px)"
-                        type="image/jpeg">
-                <source srcset="/public/images/temp/basement-tips/basement-tips-single-2_440x230.webp,
-                                        /public/images/temp/basement-tips/basement-tips-single-2_880x460.webp 2x"
-                        media="(max-width: 767px)"
-                        type="image/webp">
-                <source srcset="/public/images/temp/basement-tips/basement-tips-single-2_440x230.jpg,
-                                        /public/images/temp/basement-tips/basement-tips-single-2_880x460.jpg 2x"
-                        media="(max-width: 767px)"
-                        type="image/jpeg">
-                <source srcset="/public/images/temp/basement-tips/basement-tips-single-2_728x380.webp,
-                                        /public/images/temp/basement-tips/basement-tips-single-2_1456x760.webp 2x"
-                        media="(max-width: 999px)"
-                        type="image/webp">
-                <source srcset="/public/images/temp/basement-tips/basement-tips-single-2_728x380.jpg,
-                                        /public/images/temp/basement-tips/basement-tips-single-2_1456x760.jpg 2x"
-                        media="(max-width: 999px)"
-                        type="image/jpeg">
-                <source srcset="/public/images/temp/basement-tips/basement-tips-single-2_894x466.webp,
-                                        /public/images/temp/basement-tips/basement-tips-single-2_1788x932.webp 2x"
-                        media="(max-width: 1439px)"
-                        type="image/webp">
-                <source srcset="/public/images/temp/basement-tips/basement-tips-single-2_894x466.jpg,
-                                        /public/images/temp/basement-tips/basement-tips-single-2_1788x932.jpg 2x"
-                        media="(max-width: 1439px)"
-                        type="image/jpeg">
-                <source srcset="/public/images/temp/basement-tips/basement-tips-single-2_960x500.webp,
-                                        /public/images/temp/basement-tips/basement-tips-single-2_1920x1000.webp 2x"
-                        media="(min-width: 1440px)"
-                        type="image/webp">
-                <source srcset="/public/images/temp/basement-tips/basement-tips-single-2_960x500.jpg,
-                                        /public/images/temp/basement-tips/basement-tips-single-2_1920x1000.jpg 2x"
-                        media="(min-width: 1440px)"
-                        type="image/jpeg">
-                <img class="contentImage"
-                     src="/public/images/temp/basement-tips/basement-tips-single-2_960x500.jpg"
-                     srcset="/public/images/temp/basement-tips/basement-tips-single-2_960x500.jpg,
-                                     /public/images/temp/basement-tips/basement-tips-single-2_1920x1000.jpg 2x"
-                     alt="Natural Colors">
-            </picture>
-            <span class="imageDescription">A multi-textured rug on LVT flooring with rounded furniture and a small off-centered coffee table creates the minimalist look for a basement refinishing in Arlington, VA.</span>
-        </div>
-
-        <h2 class="contentHeader">Pros of installing a walkout entrance</h2>
-        <h3 class="contentHeader">Better lighting</h3>
-        <p class="textBlock">Perhaps the most essential feature of a walkout is its ability to boost the natural light in your basement. Natural light often has an understandably difficult time reaching a regular basement space, making the basement feel closed off and dungeon-esque. Adding a door (or double door) walkout provides the light the opportunity to flood into the basement. Not only is the additional light aesthetically pleasing, but air will also flow with much greater ease through the basement, helping with mold prevention.</p>
-        <h3 class="contentHeader">Accessibility</h3>
-        <p class="textBlock">This is a rather obvious feature—an additional entrance means easier access. Walkouts are perfect if you have people living or staying in your basement. Family, guests, teens with their friends, renters, and so on can keep odd hours without waking the rest of the house. It’s really the best way to keep the night owls and the morning people in your home from disturbing each other. Additionally, the new entrance is also useful for emergency situations, such as a fire!</p>
-        <h3 class="contentHeader">Increase property value</h3>
-        <p class="textBlock">Another noticeable advantage of putting in a walkout basement is the increase in property value that comes with it! A lovely new walkout will increase the resale value of your home.</p>
-        <p class="textBlock">At Basement Remodeling Company, we’re experts in every aspect of 3D modeling and design. Simply providing a description to our team is enough to map out what you're looking for accurately; and if it's not quite right, we'll change it until it is! Brilliant basement 3D modeling designs of your space are a part of our service. Not only do we walk you through your plan, but we'll also give you a free estimate on how much it’ll cost!</p>
-        <p class="textBlock">Contact us today for a free quote and in-house consultation!</p>
     </div>
 </section>
 
 <section class="pageButtons">
     <div class="wrapper center">
         <div class="twoColumnsWrapper">
-            <button class="backButton">GO BACK</button>
+            <a class="backButton" href="/how-it-works/basement-tips/">GO BACK</a>
         </div>
     </div>
 </section>

@@ -5,10 +5,10 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="keywords" content="basement remodeling, basement finishing, basement remodeling va, basement finishing va, basement finishing md, basement remodeling md, basement remodeling dc, basement finishing dc, maryland, virginia, basement finishing company, basement remodeling company, remodel a basement, basement contractor, basement ideas, basement renovation, finished basement, basement refinish, basement waterproofing, dc, Washington dc, basement design ideas">
-    <meta name="description" content="Complete Basement Finishing, Remodeling, and Waterproofing services in Maryland, Virginia, and DC. The most trusted company in the basement industry.">
+    <meta name="keywords" content="{{{ page.pageKeywords }}}">
+    <meta name="description" content="{{{ page.pageDescription }}}">
     <link rel="stylesheet" href="/public/styles/main.min.css">
-    <title>DEV</title>
+    <title>{{{ page.pageTitle }}}</title>
     <link rel="apple-touch-icon" type="image/png" href="/public/images/favicon-192x192.png" sizes="192x192" />
     <link rel="icon" type="image/png" href="/public/images/favicon-192x192.png" sizes="192x192" />
     <link rel="icon" type="image/png" href="/public/images/favicon-32x32.png" sizes="32x32" />
@@ -25,6 +25,7 @@
 {{> footer/footer }}
 
 {{> modals/view-idea/view-idea.modal }}
+{{> modals/save-idea/save-idea.modal }}
 {{> modals/sign-in/sign-in.modal }}
 {{> modals/edit-profile/edit-profile.modal }}
 {{> modals/create-album/create-album.modal }}
@@ -32,7 +33,12 @@
 {{> modals/add-photo/add-photo.modal }}
 {{> modals/contact-us/contact-us.modal }}
 
-<script src="/public/scripts/bundle.min.js"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+<script src="https://apis.google.com/js/api:client.js"></script>
+<script src="/public/scripts/layout.min.js"></script>
+{{# each scripts }}
+    <script src="/public/scripts/{{{ this }}}.min.js"></script>
+{{/each}}
 
 </body>
 </html>

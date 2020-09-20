@@ -23,27 +23,27 @@
         margin: 26px auto 0;
         width: 288px;
         height: 154px;
-        background: url("/public/images/close-modal-arrows320.svg");
+        background: url("/public/images/vector/close-modal-arrows320.svg");
         background-size: 288px 154px;
         @include minWidth(480) {
             margin: 47px auto 0;
             width: 434px;
             height: 246px;
-            background: url("/public/images/close-modal-arrows480.svg");
+            background: url("/public/images/vector/close-modal-arrows480.svg");
             background-size: 434px 246px;
         }
         @include minWidth(768) {
             margin: 50px auto 0;
             width: 507px;
             height: 250px;
-            background: url("/public/images/close-modal-arrows768.svg");
+            background: url("/public/images/vector/close-modal-arrows768.svg");
             background-size: 507px 250px;
         }
         @include minWidth(1000) {
             margin: 50px auto 0;
             width: 925px;
             height: 123px;
-            background: url("/public/images/close-modal-arrows1000.svg");
+            background: url("/public/images/vector/close-modal-arrows1000.svg");
             background-size: 925px 123px;
         }
         .closeButton {
@@ -150,7 +150,7 @@
     left: 10px;
     width: 44px;
     height: 13px;
-    background: url("/public/images/close-window_arrow.svg") space;
+    background: url("/public/images/vector/close-window_arrow.svg") space;
     background-size: auto 13px;
     @include minWidth(480) {
         width: 52px;

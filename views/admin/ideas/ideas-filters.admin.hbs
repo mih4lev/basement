@@ -1,0 +1,85 @@
+<div class="editWrapper editFilters">
+    {{# each filters }}
+        <ul>
+            <li>
+                <form action="/admin/basement-ideas/filters/edit">
+                    <div class="fieldWrapper">
+                        <label class="fieldLabel"
+                               for="filter{{{ filterID }}}">Filter title</label>
+                        <input class="categoryField titleField" name="filterTitle" type="text"
+                               id="filter{{{ filterID }}}" value="{{{ filterTitle }}}">
+                    </div>
+                    <input class="hiddenField filterID" type="hidden"
+                           name="filterID" value="{{{ filterID }}}">
+                    <button class="saveButton hiddenButton"
+                            type="button" title="Save filter">Save filter</button>
+                </form>
+            </li>
+            {{# if children }}
+                <ul>
+                    {{# each children }}
+                        <li>
+                            <form action="/admin/basement-ideas/filters/edit">
+                                <div class="fieldWrapper">
+                                    <label class="fieldLabel"
+                                           for="filter{{{ filterID }}}">Filter title</label>
+                                    <input class="categoryField titleField" name="filterTitle" type="text"
+                                           id="filter{{{ filterID }}}" value="{{{ filterTitle }}}">
+                                </div>
+                                {{# if filterColor }}
+                                    <div class="fieldWrapper">
+                                        <label class="fieldLabel"
+                                               for="filterColor{{{ filterID }}}">Filter color</label>
+                                        <input class="categoryField colorField" name="filterColor" type="text"
+                                               id="filterColor{{{ filterID }}}" value="{{{ filterColor }}}">
+                                    </div>
+                                {{/ if }}
+                                <input class="hiddenField filterID" type="hidden"
+                                       name="filterID" value="{{{ filterID }}}">
+                                <button class="saveButton hiddenButton"
+                                        type="button" title="Save filter">Save filter</button>
+                            </form>
+                        </li>
+                    {{/ each }}
+                </ul>
+            {{/ if }}
+            <ul>
+                <li>
+                    <form action="/admin/basement-ideas/filters">
+                        <div class="fieldWrapper">
+                            <label class="fieldLabel greyLabel"
+                                   for="addFilter{{{ filterID }}}">+ filter</label>
+                            <input class="categoryField titleField" type="text"
+                                   name="filterTitle" id="addFilter{{{ filterID }}}">
+                        </div>
+                        {{# if isColor }}
+                            <div class="fieldWrapper">
+                                <label class="fieldLabel"
+                                       for="filterColor{{{ filterID }}}">+ color</label>
+                                <input class="categoryField colorField" name="filterColor" type="text"
+                                       id="filterColor{{{ filterID }}}">
+                            </div>
+                        {{/ if }}
+                        <input class="hiddenField" type="hidden" name="parentID" value="{{{ filterID }}}">
+                        <button class="saveButton hiddenButton"
+                                type="button" title="Save filter">Save filter</button>
+                    </form>
+                </li>
+            </ul>
+        </ul>
+    {{/ each }}
+    <ul>
+        <li>
+            <form action="/admin/basement-ideas/filters">
+                <div class="fieldWrapper">
+                    <label class="fieldLabel"
+                           for="addFilter{{{ filterID }}}">+ Add filter</label>
+                    <input class="categoryField titleField" name="filterTitle" type="text"
+                           id="addFilter{{{ filterID }}}">
+                </div>
+                <button class="saveButton hiddenButton"
+                        type="button" title="Save filter">Save filter</button>
+            </form>
+        </li>
+    </ul>
+</div>

@@ -44,6 +44,32 @@
             padding: 245px 20px 20px 20px;
             width: 252px;
         }
+        &:hover {
+            .unfinishedBasement {
+                background-position: 0 0;
+            }
+            .completeBasementRemodeling {
+                background-position: -400px 0;
+            }
+            .partialBasementRemodeling {
+                background-position: 0 -200px;
+            }
+            .basementRenovation {
+                background-position: -400px -200px;
+            }
+            .addBathroom {
+                background-position: 0 -400px;
+            }
+            .addEgressWindow {
+                background-position: -400px -400px;
+            }
+            .foundationRepairs {
+                background-position: 0 -600px;
+            }
+            .basementWaterproofing {
+                background-position: -400px -600px;
+            }
+        }
     }
 }
 

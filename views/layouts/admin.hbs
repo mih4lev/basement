@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/public/styles/admin.min.css">
+    <link rel="preload" href="/public/images/vector/load-icon.svg" as="image">
+    <link rel="preload" href="/public/images/vector/load-icon_grey.svg" as="image">
+    <title>Admin</title>
+</head>
+<body>
+
+<main class="main">
+    <aside class="menu">
+        <div class="logoWrapper">
+            <a class="logoLink" href="/admin/">
+                <img class="logo" src="/public/images/logo.png" alt="BR.com admin">
+            </a>
+        </div>
+        <ul class="menuLinks">
+            <li class="menuWrapper">
+                <span class="menuLink">Landings <span class="dropdownMenu"></span></span>
+                <ul class="subMenuLinks">
+                    <li class="subMenuWrapper">
+                        {{# if isAdminHome }}
+                            <span class="subMenuLink activeLink">Home page</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/landings/home/">Home page</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminLandings }}
+                            <span class="subMenuLink activeLink">All local landings</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/landings/">All local landings</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminLandingAdd }}
+                            <span class="subMenuLink addLink activeLink">Add new local landing</span>
+                        {{ else }}
+                            <a class="subMenuLink addLink" href="/admin/landings/add/">Add new local landing</a>
+                        {{/ if }}
+                    </li>
+                </ul>
+            </li>
+            <li class="menuWrapper">
+                <span class="menuLink">Portfolio <span class="dropdownMenu"></span></span>
+                <ul class="subMenuLinks">
+                    <li class="subMenuWrapper">
+                        {{# if isAdminPortfolio }}
+                            <span class="subMenuLink activeLink">All projects</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/portfolio/">All projects</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminPortfolioAdd }}
+                            <span class="subMenuLink addLink activeLink">Add new project</span>
+                        {{ else }}
+                            <a class="subMenuLink addLink" href="/admin/portfolio/add/">Add new project</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminPortfolioFilters }}
+                            <span class="subMenuLink activeLink">Portfolio filters</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/portfolio/filters/">Portfolio filters</a>
+                        {{/ if }}
+                    </li>
+                </ul>
+            </li>
+            <li class="menuWrapper">
+                <span class="menuLink">Basement ideas <span class="dropdownMenu"></span></span>
+                <ul class="subMenuLinks">
+                    <li class="subMenuWrapper">
+                        {{# if isAdminIdeas }}
+                            <span class="subMenuLink activeLink">All ideas</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/basement-ideas/">All ideas</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminUserIdeas }}
+                            <span class="subMenuLink activeLink">User ideas</span>
+                            {{# if moderateCount }}
+                                <span class="ideasCount">{{{ moderateCount }}}</span>
+                            {{/ if }}
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/basement-ideas/user/">User ideas</a>
+                            {{# if moderateCount }}
+                                <span class="ideasCount">{{{ moderateCount }}}</span>
+                            {{/ if }}
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminIdeasAdd }}
+                            <span class="subMenuLink addLink activeLink">Add new idea</span>
+                        {{ else }}
+                            <a class="subMenuLink addLink" href="/admin/basement-ideas/add/">Add new idea</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminIdeasCategories }}
+                            <span class="subMenuLink activeLink">Idea categories</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/basement-ideas/categories/">Idea categories</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminIdeasFilters }}
+                            <span class="subMenuLink activeLink">Idea filters</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/basement-ideas/filters/">Idea filters</a>
+                        {{/ if }}
+                    </li>
+                </ul>
+            </li>
+            <li class="menuWrapper">
+                <span class="menuLink">How it works <span class="dropdownMenu"></span></span>
+                <ul class="subMenuLinks">
+                    <li class="subMenuWrapper">
+                        {{# if isAdminProcess }}
+                            <span class="subMenuLink activeLink">Our process</span>
+                        {{ else }}
+                            <a class="subMenuLink"
+                               href="/admin/how-it-works/our-process/">Our process</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminFAQ }}
+                            <span class="subMenuLink activeLink">Contractor FAQ</span>
+                        {{ else }}
+                            <a class="subMenuLink"
+                               href="/admin/how-it-works/faq/">Contractor FAQ</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminTips }}
+                            <span class="subMenuLink activeLink">All basement tips</span>
+                        {{ else }}
+                            <a class="subMenuLink"
+                               href="/admin/how-it-works/basement-tips/">All basement tips</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminTipsAdd }}
+                            <span class="subMenuLink addLink activeLink">Add new basement tip</span>
+                        {{ else }}
+                            <a class="subMenuLink addLink"
+                               href="/admin/how-it-works/basement-tips/add/">Add new basement tip</a>
+                        {{/ if }}
+                    </li>
+                </ul>
+            </li>
+            <li class="menuWrapper">
+                <span class="menuLink">About us <span class="dropdownMenu"></span></span>
+                <ul class="subMenuLinks">
+                    <li class="subMenuWrapper">
+                        {{# if isAdminTestimonials }}
+                            <span class="subMenuLink activeLink">All testimonials</span>
+                        {{ else }}
+                            <a class="subMenuLink"
+                               href="/admin/about-us/testimonials/">All testimonials</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminTestimonialsAdd }}
+                            <span class="subMenuLink addLink activeLink">Add new testimonial</span>
+                        {{ else }}
+                            <a class="subMenuLink addLink"
+                               href="/admin/about-us/testimonials/add/">Add new testimonial</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminPress }}
+                            <span class="subMenuLink activeLink">All press</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/about-us/press/">All press</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminPressAdd }}
+                            <span class="subMenuLink addLink activeLink">Add new press</span>
+                        {{ else }}
+                            <a class="subMenuLink addLink" href="/admin/about-us/press/add/">Add new press</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminOffers }}
+                            <span class="subMenuLink activeLink">Financing offers</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/about-us/offers/">Financing offers</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminContact }}
+                            <span class="subMenuLink activeLink">Contact us</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/about-us/contact-us/">Contact us</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminQuotes }}
+                            <span class="subMenuLink activeLink">Get an instant quote</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/about-us/instant-quotes/">Get an instant quote</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminThanks }}
+                            <span class="subMenuLink activeLink">Thank you</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/about-us/thank-you/">Thank you</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminReview }}
+                            <span class="subMenuLink activeLink">Leave a review</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/about-us/leave-review/">Leave a review</a>
+                        {{/ if }}
+                    </li>
+                </ul>
+            </li>
+            <li class="menuWrapper">
+                <span class="menuLink">Other <span class="dropdownMenu"></span></span>
+                <ul class="subMenuLinks">
+                    <li class="subMenuWrapper">
+                        {{# if isAdminSettings }}
+                            <span class="subMenuLink activeLink">Settings</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/settings/">Settings</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminUser }}
+                            <span class="subMenuLink activeLink">All users</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/users/">All users</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminUserAdd }}
+                            <span class="subMenuLink addLink activeLink">Add user</span>
+                        {{ else }}
+                            <a class="subMenuLink addLink" href="/admin/users/add/">Add user</a>
+                        {{/ if }}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </aside>
+    <div class="content">
+        <header class="header"></header>
+        <div class="wrapper">{{{ body }}}</div>
+    </div>
+</main>
+
+<script src="/public/scripts/admin.min.js"></script>
+
+<script src="https://cdn.tiny.cloud/1/mj86lapz6ohgcvdlhkzgxke2ysm1tjmhf1tw4utj9pxlgurk/tinymce/5/tinymce.min.js" referrerpolicy="origin"/></script>
+<script>
+    tinymce.init({
+        selector: '.tinyField',
+        plugins: 'code image link preview paste',
+        toolbar: 'undo redo | formatselect | ' +
+                'bold italic | alignleft aligncenter ' +
+                'alignright alignjustify | bullist numlist outdent indent | ' +
+                'link image | code',
+        menubar: 'false',
+        content_style: 'body { font-family: Arial, sans-serif; font-size: 14px }'
+    });
+</script>
+
+</body>
+</html>

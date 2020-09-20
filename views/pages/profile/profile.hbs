@@ -3,21 +3,20 @@
         <div class="cardWrapper">
             <div class="userWrapper">
                 <div class="userAvatar">
-                    {{# if profileData.isAvatarExist }}
-                        <img class="avatarPicture"
-                             src="{{{ profileData.avatar }}}"
+                    {{# if profile.isAvatarExist }}
+                        <img class="avatarPicture" src="{{{ profile.avatarImage }}}_130x130.jpg"
                              alt="Avatar photo">
                     {{/ if }}
                 </div>
                 <div class="userInfoWrapper">
                     <p class="userNameWrapper">
-                        <span class="name">{{{ profileData.name }}}</span>
-                        <span class="surname">{{{ profileData.surname }}}</span>
-                        <span class="mail">{{{ profileData.mail }}}</span>
-                        <span class="username">{{{ profileData.username }}}</span>
-                        <span class="userID">{{{ profileData.userID }}}</span>
+                        <span class="name">{{{ profile.name }}}</span>
+                        <span class="surname">{{{ profile.surname }}}</span>
+                        <span class="mail">{{{ profile.mail }}}</span>
+                        <span class="username">{{{ profile.username }}}</span>
+                        <span class="userID">{{{ profile.userID }}}</span>
                     </p>
-                    <span class="userMembership">{{{ profileData.membership }}}</span>
+                    <span class="userMembership">Member since {{{ profile.year }}}</span>
                 </div>
             </div>
             <div class="cardButtonsWrapper">
@@ -36,30 +35,34 @@
     <div class="wrapper center">
         <div class="sectionHeader">
             <h2 class="sectionTitle">My collection</h2>
-            {{# if isSavedPhoto }}
-                <button class="createAlbumButton" type="button" title="Create album">CREATE ALBUM</button>
+            {{# if isAlbumsVisible }}
+                <button class="createAlbumButton"
+                        type="button" title="Create album">CREATE ALBUM</button>
             {{/ if }}
         </div>
         {{> micro-blocks/profile-menu/profile-menu }}
         {{# if isAlbumsVisible }}
             <ul class="albumList">
                 {{# each albums }}
-                    <li class="albumWrapper" data-album="{{{ id }}}">
-                        <a class="albumLink" href="/profile/saved/{{{ id }}}">
+                    <li class="albumWrapper" data-album="{{{ albumID }}}">
+                        <a class="albumLink" href="/profile/saved/{{{ albumID }}}">
                             <div class="albumCoverWrapper">
                                 <img class="albumCoverPicture"
-                                     src="/public/images/temp/{{{ image }}}.jpg"
-                                     alt="{{{ title }}}">
-                                <div class="albumPicturesCount">{{{ albumCount }}}</div>
+                                     src="{{{ albumCover }}}.jpg"
+                                     alt="{{{ albumTitle }}}">
+                                {{# if albumCount }}
+                                    <div class="albumPicturesCount">{{{ albumCount }}}</div>
+                                {{/if}}
                             </div>
                         </a>
-                        <button class="editAlbumButton" type="button" title="Edit album">Edit album</button>
-                        <h3 class="albumTitle">{{{ title }}}</h3>
+                        <button class="editAlbumButton"
+                                type="button" title="Edit album">Edit album</button>
+                        <h3 class="albumTitle">{{{ albumTitle }}}</h3>
                     </li>
                 {{/each}}
                 <li class="albumWrapper">
                     <div class="albumCoverWrapper">
-                        <button class="albumAddCover createAlbumButton"
+                        <button class="albumAddCover createAlbumButton {{# if albums }}alreadyAdded{{/ if }}"
                                 type="button"
                                 title="Create album">Create album</button>
                     </div>
@@ -81,28 +84,45 @@
             {{# each ideas }}
                 <li class="ideaWrapper" data-album="{{{ albumID }}}">
                     <div class="ideaPhotoWrapper">
-                        <img class="ideaPhoto"
-                             data-idea="{{{ id }}}"
-                             src="/public/images/temp/{{{ image }}}.jpg"
-                             alt="{{{ title }}}">
-                        <button class="deleteCardButton" title="Delete picture" type="button">DELETE</button>
+                        <img class="{{# if ideaAuthor }}ideaPhoto{{ else }}uploadedPhoto{{/ if }}"
+                             data-idea="{{{ ideaID }}}"
+                             src="{{{ ideaImage }}}_252x252.jpg"
+                             alt="{{{ ideaTitle }}}">
+                        <button class="deleteCardButton" title="Delete picture"
+                                type="button">DELETE</button>
                         <div class="hoverCardWrapper">
                             <div class="deleteWrapper">
                                 <p class="deleteAnnotation">Are you sure you want to remove this photo?</p>
                                 <form class="deleteButtonsWrapper formWrapper">
-                                    <input class="hiddenField" type="hidden" name="ideaID" value="{{{ id }}}">
-                                    <button class="cancelButton" title="Cancel" type="button">CANCEL</button>
-                                    <button class="deleteButton" title="Delete" type="button">DELETE</button>
+                                    <input class="hiddenField" type="hidden"
+                                           name="ideaID" value="{{{ ideaID }}}">
+                                    {{# if albumID }}
+                                        <input class="hiddenField" type="hidden"
+                                               name="albumID" value="{{{ albumID }}}">
+                                    {{/if}}
+                                    <button class="cancelButton"
+                                            title="Cancel" type="button">CANCEL</button>
+                                    {{# if ideaAuthor }}
+                                        <button class="deleteButton" data-api="/api/ideas/relation"
+                                                title="Delete" type="button">DELETE</button>
+                                    {{ else }}
+                                        <button class="deleteButton" data-api="/api/ideas"
+                                                title="Delete" type="button">DELETE</button>
+                                    {{/if}}
                                 </form>
                             </div>
                         </div>
                     </div>
-                    <h3 class="ideaTitle">{{{ title }}}</h3>
-                    <strong class="ideaAuthor">{{{ author }}}</strong>
+                    <h3 class="ideaTitle">{{{ ideaTitle }}}</h3>
+                    {{# if ideaAuthor }}
+                        <strong class="ideaAuthor">By {{{ ideaAuthor }}}</strong>
+                    {{ else }}
+                        <strong class="ideaAuthor">By you</strong>
+                    {{/ if }}
                 </li>
             {{/each}}
         </ul>
-        <button class="showMoreButton">SHOW MORE</button>
+        <button class="showMoreButton hiddenButton">SHOW MORE</button>
     </div>
 </section>
 
@@ -129,7 +149,8 @@
                     <form class="deleteButtonsWrapper formWrapper">
                         <input class="hiddenField" type="hidden" name="ideaID">
                         <button class="cancelButton" title="Cancel" type="button">CANCEL</button>
-                        <button class="deleteButton" title="Delete" type="button">DELETE</button>
+                        <button class="deleteButton" title="Delete" data-api="/api/ideas"
+                                type="button">DELETE</button>
                     </form>
                 </div>
             </div>

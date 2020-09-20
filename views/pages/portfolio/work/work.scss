@@ -91,10 +91,18 @@
             border-bottom: 1px solid $sub;
         }
         .pictureFull {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
+            min-height: 190px;
+            @include minWidth(480) {
+                min-height: 290px;
+            }
+            @include minWidth(768) {
+                min-height: 430px;
+            }
             @include minWidth(1000) {
                 width: 648px;
                 min-height: 554px;
@@ -104,7 +112,9 @@
                 min-height: 590px;
             }
             .fullsizePicture {
+                @extend %animation;
                 @extend %shadow;
+                opacity: 1;
                 max-width: 290px;
                 max-height: 290px;
                 @include minWidth(480) {
@@ -122,6 +132,29 @@
                 @include minWidth(1440) {
                     max-width: 704px;
                     max-height: 704px;
+                }
+                &.hiddenPicture {
+                    opacity: 0;
+                }
+            }
+            .fullsizeLoader {
+                @extend %animation;
+                opacity: 1;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 24px;
+                height: 24px;
+                background-image: url("/public/images/vector/load-icon_grey.svg");
+                background-size: 24px 24px;
+                @include minWidth(1000) {
+                    width: 36px;
+                    height: 36px;
+                    background-size: 36px 36px;
+                }
+                &.hiddenLoader {
+                    opacity: 0;
                 }
             }
         }
@@ -184,10 +217,7 @@
             }
         }
     }
-    .textBlock {
-        @include minWidth(768) {
-            font-size: 12px;
-        }
+    .portfolioText {
         @include minWidth(1000) {
             margin: 20px auto 0;
             width: 894px;

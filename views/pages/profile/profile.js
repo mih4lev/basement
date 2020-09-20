@@ -1,4 +1,4 @@
-import { saveAction } from "../../partials/modals/modals";
+import { saveAction } from "../../../source/scripts/utils";
 
 export const showDeleteWrappers = () => {
 
@@ -32,14 +32,13 @@ export const showDeleteWrappers = () => {
         };
 
         const deleteHandler = async () => {
+            const { dataset: { api: URL }} = deleteButton;
             const parentWrapper = deleteButton.closest(`.ideaWrapper`);
             const formNode = parentWrapper.querySelector(`.formWrapper`);
             const formData = new FormData(formNode);
-            const responseOptions = {
-                URL: `/api/ideas`, method: `DELETE`, body: formData, button: deleteButton
-            };
-            const responseData = await saveAction(responseOptions);
-            if (responseData.code !== 200) return false; // show error
+            const options = { URL, method: `DELETE`, body: formData, button: deleteButton };
+            const response = await saveAction(options);
+            if (response.status !== 1) return false; // show error
             removeFromAlbum(parentWrapper.dataset.album);
             parentWrapper.parentNode.removeChild(parentWrapper);
         };

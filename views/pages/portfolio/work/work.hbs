@@ -11,7 +11,9 @@
                         <a class="breadcrumbLink" href="/portfolio/">Portfolio</a>
                     </li>
                     <li class="breadcrumbLinkWrapper">
-                        <span class="breadcrumbLink breadcrumbActive">{{{ city }}} {{{ work }}}</span>
+                        <span class="breadcrumbLink breadcrumbActive">
+                            {{{ page.workTitle }}}, {{{ page.workCity }}}
+                        </span>
                     </li>
                 </ul>
             </nav>
@@ -21,39 +23,52 @@
 
 <section class="portfolioWork">
     <div class="wrapper slimWrapper">
-        <h1 class="sectionTitle">{{{ city }}} {{{ work }}}</h1>
+        <h1 class="sectionTitle">{{{ page.workTitle }}}, {{{ page.workCity }}}</h1>
         <div class="headerArrows">
-            <button title="View previous portfolio work" type="button"
-                    class="headerArrow leftArrow">View previous portfolio work</button>
-            <button title="View next portfolio work" type="button"
-                    class="headerArrow rightArrow">View next portfolio work</button>
+            {{# if page.prevID }}
+                <a href="/portfolio/{{{ page.prevID }}}"
+                   class="headerArrow leftArrow">View previous portfolio work</a>
+            {{/ if }}
+            {{# if page.nextID }}
+                <a href="/portfolio/{{{ page.nextID }}}"
+                   class="headerArrow rightArrow">View next portfolio work</a>
+            {{/ if }}
         </div>
-        <div class="squareData">{{{ square }}} SQ. FT.</div>
+        <div class="squareData">{{{ page.workSquare }}} SQ. FT.</div>
         <div class="picturesWrapper">
             <div class="pictureFull">
-                <img class="fullsizePicture"
-                     data-picture="/public/images/work_1_1440.jpg"
-                     src="/public/images/temp/work_1_1440.jpg"
-                     alt="{{{ city }}} {{{ work }}}">
+                <img class="fullsizePicture hiddenPicture" src=""
+                     alt="{{{ page.workTitle }}}, {{{ page.workCity }}}">
+                <div class="fullsizeLoader"></div>
             </div>
             <div class="portfolioPreviews">
                 <ul class="previewList">
-                    {{# each previews }}
+                    {{# each page.images }}
                         <li class="previewWrapper"
-                            data-picture="/public/images/temp/{{{ picture }}}_1440.jpg"
-                            data-title="{{{ title }}}">
-                            <img class="previewImage"
-                                 data-picture="/public/images/temp/{{{ picture }}}_1440.jpg"
-                                 src="/public/images/temp/{{{ preview }}}_1440.jpg"
-                                 alt="{{{ title }}}">
+                            data-picture="{{{ imageName }}}.jpg">
+                            <picture>
+                                <source srcset="{{{ imageName }}}_38x38.jpg,
+                                                {{{ imageName }}}_76x76.jpg 2x"
+                                        media="(max-width: 479px)">
+                                <source srcset="{{{ imageName }}}_71x71.jpg,
+                                                {{{ imageName }}}_142x142.jpg 2x"
+                                        media="(min-width: 480px)">
+                                <img class="previewImage" src="{{{ imageName }}}_71x71.jpg"
+                                     data-picture="{{{ imageName }}}.jpg"
+                                     srcset="{{{ imageName }}}_71x71.jpg,
+                                             {{{ imageName }}}_142x142.jpg 2x"
+                                     alt="Preview image">
+                            </picture>
                         </li>
                     {{/each}}
                 </ul>
             </div>
         </div>
-        <p class="textBlock">A dazzling new home in Rockville, MD with a gently sloping backyard features an amazing sky blue exterior with white trimming, balcony walkway, rowed windows and a spectacular stone accent wall denoting the entrance. Inside, a heavily recessed, darkened door frame with dramatic side windows creates a striking impression against a neutral backdrop of soft grays, LVT flooring and recessed row lighting. The neutral motif extends into the kitchen and dining room (complete with wraparound countertops, cabinets, and a center island), varying only slightly in the living room area by incorporating crisp white-on-white walls, ceiling and trim in contrast to darker LVT flooring. An accent wall with artificial fireplace masterfully draws the eye.</p>
-        <p class="textBlock">The laundry room has a stacked washer and dryer tucked away neatly across from a stairway with clean white railings and banisters that match the light tones of the LVT flooring. Four bedrooms each have an abundance of natural lighting while maintaining a distinct look and feel through sweeping architectural curves and strategic window placing. The master bathroom has separate toilets, matching extra-wide countertops with twin vanity mirrors and lighted frames, recessed lighting, and a tiled shower with a retractable wand and pull-open glass doors.</p>
-        <p class="textBlock">Finally, the half-submerged ground floor boasts great acoustics and fun games in the music room, with LVT flooring and neutral gray colors. A giant metallic gray garage with white trimming has enough room for any car collector. Overall, a beautiful new home with a uniform look that’s bold and inviting.</p>
+        <div class="portfolioText">
+            <div class="contentTextarea">
+                {{{ page.workText }}}
+            </div>
+        </div>
         <div class="buttonWrapper">
             <a href="/portfolio/" title="Return to portfolio" class="backButton">GO BACK</a>
         </div>

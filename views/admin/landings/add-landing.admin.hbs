@@ -1,0 +1,146 @@
+<form class="formNode" action="/admin/landings/add">
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageURL">Page URL</label>
+            <input class="textField" type="text" id="pageURL" name="pageURL">
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageTitle">Page title</label>
+            <input class="textField" type="text" id="pageTitle" name="pageTitle">
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageDescription">Page description</label>
+            <textarea class="textareaField" id="pageDescription" name="pageDescription"></textarea>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageKeywords">Page keywords</label>
+            <textarea class="textareaField" id="pageKeywords" name="pageKeywords"></textarea>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="headerTitle">Header title</label>
+            <input class="textField" type="text" id="headerTitle" name="headerTitle">
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="headerText">Header text</label>
+            <textarea class="textareaField tinyField" id="headerText" name="headerText"></textarea>
+        </div>
+    </section>
+
+    <section class="fileSection">
+        <div class="fileWrapper">
+            <input type="file" class="fileField" id="landingImage" name="landingImage">
+            <label class="fileLabel" for="landingImage">Landing image</label>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="footerTitle">Footer title</label>
+            <input class="textField" type="text" id="footerTitle" name="footerTitle">
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="footerText">Footer text</label>
+            <textarea class="textareaField tinyField" id="footerText" name="footerText"></textarea>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper" style="width: 40%; margin-right: 10px;">
+            <label class="fieldLabel" for="workAddress">Find location by address</label>
+            <input class="textField" type="text" id="workAddress" value="">
+        </div>
+        <div class="fieldWrapper" style="width: 20%; margin-right: 10px;">
+            <label class="fieldLabel" for="lat"></label>
+            <input class="textField" type="text" id="lat" name="lat" value="">
+        </div>
+        <div class="fieldWrapper" style="width: 20%; margin-right: 10px;">
+            <label class="fieldLabel" for="lng"></label>
+            <input class="textField" type="text" id="lng" name="lng" value="">
+        </div>
+        <div class="fieldWrapper" style="width: 20%">
+            <label class="fieldLabel" for="zoom"></label>
+            <input class="textField" type="text" id="zoom" name="zoom" value="">
+        </div>
+    </section>
+
+    <section class="mapSection">
+        <div class="mapPlaceholder"></div>
+        <script>
+            const mapNode = document.querySelector(`.mapPlaceholder`);
+            const addressField = document.querySelector(`#workAddress`);
+            const latField = document.querySelector(`#lat`);
+            const lngField = document.querySelector(`#lng`);
+            const zoomField = document.querySelector(`#zoom`);
+            const markers = [];
+            const setZoom = (map) => {
+                return () => {
+                    zoomField.value = map.getZoom();
+                };
+            };
+            const setCenter = (map) => {
+                return () => {
+                    latField.value = map.getCenter().lat();
+                    lngField.value = map.getCenter().lng();
+                }
+            };
+            function initMap() {
+                const lat = Number(latField.value) || 38.89511;
+                const lng = Number(lngField.value) || -77.03637;
+                const zoom = Number(zoomField.value) || 8;
+                const coors = { lat, lng };
+                const map = new google.maps.Map(mapNode, { zoom, center: coors });
+                setZoom(map)();
+                setCenter(map)();
+                map.addListener(`zoom_changed`, setZoom(map));
+                map.addListener(`center_changed`, setCenter(map));
+                const geocoder = new google.maps.Geocoder();
+                const callback = (results, status) => {
+                    if (!status || !results.length) return false;
+                    latField.value = results[0].geometry.location.lat();
+                    lngField.value = results[0].geometry.location.lng();
+                    const position = results[0].geometry.location;
+                    map.setCenter(position);
+                    map.setZoom(13);
+                };
+                const geocodeAddress = (geocoder) => {
+                    if (!addressField.value) return false;
+                    geocoder.geocode({ address: addressField.value }, callback);
+                };
+                addressField.addEventListener(`change`, () => {
+                    geocodeAddress(geocoder, map);
+                });
+                addressField.addEventListener(`input`, () => {
+                    geocodeAddress(geocoder, map);
+                });
+            }
+        </script>
+    </section>
+
+    <div class="formButtons">
+        {{> micro-blocks/upload-button/upload-button }}
+        <button class="submitButton" type="button" title="Create" data-redirect="/admin/landings"
+                data-action="create" data-api="">Create</button>
+    </div>
+
+</form>
+
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUZcbipHbHCXwp6PdXIFGhExytbzvh7Tk&callback=initMap"></script>

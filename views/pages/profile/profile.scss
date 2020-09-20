@@ -61,12 +61,14 @@
                     left: 0;
                     width: 76px;
                     height: 76px;
+                    margin: -2px;
                     object-fit: cover;
                     @include minWidth(480) {
                         width: 86px;
                         height: 86px;
                     }
                     @include minWidth(768) {
+                        margin: -5px;
                         width: 130px;
                         height: 130px;
                     }
@@ -399,6 +401,17 @@
                             font-size: 10px;
                         }
                     }
+                    &.alreadyAdded {
+                        &:before {
+                            margin-top: -10px;
+                        }
+                        &:after {
+                            content: "Add album";
+                            margin-top: 12px;
+                            color: $raven;
+                            font-size: 12px;
+                        }
+                    }
                 }
             }
             .editAlbumButton {
@@ -541,6 +554,9 @@
                 opacity: 1;
             }
         }
+        .ideaPhoto {
+            object-fit: cover;
+        }
         .deleteCardButton {
             @extend %animation;
             @extend %closeIcon;
@@ -624,7 +640,7 @@
                                 width: 20px;
                                 height: 20px;
                                 background-color: transparent;
-                                background-image: url("/public/images/load-icon.svg");
+                                background-image: url("/public/images/vector/load-icon.svg");
                                 background-size: 20px 20px;
                                 -webkit-mask-image: none;
                                 mask-image: none;

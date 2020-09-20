@@ -21,6 +21,29 @@
         font-size: 15px;
         color: $ghost;
     }
+    .submitButton {
+        &.loadButton {
+            position: relative;
+            &:after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                right: 15px;
+                transform: translateY(-50%);
+                margin-left: 0;
+                width: 20px;
+                height: 20px;
+                background-color: transparent;
+                background-image: url("/public/images/vector/load-icon.svg");
+                background-size: 20px 20px;
+                -webkit-mask-image: none;
+                mask-image: none;
+                @include minWidth(480) {
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
     .signUpTextWrapper {
         display: flex;
         flex-direction: column;

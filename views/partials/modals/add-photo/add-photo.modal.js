@@ -1,4 +1,5 @@
-import { changeModalVisible, resetDropEvents, saveAction, setModal } from "../modals";
+import { changeModalVisible, setModal } from "../modals";
+import { resetDropEvents, saveAction } from "../../../../source/scripts/utils";
 
 export const addPhotoModal = () => {
 
@@ -145,31 +146,25 @@ export const addPhotoModal = () => {
         ideaList.insertBefore(ideaClone, ideaList.children[1]);
     }
 
-    const saveIdeas = (title, addedIDArray) => {
+    const saveIdeas = (title, ideasArray) => {
         if (ideaList.classList.contains(`savedList`)) return false;
-        let arrayIndex = 0;
-        for (const fileName in customFiles) {
-            const ideaID = addedIDArray[arrayIndex] || 10; // delete defaultID
-            const reader = new FileReader();
-            reader.addEventListener(`load`, () => {
-                createIdea(reader.result, title, ideaID);
-            });
-            reader.readAsDataURL(customFiles[fileName]);
-            arrayIndex += 1;
-        }
+        ideasArray.forEach(({ requestID: ideaID, filename }) => {
+            const URL = `/public/upload/ideas/${ideaID}/${filename}_252x252.jpg`
+            createIdea(URL, title, ideaID);
+        });
     };
 
     const sendData = async (event) => {
         event.preventDefault();
         const formData = new FormData(formNode);
         for (const fileName in customFiles) {
-            formData.append(`ideaPhotos`, customFiles[fileName], fileName);
+            formData.append(`ideaImage`, customFiles[fileName], fileName);
         }
         // change button && fetch data
         const responseOptions = { URL: `/api/ideas`, body: formData, button: event.target };
-        const responseData = await saveAction(responseOptions);
-        if (responseData.code !== 200) return false; // show error
-        saveIdeas(photosTitle.value, responseData.addedIDArray);
+        const { status, ideasArray } = await saveAction(responseOptions);
+        if (status !== 1) return false; // show error
+        saveIdeas(photosTitle.value, ideasArray);
         changeModalVisible(modalNode)();
         clearModalData();
     };

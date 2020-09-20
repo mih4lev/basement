@@ -1,0 +1,110 @@
+<form class="formNode" action="/admin/how-it-works/basement-tips/add">
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageTitle">Page title</label>
+            <input class="textField" type="text" id="pageTitle" name="pageTitle">
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageDescription">Page description</label>
+            <textarea class="textareaField" id="pageDescription" name="pageDescription"></textarea>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageKeywords">Page keywords</label>
+            <textarea class="textareaField" id="pageKeywords" name="pageKeywords"></textarea>
+        </div>
+    </section>
+
+    <section class="fileSection">
+        <div class="fileWrapper" style="width: 330px; height: 173px;">
+            <input type="file" class="fileField" id="tipImage" name="tipImage">
+            <label class="fileLabel" for="tipImage">Tip cover</label>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="tipTitle">Tip title</label>
+            <input class="textField" type="text" id="tipTitle" name="tipTitle">
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <span class="fieldTitle">Category:</span>
+        <div class="selectWrapper" data-id="categoryID" data-name="categoryName" style="margin: 0 5px 0 10px;">
+            <div class="currentSelect"></div>
+            <input class="hiddenField" type="hidden" name="categoryID" value="0">
+            <div class="dropdownWrapper hiddenWrapper">
+                {{# each categories }}
+                    <div class="dropdownElement">
+                        <div class="elementWrapper">
+                            <span class="selectElement" data-request="{{{ categoryID }}}">{{{ categoryName }}}</span>
+                            <button class="editButton" type="button" title="Edit category">Edit category</button>
+                        </div>
+                        <div class="editWrapper hiddenWrapper">
+                            <input class="editField" type="text" value="{{{ categoryName }}}">
+                            <button class="saveButton" data-api="/admin/how-it-works/basement-tips/categories/edit"
+                                    type="button" title="Save category">Save category</button>
+                        </div>
+                    </div>
+                {{/ each }}
+                <div class="newElement">
+                    <div class="createWrapper">+ Add new</div>
+                    <div class="editWrapper hiddenWrapper">
+                        <input class="editField" type="text">
+                        <button class="saveButton" data-api="/admin/how-it-works/basement-tips/categories"
+                                type="button" title="Save category">Save category</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="tipAnnounce">Tip announce</label>
+            <textarea class="textareaField" id="tipAnnounce" name="tipAnnounce"></textarea>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="tipText">Tip text</label>
+            <textarea class="textareaField tinyField" id="tipText" name="tipText"></textarea>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="portfolioID">Portfolio ID</label>
+            <input class="textField" type="text" id="portfolioID" name="portfolioID">
+        </div>
+    </section>
+
+    <div class="formButtons">
+        {{> micro-blocks/upload-button/upload-button }}
+        <button class="submitButton" type="button" title="Create" data-redirect="/admin/how-it-works/basement-tips"
+                data-action="create" data-api="">Create</button>
+    </div>
+
+</form>
+
+<template class="dropdownTemplate">
+    <div class="dropdownElement">
+        <div class="elementWrapper">
+            <span class="selectElement" data-request=""></span>
+            <button class="editButton" type="button" title="Edit category">Edit category</button>
+        </div>
+        <div class="editWrapper hiddenWrapper">
+            <input class="editField" type="text" value="">
+            <button class="saveButton" data-api="/admin/how-it-works/basement-tips/categories/edit"
+                    type="button" title="Save category">Save category</button>
+        </div>
+    </div>
+</template>

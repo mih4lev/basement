@@ -1,0 +1,130 @@
+<section class="pageHeader subCategories">
+    <div class="wrapper headerWrapper">
+        <div class="subCategoriesWrapper">
+            <div class="pageTitleWrapper">
+                {{# if subCategory.categoryImage }}
+                    <picture>
+                        <source srcset="{{{ subCategory.categoryImage }}}_79x79.jpg,
+                                        {{{ subCategory.categoryImage }}}_158x158.jpg 2x"
+                                media="(max-width: 767px)">
+                        <source srcset="{{{ subCategory.categoryImage }}}_137x137.jpg,
+                                        {{{ subCategory.categoryImage }}}_274x274.jpg 2x"
+                                media="(min-width: 768px)">
+                        <img class="pageTitleImage"
+                             src="{{{ subCategory.categoryImage }}}_137x137.jpg"
+                             srcset="{{{ subCategory.categoryImage }}}_137x137.jpg,
+                                     {{{ subCategory.categoryImage }}}_274x274.jpg 2x"
+                             alt="{{{ subCategory.categoryTitle }}}">
+                    </picture>
+                {{ else }}
+                    <div class="categoryImage coverImage"></div>
+                {{/ if }}
+                <h1 class="pageTitle">{{{ subCategory.categoryTitle }}}</h1>
+            </div>
+            {{# if subCategories }}
+                <div class="categoriesListWrapper">
+                    <p class="subCategoriesHeader">Available subcategories:</p>
+                    <ul class="categoryList">
+                        {{# each subCategories }}
+                        <li class="categoryWrapper{{# if isActive }} activeCategory{{/if}}">
+                            <a class="categoryLink" href="{{{ categoryLink }}}">
+                                {{# if categoryImage }}
+                                    <picture>
+                                        <source srcset="{{{ categoryImage }}}_54x54.jpg,
+                                                    {{{ categoryImage }}}_108x108.jpg 2x"
+                                                media="(max-width: 767px)">
+                                        <source srcset="{{{ categoryImage }}}_79x79.jpg,
+                                                    {{{ categoryImage }}}_158x158.jpg 2x"
+                                                media="(min-width: 768px)">
+                                        <img class="categoryImage"
+                                             src="{{{ categoryImage }}}_79x79.jpg"
+                                             srcset="{{{ categoryImage }}}_79x79.jpg,
+                                                 {{{ categoryImage }}}_158x158.jpg 2x"
+                                             alt="{{{ categoryTitle }}}">
+                                    </picture>
+                                {{ else }}
+                                    <div class="categoryImage coverImage"></div>
+                                {{/ if }}
+                                <span class="categoryTitle">{{{ categoryTitle }}}</span>
+                            </a>
+                        </li>
+                        {{/ each }}
+                    </ul>
+                </div>
+            {{/ if }}
+        </div>
+        <nav class="breadcrumbs">
+            <ul class="breadcrumbList">
+                <li class="breadcrumbLinkWrapper">
+                    <a class="breadcrumbLink" href="/">Basement Remodeling Company</a>
+                </li>
+                <li class="breadcrumbLinkWrapper">
+                    <a class="breadcrumbLink" href="/basement-ideas/">Basement ideas</a>
+                </li>
+                <li class="breadcrumbLinkWrapper">
+                    <a class="breadcrumbLink"
+                       href="/basement-ideas/{{{ category.categoryLink }}}/">
+                        {{{ category.categoryTitle }}}
+                    </a>
+                </li>
+                <li class="breadcrumbLinkWrapper">
+                    <a class="breadcrumbLink"
+                       href="/basement-ideas/{{{ category.categoryLink }}}/{{{ subCategory.categoryLink }}}/">
+                        {{{ subCategory.categoryTitle }}}
+                    </a>
+                </li>
+                <li class="breadcrumbLinkWrapper">
+                    <span class="breadcrumbLink breadcrumbActive">{{{ childCategory.categoryTitle }}}</span>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>
+
+<section class="filtersWrapper">
+    <div class="wrapper headerWrapper">
+        {{> micro-blocks/filters/ideas.filters }}
+    </div>
+</section>
+
+<section class="chosenFiltersWrapper ideasActiveFilters">
+    <div class="wrapper headerWrapper emptyChosenFilters">
+        <form class="filtersForm" action="/api/ideas/category/{{{ childCategory.categoryID }}}/filter">
+            <ul class="activeFilterList"></ul>
+            <input type="hidden" class="hiddenField orderField" name="order" value="ideaID">
+        </form>
+    </div>
+</section>
+
+<section class="ideasMain">
+    <div class="wrapper listWrapper">
+        <button class="ideasSortWrapper" data-order="ideaID">WHAT’S NEW</button>
+        <ul class="ideaList elementsWrapper" data-page="12"
+            data-api="/api/ideas/category/{{{ childCategory.categoryID }}}/all">
+            {{# each ideas }}
+                {{> micro-blocks/idea/idea }}
+            {{/each}}
+        </ul>
+        <button title="Show more" data-scroll="1"
+                class="showMoreButton {{# if categoryData.hiddenButton }}hiddenButton{{/ if }}">SHOW MORE</button>
+    </div>
+    <div class="pageLoader hiddenLoader"></div>
+</section>
+
+<section class="ideasFooter">
+    <div class="wrapper headerWrapper">
+        <h2>Basement Remodeling Ideas</h2>
+        <p>For the ultimate in entertainment, consider installing a premium home theater! With authentic movie seats, theater-style carpet, walls, and a recessed ceiling to hold your deluxe sound system, you and your family will feel like you are out for a night on the town.</p>
+        <p>Like pocket doors, interior sliding barn doors are a rustic alternative to the traditional swinging door format. Interior barn style doors are made of virtually any material you can think of, from iron to steel, but most prefer the timeless look of a weathered set of double barn doors. Barn doors make great focal points by framing the beautiful room behind them on both sides, lending geometrical symmetry to the overall floorplan.</p>
+        <p>Or, perhaps you would like to convey a more family-oriented design with soft lighting, modern furniture and casual artwork? Either way, our design experts can make all of your home theater basement ideas come true! Plus, you’ll always have the best seat!</p>
+    </div>
+</section>
+
+<template class="elementTemplate">
+    <li class="ideaWrapper">
+        <div class="imageWrapper"></div>
+        <button class="saveIdea" data-idea="">SAVE TO COLLECTION</button>
+        <h3 class="ideaTitle"></h3>
+        <strong class="ideaAuthor"></strong>
+    </li>
+</template>

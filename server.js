@@ -4,11 +4,12 @@ const expressHbs = require(`express-handlebars`);
 const app = express();
 const hbs = require(`hbs`);
 const cookieParser = require(`cookie-parser`);
+const setRequest = require("./middlewares/request.middleware");
 const loginMiddleware = require("./middlewares/login.middleware");
 const createPageRoutes = require("./routes/pages.route");
-const createAPIRoutes = require("./routes/api.route")
+const createAPIRoutes = require("./routes/api.route");
+const createAdminRoutes = require("./routes/admin.route");
 
-// compress response
 app.use(compression());
 
 // handlebars options
@@ -28,6 +29,7 @@ app.use(`/data-mock`, express.static(__dirname + `/data-mock`));
 // middleware
 app.use(express.json({ extended: true }));
 app.use(cookieParser('secretKeyBasementRemodelingDotCom'));
+app.use(setRequest);
 app.use(loginMiddleware);
 
 // pages routes
@@ -35,6 +37,9 @@ createPageRoutes(app);
 
 // API routes
 createAPIRoutes(app);
+
+// API routes
+createAdminRoutes(app);
 
 // 404
 app.use((request, response, next) => {

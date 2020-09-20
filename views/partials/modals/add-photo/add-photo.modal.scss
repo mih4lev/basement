@@ -113,9 +113,12 @@
                     @extend %animation;
                     content: "+";
                     position: absolute;
-                    margin-top: -20px;
+                    margin-top: -40px;
                     font-size: 48px;
                     color: $raven;
+                    @include minWidth(1000) {
+                        margin-top: -40px;
+                    }
                 }
                 &:hover {
                     color: $blue;

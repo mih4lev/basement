@@ -14,6 +14,8 @@
 # ignore upload files
 /public/upload/
 /data-mock/instagram.json
+# ignore ENV files
+.env
 # ignore DS files
 .DS_Store
 /client/.DS_Store

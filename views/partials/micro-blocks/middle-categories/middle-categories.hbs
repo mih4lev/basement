@@ -3,20 +3,27 @@
     <nav class="headerMiddleCategories">
         <div class="categoriesActionWrapper">
             <ul class="categoryList">
-                {{# each ideas-categories }}
+                {{# each subCategories }}
                     <li class="categoryWrapper">
-                        <a class="categoryLink" href="{{{ link }}}">
-                            <picture class="categoryImage">
-                                <source srcset="/public/images/categories/{{{ image }}}_85x85.webp,
-                                                    /public/images/categories/{{{ image }}}_170x170.webp 2x"
-                                        type="image/webp">
-                                <img class="categoryImage"
-                                     src="/public/images/temp/{{{ image }}}_85x85.jpg"
-                                     srcset="/public/images/temp/{{{ image }}}_85x85.jpg,
-                                                 /public/images/temp/{{{ image }}}_170x170.jpg 2x"
-                                     alt="{{{ title }}}">
-                            </picture>
-                            <span class="categoryLabel">{{{ title }}}</span>
+                        <a class="categoryLink" href="{{{ categoryLink }}}">
+                            {{# if categoryImage }}
+                                <picture>
+                                    <source srcset="{{{ categoryImage }}}_54x54.jpg,
+                                                {{{ categoryImage }}}_108x108.jpg 2x"
+                                            media="(max-width: 479px)">
+                                    <source srcset="{{{ categoryImage }}}_79x79.jpg,
+                                                {{{ categoryImage }}}_158x158.jpg 2x"
+                                            media="(min-width: 480px)">
+                                    <img class="categoryImage"
+                                         src="{{{ categoryImage }}}_79x79.jpg"
+                                         srcset="{{{ categoryImage }}}_79x79.jpg,
+                                             {{{ categoryImage }}}_158x158.jpg 2x"
+                                         alt="{{{ title }}}">
+                                </picture>
+                            {{ else }}
+                                <div class="categoryImage coverImage"></div>
+                            {{/ if }}
+                            <span class="categoryLabel">{{{ categoryTitle }}}</span>
                         </a>
                     </li>
                 {{/each}}

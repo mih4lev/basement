@@ -3,58 +3,30 @@
         <ul class="portfolioHomeList">
             {{# each portfolio }}
             <li class="portfolioHomeWrapper">
-                <picture class="portfolioHomeImage">
-                    <source srcset="/public/images/temp/portfolio_home/{{{ image }}}_320.webp,
-                                    /public/images/temp/portfolio_home/{{{ image }}}_320@2x.webp 2x"
-                            media="(max-width: 479px)"
-                            type="image/webp">
-                    <source srcset="/public/images/temp/portfolio_home/{{{ image }}}_320.jpg,
-                                    /public/images/temp/portfolio_home/{{{ image }}}_320@2x.jpg 2x"
-                            media="(max-width: 479px)"
-                            type="image/jpeg">
-                    <source srcset="/public/images/temp/portfolio_home/{{{ image }}}_480.webp,
-                                    /public/images/temp/portfolio_home/{{{ image }}}_480@2x.webp 2x"
-                            media="(max-width: 767px)"
-                            type="image/webp">
-                    <source srcset="/public/images/temp/portfolio_home/{{{ image }}}_480.jpg,
-                                    /public/images/temp/portfolio_home/{{{ image }}}_480@2x.jpg 2x"
-                            media="(max-width: 767px)"
-                            type="image/jpeg">
-                    <source srcset="/public/images/temp/portfolio_home/{{{ image }}}_768.webp,
-                                    /public/images/temp/portfolio_home/{{{ image }}}_768@2x.webp 2x"
-                            media="(max-width: 999px)"
-                            type="image/webp">
-                    <source srcset="/public/images/temp/portfolio_home/{{{ image }}}_768.jpg,
-                                    /public/images/temp/portfolio_home/{{{ image }}}_768@2x.jpg 2x"
-                            media="(max-width: 999px)"
-                            type="image/jpeg">
-                    <source srcset="/public/images/temp/portfolio_home/{{{ image }}}_1000.webp,
-                                    /public/images/temp/portfolio_home/{{{ image }}}_1000@2x.webp 2x"
-                            media="(max-width: 1439px)"
-                            type="image/webp">
-                    <source srcset="/public/images/temp/portfolio_home/{{{ image }}}_1000.jpg,
-                                    /public/images/temp/portfolio_home/{{{ image }}}_1000@2x.jpg 2x"
-                            media="(max-width: 1439px)"
-                            type="image/jpeg">
-                    <source srcset="/public/images/temp/portfolio_home/{{{ image }}}_1440.webp,
-                                    /public/images/temp/portfolio_home/{{{ image }}}_1440@2x.webp 2x"
-                            media="(min-width: 1440px)"
-                            type="image/webp">
-                    <source srcset="/public/images/temp/portfolio_home/{{{ image }}}_1440.jpg,
-                                    /public/images/temp/portfolio_home/{{{ image }}}_1440@2x.jpg 2x"
-                            media="(min-width: 1440px)"
-                            type="image/jpeg">
-                    <img class="portfolioHomeImage"
-                         src="/public/images/temp/portfolio_home/{{{ image }}}_1440.jpg"
-                         srcset="/public/images/temp/portfolio_home/{{{ image }}}_1440.jpg,
-                                 /public/images/temp/portfolio_home/{{{ image }}}_1440@2x.jpg 2x"
-                         alt="{{{ title }}}">
-                </picture>
+                {{# if workImage }}
+                    <picture>
+                        <source srcset="{{{ workImage }}}_100whx130.jpg,
+                                        {{{ workImage }}}_100whx260.jpg 2x"
+                                media="(max-width: 479px)">
+                        <source srcset="{{{ workImage }}}_100whx204.jpg,
+                                        {{{ workImage }}}_100whx408.jpg 2x"
+                                media="(max-width: 1439px)">
+                        <source srcset="{{{ workImage }}}_100whx408.jpg,
+                                        {{{ workImage }}}_100whx816.jpg 2x"
+                                media="(min-width: 1440px)">
+                        <img class="portfolioHomeImage" src="{{{ workImage }}}_100whx204.jpg"
+                             srcset="{{{ workImage }}}_100whx204.jpg,
+                                     {{{ workImage }}}_100whx408.jpg 2x"
+                             alt="{{{ workTitle }}}">
+                    </picture>
+                {{ else }}
+                    <div class="portfolioHomeImage defaultImage"></div>
+                {{/ if }}
                 <div class="portfolioHiddenBlock">
-                    <strong class="portfolioHeader">{{{ work }}}</strong>
-                    <span class="portfolioCity">{{{ city }}}</span>
-                    <span class="portfolioSquare">{{{ square }}}</span>
-                    <a class="portfolioButton" href="/portfolio/{{{ id }}}">VIEW PROJECT</a>
+                    <strong class="portfolioHeader">{{{ workTitle }}}</strong>
+                    <span class="portfolioCity">{{{ workCity }}}</span>
+                    <span class="portfolioSquare">{{{ workSquare }}}</span>
+                    <a class="portfolioButton" href="/portfolio/{{{ portfolioID }}}">VIEW PROJECT</a>
                 </div>
             </li>
             {{/ each }}

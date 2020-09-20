@@ -1,10 +1,9 @@
 const { Router } = require(`express`);
 const router = new Router();
-const fs = require(`fs`);
 const multer = require('multer');
 const formParser = multer();
 
-// API /api/ideas - POST | add ideas (multiple)
+// API /api/contact - POST
 router.post(`/`, formParser.none(), async (request, response) => {
     const formData = { ...request.body };
     console.log(formData);

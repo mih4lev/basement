@@ -86,26 +86,26 @@
             width: 100%;
             max-width: 320px;
             height: 613px;
-            background: url("/public/images/home-map/map-opacity_320.svg");
+            background: url("/public/images/vector/map-opacity_320.svg");
             @include minWidth(480) {
                 max-width: 480px;
                 height: 822px;
-                background: url("/public/images/home-map/map-opacity_480.svg");
+                background: url("/public/images/vector/map-opacity_480.svg");
             }
             @include minWidth(768) {
                 max-width: 768px;
                 height: 594px;
-                background: url("/public/images/home-map/map-opacity_768.svg");
+                background: url("/public/images/vector/map-opacity_768.svg");
             }
             @include minWidth(1000) {
                 max-width: 1000px;
                 height: 721px;
-                background: url("/public/images/home-map/map-opacity_1000.svg");
+                background: url("/public/images/vector/map-opacity_1000.svg");
             }
             @include minWidth(1440) {
                 max-width: 1440px;
                 height: 733px;
-                background: url("/public/images/home-map/map-opacity_1440.svg");
+                background: url("/public/images/vector/map-opacity_1440.svg");
             }
         }
         .mapBorders {
@@ -115,34 +115,34 @@
             left: 8px;
             width: 302px;
             height: 266px;
-            background: url("/public/images/home-map/map-border_320.svg");
+            background: url("/public/images/vector/map-border_320.svg");
             @include minWidth(480) {
                 top: 391px;
                 left: 12px;
                 width: 452px;
                 height: 399px;
-                background: url("/public/images/home-map/map-border_480.svg");
+                background: url("/public/images/vector/map-border_480.svg");
             }
             @include minWidth(768) {
                 top: 127px;
                 left: 272px;
                 width: 484px;
                 height: 426px;
-                background: url("/public/images/home-map/map-border_768.svg");
+                background: url("/public/images/vector/map-border_768.svg");
             }
             @include minWidth(1000) {
                 top: 107px;
                 left: 348px;
                 width: 636px;
                 height: 561px;
-                background: url("/public/images/home-map/map-border_1000.svg");
+                background: url("/public/images/vector/map-border_1000.svg");
             }
             @include minWidth(1440) {
                 top: 110px;
                 left: 600px;
                 width: 645px;
                 height: 568px;
-                background: url("/public/images/home-map/map-border_1440.svg");
+                background: url("/public/images/vector/map-border_1440.svg");
             }
         }
         .mapCorners {
@@ -167,30 +167,30 @@
             right: 15px;
             width: 165px;
             height: 436px;
-            background: url("/public/images/home-map/arrow-to_map_320.svg");
+            background: url("/public/images/vector/arrow-to_map_320.svg");
             @include minWidth(480) {
                 right: 21px;
                 width: 246px;
                 height: 555px;
-                background: url("/public/images/home-map/arrow-to_map_480.svg");
+                background: url("/public/images/vector/arrow-to_map_480.svg");
             }
             @include minWidth(768) {
                 right: 271px;
                 width: 10px;
                 height: 301px;
-                background: url("/public/images/home-map/arrow-to_map_768.svg");
+                background: url("/public/images/vector/arrow-to_map_768.svg");
             }
             @include minWidth(1000) {
                 right: 358px;
                 width: 10px;
                 height: 339px;
-                background: url("/public/images/home-map/arrow-to_map_1000.svg");
+                background: url("/public/images/vector/arrow-to_map_1000.svg");
             }
             @include minWidth(1440) {
                 right: 542px;
                 width: 10px;
                 height: 344px;
-                background: url("/public/images/home-map/arrow-to_map_1440.svg");
+                background: url("/public/images/vector/arrow-to_map_1440.svg");
             }
         }
         .countyPin {
@@ -199,24 +199,24 @@
             width: 14px;
             height: 14px;
             background-size: 14px 14px;
-            background: url("/public/images/home-map/map-pin_320.svg");
+            background: url("/public/images/vector/map-pin_320.svg");
             @include minWidth(480) {
                 width: 22px;
                 height: 21px;
                 background-size: 22px 21px;
-                background: url("/public/images/home-map/map-pin_480.svg");
+                background: url("/public/images/vector/map-pin_480.svg");
             }
             @include minWidth(768) {
                 width: 23px;
                 height: 23px;
                 background-size: 23px 23px;
-                background: url("/public/images/home-map/map-pin_768.svg");
+                background: url("/public/images/vector/map-pin_768.svg");
             }
             @include minWidth(1000) {
                 width: 30px;
                 height: 29px;
                 background-size: 30px 29px;
-                background: url("/public/images/home-map/map-pin_1000.svg");
+                background: url("/public/images/vector/map-pin_1000.svg");
             }
             &.pin1 {
                 top: 384px;
@@ -281,21 +281,21 @@
             &.mainPin {
                 top: 442px;
                 right: 167px;
-                background: url("/public/images/home-map/map-main_pin_320.svg");
+                background: url("/public/images/vector/map-main_pin_320.svg");
                 @include minWidth(480) {
                     top: 566px;
                     right: 250px;
-                    background: url("/public/images/home-map/map-main_pin_480.svg");
+                    background: url("/public/images/vector/map-main_pin_480.svg");
                 }
                 @include minWidth(768) {
                     top: 312px;
                     right: 265px;
-                    background: url("/public/images/home-map/map-main_pin_768.svg");
+                    background: url("/public/images/vector/map-main_pin_768.svg");
                 }
                 @include minWidth(1000) {
                     top: 350px;
                     right: 347px;
-                    background: url("/public/images/home-map/map-main_pin_1000.svg");
+                    background: url("/public/images/vector/map-main_pin_1000.svg");
                 }
                 @include minWidth(1440) {
                     top: 356px;
@@ -411,7 +411,7 @@
             box-sizing: border-box;
             width: 768px;
             height: 835px;
-            background-image: url("/public/images/home-map/arrow-from-service_768.svg");
+            background-image: url("/public/images/vector/arrow-from-service_768.svg");
             background-repeat: no-repeat;
             background-size: 738px 825px;
             background-position: 15px 10px;
@@ -421,7 +421,7 @@
             padding: 0 36px;
             width: 1000px;
             height: 813px;
-            background-image: url("/public/images/home-map/arrow-from-service_1000.svg");
+            background-image: url("/public/images/vector/arrow-from-service_1000.svg");
             background-size: 972px 798px;
             background-position: 15px 15px;
         }
@@ -430,7 +430,7 @@
             padding: 0 26px;
             width: 1014px;
             height: 813px;
-            background-image: url("/public/images/home-map/arrow-from-service_1440.svg");
+            background-image: url("/public/images/vector/arrow-from-service_1440.svg");
             background-size: 1014px 798px;
             background-position: 0 15px;
             //background-position: 15px 15px;
@@ -449,12 +449,12 @@
                 margin-top: -91px;
                 width: 175px;
                 height: 105px;
-                background-image: url("/public/images/home-map/arrow-from-service_320.svg");
+                background-image: url("/public/images/vector/arrow-from-service_320.svg");
                 @include minWidth(480) {
                     margin-top: -120px;
                     width: 271px;
                     height: 140px;
-                    background-image: url("/public/images/home-map/arrow-from-service_480.svg");
+                    background-image: url("/public/images/vector/arrow-from-service_480.svg");
                 }
                 @include minWidth(768) {
                     display: none;
@@ -563,62 +563,62 @@
 }
 
 .webp .countiesMap .map {
-    background-image: url("/public/images/home-map/map_background_320.webp");
+    background-image: url("/public/images/home/counties/map_background_320.webp");
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-        background-image: url("/public/images/home-map/map_background_320@2x.webp");
+        background-image: url("/public/images/home/counties/map_background_320@2x.webp");
     }
     @include minWidth(480) {
-        background-image: url("/public/images/home-map/map_background_480.webp");
+        background-image: url("/public/images/home/counties/map_background_480.webp");
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: url("/public/images/home-map/map_background_480@2x.webp");
+            background-image: url("/public/images/home/counties/map_background_480@2x.webp");
         }
     }
     @include minWidth(768) {
-        background-image: url("/public/images/home-map/map_background_768.webp");
+        background-image: url("/public/images/home/counties/map_background_768.webp");
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: url("/public/images/home-map/map_background_768@2x.webp");
+            background-image: url("/public/images/home/counties/map_background_768@2x.webp");
         }
     }
     @include minWidth(1000) {
-        background-image: url("/public/images/home-map/map_background_1000.webp");
+        background-image: url("/public/images/home/counties/map_background_1000.webp");
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: url("/public/images/home-map/map_background_1000@2x.webp");
+            background-image: url("/public/images/home/counties/map_background_1000@2x.webp");
         }
     }
     @include minWidth(1440) {
-        background-image: url("/public/images/home-map/map_background_1440.webp");
+        background-image: url("/public/images/home/counties/map_background_1440.webp");
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: url("/public/images/home-map/map_background_1440@2x.webp");
+            background-image: url("/public/images/home/counties/map_background_1440@2x.webp");
         }
     }
 }
 .no-webp .countiesMap .map {
-    background-image: url("/public/images/home-map/map_background_320.png");
+    background-image: url("/public/images/home/counties/map_background_320.png");
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-        background-image: url("/public/images/home-map/map_background_320@2x.png");
+        background-image: url("/public/images/home/counties/map_background_320@2x.png");
     }
     @include minWidth(480) {
-        background-image: url("/public/images/home-map/map_background_480.png");
+        background-image: url("/public/images/home/counties/map_background_480.png");
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: url("/public/images/home-map/map_background_480@2x.png");
+            background-image: url("/public/images/home/counties/map_background_480@2x.png");
         }
     }
     @include minWidth(768) {
-        background-image: url("/public/images/home-map/map_background_768.png");
+        background-image: url("/public/images/home/counties/map_background_768.png");
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: url("/public/images/home-map/map_background_768@2x.png");
+            background-image: url("/public/images/home/counties/map_background_768@2x.png");
         }
     }
     @include minWidth(1000) {
-        background-image: url("/public/images/home-map/map_background_1000.png");
+        background-image: url("/public/images/home/counties/map_background_1000.png");
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: url("/public/images/home-map/map_background_1000@2x.png");
+            background-image: url("/public/images/home/counties/map_background_1000@2x.png");
         }
     }
     @include minWidth(1440) {
-        background-image: url("/public/images/home-map/map_background_1440.png");
+        background-image: url("/public/images/home/counties/map_background_1440.png");
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: url("/public/images/home-map/map_background_1440@2x.png");
+            background-image: url("/public/images/home/counties/map_background_1440@2x.png");
         }
     }
 }

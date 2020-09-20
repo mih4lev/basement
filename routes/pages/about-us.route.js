@@ -1,68 +1,97 @@
 const { Router } = require(`express`);
 const router = new Router();
-const fs = require(`fs`);
+
+const { requestMeta } = require("../../models/pages.model");
+const { requestContent } = require("../../models/utils.model");
+const {
+    requestTestimonials, requestTestimonial, requestTestimonialsCount
+} = require("../../models/testimonials.model");
+const { requestPress, requestArticle, requestPressCount } = require("../../models/press.model");
+const { requestOffices } = require("../../models/offices.model");
 
 router.use((request, response, next) => {
-    const isAboutUs = true;
-    request.data = { ...request.data, isAboutUs };
+    request.data['isAboutUs'] = true;
     next();
 });
 
 router.get(`/`, async (request, response) => {
-    const data = Object.assign(request.data);
-    response.render(`pages/about-us/about-us`, data);
+    return response.redirect(`/about-us/testimonials/`);
 });
 
-router.get(`/testimonials`, async (request, response) => {
-    const isTestimonials = true;
-    const mockJSON = fs.readFileSync(`data-mock/testimonials.json`);
-    const mockData = JSON.parse(mockJSON);
-    const data = Object.assign(request.data, mockData,{ isTestimonials });
-    response.render(`pages/about-us/testimonials/testimonials`, data);
+router.get(`/testimonials`, async (request, response, next) => {
+    request.data['isTestimonials'] = true;
+    request.data['scripts'] = [`testimonials`];
+    const pageID = 6;
+    const limit = 9;
+    const content = requestContent(await Promise.all([
+        requestMeta(pageID),
+        requestTestimonials({ limit }),
+        requestTestimonialsCount({ limit })
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `pages/about-us/testimonials/testimonials`;
+    return (content.page) ? response.render(template, data) : next();
 });
 
-router.get(`/testimonials/:testimonialID`, async (request, response) => {
+router.get(`/testimonials/:testimonialID`, async (request, response, next) => {
+    request.data['isTestimonials'] = true;
     const { params: { testimonialID }} = request;
-    const isTestimonials = true;
-    const mockJSON = fs.readFileSync(`data-mock/testimonials.json`);
-    const { testimonials } = JSON.parse(mockJSON);
-    const filterFunc = ({ id }) => Number(testimonialID) === Number(id);
-    const testimonialMockData = testimonials.filter(filterFunc);
-    const data = Object.assign(request.data, testimonialMockData[0],{ isTestimonials });
-    response.render(`pages/about-us/testimonials/testimonials-single`, data);
+    const content = requestContent(await Promise.all([
+        requestTestimonial(testimonialID)
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `pages/about-us/testimonials/testimonials-single`;
+    return (content.page) ? response.render(template, data) : next();
 });
 
-router.get(`/in-the-press`, async (request, response) => {
-    const isInThePress = true;
-    const mockJSON = fs.readFileSync(`data-mock/in-the-press.json`);
-    const mockData = JSON.parse(mockJSON);
-    const data = Object.assign(request.data, mockData,{ isInThePress });
-    response.render(`pages/about-us/press/press`, data);
+router.get(`/in-the-press`, async (request, response, next) => {
+    request.data['isInThePress'] = true;
+    request.data['scripts'] = [`press`];
+    const pageID = 7;
+    const limit = 9;
+    const content = requestContent(await Promise.all([
+        requestMeta(pageID),
+        requestPress({ limit }),
+        requestPressCount({ limit })
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `pages/about-us/press/press`;
+    return (content.page) ? response.render(template, data) : next();
 });
 
-router.get(`/in-the-press/:pressID`, async (request, response) => {
+router.get(`/in-the-press/:pressID`, async (request, response, next) => {
+    request.data['isInThePress'] = true;
     const { params: { pressID }} = request;
-    const isInThePress = true;
-    const mockJSON = fs.readFileSync(`data-mock/in-the-press.json`);
-    const { articles } = JSON.parse(mockJSON);
-    const filterFunc = ({ id }) => Number(pressID) === Number(id);
-    const inThePressMockData = articles.filter(filterFunc);
-    const data = Object.assign(request.data, inThePressMockData[0], { isInThePress });
-    response.render(`pages/about-us/press/press-single`, data);
+    const content = requestContent(await Promise.all([
+        requestArticle(pressID)
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `pages/about-us/press/press-single`;
+    return (content.page) ? response.render(template, data) : next();
 });
 
-router.get(`/financing-offers`, async (request, response) => {
-    const isFinancingOffers = true;
-    const data = Object.assign(request.data, { isFinancingOffers });
-    response.render(`pages/about-us/offers/offers`, data);
+router.get(`/financing-offers`, async (request, response, next) => {
+    request.data['scripts'] = [`offers`];
+    request.data['isFinancingOffers'] = true;
+    const pageID = 8;
+    const content = requestContent(await Promise.all([
+        requestMeta(pageID)
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `pages/about-us/offers/offers`;
+    return (content.page) ? response.render(template, data) : next();
 });
 
-router.get(`/contact-us`, async (request, response) => {
-    const isContactUs = true;
-    const mockJSON = fs.readFileSync(`data-mock/contact-us.json`);
-    const mockData = JSON.parse(mockJSON);
-    const data = Object.assign(request.data, mockData,{ isContactUs });
-    response.render(`pages/about-us/contact-us/contact-us`, data);
+router.get(`/contact-us`, async (request, response, next) => {
+    request.data['isContactUs'] = true;
+    const pageID = 9;
+    const content = requestContent(await Promise.all([
+        requestMeta(pageID),
+        requestOffices()
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `pages/about-us/contact-us/contact-us`;
+    return (content.page) ? response.render(template, data) : next();
 });
 
 module.exports = router;

@@ -1,0 +1,184 @@
+<div class="editWrapper editCategories">
+    {{# each categories }}
+        <ul>
+            <li>
+                <form action="/admin/basement-ideas/categories/edit">
+                    <div class="imageWrapper">
+                        <div class="uploadWrapper existCategory">
+                            <input class="fileFiled" type="file"
+                                   name="categoryImage" id="middleCategory{{{ categoryID }}}">
+                            <label class="fieldLabel"
+                                   for="middleCategory{{{ categoryID }}}">Category cover</label>
+                            {{# if categoryImage }}
+                                <img class="categoryPreview" alt="Category image"
+                                     src="{{{ categoryImage }}}_137x137.jpg">
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div class="fieldWrapper">
+                        <label class="fieldLabel"
+                               for="category{{{ categoryID }}}">Category title</label>
+                        <input class="categoryField titleField" name="categoryTitle" type="text"
+                               id="category{{{ categoryID }}}" value="{{{ categoryTitle }}}">
+                    </div>
+                    <div class="fieldWrapper">
+                        <label class="fieldLabel"
+                               for="link{{{ categoryID }}}">Category link</label>
+                        <input class="categoryField linkField" name="categoryLink" type="text"
+                               id="link{{{ categoryID }}}" value="{{{ categoryLink }}}">
+                    </div>
+                    <input class="hiddenField categoryID" type="hidden"
+                           name="categoryID" value="{{{ categoryID }}}">
+                    <input class="hiddenField categoryLevel" type="hidden"
+                           name="categoryLevel" value="{{{ categoryLevel }}}">
+                    <button class="saveButton hiddenButton"
+                            type="button" title="Save category">Save category</button>
+                </form>
+            </li>
+            {{# if children }}
+                <ul>
+                    {{# each children }}
+                        <li>
+                            <form action="/admin/basement-ideas/categories/edit">
+                                <div class="imageWrapper">
+                                    <div class="uploadWrapper existCategory">
+                                        <input class="fileFiled" type="file"
+                                               name="categoryImage" id="middleCategory{{{ categoryID }}}">
+                                        <label class="fieldLabel"
+                                               for="middleCategory{{{ categoryID }}}">Category cover</label>
+                                        {{# if categoryImage }}
+                                            <img class="categoryPreview" alt="Category image"
+                                                 src="{{{ categoryImage }}}_137x137.jpg">
+                                        {{/if}}
+                                    </div>
+                                </div>
+                                <div class="fieldWrapper">
+                                    <label class="fieldLabel"
+                                           for="category{{{ categoryID }}}">Category title</label>
+                                    <input class="categoryField titleField" name="categoryTitle" type="text"
+                                           id="category{{{ categoryID }}}" value="{{{ categoryTitle }}}">
+                                </div>
+                                <div class="fieldWrapper">
+                                    <label class="fieldLabel"
+                                           for="link{{{ categoryID }}}">Category link</label>
+                                    <input class="categoryField linkField" name="categoryLink" type="text"
+                                           id="link{{{ categoryID }}}" value="{{{ categoryLink }}}">
+                                </div>
+                                <input class="hiddenField categoryID" type="hidden"
+                                       name="categoryID" value="{{{ categoryID }}}">
+                                <input class="hiddenField categoryLevel" type="hidden"
+                                       name="categoryLevel" value="{{{ categoryLevel }}}">
+                                <button class="saveButton hiddenButton"
+                                        type="button" title="Save category">Save category</button>
+                            </form>
+                        </li>
+                        {{# if children }}
+                            <ul data-parent="{{{ categoryID }}}">
+                                {{# each children }}
+                                    <li>
+                                        <form action="/admin/basement-ideas/categories/edit">
+                                            <div class="imageWrapper">
+                                                <div class="uploadWrapper existCategory">
+                                                    <input class="fileFiled" type="file"
+                                                           name="categoryImage" id="middleCategory{{{ categoryID }}}">
+                                                    <label class="fieldLabel"
+                                                           for="middleCategory{{{ categoryID }}}">Category cover</label>
+                                                    {{# if categoryImage }}
+                                                        <img class="categoryPreview" alt="Category image"
+                                                             src="{{{ categoryImage }}}_137x137.jpg">
+                                                    {{/if}}
+                                                </div>
+                                            </div>
+                                            <div class="fieldWrapper">
+                                                <label class="fieldLabel"
+                                                       for="category{{{ categoryID }}}">Category title</label>
+                                                <input class="categoryField titleField" name="categoryTitle" type="text"
+                                                       id="category{{{ categoryID }}}" value="{{{ categoryTitle }}}">
+                                            </div>
+                                            <div class="fieldWrapper">
+                                                <label class="fieldLabel"
+                                                       for="link{{{ categoryID }}}">Category link</label>
+                                                <input class="categoryField linkField" name="categoryLink" type="text"
+                                                       id="link{{{ categoryID }}}" value="{{{ categoryLink }}}">
+                                            </div>
+                                            <input class="hiddenField categoryID" type="hidden"
+                                                   name="categoryID" value="{{{ categoryID }}}">
+                                            <input class="hiddenField categoryLevel" type="hidden"
+                                                   name="categoryLevel" value="{{{ categoryLevel }}}">
+                                            <button class="saveButton hiddenButton"
+                                                    type="button" title="Save category">Save category</button>
+                                        </form>
+                                    </li>
+                                {{/ each }}
+                            </ul>
+                        {{/ if }}
+                        <ul data-parent="{{{ categoryID }}}">
+                            <li>
+                                <form action="/admin/basement-ideas/categories">
+                                    <div class="imageWrapper">
+                                        <div class="uploadWrapper">
+                                            <input class="fileFiled" type="file"
+                                                   name="categoryImage" id="newMiddleCategory{{{ categoryID }}}">
+                                            <label class="fieldLabel"
+                                                   for="newMiddleCategory{{{ categoryID }}}">Category cover</label>
+                                            <img class="categoryPreview hiddenPreview" src="" alt="Category preview">
+                                        </div>
+                                    </div>
+                                    <div class="fieldWrapper">
+                                        <label class="fieldLabel"
+                                               for="addCategory{{{ categoryID }}}">+ category</label>
+                                        <input class="categoryField titleField" type="text"
+                                               name="categoryTitle" id="addCategory{{{ categoryID }}}">
+                                    </div>
+                                    <div class="fieldWrapper">
+                                        <label class="fieldLabel"
+                                               for="addLink{{{ categoryID }}}">+ link</label>
+                                        <input class="categoryField linkField"
+                                               name="categoryLink" type="text" id="addLink{{{ categoryID }}}">
+                                    </div>
+                                    <input class="hiddenField" type="hidden"
+                                           name="categoryParent" value="{{{ categoryID }}}">
+                                    <input class="hiddenField categoryLevel" type="hidden"
+                                           name="categoryLevel" value="2">
+                                    <button class="saveButton hiddenButton"
+                                            type="button" title="Save category">Save category</button>
+                                </form>
+                            </li>
+                        </ul>
+                    {{/ each }}
+                    <li>
+                        <form action="/admin/basement-ideas/categories">
+                            <div class="imageWrapper">
+                                <div class="uploadWrapper">
+                                    <input class="fileFiled" type="file"
+                                           name="categoryImage" id="newMiddleCategory{{{ categoryID }}}">
+                                    <label class="fieldLabel"
+                                           for="newMiddleCategory{{{ categoryID }}}">Category cover</label>
+                                    <img src="" class="categoryPreview hiddenPreview" alt="Category preview">
+                                </div>
+                            </div>
+                            <div class="fieldWrapper">
+                                <label class="fieldLabel greyLabel"
+                                       for="addCategory{{{ categoryID }}}">+ category</label>
+                                <input class="categoryField titleField" type="text"
+                                       name="categoryTitle" id="addCategory{{{ categoryID }}}">
+                            </div>
+                            <div class="fieldWrapper">
+                                <label class="fieldLabel greyLabel"
+                                       for="addLink{{{ categoryID }}}">+ link</label>
+                                <input class="categoryField linkField" type="text"
+                                       name="categoryLink" id="addLink{{{ categoryID }}}">
+                            </div>
+                            <input class="hiddenField" type="hidden"
+                                   name="categoryParent" value="{{{ categoryID }}}">
+                            <input class="hiddenField categoryLevel" type="hidden"
+                                   name="categoryLevel" value="1">
+                            <button class="saveButton hiddenButton"
+                                    type="button" title="Save category">Save category</button>
+                        </form>
+                    </li>
+                </ul>
+            {{/ if }}
+        </ul>
+    {{/ each }}
+</div>

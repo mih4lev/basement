@@ -1,4 +1,4 @@
-import { createCustomEvent } from "../../../../source/scripts/utils";
+import { createCustomEvent, createScroll } from "../../../../source/scripts/utils";
 
 // collect data from filters and send them to API
 const collectFiltersData = async () => {
@@ -9,9 +9,7 @@ const collectFiltersData = async () => {
     createCustomEvent(`listRequest`);
     const response = await fetch(URL, sendOptions);
     const responseData = await response.json();
-    // console.log(responseData);
-    // create customEvent
-    createCustomEvent(`listResponse`, responseData.data);
+    createCustomEvent(`listResponse`, responseData);
 };
 
 // check chosen filter && set them wrapper .emptyChosenFilters class
@@ -51,7 +49,7 @@ const removeFilter = (filterNode) => {
 
 // remove filter from chosen list
 const addFilter = (filterNode) => {
-    const { dataset: { filter, title }} = filterNode;
+    const { dataset: { filter, title, value }} = filterNode;
     const chosenWrapper = document.querySelector(`.activeFilterList`);
     const createdNode = document.createElement(`li`);
     createdNode.classList.add(`activeFilter`);
@@ -65,7 +63,7 @@ const addFilter = (filterNode) => {
     createdNode.appendChild(removeButton);
     // add hidden field with data
     const createdField = document.createElement(`input`);
-    createdField.setAttribute(`value`, title);
+    createdField.setAttribute(`value`, value);
     createdField.setAttribute(`name`, filter);
     createdField.setAttribute(`type`, `hidden`);
     createdNode.appendChild(createdField);
@@ -98,60 +96,9 @@ const changeDropdownVisible = (dropdownLink) => {
     }
 };
 
-const maxFiltersValue = 8;
 const createDropdownFilters = (filterWrapper) => {
-    const filtersParent = filterWrapper.parentNode;
-    const filtersCount = filterWrapper.children.length;
-    const scrollHeight = (100 / filtersCount) * maxFiltersValue;
-    const childHeight = filterWrapper.children[0].offsetHeight;
-    // exist more then maxFiltersValue filters
-    if (filtersCount > maxFiltersValue) {
-        // create scroll line
-        const scrollNode = document.createElement(`div`);
-        scrollNode.classList.add(`scrollLine`);
-        scrollNode.style.height = `${scrollHeight}%`;
-        filtersParent.appendChild(scrollNode);
-        // set max wrapper height
-        filtersParent.style.height = `${ childHeight * maxFiltersValue }px`;
-        // add scrollListeners
-        const dropdownScrollHandler = (isNext, movedValue) => {
-            // movedValue for check touch range
-            const previousValue = filterWrapper.offset || 0;
-            const newValue = (isNext) ? previousValue + childHeight : previousValue - childHeight;
-            const maxScroll = (filtersCount - maxFiltersValue) * childHeight;
-            if (newValue > maxScroll) return false;
-            filterWrapper.style.marginTop = `-${newValue}px`;
-            filterWrapper.offset = (newValue < 0) ? 0 : newValue;
-            // hidden wrapper scroll
-            const scrollEmpty = (maxFiltersValue * childHeight) - scrollNode.offsetHeight;
-            const scrollStep = scrollEmpty / (filtersCount - maxFiltersValue);
-            const previousScrollStep = scrollNode.offset || 0;
-            const scrollValue = (isNext) ? previousScrollStep + scrollStep : previousScrollStep - scrollStep;
-            if (scrollValue < -10) return false;
-            scrollNode.style.marginTop = `${scrollValue}px`;
-            scrollNode.offset = (scrollValue < 0) ? 0 : scrollValue;
-        };
-        filtersParent.addEventListener(`wheel`, (event) => {
-            event.preventDefault();
-            const isNext = event.deltaY > 0;
-            dropdownScrollHandler(isNext);
-        });
-        // add touch events
-        let startValue;
-        const touchEndHandler = (event) => {
-            const endedValue = event.changedTouches[0].pageY;
-            const isNext = endedValue < startValue;
-            const movedValue = endedValue - startValue;
-            dropdownScrollHandler(isNext, movedValue);
-            filterWrapper.removeEventListener(`touchend`, touchEndHandler);
-        };
-        const touchStartHandler = (event) => {
-            event.preventDefault();
-            startValue = event.changedTouches[0].pageY;
-            filterWrapper.addEventListener(`touchend`, touchEndHandler);
-        };
-        filterWrapper.addEventListener(`touchstart`, touchStartHandler);
-    }
+    // create scroll wrappers
+    createScroll(filterWrapper, 8);
     // filter click
     const selectNodes = [...filterWrapper.querySelectorAll(`.hiddenFilter`)];
     selectNodes.forEach((selectNode) => {
@@ -308,5 +255,22 @@ export const filters = () => {
         };
         window.addEventListener(`resize`, setRange);
         rangeButtons.forEach(rangeHandler);
+    });
+};
+
+export const orderButton = () => {
+    const sortButton = document.querySelector(`.ideasSortWrapper`);
+    if (!sortButton) return false;
+    sortButton.addEventListener(`click`, () => {
+        const { dataset: { order }} = sortButton;
+        const data = (order === `ideaID`) ? `popular` : `ideaID`;
+        const title = (order === `ideaID`) ? `MOST POPULAR` : `WHAT’S NEW`;
+        sortButton.dataset.order = data;
+        sortButton.innerText = title;
+        // set hidden order field
+        const filtersForm = document.querySelector(`.filtersForm`);
+        const hiddenField = filtersForm.querySelector(`.orderField`);
+        hiddenField.value = data;
+        collectFiltersData();
     });
 };

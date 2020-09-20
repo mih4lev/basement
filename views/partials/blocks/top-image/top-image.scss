@@ -163,15 +163,12 @@
         }
     }
     .topImageText {
-        @include minWidth(480) {
-            margin-bottom: 20px;
-        }
-        @include minWidth(1000) {
-            margin-bottom: 40px;
-        }
+        margin-bottom: 0;
         @include minWidth(1440) {
-            margin-bottom: 60px;
             padding-right: 80px;
+        }
+        p {
+            margin-bottom: 0;
         }
     }
     .localContent {

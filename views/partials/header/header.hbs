@@ -2,18 +2,13 @@
     <div class="wrapper headerWrapper rowLeftFlex">
         <a class="headerLogoLink" href="/">
             <picture class="headerLogo">
-                <source srcset="/public/images/logo.webp,
-                                /public/images/logo@2x.webp 2x,
-                                /public/images/logo@3x.webp 3x,
-                                /public/images/logo@4x.webp 4x"
-                        type="image/webp">
-                <img class="headerLogo"
+                <source type="image/webp"
+                        srcset="/public/images/logo.webp, /public/images/logo@2x.webp 2x,
+                                /public/images/logo@3x.webp 3x, /public/images/logo@4x.webp 4x">
+                <img class="headerLogo" alt="Basement remodeling Logo"
                      src="/public/images/logo.png"
-                     srcset="/public/images/logo.png,
-                             /public/images/logo@2x.png 2x,
-                             /public/images/logo@3x.png 3x,
-                             /public/images/logo@4x.png 4x"
-                     alt="Basement remodeling Logo">
+                     srcset="/public/images/logo.png, /public/images/logo@2x.png 2x,
+                             /public/images/logo@3x.png 3x, /public/images/logo@4x.png 4x">
             </picture>
         </a>
         <nav class="headerMenu">
@@ -25,10 +20,6 @@
                 <li class="menuLinkWrapper">
                     <a class="menuLink{{# if isPortfolio }} activeLink{{/ if }}"
                        href="/portfolio/">PORTFOLIO</a>
-                </li>
-                <li class="menuLinkWrapper">
-                    <a class="menuLink{{# if isServices }} activeLink{{/ if }}"
-                       href="#">SERVICES</a>
                 </li>
                 <li class="menuLinkWrapper">
                     <span class="menuLink dropdownMenuLink{{# if isHowItWorks }} activeLink{{/ if }}">
@@ -114,12 +105,32 @@
         </nav>
         <a class="mainPhone" href="tel:+18772242434">877-224-2434</a>
         {{# if isLogin }}
-            <a class="headerLoginButton" href="/profile/">
-                <img class="avatarPicture" src="/public/images/temp/avatar_130x130.jpg" alt="George Washington">
-                George Washington
-            </a>
+            <div class="headerLoginWrapper">
+                <div class="headerLoginButton" onclick="">
+                    {{# if profile.avatarImage }}
+                        <img class="avatarPicture"
+                             src="{{{ profile.avatarImage }}}_32x32.jpg" alt="{{{ profile.user }}}">
+                    {{ else }}
+                        <div class="avatarIcon"></div>
+                    {{/if}}
+                    <span class="userName">{{{ profile.user }}}</span>
+                    <ul class="avatarWrapper">
+                        <li class="avatarLinkWrapper">
+                            <a class="avatarLink" href="/profile/">PROFILE</a>
+                        </li>
+                        {{# if profile.isAdmin }}
+                            <li class="avatarLinkWrapper">
+                                <a class="avatarLink" href="/admin/">ADMIN PANEL</a>
+                            </li>
+                        {{/if}}
+                        <li class="avatarLinkWrapper">
+                            <a class="avatarLink" href="/profile/logout">LOG OUT</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         {{ else }}
-            <button class="headerLoginButton userLogin" type="button" title="Log in">LOG IN</button>
+            <button class="headerLoginButton userLogin" type="button" title="Log in">SIGN IN</button>
         {{/ if }}
         <button class="headerSandwichButton" title="Show menu">SHOW MENU</button>
     </div>

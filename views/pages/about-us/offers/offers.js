@@ -1,4 +1,4 @@
-import { saveAction } from "../../../partials/modals/modals";
+import { saveAction } from "../../../../source/scripts/utils";
 
 export const offersForm = () => {
     const offersForm = document.querySelector(`.offersForm`);

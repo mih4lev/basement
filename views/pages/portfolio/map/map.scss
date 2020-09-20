@@ -15,26 +15,6 @@
         .mapBlockWrapper {
             width: 100%;
             height: 100%;
-            background-image: url("/public/images/temp/map.png");
-            background-repeat: no-repeat;
-            background-position: -1200px -300px;
-            background-size: 2000px;
-            @include minWidth(480) {
-                background-size: 2400px;
-                background-position: -1420px -300px;
-            }
-            @include minWidth(768) {
-                background-size: 3000px;
-                background-position: -1700px -400px;
-            }
-            @include minWidth(1000) {
-                background-size: 3600px;
-                background-position: -2000px -600px;
-            }
-            @include minWidth(1440) {
-                background-size: 3600px;
-                background-position: -1700px -600px;
-            }
         }
         .mapViewChanger {
             @extend %shadow2;
@@ -142,135 +122,50 @@
                 right: 23px;
             }
         }
-        .mapBackButton {
-            @extend %shadow2;
-            @extend %animation;
-            position: absolute;
-            left: 50%;
-            bottom: 10px;
-            transform: translateX(-50%);
-            font-size: 9px;
-            font-weight: 800;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            padding: 7px 40px;
-            background-color: $white;
-            border-radius: 5px;
-            color: $raven;
-            white-space: nowrap;
-            @include minWidth(480) {
-                left: 20px;
-                padding: 13px 20px;
-                font-size: 13px;
-                transform: none;
-            }
-            &:hover {
-                color: $blue;
-            }
+    }
+    .mapWrapper {
+        position: relative;
+    }
+    .mapBackButton {
+        @extend %shadow2;
+        @extend %animation;
+        position: absolute;
+        left: 50%;
+        bottom: 10px;
+        z-index: 1;
+        transform: translateX(-50%);
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        padding: 7px 40px;
+        background-color: $white;
+        border-radius: 5px;
+        color: $raven;
+        white-space: nowrap;
+        @include minWidth(480) {
+            left: 10px;
+            padding: 13px 20px;
+            font-size: 13px;
+            transform: none;
+        }
+        &:hover {
+            color: $blue;
         }
     }
-    .mapControlBlock {
+    .pageLoader {
+        transition: all 0.1s ease-in;
+        z-index: 1;
         position: absolute;
-        top: 50%;
-        right: 20px;
-        transform: translateY(-50%);
-        display: none;
-        @include minWidth(480) {
-            display: block;
-        }
-        .locationFindButton {
-            @extend %shadow2;
-            position: relative;
-            width: 41px;
-            height: 41px;
-            font-size: 0;
-            background-color: $white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            outline: none;
-            &:hover {
-                &:after {
-                    background-color: $blue;
-                }
-            }
-            &:after {
-                @extend %avatarIcon;
-                @extend %animation;
-                content: "";
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 18px;
-                height: 21px;
-                background-color: $raven;
-            }
-        }
-        .locationZoomButtons {
-            @extend %shadow2;
-            display: flex;
-            flex-direction: column;
-            width: 41px;
-            height: 82px;
-            margin-top: 10px;
-            background-color: $white;
-            border-radius: 5px;
-            overflow: hidden;
-            .zoomButton {
-                position: relative;
-                height: 100%;
-                font-size: 0;
-                background-color: transparent;
-                border: none;
-                cursor: pointer;
-                outline: none;
-                &.zoomInButton {
-                    &:before {
-                        @extend %animation;
-                        content: "";
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        display: block;
-                        transform: translateX(-50%);
-                        width: 17px;
-                        height: 3px;
-                        background-color: $raven;
-                    }
-                    &:after {
-                        @extend %animation;
-                        content: "";
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        display: block;
-                        transform: translateX(-50%) rotate(90deg);
-                        width: 17px;
-                        height: 3px;
-                        background-color: $raven;
-                    }
-                }
-                &.zoomOutButton {
-                    &:before {
-                        @extend %animation;
-                        content: "";
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        display: block;
-                        transform: translateX(-50%);
-                        width: 17px;
-                        height: 3px;
-                        background-color: $raven;
-                    }
-                }
-                &:hover {
-                    &:before, &:after {
-                        background-color: $blue;
-                    }
-                }
-            }
+        top: 0;
+        left: 0;
+        opacity: 0.75;
+        width: 100%;
+        height: 100%;
+        background-color: $white;
+        &.hiddenLoader {
+            opacity: 0;
+            z-index: -1;
         }
     }
     .mapNotification {
@@ -282,6 +177,244 @@
         }
         @include minWidth(768) {
             width: 100%;
+        }
+    }
+}
+
+
+.gm-style-cc {
+    display: none !important;
+}
+.gm-fullscreen-control {
+    @extend %animation;
+    border-radius: 5px !important;
+    background-image: url("/public/images/vector/fullscreen-icon.svg") !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    &:hover {
+        background-image: url("/public/images/vector/fullscreen-icon-blue.svg") !important;
+    }
+    img {
+        display: none !important;
+    }
+}
+.gmnoprint {
+    .gm-style-mtc:nth-of-type(1) {
+        div {
+            border-top-left-radius: 5px !important;
+            border-bottom-left-radius: 5px !important;
+            background-color: $white !important;
+        }
+        div:nth-of-type(2) {
+            display: none !important;
+        }
+    }
+    .gm-style-mtc:nth-of-type(2) {
+        div {
+            border-top-right-radius: 5px !important;
+            border-bottom-right-radius: 5px !important;
+            background-color: $white !important;
+        }
+        div:nth-of-type(2) {
+            display: none !important;
+        }
+    }
+    div {
+        background-color: transparent !important;
+        button:nth-of-type(1) {
+            position: relative !important;
+            border-top-left-radius: 5px !important;
+            border-top-right-radius: 5px !important;
+            background-color: $white !important;
+            &:before, &:after {
+                @extend %animation;
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: $raven;
+            }
+            &:before {
+                width: 16px;
+                height: 4px;
+            }
+            &:after {
+                width: 4px;
+                height: 16px;
+            }
+            &:hover {
+                &:before, &:after {
+                    background-color: $blue;
+                }
+            }
+            img {
+                display: none !important;
+            }
+        }
+        button:nth-of-type(2) {
+            position: relative !important;
+            border-bottom-left-radius: 5px !important;
+            border-bottom-right-radius: 5px !important;
+            background-color: $white !important;
+            &:before {
+                @extend %animation;
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 16px;
+                height: 4px;
+                transform: translate(-50%, -50%);
+                background-color: $raven;
+            }
+            &:hover {
+                &:before {
+                    background-color: $blue;
+                }
+            }
+            img {
+                display: none !important;
+            }
+        }
+        div {
+            background-color: $sub !important;
+        }
+    }
+}
+.gm-style-mtc {
+    display: none !important;
+    div {
+        @extend %animation;
+        height: 41px !important;
+        font-family: "Gilroy", Arial, sans-serif !important;
+        font-size: 13px !important;
+        font-weight: 800 !important;
+        text-transform: uppercase !important;
+        &:hover {
+            background-color: $white !important;
+        }
+    }
+    div[aria-pressed="true"] {
+        color: $raven !important;
+        &:hover {
+            color: $blue !important;
+        }
+    }
+    div[aria-pressed="false"] {
+        color: $ghost !important;
+        &:hover {
+            color: $blue !important;
+        }
+    }
+    @include minWidth(480) {
+        display: block !important;
+    }
+}
+div.gm-svpc {
+    @extend %animation;
+    background-image: url("/public/images/vector/avatar-icon.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: $white !important;
+    border-radius: 5px !important;
+    &:hover {
+        background-image: url("/public/images/vector/avatar-icon_blue.svg");
+    }
+    div {
+        display: none !important;
+    }
+}
+.gm-style {
+    a[rel="noopener"] {
+        img {
+            display: none !important;
+        }
+    }
+}
+.gm-style-iw.gm-style-iw-c {
+    width: 163px !important;
+    padding: 10px !important;
+    box-sizing: border-box;
+    background-color: $white;
+    border-radius: 5px;
+    @include minWidth(480) {
+        width: 294px !important;
+        padding: 0 21px 21px !important;
+    }
+    .gm-style-iw-d {
+        overflow: hidden !important;
+    }
+    .cardHeader {
+        margin: 0 0 10px 0 !important;
+        padding-right: 20px;
+        box-sizing: border-box;
+        font-size: 11px;
+        line-height: 125%;
+        text-transform: uppercase;
+        @include minWidth(480) {
+            margin: 21px 0 16px !important;
+            font-size: 16px;
+            letter-spacing: 0.05em;
+        }
+    }
+    .cardPicture {
+        margin-bottom: 0;
+        display: block;
+        width: 143px !important;
+        height: 143px !important;
+        @include minWidth(480) {
+            width: 252px !important;
+            height: 252px !important;
+        }
+    }
+    .cardButton {
+        @extend %whiteButton;
+        position: absolute;
+        transform: translateX(-50%);
+        left: 50%;
+        bottom: 20px;
+        height: 32px;
+        padding: 0 15px;
+        font-size: 11px;
+        @include minWidth(480) {
+            bottom: 40px;
+            height: 41px;
+            padding-left: 20px;
+            padding-right: 20px;
+            font-size: 13px;
+        }
+        &:after {
+            @extend %buttonIconAfter;
+            @extend %arrowIcon;
+            background-color: $black;
+            transform: scale(1);
+        }
+        &:hover {
+            background-color: $white;
+        }
+    }
+    .gm-ui-hover-effect {
+        top: 0 !important;
+        right: 0 !important;
+        margin-top: 8px !important;
+        margin-right: 7px !important;
+        width: 14px !important;
+        height: 14px !important;
+        @include minWidth(480) {
+            margin-top: 20px !important;
+            margin-right: 15px !important;
+            width: 20px !important;
+            height: 20px !important;
+        }
+        img {
+            margin: 0 !important;
+            width: 14px !important;
+            height: 14px !important;
+            @include minWidth(480) {
+                width: 20px !important;
+                height: 20px !important;
+            }
         }
     }
 }

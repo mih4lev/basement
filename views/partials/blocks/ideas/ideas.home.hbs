@@ -5,22 +5,7 @@
         {{> micro-blocks/middle-categories/middle-categories }}
         <ul class="ideaList">
             {{# each ideas }}
-                <li class="ideaWrapper">
-                    <picture>
-                        <source srcset="/public/images/temp/{{{ image }}}.webp,
-                                /public/images/temp/{{{ image }}}@2x.webp 2x"
-                                type="image/webp">
-                        <img class="ideaPhoto"
-                             data-idea="{{{ id }}}"
-                             src="/public/images/temp/{{{ image }}}.jpg"
-                             srcset="/public/images/temp/{{{ image }}}.jpg,
-                                     /public/images/temp/{{{ image }}}@2x.jpg 2x"
-                             alt="{{{ title }}}">
-                    </picture>
-                    <button class="saveIdea">SAVE TO COLLECTION</button>
-                    <h3 class="ideaTitle">{{{ title }}}</h3>
-                    <strong class="ideaAuthor">{{{ author }}}</strong>
-                </li>
+                {{> micro-blocks/idea/idea }}
             {{/each}}
         </ul>
         <a class="ideasButton" href="/basement-ideas/">GO TO BASEMENT IDEAS</a>

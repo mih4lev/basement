@@ -138,6 +138,11 @@ footer {
                 width: 740px;
                 font-size: 12px;
             }
+            &.fullWrapper {
+                @include minWidth(768) {
+                    width: 100%;
+                }
+            }
         }
         .address {
             font-size: 9px;
@@ -173,6 +178,9 @@ footer {
                 @extend %buttonIconAfter;
                 @extend %arrowIcon;
                 background: $white;
+            }
+            &.hiddenButton {
+                display: none;
             }
         }
     }

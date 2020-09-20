@@ -5,63 +5,42 @@
     </div>
     <div class="wrapper">
         <div class="pricingTable">
-            {{# each pricing }}
+            {{# each price }}
             <div class="pricingWrapper">
                 <picture class="officeImage">
-                    <source srcset="/public/images/temp/{{{ image }}}_320.webp,
-                                    /public/images/temp/{{{ image }}}_320@2x.webp 2x"
-                            media="(max-width: 479px)"
-                            type="image/webp">
-                    <source srcset="/public/images/temp/{{{ image }}}_320.jpg,
-                                    /public/images/temp/{{{ image }}}_320@2x.jpg 2x"
+                    <source srcset="/public/images/home/pricing/{{{ priceCover }}}_320.jpg,
+                                    /public/images/home/pricing/{{{ priceCover }}}_320@2x.jpg 2x"
                             media="(max-width: 479px)"
                             type="image/jpeg">
-                    <source srcset="/public/images/temp/{{{ image }}}_480.webp,
-                                    /public/images/temp/{{{ image }}}_480@2x.webp 2x"
-                            media="(max-width: 767px)"
-                            type="image/webp">
-                    <source srcset="/public/images/temp/{{{ image }}}_480.jpg,
-                                    /public/images/temp/{{{ image }}}_480@2x.jpg 2x"
+                    <source srcset="/public/images/home/pricing/{{{ priceCover }}}_480.jpg,
+                                    /public/images/home/pricing/{{{ priceCover }}}_480@2x.jpg 2x"
                             media="(max-width: 767px)"
                             type="image/jpeg">
-                    <source srcset="/public/images/temp/{{{ image }}}_768.webp,
-                                    /public/images/temp/{{{ image }}}_768@2x.webp 2x"
-                            media="(max-width: 999px)"
-                            type="image/webp">
-                    <source srcset="/public/images/temp/{{{ image }}}_768.jpg,
-                                    /public/images/temp/{{{ image }}}_768@2x.jpg 2x"
+                    <source srcset="/public/images/home/pricing/{{{ priceCover }}}_768.jpg,
+                                    /public/images/home/pricing/{{{ priceCover }}}_768@2x.jpg 2x"
                             media="(max-width: 999px)"
                             type="image/jpeg">
-                    <source srcset="/public/images/temp/{{{ image }}}_1000.webp,
-                                    /public/images/temp/{{{ image }}}_1000@2x.webp 2x"
-                            media="(max-width: 1439px)"
-                            type="image/webp">
-                    <source srcset="/public/images/temp/{{{ image }}}_1000.jpg,
-                                    /public/images/temp/{{{ image }}}_1000@2x.jpg 2x"
+                    <source srcset="/public/images/home/pricing/{{{ priceCover }}}_1000.jpg,
+                                    /public/images/home/pricing/{{{ priceCover }}}_1000@2x.jpg 2x"
                             media="(max-width: 1439px)"
                             type="image/jpeg">
-                    <source srcset="/public/images/temp/{{{ image }}}_1440.webp,
-                                    /public/images/temp/{{{ image }}}_1440@2x.webp 2x"
-                            media="(min-width: 1440px)"
-                            type="image/webp">
-                    <source srcset="/public/images/temp/{{{ image }}}_1440.jpg,
-                                    /public/images/temp/{{{ image }}}_1440@2x.jpg 2x"
+                    <source srcset="/public/images/home/pricing/{{{ priceCover }}}_1440.jpg,
+                                    /public/images/home/pricing/{{{ priceCover }}}_1440@2x.jpg 2x"
                             media="(min-width: 1440px)"
                             type="image/jpeg">
-                    <img class="officeImage"
-                         src="/public/images/temp/{{{ image }}}_1440.jpg"
-                         srcset="/public/images/temp/{{{ image }}}_1440.jpg,
-                                 /public/images/temp/{{{ image }}}_1440@2x.jpg 2x"
-                         alt="{{{ title }}}">
+                    <img class="officeImage" alt="{{{ priceTitle }}}"
+                         src="/public/images/home/pricing/{{{ priceCover }}}_1440.jpg"
+                         srcset="/public/images/home/pricing/{{{ priceCover }}}_1440.jpg,
+                                 /public/images/home/pricing/{{{ priceCover }}}_1440@2x.jpg 2x">
                 </picture>
                 <div class="pricingData">
-                    <h3 class="pricingHeader">{{{ title }}}</h3>
+                    <h3 class="pricingHeader">{{{ priceTitle }}}</h3>
                     <ul class="priceList">
-                        {{# each fields }}
+                        {{# each priceFields }}
                         <li class="priceField">{{{ this }}}</li>
                         {{/ each }}
                     </ul>
-                    <em class="pricingPrice">{{{ price }}}</em>
+                    <em class="pricingPrice">$ {{{ priceValue }}}</em>
                 </div>
             </div>
             {{/ each }}

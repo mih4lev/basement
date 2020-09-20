@@ -1,12 +1,11 @@
 .mapPicture {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 123px;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+    background-color: $sub;
     @include minWidth(1000) {
         margin: 0 auto;
         width: 968px;
@@ -14,94 +13,110 @@
     @include minWidth(1440) {
         width: 1032px;
     }
-}
-
-.no-webp .mapPicture {
-    background-image: url("/public/images/portfolio-map_480x123.png");
-    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-        background-image: url("/public/images/portfolio-map_960x246.png");
-    }
-    @include minWidth(480) {
-        background-image: url("/public/images/portfolio-map_768x123.png");
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: url("/public/images/portfolio-map_1536x246.png");
+    .mapBlock {
+        width: 100%;
+        height: inherit;
+        .gm-fullscreen-control {
+            display: none !important;
+        }
+        .gmnoprint {
+            display: none !important;
+        }
+        .gm-svpc {
+            display: none !important;
         }
     }
-    @include minWidth(768) {
-        background-image: url("/public/images/portfolio-map_1032x123.png");
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: url("/public/images/portfolio-map_2064x246.png");
+    .mapButton {
+        @extend %shadow;
+        @extend %font;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 177px;
+        height: 26px;
+        line-height: 26px;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        text-align: center;
+        color: $raven;
+        background: $white;
+        border-radius: 5px;
+        &:hover {
+            color: $blue;
         }
-    }
-    @include minWidth(1000) {
-        background-image: url("/public/images/portfolio-map_968x123.png");
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: url("/public/images/portfolio-map_1936x246.png");
-        }
-    }
-    @include minWidth(1440) {
-        background-image: url("/public/images/portfolio-map_1032x123.png");
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: url("/public/images/portfolio-map_2064x246.png");
-        }
-    }
-}
-
-.webp .mapPicture {
-    background-image: url("/public/images/portfolio-map_480x123.webp");
-    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-        background-image: url("/public/images/portfolio-map_960x246.webp");
-    }
-    @include minWidth(480) {
-        background-image: url("/public/images/portfolio-map_768x123.webp");
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: url("/public/images/portfolio-map_1536x246.webp");
-        }
-    }
-    @include minWidth(768) {
-        background-image: url("/public/images/portfolio-map_1032x123.webp");
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: url("/public/images/portfolio-map_2064x246.webp");
-        }
-    }
-    @include minWidth(1000) {
-        background-image: url("/public/images/portfolio-map_968x123.webp");
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: url("/public/images/portfolio-map_1936x246.webp");
-        }
-    }
-    @include minWidth(1440) {
-        background-image: url("/public/images/portfolio-map_1032x123.webp");
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: url("/public/images/portfolio-map_2064x246.webp");
+        @include minWidth(480) {
+            width: 235px;
+            height: 41px;
+            line-height: 41px;
+            font-size: 13px;
         }
     }
 }
-
-.mapButton {
-    @extend %shadow;
-    @extend %font;
-    width: 177px;
-    height: 26px;
-    line-height: 26px;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    text-align: center;
-    color: $raven;
-    background: $white;
-    border-radius: 5px;
-    &:hover {
-        color: $blue;
-    }
-    @include minWidth(480) {
-        width: 235px;
-        height: 41px;
-        line-height: 41px;
-        font-size: 13px;
-    }
-}
+//
+//.no-webp .mapPicture {
+//    background-image: url("/public/images/portfolio-map_480x123.png");
+//    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+//        background-image: url("/public/images/portfolio-map_960x246.png");
+//    }
+//    @include minWidth(480) {
+//        background-image: url("/public/images/portfolio-map_768x123.png");
+//        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+//            background-image: url("/public/images/portfolio-map_1536x246.png");
+//        }
+//    }
+//    @include minWidth(768) {
+//        background-image: url("/public/images/portfolio-map_1032x123.png");
+//        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+//            background-image: url("/public/images/portfolio-map_2064x246.png");
+//        }
+//    }
+//    @include minWidth(1000) {
+//        background-image: url("/public/images/portfolio-map_968x123.png");
+//        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+//            background-image: url("/public/images/portfolio-map_1936x246.png");
+//        }
+//    }
+//    @include minWidth(1440) {
+//        background-image: url("/public/images/portfolio-map_1032x123.png");
+//        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+//            background-image: url("/public/images/portfolio-map_2064x246.png");
+//        }
+//    }
+//}
+//
+//.webp .mapPicture {
+//    background-image: url("/public/images/portfolio-map_480x123.webp");
+//    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+//        background-image: url("/public/images/portfolio-map_960x246.webp");
+//    }
+//    @include minWidth(480) {
+//        background-image: url("/public/images/portfolio-map_768x123.webp");
+//        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+//            background-image: url("/public/images/portfolio-map_1536x246.webp");
+//        }
+//    }
+//    @include minWidth(768) {
+//        background-image: url("/public/images/portfolio-map_1032x123.webp");
+//        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+//            background-image: url("/public/images/portfolio-map_2064x246.webp");
+//        }
+//    }
+//    @include minWidth(1000) {
+//        background-image: url("/public/images/portfolio-map_968x123.webp");
+//        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+//            background-image: url("/public/images/portfolio-map_1936x246.webp");
+//        }
+//    }
+//    @include minWidth(1440) {
+//        background-image: url("/public/images/portfolio-map_1032x123.webp");
+//        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+//            background-image: url("/public/images/portfolio-map_2064x246.webp");
+//        }
+//    }
+//}
 
 .portfolioList {
     display: flex;
@@ -184,10 +199,28 @@
     }
 }
 
-.portfolioImage {
+.imageWrapper {
     width: inherit;
     height: inherit;
+    picture {
+        width: inherit;
+        height: inherit;
+    }
+}
+
+.portfolioPhoto {
+    width: inherit;
+    height: inherit;
+    //width: 143px;
+    //height: 143px;
     border: none;
+    &.defaultImage {
+        background-color: $sub;
+        background-image: url("/public/images/vector/default-image.svg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 220px;
+    }
 }
 
 .portfolioHiddenBlock {

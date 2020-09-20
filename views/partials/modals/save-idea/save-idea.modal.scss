@@ -1,0 +1,242 @@
+//.modalSection.saveIdeaModal {
+//    display: block;
+//}
+
+.saveIdeaWrapper {
+    @include modal(282px, 40px);
+    @include minWidth(768) {
+        @include modal(570px, 40px);
+    }
+    .formWrapper {
+        display: flex;
+        flex-direction: column;
+        @include minWidth(768) {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .photoWrapper {
+            .ideaPhoto {
+                width: 252px;
+                height: 252px;
+            }
+        }
+        .albumsWrapper {
+            display: flex;
+            flex-direction: column;
+            width: 252px;
+            margin-top: 15px;
+            @include minWidth(768) {
+                margin-top: 0;
+            }
+            .createWrapper {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                width: 240px;
+                margin: 0 auto;
+                .coverWrapper {
+                    flex-shrink: 0;
+                    position: relative;
+                    width: 40px;
+                    height: 40px;
+                    overflow: hidden;
+                    @include minWidth(768) {
+                        width: 54px;
+                        height: 54px;
+                    }
+                    .coverField {
+                        position: absolute;
+                        top: -100%;
+                    }
+                    .coverLabel {
+                        position: relative;
+                        display: block;
+                        width: inherit;
+                        height: inherit;
+                        background-color: $sub;
+                        border-radius: 50%;
+                        font-size: 0;
+                        cursor: pointer;
+                        opacity: 0.5;
+                        &:before {
+                            content: "+";
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            font-size: 32px;
+                            font-weight: 800;
+                            color: $raven;
+                            @include minWidth(768) {
+                                font-size: 44px;
+                            }
+                        }
+                    }
+                    .coverPhoto {
+                        //opacity: 0;
+                        position: absolute;
+                        z-index: -1;
+                        top: 0;
+                        left: 0;
+                        width: inherit;
+                        height: inherit;
+                        border-radius: 50%;
+                        object-fit: cover;
+
+                    }
+                }
+                .titleWrapper {
+                    position: relative;
+                    margin-left: 10px;
+                    height: 40px;
+                    .titleField {
+                        @extend %font;
+                        @extend %animation;
+                        width: 185px;
+                        height: inherit;
+                        padding: 0 10px;
+                        box-sizing: border-box;
+                        line-height: 40px;
+                        font-size: 15px;
+                        border: 1px solid $sub;
+                        border-radius: 5px;
+                        background-color: transparent;
+                        outline: none;
+                        @include minWidth(768) {
+                            width: 180px;
+                        }
+                        &.typedField {
+                            position: relative;
+                            font-weight: 800;
+                            border-color: transparent;
+                        }
+                        &:focus {
+                            font-weight: 400;
+                            border-color: $blue;
+                        }
+                    }
+                    .titleLabel {
+                        @extend %animation;
+                        z-index: -1;
+                        position: absolute;
+                        top: 0;
+                        left: 10px;
+                        height: 40px;
+                        line-height: 40px;
+                        font-size: 15px;
+                        color: $blue;
+                        white-space: nowrap;
+                        &.hiddenLabel {
+                            opacity: 0;
+                        }
+                    }
+                }
+            }
+            .albumsListWrapper {
+                position: relative;
+                margin: 4px auto 0;
+                width: 240px;
+                height: 144px;
+                overflow: hidden;
+                @include minWidth(768) {
+                    margin: 5px 0 0 6px;
+                    width: 244px;
+                    height: 192px;
+                }
+                .albumList {
+                    @extend %animation;
+                    display: flex;
+                    flex-direction: column;
+                    width: 230px;
+                    margin: 0;
+                    padding: 0;
+                    list-style-type: none;
+                    .album {
+                        position: relative;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        padding: 4px 0;
+                        cursor: pointer;
+                        &.hiddenAlbum {
+                            display: none;
+                        }
+                        @include minWidth(768) {
+                            padding: 5px 0;
+                        }
+                        .albumCover {
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                            @include minWidth(768) {
+                                width: 54px;
+                                height: 54px;
+                            }
+                        }
+                        .albumTitle {
+                            margin-left: 20px;
+                            font-size: 15px;
+                            color: $black;
+                        }
+                        &:hover {
+                            .albumTitle {
+                                color: $blue;
+                            }
+                        }
+                        &.activeAlbum {
+                            font-weight: 800;
+                            color: $blue;
+                        }
+                    }
+                }
+                .scrollLine {
+                    @extend %animation;
+                    position: absolute;
+                    top: 4px;
+                    right: 2px;
+                    width: 3px;
+                    height: 40px;
+                    background-color: $blue;
+                    border-radius: 5px;
+                }
+                .loaderWrapper {
+                    @extend %animation;
+                    z-index: 2;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background-color: $half;
+                    width: 100%;
+                    height: 100%;
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        width: 24px;
+                        height: 24px;
+                        background-color: transparent;
+                        background-image: url("/public/images/vector/load-icon_black.svg");
+                        background-size: 24px 24px;
+                    }
+                    &.hiddenWrapper {
+                        opacity: 0;
+                        z-index: -1;
+                    }
+                }
+            }
+            .submitWrapper {
+                .submitButton {
+                    width: 100%;
+                    height: 40px;
+                    font-size: 13px;
+                    @include minWidth(768) {
+                        margin-left: auto;
+                        width: 180px;
+                    }
+                }
+            }
+        }
+    }
+}

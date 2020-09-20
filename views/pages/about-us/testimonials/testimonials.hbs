@@ -33,74 +33,68 @@
 
 <section class="pageContent">
     <div class="wrapper">
-        <ul class="cardList">
-            {{#each testimonials}}
+        <ul class="cardList elementsWrapper" data-page="9">
+            {{# each testimonials }}
                 <li class="cardWrapper">
-                    <a class="cardLink" href="/about-us/testimonials/{{{ id }}}">
-                        {{# if image }}
-                        <picture class="cardImage">
-                            <source srcset="/public/images/temp/testimonials/{{{ image }}}_120x83.webp,
-                                        /public/images/temp/testimonials/{{{ image }}}_240x166.webp 2x"
-                                    media="(max-width: 479px)"
-                                    type="image/webp">
-                            <source srcset="/public/images/temp/testimonials/{{{ image }}}_120x83.jpg,
-                                        /public/images/temp/testimonials/{{{ image }}}_240x166.jpg 2x"
-                                    media="(max-width: 479px)"
-                                    type="image/jpeg">
-                            <source srcset="/public/images/temp/testimonials/{{{ image }}}_228x123.webp,
-                                        /public/images/temp/testimonials/{{{ image }}}_456x246.webp 2x"
-                                    media="(max-width: 767px)"
-                                    type="image/webp">
-                            <source srcset="/public/images/temp/testimonials/{{{ image }}}_228x123.jpg,
-                                        /public/images/temp/testimonials/{{{ image }}}_456x246.jpg 2x"
-                                    media="(max-width: 767px)"
-                                    type="image/jpeg">
-                            <source srcset="/public/images/temp/testimonials/{{{ image }}}_236x123.webp,
-                                        /public/images/temp/testimonials/{{{ image }}}_472x246.webp 2x"
-                                    media="(max-width: 999px)"
-                                    type="image/webp">
-                            <source srcset="/public/images/temp/testimonials/{{{ image }}}_236x123.jpg,
-                                        /public/images/temp/testimonials/{{{ image }}}_472x246.jpg 2x"
-                                    media="(max-width: 999px)"
-                                    type="image/jpeg">
-                            <source srcset="/public/images/temp/testimonials/{{{ image }}}_314x173.webp,
-                                        /public/images/temp/testimonials/{{{ image }}}_628x346.webp 2x"
-                                    media="(max-width: 1439px)"
-                                    type="image/webp">
-                            <source srcset="/public/images/temp/testimonials/{{{ image }}}_314x173.jpg,
-                                        /public/images/temp/testimonials/{{{ image }}}_628x346.jpg 2x"
-                                    media="(max-width: 1439px)"
-                                    type="image/jpeg">
-                            <source srcset="/public/images/temp/testimonials/{{{ image }}}_330x173.webp,
-                                        /public/images/temp/testimonials/{{{ image }}}_660x346.webp 2x"
-                                    media="(min-width: 1440px)"
-                                    type="image/webp">
-                            <source srcset="/public/images/temp/testimonials/{{{ image }}}_330x173.jpg,
-                                        /public/images/temp/testimonials/{{{ image }}}_660x346.jpg 2x"
-                                    media="(min-width: 1440px)"
-                                    type="image/jpeg">
-                            <img class="cardImage"
-                                 src="/public/images/temp/testimonials/{{{ image }}}_330x173.jpg"
-                                 srcset="/public/images/temp/testimonials/{{{ image }}}_330x173.jpg,
-                                     /public/images/temp/testimonials/{{{ image }}}_660x346.jpg 2x"
-                                 alt="{{{ name }}}'s testimonial">
-                        </picture>
+                    <a class="cardLink" href="/about-us/testimonials/{{{ testimonialID }}}">
+                        {{# if testimonialImage }}
+                            <picture>
+                                <source srcset="{{{ testimonialImage }}}_120x83.jpg,
+                                                {{{ testimonialImage }}}_240x166.jpg 2x"
+                                        media="(max-width: 479px)" type="image/jpeg">
+                                <source srcset="{{{ testimonialImage }}}_228x123.jpg,
+                                                {{{ testimonialImage }}}_456x246.jpg 2x"
+                                        media="(max-width: 767px)" type="image/jpeg">
+                                <source srcset="{{{ testimonialImage }}}_236x123.jpg,
+                                                {{{ testimonialImage }}}_472x246.jpg 2x"
+                                        media="(max-width: 999px)" type="image/jpeg">
+                                <source srcset="{{{ testimonialImage }}}_314x173.jpg,
+                                                {{{ testimonialImage }}}_628x346.jpg 2x"
+                                        media="(max-width: 1439px)" type="image/jpeg">
+                                <source srcset="{{{ testimonialImage }}}_330x173.jpg,
+                                                {{{ testimonialImage }}}_660x346.jpg 2x"
+                                        media="(min-width: 1440px)" type="image/jpeg">
+                                <img class="cardImage" alt="{{{ testimonialAuthor }}}'s testimonial"
+                                     src="{{{ testimonialImage }}}_330x173.jpg"
+                                     srcset="{{{ testimonialImage }}}_330x173.jpg,
+                                             {{{ testimonialImage }}}_660x346.jpg 2x">
+                            </picture>
                         {{ else }}
-                            <div class="cardImage">{{{ name }}}'s testimonial</div>
+                            <div class="cardImage">{{{ testimonialAuthor }}}'s testimonial</div>
                         {{/ if }}
                     </a>
                     <div class="cardData">
-                        <a class="cardHeader" href="/about-us/testimonials/{{{ id }}}">{{{ name }}}</a>
-                        <div class="stars" data-rating="{{{ rating }}}">Stars: {{{ rating }}}</div>
-                        <p class="cardAnnounce" data-rows="6">{{{ announce }}}</p>
+                        <a class="cardHeader" href="/about-us/testimonials/{{{ testimonialID }}}">
+                            {{{ testimonialAuthor }}}
+                        </a>
+                        <div class="stars" data-rating="{{{ testimonialRating }}}">
+                            Stars: {{{ testimonialRating }}}
+                        </div>
+                        <p class="cardAnnounce" data-rows="6">{{{ testimonialAnnounce }}}</p>
                         <div class="twoColumnsWrapper bottomCardWrapper">
-                            <span class="dataDate">{{{ date }}}</span>
-                            <span class="dataState">{{{ state }}}</span>
+                            <span class="dataDate">{{{ testimonialDate }}}</span>
+                            <span class="dataState">{{{ testimonialState }}}</span>
                         </div>
                     </div>
                 </li>
-            {{/each}}
+            {{/ each }}
         </ul>
-        <button class="showMoreButton">SHOW MORE</button>
+        <button class="showMoreButton {{# if testimonialsData.hiddenButton }}hiddenButton{{/if}}"
+                data-scroll="1">SHOW MORE</button>
     </div>
 </section>
+
+<template class="elementTemplate">
+    <li class="cardWrapper">
+        <a class="cardLink" href=""></a>
+        <div class="cardData">
+            <a class="cardHeader" href=""></a>
+            <div class="stars" data-rating=""></div>
+            <p class="cardAnnounce" data-rows="6"></p>
+            <div class="twoColumnsWrapper bottomCardWrapper">
+                <span class="dataDate"></span>
+                <span class="dataState"></span>
+            </div>
+        </div>
+    </li>
+</template>

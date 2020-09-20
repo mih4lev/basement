@@ -1,4 +1,5 @@
-import {changeModalVisible, saveAction, setModal} from "../modals";
+import { changeModalVisible, setModal } from "../modals";
+import { saveAction } from "../../../../source/scripts/utils";
 
 export const viewIdeaModal = () => {
 
@@ -15,7 +16,7 @@ export const viewIdeaModal = () => {
     // modalData
     const ideaIDNode = modalNode.querySelector(`#ideaID`);
     const sectionTitle = modalNode.querySelector(`.sectionTitle`);
-    const ideaAuthor = modalNode.querySelector(`.ideaAuthor`);
+    const authorNode = modalNode.querySelector(`.ideaAuthor`);
     const countWrapper = modalNode.querySelector(`.countWrapper`);
     const ideaLink = modalNode.querySelector(`.ideaLink`);
     const ideaLabelList = modalNode.querySelector(`.ideaLabelList`);
@@ -31,13 +32,13 @@ export const viewIdeaModal = () => {
             setTimeout(() => {
                 ideaIDNode.value = ``;
                 sectionTitle.innerText = ``;
-                ideaAuthor.innerText = ``;
+                authorNode.innerText = ``;
                 countWrapper.innerText = ``;
                 ideaLink.innerText = ``;
                 ideaLink.removeAttribute(`href`);
                 ideaLabelList.innerHTML = ``;
                 otherPreviewList.innerHTML = ``;
-                changeButtonStatus({ isDisabled: false });
+                saveButton.dataset.idea = ``;
                 resolve();
             }, animationTimeout);
         });
@@ -72,8 +73,9 @@ export const viewIdeaModal = () => {
     };
 
     // create tag list for modal data
-    const createTagList = (tagList) => {
-        tagList.forEach((tagName) => {
+    const createTagList = (tags) => {
+        ideaLabelList.innerHTML = ``;
+        tags.forEach((tagName) => {
             const tagNode = document.createElement(`li`);
             tagNode.classList.add(`ideaLabel`);
             tagNode.innerText = tagName;
@@ -88,63 +90,85 @@ export const viewIdeaModal = () => {
     }
 
     // create preview list for modal data
-    const createPreviewList = (previewList) => {
-        previewList.forEach(({ thumb, picture, title }) => {
-            const pictureFormat = selectPictureFormat();
+    const createPreviewList = (similar) => {
+        otherPreviewList.innerHTML = ``;
+        similar.forEach(({ ideaID, ideaTitle, ideaImage }) => {
             // li
             const previewNode = document.createElement(`li`);
             previewNode.classList.add(`otherPreviewWrapper`);
-            previewNode.dataset.picture = `/public/images/temp/${picture}${pictureFormat}`;
-            previewNode.dataset.title = title;
+            previewNode.dataset.idea = ideaID;
             // img
             const previewPicture = document.createElement(`img`);
             previewPicture.classList.add(`otherPreview`);
-            previewPicture.src = `/public/images/temp/${thumb}${pictureFormat}`;
-            previewPicture.setAttribute(`alt`, title);
+            previewPicture.src = ideaImage + `_154x154.jpg`;
+            previewPicture.setAttribute(`alt`, ideaTitle);
             // append
             previewNode.appendChild(previewPicture);
             otherPreviewList.appendChild(previewNode);
         });
         // preview thumbs click handler
         [...otherPreviewList.children].forEach((thumb) => {
-            const { dataset: { picture, title }} = thumb;
-            ideaModalPhoto.addEventListener(`load`, () => {
-                setTimeout(() => {
-                    ideaModalWrapper.classList.remove(`loadWrapper`);
-                }, animationTimeout);
-            });
-            thumb.addEventListener(`click`, () => {
-                ideaModalWrapper.classList.add(`loadWrapper`);
-                setTimeout(() => {
-                    ideaModalPhoto.src = picture;
-                    ideaModalPhoto.setAttribute(`alt`, title);
-                }, animationTimeout);
+            thumb.addEventListener(`click`, async () => {
+                const { dataset: { idea: ideaID }} = thumb;
+                const modalNode = document.querySelector(`[data-modal="view-idea"]`);
+                const modalWrapper = modalNode.querySelector(`.contentWrapper`);
+                modalWrapper.classList.add(`showLoadStatus`);
+                await requestModalData(ideaID);
+                modalWrapper.classList.remove(`showLoadStatus`);
             });
         });
     };
 
-    const selectModalPicture = ({ picture, title }) => {
+    const selectModalPicture = ({ ideaImage, ideaTitle }) => {
         const pictureFormat = selectPictureFormat();
-        ideaModalPhoto.src = `/public/images/temp/${picture}${pictureFormat}`;
-        ideaModalPhoto.setAttribute(`title`, title);
+        ideaModalPhoto.src = ideaImage + `.jpg`;
+        ideaModalPhoto.setAttribute(`title`, ideaTitle);
+    };
+
+    const changeButtonVisible = (ideaID, isVisible, isLogin) => {
+        if (isLogin === 0) {
+            const title = `Sign in to save`;
+            saveButton.setAttribute(`title`, title);
+            saveButton.innerText = title;
+            saveButton.classList.remove(`userIdea`);
+            saveButton.classList.add(`unLoginIdea`);
+            return false;
+        }
+        const title = (isVisible) ? `Save to collection` : `Created by you`;
+        const userAction = (isVisible) ? `remove` : `add`;
+        const saveAction = (isVisible) ? `add` : `remove`;
+        saveButton.dataset.idea = (isVisible) ? ideaID : ``;
+        saveButton.setAttribute(`title`, title);
+        saveButton.innerText = title;
+        saveButton.classList[userAction](`userIdea`);
+        saveButton.classList[saveAction](`saveIdea`);
     };
 
     // set requested data to modal
     const setModalData = (responseData) => {
-        const { id, header, author, saveCount, category, categoryLink, tagList, previewList } = responseData;
+        const {
+            ideaID, ideaTitle, ideaAuthor, ideaImage, saveCount, prevID, nextID,
+            categories, filters, isVisible, isLogin
+        } = responseData;
+        const { 0: { categoryTitle, categoryLink, similar }} = categories;
         // set data to modal
-        ideaIDNode.value = id;
-        sectionTitle.innerText = header;
-        ideaAuthor.innerText = author;
+        ideaIDNode.value = ideaID;
+        sectionTitle.innerText = ideaTitle;
+        authorNode.innerText = ideaAuthor;
         countWrapper.innerText = saveCount;
-        ideaLink.innerText = category;
+        // button
+        changeButtonVisible(ideaID, isVisible, isLogin);
+        // category
+        ideaLink.innerText = categoryTitle;
         ideaLink.setAttribute(`href`, categoryLink);
+        // arrows
+        modalArrows[0].dataset.idea = nextID;
+        modalArrows[1].dataset.idea = prevID;
         // create tag list
-        createTagList(tagList)
+        createTagList(filters);
         // create thumbs list
-        createPreviewList(previewList)
-        // select first image
-        selectModalPicture(previewList[0]);
+        createPreviewList(similar);
+        selectModalPicture({ ideaImage, ideaTitle });
     };
 
     // request from DB for modal data
@@ -158,31 +182,9 @@ export const viewIdeaModal = () => {
         });
     };
 
-    // change save to collection button status
-    const changeButtonStatus = ({ isDisabled = false } = {}) => {
-        const classAction = (isDisabled) ? `add` : `remove`;
-        const buttonTitle = (isDisabled) ? `Already saved to collection` : `Save to collection`;
-        saveButton.disabled = isDisabled;
-        saveButton.classList[classAction](`savedButton`);
-        saveButton.setAttribute(`title`, buttonTitle);
-    };
-
-    // update saved count on sav idea
-    const updateSavedCount = () => {
-        const saveCount = modalNode.querySelector(`.saveCount .countWrapper`);
-        const prevValue = Number(saveCount.innerText);
-        saveCount.innerText = prevValue + 1;
-    };
-
     // save idea to profile DB
-    const saveIdea = async (event) => {
+    const saveIdea = (event) => {
         event.preventDefault();
-        const formData = new FormData(formNode);
-        const responseOptions = { URL: `/api/profile/ideas`, body: formData, button: saveButton };
-        const responseData = await saveAction(responseOptions);
-        if (responseData.code !== 200) return changeButtonStatus({ isDisabled: false });
-        changeButtonStatus({ isDisabled: true });
-        updateSavedCount();
     };
 
     // show idea modal
@@ -191,7 +193,6 @@ export const viewIdeaModal = () => {
             const { dataset: { idea: ideaID }} = ideaPhoto;
             changeModalVisible(modalNode)();
             await requestModalData(ideaID);
-            changeButtonStatus({ isDisabled: false });
             changeDataVisible({ isVisible: true });
         });
     };
@@ -199,11 +200,7 @@ export const viewIdeaModal = () => {
     // modal arrow handler
     const arrowHandler = async (event) => {
         event.preventDefault();
-        const arrowButton = event.target;
-        const isNext = arrowButton.classList.contains(`nextArrow`);
-        const previousIdeaID = Number(ideaIDNode.value);
-        const ideaID = (isNext) ? previousIdeaID + 1 : previousIdeaID - 1;
-        // set disabled status to buttons && set load status
+        const { dataset: { idea: ideaID }} = event.target;
         await clearModalData();
         await requestModalData(ideaID);
         changeDataVisible({ isVisible: true });
@@ -211,6 +208,19 @@ export const viewIdeaModal = () => {
 
     // show idea modals on photo click
     ideaPhotos.forEach(showModal);
+
+    // observe new elements
+    const callback = (mutationsList) => {
+        mutationsList.forEach((mutation) => {
+            mutation.addedNodes.forEach((node) => {
+                if (!node.classList || !node.classList.contains(`ideaWrapper`)) return false;
+                const saveButton = [...node.querySelectorAll(`.ideaPhoto`)];
+                saveButton.forEach(showModal);
+            });
+        });
+    };
+    const ideasObserver = new MutationObserver(callback);
+    if (ideaList) ideasObserver.observe(ideaList, { childList: true });
 
     // modal save button click
     if (saveButton) saveButton.addEventListener(`click`, saveIdea);

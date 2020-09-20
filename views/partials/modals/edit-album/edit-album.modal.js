@@ -1,4 +1,5 @@
-import { changeModalVisible, resetDropEvents, saveAction, setModal } from "../modals";
+import { changeModalVisible, setModal } from "../modals";
+import { resetDropEvents, saveAction } from "../../../../source/scripts/utils";
 
 export const editAlbumModal = () => {
 
@@ -69,18 +70,27 @@ export const editAlbumModal = () => {
     const deleteHandler = async (event) => {
         event.preventDefault();
         const responseData = await requestData(`DELETE`, deleteButton);
-        if (responseData.code !== 200) return false; // show error
+        if (responseData.status !== 1) return false; // show error
         // hide edit modal && change album data
         const albumID = modalNode.dataset.album;
         albumList.removeChild(albumList.querySelector(`[data-album="${albumID}"]`));
         modalNode.classList.remove(`activeModal`);
+        // change add button style if last deleted
+        const albums = [...document.querySelectorAll(`.albumWrapper[data-album]`)];
+        if (!albums.length) {
+            const addButton = document.querySelector(`.albumAddCover`);
+            addButton.classList.remove(`alreadyAdded`);
+        }
     };
 
     // edit func
     const updateHandler = async (event) => {
         event.preventDefault();
-        const responseData = await requestData(`PUT`, updateButton);
-        if (responseData.code !== 200) return false; // show error
+        const formNode = modalNode.querySelector(`.formWrapper`);
+        const formData = new FormData(formNode);
+        const responseOptions = { URL: `/api/profile/albums/edit`, body: formData, button: updateButton };
+        const responseData = await saveAction(responseOptions);
+        if (responseData.status !== 1) return false; // show error
         // hide modal && change album data on profile
         const albumID = modalNode.dataset.album;
         const albumNode = albumList.querySelector(`[data-album="${albumID}"]`);

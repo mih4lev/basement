@@ -1,0 +1,210 @@
+<form class="formNode" action="/admin/portfolio/add">
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageTitle">Page title</label>
+            <input class="textField" type="text" id="pageTitle" name="pageTitle">
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageDescription">Page description</label>
+            <textarea class="textareaField" id="pageDescription" name="pageDescription"></textarea>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageKeywords">Page keywords</label>
+            <textarea class="textareaField" id="pageKeywords" name="pageKeywords"></textarea>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="workTitle">Work title</label>
+            <input class="textField" type="text" id="workTitle" name="workTitle">
+        </div>
+        <div class="selectWrapper autoWrapper">
+            <div class="toggleButtonWrapper">
+                <input class="toggleButton" type="checkbox"
+                       name="isHomeVisible" id="isHomeVisible" value="1">
+                <label class="buttonLabel" for="isHomeVisible">Home portfolio</label>
+            </div>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper" style="width: 50%; margin-right: 10px;">
+            <label class="fieldLabel" for="workCity">Work city</label>
+            <input class="textField" type="text" id="workCity" name="workCity" value="{{{ page.workCity }}}">
+        </div>
+        <div class="fieldWrapper" style="width: 25%; margin-right: 10px;"></div>
+        <div class="fieldWrapper" style="width: 25%;"></div>
+    </section>
+
+    <section class="imagesSection">
+        <div class="imagesWrapper previewsWrapper collectData">
+            <div class="imageWrapper addWrapper">
+                <input class="fileField previewUpload" type="file" id="fileField" multiple>
+                <label class="fileLabel" for="fileField">+</label>
+            </div>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <span class="fieldTitle">By:</span>
+        <div class="selectWrapper" data-id="creatorID" data-name="creatorName" style="margin: 0 5px 0 10px;">
+            <div class="currentSelect"></div>
+            <input class="hiddenField" type="hidden" name="creatorID" value="0">
+            <div class="dropdownWrapper hiddenWrapper">
+                {{# each creators }}
+                    <div class="dropdownElement">
+                        <div class="elementWrapper">
+                            <span class="selectElement" data-request="{{{ creatorID }}}">{{{ creatorName }}}</span>
+                            <button class="editButton" type="button" title="Edit company">Edit company</button>
+                        </div>
+                        <div class="editWrapper hiddenWrapper">
+                            <input class="editField" type="text" value="{{{ creatorName }}}">
+                            <button class="saveButton" data-api="/admin/portfolio/creators/edit"
+                                    type="button" title="Save company">Save company</button>
+                        </div>
+                    </div>
+                {{/ each }}
+                <div class="newElement">
+                    <div class="createWrapper">+ Add new</div>
+                    <div class="editWrapper hiddenWrapper">
+                        <input class="editField" type="text">
+                        <button class="saveButton" data-api="/admin/portfolio/creators"
+                                type="button" title="Save company">Save company</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fieldWrapper" style="margin: 0 10px 0 5px; width: 70px;">
+            <label class="fieldLabel" for="workSquare">Square</label>
+            <input class="textField" type="text" id="workSquare" name="workSquare" value="">
+        </div>
+        <span class="fieldTitle">SQ. FT.</span>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper" style="width: 50%; margin-right: 10px;">
+            <label class="fieldLabel" for="workAddress">Address</label>
+            <input class="textField" type="text" id="workAddress" name="workAddress" value="">
+        </div>
+        <div class="fieldWrapper" style="width: 25%; margin-right: 10px;">
+            <label class="fieldLabel" for="lat"></label>
+            <input class="textField" type="text" id="lat" name="lat" value="">
+        </div>
+        <div class="fieldWrapper" style="width: 25%">
+            <label class="fieldLabel" for="lng"></label>
+            <input class="textField" type="text" id="lng" name="lng" value="">
+        </div>
+    </section>
+
+    <section class="mapSection">
+        <div class="mapPlaceholder"></div>
+        <script>
+            const mapNode = document.querySelector(`.mapPlaceholder`);
+            const addressField = document.querySelector(`#workAddress`);
+            const latField = document.querySelector(`#lat`);
+            const lngField = document.querySelector(`#lng`);
+            function initMap() {
+                const lat = Number(latField.value) || 38.89511;
+                const lng = Number(lngField.value) || -77.03637;
+                const coors = { lat, lng };
+                const map = new google.maps.Map(mapNode, { zoom: 10, center: coors });
+                const icon = `/public/images/vector/pin-image.svg`;
+                const pinOptions = { map, animation: google.maps.Animation.DROP, position: coors, icon };
+                let marker = new google.maps.Marker(pinOptions);
+                // var marker = new google.maps.Marker({position: uluru, map: map});
+                const geocoder = new google.maps.Geocoder();
+                const callback = (results, status) => {
+                    if (!status) return false;
+                    latField.value = results[0].geometry.location.lat();
+                    lngField.value = results[0].geometry.location.lng();
+                    const position = results[0].geometry.location;
+                    map.setCenter(position);
+                    map.setZoom(17);
+                    marker.setMap(null);
+                    const icon = `/public/images/vector/pin-image.svg`;
+                    const pinOptions = { map, animation: google.maps.Animation.DROP, position, icon };
+                    marker = new google.maps.Marker(pinOptions);
+                };
+                const geocodeAddress = (geocoder) => {
+                    if (!addressField.value) return false;
+                    geocoder.geocode({ address: addressField.value }, callback);
+                };
+                addressField.addEventListener(`change`, () => {
+                    geocodeAddress(geocoder, map);
+                });
+            }
+        </script>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="workText">Work text</label>
+            <textarea class="textareaField tinyField" id="workText" name="workText"></textarea>
+        </div>
+    </section>
+
+    <section class="filtersSection">
+        Filters:
+        <div class="filtersWrapper">
+            {{# each filters }}
+                <ul>
+                    <li>{{{ filterTitle }}}</li>
+                    {{# if children }}
+                        <ul>
+                            {{# each children }}
+                                <li class="activeFilter">
+                                    <input type="checkbox" name="filterArray"
+                                           {{# if isChosen }}checked{{/if}}
+                                           value="{{{ filterID }}}" id="filter{{{ filterID }}}">
+                                    <label for="filter{{{ filterID }}}">
+                                        {{{ filterTitle }}}
+                                    </label>
+                                </li>
+                            {{/ each }}
+                        </ul>
+                    {{/ if }}
+                </ul>
+            {{/ each }}
+        </div>
+    </section>
+
+    <div class="formButtons">
+        {{> micro-blocks/upload-button/upload-button }}
+        <button class="submitButton" type="button" title="Create" data-redirect="/admin/portfolio"
+                data-action="create" data-api="">Create</button>
+    </div>
+
+</form>
+
+<template class="dropdownTemplate">
+    <div class="dropdownElement">
+        <div class="elementWrapper">
+            <span class="selectElement" data-request=""></span>
+            <button class="editButton" type="button" title="Edit company">Edit company</button>
+        </div>
+        <div class="editWrapper hiddenWrapper">
+            <input class="editField" type="text" value="">
+            <button class="saveButton" data-api="/admin/portfolio/creators/edit"
+                    type="button" title="Save company">Save company</button>
+        </div>
+    </div>
+</template>
+
+<template class="previewTemplate">
+    <div class="imageWrapper createdWrapper" data-name="portfolioImages">
+        <img class="imagePreview" src="" alt="Image preview">
+        <div class="deleteWrapper">
+            <button class="wrapperButton" type="button" title="Delete photo">Delete</button>
+        </div>
+    </div>
+</template>
+
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUZcbipHbHCXwp6PdXIFGhExytbzvh7Tk&callback=initMap"></script>

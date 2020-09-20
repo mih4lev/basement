@@ -1,8 +1,35 @@
+<style>
+    .localSection {
+        --local-city-background-320: url({{{ page.landingImage }}}_480x536.jpg);
+        --local-city-background-480: url({{{ page.landingImage }}}_769x637.jpg);
+        --local-city-background-768: url({{{ page.landingImage }}}_1000x537.jpg);
+        --local-city-background-1000: url({{{ page.landingImage }}}_1440x594.jpg);
+        --local-city-background-1440: url({{{ page.landingImage }}}_1440x960.jpg);
+    }
+</style>
+
 <section class="mapSection localSection">
     <div class="wrapper mapWrapper">
-        <h2 class="sectionTitle">Basement Finishing & Remodeling Services with Fast Turnaround Times!</h2>
-        <p class="textBlock">At Basement Remodeling Company, we provide our services cities all across Maryland, including Ellicott City (Howard County)! Basement Remodeling Company has an extensive proven track record, affordable prices, lightning-fast turnaround times, and team of courteous professionals—what more could you want?</p>
-        <p class="textBlock">Click the button below to find out more about what we do, how we do it, and why we're the basement contractor you need!</p>
-        <button class="mapLearnMoreButton" type="button">LEARN MORE</button>
+        <div class="landingContent">
+            <h2 class="sectionTitle">{{{ page.footerTitle }}}</h2>
+            {{{ page.footerText }}}
+            <a href="/portfolio/" class="mapLearnMoreButton">LEARN MORE</a>
+        </div>
+        <div class="landingMap" data-lat="{{{ page.lat }}}"
+             data-lng="{{{ page.lng }}}" data-zoom="{{{ page.zoom }}}"></div>
     </div>
 </section>
+
+<script>
+    const mapNode = document.querySelector(`.landingMap`);
+    const { dataset: { lat: latValue, lng: lngValue, zoom: zoomValue }} = mapNode;
+    function initMap() {
+        const lat = Number(latValue) || 38.89511;
+        const lng = Number(lngValue) || -77.03637;
+        const zoom = Number(zoomValue) || 8;
+        const coors = { lat, lng };
+        new google.maps.Map(mapNode, { zoom, center: coors });
+    }
+</script>
+
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUZcbipHbHCXwp6PdXIFGhExytbzvh7Tk&callback=initMap"></script>
