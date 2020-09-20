@@ -330,8 +330,7 @@ uploadFields.forEach((uploadField) => {
 });
 
 // idea categories
-const filtersWrapper = [...document.querySelectorAll(`.editCategories`)];
-filtersWrapper.forEach((wrapper) => {
+const editWrapper = (wrapper) => {
     const showButton = (button) => button.classList.remove(`hiddenButton`);
     const hideButton = (button) => button.classList.add(`hiddenButton`);
     const categories = [...wrapper.querySelectorAll(`li`)];
@@ -405,7 +404,12 @@ filtersWrapper.forEach((wrapper) => {
             });
         }
     });
-});
+};
+
+const categoriesWrapper = [...document.querySelectorAll(`.editCategories`)];
+categoriesWrapper.forEach(editWrapper);
+const filtersWrapper = [...document.querySelectorAll(`.editFilters`)];
+filtersWrapper.forEach(editWrapper);
 
 // portfolio images
 const previewsWrapper = [...document.querySelectorAll(`.previewsWrapper`)];
