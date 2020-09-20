@@ -1,4 +1,4 @@
-import { titleWidth, webpCheck } from "../../source/scripts/utils";
+import { webpCheck } from "../../source/scripts/utils";
 import { headerMenu } from "../partials/header/header";
 import { viewIdeaModal } from "../partials/modals/view-idea/view-idea.modal";
 import { saveIdeaModal } from "../partials/modals/save-idea/save-idea.modal";
@@ -33,6 +33,3 @@ sendForms();
 
 // schedule buttons
 zipCodeButtons();
-
-// temp func for title width
-titleWidth();

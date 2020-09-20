@@ -51,15 +51,6 @@ export const createCustomEvent = (eventName, eventData = {}) => {
     document.dispatchEvent(customEvent);
 };
 
-// TEMP
-
-export const titleWidth = () => {
-    const titleNode = document.querySelector(`title`);
-    const checkWidth = () => titleNode.innerText = `DEV ${window.innerWidth}`;
-    window.addEventListener(`resize`, checkWidth);
-    checkWidth();
-};
-
 const createScrollLine = (scrollHeight) => {
     const scrollLine = document.createElement(`div`);
     scrollLine.classList.add(`scrollLine`);
