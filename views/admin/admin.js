@@ -330,7 +330,7 @@ uploadFields.forEach((uploadField) => {
 });
 
 // idea categories
-const filtersWrapper = [...document.querySelectorAll(`.editFilters`)];
+const filtersWrapper = [...document.querySelectorAll(`.editCategories`)];
 filtersWrapper.forEach((wrapper) => {
     const showButton = (button) => button.classList.remove(`hiddenButton`);
     const hideButton = (button) => button.classList.add(`hiddenButton`);
