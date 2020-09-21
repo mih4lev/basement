@@ -20,7 +20,7 @@ const requestPress = async ({ limit = 100000 } = {}) => {
     try {
         const query = `
             SELECT 
-                pressID, pressTitle, pressAnnounce, pressMagazine, pressImage, 
+                pressID, pressTitle, pressAnnounce, pressMagazine, pressImage, pressLink, 
                 DATE_FORMAT(press.timestamp, "%m/%d/%Y") AS pressDate 
             FROM press ORDER BY timestamp DESC LIMIT ?
         `;
@@ -38,6 +38,19 @@ const requestArticle = async (pressID) => {
             FROM press WHERE pressID = ?
         `;
         return { page: await singleDB(query, [ pressID ]) };
+    } catch (error) {
+        console.log(error);
+        return {};
+    }
+};
+
+const requestArticleByLink = async (pressLink) => {
+    try {
+        const query = `
+            SELECT *, DATE_FORMAT(press.timestamp, "%m/%d/%Y") AS pressDate  
+            FROM press WHERE pressLink = ?
+        `;
+        return { page: await singleDB(query, [ pressLink ]) };
     } catch (error) {
         console.log(error);
         return {};
@@ -86,5 +99,6 @@ const deletePress = async (pressID) => {
 };
 
 module.exports = {
-    createPress, requestPress, requestArticle, requestPressCount, updatePress, deletePress
+    createPress, requestPress, requestArticle, requestPressCount,
+    requestArticleByLink, updatePress, deletePress
 };

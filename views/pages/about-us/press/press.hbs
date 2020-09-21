@@ -21,10 +21,10 @@
 
 <section class="pageContent">
     <div class="wrapper">
-        <ul class="cardList elementsWrapper" data-page="9"">
+        <ul class="cardList elementsWrapper" data-page="9">
             {{# each press }}
                 <li class="cardWrapper">
-                    <a class="cardLink" href="/about-us/in-the-press/{{{ pressID }}}">
+                    <a class="cardLink" href="/about-us/in-the-press/{{{ pressLink }}}">
                         {{# if pressImage }}
                             <picture class="cardImage">
                                 <source srcset="{{{ pressImage }}}_120x83.jpg, {{{ pressImage }}}_240x166.jpg 2x"
@@ -45,7 +45,7 @@
                         {{/ if }}
                     </a>
                     <div class="cardData">
-                        <a class="cardHeader" href="/about-us/in-the-press/{{{ pressID }}}">
+                        <a class="cardHeader" href="/about-us/in-the-press/{{{ pressLink }}}">
                             {{{ pressTitle }}}
                         </a>
                         <p class="cardAnnounce" data-rows="5">{{{ pressAnnounce }}}</p>

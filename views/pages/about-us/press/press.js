@@ -8,9 +8,9 @@ const imageSize = [
 
 export const pressData = (data) => {
     const {
-        pressID, pressAnnounce, pressDate, pressMagazine, pressTitle, pressImage
+        pressAnnounce, pressDate, pressMagazine, pressTitle, pressImage, pressLink
     } = data;
-    const link = `/about-us/in-the-press/` + pressID;
+    const link = `/about-us/in-the-press/` + pressLink;
     return [
         { type: `link`, selector: `.cardLink`, link },
         { type: `link`, selector: `.cardHeader`, title: pressTitle, link },

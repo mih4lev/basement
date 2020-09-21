@@ -6,7 +6,7 @@ const { requestContent } = require("../../models/utils.model");
 const {
     requestTestimonials, requestTestimonialByLink, requestTestimonialsCount
 } = require("../../models/testimonials.model");
-const { requestPress, requestArticle, requestPressCount } = require("../../models/press.model");
+const { requestPress, requestArticleByLink, requestPressCount } = require("../../models/press.model");
 const { requestOffices } = require("../../models/offices.model");
 
 router.use((request, response, next) => {
@@ -59,11 +59,11 @@ router.get(`/in-the-press`, async (request, response, next) => {
     return (content.page) ? response.render(template, data) : next();
 });
 
-router.get(`/in-the-press/:pressID`, async (request, response, next) => {
+router.get(`/in-the-press/:pressLink`, async (request, response, next) => {
     request.data['isInThePress'] = true;
-    const { params: { pressID }} = request;
+    const { params: { pressLink }} = request;
     const content = requestContent(await Promise.all([
-        requestArticle(pressID)
+        requestArticleByLink(pressLink)
     ]));
     const data = { ...request.data, ...content };
     const template = `pages/about-us/press/press-single`;
