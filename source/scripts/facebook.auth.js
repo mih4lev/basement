@@ -2,7 +2,7 @@ const requestAuth = async (accessToken) => {
     const request = await fetch(`/api/users/login/facebook/${accessToken}`, { method: `POST` });
     const data = await request.json();
     if (data.status !== 1) return false; // show error message
-    location.reload();
+    location.href = `/profile/`;
 };
 
 const requestFacebookData = () => {
@@ -11,17 +11,6 @@ const requestFacebookData = () => {
             requestAuth(response.authResponse.accessToken);
         }
     }, { scope: 'public_profile,email'} );
-    // FB.getLoginStatus(function(response) {
-    //     if (response.authResponse) {
-    //         requestAuth(response.authResponse.accessToken);
-    //     } else {
-    //         FB.login(function(response) {
-    //             if (response.authResponse) {
-    //                 requestAuth(response.authResponse.accessToken);
-    //             }
-    //         }, { scope: 'public_profile,email'} );
-    //     }
-    // });
 };
 
 window.fbAsyncInit = function() {

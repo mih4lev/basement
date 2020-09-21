@@ -7,7 +7,7 @@ const successResponse = async (googleUser) => {
     const response = await fetch(`/api/users/login/google/` + authToken, { method: `POST` });
     const data = await response.json();
     if (data.status !== 1) return false; // show error message
-    location.reload();
+    location.href = `/profile/`;
 };
 
 const errorResponse = (error) => {
