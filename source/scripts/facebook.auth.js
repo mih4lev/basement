@@ -2,7 +2,7 @@ const requestAuth = async (accessToken) => {
     const request = await fetch(`/api/users/login/facebook/${accessToken}`, { method: `POST` });
     const data = await request.json();
     if (data.status !== 1) return false; // show error message
-    location.href = `/profile/`;
+    location.reload();
 };
 
 const requestFacebookData = () => {
