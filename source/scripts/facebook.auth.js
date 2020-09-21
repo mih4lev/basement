@@ -6,17 +6,22 @@ const requestAuth = async (accessToken) => {
 };
 
 const requestFacebookData = () => {
-    FB.getLoginStatus(function(response) {
+    FB.login(function(response) {
         if (response.authResponse) {
             requestAuth(response.authResponse.accessToken);
-        } else {
-            FB.login(function(response) {
-                if (response.authResponse) {
-                    requestAuth(response.authResponse.accessToken);
-                }
-            }, { scope: 'public_profile,email'} );
         }
-    });
+    }, { scope: 'public_profile,email'} );
+    // FB.getLoginStatus(function(response) {
+    //     if (response.authResponse) {
+    //         requestAuth(response.authResponse.accessToken);
+    //     } else {
+    //         FB.login(function(response) {
+    //             if (response.authResponse) {
+    //                 requestAuth(response.authResponse.accessToken);
+    //             }
+    //         }, { scope: 'public_profile,email'} );
+    //     }
+    // });
 };
 
 window.fbAsyncInit = function() {
