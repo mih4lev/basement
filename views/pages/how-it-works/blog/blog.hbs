@@ -12,7 +12,7 @@
                         <span class="breadcrumbLink">How it works</span>
                     </li>
                     <li class="breadcrumbLinkWrapper">
-                        <span class="breadcrumbLink breadcrumbActive">Basement Tips</span>
+                        <span class="breadcrumbLink breadcrumbActive">Basement tips</span>
                     </li>
                 </ul>
             </nav>
@@ -34,7 +34,7 @@
             {{# each tips }}
                 <li class="cardWrapper">
                     <a class="cardLink"
-                       href="/how-it-works/basement-tips/{{{ tipID }}}">
+                       href="/how-it-works/basement-tips/{{{ tipLink }}}">
                         {{# if tipImage }}
                             <picture>
                                 <source srcset="{{{ tipImage }}}_120x83.jpg, {{{ tipImage }}}_240x166.jpg 2x"
@@ -56,7 +56,7 @@
                     </a>
                     <div class="cardData">
                         <a class="cardHeader"
-                           href="/how-it-works/basement-tips/{{{ tipID }}}">{{{ tipTitle }}}</a>
+                           href="/how-it-works/basement-tips/{{{ tipLink }}}">{{{ tipTitle }}}</a>
                         <p class="cardAnnounce" data-rows="5">{{{ tipAnnounce }}}</p>
                         <div class="twoColumnsWrapper bottomCardWrapper">
                             <span class="dataDate">{{{ tipDate }}}</span>

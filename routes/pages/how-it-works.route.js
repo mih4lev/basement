@@ -4,7 +4,7 @@ const router = new Router();
 const { requestContent } = require("../../models/utils.model");
 const { requestMeta } = require("../../models/pages.model");
 const {
-    requestCategories, requestTips, requestTip, requestTipsCount
+    requestCategories, requestTips, requestTipByLink, requestTipsCount
 } = require("../../models/tips.model");
 
 router.use((request, response, next) => {
@@ -56,11 +56,11 @@ router.get(`/basement-tips`, async (request, response, next) => {
     return (content.page) ? response.render(template, data) : next();
 });
 
-router.get(`/basement-tips/:tipID`, async (request, response, next) => {
+router.get(`/basement-tips/:tipLink`, async (request, response, next) => {
     request.data['isBasementTips'] = true;
-    const { params: { tipID }} = request;
+    const { params: { tipLink }} = request;
     const content = requestContent(await Promise.all([
-        requestTip(tipID)
+        requestTipByLink(tipLink)
     ]));
     const data = { ...request.data, ...content };
     const template = `pages/how-it-works/blog/blog-single`;

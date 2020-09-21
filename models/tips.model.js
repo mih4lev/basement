@@ -32,7 +32,7 @@ const requestTips = async ({ limit = 100000 } = {}) => {
     try {
         const query = `
             SELECT 
-                tips.tipID, tips.tipTitle, tips.tipAnnounce, tips.tipImage, tips.categoryID, 
+                tips.tipID, tips.tipTitle, tips.tipAnnounce, tips.tipImage, tips.categoryID, tips.tipLink,
                 DATE_FORMAT(tips.timestamp, "%m/%d/%Y") AS tipDate, tips_categories.categoryName
             FROM tips 
             LEFT JOIN tips_categories ON tips.categoryID = tips_categories.categoryID
@@ -51,7 +51,7 @@ const requestFilteredTips = async ({ categories, limit = 100000 } = {}) => {
     try {
         const query = `
             SELECT 
-                tips.tipID, tips.tipTitle, tips.tipAnnounce, tips.tipImage, tips.categoryID, 
+                tips.tipID, tips.tipTitle, tips.tipAnnounce, tips.tipImage, tips.categoryID, tips.tipLink,
                 DATE_FORMAT(tips.timestamp, "%m/%d/%Y") AS tipDate, tips_categories.categoryName
             FROM tips 
             LEFT JOIN tips_categories ON tips.categoryID = tips_categories.categoryID
@@ -71,12 +71,30 @@ const requestTip = async (tipID) => {
             SELECT 
                 tips.tipID, tips.pageTitle, tips.pageDescription, tips.pageKeywords,
                 tips.tipTitle, tips.tipImage, tips.tipAnnounce, tips.tipText, tips.categoryID,
-                tips.portfolioID, tips_categories.categoryName, 
+                tips.portfolioID, tips_categories.categoryName, tips.tipLink,
                 DATE_FORMAT(tips.timestamp, "%m/%d/%Y") AS tipDate 
             FROM tips LEFT JOIN tips_categories ON tips.categoryID = tips_categories.categoryID
             WHERE tipID = ? 
         `;
         return { page: await singleDB(query, [ tipID ]) };
+    } catch (error) {
+        console.log(error);
+        return {};
+    }
+};
+
+const requestTipByLink = async (tipLink) => {
+    try {
+        const query = `
+            SELECT 
+                tips.tipID, tips.pageTitle, tips.pageDescription, tips.pageKeywords,
+                tips.tipTitle, tips.tipImage, tips.tipAnnounce, tips.tipText, tips.categoryID,
+                tips.portfolioID, tips_categories.categoryName, tips.tipLink,
+                DATE_FORMAT(tips.timestamp, "%m/%d/%Y") AS tipDate 
+            FROM tips LEFT JOIN tips_categories ON tips.categoryID = tips_categories.categoryID
+            WHERE tipLink = ? 
+        `;
+        return { page: await singleDB(query, [ tipLink ]) };
     } catch (error) {
         console.log(error);
         return {};
@@ -171,5 +189,5 @@ const deleteCategory = async ({ categoryID }) => {
 
 module.exports = {
     createTip, createCategory, requestTips, requestTip, requestCategories, requestTipsCount,
-    requestFilteredTips, updateTip, updateCategory, deleteTip, deleteCategory
+    requestTipByLink, requestFilteredTips, updateTip, updateCategory, deleteTip, deleteCategory
 };

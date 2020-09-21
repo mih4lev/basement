@@ -24,6 +24,8 @@ window.fbAsyncInit = function() {
 };
 
 export const facebookAuth = () => {
-    const facebookButton = document.querySelector(`.networkButton.facebookButton`);
-    facebookButton.addEventListener(`click`, requestFacebookData);
+    const facebookButtons = [...document.querySelectorAll(`.networkButton.facebookButton`)];
+    facebookButtons.forEach((facebookButton) => {
+        facebookButton.addEventListener(`click`, requestFacebookData);
+    });
 };
