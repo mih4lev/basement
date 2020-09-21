@@ -19,7 +19,7 @@ export const testimonialsData = (data) => {
         { type: `link`, selector: `.cardHeader`, title: testimonialAuthor, link },
         {
             type: `picture`, parent: `.cardLink`, alt: title, image: testimonialImage,
-            imageSize, selector: `cardImage`, plug: [`cardImage`]
+            imageSize, selector: `cardImage`, plug: [`cardImage`, `defaultImage`]
         },
         { type: `text`, selector: `.cardAnnounce`, text: testimonialAnnounce },
         { type: `text`, selector: `.dataDate`, text: testimonialDate },
