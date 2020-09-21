@@ -7,8 +7,8 @@ const imageSize = [
 ];
 
 export const blogData = (data) => {
-    const { categoryName, tipAnnounce, tipDate, tipID, tipImage, tipTitle } = data;
-    const link = `/how-it-works/basement-tips/` + tipID;
+    const { categoryName, tipAnnounce, tipDate, tipLink, tipImage, tipTitle } = data;
+    const link = `/how-it-works/basement-tips/` + tipLink;
     return [
         {type: `link`, selector: `.cardLink`, link},
         {type: `link`, selector: `.cardHeader`, title: tipTitle, link},
