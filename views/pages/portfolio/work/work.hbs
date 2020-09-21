@@ -25,12 +25,12 @@
     <div class="wrapper slimWrapper">
         <h1 class="sectionTitle">{{{ page.workTitle }}}, {{{ page.workCity }}}</h1>
         <div class="headerArrows">
-            {{# if page.prevID }}
-                <a href="/portfolio/{{{ page.prevID }}}"
+            {{# if page.prevLink }}
+                <a href="/portfolio/{{{ page.prevLink }}}"
                    class="headerArrow leftArrow">View previous portfolio work</a>
             {{/ if }}
-            {{# if page.nextID }}
-                <a href="/portfolio/{{{ page.nextID }}}"
+            {{# if page.nextLink }}
+                <a href="/portfolio/{{{ page.nextLink }}}"
                    class="headerArrow rightArrow">View next portfolio work</a>
             {{/ if }}
         </div>

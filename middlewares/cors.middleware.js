@@ -3,7 +3,6 @@ const { CORS } = process.env;
 const allowedOrigins = [ CORS ];
 const corsOptions = {
     origin: function(origin, callback){
-        console.log(CORS);
         if (!origin) return callback(null, true);
         if (allowedOrigins.indexOf(origin) === -1) {
             // exit if hostname not allowed

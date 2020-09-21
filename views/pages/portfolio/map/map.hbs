@@ -52,7 +52,7 @@
             markers.forEach((marker) => marker.setMap(null));
             markers.length = 0;
             window.responseData.forEach((work) => {
-                const { lat, lng, portfolioID, workTitle, workCity, workImage } = work;
+                const { lat, lng, workLink, workTitle, workCity, workImage } = work;
                 const position = { lat: Number(lat), lng: Number(lng) };
                 const icon = `/public/images/vector/pin-image.svg`;
                 const pinOptions = { map, position, icon };
@@ -68,7 +68,7 @@
                                  srcset="${workImage}_252x252.jpg, ${workImage}_504x504.jpg 2x"
                                  alt="${workCity}">
                         </picture>
-                        <a class="cardButton" href="/portfolio/${portfolioID}">VIEW PROJECT</a>
+                        <a class="cardButton" href="/portfolio/${workLink}">VIEW PROJECT</a>
                     </div>
                 `;
                 const infoWindow = new google.maps.InfoWindow({

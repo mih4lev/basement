@@ -32,11 +32,18 @@ const requestTestimonials = async ({ limit = 100000 } = {}) => {
 
 const requestTestimonial = async (testimonialID) => {
     try {
-        const query = `
-            SELECT *, DATE_FORMAT(timestamp, "%m/%d/%Y") AS testimonialDate  
-            FROM testimonials WHERE testimonialID = ?
+        const query = `            
+            SELECT 
+                testimonials.testimonialID, testimonials.pageTitle, testimonials.pageDescription, 
+                testimonials.pageKeywords, testimonials.testimonialLink, testimonials.testimonialAuthor,
+                testimonials.testimonialImage, testimonials.testimonialAnnounce, testimonials.testimonialText,
+                testimonials.testimonialState, testimonials.testimonialRating, portfolio.workLink,
+                testimonials.portfolioID, DATE_FORMAT(testimonials.timestamp, "%m/%d/%Y") AS testimonialDate
+            FROM testimonials 
+            LEFT JOIN portfolio ON testimonials.portfolioID = portfolio.portfolioID
+            WHERE testimonials.testimonialID = ?
         `;
-        return { page: await singleDB(query, [testimonialID]) };
+        return { page: await singleDB(query, [ testimonialID ]) };
     } catch (error) {
         console.log(error);
         return {};
@@ -46,10 +53,17 @@ const requestTestimonial = async (testimonialID) => {
 const requestTestimonialByLink = async (testimonialLink) => {
     try {
         const query = `
-            SELECT *, DATE_FORMAT(timestamp, "%m/%d/%Y") AS testimonialDate  
-            FROM testimonials WHERE testimonialLink = ?
+            SELECT 
+                testimonials.testimonialID, testimonials.pageTitle, testimonials.pageDescription, 
+                testimonials.pageKeywords, testimonials.testimonialLink, testimonials.testimonialAuthor,
+                testimonials.testimonialImage, testimonials.testimonialAnnounce, testimonials.testimonialText,
+                testimonials.testimonialState, testimonials.testimonialRating, portfolio.workLink,
+                testimonials.portfolioID, DATE_FORMAT(testimonials.timestamp, "%m/%d/%Y") AS testimonialDate
+            FROM testimonials 
+            LEFT JOIN portfolio ON testimonials.portfolioID = portfolio.portfolioID
+            WHERE testimonials.testimonialLink = ?
         `;
-        return { page: await singleDB(query, [testimonialLink]) };
+        return { page: await singleDB(query, [ testimonialLink ]) };
     } catch (error) {
         console.log(error);
         return {};

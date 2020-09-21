@@ -3,7 +3,7 @@ const router = new Router();
 
 const { requestContent } = require("../../models/utils.model");
 const {
-    requestPortfolio, requestWork
+    requestPortfolio, requestWorkByLink
 } = require("../../models/portfolio.model");
 const {
     requestPortfolioFilters
@@ -41,10 +41,10 @@ router.get(`/map`, async (request, response) => {
     response.render(template, data);
 });
 
-router.get(`/:portfolioID`, async (request, response, next) => {
-    const { params: { portfolioID }} = request;
+router.get(`/:workLink`, async (request, response, next) => {
+    const { params: { workLink }} = request;
     const content = requestContent(await Promise.all([
-        requestWork(portfolioID)
+        requestWorkByLink(workLink)
     ]));
     if (!content.page) return next();
     const data = { ...request.data, ...content };

@@ -4,8 +4,8 @@ const imageSize = [
 ];
 
 export const portfolioData = (data) => {
-    const { portfolioID, workCity, workImage, workSquare, workTitle } = data;
-    const link = `/portfolio/` + portfolioID;
+    const { workLink, workCity, workImage, workSquare, workTitle } = data;
+    const link = `/portfolio/` + workLink;
     const imageTitle = workTitle + `,` + workCity;
     return [
         { type: `link`, selector: `.portfolioButton`, link },
