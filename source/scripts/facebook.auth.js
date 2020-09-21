@@ -13,10 +13,6 @@ const requestFacebookData = () => {
     }, { scope: 'public_profile,email'} );
 };
 
-window.fbAsyncInit = function() {
-    FB.init({ appId: `2691439147789974`, cookie: true, xfbml: true, version: 'v8.0' });
-};
-
 export const facebookAuth = () => {
     const facebookButtons = [...document.querySelectorAll(`.networkButton.facebookButton`)];
     facebookButtons.forEach((facebookButton) => {
