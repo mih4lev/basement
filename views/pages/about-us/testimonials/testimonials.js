@@ -16,10 +16,10 @@ export const testimonialsData = (data) => {
     const dataTitle = `Stars: ${testimonialRating}`;
     return [
         { type: `link`, selector: `.cardLink`, link },
-        { type: `link`, selector: `.cardHeader`, title, link },
+        { type: `link`, selector: `.cardHeader`, title: testimonialAuthor, link },
         {
             type: `picture`, parent: `.cardLink`, alt: title, image: testimonialImage,
-            imageSize, selector: `cardImage`, plug: [`cardImage`, `defaultImage`]
+            imageSize, selector: `cardImage`, plug: [`cardImage`]
         },
         { type: `text`, selector: `.cardAnnounce`, text: testimonialAnnounce },
         { type: `text`, selector: `.dataDate`, text: testimonialDate },
