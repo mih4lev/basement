@@ -4,7 +4,7 @@ const router = new Router();
 const { requestMeta } = require("../../models/pages.model");
 const { requestContent } = require("../../models/utils.model");
 const {
-    requestTestimonials, requestTestimonial, requestTestimonialsCount
+    requestTestimonials, requestTestimonialByLink, requestTestimonialsCount
 } = require("../../models/testimonials.model");
 const { requestPress, requestArticle, requestPressCount } = require("../../models/press.model");
 const { requestOffices } = require("../../models/offices.model");
@@ -33,11 +33,11 @@ router.get(`/testimonials`, async (request, response, next) => {
     return (content.page) ? response.render(template, data) : next();
 });
 
-router.get(`/testimonials/:testimonialID`, async (request, response, next) => {
+router.get(`/testimonials/:testimonialLink`, async (request, response, next) => {
     request.data['isTestimonials'] = true;
-    const { params: { testimonialID }} = request;
+    const { params: { testimonialLink }} = request;
     const content = requestContent(await Promise.all([
-        requestTestimonial(testimonialID)
+        requestTestimonialByLink(testimonialLink)
     ]));
     const data = { ...request.data, ...content };
     const template = `pages/about-us/testimonials/testimonials-single`;

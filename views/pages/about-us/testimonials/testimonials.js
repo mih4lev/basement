@@ -8,10 +8,10 @@ const imageSize = [
 
 export const testimonialsData = (data) => {
     const {
-        testimonialID, testimonialAuthor, testimonialAnnounce, testimonialDate,
+        testimonialAuthor, testimonialAnnounce, testimonialDate, testimonialLink,
         testimonialState, testimonialRating, testimonialImage
     } = data;
-    const link = `/about-us/testimonials/` + testimonialID;
+    const link = `/about-us/testimonials/` + testimonialLink;
     const title = testimonialAuthor + `'s testimonial`;
     const dataTitle = `Stars: ${testimonialRating}`;
     return [

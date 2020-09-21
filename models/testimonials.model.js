@@ -20,7 +20,7 @@ const requestTestimonials = async ({ limit = 100000 } = {}) => {
     try {
         const query = `
             SELECT testimonialID, testimonialAuthor, testimonialImage, testimonialState, testimonialRating, 
-                   testimonialAnnounce, DATE_FORMAT(timestamp, "%m/%d/%Y") AS testimonialDate 
+                   testimonialAnnounce, DATE_FORMAT(timestamp, "%m/%d/%Y") AS testimonialDate, testimonialLink
             FROM testimonials ORDER BY timestamp DESC LIMIT ?
         `;
         return { testimonials: await DB(query, [ limit ]) };
@@ -37,6 +37,19 @@ const requestTestimonial = async (testimonialID) => {
             FROM testimonials WHERE testimonialID = ?
         `;
         return { page: await singleDB(query, [testimonialID]) };
+    } catch (error) {
+        console.log(error);
+        return {};
+    }
+};
+
+const requestTestimonialByLink = async (testimonialLink) => {
+    try {
+        const query = `
+            SELECT *, DATE_FORMAT(timestamp, "%m/%d/%Y") AS testimonialDate  
+            FROM testimonials WHERE testimonialLink = ?
+        `;
+        return { page: await singleDB(query, [testimonialLink]) };
     } catch (error) {
         console.log(error);
         return {};
@@ -87,5 +100,5 @@ const deleteTestimonial = async (testimonialID) => {
 
 module.exports = {
     createTestimonial, requestTestimonials, requestTestimonial, requestTestimonialsCount,
-    updateTestimonial, deleteTestimonial
+    requestTestimonialByLink, updateTestimonial, deleteTestimonial
 };

@@ -36,7 +36,7 @@
         <ul class="cardList elementsWrapper" data-page="9">
             {{# each testimonials }}
                 <li class="cardWrapper">
-                    <a class="cardLink" href="/about-us/testimonials/{{{ testimonialID }}}">
+                    <a class="cardLink" href="/about-us/testimonials/{{{ testimonialLink }}}">
                         {{# if testimonialImage }}
                             <picture>
                                 <source srcset="{{{ testimonialImage }}}_120x83.jpg,
@@ -64,7 +64,7 @@
                         {{/ if }}
                     </a>
                     <div class="cardData">
-                        <a class="cardHeader" href="/about-us/testimonials/{{{ testimonialID }}}">
+                        <a class="cardHeader" href="/about-us/testimonials/{{{ testimonialLink }}}">
                             {{{ testimonialAuthor }}}
                         </a>
                         <div class="stars" data-rating="{{{ testimonialRating }}}">
