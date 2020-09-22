@@ -183,7 +183,7 @@ router.post(`/edit`, imagesParser.fields(ideasImages), async (request, response,
         ideaTitle: workTitle, portfolioID
     };
     const savedImages = await saveIdeasImages(ideasData);
-    const formData = { ...updateData, portfolioID, isHomeVisible, workImage };
+    const formData = { ...updateData, portfolioID, isHomeVisible, workImage, workTitle };
     const responseData = await updateWork(formData, true);
     if (possibleImage) {
         const updateData = { portfolioID, workImage: savedImages[possibleImage] };
