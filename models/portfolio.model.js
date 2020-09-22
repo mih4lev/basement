@@ -34,25 +34,6 @@ const addCreator = async (pageData) => {
     }
 };
 
-const createImages = async ({ portfolioID, portfolioImages }) => {
-    try {
-        let images = [];
-        if (typeof portfolioImages === `string`) images.push(portfolioImages);
-        if (typeof portfolioImages === `object`) images = [ ...portfolioImages ];
-        const savedImages = [];
-        console.log(images);
-        // for (const imageName of images) {
-        //     const query = `INSERT INTO portfolio_images SET ?`;
-        //     const response = await DB(query, { portfolioID, imageName });
-        //     savedImages.push(response.insertId);
-        // }
-        return savedImages;
-    } catch (error) {
-        console.log(error);
-        return { status: 0, requestID: Number(portfolioID), error };
-    }
-};
-
 // REQUEST
 
 const requestPortfolio = async (limit = 1000) => {
@@ -64,7 +45,7 @@ const requestPortfolio = async (limit = 1000) => {
                 ideas.ideaImage as workImage
             FROM portfolio 
             LEFT JOIN ideas ON portfolio.workImage = ideas.ideaID
-            ORDER BY portfolio.timestamp DESC LIMIT ?
+            ORDER BY portfolio.portfolioID LIMIT ?
         `;
         return { portfolio: await DB(query, [limit]) };
     } catch (error) {
@@ -88,7 +69,7 @@ const requestFilteredPortfolio = async ({ filters }) => {
                 portfolio_properties.filterID IN (?) && 
                 portfolio.workSquare > ? && portfolio.workSquare < ?
             GROUP BY portfolio.portfolioID
-            ORDER BY portfolio.portfolioID DESC
+            ORDER BY portfolio.portfolioID
         `;
         const squareQuery = `
             SELECT 
@@ -98,7 +79,7 @@ const requestFilteredPortfolio = async ({ filters }) => {
             FROM portfolio 
             LEFT JOIN ideas ON portfolio.workImage = ideas.ideaID 
             WHERE portfolio.workSquare > ? && portfolio.workSquare < ? 
-            ORDER BY portfolio.timestamp DESC
+            ORDER BY portfolio.portfolioID
         `;
         const query = (filterArray) ? filtersQuery : squareQuery;
         const params = (filterArray) ? [filterArray, minSquare, maxSquare] : [minSquare, maxSquare];
@@ -119,7 +100,7 @@ const requestHomePortfolio = async (limit = 1000) => {
             FROM portfolio 
             LEFT JOIN ideas ON portfolio.workImage = ideas.ideaID
             WHERE isHomeVisible = 1 
-            ORDER BY portfolio.timestamp DESC LIMIT ?
+            ORDER BY portfolio.portfolioID LIMIT ?
         `;
         return { portfolio: await DB(query, [limit]) };
     } catch (error) {
@@ -152,11 +133,6 @@ const requestWork = async (portfolioID) => {
             WHERE portfolioID = ?
         `;
         const workData = await singleDB(query, [ portfolioID ]);
-        // const imagesQuery = `
-        //     SELECT portfolio_images.imageName, portfolio_images.imageID
-        //     FROM portfolio_images WHERE portfolio_images.portfolioID = ?
-        // `;
-        // workData.images = await DB(imagesQuery, [ portfolioID ]);
         return { page: workData };
     } catch (error) {
         console.log(error);
@@ -295,6 +271,6 @@ const deleteCreator = async ({ creatorID }) => {
 
 module.exports = {
     createWork, addCreator, requestFilteredPortfolio, requestPortfolio, requestHomePortfolio, requestWork,
-    requestWorkByLink, requestImages, requestCreators, createImages, updateWork, updateCreator,
+    requestWorkByLink, requestImages, requestCreators, updateWork, updateCreator,
     deleteWork, deleteCreator
 };
