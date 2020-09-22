@@ -100,6 +100,7 @@ const sendData = async (event) => {
     const { status, requestID } = response;
     document.dispatchEvent(new CustomEvent(`successSave`, { detail: { response }}));
     if (status && action === `create`) location.href = `${redirect}/edit/${requestID}`;
+    // if (status && action === `update`) location.reload();
 };
 if (formButton) formButton.addEventListener(`click`, sendData);
 if (formNode) formNode.addEventListener(`submit`, sendData);

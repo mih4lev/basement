@@ -3,7 +3,7 @@ const router = new Router();
 const multer = require('multer');
 
 const formParser = multer();
-const uploadDir = `public/upload/portfolio/`;
+const uploadDir = `public/upload/ideas/`;
 const imagesParser = multer({ dest: uploadDir });
 
 const responseTimeout = 0;
@@ -13,17 +13,19 @@ const { saveImages, deleteImages } = require("../../models/images.model");
 
 const {
     createWork, addCreator, requestPortfolio, requestWork, requestCreators, requestImages,
-    createImages, updateWork, updateCreator, deleteWork, deleteCreator, deleteImage
+    createImages, updateWork, updateCreator, deleteWork, deleteCreator
 } = require("../../models/portfolio.model");
 const {
     createPortfolioFilter, requestPortfolioFilters, updatePortfolioFilter, deletePortfolioFilter
 } = require("../../models/filters.model");
 const { requestMeta, updateMeta } = require("../../models/pages.model");
-const { requestModerateCount } = require("../../models/ideas.model");
+const {
+    createIdea, updateIdea, deleteIdea, requestModerateCount, requestIdeasByPortfolioID
+} = require("../../models/ideas.model");
 
-const portfolioImages = [
+const ideasImages = [
     {
-        name: `portfolioImages`,
+        name: `ideaImage`,
         maxCount: 100,
         sizes: [
             [252, 252, 80],
@@ -98,15 +100,36 @@ router.get(`/add`, async (request, response, next) => {
     response.render(template, data);
 });
 
-router.post(`/add`, imagesParser.fields(portfolioImages), async (request, response, next) => {
+const saveIdeasImages = async ({ files, userID, creatorID = 9, ideaTitle, portfolioID }) => {
+    const savedImages = [];
+    if (files['ideaImage']) {
+        for (const file of files['ideaImage']) {
+            const sendFile = {};
+            sendFile['ideaImage'] = [];
+            sendFile['ideaImage'].push(file);
+            const ideaData = { userID, creatorID, ideaTitle, portfolioID };
+            const { requestID } = await createIdea(ideaData);
+            const files = await saveImages(ideasImages, sendFile, requestID);
+            const filesData = { ...files, ...{ ideaID: requestID }};
+            await updateIdea(filesData, false);
+            savedImages.push(requestID);
+        }
+    }
+    return savedImages;
+};
+
+router.post(`/add`, imagesParser.fields(ideasImages), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
-    const { possibleImage, ...createData } = request.body;
-    const responseData = await createWork(createData);
-    const { requestID } = responseData;
-    const files = await saveImages(portfolioImages, request.files, requestID, false);
-    const savedImages = await createImages({ portfolioID: requestID, ...files });
+    const { possibleImage, workTitle, ...createData } = request.body;
+    const responseData = await createWork({ workTitle, ...createData });
+    const { requestID: portfolioID } = responseData;
+    const ideasData = {
+        files: request.files, userID: request.data['userID'],
+        ideaTitle: workTitle, portfolioID
+    };
+    const savedImages = await saveIdeasImages(ideasData);
     if (possibleImage) {
-        const updateData = { portfolioID: requestID, workImage: savedImages[possibleImage] };
+        const updateData = { portfolioID, workImage: savedImages[possibleImage] };
         await updateWork(updateData);
     }
     setTimeout(() => response.json(responseData), responseTimeout);
@@ -148,15 +171,19 @@ router.get(`/edit/:portfolioID`, async (request, response, next) => {
     response.render(template, data);
 });
 
-router.post(`/edit`, imagesParser.fields(portfolioImages), async (request, response, next) => {
+router.post(`/edit`, imagesParser.fields(ideasImages), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     const {
-        portfolioID, isHomeVisible = 0, workImage: selectedImage = 0, possibleImage, ...updateData
+        portfolioID, workTitle, isHomeVisible = 0, workImage: selectedImage = 0,
+        possibleImage, ...updateData
     } = request.body;
     const workImage = selectedImage || 0;
-    const files = await saveImages(portfolioImages, request.files, portfolioID, false);
-    const savedImages = await createImages({ portfolioID, ...files });
-    const formData = { ...updateData, portfolioID, isHomeVisible, workImage, ...files };
+    const ideasData = {
+        files: request.files, userID: request.data['userID'],
+        ideaTitle: workTitle, portfolioID
+    };
+    const savedImages = await saveIdeasImages(ideasData);
+    const formData = { ...updateData, portfolioID, isHomeVisible, workImage };
     const responseData = await updateWork(formData, true);
     if (possibleImage) {
         const updateData = { portfolioID, workImage: savedImages[possibleImage] };
@@ -185,7 +212,13 @@ router.delete(`/:portfolioID`, formParser.none(), async (request, response, next
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     const { params: { portfolioID }} = request;
     const responseData = await deleteWork(portfolioID);
-    await deleteImages(portfolioID, uploadDir);
+    const { ideas } = await requestIdeasByPortfolioID(portfolioID);
+    if (ideas) {
+        for (const { ideaID } of ideas) {
+            await deleteIdea(ideaID);
+            await deleteImages(ideaID, uploadDir);
+        }
+    }
     setTimeout(() => response.json(responseData), responseTimeout);
 });
 
@@ -196,10 +229,11 @@ router.delete(`/filters/edit`, formParser.none(), async (request, response, next
     setTimeout(() => response.json(responseData), responseTimeout);
 });
 
-router.delete(`/images/:imageID`, formParser.none(), async (request, response, next) => {
+router.delete(`/images/:ideaID`, formParser.none(), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
-    const { params: { imageID }} = request;
-    const responseData = await deleteImage(imageID);
+    const { params: { ideaID }} = request;
+    const responseData = await deleteIdea(ideaID);
+    await deleteImages(ideaID, uploadDir);
     setTimeout(() => response.json(responseData), responseTimeout);
 });
 

@@ -69,6 +69,14 @@ router.get(`/category/:categoryID/all`, async (request, response) => {
     setTimeout(() => response.json(responseData), 0);
 });
 
+// API /api/ideas/:ideaID - GET data for :ideaID idea (single)
+router.get(`/:ideaID`, async (request, response) => {
+    const { params: { ideaID }} = request;
+    const userID = request.data['userID'];
+    const { page } = await requestIdea(ideaID, userID);
+    setTimeout(() => response.json(page), 0);
+});
+
 // API /api/portfolio/filter - GET ELEMENTS with filter body
 router.post(`/category/:categoryID/filter`, formParser.none(), async (request, response) => {
     const { params: { categoryID }} = request;
@@ -100,14 +108,6 @@ router.delete(`/relation`, formParser.none(), async (request, response) => {
     const { body: { ideaID, albumID }, data: { userID }} = request;
     const responseData = await deleteRelations(userID, ideaID, albumID);
     setTimeout(() => response.json(responseData), 0);
-});
-
-// API /api/ideas/:ideaID - GET data for :ideaID idea (single)
-router.get(`/:ideaID`, async (request, response) => {
-    const { params: { ideaID }} = request;
-    const userID = request.data['userID'];
-    const { page } = await requestIdea(ideaID, userID);
-    setTimeout(() => response.json(page), 0);
 });
 
 module.exports = router;

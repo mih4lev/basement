@@ -246,9 +246,13 @@
                     align-items: center;
                     margin: 5px -5px -2px;
                     padding-left: 0;
+                    padding-right: 40px;
+                    box-sizing: border-box;
                     list-style-type: none;
                     @include minWidth(480) {
-                        margin-bottom: -5px;
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                        padding-right: 0;
                     }
                     @include minWidth(1000) {
                         margin-top: 20px;
@@ -293,10 +297,12 @@
                     flex-direction: column;
                     align-items: center;
                     @include minWidth(480) {
-                        align-items: flex-start;
+                        flex-direction: row;
+                        align-items: center;
                         position: relative;
                         top: auto;
                         right: auto;
+                        margin-top: auto;
                     }
                     @include minWidth(1000) {
                         margin-top: 10px;
@@ -437,11 +443,9 @@
                         font-size: 9px;
                         color: $grey;
                         @include minWidth(480) {
-                            order: 1;
-                            margin-bottom: 5px;
-                            font-size: 10px;
-                        }
-                        @include minWidth(768) {
+                            order: 2;
+                            margin-left: 10px;
+                            margin-top: 0;
                             font-size: 12px;
                         }
                         @include minWidth(1440) {
@@ -452,19 +456,19 @@
                     }
                 }
             }
-            .ideaOtherPhotos {
+            .ideaOtherPhotos, .ideaPortfolioPhotos {
                 @extend %animation;
-                flex-grow: 1;
+                flex-grow: 0;
                 flex-shrink: 0;
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
-                margin-top: 5px;
+                margin-top: 10px;
                 @include minWidth(480) {
                     order: 1;
                     flex-direction: column;
                     margin-top: 0;
-                    width: 142px;
+                    width: 190px;
                 }
                 @include minWidth(768) {
                     width: 208px;
@@ -475,10 +479,19 @@
                     width: 100%;
                 }
                 @include minWidth(1440) {
-                    margin-top: 40px;
+                    margin-top: 20px;
                 }
-                .ideaOtherWrapper {
-                    .ideaOtherTitle {
+                .ideaPortfolioWrapper {
+                    @include minWidth(480) {
+                        margin-bottom: 10px;
+                    }
+                }
+                .ideaOtherWrapper, .ideaPortfolioWrapper {
+                    min-width: 153px;
+                    &.hiddenList {
+                        display: none;
+                    }
+                    .ideaOtherTitle, .ideaPortfolioTitle {
                         margin-top: 0;
                         margin-bottom: 0;
                         font-size: 9px;
@@ -495,6 +508,9 @@
                             margin-bottom: 5px;
                             font-size: 15px;
                         }
+                        &.hiddenWrapper {
+                            display: none;
+                        }
                         .ideaLink {
                             color: $blue;
                             &:hover {
@@ -502,7 +518,7 @@
                             }
                         }
                     }
-                    .otherPreviewList {
+                    .otherPreviewList, .portfolioPreviewList {
                         display: flex;
                         flex-direction: row;
                         margin: 2px -1px -1px;
@@ -525,8 +541,8 @@
                             .otherPreview {
                                 @extend %animation;
                                 display: block;
-                                width: 40px;
-                                height: 40px;
+                                width: 44px;
+                                height: 44px;
                                 cursor: pointer;
                                 &:hover {
                                     opacity: 0.75;
@@ -589,7 +605,7 @@
                         }
                     }
                     &.allIdeasPreview {
-                        .otherPreviewList {
+                        .otherPreviewList, .portfolioPreviewList {
                             flex-wrap: wrap;
                             .otherPreviewWrapper {
                                 &:nth-child(1n + 4) {
@@ -602,21 +618,38 @@
                                     &:nth-child(1n + 7) {
                                         display: block;
                                     }
-                                    &:nth-child(1n + 10) {
+                                    &:nth-child(1n + 9) {
                                         display: none;
                                     }
                                 }
                                 @include minWidth(768) {
-                                    &:nth-child(1n + 9) {
+                                    //&:nth-child(1n + 9) {
+                                    //    display: block;
+                                    //}
+                                    //&:nth-child(1n + 14) {
+                                    //    display: none;
+                                    //}
+                                }
+                                @include minWidth(1000) {
+                                    &:nth-child(1n + 14) {
                                         display: block;
                                     }
-                                    &:nth-child(1n + 13) {
+                                }
+                            }
+                        }
+                        .portfolioPreviewList {
+                            .otherPreviewWrapper {
+                                @include minWidth(768) {
+                                    &:nth-child(1n + 5) {
                                         display: none;
                                     }
                                 }
                                 @include minWidth(1000) {
-                                    &:nth-child(1n + 13) {
+                                    &:nth-child(1n + 5) {
                                         display: block;
+                                    }
+                                    &:nth-child(1n + 9) {
+                                        display: none;
                                     }
                                 }
                             }

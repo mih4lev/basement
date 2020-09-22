@@ -18,9 +18,14 @@ export const viewIdeaModal = () => {
     const sectionTitle = modalNode.querySelector(`.sectionTitle`);
     const authorNode = modalNode.querySelector(`.ideaAuthor`);
     const countWrapper = modalNode.querySelector(`.countWrapper`);
-    const ideaLink = modalNode.querySelector(`.ideaLink`);
+    const categoryWrapper = modalNode.querySelector(`.ideaOtherTitle`);
+    const portfolioWrapper = modalNode.querySelector(`.ideaPortfolioTitle`);
+    const ideaLink = modalNode.querySelector(`.ideaOtherTitle .ideaLink`);
+    const portfolioLinkNode = modalNode.querySelector(`.ideaPortfolioTitle .ideaLink`);
     const ideaLabelList = modalNode.querySelector(`.ideaLabelList`);
     const otherPreviewList = modalNode.querySelector(`.otherPreviewList`);
+    const portfolioListWrapper = modalNode.querySelector(`.ideaPortfolioWrapper`);
+    const portfolioList = modalNode.querySelector(`.portfolioPreviewList`);
     const ideaModalPhoto = modalNode.querySelector(`.ideaModalPhoto`);
     const ideaModalWrapper = modalNode.querySelector(`.ideaPhotoWrapper`);
 
@@ -38,6 +43,7 @@ export const viewIdeaModal = () => {
                 ideaLink.removeAttribute(`href`);
                 ideaLabelList.innerHTML = ``;
                 otherPreviewList.innerHTML = ``;
+                portfolioList.innerHTML = ``;
                 saveButton.dataset.idea = ``;
                 resolve();
             }, animationTimeout);
@@ -92,6 +98,7 @@ export const viewIdeaModal = () => {
     // create preview list for modal data
     const createPreviewList = (similar) => {
         otherPreviewList.innerHTML = ``;
+        if (!similar) return false;
         similar.forEach(({ ideaID, ideaTitle, ideaImage }) => {
             // li
             const previewNode = document.createElement(`li`);
@@ -119,8 +126,39 @@ export const viewIdeaModal = () => {
         });
     };
 
+    // create portfolio list for modal data
+    const createPortfolioList = (portfolio) => {
+        portfolioList.innerHTML = ``;
+        if (!portfolio.length) return portfolioListWrapper.classList.add(`hiddenList`);
+        portfolio.forEach(({ ideaID, ideaTitle, ideaImage }) => {
+            portfolioListWrapper.classList.remove(`hiddenList`);
+            // li
+            const previewNode = document.createElement(`li`);
+            previewNode.classList.add(`otherPreviewWrapper`);
+            previewNode.dataset.idea = ideaID;
+            // img
+            const previewPicture = document.createElement(`img`);
+            previewPicture.classList.add(`otherPreview`);
+            previewPicture.src = ideaImage + `_154x154.jpg`;
+            previewPicture.setAttribute(`alt`, ideaTitle);
+            // append
+            previewNode.appendChild(previewPicture);
+            portfolioList.appendChild(previewNode);
+        });
+        // preview thumbs click handler
+        [...portfolioList.children].forEach((thumb) => {
+            thumb.addEventListener(`click`, async () => {
+                const { dataset: { idea: ideaID }} = thumb;
+                const modalNode = document.querySelector(`[data-modal="view-idea"]`);
+                const modalWrapper = modalNode.querySelector(`.contentWrapper`);
+                modalWrapper.classList.add(`showLoadStatus`);
+                await requestModalData(ideaID);
+                modalWrapper.classList.remove(`showLoadStatus`);
+            });
+        });
+    };
+
     const selectModalPicture = ({ ideaImage, ideaTitle }) => {
-        const pictureFormat = selectPictureFormat();
         ideaModalPhoto.src = ideaImage + `.jpg`;
         ideaModalPhoto.setAttribute(`title`, ideaTitle);
     };
@@ -144,13 +182,27 @@ export const viewIdeaModal = () => {
         saveButton.classList[saveAction](`saveIdea`);
     };
 
+    const setOtherCategory = ({ categoryTitle, categoryLink, isVisibleCategory }) => {
+        if (!isVisibleCategory) return categoryWrapper.classList.add(`hiddenWrapper`);
+        ideaLink.innerText = categoryTitle;
+        ideaLink.setAttribute(`href`, categoryLink);
+        categoryWrapper.classList.remove(`hiddenWrapper`);
+    };
+
+    const setPortfolioLink = ({ portfolioLink }) => {
+        if (!portfolioLink) return portfolioWrapper.classList.add(`hiddenWrapper`);
+        if (!portfolioLinkNode) return false;
+        portfolioLinkNode.setAttribute(`href`, portfolioLink);
+        portfolioWrapper.classList.remove(`hiddenWrapper`);
+    };
+
     // set requested data to modal
     const setModalData = (responseData) => {
         const {
             ideaID, ideaTitle, ideaAuthor, ideaImage, saveCount, prevID, nextID,
-            categories, filters, isVisible, isLogin
+            categories, filters, isVisible, isLogin, portfolio, portfolioLink
         } = responseData;
-        const { 0: { categoryTitle, categoryLink, similar }} = categories;
+        const { 0: { categoryTitle, categoryLink, similar } = {}} = categories;
         // set data to modal
         ideaIDNode.value = ideaID;
         sectionTitle.innerText = ideaTitle;
@@ -158,16 +210,20 @@ export const viewIdeaModal = () => {
         countWrapper.innerText = saveCount;
         // button
         changeButtonVisible(ideaID, isVisible, isLogin);
-        // category
-        ideaLink.innerText = categoryTitle;
-        ideaLink.setAttribute(`href`, categoryLink);
         // arrows
         modalArrows[0].dataset.idea = nextID;
         modalArrows[1].dataset.idea = prevID;
         // create tag list
         createTagList(filters);
+        // set other category title && link
+        const isVisibleCategory = similar && !!similar.length;
+        setOtherCategory({ categoryTitle, categoryLink, isVisibleCategory });
         // create thumbs list
         createPreviewList(similar);
+        // set profile category title && link
+        setPortfolioLink({ portfolioLink });
+        //
+        createPortfolioList(portfolio);
         selectModalPicture({ ideaImage, ideaTitle });
     };
 

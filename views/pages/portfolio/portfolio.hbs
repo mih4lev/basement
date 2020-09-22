@@ -57,7 +57,7 @@
                                      alt="{{{ workTitle }}}">
                             </picture>
                         {{ else }}
-                            <div class="portfolioImage defaultImage"></div>
+                            <div class="portfolioPhoto defaultImage"></div>
                         {{/ if }}
                     </div>
                     <div class="portfolioHiddenBlock">
@@ -95,6 +95,7 @@
         return async () => {
             markers.forEach((marker) => marker.setMap(null));
             markers.length = 0;
+            if (!window.responseData) return false;
             window.responseData.forEach((work) => {
                 const { lat, lng } = work;
                 const position = { lat: Number(lat), lng: Number(lng) };

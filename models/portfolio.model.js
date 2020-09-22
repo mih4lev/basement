@@ -40,11 +40,12 @@ const createImages = async ({ portfolioID, portfolioImages }) => {
         if (typeof portfolioImages === `string`) images.push(portfolioImages);
         if (typeof portfolioImages === `object`) images = [ ...portfolioImages ];
         const savedImages = [];
-        for (const imageName of images) {
-            const query = `INSERT INTO portfolio_images SET ?`;
-            const response = await DB(query, { portfolioID, imageName });
-            savedImages.push(response.insertId);
-        }
+        console.log(images);
+        // for (const imageName of images) {
+        //     const query = `INSERT INTO portfolio_images SET ?`;
+        //     const response = await DB(query, { portfolioID, imageName });
+        //     savedImages.push(response.insertId);
+        // }
         return savedImages;
     } catch (error) {
         console.log(error);
@@ -60,9 +61,9 @@ const requestPortfolio = async (limit = 1000) => {
             SELECT 
                 portfolio.portfolioID, portfolio.workLink, portfolio.workTitle, portfolio.workCity, 
                 portfolio.workSquare, portfolio.isHomeVisible, portfolio.lat, portfolio.lng,
-                portfolio_images.imageName as workImage
+                ideas.ideaImage as workImage
             FROM portfolio 
-            LEFT JOIN portfolio_images ON portfolio.workImage = portfolio_images.imageID
+            LEFT JOIN ideas ON portfolio.workImage = ideas.ideaID
             ORDER BY portfolio.timestamp DESC LIMIT ?
         `;
         return { portfolio: await DB(query, [limit]) };
@@ -79,10 +80,10 @@ const requestFilteredPortfolio = async ({ filters }) => {
             SELECT 
                 portfolio.portfolioID, portfolio.workLink, portfolio.workTitle, 
                 portfolio.workCity, portfolio.workSquare, portfolio.isHomeVisible, 
-                portfolio.lat, portfolio.lng, portfolio_images.imageName as workImage 
+                portfolio.lat, portfolio.lng, ideas.ideaImage as workImage 
             FROM portfolio_properties 
             JOIN portfolio ON portfolio.portfolioID = portfolio_properties.portfolioID 
-            LEFT JOIN portfolio_images ON portfolio.workImage = portfolio_images.imageID 
+            LEFT JOIN ideas ON portfolio.workImage = ideas.ideaID 
             WHERE 
                 portfolio_properties.filterID IN (?) && 
                 portfolio.workSquare > ? && portfolio.workSquare < ?
@@ -93,10 +94,10 @@ const requestFilteredPortfolio = async ({ filters }) => {
             SELECT 
                 portfolio.portfolioID, portfolio.workLink, portfolio.workTitle, 
                 portfolio.workCity, portfolio.workSquare, portfolio.isHomeVisible, 
-                portfolio.lat, portfolio.lng, portfolio_images.imageName as workImage
+                portfolio.lat, portfolio.lng, ideas.ideaImage as workImage 
             FROM portfolio 
-            LEFT JOIN portfolio_images ON portfolio.workImage = portfolio_images.imageID
-            WHERE portfolio.workSquare > ? && portfolio.workSquare < ?
+            LEFT JOIN ideas ON portfolio.workImage = ideas.ideaID 
+            WHERE portfolio.workSquare > ? && portfolio.workSquare < ? 
             ORDER BY portfolio.timestamp DESC
         `;
         const query = (filterArray) ? filtersQuery : squareQuery;
@@ -114,9 +115,9 @@ const requestHomePortfolio = async (limit = 1000) => {
             SELECT 
                 portfolio.portfolioID, portfolio.workLink, portfolio.workTitle, 
                 portfolio.workCity, portfolio.workSquare, portfolio.isHomeVisible, 
-                portfolio_images.imageName as workImage
+                ideas.ideaImage as workImage
             FROM portfolio 
-            LEFT JOIN portfolio_images ON portfolio.workImage = portfolio_images.imageID
+            LEFT JOIN ideas ON portfolio.workImage = ideas.ideaID
             WHERE isHomeVisible = 1 
             ORDER BY portfolio.timestamp DESC LIMIT ?
         `;
@@ -151,11 +152,11 @@ const requestWork = async (portfolioID) => {
             WHERE portfolioID = ?
         `;
         const workData = await singleDB(query, [ portfolioID ]);
-        const imagesQuery = `
-            SELECT portfolio_images.imageName, portfolio_images.imageID 
-            FROM portfolio_images WHERE portfolio_images.portfolioID = ?
-        `;
-        workData.images = await DB(imagesQuery, [ portfolioID ]);
+        // const imagesQuery = `
+        //     SELECT portfolio_images.imageName, portfolio_images.imageID
+        //     FROM portfolio_images WHERE portfolio_images.portfolioID = ?
+        // `;
+        // workData.images = await DB(imagesQuery, [ portfolioID ]);
         return { page: workData };
     } catch (error) {
         console.log(error);
@@ -189,8 +190,8 @@ const requestWorkByLink = async (workLink) => {
         const workData = await singleDB(query, [ workLink ]);
         const { portfolioID } = workData;
         const imagesQuery = `
-            SELECT portfolio_images.imageName, portfolio_images.imageID 
-            FROM portfolio_images WHERE portfolio_images.portfolioID = ?
+            SELECT ideas.ideaImage, ideas.ideaID, ideas.ideaTitle
+            FROM ideas WHERE ideas.portfolioID = ?
         `;
         workData.images = await DB(imagesQuery, [ portfolioID ]);
         return { page: workData };
@@ -203,15 +204,14 @@ const requestWorkByLink = async (workLink) => {
 const requestImages = async (portfolioID) => {
     try {
         const query = `
-            SELECT 
-                portfolio_images.imageID, portfolio_images.imageName, 
-                (
+            SELECT ideaID, ideaImage, ideaTitle,
+                (   
                     SELECT COUNT(*) FROM portfolio 
-                    WHERE portfolio.workImage = portfolio_images.imageID
+                    WHERE portfolio.workImage = ideas.ideaID
                 ) as isCurrent
-            FROM portfolio_images     
-            WHERE portfolio_images.portfolioID = ?`;
-        return { images: await DB(query, [portfolioID]) };
+            FROM ideas WHERE portfolioID = ?
+        `;
+        return { images: await DB(query, [ portfolioID ]) };
     } catch (error) {
         console.log(error);
         return {};
@@ -233,7 +233,6 @@ const requestCreators = async () => {
 const updateWork = async (requestData, hasFilters = false) => {
     const { portfolioID, portfolioImages, filterArray, ...updateData } = requestData;
     try {
-        console.log(updateData);
         const query = `UPDATE portfolio SET ? WHERE portfolioID = ?`;
         const response = await DB(query, [updateData, portfolioID]);
         if (hasFilters) {
@@ -294,22 +293,8 @@ const deleteCreator = async ({ creatorID }) => {
     }
 };
 
-const deleteImage = async (imageID) => {
-    try {
-        const query = `DELETE FROM portfolio_images WHERE imageID = ?`;
-        const response = await DB(query, [imageID]);
-        const updateQuery = `UPDATE portfolio SET workImage = NULL WHERE workImage = ?`
-        await DB(updateQuery, [imageID]);
-        const status = Number(response.affectedRows && response.affectedRows === 1);
-        return { status, requestID: Number(imageID) };
-    } catch (error) {
-        console.log(error);
-        return { status: 0, requestID: Number(imageID), error };
-    }
-};
-
 module.exports = {
     createWork, addCreator, requestFilteredPortfolio, requestPortfolio, requestHomePortfolio, requestWork,
     requestWorkByLink, requestImages, requestCreators, createImages, updateWork, updateCreator,
-    deleteWork, deleteCreator, deleteImage
+    deleteWork, deleteCreator
 };

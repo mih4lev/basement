@@ -410,16 +410,31 @@ const requestAlbumIdeas = async (albumID) => {
     }
 };
 
+const requestIdeasByPortfolioID = async (portfolioID) => {
+    try {
+        const query = `SELECT ideaID FROM ideas WHERE portfolioID = ?`;
+        return { ideas: await DB(query, [ portfolioID ]) };
+    } catch (error) {
+        console.log(error);
+        return {};
+    }
+};
+
 const requestIdea = async (ideaID, userID = 0) => {
     try {
         const query = `
             SELECT 
                 ideas.ideaID, ideas.userID, ideas.ideaTitle, ideas.creatorID, ideas.ideaImage,
                 ideas.isModerated, ideas.isHomeIdea, ideas.timestamp,
-                ideas_creators.creatorName, COUNT(albums_relation.ideaID) AS saveCount,
-                IF (ideas.userID = ?, false, true) as isVisible,
+                COUNT(albums_relation.ideaID) AS saveCount, ideas_creators.creatorName,
+                CONCAT('/portfolio/', portfolio.workLink) as portfolioLink,
+                IF (ideas.userID = ?, false, true) as isVisible, ideas.portfolioID,
                 IF (? = 0, false, true) as isLogin,
-                CONCAT(users.name, ' ', users.surname) as ideaAuthor,
+                IF (
+                    ideas_creators.creatorName IS NOT NULL, 
+                    ideas_creators.creatorName, 
+                    CONCAT(users.name, ' ', users.surname)
+                ) as ideaAuthor,
                 (
                     SELECT prevIdeas.ideaID FROM ideas as prevIdeas 
                     WHERE prevIdeas.ideaID < ideas.ideaID && prevIdeas.isModerated = 1
@@ -434,6 +449,7 @@ const requestIdea = async (ideaID, userID = 0) => {
             JOIN users ON users.userID = ideas.userID 
             LEFT JOIN ideas_creators ON ideas.creatorID = ideas_creators.creatorID
             LEFT JOIN albums_relation ON albums_relation.ideaID = ideas.ideaID
+            LEFT JOIN portfolio ON portfolio.portfolioID = ideas.portfolioID
             WHERE ideas.ideaID = ?
             GROUP BY albums_relation.ideaID
         `;
@@ -443,6 +459,10 @@ const requestIdea = async (ideaID, userID = 0) => {
                 SELECT 
                     categories.categoryID, categories.categoryTitle, 
                     categories.categoryLink, categories.categoryImage,
+                    (
+                        SELECT COUNT(*) FROM ideas_relation 
+                        WHERE categories.categoryID = ideas_relation.categoryID
+                    ) as ideasCount,
                     CONCAT(
                         '/basement-ideas/', 
                         IF (mainCategories.categoryLink IS NOT NULL, mainCategories.categoryLink, ''),
@@ -459,16 +479,25 @@ const requestIdea = async (ideaID, userID = 0) => {
                 LEFT JOIN ideas_categories as mainCategories 
                     ON parentCategories.categoryParent = mainCategories.categoryID
                 WHERE ideaID = ?
+                ORDER BY ideasCount DESC
             `;
             idea.categories = await DB(categoriesQuery, [ideaID]);
             for (const category of idea.categories) {
                 const { categoryID } = category;
                 const similarQuery = `
-                    SELECT ideas.ideaID, ideas.ideaTitle, ideas.ideaImage FROM ideas_relation 
+                    SELECT 
+                        ideas.ideaID, ideas.ideaTitle, ideas.ideaImage,
+                        (
+                            SELECT COUNT(*) FROM albums_relation 
+                            WHERE ideas.ideaID = albums_relation.ideaID
+                        ) as saveCount
+                    FROM ideas_relation 
                     JOIN ideas ON ideas.ideaID = ideas_relation.ideaID
-                    WHERE ideas_relation.categoryID = ? && ideas.isModerated = 1 LIMIT 12
+                    WHERE ideas_relation.categoryID = ? && ideas.isModerated = 1 && ideas_relation.ideaID != ?
+                    ORDER BY saveCount DESC 
+                    LIMIT 12
                 `;
-                category.similar = await DB(similarQuery, [categoryID]);
+                category.similar = await DB(similarQuery, [ categoryID, ideaID ]);
             }
         }
         if (idea) {
@@ -479,6 +508,23 @@ const requestIdea = async (ideaID, userID = 0) => {
             `;
             const filtersData = await DB(filtersQuery, [ideaID]);
             idea.filters = filtersData.map(({ filterTitle }) => filterTitle );
+        }
+        if (idea) {
+            const portfolioQuery = `
+                SELECT 
+                    ideas.ideaID, ideas.ideaTitle, ideas.ideaImage,
+                    (
+                        SELECT COUNT(*) FROM albums_relation 
+                        WHERE ideas.ideaID = albums_relation.ideaID
+                    ) as saveCount
+                FROM ideas
+                WHERE 
+                    ideas.isModerated = 1 && ideas.ideaID != ? &&
+                    ideas.portfolioID = (SELECT portfolioID FROM ideas WHERE ideaID = ?) 
+                ORDER BY saveCount DESC
+                LIMIT 8
+            `;
+            idea.portfolio = await DB(portfolioQuery, [ ideaID, ideaID ]);
         }
         return { page: idea };
     } catch (error) {
@@ -587,8 +633,8 @@ const deleteCreator = async ({ creatorID } = {}) => {
 module.exports = {
     createIdea, addCreator, requestIdea, requestAlbumIdeas, requestFilteredIdeas,
     requestAllIdeas, requestIdeasCount, requestModerateIdeas, requestIdeas,
-    requestCategoryIdeasByID, requestCategoryFilteredIdeasByID, requestCategoryIdeasByURL,
-    requestCategoryFilteredIdeasByURL, requestModerateCount, requestUserIdeas,
-    requestUploadIdeas, requestCreators, requestHomeIdeas, updateIdea, updateCreator,
-    deleteIdea, deleteCreator
+    requestIdeasByPortfolioID, requestCategoryIdeasByID, requestCategoryFilteredIdeasByID,
+    requestCategoryIdeasByURL, requestCategoryFilteredIdeasByURL, requestModerateCount,
+    requestUserIdeas, requestUploadIdeas, requestCreators, requestHomeIdeas, updateIdea,
+    updateCreator, deleteIdea, deleteCreator
 };

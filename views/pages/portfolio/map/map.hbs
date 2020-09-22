@@ -51,6 +51,7 @@
             const modals = [];
             markers.forEach((marker) => marker.setMap(null));
             markers.length = 0;
+            if (!window.responseData) return false;
             window.responseData.forEach((work) => {
                 const { lat, lng, workLink, workTitle, workCity, workImage } = work;
                 const position = { lat: Number(lat), lng: Number(lng) };
