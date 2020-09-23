@@ -121,13 +121,13 @@ const requestWork = async (portfolioID) => {
                 (
                     SELECT temp1.workLink FROM portfolio as temp1 
                     WHERE temp1.portfolioID < portfolio.portfolioID
-                    ORDER BY timestamp DESC LIMIT 1
-                ) AS nextLink,
+                    ORDER BY temp1.portfolioID DESC LIMIT 1
+                ) AS prevLink,
                 (
                     SELECT temp2.workLink FROM portfolio as temp2 
                     WHERE temp2.portfolioID > portfolio.portfolioID
-                    ORDER BY timestamp LIMIT 1
-                ) AS prevLink
+                    ORDER BY temp2.portfolioID LIMIT 1
+                ) AS nextLink
             FROM portfolio 
             LEFT JOIN portfolio_creators ON portfolio_creators.creatorID = portfolio.creatorID
             WHERE portfolioID = ?
@@ -152,13 +152,13 @@ const requestWorkByLink = async (workLink) => {
                 (
                     SELECT temp1.workLink FROM portfolio as temp1 
                     WHERE temp1.portfolioID < portfolio.portfolioID
-                    ORDER BY timestamp DESC LIMIT 1
-                ) AS nextLink,
+                    ORDER BY temp1.portfolioID DESC LIMIT 1
+                ) AS prevLink,
                 (
                     SELECT temp2.workLink FROM portfolio as temp2 
                     WHERE temp2.portfolioID > portfolio.portfolioID
-                    ORDER BY timestamp LIMIT 1
-                ) AS prevLink
+                    ORDER BY temp2.portfolioID LIMIT 1
+                ) AS nextLink
             FROM portfolio 
             LEFT JOIN portfolio_creators ON portfolio_creators.creatorID = portfolio.creatorID
             WHERE portfolio.workLink = ?
