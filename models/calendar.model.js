@@ -44,12 +44,21 @@ const createAccessToken = (authCode, tokenPath) => {
     });
 };
 
+const tokensCallback = (tokens) => {
+    if (tokens.refresh_token) {
+        // store the refresh_token in my database!
+        console.log(tokens.refresh_token);
+    }
+    console.log(tokens.access_token);
+};
+
 // REQUEST oath authorization
 const authCalendar = async (userToken) => {
     try {
         const credentials = await fs.readJson(CREDENTIAL);
         const { client_id, client_secret, redirect_uris } = credentials.installed;
         const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
+        oAuth2Client.on(`tokens`, tokensCallback);
         const token = await fs.readJson(userToken);
         oAuth2Client.setCredentials(token);
         return google.calendar({ version: 'v3', auth: oAuth2Client });

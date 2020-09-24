@@ -2,7 +2,7 @@ const {
     requestAuthURL, createAccessToken, requestCalendar, addEvent
 } = require("./models/calendar.model");
 
-const userToken = `tokens/token4.json`;
+const userToken = `tokens/token.json`;
 
 const eventData = {
     summary: `Andrei Mikhalev`,
@@ -42,7 +42,7 @@ const calendar = async () => {
         console.log(`${start} - ${end} | ${event.summary}`);
     });
 };
-// calendar();
+calendar();
 
 const authURL = async () => {
     const data = await requestAuthURL();
