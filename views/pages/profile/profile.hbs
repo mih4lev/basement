@@ -17,6 +17,9 @@
                         <span class="userID">{{{ profile.userID }}}</span>
                     </p>
                     <span class="userMembership">Member since {{{ profile.year }}}</span>
+                    {{# if isSpec }}
+                        <div class="calendarToken">Request calendar token</div>
+                    {{/if}}
                 </div>
             </div>
             <div class="cardButtonsWrapper">

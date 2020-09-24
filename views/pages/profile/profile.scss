@@ -1,3 +1,7 @@
+@keyframes rotate {
+    to { transform: rotate(360deg); }
+}
+
 .cardSection {
     background: $sub;
     .cardWrapper {
@@ -107,6 +111,53 @@
                 .userMembership {
                     margin-top: 5px;
                 }
+                .calendarToken {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    margin-top: 5px;
+                    &.successToken {
+                        color: $blue;
+                    }
+                    &.requestToken {
+                        color: $red;
+                    }
+                    a {
+                        text-decoration: underline;
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+                    .codeField {
+                        @extend %font;
+                        width: 200px;
+                        margin-right: 5px;
+                        border: none;
+                        border-bottom: 1px solid $blue;
+                        padding: 3px 0;
+                        outline: none;
+                    }
+                    .codeButton {
+                        display: block;
+                        width: 14px;
+                        height: 12px;
+                        margin: 0;
+                        padding: 0;
+                        font-size: 0;
+                        border: none;
+                        background-color: transparent;
+                        background-image: url("/public/images/vector/confirm_icon_grey.svg");
+                        background-size: 14px 12px;
+                        cursor: pointer;
+                        outline: none;
+                        &:hover {
+                            background-image: url("/public/images/vector/confirm_icon_blue.svg");
+                        }
+                        &.loadButton {
+                            animation: rotate 1s linear infinite;
+                        }
+                    }
+                }
             }
         }
         .cardButtonsWrapper {
@@ -203,8 +254,10 @@
     .sectionHeader {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
         align-items: center;
+        .sectionTitle {
+            margin-right: auto;
+        }
         .createAlbumButton {
             @extend %font;
             font-size: 9px;
