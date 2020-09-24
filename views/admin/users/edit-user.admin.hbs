@@ -48,6 +48,13 @@
                         <label class="buttonLabel" for="isAdmin">Admin</label>
                     </div>
                 </div>
+                <div class="selectWrapper autoWrapper">
+                    <div class="toggleButtonWrapper">
+                        <input class="toggleButton" type="checkbox" {{# if user.isSpec }}checked{{/if}}
+                               name="isSpec" id="isSpec" value="1">
+                        <label class="buttonLabel" for="isSpec">Spec</label>
+                    </div>
+                </div>
                 <div class="buttonWrapper">
                     <button class="deleteButton" type="button" data-redirect="/admin/users/"
                             data-action="/admin/users/{{{ user.userID }}}">

@@ -107,6 +107,7 @@ const requestGoogleAuthorize = async (googleID) => {
 
 const updateUser = async ({ userID, ...updateData }) => {
     try {
+        console.log(updateData);
         const query = `UPDATE users SET ? WHERE userID = ?`;
         const response = await DB(query, [updateData, userID]);
         const status = Number(response.affectedRows && response.affectedRows === 1);

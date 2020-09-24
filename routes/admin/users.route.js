@@ -62,9 +62,9 @@ router.get(`/edit/:userID`, async (request, response, next) => {
 
 router.post(`/edit`, imagesParser.fields(usersImages), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
-    const { userID, isAdmin = 0, ...userData } = request.body;
+    const { userID, isAdmin = 0, isSpec = 0, ...userData } = request.body;
     const files = await saveImages(usersImages, request.files, userID);
-    const formData = { userID, isAdmin, ...userData, ...files };
+    const formData = { userID, isAdmin, isSpec, ...userData, ...files };
     const responseData = await updateUser(formData);
     setTimeout(() => response.json(responseData), 0);
 });
