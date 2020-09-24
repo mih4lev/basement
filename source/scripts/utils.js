@@ -278,7 +278,9 @@ const showWorks = (renderCallback) => {
         const listWrapper = document.querySelector(`.elementsWrapper`);
         if (event && event.detail && typeof event.detail === `object`) updateData(event, listWrapper);
         if (!listWrapper) return false;
-        if (!window.responseData) return setTimeout(showWorks, 3000);
+        if (!window.responseData || window.responseData.length === 0) {
+            return setTimeout(showWorks, 3000);
+        }
         window.responseData.forEach(addChild(listWrapper, renderCallback));
         // show // hide more button
         const wrapperChild = listWrapper.children.length;
