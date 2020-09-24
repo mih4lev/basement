@@ -130,26 +130,40 @@
                     }
                     .codeField {
                         @extend %font;
-                        width: 200px;
+                        width: 80px;
                         margin-right: 5px;
+                        font-size: 9px;
                         border: none;
                         border-bottom: 1px solid $blue;
                         padding: 3px 0;
                         outline: none;
+                        @include minWidth(480) {
+                            width: 140px;
+                            font-size: 12px;
+                        }
+                        @include minWidth(768) {
+                            width: 200px;
+                            font-size: 15px;
+                        }
                     }
                     .codeButton {
                         display: block;
-                        width: 14px;
-                        height: 12px;
+                        width: 11px;
+                        height: 7px;
                         margin: 0;
                         padding: 0;
                         font-size: 0;
                         border: none;
                         background-color: transparent;
                         background-image: url("/public/images/vector/confirm_icon_grey.svg");
-                        background-size: 14px 12px;
+                        background-size: 11px 7px;
                         cursor: pointer;
                         outline: none;
+                        @include minWidth(480) {
+                            width: 14px;
+                            height: 12px;
+                            background-size: 14px 12px;
+                        }
                         &:hover {
                             background-image: url("/public/images/vector/confirm_icon_blue.svg");
                         }
