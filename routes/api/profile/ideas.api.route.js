@@ -1,8 +1,7 @@
 const { Router } = require(`express`);
 const router = new Router();
-const fs = require(`fs`);
 const multer = require('multer');
-const formParser = multer();
+// const formParser = multer();
 const uploadDir = `public/upload/albums/`;
 const imagesParser = multer({ dest: uploadDir });
 
@@ -26,13 +25,18 @@ const {
 } = require("../../../models/albums.model");
 
 // API /api/profile/ideas/save POST
-router.post(`/save`, imagesParser.fields(albumsImages), async (request, response) => {
+router.post(`/save`, imagesParser.fields(albumsImages), async (request, response, next) => {
+    if (!request.data['userID']) return next();
     const { data: { userID }, body: { ideaID }} = request;
     let albumsArray = [];
     // if save to 1 album
-    if (typeof request.body['savedAlbums'] === `string`) albumsArray.push(request.body['savedAlbums']);
+    if (typeof request.body['savedAlbums'] === `string`) {
+        albumsArray.push(request.body['savedAlbums']);
+    }
     // if save to many albums
-    if (typeof request.body['savedAlbums'] === `object`) albumsArray = [...request.body['savedAlbums']];
+    if (typeof request.body['savedAlbums'] === `object`) {
+        albumsArray = [...request.body['savedAlbums']];
+    }
     // create new album
     if (request.files && request.files['albumCover'] && request.body['albumTitle']) {
         const albumTitle = request.body['albumTitle'];
@@ -56,20 +60,22 @@ router.post(`/save`, imagesParser.fields(albumsImages), async (request, response
     setTimeout(() => response.json(data), 0);
 });
 
-// API /api/profile/ideas/ POST
-router.post(`/`, formParser.none(), async (request, response) => {
-    const formData = { ...request.body };
-    console.log(formData);
-    const data = { code: 200 };
-    setTimeout(() => response.json(data), 0);
-});
-
-// API /api/profile/ideas/ DELETE
-router.delete(`/`, formParser.none(), async (request, response) => {
-    const formData = { ...request.body };
-    console.log(formData);
-    const data = { code: 200 };
-    setTimeout(() => response.json(data), 0);
-});
+// // API /api/profile/ideas/ POST
+// router.post(`/`, formParser.none(), async (request, response, next) => {
+//     if (!request.data['userID']) return next();
+//     const formData = { ...request.body };
+//     console.log(formData);
+//     const data = { code: 200 };
+//     setTimeout(() => response.json(data), 0);
+// });
+//
+// // API /api/profile/ideas/ DELETE
+// router.delete(`/`, formParser.none(), async (request, response, next) => {
+//     if (!request.data['userID']) return next();
+//     const formData = { ...request.body };
+//     console.log(formData);
+//     const data = { code: 200 };
+//     setTimeout(() => response.json(data), 0);
+// });
 
 module.exports = router;

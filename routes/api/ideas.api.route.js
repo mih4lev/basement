@@ -36,8 +36,9 @@ const ideasImages = [
     }
 ];
 
-// API /api/ideas - POST | add ideas (multiple)
-router.post(`/`, imagesParser.fields(ideasImages), async (request, response) => {
+// API /api/ideas - POST | add ideas from profile (multiple)
+router.post(`/`, imagesParser.fields(ideasImages), async (request, response, next) => {
+    if (!request.data['userID']) return next();
     const formData = { ...request.body };
     const ideasArray = [];
     for (const file of request.files['ideaImage']) {
@@ -98,7 +99,8 @@ router.post(`/category/:categoryID/filter`, formParser.none(), async (request, r
 });
 
 // API /api/ideas/albums - GET albums data
-router.get(`/albums/:ideaID`, async (request, response) => {
+router.get(`/albums/:ideaID`, async (request, response, next) => {
+    if (!request.data['userID']) return next();
     const { params: { ideaID }} = request;
     const userID = request.data['userID'];
     const responseData = await requestSavedAlbums(ideaID, userID);
@@ -106,15 +108,17 @@ router.get(`/albums/:ideaID`, async (request, response) => {
 });
 
 // API /api/ideas - DELETE | delete ideas (single)
-router.delete(`/`, formParser.none(), async (request, response) => {
+router.delete(`/`, formParser.none(), async (request, response, next) => {
+    if (!request.data['userID']) return next();
     const { ideaID } = request.body;
     const responseData = await deleteIdea(ideaID);
     await deleteImages(ideaID, uploadDir);
     setTimeout(() => response.json(responseData), 0);
 });
 
-// API /api/ideas/relation - DELETE | delete ideas (single)
-router.delete(`/relation`, formParser.none(), async (request, response) => {
+// API /api/ideas/relation - DELETE | delete idea relation (single)
+router.delete(`/relation`, formParser.none(), async (request, response, next) => {
+    if (!request.data['userID']) return next();
     const { body: { ideaID, albumID }, data: { userID }} = request;
     const responseData = await deleteRelations(userID, ideaID, albumID);
     setTimeout(() => response.json(responseData), 0);

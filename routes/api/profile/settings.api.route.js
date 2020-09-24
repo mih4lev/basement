@@ -1,7 +1,6 @@
 const { Router } = require(`express`);
 const router = new Router();
 const multer = require('multer');
-const formParser = multer();
 const uploadDir = `public/upload/users/`;
 const imagesParser = multer({ dest: uploadDir });
 
@@ -22,11 +21,10 @@ const usersImages = [
 const { saveImages } = require("../../../models/images.model");
 const { updateUser } = require("../../../models/users.model");
 
-// CRUD API /api/profile/settings
-
 // API /api/profile/settings/edit POST
-router.post(`/edit`, imagesParser.fields(usersImages), async (request, response) => {
-    const { userID } = request.body;
+router.post(`/edit`, imagesParser.fields(usersImages), async (request, response, next) => {
+    if (!request.data['userID']) return next();
+    const { body: { userID }} = request;
     const files = await saveImages(usersImages, request.files, userID);
     const formData = { ...request.body, ...files };
     const responseData = await updateUser(formData);

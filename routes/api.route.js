@@ -17,6 +17,7 @@ const createAPIRoutes = (app) => {
         { URL: `/api/profile/ideas`, route: `profile/ideas.api.route` },
         { URL: `/api/profile/albums`, route: `profile/albums.api.route` },
         { URL: `/api/profile/settings`, route: `profile/settings.api.route` },
+        { URL: `/api/profile/calendar`, route: `profile/calendar.api.route` },
     ];
 
     routes.forEach((routeData) => {

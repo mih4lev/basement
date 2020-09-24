@@ -29,7 +29,7 @@ const createAccessToken = (authCode, tokenPath) => {
             const tokenCallback = (tokenPath) => {
                 return async (error, token) => {
                     try {
-                        if (error) reject({ status: 0, error })
+                        if (error) reject({ status: 0, error });
                         await fs.writeJson(tokenPath, token);
                         resolve({ status: 1, data: tokenPath });
                     } catch (error) {

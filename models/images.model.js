@@ -15,7 +15,6 @@ const saveResizedImages = async (requestID, promises, file, sizes, output) => {
     const { filename, path, destination } = file;
     const collectPromises = async ({ 0: width, 1: height, 2: qualityValue }) => {
         const size = { width, height };
-        // const sizePrefix = (width === 0 || height === 0) ? `` : `_${width}x${height}`;
         const sizePrefix = (!width) ? `_100whx${height}` : (!height) ? `_${width}x100wh` :
                            (width && height) ? `_${width}x${height}` : ``;
         const name = destination + requestID + `/` + filename + sizePrefix;

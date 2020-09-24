@@ -23,7 +23,8 @@ const albumsImages = [
 ];
 
 // API /api/profile/albums POST
-router.post(`/`, imagesParser.fields(albumsImages), async (request, response) => {
+router.post(`/`, imagesParser.fields(albumsImages), async (request, response, next) => {
+    if (!request.data['userID']) return next();
     const formData = { ...request.body };
     const responseData = await createAlbum(formData);
     const { requestID } = responseData;
@@ -34,7 +35,8 @@ router.post(`/`, imagesParser.fields(albumsImages), async (request, response) =>
 });
 
 // API /api/profile/albums/edit POST
-router.post(`/edit`, imagesParser.fields(albumsImages), async (request, response) => {
+router.post(`/edit`, imagesParser.fields(albumsImages), async (request, response, next) => {
+    if (!request.data['userID']) return next();
     const { albumID } = request.body;
     const files = await saveImages(albumsImages, request.files, albumID);
     const formData = { ...request.body, ...files };
@@ -43,7 +45,8 @@ router.post(`/edit`, imagesParser.fields(albumsImages), async (request, response
 });
 
 // API /api/profile/albums DELETE
-router.delete(`/`, formParser.none(), async (request, response) => {
+router.delete(`/`, formParser.none(), async (request, response, next) => {
+    if (!request.data['userID']) return next();
     const { albumID } = request.body;
     const responseData = await deleteAlbum(albumID);
     await deleteImages(albumID, uploadDir);

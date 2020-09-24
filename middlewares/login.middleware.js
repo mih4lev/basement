@@ -16,6 +16,7 @@ const checkLogin = async (request, response, next) => {
         request.data['isLogin'] = true;
         request.data['userID'] = userID;
         request.data['isAdmin'] = userData.profile.isAdmin;
+        request.data['isSpec'] = userData.profile.isSpec;
         request.data = { ...request.data, ...userData };
         next();
     } catch (error) {

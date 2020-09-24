@@ -3,7 +3,7 @@ const router = new Router();
 const multer = require('multer');
 const formParser = multer();
 
-// API /api/quote - POST
+// API /api/quote - POST - save quote data form
 router.post(`/`, formParser.none(), async (request, response) => {
     const formData = { ...request.body };
     console.log(formData);

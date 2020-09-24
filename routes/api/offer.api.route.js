@@ -3,7 +3,7 @@ const router = new Router();
 const multer = require('multer');
 const formParser = multer();
 
-// API /api/offer - POST | add ideas (multiple)
+// API /api/offer - POST | add offer (multiple)
 router.post(`/`, formParser.none(), async (request, response) => {
     const formData = { ...request.body };
     console.log(formData);

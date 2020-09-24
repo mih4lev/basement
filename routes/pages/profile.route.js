@@ -5,7 +5,9 @@ const { requestContent } = require("../../models/utils.model");
 const { requestMeta } = require("../../models/pages.model");
 const { requestUser } = require("../../models/users.model");
 const { requestUserAlbums } = require("../../models/albums.model");
-const { requestUserIdeas, requestUploadIdeas, requestAlbumIdeas } = require("../../models/ideas.model");
+const {
+    requestUserIdeas, requestUploadIdeas, requestAlbumIdeas
+} = require("../../models/ideas.model");
 
 router.use(async (request, response, next) => {
     request.data['isAdaptiveHeader'] = false;
