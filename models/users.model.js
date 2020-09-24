@@ -20,7 +20,7 @@ const requestUsers = async (userID) => {
     try {
         const query = `
             SELECT 
-                userID, avatarImage, isAdmin, 
+                userID, avatarImage, isAdmin, isSpec,
                 CONCAT(users.name, ' ', users.surname) as user,
                 IF (googleID IS NOT NULL, 1, 0) as isGoogle, 
                 IF (facebookID IS NOT NULL, 1, 0) as isFacebook
