@@ -8,7 +8,7 @@ const collectFiltersData = async () => {
     const sendOptions = { method: `POST`, body: formData };
     createCustomEvent(`listRequest`);
     const response = await fetch(URL, sendOptions);
-    const responseData = await response.json();
+    window.responseData = await response.json();
     createCustomEvent(`listResponse`, responseData);
 };
 
