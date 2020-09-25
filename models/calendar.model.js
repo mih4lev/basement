@@ -12,7 +12,7 @@ const requestAuthURL = async () => {
             const credentials = await fs.readJson(CREDENTIAL);
             const { client_id, client_secret, redirect_uris } = credentials.installed;
             const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
-            const authUrl = oAuth2Client.generateAuthUrl({ access_type: `online`, scope: SCOPES });
+            const authUrl = oAuth2Client.generateAuthUrl({ access_type: `offline`, scope: SCOPES });
             resolve({ status: 1, link: authUrl });
         } catch (error) {
             resolve({ status: 0, error: error.toString() });
