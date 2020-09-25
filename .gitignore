@@ -13,6 +13,8 @@
 /public/images/css/sprite.css
 # ignore upload files
 /public/upload/
+/tokens/
+/tokens/.json
 /data-mock/instagram.json
 # ignore ENV files
 .env
