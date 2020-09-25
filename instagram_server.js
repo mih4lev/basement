@@ -3,7 +3,7 @@ const fetch = require(`node-fetch`);
 
 const fields = `media_type,media_url,thumbnail_url,permalink`;
 const limit = 6;
-const APIKey = `IGQVJVN0NiRTBqVzVTMU5EX2JDWHB0clFiMDVkWHctUkhKQ0M1ZAFJibDFrNDVlU1hzd0UxcjVoZAjFhRHhUX2lmTGJ3b2FqbmJVQ1BXZATQ2bE5XbEdqaWZAhMl9OZAGJ4YTFLaUMtQXRPTlF5NjRyUG92QwZDZD`;
+const APIKey = `IGQVJXSTNSZA3hUVUdKN0oxTXRfMktrSmhXdGV5ZAkl3ak80RWQ2YTBQVGpScW1fczVsY0FNVXN6eUg5Tk9wYnNoVlBZAWmRJdnVLSWNqV3o3ODlHaWl0Um4ydnV3d3BMZAUVfeWc1TnRWa2tSUTVzVUJoOQZDZD`;
 const instagramURL = `https://graph.instagram.com/me/media?fields=${fields}&limit=${limit}&access_token=${APIKey}`;
 
 const requestData = async () => {
