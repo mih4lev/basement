@@ -77,7 +77,7 @@ const requestCalendar = async (userID) => {
             const timeMin = (new Date()).toISOString();
             const requestData = { calendarId: `primary`, timeMin, singleEvents: true };
             const requestCalendarHandler = (error, result) => {
-                if (error) resolve({ status: 0, error });
+                if (error) resolve({ status: 0, error: error.toString() });
                 resolve({ status: 1, data: result.data.items });
             };
             calendar.events.list(requestData, requestCalendarHandler);
