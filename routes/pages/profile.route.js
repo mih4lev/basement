@@ -22,8 +22,8 @@ router.use(async (request, response, next) => {
     next();
 });
 
-router.get(`/`, async (request, response) => {
-    if (!request.data['userID']) return response.status(401).redirect(`/`);
+router.get(`/`, async (request, response, next) => {
+    if (!request.data['userID']) return next();
     request.data['isSavedIdeas'] = true;
     request.data['isAlbumsVisible'] = true;
     const userID = request.data['userID'];
@@ -35,8 +35,8 @@ router.get(`/`, async (request, response) => {
     response.render(`pages/profile/profile`, data);
 });
 
-router.get(`/saved/:albumID`, async (request, response) => {
-    if (!request.data['userID']) return response.status(401).redirect(`/`);
+router.get(`/saved/:albumID`, async (request, response, next) => {
+    if (!request.data['userID']) return next();
     const { params: { albumID }} = request;
     request.data['isSavedIdeas'] = true;
     const content = requestContent(await Promise.all([
@@ -46,8 +46,8 @@ router.get(`/saved/:albumID`, async (request, response) => {
     response.render(`pages/profile/profile`, data);
 });
 
-router.get(`/uploaded`, async (request, response) => {
-    if (!request.data['userID']) return response.status(401).redirect(`/`);
+router.get(`/uploaded`, async (request, response, next) => {
+    if (!request.data['userID']) return next();
     request.data['isUploadedIdeas'] = true;
     const userID = request.data['userID'];
     const content = requestContent(await Promise.all([
@@ -57,8 +57,8 @@ router.get(`/uploaded`, async (request, response) => {
     response.render(`pages/profile/profile`, data);
 });
 
-router.get(`/logout`, async (request, response) => {
-    if (!request.data['userID']) return response.status(401).redirect(`/`);
+router.get(`/logout`, async (request, response, next) => {
+    if (!request.data['userID']) return next();
     response.cookie('auth_token', { expires: Date.now() }).redirect(`/`);
 });
 
