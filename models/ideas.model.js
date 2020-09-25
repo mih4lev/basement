@@ -381,7 +381,8 @@ const requestUploadIdeas = async (userID) => {
     try {
         const query = `
             SELECT ideaID, ideaTitle, ideaImage 
-            FROM ideas WHERE userID = ? ORDER BY ideaID DESC
+            FROM ideas WHERE userID = ? && portfolioID IS NULL 
+            ORDER BY ideaID DESC
         `;
         return { ideas: await DB(query, [userID]) };
     } catch (error) {
