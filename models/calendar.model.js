@@ -82,6 +82,7 @@ const requestCalendar = async (userID) => {
             };
             calendar.events.list(requestData, requestCalendarHandler);
         } catch (error) {
+            console.log(error);
             const errorMessage = error.toString();
             resolve({ status: 0, error: errorMessage });
         }
