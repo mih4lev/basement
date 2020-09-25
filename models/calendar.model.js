@@ -15,7 +15,7 @@ const requestAuthURL = async () => {
             const authUrl = oAuth2Client.generateAuthUrl({ access_type: `online`, scope: SCOPES });
             resolve({ status: 1, link: authUrl });
         } catch (error) {
-            resolve({ status: 0, error });
+            resolve({ status: 0, error: error.toString() });
         }
     });
 };
@@ -30,27 +30,19 @@ const createAccessToken = (authCode, tokenPath) => {
             const tokenCallback = (tokenPath) => {
                 return async (error, token) => {
                     try {
-                        if (error) resolve({ status: 0, error });
+                        if (error) resolve({ status: 0, error: error.toString() });
                         await fs.writeJson(tokenPath, token);
                         resolve({ status: 1, data: tokenPath });
                     } catch (error) {
-                        resolve({ status: 0, error })
+                        resolve({ status: 0, error: error.toString() })
                     }
                 };
             };
             oAuth2Client.getToken(authCode, tokenCallback(tokenPath));
         } catch (error) {
-            resolve({ status: 0, error })
+            resolve({ status: 0, error: error.toString() })
         }
     });
-};
-
-const tokensCallback = (tokens) => {
-    if (tokens.refresh_token) {
-        // store the refresh_token in my database!
-        console.log(tokens.refresh_token);
-    }
-    console.log(tokens.access_token);
 };
 
 // REQUEST oath authorization
@@ -59,7 +51,6 @@ const authCalendar = async (userToken) => {
         const credentials = await fs.readJson(CREDENTIAL);
         const { client_id, client_secret, redirect_uris } = credentials.installed;
         const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
-        oAuth2Client.on(`tokens`, tokensCallback);
         const token = await fs.readJson(userToken);
         oAuth2Client.setCredentials(token);
         return google.calendar({ version: 'v3', auth: oAuth2Client });
@@ -82,9 +73,7 @@ const requestCalendar = async (userID) => {
             };
             calendar.events.list(requestData, requestCalendarHandler);
         } catch (error) {
-            console.log(error);
-            const errorMessage = error.toString();
-            resolve({ status: 0, error: errorMessage });
+            resolve({ status: 0, error: error.toString() });
         }
     });
 };
@@ -96,7 +85,7 @@ const addEvent = (eventData, userToken) => {
             const calendar = await authCalendar(userToken);
             const addData = { calendarId: `primary`, resource: eventData };
             const addEventHandler = (error, event) => {
-                if (error) resolve({ status: 0, error });
+                if (error) resolve({ status: 0, error: error.toString() });
                 resolve({ status: 1, data: event });
             };
             await calendar.events.insert(addData, addEventHandler);
