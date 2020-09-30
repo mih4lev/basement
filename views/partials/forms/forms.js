@@ -52,7 +52,9 @@ const sendForm = (formNode) => {
         const { dataset: { link: URL }} = formNode;
         if (!URL) return false;
         const responseData = await saveAction({ URL, body, button: submitButton });
-        if (responseData.code !== 200) return false; // need show error
+        if (responseData.status !== 1) return false; // need show error
+        const modalNode = submitButton.closest(`.modalSection`);
+        modalNode.classList.remove(`activeModal`);
         console.log(responseData);
     };
     if (submitButton) submitButton.addEventListener(`click`, submitHandler);

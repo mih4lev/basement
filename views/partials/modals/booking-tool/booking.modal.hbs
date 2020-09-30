@@ -1,0 +1,66 @@
+<section class="modalSection" data-modal="booking-tool">
+    <div class="modalBlurWrapper"></div>
+    <div class="modalMainWrapper bookingToolModal">
+        <div class="modalContentWrapper2">
+            <div class="bookingToolWrapper">
+                <h2 class="modalTitle">
+                    <span class="nobr">We are happy to announce:</span>
+                    <span class="nobr">in-home consultations are now free!</span>
+                </h2>
+                <div class="textAnnounce">
+                    <span class="nobr">Please chose your 1 hour ETA</span>
+                    <span class="nobr">(Estimated Time of Representative Arrival)</span>
+                </div>
+                <div class="monthChanger">
+                    <div class="monthWrapper">
+                        <button class="monthArrow prevArrow" type="button"
+                                title="Previous month">Previous month</button>
+                        <span class="dateTitle" data-year="2020" data-month="9">
+                            <em class="monthTitle">SEPTEMBER</em> <em class="yearTitle">2020</em>
+                        </span>
+                        <button class="monthArrow nextArrow" type="button"
+                                title="Next month">Next month</button>
+                        <div class="selectWrapper">
+                            <ul class="tableHeader">
+                                <li class="dayName">MO</li>
+                                <li class="dayName">TU</li>
+                                <li class="dayName">WE</li>
+                                <li class="dayName">TH</li>
+                                <li class="dayName">FR</li>
+                                <li class="dayName">SA</li>
+                                <li class="dayName">SU</li>
+                            </ul>
+                            <ul class="tableDays"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="dateHeader">
+                    <button class="weekArrow prevArrow" type="button" title="Previous week">Previous week</button>
+                    <ul class="daysWrapper">
+                        <li class="dayNum"><em class="dayTitle"></em><em class="dayName">MON</em></li>
+                        <li class="dayNum"><em class="dayTitle"></em><em class="dayName">TUE</em></li>
+                        <li class="dayNum"><em class="dayTitle"></em><em class="dayName">WED</em></li>
+                        <li class="dayNum"><em class="dayTitle"></em><em class="dayName">THU</em></li>
+                        <li class="dayNum"><em class="dayTitle"></em><em class="dayName">FRI</em></li>
+                        <li class="dayNum"><em class="dayTitle"></em><em class="dayName">SAT</em></li>
+                        <li class="dayNum"><em class="dayTitle"></em><em class="dayName">SUN</em></li>
+                    </ul>
+                    <button class="weekArrow nextArrow" type="button" title="Next week">Next week</button>
+                </div>
+                <div class="dateTables" data-year="2020" data-month="9"></div>
+            </div>
+            <button class="closeButton" type="button">CLOSE MODAL</button>
+            <div class="loaderWrapper"></div>
+        </div>
+    </div>
+</section>
+
+<section class="modalSection bookingFormModal" data-modal="booking-form">
+    <div class="modalBlurWrapper"></div>
+    <div class="modalMainWrapper contactUsWrapper">
+        <div class="modalContentWrapper">
+            {{> forms/booking/booking.form }}
+            <button class="closeButton">CLOSE MODAL</button>
+        </div>
+    </div>
+</section>

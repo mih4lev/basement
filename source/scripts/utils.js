@@ -16,7 +16,8 @@ export const setButtonStatus = ({ button, isLoaded }) => {
     else button.removeAttribute(`disabled`);
 };
 
-export const saveAction = async ({ URL, method = `POST`, isJSON = false, body = {}, button }) => {
+export const saveAction = async (requestData) => {
+    const { URL, method = `POST`, isJSON = false, body = {}, button, isShowLoaded = true } = requestData;
     setButtonStatus({ button: button, isLoaded: false });
     const JSONHeaders = { "Content-Type": "application/json" };
     const JSONOptions = { method, headers: JSONHeaders, body: JSON.stringify(body) };
@@ -24,7 +25,7 @@ export const saveAction = async ({ URL, method = `POST`, isJSON = false, body = 
     const responseOptions = (isJSON) ? JSONOptions : formOptions;
     const response = await fetch(URL, responseOptions);
     const responseData = await response.json();
-    setButtonStatus({ button: button, isLoaded: true });
+    if (isShowLoaded) setButtonStatus({ button: button, isLoaded: true });
     return responseData;
 };
 
@@ -171,7 +172,7 @@ export const requestData = async (requestURL) => {
     const URL = requestURL || wrapper.dataset.api;
     const response = await fetch(URL);
     const data = await response.json();
-    window.responseData = data[Object.keys(data)[0]];
+    window.responseData = data[Object.keys(data)];
     document.dispatchEvent(new CustomEvent(`dataLoaded`, { detail: {}}));
 };
 
@@ -257,9 +258,8 @@ export const renderElements = (elements) => {
 
 const updateData = (event, listWrapper) => {
     const { detail: { data }} = event;
-    const updatedData = data[Object.keys(data)[0]];
     if (listWrapper) listWrapper.innerHTML = ``;
-    window.responseData = updatedData;
+    window.responseData = data[Object.keys(data)];
     hideLoader();
 };
 

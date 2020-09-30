@@ -1,0 +1,745 @@
+.bookingToolModal {
+    @include modal(290px, 40px);
+    @include minWidth(480) {
+        @include modal(438px, 40px);
+    }
+    @include minWidth(768) {
+        @include modal(638px, 40px);
+    }
+    .formWrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    .modalTitle {
+        margin: 0 0 10px 0;
+        font-size: 9px;
+        @include minWidth(480) {
+            margin: 0 0 15px 0;
+            font-size: 12px;
+        }
+        @include minWidth(768) {
+            font-size: 15px;
+        }
+    }
+    .nobr {
+        white-space: nowrap;
+    }
+    .monthChanger {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 10px;
+        @include minWidth(480) {
+            margin-top: 15px;
+        }
+        .monthWrapper {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            position: relative;
+            margin: 0 auto;
+            padding: 0 15px;
+            height: 16px;
+            border: 1px solid $sub;
+            border-radius: 5px;
+            @include minWidth(480) {
+                height: 30px;
+                padding: 0 25px;
+            }
+            @include minWidth(768) {
+                height: 40px;
+                padding: 0 30px;
+            }
+            .monthArrow {
+                @extend %animation;
+                position: absolute;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                font-size: 0;
+                background-color: transparent;
+                outline: none;
+                cursor: pointer;
+                &:before, &:after {
+                    @extend %animation;
+                    content: "";
+                    top: 50%;
+                    display: block;
+                    width: 5px;
+                    height: 1px;
+                    background-color: $raven;
+                    @include minWidth(480) {
+                        width: 8px;
+                        height: 2px;
+                    }
+                }
+                &:before {
+                    transform: translateY(0px) rotate(-45deg);
+                }
+                &:after {
+                    transform: translateY(0px) rotate(45deg);
+                }
+                &:hover {
+                    &:before, &:after {
+                        background-color: $blue;
+                    }
+                }
+                &.prevArrow {
+                    left: 5px;
+                    @include minWidth(480) {
+                        left: 10px;
+                    }
+                    &:before {
+                        transform: translateY(0px) rotate(-45deg);
+                        margin-top: 0;
+                    }
+                    &:after {
+                        transform: translateY(0px) rotate(45deg);
+                        margin-top: 2px;
+                        @include minWidth(480) {
+                            margin-top: 3px;
+                        }
+                    }
+                }
+                &.nextArrow {
+                    right: 5px;
+                    @include minWidth(480) {
+                        right: 10px;
+                    }
+                    &:before {
+                        transform: translateY(0px) rotate(45deg);
+                        margin-top: 0;
+                    }
+                    &:after {
+                        transform: translateY(0px) rotate(-45deg);
+                        margin-top: 2px;
+                        @include minWidth(480) {
+                            margin-top: 3px;
+                        }
+                    }
+                }
+                &.disableArrow {
+                    cursor: default;
+                    &:before, &:after {
+                        cursor: default;
+                        background-color: $sub;
+                    }
+                }
+            }
+            .dateTitle {
+                @extend %animation;
+                position: relative;
+                display: block;
+                margin: 0 5px;
+                padding: 0;
+                font-weight: 600;
+                font-size: 8px;
+                cursor: pointer;
+                min-width: 70px;
+                text-align: center;
+                &:hover {
+                    color: $blue;
+                    &:before, &:after {
+                        background-color: $blue;
+                    }
+                }
+                @include minWidth(480) {
+                    min-width: 110px;
+                    font-size: 13px;
+                }
+                @include minWidth(768) {
+                    min-width: 120px;
+                    font-size: 15px;
+                }
+                &:before, &:after {
+                    @extend %animation;
+                    content: "";
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    background-color: $raven;
+                    width: 3px;
+                    height: 1px;
+                    @include minWidth(480) {
+                        width: 6px;
+                        height: 2px;
+                    }
+                    @include minWidth(768) {
+                        width: 8px;
+                        height: 2px;
+                    }
+                }
+                &:before {
+                    margin-right: -7px;
+                    transform: translateY(-50%) rotate(45deg);
+                    @include minWidth(480) {
+                        margin-right: -12px;
+                    }
+                    @include minWidth(768) {
+                        margin-right: -14px;
+                    }
+                }
+                &:after {
+                    margin-right: -9px;
+                    transform: translateY(-50%) rotate(-45deg);
+                    @include minWidth(480) {
+                        margin-right: -15px;
+                    }
+                    @include minWidth(768) {
+                        margin-right: -18px;
+                    }
+                }
+                .monthTitle {
+                    text-transform: uppercase;
+                }
+                em {
+                    font-weight: 400;
+                    font-style: normal;
+                }
+            }
+            .monthArrow {
+                display: none;
+            }
+            .selectWrapper {
+                display: none;
+                position: absolute;
+                z-index: 2;
+                margin-top: 22px;
+                transform: translateX(-50%);
+                top: 0;
+                left: 50%;
+                padding: 5px;
+                box-sizing: border-box;
+                background-color: $white;
+                border: 1px solid $blue;
+                border-radius: 5px;
+                min-width: 150px;
+                min-height: 40px;
+                @include minWidth(480) {
+                    margin-top: 28px;
+                    padding: 10px;
+                    min-width: 250px;
+                }
+                @include minWidth(768) {
+                    margin-top: 36px;
+                }
+                &:before {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: -4px;
+                    left: 50%;
+                    width: 6px;
+                    height: 6px;
+                    background: #fff;
+                    box-sizing: border-box;
+                    transform: translateX(-50%) rotate(45deg);
+                    border: 1px solid $blue;
+                }
+                &:after {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: -3px;
+                    left: 50%;
+                    width: 6px;
+                    height: 6px;
+                    background: #fff;
+                    box-sizing: border-box;
+                    transform: translateX(-50%) rotate(45deg);
+                }
+                .tableHeader {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    margin: 0;
+                    padding: 0;
+                    list-style-type: none;
+                    .dayName {
+                        flex-basis: 14.2857%;
+                        flex-grow: 0;
+                        flex-shrink: 0;
+                        box-sizing: border-box;
+                        font-size: 7px;
+                        font-weight: 800;
+                        text-transform: uppercase;
+                        text-align: center;
+                        padding: 2px;
+                        border: 1px solid $white;
+                        @include minWidth(480) {
+                            font-size: 12px;
+                        }
+                        @include minWidth(768) {
+                            padding: 2px 2px 7px 2px;
+                            font-size: 13px;
+                        }
+                    }
+                }
+                .tableDays {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    margin: 0;
+                    padding: 0;
+                    width: 100%;
+                    list-style-type: none;
+                    li {
+                        flex-shrink: 0;
+                        flex-grow: 0;
+                        flex-basis: 14.2857%;
+                        box-sizing: border-box;
+                        font-family: Arial, sans-serif;
+                        font-size: 7px;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        text-align: center;
+                        @include minWidth(480) {
+                            font-size: 12px;
+                        }
+                        @include minWidth(768) {
+                            font-size: 13px;
+                        }
+                        &.disableDay {
+                            .day {
+                                color: $sub;
+                                cursor: default;
+                                &:hover, &:focus {
+                                    border-color: $sub;
+                                    color: $sub;
+                                }
+                            }
+                        }
+                        &.currentDay {
+                            .day {
+                                color: $blue;
+                                border-color: $blue;
+                                background-color: $menuHover;
+                                cursor: default;
+                            }
+                        }
+                        .day {
+                            margin: 1px;
+                            padding: 2px 0;
+                            display: block;
+                            border: 1px solid $sub;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            &:hover, &:focus {
+                                border-color: $blue;
+                                color: $blue;
+                            }
+                            @include minWidth(480) {
+                                padding: 5px 0;
+                            }
+                        }
+                    }
+                }
+            }
+            &.activeWrapper {
+                //border: 1px solid $blue;
+                .selectWrapper {
+                    display: block;
+                }
+                .monthArrow {
+                    display: block;
+                }
+                .dateTitle {
+                    color: $blue;
+                    &:before, &:after {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    .dateHeader {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+        margin: 5px auto 0;
+        width: 100%;
+        max-width: 540px;
+        @include minWidth(768) {
+            margin-top: 15px;
+        }
+        .weekArrow {
+            position: absolute;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 0;
+            background-color: transparent;
+            outline: none;
+            cursor: pointer;
+            &:before, &:after {
+                @extend %animation;
+                content: "";
+                top: 50%;
+                display: block;
+                width: 6px;
+                height: 2px;
+                background-color: $raven;
+                @include minWidth(480) {
+                    width: 10px;
+                    height: 2px;
+                }
+                @include minWidth(768) {
+                    width: 12px;
+                    height: 2px;
+                }
+            }
+            &:hover {
+                &:before, &:after {
+                    background-color: $blue;
+                }
+            }
+            &:before {
+                transform: translateY(0px) rotate(-45deg);
+            }
+            &:after {
+                transform: translateY(0px) rotate(45deg);
+            }
+            &.prevArrow {
+                left: -10px;
+                @include minWidth(480) {
+                    left: -13px;
+                }
+                @include minWidth(768) {
+                    left: -20px;
+                }
+                &:before {
+                    transform: translateY(0px) rotate(-45deg);
+                    margin-top: 0;
+                }
+                &:after {
+                    transform: translateY(0px) rotate(45deg);
+                    margin-top: 1px;
+                    @include minWidth(480) {
+                        margin-top: 4px;
+                    }
+                    @include minWidth(768) {
+                        margin-top: 5px;
+                    }
+                }
+            }
+            &.nextArrow {
+                right: -10px;
+                @include minWidth(480) {
+                    right: -13px;
+                }
+                @include minWidth(768) {
+                    right: -20px;
+                }
+                &:before {
+                    transform: translateY(0px) rotate(45deg);
+                    margin-top: 0;
+                }
+                &:after {
+                    transform: translateY(0px) rotate(-45deg);
+                    margin-top: 1px;
+                    @include minWidth(480) {
+                        margin-top: 4px;
+                    }
+                    @include minWidth(768) {
+                        margin-top: 5px;
+                    }
+                }
+            }
+            &.disableArrow {
+                cursor: default;
+                &:before, &:after {
+                    background-color: $sub;
+                    cursor: default;
+                }
+            }
+        }
+        .daysWrapper {
+            display: flex;
+            flex-direction: row;
+            flex-grow: 1;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            list-style-type: none;
+            .dayNum {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-end;
+                flex-grow: 1;
+                flex-shrink: 1;
+                flex-basis: 14.2857%;
+                padding: 2px 0 2px 3px;
+                font-family: Arial, sans-serif;
+                font-size: 7px;
+                font-weight: 600;
+                line-height: 7px;
+                border-top: 1px solid $sub;
+                border-bottom: 1px solid $sub;
+                border-right: 1px solid $sub;
+                .dayTitle, .dayName {
+                    font-style: normal;
+                }
+                &:first-child {
+                    border-left: 1px solid $sub;
+                }
+                @include minWidth(480) {
+                    padding: 5px 0 5px 5px;
+                    font-size: 12px;
+                    line-height: 12px;
+                }
+                @include minWidth(768) {
+                    padding: 10px 0 10px 10px;
+                    font-size: 13px;
+                    line-height: 13px;
+                }
+                .dayName {
+                    margin-left: 2px;
+                    font-size: 5px;
+                    line-height: 5px;
+                    @include minWidth(480) {
+                        margin-left: 3px;
+                        font-size: 8px;
+                        line-height: 8px;
+                    }
+                    @include minWidth(768) {
+                        margin-left: 5px;
+                        font-size: 10px;
+                        line-height: 10px;
+                    }
+                }
+            }
+        }
+    }
+    .dateTables {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        max-width: 540px;
+        margin: 5px auto 0;
+        .dayTimes {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            white-space: nowrap;
+            &:first-child {
+                .time {
+                    border-left: 1px solid $sub;
+                    &.selectTime {
+                        margin-left: 0;
+                    }
+                    &.hoverTime {
+                        margin-left: 0;
+                    }
+                    &.errorTime {
+                        margin-left: 0;
+                    }
+                }
+            }
+            &.disableDay {
+                z-index: -1;
+                position: relative;
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: $sub;
+                    opacity: 0.7;
+                }
+                .time {
+                    font-weight: 400 !important;
+                    color: grey !important;
+                }
+            }
+            .time {
+                display: flex;
+                flex-direction: row;
+                flex-grow: 1;
+                flex-shrink: 0;
+                align-items: flex-end;
+                padding: 2px 0 2px 3px;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+                font-size: 7px;
+                font-weight: 600;
+                line-height: 7px;
+                border-bottom: 1px solid $sub;
+                border-right: 1px solid $sub;
+                cursor: pointer;
+                @include minWidth(480) {
+                    padding: 5px 0 5px 5px;
+                    font-size: 12px;
+                    line-height: 12px;
+                }
+                @include minWidth(768) {
+                    padding: 10px 0 10px 10px;
+                    font-size: 13px;
+                    line-height: 13px;
+                }
+                &:first-child {
+                    border-top: 1px solid $sub;
+                    &.selectTime {
+                        margin-top: 0;
+                    }
+                    &.hoverTime {
+                        margin-top: 0;
+                    }
+                    &.errorTime {
+                        margin-top: 0;
+                    }
+                }
+                &.selectTime {
+                    margin: -1px 0 0 -1px;
+                    color: $blue;
+                    background-color: $menuHover;
+                    border: 1px solid $blue;
+                }
+                &.hoverTime {
+                    margin: -1px 0 0 -1px;
+                    color: $blue;
+                    background-color: $white;
+                    border: 1px solid $blue;
+                }
+                &.disableTime {
+                    font-weight: 400;
+                    color: $grey;
+                    text-decoration: line-through;
+                }
+                &.errorTime {
+                    margin: -1px 0 0 -1px;
+                    color: rgba(255, 148, 148, 1);
+                    border: 1px solid rgba(255, 148, 148, 1);
+                }
+                em {
+                    margin-left: 2px;
+                    font-weight: 400;
+                    font-size: 5px;
+                    line-height: 5px;
+                    font-style: normal;
+                    @include minWidth(480) {
+                        margin-left: 3px;
+                        font-size: 8px;
+                        line-height: 8px;
+                    }
+                    @include minWidth(768) {
+                        margin-left: 5px;
+                        font-size: 10px;
+                        line-height: 10px;
+                    }
+                }
+            }
+        }
+    }
+    .loaderWrapper {
+        display: none;
+        opacity: 0.5;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $white;
+        border-radius: 5px;
+        &.activeWrapper {
+            display: block;
+        }
+    }
+}
+
+.bookingFormModal {
+    .sectionTitle {
+        margin-bottom: 10px;
+        font-size: 12px;
+        text-transform: uppercase;
+        @include minWidth(480) {
+            font-size: 18px;
+        }
+        .bookingTime {
+            color: $blue;
+            white-space: nowrap;
+            em {
+                font-style: normal;
+            }
+        }
+    }
+    .textareaLabel {
+        margin-top: 10px;
+        width: 200px;
+        font-weight: 400;
+        line-height: 125%;
+        text-transform: unset;
+        @include minWidth(480) {
+            margin-top: 0;
+            width: 100%;
+            line-height: 41px;
+        }
+    }
+    .selectWrapper {
+        margin-bottom: 8px;
+    }
+    .mailWrapper {
+        flex-shrink: 0;
+    }
+    .twoColumnWrapper {
+        .fieldWrapper:nth-child(1) {
+            @include minWidth(768) {
+                width: 44%;
+            }
+        }
+        .fieldWrapper:nth-child(2) {
+            @include minWidth(768) {
+                width: 54%;
+            }
+        }
+        .threeColumnWrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            @include minWidth(768) {
+                width: 54%;
+            }
+            .splitWrapper:nth-child(1) {
+                width: 40%;
+                @include minWidth(480) {
+                    width: 46%;
+                }
+            }
+            .splitWrapper:nth-child(2) {
+                width: 28%;
+                @include minWidth(480) {
+                    width: 24%;
+                }
+            }
+            .splitWrapper:nth-child(3) {
+                width: 28%;
+                @include minWidth(480) {
+                    width: 24%;
+                }
+            }
+        }
+        .selectWrapper:nth-child(2) {
+            @include minWidth(768) {
+                width: 54%;
+            }
+        }
+    }
+    .inputTitle {
+        margin-top: 12px;
+    }
+    .textLink {
+        white-space: nowrap;
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}

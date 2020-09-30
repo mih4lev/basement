@@ -504,14 +504,12 @@ strong {
     }
 }
 
-
-
 // forms
 
 // input[type="text"] && textarea
 
 .fieldLabel {
-    @extend %animation;
+    //@extend %animation;
     z-index: -1;
     position: absolute;
     line-height: 26px;
@@ -716,7 +714,7 @@ strong {
         font-size: 12px;
     }
     .emptyData {
-        color: $ghost;
+        color: $grey;
     }
     .hiddenSelectWrapper {
         @extend %shadow2;

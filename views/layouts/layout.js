@@ -8,6 +8,7 @@ import { zipCodeButtons } from "../partials/micro-blocks/zip-code/zip-code";
 import { selectElements, sendForms } from "../partials/forms/forms";
 import { googleAuth } from "../../source/scripts/google.auth";
 import { facebookAuth } from "../../source/scripts/facebook.auth";
+import { bookingTool } from "../partials/modals/booking-tool/booking.modal";
 
 // webp checker
 webpCheck();
@@ -33,3 +34,6 @@ sendForms();
 
 // schedule buttons
 zipCodeButtons();
+
+// booking-tool
+bookingTool();

@@ -22,14 +22,20 @@ export const zipCodeButtons = () => {
         const sendZipCodeData = async (event) => {
             event.preventDefault();
             const formData = new FormData(zipCodeForm);
-            const responseOptions = { URL: `/api/zip-code`, body: formData, button: zipCodeButton };
+            const responseOptions = {
+                URL: `/api/booking`, body: formData, button: zipCodeButton, isShowLoaded: false
+            };
             zipCodeLoader.classList.remove(`hiddenLoader`);
             const responseData = await saveAction(responseOptions);
-            if (responseData.code !== 200) return false; // show error
-            console.log(responseData);
+            if (responseData.status !== 1) return false; // show error
+            const { calendar: { data }, userID} = responseData;
+            const calendarEvent = new CustomEvent(`bookingData`, { detail: { data, userID }});
+            document.dispatchEvent(calendarEvent);
             // hide loader && show go button
             zipCodeLoader.classList.add(`hiddenLoader`);
-            zipCodeButton.classList.add(`loadedButton`);
+            zipCodeButton.classList.remove(`loadButton`);
+            zipCodeButton.classList.remove(`loadedButton`);
+            zipCodeButton.disabled = false;
             // reset schedule button view to default
             zipCodeField.value = ``;
             scheduleButton.classList.remove(`hiddenButton`);

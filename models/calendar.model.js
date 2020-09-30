@@ -78,11 +78,53 @@ const requestCalendar = async (userID) => {
     });
 };
 
+const createEventData = (formData) => {
+    const {
+        firstName, lastName, phone, email, square, budget, state, zipCode, date,
+        service, address, town, message, referer
+    } = formData;
+    const startDate = new Date(Number(date));
+    const endDate = new Date(Number(date));
+    startDate.setHours(startDate.getHours() - 1);
+    endDate.setHours(endDate.getHours() + 2);
+    return {
+        summary: `${firstName} ${lastName}`,
+        location: `${address}, ${town}, ${state}, ${zipCode}`,
+        description: `
+        Phone: ${phone}
+        Basement square: ${square} SQ. FT.
+        Budget price: ${budget}
+        Comment: ${message}
+        Service: ${service}
+        Referer: ${referer}
+    `,
+        start: {
+            dateTime: startDate.toISOString(),
+            timeZone: `Europe/Moscow`
+            // timeZone: `America/New_York`
+        },
+        end: {
+            dateTime: endDate.toISOString(),
+            timeZone: `Europe/Moscow`
+            // timeZone: `America/New_York`
+        },
+        attendees: [
+            { email: `${email}` }
+        ],
+        reminders: {
+            useDefault: true
+        }
+    };
+};
+
 // ADD event to calendar
-const addEvent = (eventData, userToken) => {
+const addEvent = (formData) => {
     return new Promise(async (resolve, reject) => {
         try {
+            const { spec } = formData;
+            const userToken = `tokens/${spec}.json`;
             const calendar = await authCalendar(userToken);
+            const eventData = createEventData(formData);
             const addData = { calendarId: `primary`, resource: eventData };
             const addEventHandler = (error, event) => {
                 if (error) resolve({ status: 0, error: error.toString() });

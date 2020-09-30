@@ -8,13 +8,14 @@ export const contactUsModal = () => {
     const addButtons = [...document.querySelectorAll(`.contactButton`)];
 
     // hide modal && button if 2 form on page
-    if (sendForms.length > 1) {
+    if (sendForms.length > 2) {
+        if (!addButtons.length) return false;
         addButtons.forEach((button) => {
             button.classList.add(`hiddenButton`);
             const wrapper = button.closest(`.wrapper`);
             if (wrapper) {
                 const footerText = wrapper.querySelector(`.footerText`);
-                footerText.classList.add(`fullWrapper`);
+                if (footerText) footerText.classList.add(`fullWrapper`);
             }
         });
         return false;

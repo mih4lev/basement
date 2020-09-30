@@ -6,7 +6,7 @@
 @import "edit-album/edit-album.modal";
 @import "add-photo/add-photo.modal";
 @import "edit-photo/edit-photo.modal";
-@import "booking-tool/booking-tool.modal";
+@import "booking-tool/booking.modal";
 @import "view-idea/view-idea.modal";
 @import "save-idea/save-idea.modal";
 
@@ -57,7 +57,7 @@
 }
 
 .closeButton {
-    @extend %animation;
+    //@extend %animation;
     position: absolute;
     top: 15px;
     right: 15px;
@@ -71,10 +71,12 @@
     outline: none;
     &:hover {
         &:before {
-            transform: rotate(135deg);
+            background-color: $blue;
+            //transform: rotate(135deg);
         }
         &:after {
-            transform: rotate(45deg);
+            background-color: $blue;
+            //transform: rotate(45deg);
         }
     }
     @include minWidth(480) {
@@ -82,7 +84,7 @@
         right: 23px;
     }
     &:before, &:after {
-        @extend %animation;
+        //@extend %animation;
         position: absolute;
         top: 6px;
         left: 0;

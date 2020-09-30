@@ -35,7 +35,7 @@
 @mixin scrollModal($width, $height) {
     position: absolute;
     z-index: 999;
-    top: 85px;
+    top: 40px;
     left: 50%;
     transform: translate(-50%, 0);
     width: $width;

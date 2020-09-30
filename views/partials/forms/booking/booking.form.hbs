@@ -1,0 +1,202 @@
+<form class="formWrapper contactFormWrapper sendForm" data-steps="15" data-link="/api/booking/form">
+    <h2 class="sectionTitle">
+        YOUR ETA IS 1 HOUR FROM:
+        <span class="bookingTime">
+            <em class="selectDay"></em>,
+            <em class="selectMonth"></em>
+            <em class="selectDate"></em>,
+            <em class="selectYear"></em>
+            <em class="selectTime"></em>
+        </span>
+    </h2>
+    <input type="hidden" name="date" class="hiddenField">
+    <input type="hidden" name="spec" class="specField">
+    <div class="progressBar">
+        <div class="progressLine" style="width: 0"></div>
+    </div>
+    <div class="twoColumnWrapper">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="bookingFirstName">First name</label>
+            <input class="fieldInput" name="firstName" id="bookingFirstName" type="text">
+        </div>
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="bookingLastName">Last name</label>
+            <input class="fieldInput" name="lastName" id="bookingLastName" type="text">
+        </div>
+    </div>
+    <div class="twoColumnWrapper">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="bookingPhoneNumber">Phone number</label>
+            <input class="fieldInput" name="phone" id="bookingPhoneNumber" type="text">
+        </div>
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="bookingEmail">E-mail</label>
+            <input class="fieldInput" name="email" id="bookingEmail" type="text">
+        </div>
+    </div>
+    <div class="twoColumnWrapper">
+        <div class="fieldWrapper mailWrapper">
+            <label class="fieldLabel" for="bookingAddress">Street address</label>
+            <input class="fieldInput" name="address" id="bookingAddress" type="text">
+        </div>
+        <div class="threeColumnWrapper">
+            <div class="splitWrapper">
+                <label class="fieldLabel" for="bookingTown">Town / City</label>
+                <input class="fieldInput" name="town" id="bookingTown" type="text">
+            </div>
+            <div class="splitWrapper">
+                <div class="selectElement">
+                    <span class="currentSelectData emptyData">State</span>
+                    <input class="hiddenField" type="hidden" name="state">
+                    <ul class="hiddenSelectWrapper">
+                        <li class="selectData" data-select="DS">DS</li>
+                        <li class="selectData" data-select="MD">MD</li>
+                        <li class="selectData" data-select="VA">VA</li>
+                        <li class="selectData" data-select="PA">PA</li>
+                        <li class="selectData" data-select="DE">DE</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="splitWrapper">
+                <label class="fieldLabel" for="bookingZipCode">Zip code</label>
+                <input class="fieldInput" name="zipCode" id="bookingZipCode" type="text">
+            </div>
+        </div>
+    </div>
+    <p class="inputTitle">Service(s) you are looking for:</p>
+    <div class="oneColumnFieldset">
+        <div class="checkboxWrapper">
+            <input class="checkboxInput"
+                   name="service" id="bookingService1" type="checkbox"
+                   value="Finish an unfinished basement (full or part)">
+            <label class="checkboxLabel" for="bookingService1">
+                Finish an unfinished basement (full or part)
+            </label>
+        </div>
+        <div class="checkboxWrapper">
+            <input class="checkboxInput"
+                   name="service" id="bookingService2" type="checkbox"
+                   value="Complete basement remodeling">
+            <label class="checkboxLabel" for="bookingService2">Complete basement remodeling</label>
+        </div>
+        <div class="checkboxWrapper">
+            <input class="checkboxInput"
+                   name="service" id="bookingService3" type="checkbox"
+                   value="Partial basement remodeling">
+            <label class="checkboxLabel" for="bookingService3">Partial basement remodeling</label>
+        </div>
+        <div class="checkboxWrapper">
+            <input class="checkboxInput"
+                   name="service" id="bookingService4" type="checkbox"
+                   value="Flooded basement restoration">
+            <label class="checkboxLabel" for="bookingService4">Flooded basement restoration</label>
+        </div>
+        <div class="checkboxWrapper">
+            <input class="checkboxInput"
+                   name="service" id="bookingService5" type="checkbox"
+                   value="Add bathroom or wet-bar">
+            <label class="checkboxLabel" for="bookingService5">Add bathroom or wet-bar</label>
+        </div>
+        <div class="checkboxWrapper">
+            <input class="checkboxInput"
+                   name="service" id="bookingService6" type="checkbox"
+                   value="Add egress window or walk-out">
+            <label class="checkboxLabel" for="bookingService6">Add egress window or walk-out</label>
+        </div>
+        <div class="checkboxWrapper">
+            <input class="checkboxInput"
+                   name="service" id="bookingService7" type="checkbox"
+                   value="Foundation repairs">
+            <label class="checkboxLabel" for="bookingService7">Foundation repairs</label>
+        </div>
+        <div class="checkboxWrapper">
+            <input class="checkboxInput"
+                   name="service" id="bookingService8" type="checkbox"
+                   value="Basement waterproofing">
+            <label class="checkboxLabel" for="bookingService8">Basement waterproofing</label>
+        </div>
+    </div>
+    <div class="twoColumnWrapper">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="bookingSquare">Basement SQ. FT.</label>
+            <input class="fieldInput" name="square" id="bookingSquare" type="text">
+        </div>
+        <div class="selectWrapper">
+            <div class="selectElement">
+                <span class="currentSelectData emptyData">Budget idea</span>
+                <input class="hiddenField" type="hidden" name="budget">
+                <ul class="hiddenSelectWrapper">
+                    <li class="selectData" data-select="Under $10,000">Under $10,000</li>
+                    <li class="selectData" data-select="$10,000 - $20,000">$10,000 - $20,000</li>
+                    <li class="selectData" data-select="$20,000 - $40,000">$20,000 - $40,000</li>
+                    <li class="selectData" data-select="$40,000 - $70,000">$40,000 - $70,000</li>
+                    <li class="selectData" data-select="$70,000 - $100,000">$70,000 - $100,000</li>
+                    <li class="selectData" data-select="$100,000 +">$100,000 +</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="fieldWrapper">
+        <label class="fieldLabel textareaLabel"
+               for="bookingMessage">Please, provide description of your Basement Project:</label>
+        <textarea class="fieldTextarea" id="bookingMessage" name="message"></textarea>
+    </div>
+    <p class="inputTitle">How did you find us?</p>
+    <div class="findUsWrapper">
+        <div class="twoColumnWrapper">
+            <input class="checkboxInput"
+                   name="referer" id="bookingReferer1" type="radio"
+                   value="Google search">
+            <label class="checkboxLabel" for="bookingReferer1">Google search</label>
+        </div>
+        <div class="twoColumnWrapper">
+            <input class="checkboxInput"
+                   name="referer" id="bookingReferer2" type="radio"
+                   value="Houzz.com">
+            <label class="checkboxLabel" for="bookingReferer2">Houzz.com</label>
+        </div>
+        <div class="twoColumnWrapper">
+            <input class="checkboxInput"
+                   name="referer" id="bookingReferer3" type="radio"
+                   value="Facebook">
+            <label class="checkboxLabel" for="bookingReferer3">Facebook</label>
+        </div>
+        <div class="twoColumnWrapper">
+            <input class="checkboxInput"
+                   name="referer" id="bookingReferer4" type="radio"
+                   value="Postcard">
+            <label class="checkboxLabel" for="bookingReferer4">Postcard</label>
+        </div>
+        <div class="twoColumnWrapper">
+            <input class="checkboxInput"
+                   name="referer" id="bookingReferer5" type="radio"
+                   value="Angieslist.com">
+            <label class="checkboxLabel" for="bookingReferer5">Angieslist.com</label>
+        </div>
+        <div class="twoColumnWrapper">
+            <input class="checkboxInput"
+                   name="referer" id="bookingReferer6" type="radio"
+                   value="Homeadvisor.com">
+            <label class="checkboxLabel" for="bookingReferer6">Homeadvisor.com</label>
+        </div>
+        <div class="twoColumnWrapper">
+            <input class="checkboxInput"
+                   name="referer" id="bookingReferer7" type="radio"
+                   value="Instagram">
+            <label class="checkboxLabel" for="bookingReferer7">Instagram</label>
+        </div>
+        <div class="twoColumnWrapper">
+            <input class="checkboxInput"
+                   name="referer" id="bookingReferer8" type="radio"
+                   value="Other">
+            <label class="checkboxLabel" for="bookingReferer8">Other</label>
+        </div>
+    </div>
+    <div class="submitWrapper">
+        <p class="textBlock">
+            By clicking CONFIRM BOOKING you agree to our
+            <a href="#" class="textLink">terms and conditions</a>
+        </p>
+        <button class="submitButton" type="submit">CONFIRM BOOKING</button>
+    </div>
+</form>

@@ -693,7 +693,7 @@
         }
     }
     .closeButton {
-        @extend %animation;
+        //@extend %animation;
         position: absolute;
         top: -345px;
         left: 50%;

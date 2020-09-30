@@ -1,4 +1,4 @@
-import { createCustomEvent, createScroll } from "../../../../source/scripts/utils";
+import {createCustomEvent, createScroll} from "../../../../source/scripts/utils";
 
 // collect data from filters and send them to API
 const collectFiltersData = async () => {
@@ -8,8 +8,7 @@ const collectFiltersData = async () => {
     const sendOptions = { method: `POST`, body: formData };
     createCustomEvent(`listRequest`);
     const response = await fetch(URL, sendOptions);
-    const { portfolio } = await response.json();
-    window.responseData = portfolio;
+    window.responseData = await response.json();
     createCustomEvent(`listResponse`, responseData);
 };
 
