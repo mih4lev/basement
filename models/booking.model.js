@@ -15,7 +15,7 @@ const saveBooking = async (bookingData) => {
 
 const requestUserByZipCode = async (zipCode) => {
     try {
-        const query = `SELECT * FROM calendars WHERE ? IN (zipCodes)`;
+        const query = `SELECT * FROM calendars WHERE zipCodes LIKE '%?%'`;
         return { ...(await singleDB(query, [ Number(zipCode) ])) };
     } catch (error) {
         return { status: 0, error };
