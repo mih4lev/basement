@@ -242,8 +242,12 @@ const monthSelector = () => {
     });
 };
 
-const addCalendarEvents = () => {
+const removeClass = (className) => {
     const timeNodes = [...modalNode.querySelectorAll(`.time`)];
+    timeNodes.forEach((timeNode) => timeNode.classList.remove(className));
+};
+
+const addCalendarEvents = () => {
     const checkDayTimeline = () => {
         const dayNodes = [...modalNode.querySelectorAll(`.dayTimes`)];
         dayNodes.forEach((dayNode) => {
@@ -251,52 +255,44 @@ const addCalendarEvents = () => {
             if (timeNodes.length < 3) return dayNode.classList.add(`disableDay`);
             let isInvalid = true;
             timeNodes.forEach((timeNode) => {
-                const prevNode = timeNode.previousSibling || timeNode.nextSibling.nextSibling;
-                const nextNode = timeNode.nextSibling || timeNode.previousSibling.previousSibling;
-                const isDisable = timeNode.classList.contains(`disableTime`) ||
-                    prevNode.classList.contains(`disableTime`) ||
-                    nextNode.classList.contains(`disableTime`);
-                if (!isDisable) isInvalid = false;
+                if (
+                    !timeNode.nextSibling ||
+                    !timeNode.nextSibling.nextSibling ||
+                    timeNode.nextSibling.classList.contains(`disableTime`) ||
+                    timeNode.nextSibling.nextSibling.classList.contains(`disableTime`)
+                ) {
+                    timeNode.classList.add(`passTime`);
+                    return false;
+                }
+                isInvalid = false;
             });
             if (isInvalid) dayNode.classList.add(`disableDay`);
         });
     };
+    checkDayTimeline();
+    const timeNodes = [...modalNode.querySelectorAll(`.time:not(.passTime):not(.disableTime)`)];
     timeNodes.forEach((timeNode) => {
-        const removeClass = (className) => {
-            timeNodes.forEach((timeNode) => timeNode.classList.remove(className));
-        };
         timeNode.addEventListener(`mouseover`, () => {
-            const prevNode = timeNode.previousSibling || timeNode.nextSibling.nextSibling;
-            const nextNode = timeNode.nextSibling || timeNode.previousSibling.previousSibling;
+            const firstRangeNode = timeNode.nextSibling || timeNode.previousSibling;
+            const secondRangeNode = timeNode.nextSibling.nextSibling || timeNode.previousSibling.previousSibling;
             const isDisable = timeNode.classList.contains(`disableTime`) ||
-                              prevNode.classList.contains(`disableTime`) ||
-                              nextNode.classList.contains(`disableTime`);
+                firstRangeNode.classList.contains(`disableTime`) ||
+                secondRangeNode.classList.contains(`disableTime`);
             const selector = (isDisable) ? `errorTime` : `hoverTime`;
             timeNode.classList.add(selector);
-            prevNode.classList.add(selector);
-            nextNode.classList.add(selector);
+            firstRangeNode.classList.add(selector);
+            secondRangeNode.classList.add(selector);
         });
         timeNode.addEventListener(`mouseout`, () => {
             removeClass(`errorTime`);
             removeClass(`hoverTime`);
         });
         timeNode.addEventListener(`click`, () => {
-            const prevNode = timeNode.previousSibling || timeNode.nextSibling.nextSibling;
-            const nextNode = timeNode.nextSibling || timeNode.previousSibling.previousSibling;
-            const isDisable = timeNode.classList.contains(`disableTime`) ||
-                prevNode.classList.contains(`disableTime`) ||
-                nextNode.classList.contains(`disableTime`);
-            if (isDisable) return false;
             const { dataset: data } = timeNode;
             const customEvent = new CustomEvent(`selectDate`, { detail: { data }});
             document.dispatchEvent(customEvent);
-            // removeClass(`selectTime`);
-            // timeNode.classList.add(`selectTime`);
-            // prevNode.classList.add(`selectTime`);
-            // nextNode.classList.add(`selectTime`);
         });
     });
-    checkDayTimeline();
 };
 
 const bookingForm = () => {
@@ -305,7 +301,7 @@ const bookingForm = () => {
         const selectDate = new Date(year, month, day, time);
         const { dataset: { spec }} = weekWrapper;
         // change date data
-        const hours = selectDate.getHours() - 1;
+        const hours = selectDate.getHours();
         const selectTime = (hours > 12) ? hours - 12 : hours;
         const selectZone = (hours > 12) ? `PM` : `AM`;
         bookingTime.querySelector(`.selectDay`).innerText = days[selectDate.getDay()];

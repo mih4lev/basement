@@ -602,16 +602,22 @@
                     background-color: $menuHover;
                     border: 1px solid $blue;
                 }
-                &.hoverTime {
-                    margin: -1px 0 0 -1px;
-                    color: $blue;
-                    background-color: $white;
-                    border: 1px solid $blue;
+                &.passTime {
+                    font-weight: 600;
+                    color: $grey;
+                    cursor: default;
                 }
                 &.disableTime {
                     font-weight: 400;
                     color: $grey;
                     text-decoration: line-through;
+                    cursor: default;
+                }
+                &.hoverTime {
+                    margin: -1px 0 0 -1px;
+                    color: $blue;
+                    background-color: $white;
+                    border: 1px solid $blue;
                 }
                 &.errorTime {
                     margin: -1px 0 0 -1px;
