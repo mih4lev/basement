@@ -55,7 +55,6 @@ const sendForm = (formNode) => {
         if (responseData.status !== 1) return false; // need show error
         const modalNode = submitButton.closest(`.modalSection`);
         modalNode.classList.remove(`activeModal`);
-        console.log(responseData);
     };
     if (submitButton) submitButton.addEventListener(`click`, submitHandler);
     // check fields functions

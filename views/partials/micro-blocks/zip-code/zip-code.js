@@ -60,8 +60,9 @@ export const zipCodeButtons = () => {
                 zipCodeButton.disabled = false;
                 return showError(errorMessage);
             }
-            const { calendar: { data }, userID} = responseData;
-            const calendarEvent = new CustomEvent(`bookingData`, { detail: { data, userID }});
+            const { calendar: { data }, userID, timeStart, timeEnd } = responseData;
+            const eventData = { data, userID, timeStart, timeEnd };
+            const calendarEvent = new CustomEvent(`bookingData`, { detail: eventData});
             document.dispatchEvent(calendarEvent);
             // hide loader && show go button
             zipCodeLoader.classList.add(`hiddenLoader`);

@@ -11,10 +11,10 @@ const { checkRequestData } = require("../../controllers/booking.controller");
 router.post(`/`, formParser.none(), async (request, response) => {
     const { body: { zipCode }} = request;
     const responseData = await requestUserByZipCode(zipCode);
-    const { userID } = responseData;
+    const { userID, timeStart, timeEnd } = responseData;
     if (!userID) return response.json({ status: 0 });
     const calendar = await requestCalendar(userID);
-    const data = { status: 1, calendar, userID };
+    const data = { status: 1, calendar, userID, timeStart, timeEnd };
     setTimeout(() => response.json(data), 0);
 });
 

@@ -54,15 +54,16 @@ const createDay = (hour) => {
 };
 
 const updateWeekData = (weekDays) => {
+    const { dataset: { start, end }} = weekWrapper;
     weekWrapper.innerHTML = ``;
     weekDays.forEach((day) => {
         // create time list
         const dayList = document.createElement(`ul`);
         dayList.classList.add(`dayTimes`);
         const currentDate = new Date();
-        day.setHours(8);
+        day.setHours(Number(start));
         const startHour = day.getHours();
-        day.setHours(20);
+        day.setHours(Number(end));
         const endHour = day.getHours();
         for (let hour = startHour; hour <= endHour; hour++) {
             const dayNode = createDay(hour);
@@ -320,22 +321,6 @@ const bookingForm = () => {
     });
 };
 
-const showBooking = () => {
-    document.addEventListener(`bookingData`, (event) => {
-        const { detail: { data, userID }} = event;
-        const currentDate = new Date();
-        const year = currentDate.getFullYear();
-        const month = currentDate.getMonth();
-        const day = currentDate.getDate();
-        const requestData = { year, month, day, calendar: data };
-        weekWrapper.dataset.spec = userID;
-        updateWeek(requestData);
-        updateTitleData({ year, month });
-        const calendarModal = document.querySelector(`[data-modal="booking-tool"]`);
-        if (calendarModal) calendarModal.classList.add(`activeModal`);
-    });
-};
-
 const setWeekArrows = () => {
     weekArrows.forEach((arrow) => {
         arrow.addEventListener(`click`, async () => {
@@ -361,6 +346,24 @@ const setWeekArrows = () => {
             updateTitleData({ year, month });
             updateWeek({ year, month, day, calendar: data });
         });
+    });
+};
+
+const showBooking = () => {
+    document.addEventListener(`bookingData`, (event) => {
+        const { detail: { data, userID, timeStart, timeEnd }} = event;
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+        const day = currentDate.getDate();
+        const requestData = { year, month, day, calendar: data };
+        weekWrapper.dataset.spec = userID;
+        weekWrapper.dataset.start = timeStart;
+        weekWrapper.dataset.end = timeEnd;
+        updateWeek(requestData);
+        updateTitleData({ year, month });
+        const calendarModal = document.querySelector(`[data-modal="booking-tool"]`);
+        if (calendarModal) calendarModal.classList.add(`activeModal`);
     });
 };
 
