@@ -5,6 +5,7 @@ const formParser = multer();
 
 const { requestCalendar, addEvent } = require("../../models/calendar.model");
 const { saveBooking, requestUserByZipCode } = require("../../models/booking.model");
+const { checkRequestData } = require("../../controllers/booking.controller");
 
 // API /api/booking - POST
 router.post(`/`, formParser.none(), async (request, response) => {
@@ -27,10 +28,14 @@ router.post(`/calendar`, formParser.none(), async (request, response) => {
 
 // API /api/booking/form
 router.post(`/form`, formParser.none(), async (request, response) => {
-    const formData = { ...request.body };
-    const data = await saveBooking(formData);
-    await addEvent(formData);
-    setTimeout(() => response.json(data), 0);
+    try {
+        const formData = checkRequestData(request.body);
+        const data = await saveBooking(formData);
+        await addEvent(formData);
+        setTimeout(() => response.json(data), 0);
+    } catch (error) {
+        response.json({ status: 0, error: error.toString() });
+    }
 });
 
 module.exports = router;
