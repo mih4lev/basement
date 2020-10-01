@@ -33,7 +33,7 @@ const sendForm = (formNode) => {
     const textFields = [...formNode.querySelectorAll(`input[type="text"], textarea`)];
     const checkboxElements = [...formNode.querySelectorAll(`input[type="checkbox"]`)];
     const radioElements = [...formNode.querySelectorAll(`input[type="radio"]`)];
-    const selectElements = [...formNode.querySelectorAll(`input[type="hidden"]`)];
+    const selectElements = [...formNode.querySelectorAll(`input[type="hidden"]:not(.progressHidden)`)];
     // show|hide labels
     textFields.forEach((field) => {
         const fieldLabel = field.parentNode.querySelector(`.fieldLabel`);
