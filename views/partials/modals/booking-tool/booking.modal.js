@@ -136,7 +136,7 @@ const dayClickHandler = (dayNode) => {
         const { calendar: { data }} = await calendar.json();
         loaderWrapper.classList.remove(`activeWrapper`);
         //
-        const requestData = { year: Number(year), month: Number(month) - 1, day: Number(day), calendar: data };
+        const requestData = { year: Number(year), month: Number(month), day: Number(day), calendar: data };
         updateWeek(requestData);
         weekWrapper.dataset.year = year;
         weekWrapper.dataset.month = month;
@@ -173,7 +173,7 @@ const createMonthDays = (requestData) => {
         innerSpan.classList.add(`day`);
         innerSpan.innerText = String(dayNum);
         newDay.appendChild(innerSpan);
-        if (currentMonth + 1 === month && currentYear === year && currentDay === dayNum) {
+        if (currentMonth === month && currentYear === year && currentDay === dayNum) {
             newDay.classList.add(`currentDay`);
         }
         tableDays.appendChild(newDay);
@@ -184,16 +184,21 @@ const createMonthDays = (requestData) => {
 
 const checkArrowsVisible = ({ year, month }) => {
     const currentYear = (new Date()).getFullYear();
-    const currentMonth = (new Date()).getMonth() + 1;
+    const currentMonth = (new Date()).getMonth();
     const isDisable = (currentYear === Number(year) && currentMonth === Number(month));
     const classAction = (isDisable) ? `add` : `remove`;
     monthArrows[0].classList[classAction](`disableArrow`);
 };
 
 const updateTitleData = ({ year, month }) => {
-    monthTitle.innerText = months[month - 1];
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth();
+    const isPast = (currentYear === Number(year) && currentMonth > Number(month));
+    const selectMonth = (isPast) ? Number(month) + 1 : Number(month);
+    monthTitle.innerText = months[selectMonth];
     yearTitle.innerText = year;
-    dateTitle.dataset.month = month;
+    dateTitle.dataset.month = String(selectMonth);
     dateTitle.dataset.year = year;
 };
 
@@ -325,6 +330,7 @@ const showBooking = () => {
         const requestData = { year, month, day, calendar: data };
         weekWrapper.dataset.spec = userID;
         updateWeek(requestData);
+        updateTitleData({ year, month });
         const calendarModal = document.querySelector(`[data-modal="booking-tool"]`);
         if (calendarModal) calendarModal.classList.add(`activeModal`);
     });
@@ -351,8 +357,8 @@ const setWeekArrows = () => {
             const { calendar: { data }} = await calendar.json();
             loaderWrapper.classList.remove(`activeWrapper`);
             weekWrapper.dataset.year = String(year);
-            weekWrapper.dataset.month = String(month + 1);
-            updateTitleData({ year, month: month + 1 });
+            weekWrapper.dataset.month = String(month);
+            updateTitleData({ year, month });
             updateWeek({ year, month, day, calendar: data });
         });
     });
