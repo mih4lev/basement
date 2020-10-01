@@ -1,4 +1,4 @@
-import { saveAction } from "../../../../source/scripts/utils";
+import {saveAction} from "../../../../source/scripts/utils";
 
 export const zipCodeButtons = () => {
     const scheduleButtons = [...document.querySelectorAll(`.consultationButton`)];
@@ -9,6 +9,7 @@ export const zipCodeButtons = () => {
         const zipCodeField = scheduleWrapper.querySelector(`.zipCodeField`);
         const zipCodeButton = scheduleWrapper.querySelector(`.zipCodeButton`);
         const zipCodeLoader = scheduleWrapper.querySelector(`.zipCodeLoader`);
+        const errorWrapper = scheduleWrapper.querySelector(`.errorWrapper`);
         scheduleButton.addEventListener(`click`, (event) => {
             event.preventDefault();
             const wrapperWidth = scheduleButton.offsetWidth;
@@ -18,16 +19,47 @@ export const zipCodeButtons = () => {
             zipCodeForm.classList.remove(`hiddenWrapper`);
             zipCodeField.focus();
         });
+        let isActive = false;
+        const showError = (errorMessage) => {
+            if (isActive) return false;
+            errorWrapper.innerText = errorMessage;
+            errorWrapper.classList.remove(`hiddenWrapper`);
+            isActive = true;
+            setTimeout(() => {
+                errorWrapper.classList.add(`hiddenWrapper`);
+                isActive = false;
+            }, 3000);
+        };
+        const checkZipCode = () => {
+            const regex = /^\d{5}[-\s]?(?:\d{4})?$/gm;
+            if (!zipCodeField.value) {
+                showError(`Please enter the zip code`);
+                return false;
+            }
+            if (!regex.test(zipCodeField.value)) {
+                showError(`Invalid zip code format`);
+                return false;
+            }
+            return true;
+        };
         // form handler
         const sendZipCodeData = async (event) => {
             event.preventDefault();
+            if (!checkZipCode()) return false;
             const formData = new FormData(zipCodeForm);
             const responseOptions = {
                 URL: `/api/booking`, body: formData, button: zipCodeButton, isShowLoaded: false
             };
             zipCodeLoader.classList.remove(`hiddenLoader`);
             const responseData = await saveAction(responseOptions);
-            if (responseData.status !== 1) return false; // show error
+            if (responseData.status !== 1) {
+                const errorMessage = `Unfortunately, your ZIP code is currently outside of Basement Masters service area. Stay tuned for updates.`;
+                zipCodeLoader.classList.add(`hiddenLoader`);
+                zipCodeButton.classList.remove(`loadButton`);
+                zipCodeButton.classList.remove(`loadedButton`);
+                zipCodeButton.disabled = false;
+                return showError(errorMessage);
+            }
             const { calendar: { data }, userID} = responseData;
             const calendarEvent = new CustomEvent(`bookingData`, { detail: { data, userID }});
             document.dispatchEvent(calendarEvent);
@@ -40,8 +72,15 @@ export const zipCodeButtons = () => {
             zipCodeField.value = ``;
             scheduleButton.classList.remove(`hiddenButton`);
             zipCodeForm.classList.add(`hiddenWrapper`);
-        }
+        };
+        // check input field data for number
+        const checkInputData = () => {
+            zipCodeField.value = zipCodeField.value.replace(/[^0-9\s\-]/g, ``);
+        };
+        // listeners
         zipCodeButton.addEventListener(`click`, sendZipCodeData);
         zipCodeForm.addEventListener(`submit`, sendZipCodeData);
+        zipCodeField.addEventListener(`input`, checkInputData);
+        zipCodeField.addEventListener(`change`, checkInputData);
     });
 };

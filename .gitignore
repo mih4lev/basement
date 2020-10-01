@@ -5,6 +5,7 @@
 /.idea/
 /client/.idea/
 # ignore config
+data-mock/
 /data-mock/
 /data-mock/.json
 # ignore config
