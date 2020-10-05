@@ -1,4 +1,4 @@
-const checkRequestData = (requestData) => {
+const checkBookingData = (requestData) => {
     let {
         date, spec, firstName, lastName, phone, email, address, town,
         state, zipCode, service, square, budget, message
@@ -12,4 +12,4 @@ const checkRequestData = (requestData) => {
     };
 };
 
-module.exports = { checkRequestData };
+module.exports = { checkBookingData };

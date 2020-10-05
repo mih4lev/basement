@@ -9,7 +9,7 @@ const createAPIRoutes = (app) => {
         { URL: `/api/tips`, route: `tips.api.route` },
         { URL: `/api/testimonials`, route: `testimonials.api.route` },
         { URL: `/api/press`, route: `press.api.route` },
-        { URL: `/api/contact`, route: `contact.api.route` },
+        { URL: `/api/forms`, route: `forms.api.route` },
         { URL: `/api/quote`, route: `quote.api.route` },
         { URL: `/api/offer`, route: `offer.api.route` },
         { URL: `/api/booking`, route: `booking.api.route` },

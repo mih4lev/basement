@@ -71,7 +71,7 @@ const sendForm = (formNode) => {
         const responseData = await saveAction({ URL, body, button: submitButton });
         if (responseData.status !== 1) return false; // need show error
         const modalNode = submitButton.closest(`.modalSection`);
-        modalNode.classList.remove(`activeModal`);
+        if (modalNode) modalNode.classList.remove(`activeModal`);
     };
     if (submitButton) submitButton.addEventListener(`click`, submitHandler);
     // check button visible
@@ -79,8 +79,6 @@ const sendForm = (formNode) => {
         const validSelector = `.validField`;
         const validFields = [...formNode.querySelectorAll(validSelector)];
         submitButton.disabled = (requiredElements.length !== validFields.length);
-        console.log(requiredElements.length);
-        console.log(validFields.length);
     };
     // check fields functions
     const radioChecked = `input[type="radio"]:checked`;
