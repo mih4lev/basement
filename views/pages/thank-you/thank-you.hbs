@@ -1,0 +1,57 @@
+<section class="pageHeader">
+    <div class="wrapper headerWrapper">
+        <div class="contentWrapper">
+            <h1 class="pageTitle">{{{ page.pageTitle }}}</h1>
+            <nav class="breadcrumbs">
+                <ul class="breadcrumbList">
+                    <li class="breadcrumbLinkWrapper">
+                        <a class="breadcrumbLink" href="/">Basement Remodeling Company</a>
+                    </li>
+                    <li class="breadcrumbLinkWrapper">
+                        <span class="breadcrumbLink breadcrumbActive">
+                            {{# if isBookingReferer }}
+                                Thank you for booking your appointment!
+                            {{ else }}
+                                Thank you for submitting your request
+                            {{/ if }}
+                        </span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="offersBlock">
+    <div class="wrapper blockWrapper">
+        <h1 class="sectionTitle">
+            {{# if isBookingReferer }}
+                Thank you for booking your appointment!
+            {{ else }}
+                Thank you for submitting your request!
+            {{/ if }}
+        </h1>
+        {{# if isBookingReferer }}
+            <p class="nextText">Here is what you can do next:</p>
+        {{/ if }}
+        <div class="roundBlock">
+            <h2 class="contentHeader">Apply for financing right now!</h2>
+            <p class="textBlock">Why wait to get your Basement Finished? We’ve partnered up with GreenSky Credit to offer an excellent opportunity to finance your Basement Project for free or at a low cost. You can <strong>get instant approval</strong> and enjoy a brand new basement in just a few weeks. Choose a plan and apply for up to <strong>$60,000 right now</strong>. GreenSky Credit – the leading home improvement loans provider in the nation – offers a way to finally finance your Basement Finishing Project. No more tedious trips to the bank, no long approval processes, no additional paperwork required – just the capital you need to get underway!</p>
+            {{> micro-blocks/offers-buttons/thank-you-buttons }}
+            <p class="formHint">* – No interest if paid in full during promotional period, 17.99%-26.99% APR for 84 months if not paid in full.</p>
+            <p class="formHint">** – offer is subject to credit approval.</p>
+        </div>
+    </div>
+</section>
+
+{{# if isBookingReferer }}
+    <section class="contactUsForm">
+        <div class="wrapper blockWrapper">
+            <p class="formAnnotation">Get online quote right into your email. Our tool will send you a detailed quote in under 60 seconds.</p>
+            <div class="roundBlock">
+                <p class="inputTitle quoteTitle">Get online quote!</p>
+                {{> forms/instant-quote/instant-quote.form }}
+            </div>
+        </div>
+    </section>
+{{/ if }}

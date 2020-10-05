@@ -1,0 +1,58 @@
+.offersBlock {
+    .roundBlock {
+        padding-bottom: 60px;
+        &:after {
+            content: "";
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            width: 177px;
+            height: 47px;
+            background-image: url("/public/images/green_sky-logo.png");
+            background-repeat: no-repeat;
+        }
+    }
+    .sectionTitle {
+        margin-bottom: 20px;
+        font-size: 34px;
+        font-weight: 800;
+        line-height: 125%;
+        text-align: center;
+    }
+    .nextText {
+        text-align: center;
+    }
+    .contentHeader {
+        margin-top: 0;
+        font-size: 21px;
+        line-height: 25px;
+        text-transform: uppercase;
+    }
+    .textBlock {
+        strong {
+            text-transform: lowercase;
+        }
+    }
+    .offerList {
+        margin: 30px auto;
+        .activeOffer {
+            cursor: default;
+        }
+    }
+    .quoteTitle {
+        margin: 0 0 20px 0;
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+    .formHint {
+        margin: 0;
+        font-size: 12px;
+    }
+}
+
+.contactUsForm {
+    .quoteTitle {
+        margin: 0 0 20px 0;
+    }
+}

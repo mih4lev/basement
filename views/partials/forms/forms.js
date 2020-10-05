@@ -66,12 +66,13 @@ const sendForm = (formNode) => {
     const submitHandler = async (event) => {
         event.preventDefault();
         const body = new FormData(formNode);
-        const { dataset: { link: URL }} = formNode;
+        const { dataset: { link: URL, redirect: redirectURL }} = formNode;
         if (!URL) return false;
         const responseData = await saveAction({ URL, body, button: submitButton });
         if (responseData.status !== 1) return false; // need show error
-        const modalNode = submitButton.closest(`.modalSection`);
-        if (modalNode) modalNode.classList.remove(`activeModal`);
+        location.href = redirectURL;
+        // const modalNode = submitButton.closest(`.modalSection`);
+        // if (modalNode) modalNode.classList.remove(`activeModal`);
     };
     if (submitButton) submitButton.addEventListener(`click`, submitHandler);
     // check button visible

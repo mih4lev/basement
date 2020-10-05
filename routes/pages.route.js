@@ -9,6 +9,7 @@ const createPageRoutes = (app) => {
         { URL: `/sign-up`, route: `sign-up.route` },
         { URL: `/profile`, route: `profile.route` },
         { URL: `/instagram`, route: `instagram.route` },
+        { URL: `/thank-you`, route: `thank-you.route` },
         { URL: `/`, route: `home.route` }
     ];
 
