@@ -17,32 +17,43 @@
     <div class="twoColumnWrapper">
         <div class="fieldWrapper">
             <label class="fieldLabel" for="bookingFirstName">First name</label>
-            <input class="fieldInput" name="firstName" id="bookingFirstName" type="text">
+            <input class="fieldInput" name="firstName" id="bookingFirstName" type="text"
+                   data-check="^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$"
+                   data-required="true">
         </div>
         <div class="fieldWrapper">
             <label class="fieldLabel" for="bookingLastName">Last name</label>
-            <input class="fieldInput" name="lastName" id="bookingLastName" type="text">
+            <input class="fieldInput" name="lastName" id="bookingLastName" type="text"
+                   data-check="^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$"
+                   data-required="true">
         </div>
     </div>
     <div class="twoColumnWrapper">
         <div class="fieldWrapper">
             <label class="fieldLabel" for="bookingPhoneNumber">Phone number</label>
-            <input class="fieldInput" name="phone" id="bookingPhoneNumber" type="text">
+            <input class="fieldInput" name="phone" id="bookingPhoneNumber" type="text"
+                   data-check="^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$"
+                   data-required="true">
         </div>
         <div class="fieldWrapper">
             <label class="fieldLabel" for="bookingEmail">E-mail</label>
-            <input class="fieldInput" name="email" id="bookingEmail" type="text">
+            <input class="fieldInput" name="email" id="bookingEmail" type="text"
+                   data-check="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+                   data-required="true">
         </div>
     </div>
     <div class="twoColumnWrapper">
         <div class="fieldWrapper mailWrapper">
             <label class="fieldLabel" for="bookingAddress">Street address</label>
-            <input class="fieldInput" name="address" id="bookingAddress" type="text">
+            <input class="fieldInput" name="address" id="bookingAddress" type="text"
+                   data-required="true">
         </div>
         <div class="threeColumnWrapper">
             <div class="splitWrapper">
                 <label class="fieldLabel" for="bookingTown">Town / City</label>
-                <input class="fieldInput" name="town" id="bookingTown" type="text">
+                <input class="fieldInput" name="town" id="bookingTown" type="text"
+                       data-check="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$"
+                       data-required="true">
             </div>
             <div class="splitWrapper">
                 <div class="selectElement">
@@ -59,7 +70,9 @@
             </div>
             <div class="splitWrapper">
                 <label class="fieldLabel" for="bookingZipCode">Zip code</label>
-                <input class="fieldInput" name="zipCode" id="bookingZipCode" type="text">
+                <input class="fieldInput" name="zipCode" id="bookingZipCode" type="text"
+                       data-check="^\d{5}[-\s]?(?:\d{4})?$"
+                       data-required="true">
             </div>
         </div>
     </div>
@@ -119,7 +132,8 @@
     <div class="twoColumnWrapper">
         <div class="fieldWrapper">
             <label class="fieldLabel" for="bookingSquare">Basement SQ. FT.</label>
-            <input class="fieldInput" name="square" id="bookingSquare" type="text">
+            <input class="fieldInput" name="square" id="bookingSquare" type="text"
+                   data-check="^-*[0-9,\.]+$">
         </div>
         <div class="selectWrapper">
             <div class="selectElement">
@@ -197,6 +211,6 @@
             By clicking CONFIRM BOOKING you agree to our
             <a href="#" class="textLink">terms and conditions</a>
         </p>
-        <button class="submitButton" type="submit">CONFIRM BOOKING</button>
+        <button class="submitButton" type="submit" disabled>CONFIRM BOOKING</button>
     </div>
 </form>

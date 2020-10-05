@@ -28,12 +28,23 @@ export const selectElements = () => {
     });
 };
 
+const checkValidation = (event) => {
+    const { dataset: { check, required }} = event.target;
+    if (!required) return false;
+    const regExp = new RegExp(check);
+    const isValid = regExp.test(event.target.value);
+    event.target.classList.remove(`validField`, `errorField`);
+    const validClass = (isValid) ? `validField` : `errorField`;
+    event.target.classList.add(validClass);
+};
+
 const sendForm = (formNode) => {
     const submitButton = formNode.querySelector(`.submitButton`);
     const textFields = [...formNode.querySelectorAll(`input[type="text"], textarea`)];
     const checkboxElements = [...formNode.querySelectorAll(`input[type="checkbox"]`)];
     const radioElements = [...formNode.querySelectorAll(`input[type="radio"]`)];
     const selectElements = [...formNode.querySelectorAll(`input[type="hidden"]:not(.progressHidden)`)];
+    const requiredElements = [...formNode.querySelectorAll(`[data-required="true"]`)];
     // show|hide labels
     textFields.forEach((field) => {
         const fieldLabel = field.parentNode.querySelector(`.fieldLabel`);
@@ -57,12 +68,23 @@ const sendForm = (formNode) => {
         modalNode.classList.remove(`activeModal`);
     };
     if (submitButton) submitButton.addEventListener(`click`, submitHandler);
+    // check button visible
+    const checkSubmitButton = () => {
+        const validSelector = `input[type="text"].validField, textarea.validField`;
+        const validFields = [...formNode.querySelectorAll(validSelector)];
+        submitButton.disabled = (requiredElements.length !== validFields.length);
+    };
     // check fields functions
     const radioChecked = `input[type="radio"]:checked`;
     const checkboxChecked = `input[type="checkbox"]:checked`;
     const isRadioChecked = () => !![...formNode.querySelectorAll(radioChecked)].length;
     const isCheckboxChecked = () => !![...formNode.querySelectorAll(checkboxChecked)].length;
-    const validFieldsCount = () => textFields.filter((field) => !!field.value).length;
+    const validFieldsCount = () => textFields.filter((field) => {
+        if (!field.value) return false;
+        if (!field.dataset.required) return true;
+        return field.classList.contains(`validField`);
+        // return !!field.value && field.classList.contains(`validField`);
+    }).length;
     const selectFieldsCount = () => selectElements.filter((field) => !!field.value).length;
     // progress line
     const progressLine = formNode.querySelector(`.progressLine`);
@@ -73,8 +95,11 @@ const sendForm = (formNode) => {
         if (isRadioChecked()) progress += 1;
         if (isCheckboxChecked()) progress += 1;
         progressLine.style.width = (progress === steps) ? `100%` : `${(100 / steps) * progress}%`;
+        // check button visible status
+        checkSubmitButton();
     };
     // add fields listeners
+    textFields.forEach((field) => field.addEventListener(`input`, checkValidation));
     textFields.forEach((field) => field.addEventListener(`input`, progressHandler));
     checkboxElements.forEach((checkbox) => checkbox.addEventListener(`change`, progressHandler));
     radioElements.forEach((radio) => radio.addEventListener(`change`, progressHandler));

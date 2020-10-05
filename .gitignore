@@ -8,6 +8,7 @@
 data-mock/
 /data-mock/
 /data-mock/.json
+instagram.json
 # ignore config
 /config/
 /config/.json
