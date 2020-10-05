@@ -28,7 +28,7 @@ export const selectElements = () => {
     });
 };
 
-const checkValidation = (event) => {
+const checkFieldValidation = (event) => {
     const { dataset: { check, required }} = event.target;
     if (!required) return false;
     const regExp = new RegExp(check);
@@ -36,6 +36,12 @@ const checkValidation = (event) => {
     event.target.classList.remove(`validField`, `errorField`);
     const validClass = (isValid) ? `validField` : `errorField`;
     event.target.classList.add(validClass);
+};
+
+const checkRadioValidation = (event) => {
+    const radioWrapper = event.target.closest(`[data-required="true"]`);
+    if (!radioWrapper) return false;
+    radioWrapper.classList.add(`validField`);
 };
 
 const sendForm = (formNode) => {
@@ -70,9 +76,11 @@ const sendForm = (formNode) => {
     if (submitButton) submitButton.addEventListener(`click`, submitHandler);
     // check button visible
     const checkSubmitButton = () => {
-        const validSelector = `input[type="text"].validField, textarea.validField`;
+        const validSelector = `.validField`;
         const validFields = [...formNode.querySelectorAll(validSelector)];
         submitButton.disabled = (requiredElements.length !== validFields.length);
+        console.log(requiredElements.length);
+        console.log(validFields.length);
     };
     // check fields functions
     const radioChecked = `input[type="radio"]:checked`;
@@ -83,7 +91,6 @@ const sendForm = (formNode) => {
         if (!field.value) return false;
         if (!field.dataset.required) return true;
         return field.classList.contains(`validField`);
-        // return !!field.value && field.classList.contains(`validField`);
     }).length;
     const selectFieldsCount = () => selectElements.filter((field) => !!field.value).length;
     // progress line
@@ -98,11 +105,24 @@ const sendForm = (formNode) => {
         // check button visible status
         checkSubmitButton();
     };
+    const fieldHandler = (event) => {
+        progressHandler(event);
+        checkFieldValidation(event);
+        checkSubmitButton(event);
+    };
+    const radioHandler = (event) => {
+        progressHandler(event);
+        checkRadioValidation(event);
+        checkSubmitButton(event);
+    };
+    const checkboxHandler = (event) => {
+        progressHandler(event);
+    };
     // add fields listeners
-    textFields.forEach((field) => field.addEventListener(`input`, checkValidation));
-    textFields.forEach((field) => field.addEventListener(`input`, progressHandler));
-    checkboxElements.forEach((checkbox) => checkbox.addEventListener(`change`, progressHandler));
-    radioElements.forEach((radio) => radio.addEventListener(`change`, progressHandler));
+    textFields.forEach((field) => field.addEventListener(`input`, fieldHandler));
+    textFields.forEach((field) => field.addEventListener(`change`, fieldHandler));
+    radioElements.forEach((radio) => radio.addEventListener(`change`, radioHandler));
+    checkboxElements.forEach((checkbox) => checkbox.addEventListener(`change`, checkboxHandler));
     // mutationObserver for hidden elements
     const mutationObserver = new MutationObserver(progressHandler);
     selectElements.forEach((selectElement) => {
