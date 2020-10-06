@@ -368,6 +368,7 @@
                         border-width: 5px;
                     }
                     &.defaultCover {
+                        font-size: 0;
                         background-size: 130px;
                         background-color: $sub;
                         background-image: url("/public/images/vector/default-image.svg");
