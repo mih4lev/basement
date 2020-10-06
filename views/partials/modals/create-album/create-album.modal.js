@@ -50,7 +50,7 @@ export const createAlbumModal = () => {
 
     // create album
     const createAlbumNode = (albumCover, responseData) => {
-        const albumSource = albumCover.src;
+
         const albumName = modalAlbumTitle.value;
         // create new album && add it to list
         const albumTemplate = document.querySelector(`.albumTemplate`).content;
@@ -58,8 +58,19 @@ export const createAlbumModal = () => {
         albumClone.querySelector(`.albumTitle`).innerText = albumName;
         albumClone.dataset.album = String(responseData.requestID);
         const templateCover = albumClone.querySelector(`.albumCoverPicture`);
-        templateCover.src = albumSource;
+        if (albumCover && albumCover.src) templateCover.src = albumCover.src;
+        else templateCover.classList.add(`defaultCover`);
         templateCover.setAttribute(`alt`, albumName);
+        // if (albumCover && albumCover.src) {
+        //     templateCover.src = albumCover.src;
+        //     templateCover.setAttribute(`alt`, albumName);
+        // } else {
+        //     const coverWrapper = templateCover.closest(`.albumCoverWrapper`);
+        //     coverWrapper.innerHTML = ``;
+        //     const defaultNode = document.createElement(`div`);
+        //     defaultNode.classList.add(`albumCoverPicture`, `defaultCover`);
+        //     coverWrapper.appendChild(defaultNode);
+        // }
         const albumLink = albumClone.querySelector(`.albumLink`);
         albumLink.setAttribute(`href`, `profile/saved/${responseData.requestID}`);
         albumList.insertBefore(albumClone, albumList.children[albumList.children.length -1]);
@@ -69,18 +80,12 @@ export const createAlbumModal = () => {
     const clearModalData = (albumCover) => {
         modalAlbumTitle.value = ``;
         modalPhotoField.value = ``;
-        modalCoverWrapper.removeChild(albumCover);
+        if (albumCover) modalCoverWrapper.removeChild(albumCover);
         modalDropZone.classList.remove(`editLabel`);
     };
 
     // check button status
-    const checkButtonStatus = () => {
-        const isFieldValid = !!modalAlbumTitle.value.length;
-        const albumCover = modalNode.querySelector(`.inputFieldPicture`);
-        const isCoverValid = albumCover && albumCover.src;
-        if (isFieldValid && isCoverValid) modalCreateButton.removeAttribute(`disabled`);
-        else modalCreateButton.setAttribute(`disabled`, `disabled`);
-    };
+    const checkButtonStatus = () => modalCreateButton.disabled = !modalAlbumTitle.value.length;
 
     // create album
     const createAlbum = async (event) => {

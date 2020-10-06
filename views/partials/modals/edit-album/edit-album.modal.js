@@ -19,7 +19,7 @@ export const editAlbumModal = () => {
     const changeModalData = ({ target: editButton }) => {
         // data from page
         const albumWrapper = editButton.closest(`.albumWrapper`);
-        const albumCover = albumWrapper.querySelector(`.albumCoverPicture`).src;
+        const albumCoverNode = albumWrapper.querySelector(`.albumCoverPicture`);
         const albumTitle = albumWrapper.querySelector(`.albumTitle`).innerText;
         // set album id to wrapper
         const albumID = albumWrapper.dataset.album;
@@ -27,7 +27,17 @@ export const editAlbumModal = () => {
         // set data to modal
         modalNode.querySelector(`#editAlbumTitle`).value = albumTitle;
         modalNode.querySelector(`#editAlbumID`).value = albumID;
-        modalNode.querySelector(`.inputFieldPicture`).src = albumCover;
+        const coverNode = modalNode.querySelector(`.inputFieldPicture`);
+        if (albumCoverNode.src) coverNode.src = albumCoverNode.src;
+        // if (albumCoverNode.src) {
+        //     coverNode.src = albumCoverNode.src;
+        // } else {
+        //     const albumField = coverNode.closest(`.albumField`);
+        //     albumField.removeChild(coverNode);
+        //     const defaultNode = document.createElement(`div`);
+        //     defaultNode.classList.add(`inputFieldPicture`);
+        //     albumField.appendChild(defaultNode);
+        // }
     };
 
     // add listeners to edit buttons
@@ -61,6 +71,7 @@ export const editAlbumModal = () => {
     const requestData = async (method, button) => {
         const formNode = modalNode.querySelector(`.formWrapper`);
         const formData = new FormData(formNode);
+        formData.delete(`albumCover`);
         const URL = `/api/profile/albums`;
         const responseOptions = { URL, method, body: formData, button };
         return await saveAction(responseOptions);

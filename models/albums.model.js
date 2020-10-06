@@ -33,11 +33,14 @@ const requestUserAlbums = async (userID) => {
         const query = `
             SELECT 
                 albums.albumID, albums.albumTitle, albums.albumCover, 
-                COUNT(albums_relation.relationID) AS albumCount 
+                (
+                    SELECT COUNT(*) FROM albums_relation WHERE 
+                    albums.albumID = albums_relation.albumID
+                ) AS albumCount 
             FROM albums 
             LEFT JOIN albums_relation ON albums.albumID = albums_relation.albumID 
             LEFT JOIN ideas ON albums_relation.ideaID = ideas.ideaID 
-            WHERE albums.userID = ? GROUP BY albums.albumTitle
+            WHERE albums.userID = ?
         `;
         return { albums: await DB(query, [userID]) };
     } catch (error) {

@@ -50,9 +50,13 @@
                     <li class="albumWrapper" data-album="{{{ albumID }}}">
                         <a class="albumLink" href="/profile/saved/{{{ albumID }}}">
                             <div class="albumCoverWrapper">
-                                <img class="albumCoverPicture"
-                                     src="{{{ albumCover }}}.jpg"
-                                     alt="{{{ albumTitle }}}">
+                                {{# if albumCover }}
+                                    <img class="albumCoverPicture"
+                                         src="{{{ albumCover }}}.jpg"
+                                         alt="{{{ albumTitle }}}">
+                                {{ else }}
+                                    <img class="albumCoverPicture defaultCover" alt="{{{ albumTitle }}}">
+                                {{/if}}
                                 {{# if albumCount }}
                                     <div class="albumPicturesCount">{{{ albumCount }}}</div>
                                 {{/if}}

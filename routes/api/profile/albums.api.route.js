@@ -25,12 +25,15 @@ const albumsImages = [
 // API /api/profile/albums POST
 router.post(`/`, imagesParser.fields(albumsImages), async (request, response, next) => {
     if (!request.data['userID']) return next();
+    const filesExist = !!Object.keys(request.files).length;
     const formData = { ...request.body };
     const responseData = await createAlbum(formData);
-    const { requestID } = responseData;
-    const files = await saveImages(albumsImages, request.files, requestID);
-    const filesData = { ...files, ...{ albumID: requestID }};
-    await updateAlbum(filesData);
+    if (filesExist) {
+        const { requestID } = responseData;
+        const files = await saveImages(albumsImages, request.files, requestID);
+        const filesData = { ...files, ...{ albumID: requestID }};
+        await updateAlbum(filesData);
+    }
     setTimeout(() => response.json(responseData), 0);
 });
 
