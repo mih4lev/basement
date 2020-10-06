@@ -72,3 +72,21 @@ export const testimonialsCarousel = () => {
     };
     reviewsWrapper.addEventListener(`touchstart`, touchstartHandler);
 };
+
+export const youtubeVideo = () => {
+    const youtubeWrapper = document.querySelector(`.youtubeVideoWrapper`);
+    if (!youtubeWrapper) return false;
+    const youtubeButton = youtubeWrapper.querySelector(`.youtubeButton`);
+    const youtubeLink = `//www.youtube.com/embed/dJS-H_qppvw?autoplay=1&mute=1&enable_js=1`;
+    youtubeButton.addEventListener(`click`, () => {
+        const youtubeFrame = document.createElement(`iframe`);
+        youtubeFrame.classList.add(`youtubeVideo`);
+        youtubeFrame.setAttribute(`src`, youtubeLink);
+        youtubeFrame.setAttribute(`frameborder`, `0`);
+        youtubeFrame.setAttribute(`autoplay`, `1`);
+        youtubeFrame.setAttribute(`allowfullscreen`, `allowfullscreen`);
+        youtubeFrame.setAttribute(`allow`, `autoplay`);
+        youtubeWrapper.appendChild(youtubeFrame);
+        youtubeWrapper.classList.add(`activeWrapper`);
+    });
+};

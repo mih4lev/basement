@@ -42,6 +42,9 @@
             }
         }
         .youtubeVideoWrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
             width: 100%;
             height: auto;
             background: $black;
@@ -63,9 +66,50 @@
                 transform: translateX(5px);
             }
             .youtubeVideo {
+                position: absolute;
+                top: 0;
+                left: 0;
+                margin: 0 auto;
+                width: 100%;
+                height: 100%;
+                display: block;
+                cursor: pointer;
+            }
+            .youtubePreview {
                 display: block;
                 width: 100%;
                 height: auto;
+            }
+            .youtubeButton {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 51px;
+                height: 36px;
+                font-size: 0;
+                border: none;
+                background-color: transparent;
+                background-image: url("/public/images/vector/youtube-button.svg");
+                cursor: pointer;
+                outline: none;
+                opacity: 0.5;
+                &:hover {
+                    opacity: 1;
+                    background-image: url("/public/images/vector/youtube-button_active.svg");
+                }
+                @include minWidth(480) {
+                    width: 68px;
+                    height: 48px;
+                }
+            }
+            &.activeWrapper {
+                .youtubePreview {
+                    visibility: hidden;
+                }
+                .youtubeButton {
+                    visibility: hidden;
+                }
             }
         }
     }
