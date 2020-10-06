@@ -77,7 +77,7 @@ export const youtubeVideo = () => {
     const youtubeWrapper = document.querySelector(`.youtubeVideoWrapper`);
     if (!youtubeWrapper) return false;
     const youtubeButton = youtubeWrapper.querySelector(`.youtubeButton`);
-    const youtubeLink = `//www.youtube.com/embed/dJS-H_qppvw?autoplay=1&mute=1&enable_js=1`;
+    const youtubeLink = `//www.youtube.com/embed/dJS-H_qppvw?autoplay=1&mute=1&enable_js=1&origin=1&rel=0`;
     youtubeButton.addEventListener(`click`, () => {
         const youtubeFrame = document.createElement(`iframe`);
         youtubeFrame.classList.add(`youtubeVideo`);
