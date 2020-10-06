@@ -4,17 +4,18 @@ const multer = require('multer');
 const formParser = multer();
 
 const { requestCalendar, addEvent } = require("../../models/calendar.model");
-const { saveBooking, requestUserByZipCode } = require("../../models/booking.model");
+const { saveBooking, requestUserByZipCode, tempRedirect } = require("../../models/booking.model");
 const { checkBookingData } = require("../../controllers/booking.controller");
 
 // API /api/booking - POST
 router.post(`/`, formParser.none(), async (request, response) => {
     const { body: { zipCode }} = request;
-    const responseData = await requestUserByZipCode(zipCode);
-    const { userID, timeStart, timeEnd } = responseData;
-    if (!userID) return response.json({ status: 0 });
-    const calendar = await requestCalendar(userID);
-    const data = { status: 1, calendar, userID, timeStart, timeEnd };
+    // const responseData = await requestUserByZipCode(zipCode);
+    // const { userID, timeStart, timeEnd } = responseData;
+    // if (!userID) return response.json({ status: 0 });
+    // const calendar = await requestCalendar(userID);
+    // const data = { status: 1, calendar, userID, timeStart, timeEnd };
+    const data = await tempRedirect(zipCode); // TEMP function for 'youcanbookme' redirects
     setTimeout(() => response.json(data), 0);
 });
 

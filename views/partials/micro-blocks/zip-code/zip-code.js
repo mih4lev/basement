@@ -60,10 +60,20 @@ export const zipCodeButtons = () => {
                 zipCodeButton.disabled = false;
                 return showError(errorMessage);
             }
-            const { calendar: { data }, userID, timeStart, timeEnd } = responseData;
-            const eventData = { data, userID, timeStart, timeEnd };
-            const calendarEvent = new CustomEvent(`bookingData`, { detail: eventData});
-            document.dispatchEvent(calendarEvent);
+            // comment for temp 'youcanbookme' redirect
+            // const { calendar: { data }, userID, timeStart, timeEnd } = responseData;
+            // const eventData = { data, userID, timeStart, timeEnd };
+            // const calendarEvent = new CustomEvent(`bookingData`, { detail: eventData});
+            // document.dispatchEvent(calendarEvent);
+            // TEMP redirect (add referrer to link)
+            // TEMP BEGIN
+            if (!sessionStorage.getItem(`referrer`)) {
+                const referrer = document.referrer || `direct`;
+                sessionStorage.setItem(`referrer`, referrer);
+            }
+            const referrer = sessionStorage.getItem(`referrer`);
+            window.open(responseData.link + `/?REFERRER=${referrer}`);
+            // TEMP END
             // hide loader && show go button
             zipCodeLoader.classList.add(`hiddenLoader`);
             zipCodeButton.classList.remove(`loadButton`);
