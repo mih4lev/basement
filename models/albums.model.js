@@ -40,7 +40,8 @@ const requestUserAlbums = async (userID) => {
             FROM albums 
             LEFT JOIN albums_relation ON albums.albumID = albums_relation.albumID 
             LEFT JOIN ideas ON albums_relation.ideaID = ideas.ideaID 
-            WHERE albums.userID = ?
+            WHERE albums.userID = ? 
+            GROUP BY albums.albumID
         `;
         return { albums: await DB(query, [userID]) };
     } catch (error) {

@@ -205,7 +205,8 @@ const createModal = async (event) => {
         const albumNode = albumClone.cloneNode(true);
         albumNode.dataset.album = albumID;
         const coverNode = albumNode.querySelector(`.albumCover`);
-        coverNode.src = albumCover + `_54x54.jpg`;
+        if (albumCover) coverNode.src = albumCover + `_54x54.jpg`;
+        if (!albumCover) coverNode.classList.add(`defaultCover`);
         const titleNode = albumNode.querySelector(`.albumTitle`);
         titleNode.innerText = albumTitle;
         addListeners(albumNode);

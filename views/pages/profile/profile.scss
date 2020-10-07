@@ -368,17 +368,25 @@
                         border-width: 5px;
                     }
                     &.defaultCover {
-                        font-size: 0;
-                        background-size: 130px;
-                        background-color: $sub;
-                        background-image: url("/public/images/vector/default-image.svg");
-                        background-repeat: no-repeat;
-                        background-position: center center;
-                        @include minWidth(480) {
-                            background-size: 160px;
-                        }
-                        @include minWidth(768) {
-                            background-size: 220px;
+                        position: relative;
+                        &:before {
+                            content: "";
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: inherit;
+                            height: inherit;
+                            background-size: 130px;
+                            background-color: $sub;
+                            background-image: url("/public/images/vector/default-image.svg");
+                            background-repeat: no-repeat;
+                            background-position: center center;
+                            @include minWidth(480) {
+                                background-size: 160px;
+                            }
+                            @include minWidth(768) {
+                                background-size: 220px;
+                            }
                         }
                     }
                 }

@@ -1,7 +1,6 @@
 const { Router } = require(`express`);
 const router = new Router();
 const multer = require('multer');
-// const formParser = multer();
 const uploadDir = `public/upload/albums/`;
 const imagesParser = multer({ dest: uploadDir });
 
@@ -38,14 +37,16 @@ router.post(`/save`, imagesParser.fields(albumsImages), async (request, response
         albumsArray = [...request.body['savedAlbums']];
     }
     // create new album
-    if (request.files && request.files['albumCover'] && request.body['albumTitle']) {
+    if (request.body['albumTitle']) {
         const albumTitle = request.body['albumTitle'];
         const formData = { userID, albumTitle };
         const responseData = await createAlbum(formData);
         const { requestID } = responseData;
-        const files = await saveImages(albumsImages, request.files, requestID);
-        const filesData = { ...files, ...{ albumID: requestID }};
-        await updateAlbum(filesData);
+        if (request.files['albumCover']) {
+            const files = await saveImages(albumsImages, request.files, requestID);
+            const filesData = { ...files, ...{ albumID: requestID }};
+            await updateAlbum(filesData);
+        }
         albumsArray.push(String(requestID));
     }
     await deleteRelations(userID, ideaID);
@@ -59,23 +60,5 @@ router.post(`/save`, imagesParser.fields(albumsImages), async (request, response
     const data = { status, savedRelations };
     setTimeout(() => response.json(data), 0);
 });
-
-// // API /api/profile/ideas/ POST
-// router.post(`/`, formParser.none(), async (request, response, next) => {
-//     if (!request.data['userID']) return next();
-//     const formData = { ...request.body };
-//     console.log(formData);
-//     const data = { code: 200 };
-//     setTimeout(() => response.json(data), 0);
-// });
-//
-// // API /api/profile/ideas/ DELETE
-// router.delete(`/`, formParser.none(), async (request, response, next) => {
-//     if (!request.data['userID']) return next();
-//     const formData = { ...request.body };
-//     console.log(formData);
-//     const data = { code: 200 };
-//     setTimeout(() => response.json(data), 0);
-// });
 
 module.exports = router;
