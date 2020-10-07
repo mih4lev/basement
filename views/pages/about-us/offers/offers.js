@@ -9,19 +9,18 @@ export const offersForm = () => {
     const offersButtons = [...document.querySelectorAll(`.offerList`)];
     offersButton.addEventListener(`click`, async (event) => {
         event.preventDefault();
-        const formData = new FormData(offersForm);
-        const responseOptions = { URL: `/api/offer`, body: formData, button: offersButton };
-        const responseData = await saveAction(responseOptions);
-        if (responseData.code !== 200) return false; // show error
-        offersButton.classList.add(`loadedButton`);
-        console.log(responseData);
-        console.log(`redirect to another location`);
+        const activeOffer = offersForm.querySelector(`.activeOffer`);
+        const { dataset: { id: offerID }} = activeOffer;
+        const offerAmount = amountField.value;
+        const link = `https://projects.greensky.com/MerchantLoanApplication?apptype=short&merchant=81016232&dealerplan=${offerID}&channel=External-Button-02&j_id0%3Aj_id1%3Acredit-form%3Aj_id78%3Aj_id79%3AinputId=${offerAmount}&agree-1=Y&agree-2=Y`
+        window.open(link);
     });
     const setTitleVisible = () => {
         const isTitleHidden = (amountFieldTitle.classList.contains(`hiddenLabel`));
         const classAction = (isTitleHidden && !amountField.value.length) ? `remove` : `add`;
         amountFieldTitle.classList[classAction](`hiddenLabel`);
     };
+    const checkValidation = () => amountField.value = amountField.value.replace(/[^0-9]/g, ``);
     const checkButtonVisible = () => {
         const isValid = !!amountField.value.length && [...(new FormData(offersForm))].length === 4;
         offersButton.disabled = !isValid;
@@ -55,6 +54,7 @@ export const offersForm = () => {
     // add listeners to fields
     amountField.addEventListener(`focusin`, setTitleVisible);
     amountField.addEventListener(`focusout`, setTitleVisible);
+    amountField.addEventListener(`input`, checkValidation);
     amountField.addEventListener(`input`, checkButtonVisible);
     checkboxFields.forEach((checkbox) => checkbox.addEventListener(`change`, checkButtonVisible));
 };
