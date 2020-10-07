@@ -15,6 +15,19 @@ const requestMeta = async (pageID) => {
     }
 };
 
+const requestTextContent = async (pageID) => {
+    try {
+        const query = `SELECT fieldTitle, fieldContent FROM text_content WHERE pageID = ?`;
+        const data = await DB(query, [pageID]);
+        const content = {};
+        data.forEach(({ fieldTitle, fieldContent }) => content[fieldTitle] = fieldContent);
+        return { content };
+    } catch (error) {
+        console.log(error);
+        return {};
+    }
+};
+
 // UPDATE
 
 const updateMeta = async ({ pageID, ...updateData }) => {
@@ -29,4 +42,18 @@ const updateMeta = async ({ pageID, ...updateData }) => {
     }
 };
 
-module.exports = { requestMeta, updateMeta };
+const updateContent = async (content) => {
+    try {
+        for (const fieldName in content) {
+            if (content.hasOwnProperty(fieldName)) {
+                const data = { fieldContent: content[fieldName] };
+                const query = `UPDATE text_content SET ? WHERE fieldTitle = ?`;
+                await DB(query, [data, fieldName]);
+            }
+        }
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+module.exports = { requestMeta, requestTextContent, updateMeta, updateContent };

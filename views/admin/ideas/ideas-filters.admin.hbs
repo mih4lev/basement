@@ -47,14 +47,14 @@
                 <li>
                     <form action="/admin/basement-ideas/filters">
                         <div class="fieldWrapper">
-                            <label class="fieldLabel greyLabel"
+                            <label class="fieldLabel greyLabel fixedLabel"
                                    for="addFilter{{{ filterID }}}">+ filter</label>
                             <input class="categoryField titleField" type="text"
                                    name="filterTitle" id="addFilter{{{ filterID }}}">
                         </div>
                         {{# if isColor }}
                             <div class="fieldWrapper">
-                                <label class="fieldLabel"
+                                <label class="fieldLabel fixedLabel"
                                        for="filterColor{{{ filterID }}}">+ color</label>
                                 <input class="categoryField colorField" name="filterColor" type="text"
                                        id="filterColor{{{ filterID }}}">
@@ -72,7 +72,7 @@
         <li>
             <form action="/admin/basement-ideas/filters">
                 <div class="fieldWrapper">
-                    <label class="fieldLabel"
+                    <label class="fieldLabel fixedLabel"
                            for="addFilter{{{ filterID }}}">+ Add filter</label>
                     <input class="categoryField titleField" name="filterTitle" type="text"
                            id="addFilter{{{ filterID }}}">

@@ -7,7 +7,7 @@ const uploadDir = `public/upload/landings/`;
 const imagesParser = multer({ dest: uploadDir });
 
 const { requestContent } = require("../../models/utils.model");
-const { requestMeta, updateMeta } = require("../../models/pages.model");
+const { requestMeta, requestTextContent, updateMeta, updateContent } = require("../../models/pages.model");
 const { saveImages, deleteImages } = require("../../models/images.model");
 
 const {
@@ -53,7 +53,7 @@ router.get(`/home`, async (request, response, next) => {
     request.data['isAdminHome'] = true;
     const pageID = 1;
     const content = requestContent(await Promise.all([
-        requestMeta(pageID), requestModerateCount()
+        requestMeta(pageID), requestTextContent(pageID), requestModerateCount()
     ]));
     const data = { ...request.data, ...content };
     const template = `admin/landings/home.admin.hbs`;
@@ -62,8 +62,10 @@ router.get(`/home`, async (request, response, next) => {
 
 router.post(`/home`, formParser.none(), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
-    const formData = { ...request.body };
-    const responseData = await updateMeta(formData);
+    const { pageID, pageTitle, pageDescription, pageKeywords, ...content } = request.body;
+    const metaData = { pageID, pageTitle, pageDescription, pageKeywords };
+    const responseData = await updateMeta(metaData);
+    updateContent(content);
     setTimeout(() => response.json(responseData), 0);
 });
 

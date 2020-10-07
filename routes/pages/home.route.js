@@ -2,7 +2,7 @@ const { Router } = require(`express`);
 const router = new Router();
 
 const { requestContent } = require("../../models/utils.model");
-const { requestMeta } = require("../../models/pages.model");
+const { requestMeta, requestTextContent } = require("../../models/pages.model");
 const { requestHomePortfolio } = require("../../models/portfolio.model");
 const { requestNews } = require("../../models/news.model");
 const { requestTestimonials } = require("../../models/testimonials.model");
@@ -23,10 +23,12 @@ router.get(`/`, async (request, response, next) => {
     request.data['isHomepage'] = true;
     request.data['isAdaptiveHeader'] = true;
     request.data['scripts'] = [`home`];
+    const pageID = 1;
     const ideasURL = `spaces`;
     const userID = request.data['userID'];
     const content = requestContent(await Promise.all([
-        requestMeta(1),
+        requestMeta(pageID),
+        requestTextContent(pageID),
         requestHomePortfolio(10),
         requestNews(),
         requestTestimonials({ limit: 6 }),

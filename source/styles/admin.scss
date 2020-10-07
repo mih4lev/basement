@@ -327,16 +327,30 @@ html, body {
 }
 
 .fieldWrapper {
+    display: flex;
+    flex-direction: column;
     position: relative;
     width: 100%;
     label {
-        position: absolute;
-        margin: 11px;
-        font-family: Arial, sans-serif;
+        @extend %font;
+        //position: absolute;
+        //margin: 11px;
+        color: $raven;
+        //font-family: Arial, sans-serif;
         font-size: 14px;
-        &.hiddenLabel {
-            opacity: 0;
-            z-index: -10;
+        min-height: 20px;
+        //&.hiddenLabel {
+        //    opacity: 0;
+        //    z-index: -10;
+        //}
+        &.fixedLabel {
+            position: absolute;
+            margin: 11px;
+            min-height: auto;
+            &.hiddenLabel {
+                opacity: 0;
+                z-index: -10;
+            }
         }
     }
     input[type="text"] {
@@ -870,6 +884,8 @@ button {
 }
 
 .fieldSection {
+    display: flex;
+    align-items: flex-end;
     .fieldTitle {
         font-size: 14px;
     }
