@@ -1,0 +1,40 @@
+<section class="portfolioSection homeSection">
+    <div class="wrapper fullWrapper">
+        <ul class="portfolioHomeList">
+            {{# each portfolio }}
+            <li class="portfolioHomeWrapper">
+                {{# if workImage }}
+                    <picture>
+                        <source srcset="{{{ workImage }}}_100whx130.jpg,
+                                        {{{ workImage }}}_100whx260.jpg 2x"
+                                media="(max-width: 479px)">
+                        <source srcset="{{{ workImage }}}_100whx204.jpg,
+                                        {{{ workImage }}}_100whx408.jpg 2x"
+                                media="(max-width: 1439px)">
+                        <source srcset="{{{ workImage }}}_100whx408.jpg,
+                                        {{{ workImage }}}_100whx816.jpg 2x"
+                                media="(min-width: 1440px)">
+                        <img class="portfolioHomeImage" src="{{{ workImage }}}_100whx204.jpg"
+                             srcset="{{{ workImage }}}_100whx204.jpg,
+                                     {{{ workImage }}}_100whx408.jpg 2x"
+                             alt="{{{ workTitle }}}">
+                    </picture>
+                {{ else }}
+                    <div class="portfolioHomeImage defaultImage"></div>
+                {{/ if }}
+                <div class="portfolioHiddenBlock">
+                    <strong class="portfolioHeader">{{{ workTitle }}}</strong>
+                    <span class="portfolioCity">{{{ workCity }}}</span>
+                    <span class="portfolioSquare">{{{ workSquare }}}</span>
+                    <a class="portfolioButton" href="/portfolio/{{{ workLink }}}">VIEW PROJECT</a>
+                </div>
+            </li>
+            {{/ each }}
+        </ul>
+    </div>
+    <div class="wrapper minContentWrapper maxPadding">
+        <h2 class="sectionTitle">{{{ page.portfolioTitle }}}</h2>
+        <p class="textBlock">{{{ page.portfolioText }}}</p>
+        <a class="portfolioHomeButton" href="/portfolio/">VIEW PORTFOLIO</a>
+    </div>
+</section>

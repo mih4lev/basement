@@ -29,9 +29,7 @@ const requestLandings = async () => {
 const requestLanding = async (searchParam, isURL = true) => {
     try {
         const query = `
-            SELECT landingID, pageURL, pageTitle, pageDescription, pageKeywords, headerTitle, 
-                   headerText, landingImage, footerTitle, footerText, lat, lng, zoom
-            FROM landings WHERE ?? = ?
+            SELECT * FROM landings WHERE ?? = ?
         `;
         const data = (isURL) ? [`pageURL`, searchParam] : [`landingID`, searchParam];
         return { page: await singleDB(query, data) };

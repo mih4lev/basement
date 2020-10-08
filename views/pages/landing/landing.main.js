@@ -1,3 +1,4 @@
-import { testimonialsCarousel } from "../../partials/blocks/testimonials/testimonials";
+import { testimonialsCarousel, youtubeVideo } from "../../partials/blocks/testimonials/testimonials";
 
 testimonialsCarousel();
+youtubeVideo();
