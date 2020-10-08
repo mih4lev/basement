@@ -54,7 +54,7 @@ router.get(`/`, async (request, response, next) => {
     request.data['layout'] = `admin`;
     request.data['isAdminPortfolio'] = true;
     const content = requestContent(await Promise.all([
-        requestPortfolio(),
+        requestPortfolio(40),
         requestModerateCount()
     ]));
     const data = { ...request.data, ...content };
