@@ -1,4 +1,4 @@
-import {saveAction} from "../../source/scripts/utils";
+import { loader, requestData, saveAction } from "../../source/scripts/utils";
 
 const formNode = document.querySelector(`.formNode`);
 const formButton = document.querySelector(`.submitButton`);
@@ -480,3 +480,9 @@ previewsWrapper.forEach((wrapper) => {
         });
     });
 });
+
+// loader
+if (document.querySelector(`.elementsWrapper`)) {
+    requestData();
+    loader(window.loaderData);
+}

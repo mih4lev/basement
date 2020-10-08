@@ -53,9 +53,7 @@ router.get(`/`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminPortfolio'] = true;
-    const pageID = 2;
     const content = requestContent(await Promise.all([
-        requestMeta(pageID),
         requestPortfolio(),
         requestModerateCount()
     ]));
@@ -64,7 +62,21 @@ router.get(`/`, async (request, response, next) => {
     response.render(template, data);
 });
 
-router.post(`/`, formParser.none(), async (request, response, next) => {
+router.get(`/settings`, async (request, response, next) => {
+    if (!request.data['userID'] || !request.data['isAdmin']) return next();
+    request.data['layout'] = `admin`;
+    request.data['isAdminPortfolioSettings'] = true;
+    const pageID = 2;
+    const content = requestContent(await Promise.all([
+        requestMeta(pageID),
+        requestModerateCount()
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `admin/portfolio/portfolio-settings.admin.hbs`;
+    response.render(template, data);
+});
+
+router.post(`/settings`, formParser.none(), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     const formData = { ...request.body };
     const responseData = await updateMeta(formData);
@@ -152,7 +164,7 @@ router.post(`/filters`, formParser.none(), async (request, response, next) => {
 router.get(`/edit/:portfolioID`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
-    request.data['isAdminPortfolio'] = true;
+    request.data['isPortfolioEdit'] = true;
     const { params: { portfolioID }} = request;
     const content = requestContent(await Promise.all([
         requestWork(portfolioID),

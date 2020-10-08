@@ -1,0 +1,53 @@
+<section class="listSection">
+    <ul class="listNode normalVisible elementsWrapper" data-page="10" data-api="{{{ ideasAPI }}}">
+        {{# each ideas }}
+            <li class="listWrapper">
+                <a class="wrapperLink" href="/admin/basement-ideas/edit/{{{ ideaID }}}">
+                    <div class="imageWrapper">
+                        <picture>
+                            <source srcset="{{{ ideaImage }}}_154x154.jpg, {{{ ideaImage }}}_308x308.jpg 2x"
+                                    media="(max-width: 479px)" type="image/jpeg">
+                            <source srcset="{{{ ideaImage }}}_252x252.jpg, {{{ ideaImage }}}_504x504.jpg 2x"
+                                    media="(min-width: 480px)" type="image/jpeg">
+                            <img class="listImage" alt="{{{ ideaTitle }}}"
+                                 srcset="{{{ ideaImage }}}_252x252.jpg, {{{ ideaImage }}}_504x504.jpg 2x"
+                                 src="{{{ ideaImage }}}_252x252.jpg">
+                        </picture>
+                    </div>
+                    <span class="listTitle">{{{ ideaTitle }}}</span>
+                </a>
+            </li>
+        {{/ each }}
+    </ul>
+    <div class="buttonWrapper">
+        <button class="showMoreButton" data-scroll="1" title="Show more">SHOW MORE</button>
+    </div>
+</section>
+
+<template class="elementTemplate">
+    <li class="listWrapper">
+        <a class="wrapperLink" href="">
+            <div class="imageWrapper"></div>
+            <span class="listTitle"></span>
+        </a>
+    </li>
+</template>
+
+<script>
+    const imageSize = [
+        [`(max-width: 479px)`, `image/jpeg`, `_154x154.jpg`, `_308x308.jpg`],
+        [`(min-width: 480px)`, `image/jpeg`, `_252x252.jpg`, `_504x504.jpg`]
+    ];
+    window.loaderData = (data) => {
+        const { ideaID, ideaImage, ideaTitle } = data;
+        const link = `/admin/basement-ideas/` + ideaID;
+        return [
+            {
+                type: `picture`, parent: `.imageWrapper`, alt: ideaTitle, image: ideaImage,
+                imageSize, selector: `listImage`, data: `idea`, value: ideaID
+            },
+            { type: `link`, selector: `.wrapperLink`, link },
+            { type: `text`, selector: `.listTitle`, text: ideaTitle }
+        ];
+    };
+</script>

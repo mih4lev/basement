@@ -13,7 +13,7 @@ const { saveImages, deleteImages } = require("../../models/images.model");
 
 const {
     createIdea, addCreator, requestAllIdeas, requestIdea, requestCreators,
-    requestModerateIdeas, requestModerateCount, updateIdea, updateCreator,
+    requestNewIdeas, requestModeratedIdeas, requestModerateCount, updateIdea, updateCreator,
     deleteIdea, deleteCreator
 } = require("../../models/ideas.model");
 const {
@@ -22,7 +22,7 @@ const {
 const {
     createIdeasFilter, requestIdeasFilters, updateIdeasFilter, deleteIdeasFilter
 } = require("../../models/filters.model");
-const { requestMeta, updateMeta } = require("../../models/pages.model");
+const { requestMeta, requestTextContent, updateMeta, updateContent } = require("../../models/pages.model");
 
 const ideasImages = [
     {
@@ -75,6 +75,7 @@ router.get(`/`, async (request, response, next) => {
     const pageID = 13;
     const content = requestContent(await Promise.all([
         requestMeta(pageID),
+        requestTextContent(pageID),
         requestAllIdeas(),
         requestModerateCount()
     ]));
@@ -85,21 +86,38 @@ router.get(`/`, async (request, response, next) => {
 
 router.post(`/`, formParser.none(), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
-    const formData = { ...request.body };
-    const responseData = await updateMeta(formData);
+    const { pageID, pageTitle, pageDescription, pageKeywords, ...content } = request.body;
+    const metaData = { pageID, pageTitle, pageDescription, pageKeywords };
+    const responseData = await updateMeta(metaData);
+    await updateContent(content);
     setTimeout(() => response.json(responseData), 0);
 });
 
-router.get(`/user`, async (request, response, next) => {
+router.get(`/moderated`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
-    request.data['isAdminUserIdeas'] = true;
+    request.data['isAdminModeratedIdeas'] = true;
+    request.data['ideasAPI'] = `/api/ideas/moderated`;
     const content = requestContent(await Promise.all([
-        requestModerateIdeas(),
+        requestModeratedIdeas({ limit: 40 }),
         requestModerateCount()
     ]));
     const data = { ...request.data, ...content };
-    const template = `admin/ideas/user-ideas.admin.hbs`;
+    const template = `admin/ideas/ideas-list.admin.hbs`;
+    response.render(template, data);
+});
+
+router.get(`/to-moderate`, async (request, response, next) => {
+    if (!request.data['userID'] || !request.data['isAdmin']) return next();
+    request.data['layout'] = `admin`;
+    request.data['isAdminToModerateIdeas'] = true;
+    request.data['ideasAPI'] = `/api/ideas/to-moderate`;
+    const content = requestContent(await Promise.all([
+        requestNewIdeas({ limit: 40 }),
+        requestModerateCount()
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `admin/ideas/ideas-list.admin.hbs`;
     response.render(template, data);
 });
 
@@ -185,7 +203,7 @@ router.post(`/filters`, formParser.none(), async (request, response, next) => {
 router.get(`/edit/:ideaID`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
-    request.data['isAdminIdeas'] = true;
+    request.data['isIdeaEdit'] = true;
     const { params: { ideaID }} = request;
     const content = requestContent(await Promise.all([
         requestIdea(ideaID),

@@ -1,7 +1,7 @@
 const { Router } = require(`express`);
 const router = new Router();
 
-const { requestMeta } = require("../../models/pages.model");
+const { requestMeta, requestTextContent } = require("../../models/pages.model");
 const { requestContent } = require("../../models/utils.model");
 const {
     requestIdeas, requestIdeasCount, requestCategoryIdeasByURL
@@ -28,12 +28,14 @@ router.get(`/:categoryTitle`, async (request, response) => {
     const ideasRequest = { categoryURL: categoryTitle, userID, limit: 12 };
     const content = requestContent(await Promise.all([
         requestMeta(pageID),
+        requestTextContent(pageID),
         requestCategory(categoryTitle, true),
         requestSubCategories(categoryTitle, true),
         requestIdeasFilters(),
         requestCategoryIdeasByURL(ideasRequest),
         requestCategoryURLData(categoryTitle)
     ]));
+    console.log(content);
     const data = { ...request.data, ...content };
     const template = `pages/basement-ideas/categories/main-categories`;
     response.render(template, data);
@@ -46,6 +48,7 @@ router.get(`/:categoryTitle/:subCategoryTitle`, async (request, response) => {
     const ideasRequest = { categoryURL: subCategoryTitle, userID, limit: 12 };
     const content = requestContent(await Promise.all([
         requestMeta(pageID),
+        requestTextContent(pageID),
         requestSubCategories(subCategoryTitle, true),
         requestCategory(categoryTitle, true),
         requestSubCategory(subCategoryTitle, true),
@@ -65,6 +68,7 @@ router.get(`/:categoryTitle/:subCategoryTitle/:childCategoryTitle`, async (reque
     const ideasRequest = { categoryURL: childCategoryTitle, userID, limit: 12 };
     const content = requestContent(await Promise.all([
         requestMeta(pageID),
+        requestTextContent(pageID),
         requestSubCategories(subCategoryTitle, true, childCategoryTitle),
         requestCategory(categoryTitle, true),
         requestSubCategory(subCategoryTitle, true),
@@ -84,6 +88,7 @@ router.get(`/`, async (request, response) => {
     const ideasRequest = { limit: 12, userID };
     const content = requestContent(await Promise.all([
         requestMeta(pageID),
+        requestTextContent(pageID),
         requestMainCategories(),
         requestIdeasFilters(),
         requestIdeas(ideasRequest),

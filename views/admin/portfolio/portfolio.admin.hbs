@@ -1,52 +1,51 @@
-<form class="formNode">
-
-    <input class="hiddenField" type="hidden" name="pageID" value="{{{ page.pageID }}}">
-
-    <section class="fieldSection">
-        <div class="fieldWrapper">
-            <label class="fieldLabel" for="pageTitle">Page title</label>
-            <input class="textField" type="text" id="pageTitle" name="pageTitle" value="{{{ page.pageTitle }}}">
-        </div>
-    </section>
-
-    <section class="fieldSection">
-        <div class="fieldWrapper">
-            <label class="fieldLabel" for="pageDescription">Page description</label>
-            <textarea class="textareaField" id="pageDescription" name="pageDescription">{{{ page.pageDescription }}}</textarea>
-        </div>
-    </section>
-
-    <section class="fieldSection">
-        <div class="fieldWrapper">
-            <label class="fieldLabel" for="pageKeywords">Page keywords</label>
-            <textarea class="textareaField" id="pageKeywords" name="pageKeywords">{{{ page.pageKeywords }}}</textarea>
-        </div>
-    </section>
-
-    <div class="formButtons">
-        <button class="submitButton" type="button" title="Update"
-                data-action="update" data-api="">Update</button>
-    </div>
-
-</form>
-
 <section class="listSection">
-    <ul class="listNode">
-        <li class="listWrapper">
-            <a class="wrapperLink addLink" href="/admin/portfolio/add">New project</a>
-        </li>
+    <ul class="listNode normalVisible elementsWrapper" data-page="10" data-api="/api/portfolio/all">
         {{# each portfolio }}
             <li class="listWrapper">
                 <a class="wrapperLink" href="/admin/portfolio/edit/{{{ portfolioID }}}">
                     {{# if workImage }}
-                        <img class="listImage" src="{{{ workImage }}}_252x252.jpg"
-                             alt="{{{ workTitle }}}">
+                        <div class="imageWrapper">
+                            <img class="listImage" src="{{{ workImage }}}_252x252.jpg"
+                                 alt="{{{ workTitle }}}, {{{ workCity }}}">
+                        </div>
                     {{ else }}
                         <div class="defaultImage"></div>
                     {{/ if }}
-                    <span class="listTitle">{{{ workTitle }}}</span>
+                    <span class="listTitle">{{{ workTitle }}}, {{{ workCity }}}</span>
                 </a>
             </li>
         {{/ each }}
     </ul>
+    <div class="buttonWrapper">
+        <button class="showMoreButton" data-scroll="1" title="Show more">SHOW MORE</button>
+    </div>
 </section>
+
+<template class="elementTemplate">
+    <li class="listWrapper">
+        <a class="wrapperLink" href="">
+            <div class="imageWrapper"></div>
+            <span class="listTitle"></span>
+        </a>
+    </li>
+</template>
+
+<script>
+    const imageSize = [
+        [`(max-width: 479px)`, `image/jpeg`, `_154x154.jpg`, `_308x308.jpg`],
+        [`(min-width: 480px)`, `image/jpeg`, `_252x252.jpg`, `_504x504.jpg`]
+    ];
+    window.loaderData = (data) => {
+        const { portfolioID, workImage, workTitle, workCity } = data;
+        const title = workTitle + `, ` + workCity;
+        const link = `/admin/portfolio/` + portfolioID;
+        return [
+            {
+                type: `picture`, parent: `.imageWrapper`, alt: title, image: workImage,
+                imageSize, selector: `listImage`, data: `idea`, value: portfolioID
+            },
+            { type: `link`, selector: `.wrapperLink`, link },
+            { type: `text`, selector: `.listTitle`, text: title }
+        ];
+    };
+</script>

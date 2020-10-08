@@ -56,11 +56,25 @@
                             <a class="subMenuLink" href="/admin/portfolio/">All projects</a>
                         {{/ if }}
                     </li>
+                    {{# if isPortfolioEdit }}
+                        <li class="subMenuWrapper">
+                            <span class="subMenuLink activeLink editLink">
+                                Edit portfolio {{{ page.portfolioID }}}
+                            </span>
+                        </li>
+                    {{/ if }}
                     <li class="subMenuWrapper">
                         {{# if isAdminPortfolioAdd }}
                             <span class="subMenuLink addLink activeLink">Add new project</span>
                         {{ else }}
                             <a class="subMenuLink addLink" href="/admin/portfolio/add/">Add new project</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminPortfolioSettings }}
+                            <span class="subMenuLink activeLink">Portfolio settings</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/portfolio/settings/">Portfolio settings</a>
                         {{/ if }}
                     </li>
                     <li class="subMenuWrapper">
@@ -82,14 +96,26 @@
                             <a class="subMenuLink" href="/admin/basement-ideas/">All ideas</a>
                         {{/ if }}
                     </li>
+                    {{# if isIdeaEdit }}
                     <li class="subMenuWrapper">
-                        {{# if isAdminUserIdeas }}
-                            <span class="subMenuLink activeLink">User ideas</span>
+                        <span class="subMenuLink activeLink editLink">Edit idea {{{ page.ideaID }}}</span>
+                    </li>
+                    {{/ if }}
+                    <li class="subMenuWrapper">
+                        {{# if isAdminModeratedIdeas }}
+                            <span class="subMenuLink activeLink">Moderated ideas</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/basement-ideas/moderated/">Moderated ideas</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminToModerateIdeas }}
+                            <span class="subMenuLink activeLink">To moderate</span>
                             {{# if moderateCount }}
                                 <span class="ideasCount">{{{ moderateCount }}}</span>
                             {{/ if }}
                         {{ else }}
-                            <a class="subMenuLink" href="/admin/basement-ideas/user/">User ideas</a>
+                            <a class="subMenuLink" href="/admin/basement-ideas/to-moderate/">To moderate</a>
                             {{# if moderateCount }}
                                 <span class="ideasCount">{{{ moderateCount }}}</span>
                             {{/ if }}

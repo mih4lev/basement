@@ -70,7 +70,10 @@
                 </div>
             </section>
             <section class="fieldSection">
-                <textarea class="textareaField" disabled>{{{ user.password }}}</textarea>
+                <div class="fieldWrapper">
+                    <label class="fieldLabel" for="passwordHash">Password hash</label>
+                    <textarea class="textareaField" id="passwordHash" disabled>{{{ user.password }}}</textarea>
+                </div>
             </section>
             <section class="fieldSection">
                 <div class="fieldWrapper">

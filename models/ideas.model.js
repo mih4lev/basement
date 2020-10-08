@@ -304,7 +304,7 @@ const requestHomeIdeas = async ({ userID = 0 } = {}) => {
     }
 };
 
-const requestModerateIdeas = async ({ limit = 1000, userID = 0 } = {}) => {
+const requestNewIdeas = async ({ limit = 1000, userID = 0 } = {}) => {
     try {
         const query = `
             SELECT 
@@ -319,6 +319,30 @@ const requestModerateIdeas = async ({ limit = 1000, userID = 0 } = {}) => {
             JOIN users ON ideas.userID = users.userID
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
             WHERE ideas.isModerated = 0 
+            ORDER BY ideas.timestamp DESC LIMIT ?
+        `;
+        return { ideas: await DB(query, [userID, limit]) };
+    } catch (error) {
+        console.log(error);
+        return {};
+    }
+};
+
+const requestModeratedIdeas = async ({ limit = 1000, userID = 0 } = {}) => {
+    try {
+        const query = `
+            SELECT 
+                ideas.ideaID, ideas.ideaTitle, ideas.ideaImage, ideas.timestamp, 
+                IF (
+                    ideas_creators.creatorName IS NOT NULL, 
+                    ideas_creators.creatorName, 
+                    CONCAT(users.name, ' ', users.surname)
+                ) as ideaAuthor,
+                IF (ideas.userID = ?, false, true) as isVisible
+            FROM ideas 
+            JOIN users ON ideas.userID = users.userID
+            LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
+            WHERE ideas.isModerated = 1 
             ORDER BY ideas.timestamp DESC LIMIT ?
         `;
         return { ideas: await DB(query, [userID, limit]) };
@@ -633,7 +657,7 @@ const deleteCreator = async ({ creatorID } = {}) => {
 
 module.exports = {
     createIdea, addCreator, requestIdea, requestAlbumIdeas, requestFilteredIdeas,
-    requestAllIdeas, requestIdeasCount, requestModerateIdeas, requestIdeas,
+    requestAllIdeas, requestIdeasCount, requestNewIdeas, requestModeratedIdeas, requestIdeas,
     requestIdeasByPortfolioID, requestCategoryIdeasByID, requestCategoryFilteredIdeasByID,
     requestCategoryIdeasByURL, requestCategoryFilteredIdeasByURL, requestModerateCount,
     requestUserIdeas, requestUploadIdeas, requestCreators, requestHomeIdeas, updateIdea,

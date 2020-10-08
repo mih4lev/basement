@@ -23,25 +23,23 @@
         </div>
     </section>
 
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="content31">Bottom title</label>
+            <input class="textField" type="text" id="content31" name="content31" value="{{{ content.content31 }}}">
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="content30">Bottom text</label>
+            <textarea class="textareaField tinyField" id="content30" name="content30">{{{ content.content30 }}}</textarea>
+        </div>
+    </section>
+
     <div class="formButtons">
         <button class="submitButton" type="button" title="Update"
                 data-action="update" data-api="">Update</button>
     </div>
 
 </form>
-
-<section class="listSection">
-    <ul class="listNode">
-        <li class="listWrapper">
-            <a class="wrapperLink addLink" href="/admin/basement-ideas/add">New idea</a>
-        </li>
-        {{# each ideas }}
-        <li class="listWrapper">
-            <a class="wrapperLink" href="/admin/basement-ideas/edit/{{{ ideaID }}}">
-                <img class="listImage" src="{{{ ideaImage }}}_252x252.jpg" alt="">
-                <span class="listTitle">{{{ ideaTitle }}}</span>
-            </a>
-        </li>
-        {{/ each }}
-    </ul>
-</section>

@@ -130,6 +130,9 @@ html, body {
                             margin-left: -10px;
                         }
                     }
+                    &.editLink {
+                        padding-left: 60px;
+                    }
                 }
                 .ideasCount {
                     position: absolute;
@@ -277,7 +280,8 @@ html, body {
     max-width: 680px;
     .ratingTitle {
         margin-right: 10px;
-        font-size: 15px;
+        font-size: 14px;
+        color: $raven;
         &:after {
             content: ":";
         }
@@ -382,6 +386,9 @@ html, body {
         }
         &.visualField {
             height: 260px;
+        }
+        &.tinyField {
+            height: 220px;
         }
     }
 }
@@ -803,6 +810,12 @@ button {
 }
 
 .listSection {
+    .listTitle {
+        display: block;
+        min-height: 20px;
+        font-size: 14px;
+        color: $raven;
+    }
     .listNode {
         display: flex;
         flex-direction: row;
@@ -823,9 +836,6 @@ button {
                 margin: 5px;
                 color: $black;
                 text-decoration: none;
-                &:hover {
-                    color: $blue;
-                }
                 &.addLink {
                     position: relative;
                     display: flex;
@@ -857,9 +867,15 @@ button {
                 .listImage {
                     width: 100%;
                     height: 150px;
+                    display: block;
                     object-fit: cover;
-                    &:hover {
-                        opacity: 0.75;
+                }
+                .imageWrapper {
+                    .listImage {
+                        width: 100%;
+                        height: 100%;
+                        display: block;
+                        object-fit: cover;
                     }
                 }
                 .defaultImage {
@@ -870,14 +886,60 @@ button {
                     background-repeat: no-repeat;
                     background-position: center center;
                     background-size: 90%;
-                    &:hover {
-                        opacity: 0.75;
-                    }
                 }
                 .listTitle {
                     margin-top: 5px;
                     font-size: 14px;
                 }
+            }
+        }
+        &.normalVisible {
+            .wrapperLink {
+                position: relative;
+                .listTitle {
+                    position: absolute;
+                    bottom: 0;
+                    box-sizing: border-box;
+                    padding: 10px;
+                    color: $white;
+                    background-color: rgba(0, 0, 0, 0.25);
+                }
+                &.addLink {
+                    height: 100%;
+                    padding-top: 70px;
+                    background-color: transparent;
+                }
+                &:hover {
+                    .listTitle {
+                        background-color: rgba(0, 0, 0, 0.5);
+                    }
+                }
+            }
+        }
+        .listWrapper:hover {
+            .listTitle {
+                color: $blue;
+            }
+        }
+        &.normalVisible {
+            .listWrapper:hover {
+                .listTitle {
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+.listSection {
+    .buttonWrapper {
+        display: flex;
+        justify-content: center;
+        height: auto;
+        .showMoreButton {
+            margin-top: 20px;
+            &.hiddenButton {
+                display: none;
             }
         }
     }
