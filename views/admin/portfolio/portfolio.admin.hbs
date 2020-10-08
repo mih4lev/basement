@@ -5,8 +5,15 @@
                 <a class="wrapperLink" href="/admin/portfolio/edit/{{{ portfolioID }}}">
                     {{# if workImage }}
                         <div class="imageWrapper">
-                            <img class="listImage" src="{{{ workImage }}}_252x252.jpg"
-                                 alt="{{{ workTitle }}}, {{{ workCity }}}">
+                            <picture>
+                                <source srcset="{{{ workImage }}}_154x154.jpg, {{{ workImage }}}_308x308.jpg 2x"
+                                        media="(max-width: 479px)" type="image/jpeg">
+                                <source srcset="{{{ workImage }}}_252x252.jpg, {{{ workImage }}}_504x504.jpg 2x"
+                                        media="(min-width: 480px)" type="image/jpeg">
+                                <img class="listImage" alt="{{{ workTitle }}}, {{{ workCity }}}"
+                                     srcset="{{{ workImage }}}_252x252.jpg, {{{ workImage }}}_504x504.jpg 2x"
+                                     src="{{{ workImage }}}_252x252.jpg">
+                            </picture>
                         </div>
                     {{ else }}
                         <div class="defaultImage"></div>
