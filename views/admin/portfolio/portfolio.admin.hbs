@@ -45,7 +45,7 @@
     window.loaderData = (data) => {
         const { portfolioID, workImage, workTitle, workCity } = data;
         const title = workTitle + `, ` + workCity;
-        const link = `/admin/portfolio/` + portfolioID;
+        const link = `/admin/portfolio/edit/` + portfolioID;
         return [
             {
                 type: `picture`, parent: `.imageWrapper`, alt: title, image: workImage,

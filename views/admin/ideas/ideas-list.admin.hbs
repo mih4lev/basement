@@ -40,7 +40,7 @@
     ];
     window.loaderData = (data) => {
         const { ideaID, ideaImage, ideaTitle } = data;
-        const link = `/admin/basement-ideas/` + ideaID;
+        const link = `/admin/basement-ideas/edit/` + ideaID;
         return [
             {
                 type: `picture`, parent: `.imageWrapper`, alt: ideaTitle, image: ideaImage,
