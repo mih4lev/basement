@@ -883,6 +883,14 @@ button {
     }
 }
 
+.filtersSection {
+    .fieldLabel {
+        display: block;
+        font-size: 14px;
+        color: $raven;
+    }
+}
+
 .fieldSection {
     display: flex;
     align-items: flex-end;
@@ -892,6 +900,12 @@ button {
     .selectWrapper {
         position: relative;
         width: 300px;
+        .fieldLabel {
+            display: block;
+            min-height: 20px;
+            font-size: 14px;
+            color: $raven;
+        }
         &.autoWrapper {
             width: auto;
         }
@@ -940,9 +954,9 @@ button {
         .dropdownWrapper {
             @extend %shadow;
             position: absolute;
-            top: 45px;
             z-index: 2;
             width: 100%;
+            margin-top: 5px;
             padding: 10px 0;
             box-sizing: border-box;
             background-color: $white;

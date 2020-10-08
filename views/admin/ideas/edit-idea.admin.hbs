@@ -33,8 +33,8 @@
     </section>
 
     <section class="fieldSection">
-        By:
-        <div class="selectWrapper" data-id="creatorID" data-name="creatorName" style="margin: 0 10px;">
+        <div class="selectWrapper" data-id="creatorID" data-name="creatorName" style="margin: 0 10px 0 0;">
+            <label class="fieldLabel">Created by</label>
             <div class="currentSelect">{{{ page.creatorName }}}</div>
             <input class="hiddenField" type="hidden" name="creatorID"
                    value="{{# if page.creatorID }}{{{ page.creatorID }}}{{ else }}0{{/ if }}">
@@ -62,7 +62,7 @@
                 </div>
             </div>
         </div>
-        <div class="fieldWrapper" style="width: 20%;">
+        <div class="fieldWrapper" style="width: 100px;">
             <label class="fieldLabel" for="portfolioID">Portfolio ID</label>
             <input class="textField" type="text" id="portfolioID" name="portfolioID" value="{{{ page.portfolioID }}}">
         </div>

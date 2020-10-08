@@ -87,8 +87,8 @@
     </section>
 
     <section class="fieldSection">
-        <span class="fieldTitle">By:</span>
-        <div class="selectWrapper" data-id="creatorID" data-name="creatorName" style="margin: 0 5px 0 10px;">
+        <div class="selectWrapper" data-id="creatorID" data-name="creatorName" style="margin: 0 5px 0 0;">
+            <label class="fieldLabel" for="workSquare">Created by</label>
             <div class="currentSelect">{{{ page.creatorName }}}</div>
             <input class="hiddenField" type="hidden" name="creatorID" value="{{{ page.creatorID }}}">
             <div class="dropdownWrapper hiddenWrapper">
@@ -128,11 +128,11 @@
             <input class="textField" type="text" id="workAddress" name="workAddress" value="{{{ page.workAddress }}}">
         </div>
         <div class="fieldWrapper" style="width: 25%; margin-right: 10px;">
-            <label class="fieldLabel" for="lat"></label>
+            <label class="fieldLabel" for="lat">LAT</label>
             <input class="textField" type="text" id="lat" name="lat" value="{{{ page.lat }}}">
         </div>
         <div class="fieldWrapper" style="width: 25%">
-            <label class="fieldLabel" for="lng"></label>
+            <label class="fieldLabel" for="lng">LNG</label>
             <input class="textField" type="text" id="lng" name="lng" value="{{{ page.lng }}}">
         </div>
     </section>

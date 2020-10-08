@@ -17,8 +17,8 @@
     </section>
 
     <section class="fieldSection">
-        By:
-        <div class="selectWrapper" data-id="creatorID" data-name="creatorName" style="margin: 0 10px;">
+        <div class="selectWrapper" data-id="creatorID" data-name="creatorName" style="margin: 0 10px 0 0;">
+            <label class="fieldLabel">Created by</label>
             <div class="currentSelect"></div>
             <input class="hiddenField" type="hidden" name="creatorID" value="0">
             <div class="dropdownWrapper hiddenWrapper">
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <div class="fieldWrapper" style="width: 20%;">
+        <div class="fieldWrapper" style="width: 100px;">
             <label class="fieldLabel" for="portfolioID">Portfolio ID</label>
             <input class="textField" type="text" id="portfolioID" name="portfolioID" value="{{{ portfolioID }}}">
         </div>
@@ -64,7 +64,7 @@
     </section>
 
     <section class="filtersSection">
-        Categories:
+        <label class="fieldLabel">Categories:</label>
         <div class="categoriesWrapper">
             {{# each categories }}
                 <ul>
@@ -109,7 +109,7 @@
     </section>
 
     <section class="filtersSection">
-        Filters:
+        <label class="fieldLabel">Filters:</label>
         <div class="filtersWrapper">
             {{# each filters }}
                 <ul>
