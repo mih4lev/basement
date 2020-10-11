@@ -462,20 +462,20 @@ const requestIdea = async (ideaID, userID = 0) => {
                 ) as ideaAuthor,
                 (
                     SELECT prevIdeas.ideaID FROM ideas as prevIdeas 
-                    WHERE prevIdeas.ideaID < ideas.ideaID && prevIdeas.isModerated = 1
+                    WHERE prevIdeas.ideaID < ideas.ideaID && prevIdeas.isModerated = 1 
                     ORDER BY prevIdeas.ideaID DESC LIMIT 1
                 ) as prevID,
                 (
                     SELECT nextIdeas.ideaID FROM ideas as nextIdeas 
-                    WHERE nextIdeas.ideaID > ideas.ideaID && nextIdeas.isModerated = 1
+                    WHERE nextIdeas.ideaID > ideas.ideaID && nextIdeas.isModerated = 1 
                     ORDER BY nextIdeas.ideaID ASC LIMIT 1
-                ) as nextID
+                ) as nextID 
             FROM ideas 
             JOIN users ON users.userID = ideas.userID 
-            LEFT JOIN ideas_creators ON ideas.creatorID = ideas_creators.creatorID
-            LEFT JOIN albums_relation ON albums_relation.ideaID = ideas.ideaID
-            LEFT JOIN portfolio ON portfolio.portfolioID = ideas.portfolioID
-            WHERE ideas.ideaID = ?
+            LEFT JOIN ideas_creators ON ideas.creatorID = ideas_creators.creatorID 
+            LEFT JOIN albums_relation ON albums_relation.ideaID = ideas.ideaID 
+            LEFT JOIN portfolio ON portfolio.portfolioID = ideas.portfolioID 
+            WHERE ideas.ideaID = ? 
             GROUP BY albums_relation.ideaID
         `;
         const idea = await singleDB(query, [ userID, userID, ideaID ]);

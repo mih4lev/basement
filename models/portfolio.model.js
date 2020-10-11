@@ -42,10 +42,10 @@ const requestPortfolio = async (limit = 1000) => {
             SELECT 
                 portfolio.portfolioID, portfolio.workLink, portfolio.workTitle, portfolio.workCity, 
                 portfolio.workSquare, portfolio.isHomeVisible, portfolio.lat, portfolio.lng,
-                ideas.ideaImage as workImage
+                ideas.ideaImage as workImage 
             FROM portfolio 
-            LEFT JOIN ideas ON portfolio.workImage = ideas.ideaID
-            ORDER BY portfolio.portfolioID LIMIT ?
+            LEFT JOIN ideas ON portfolio.workImage = ideas.ideaID 
+            ORDER BY portfolio.position LIMIT ?
         `;
         return { portfolio: await DB(query, [limit]) };
     } catch (error) {
@@ -69,7 +69,7 @@ const requestFilteredPortfolio = async ({ filters }) => {
                 portfolio_properties.filterID IN (?) && 
                 portfolio.workSquare > ? && portfolio.workSquare < ?
             GROUP BY portfolio.portfolioID
-            ORDER BY portfolio.portfolioID
+            ORDER BY portfolio.position
         `;
         const squareQuery = `
             SELECT 
@@ -79,7 +79,7 @@ const requestFilteredPortfolio = async ({ filters }) => {
             FROM portfolio 
             LEFT JOIN ideas ON portfolio.workImage = ideas.ideaID 
             WHERE portfolio.workSquare > ? && portfolio.workSquare < ? 
-            ORDER BY portfolio.portfolioID
+            ORDER BY portfolio.position
         `;
         const query = (filterArray) ? filtersQuery : squareQuery;
         const params = (filterArray) ? [filterArray, minSquare, maxSquare] : [minSquare, maxSquare];
@@ -100,7 +100,7 @@ const requestHomePortfolio = async (limit = 1000) => {
             FROM portfolio 
             LEFT JOIN ideas ON portfolio.workImage = ideas.ideaID
             WHERE isHomeVisible = 1 
-            ORDER BY portfolio.portfolioID LIMIT ?
+            ORDER BY portfolio.position LIMIT ?
         `;
         return { portfolio: await DB(query, [limit]) };
     } catch (error) {
@@ -206,6 +206,21 @@ const requestCreators = async () => {
 
 // UPDATE
 
+const updatePositions = async (requestData) => {
+    try {
+        for (const portfolioID in requestData) {
+            const position = requestData[portfolioID];
+            const updateData = { position };
+            const query = `UPDATE portfolio SET ? WHERE portfolioID = ?`;
+            await DB(query, [updateData, portfolioID]);
+        }
+        return { status: 1 };
+    } catch (error) {
+        console.log(error);
+        return { status: 0, error };
+    }
+};
+
 const updateWork = async (requestData, hasFilters = false) => {
     const { portfolioID, portfolioImages, filterArray, ...updateData } = requestData;
     try {
@@ -271,6 +286,6 @@ const deleteCreator = async ({ creatorID }) => {
 
 module.exports = {
     createWork, addCreator, requestFilteredPortfolio, requestPortfolio, requestHomePortfolio, requestWork,
-    requestWorkByLink, requestImages, requestCreators, updateWork, updateCreator,
+    requestWorkByLink, requestImages, requestCreators, updatePositions, updateWork, updateCreator,
     deleteWork, deleteCreator
 };

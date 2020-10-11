@@ -1,7 +1,9 @@
 <section class="listSection">
-    <ul class="listNode normalVisible elementsWrapper" data-page="10" data-api="/api/portfolio/all">
+    <ul class="listNode normalVisible elementsWrapper sortWrapper"
+        data-sort="/admin/portfolio/sort"
+        data-page="10" data-api="/api/portfolio/all">
         {{# each portfolio }}
-            <li class="listWrapper">
+            <li class="listWrapper sortNode" data-id="{{{ portfolioID }}}">
                 <a class="wrapperLink" href="/admin/portfolio/edit/{{{ portfolioID }}}">
                     {{# if workImage }}
                         <div class="imageWrapper">

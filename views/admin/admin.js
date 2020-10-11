@@ -486,3 +486,67 @@ if (document.querySelector(`.elementsWrapper`)) {
     requestData();
     loader(window.loaderData);
 }
+
+const sortWrapper = document.querySelector(`.sortWrapper`);
+const sortNodes = [...document.querySelectorAll(`.sortNode`)];
+let hoverElement, handleElement;
+const requestIndex = (searchElement) => {
+    const sortNodes = [...document.querySelectorAll(`.listWrapper`)];
+    let searchIndex;
+    sortNodes.forEach((element, index) => {
+        if (element === searchElement) searchIndex = index;
+    });
+    return searchIndex;
+};
+const collectData = () => {
+    const data = new FormData();
+    const sortNodes = [...document.querySelectorAll(`.listWrapper`)];
+    sortNodes.forEach((element, index) => {
+        const { dataset: { id: portfolioID }} = element;
+        data.append(portfolioID, index);
+    });
+    return data;
+};
+const removeHover = () => {
+    const sortNodes = [...document.querySelectorAll(`.listWrapper`)];
+    sortNodes.forEach((element) => element.classList.remove(`hoverWrapper`));
+};
+const addReplaceEvents = (sortNode) => {
+    sortNode.addEventListener(`dragstart`, (event) => {
+        const handleWrapper = event.target.closest(`.listWrapper`);
+        hoverElement = handleWrapper;
+        handleElement = handleWrapper;
+        hoverElement.classList.add(`handleWrapper`);
+    });
+    sortNode.addEventListener(`dragover`, (event) => {
+        const hoverWrapper = event.target.closest(`.listWrapper`);
+        if (hoverElement === hoverWrapper) return false;
+        removeHover();
+        hoverWrapper.classList.add(`hoverWrapper`);
+        hoverElement = hoverWrapper;
+    });
+    sortNode.addEventListener(`dragend`, async () => {
+        if (hoverElement === handleElement) {
+            handleElement.classList.remove(`handleWrapper`);
+            removeHover();
+            return false;
+        }
+        const hoverIndex = requestIndex(hoverElement);
+        const handleIndex = requestIndex(handleElement);
+        removeHover();
+        handleElement.classList.replace(`handleWrapper`, `loaderWrapper`);
+        const cloneNode = handleElement.cloneNode(true);
+        addReplaceEvents(cloneNode);
+        sortWrapper.removeChild(handleElement);
+        const changeNode = (hoverIndex > handleIndex) ? hoverElement.nextSibling : hoverElement;
+        sortWrapper.insertBefore(cloneNode, changeNode);
+        // collect index
+        const body = collectData();
+        const { dataset: { sort: sortURL }} = sortWrapper;
+        const response = await fetch(sortURL, { method: `POST`, body });
+        const data = await response.json();
+        if (data.status !== 1) return console.log(data);
+        cloneNode.classList.remove(`loaderWrapper`);
+    });
+};
+if (sortNodes && sortNodes.length) sortNodes.forEach(addReplaceEvents);

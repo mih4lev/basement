@@ -824,11 +824,40 @@ button {
         padding-left: 0;
         list-style-type: none;
         .listWrapper {
+            position: relative;
             width: 25%;
             min-width: 150px;
             max-width: 280px;
             @include minWidth(1440) {
                 width: 20%;
+            }
+            &.handleWrapper {
+                opacity: 0.2;
+            }
+            &.loaderWrapper {
+                &:before {
+                    content: "";
+                    z-index: 5;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(255, 255, 255, 0.5);
+                }
+                &:after {
+                    content: "";
+                    z-index: 6;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 36px;
+                    height: 36px;
+                    background-image: url("/public/images/vector/load-icon_blue.svg");
+                    background-size: 36px 36px;
+                    background-repeat: no-repeat;
+                }
             }
             .wrapperLink {
                 display: flex;
@@ -836,6 +865,10 @@ button {
                 margin: 5px;
                 color: $black;
                 text-decoration: none;
+                &.selected {
+                    z-index: 2;
+                    position: absolute;
+                }
                 &.addLink {
                     position: relative;
                     display: flex;
@@ -890,6 +923,12 @@ button {
                 .listTitle {
                     margin-top: 5px;
                     font-size: 14px;
+                }
+            }
+            &.hoverWrapper {
+                .wrapperLink {
+                    border: 3px solid $blue;
+                    margin: 2px;
                 }
             }
         }
@@ -1285,9 +1324,9 @@ button {
                 }
             }
         }
-        .imageWrapper:hover .deleteWrapper {
-            top: 0;
-        }
+        //.imageWrapper:hover .deleteWrapper {
+        //    top: 0;
+        //}
     }
 }
 
