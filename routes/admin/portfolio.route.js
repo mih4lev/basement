@@ -213,7 +213,7 @@ router.post(`/sort`, formParser.none(), async (request, response, next) => {
 router.post(`/images/sort`, formParser.none(), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     const responseData = await updateImagePositions(request.body);
-    setTimeout(() => response.json(responseData), responseTimeout);
+    setTimeout(() => response.json(responseData), 5000);
 });
 
 router.post(`/creators/edit`, formParser.none(), async (request, response, next) =>  {
