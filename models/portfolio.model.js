@@ -167,7 +167,8 @@ const requestWorkByLink = async (workLink) => {
         const { portfolioID } = workData;
         const imagesQuery = `
             SELECT ideas.ideaImage, ideas.ideaID, ideas.ideaTitle
-            FROM ideas WHERE ideas.portfolioID = ?
+            FROM ideas WHERE ideas.portfolioID = ? 
+            ORDER BY ideas.position
         `;
         workData.images = await DB(imagesQuery, [ portfolioID ]);
         return { page: workData };
