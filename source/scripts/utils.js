@@ -243,10 +243,17 @@ const createCustom = (nodeClone, { selector, name, value, isVisible, isLogin }) 
     dataNode.innerText = `CREATED BY YOU`;
 };
 
+const updateWrapper = (nodeClone, { wrapper, selector, data, value }) => {
+    const wrapperNode = nodeClone.querySelector(wrapper)
+    wrapperNode.classList.add(selector);
+    wrapperNode.dataset[data] = value;
+};
+
 export const renderElements = (elements) => {
     const template = document.querySelector(`.elementTemplate`);
     const nodeClone = template.content.cloneNode(true);
     elements.forEach(({ type, ...data }) => {
+        if (type === `wrapper`) updateWrapper(nodeClone, data)
         if (type === `link`) createLink(nodeClone, data);
         if (type === `picture`) createCover(nodeClone, data);
         if (type === `text`) createText(nodeClone, data);

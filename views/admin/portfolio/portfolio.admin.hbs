@@ -50,11 +50,15 @@
         const link = `/admin/portfolio/edit/` + portfolioID;
         return [
             {
+                type: `wrapper`, wrapper: `.listWrapper`, selector: `sortNode`,
+                data: `id`, value: portfolioID
+            },
+            {
                 type: `picture`, parent: `.imageWrapper`, alt: title, image: workImage,
                 imageSize, selector: `listImage`, data: `idea`, value: portfolioID
             },
             { type: `link`, selector: `.wrapperLink`, link },
-            { type: `text`, selector: `.listTitle`, text: title }
+            { type: `text`, selector: `.listTitle`, text: title },
         ];
     };
 </script>

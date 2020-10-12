@@ -536,7 +536,7 @@ const addReplaceEvents = (sortNode) => {
         removeHover();
         handleElement.classList.replace(`handleWrapper`, `loaderWrapper`);
         const cloneNode = handleElement.cloneNode(true);
-        addReplaceEvents(cloneNode);
+        // addReplaceEvents(cloneNode);
         sortWrapper.removeChild(handleElement);
         const changeNode = (hoverIndex > handleIndex) ? hoverElement.nextSibling : hoverElement;
         sortWrapper.insertBefore(cloneNode, changeNode);
@@ -550,3 +550,17 @@ const addReplaceEvents = (sortNode) => {
     });
 };
 if (sortNodes && sortNodes.length) sortNodes.forEach(addReplaceEvents);
+
+const loaderOptions = { attributes: true, childList: true, subtree: true };
+
+// Функция обратного вызова при срабатывании мутации
+const loaderCallback = (mutationsList) => {
+    mutationsList.forEach((mutation) => {
+        mutation.addedNodes.forEach((addedNode) => {
+            if (!addedNode.querySelector) return false;
+            addReplaceEvents(addedNode);
+        })
+    });
+};
+const observer = new MutationObserver(loaderCallback);
+observer.observe(sortWrapper, loaderOptions);
