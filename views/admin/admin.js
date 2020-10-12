@@ -422,12 +422,22 @@ previewsWrapper.forEach((wrapper) => {
         const isAddButton = (imageWrapper.classList.contains(`addWrapper`));
         const { dataset: { image: imageID }} = imageWrapper;
         return (event) => {
+            if (event.target.classList.contains(`deleteImageButton`)) return false;
             if (event.target.classList.contains(`uploadedButton`)) return false;
             if (isAddButton) return false;
             [...wrapper.querySelectorAll(`.imageWrapper`)].forEach(removeSelect);
             imageWrapper.classList.add(`workImage`);
             if (workImageField) workImageField.value = (imageID) ? imageID : 0;
         };
+    };
+    const addDeleteAction = (deleteButton) => {
+        let isActive = false;
+        deleteButton.addEventListener(`click`, () => {
+            const parentWrapper = deleteButton.parentNode.querySelector(`.deleteWrapper`);
+            const classAction = (isActive) ? `remove` : `add`;
+            parentWrapper.classList[classAction](`activeWrapper`);
+            isActive = !isActive;
+        });
     };
     const showPreview = (files) => {
         files.forEach((file) => {
@@ -444,6 +454,8 @@ previewsWrapper.forEach((wrapper) => {
                 const deleteButton = imageWrapper.querySelector(`.wrapperButton`);
                 deleteButton.addEventListener(`click`, deletePreview(imageWrapper));
                 imageWrapper.addEventListener(`click`, selectCurrent(imageWrapper));
+                const deleteImageButton = imageWrapper.querySelector(`.deleteImageButton`);
+                addDeleteAction(deleteImageButton);
                 imagePreview.src = reader.result;
                 imageWrapper.file = file;
                 wrapper.appendChild(imageWrapper);
@@ -479,6 +491,9 @@ previewsWrapper.forEach((wrapper) => {
             wrapper.classList.replace(`createdWrapper`, `uploadedWrapper`);
         });
     });
+    // delete image buttons
+    const deleteImageButtons = [...document.querySelectorAll(`.deleteImageButton`)];
+    deleteImageButtons.forEach(addDeleteAction);
 });
 
 // loader
@@ -491,7 +506,7 @@ const sortWrapper = document.querySelector(`.sortWrapper`);
 const sortNodes = [...document.querySelectorAll(`.sortNode`)];
 let hoverElement, handleElement;
 const requestIndex = (searchElement) => {
-    const sortNodes = [...document.querySelectorAll(`.listWrapper`)];
+    const sortNodes = [...document.querySelectorAll(`.sortNode`)];
     let searchIndex;
     sortNodes.forEach((element, index) => {
         if (element === searchElement) searchIndex = index;
@@ -500,7 +515,7 @@ const requestIndex = (searchElement) => {
 };
 const collectData = () => {
     const data = new FormData();
-    const sortNodes = [...document.querySelectorAll(`.listWrapper`)];
+    const sortNodes = [...document.querySelectorAll(`.sortNode`)];
     sortNodes.forEach((element, index) => {
         const { dataset: { id: portfolioID }} = element;
         data.append(portfolioID, index);
@@ -508,18 +523,18 @@ const collectData = () => {
     return data;
 };
 const removeHover = () => {
-    const sortNodes = [...document.querySelectorAll(`.listWrapper`)];
+    const sortNodes = [...document.querySelectorAll(`.sortNode`)];
     sortNodes.forEach((element) => element.classList.remove(`hoverWrapper`));
 };
 const addReplaceEvents = (sortNode) => {
     sortNode.addEventListener(`dragstart`, (event) => {
-        const handleWrapper = event.target.closest(`.listWrapper`);
+        const handleWrapper = event.target.closest(`.sortNode`);
         hoverElement = handleWrapper;
         handleElement = handleWrapper;
         hoverElement.classList.add(`handleWrapper`);
     });
     sortNode.addEventListener(`dragover`, (event) => {
-        const hoverWrapper = event.target.closest(`.listWrapper`);
+        const hoverWrapper = event.target.closest(`.sortNode`);
         if (hoverElement === hoverWrapper) return false;
         removeHover();
         hoverWrapper.classList.add(`hoverWrapper`);

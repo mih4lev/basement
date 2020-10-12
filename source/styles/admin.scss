@@ -1223,6 +1223,7 @@ button {
             width: 103px;
             height: 103px;
             background-color: $ghost;
+            cursor: pointer;
             &.workImage {
                 margin: 2px;
                 border: 3px solid $blue;
@@ -1274,6 +1275,12 @@ button {
                     }
                 }
             }
+            &.handleWrapper {
+                opacity: 0.2;
+            }
+            &.hoverWrapper {
+
+            }
             .imagePreview {
                 width: inherit;
                 height: inherit;
@@ -1323,10 +1330,59 @@ button {
                     }
                 }
             }
+            .deleteImageButton {
+                display: none;
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                padding: 0;
+                width: 16px;
+                height: 16px;
+                font-size: 0;
+                background-color: $white;
+                border-radius: 50%;
+                outline: none;
+                &:before, &:after {
+                    content: "";
+                    position: absolute;
+                    width: 10px;
+                    height: 2px;
+                    background-color: $black;
+                }
+                &:before {
+                    transform: translate(-50%, -50%) rotate(45deg);
+                }
+                &:after {
+                    transform: translate(-50%, -50%) rotate(-45deg);
+                }
+                &:hover {
+                    background-color: $black;
+                    &:before, &:after {
+                        background-color: $white;
+                    }
+                }
+            }
         }
         //.imageWrapper:hover .deleteWrapper {
         //    top: 0;
         //}
+        .imageWrapper:hover .deleteImageButton {
+            display: block;
+        }
+        .deleteWrapper.activeWrapper {
+            top: 0;
+        }
+        .deleteWrapper.activeWrapper + .deleteImageButton {
+            background-color: transparent;
+            &:before, &:after {
+                background-color: $white;
+            }
+            &:hover {
+                &:before, &:after {
+                    background-color: $blue;
+                }
+            }
+        }
     }
 }
 

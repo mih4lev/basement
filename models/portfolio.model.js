@@ -185,7 +185,8 @@ const requestImages = async (portfolioID) => {
                     SELECT COUNT(*) FROM portfolio 
                     WHERE portfolio.workImage = ideas.ideaID
                 ) as isCurrent
-            FROM ideas WHERE portfolioID = ?
+            FROM ideas WHERE portfolioID = ? 
+            ORDER BY position
         `;
         return { images: await DB(query, [ portfolioID ]) };
     } catch (error) {
@@ -210,10 +211,25 @@ const updatePositions = async (requestData) => {
     try {
         const promises = [];
         for (const portfolioID in requestData) {
-            const position = requestData[portfolioID];
-            const updateData = { position };
+            const updateData = { position: requestData[portfolioID] };
             const query = `UPDATE portfolio SET ? WHERE portfolioID = ?`;
             promises.push(DB(query, [updateData, portfolioID]))
+        }
+        await Promise.all(promises);
+        return { status: 1 };
+    } catch (error) {
+        console.log(error);
+        return { status: 0, error };
+    }
+};
+
+const updateImagePositions = async (requestData) => {
+    try {
+        const promises = [];
+        for (const ideaID in requestData) {
+            const updateData = { position: requestData[ideaID] };
+            const query = `UPDATE ideas SET ? WHERE ideaID = ?`;
+            promises.push(DB(query, [updateData, ideaID]))
         }
         await Promise.all(promises);
         return { status: 1 };
@@ -288,6 +304,6 @@ const deleteCreator = async ({ creatorID }) => {
 
 module.exports = {
     createWork, addCreator, requestFilteredPortfolio, requestPortfolio, requestHomePortfolio, requestWork,
-    requestWorkByLink, requestImages, requestCreators, updatePositions, updateWork, updateCreator,
-    deleteWork, deleteCreator
+    requestWorkByLink, requestImages, requestCreators, updatePositions, updateImagePositions, updateWork,
+    updateCreator, deleteWork, deleteCreator
 };

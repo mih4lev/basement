@@ -13,7 +13,7 @@ const { saveImages, deleteImages } = require("../../models/images.model");
 
 const {
     createWork, addCreator, requestPortfolio, requestWork, requestCreators, requestImages,
-    updatePositions, updateWork, updateCreator, deleteWork, deleteCreator
+    updatePositions, updateImagePositions, updateWork, updateCreator, deleteWork, deleteCreator
 } = require("../../models/portfolio.model");
 const {
     createPortfolioFilter, requestPortfolioFilters, updatePortfolioFilter, deletePortfolioFilter
@@ -207,6 +207,12 @@ router.post(`/edit`, imagesParser.fields(ideasImages), async (request, response,
 router.post(`/sort`, formParser.none(), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     const responseData = await updatePositions(request.body);
+    setTimeout(() => response.json(responseData), responseTimeout);
+});
+
+router.post(`/images/sort`, formParser.none(), async (request, response, next) => {
+    if (!request.data['userID'] || !request.data['isAdmin']) return next();
+    const responseData = await updateImagePositions(request.body);
     setTimeout(() => response.json(responseData), responseTimeout);
 });
 

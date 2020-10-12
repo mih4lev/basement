@@ -191,6 +191,16 @@
 
 </form>
 
+<template class="previewTemplate">
+    <div class="imageWrapper createdWrapper" data-name="ideaImage">
+        <img class="imagePreview" src="" alt="Image preview">
+        <div class="deleteWrapper">
+            <button class="wrapperButton" type="button" title="Delete photo">Delete</button>
+        </div>
+        <button class="deleteImageButton" type="button" title="Delete photo">Delete</button>
+    </div>
+</template>
+
 <template class="dropdownTemplate">
     <div class="dropdownElement">
         <div class="elementWrapper">
@@ -201,15 +211,6 @@
             <input class="editField" type="text" value="">
             <button class="saveButton" data-api="/admin/portfolio/creators/edit"
                     type="button" title="Save company">Save company</button>
-        </div>
-    </div>
-</template>
-
-<template class="previewTemplate">
-    <div class="imageWrapper createdWrapper" data-name="ideaImage">
-        <img class="imagePreview" src="" alt="Image preview">
-        <div class="deleteWrapper">
-            <button class="wrapperButton" type="button" title="Delete photo">Delete</button>
         </div>
     </div>
 </template>
