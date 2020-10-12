@@ -208,12 +208,14 @@ const requestCreators = async () => {
 
 const updatePositions = async (requestData) => {
     try {
+        const promises = [];
         for (const portfolioID in requestData) {
             const position = requestData[portfolioID];
             const updateData = { position };
             const query = `UPDATE portfolio SET ? WHERE portfolioID = ?`;
-            await DB(query, [updateData, portfolioID]);
+            promises.push(DB(query, [updateData, portfolioID]))
         }
+        await Promise.all(promises);
         return { status: 1 };
     } catch (error) {
         console.log(error);
