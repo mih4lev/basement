@@ -563,4 +563,4 @@ const loaderCallback = (mutationsList) => {
     });
 };
 const observer = new MutationObserver(loaderCallback);
-observer.observe(sortWrapper, loaderOptions);
+if (sortWrapper) observer.observe(sortWrapper, loaderOptions);
