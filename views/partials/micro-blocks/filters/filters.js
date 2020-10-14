@@ -200,7 +200,8 @@ export const filters = () => {
             // set titles visible
             setTitlesVisible();
             // add || update filters
-            updateHiddenField(currentMin, currentMax);
+            const maxValue = (currentMax >= max) ? 100000 : currentMax; // if more then max => show all
+            updateHiddenField(currentMin, maxValue);
         };
         setRange();
         const rangeHandler = (rangeNode) => {
@@ -224,7 +225,10 @@ export const filters = () => {
                 rangeLine.dataset[currentValue] = String(Math.floor(changeValue));
                 startValue = eventValue;
                 // set values
-                const setValue = (valueNode) => valueNode.innerText = Math.floor(changeValue);
+                const setValue = (valueNode) => {
+                    const value = Math.floor(changeValue);
+                    valueNode.innerText = (value >= max) ? `${max}+` : value;
+                };
                 const valuesNode = (isMinButton) ? minValueNodes : maxValueNodes;
                 valuesNode.forEach(setValue);
                 setRange();
