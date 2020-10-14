@@ -171,6 +171,11 @@
                                href="/admin/how-it-works/basement-tips/">All basement tips</a>
                         {{/ if }}
                     </li>
+                    {{# if isTipEdit }}
+                        <li class="subMenuWrapper">
+                            <span class="subMenuLink activeLink editLink">Edit tip {{{ page.tipID }}}</span>
+                        </li>
+                    {{/ if }}
                     <li class="subMenuWrapper">
                         {{# if isAdminTipsAdd }}
                             <span class="subMenuLink addLink activeLink">Add new basement tip</span>
@@ -192,6 +197,13 @@
                                href="/admin/about-us/testimonials/">All testimonials</a>
                         {{/ if }}
                     </li>
+                    {{# if isTestimonialEdit }}
+                        <li class="subMenuWrapper">
+                            <span class="subMenuLink activeLink editLink">
+                                Edit testimonial {{{ page.testimonialID }}}
+                            </span>
+                        </li>
+                    {{/ if }}
                     <li class="subMenuWrapper">
                         {{# if isAdminTestimonialsAdd }}
                             <span class="subMenuLink addLink activeLink">Add new testimonial</span>
@@ -207,6 +219,13 @@
                             <a class="subMenuLink" href="/admin/about-us/press/">All press</a>
                         {{/ if }}
                     </li>
+                    {{# if isPressEdit }}
+                        <li class="subMenuWrapper">
+                            <span class="subMenuLink activeLink editLink">
+                                Edit press {{{ page.pressID }}}
+                            </span>
+                        </li>
+                    {{/ if }}
                     <li class="subMenuWrapper">
                         {{# if isAdminPressAdd }}
                             <span class="subMenuLink addLink activeLink">Add new press</span>

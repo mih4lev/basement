@@ -873,7 +873,7 @@ button {
                     position: relative;
                     display: flex;
                     align-items: center;
-                    padding-top: 80px;
+                    padding-top: 70px;
                     box-sizing: border-box;
                     height: 150px;
                     font-size: 14px;
@@ -923,6 +923,9 @@ button {
                 .listTitle {
                     margin-top: 5px;
                     font-size: 14px;
+                    &.minTitle {
+                        font-size: 13px;
+                    }
                 }
             }
             &.hoverWrapper {
@@ -945,7 +948,7 @@ button {
                 }
                 &.addLink {
                     height: 100%;
-                    padding-top: 70px;
+                    padding-top: 90px;
                     background-color: transparent;
                 }
                 &:hover {

@@ -6,13 +6,15 @@ const formParser = multer();
 const uploadDir = `public/upload/tips/`;
 const imagesParser = multer({ dest: uploadDir });
 
+const responseTimeout = 0;
+
 const { requestContent } = require("../../models/utils.model");
 const { requestMeta, updateMeta } = require("../../models/pages.model");
 const { saveImages, deleteImages } = require("../../models/images.model");
 
 const {
     createTip, createCategory, requestTips, requestTip, requestCategories,
-    updateTip, updateCategory, deleteTip, deleteCategory
+    updateTip, updateCategory, updatePositions, deleteTip, deleteCategory
 } = require("../../models/tips.model");
 
 const { requestModerateCount } = require("../../models/ideas.model");
@@ -137,7 +139,7 @@ router.post(`/basement-tips/categories`, formParser.none(), async (request, resp
 router.get(`/basement-tips/edit/:tipID`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
-    request.data['isAdminTips'] = true;
+    request.data['isTipEdit'] = true;
     const { params: { tipID }} = request;
     const content = requestContent(await Promise.all([
         requestTip(tipID), requestCategories(), requestModerateCount()
@@ -165,6 +167,12 @@ router.post(`/basement-tips/categories/edit`, formParser.none(), async (request,
     const actionFunc = (categoryName.length) ? updateCategory : deleteCategory;
     const responseData = await actionFunc(request.body);
     setTimeout(() => response.json(responseData), 0);
+});
+
+router.post(`/basement-tips/sort`, formParser.none(), async (request, response, next) => {
+    if (!request.data['userID'] || !request.data['isAdmin']) return next();
+    const responseData = await updatePositions(request.body);
+    setTimeout(() => response.json(responseData), responseTimeout);
 });
 
 // TIPS DELETE

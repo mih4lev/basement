@@ -31,12 +31,13 @@
 </form>
 
 <section class="listSection">
-    <ul class="listNode">
+    <p class="listTitle">Press:</p>
+    <ul class="listNode normalVisible sortWrapper" data-sort="/admin/about-us/press/sort">
         <li class="listWrapper">
             <a class="wrapperLink addLink" href="/admin/about-us/press/add">New press</a>
         </li>
         {{# each press }}
-            <li class="listWrapper">
+            <li class="listWrapper sortNode" data-id="{{{ pressID }}}">
                 <a class="wrapperLink" href="/admin/about-us/press/edit/{{{ pressID }}}">
                     {{# if pressImage }}
                         <img class="listImage" src="{{{ pressImage }}}_330x173.jpg"
@@ -44,7 +45,7 @@
                     {{ else }}
                         <div class="defaultImage"></div>
                     {{/ if }}
-                    <span class="listTitle">{{{ pressTitle }}}</span>
+                    <span class="listTitle minTitle">{{{ pressTitle }}}</span>
                 </a>
             </li>
         {{/ each }}

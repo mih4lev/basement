@@ -36,7 +36,7 @@ const requestTips = async ({ limit = 100000 } = {}) => {
                 DATE_FORMAT(tips.timestamp, "%m/%d/%Y") AS tipDate, tips_categories.categoryName
             FROM tips 
             LEFT JOIN tips_categories ON tips.categoryID = tips_categories.categoryID
-            ORDER BY tips.timestamp DESC LIMIT ?
+            ORDER BY tips.position LIMIT ?
         `;
         const tips = await DB(query, [ limit ]);
         if (tips.length) tips[0].isFirstCard = true;
@@ -56,7 +56,7 @@ const requestFilteredTips = async ({ categories, limit = 100000 } = {}) => {
             FROM tips 
             LEFT JOIN tips_categories ON tips.categoryID = tips_categories.categoryID
             WHERE tips.categoryID IN (?)
-            ORDER BY tips.timestamp DESC LIMIT ?
+            ORDER BY tips.position LIMIT ?
         `;
         return { tips: await DB(query, [ categories, limit ]) };
     } catch (error) {
@@ -161,6 +161,22 @@ const updateCategory = async ({ categoryID, ...updateData }) => {
     }
 };
 
+const updatePositions = async (requestData) => {
+    try {
+        const promises = [];
+        for (const tipID in requestData) {
+            const updateData = { position: requestData[tipID] };
+            const query = `UPDATE tips SET ? WHERE tipID = ?`;
+            promises.push(DB(query, [updateData, tipID]))
+        }
+        await Promise.all(promises);
+        return { status: 1 };
+    } catch (error) {
+        console.log(error);
+        return { status: 0, error };
+    }
+};
+
 // DELETE
 
 const deleteTip = async (tipID) => {
@@ -189,5 +205,6 @@ const deleteCategory = async ({ categoryID }) => {
 
 module.exports = {
     createTip, createCategory, requestTips, requestTip, requestCategories, requestTipsCount,
-    requestTipByLink, requestFilteredTips, updateTip, updateCategory, deleteTip, deleteCategory
+    requestTipByLink, requestFilteredTips, updateTip, updateCategory,
+    updatePositions, deleteTip, deleteCategory
 };

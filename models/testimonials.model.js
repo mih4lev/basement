@@ -21,7 +21,7 @@ const requestTestimonials = async ({ limit = 100000 } = {}) => {
         const query = `
             SELECT testimonialID, testimonialAuthor, testimonialImage, testimonialState, testimonialRating, 
                    testimonialAnnounce, DATE_FORMAT(timestamp, "%m/%d/%Y") AS testimonialDate, testimonialLink
-            FROM testimonials ORDER BY timestamp DESC LIMIT ?
+            FROM testimonials ORDER BY position LIMIT ?
         `;
         return { testimonials: await DB(query, [ limit ]) };
     } catch (error) {
@@ -98,6 +98,22 @@ const updateTestimonial = async ({ testimonialID, ...updateData }) => {
     }
 };
 
+const updatePositions = async (requestData) => {
+    try {
+        const promises = [];
+        for (const testimonialID in requestData) {
+            const updateData = { position: requestData[testimonialID] };
+            const query = `UPDATE testimonials SET ? WHERE testimonialID = ?`;
+            promises.push(DB(query, [updateData, testimonialID]))
+        }
+        await Promise.all(promises);
+        return { status: 1 };
+    } catch (error) {
+        console.log(error);
+        return { status: 0, error };
+    }
+};
+
 // DELETE
 
 const deleteTestimonial = async (testimonialID) => {
@@ -114,5 +130,5 @@ const deleteTestimonial = async (testimonialID) => {
 
 module.exports = {
     createTestimonial, requestTestimonials, requestTestimonial, requestTestimonialsCount,
-    requestTestimonialByLink, updateTestimonial, deleteTestimonial
+    requestTestimonialByLink, updateTestimonial, updatePositions, deleteTestimonial
 };

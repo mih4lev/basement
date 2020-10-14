@@ -31,12 +31,13 @@
 </form>
 
 <section class="listSection">
-    <ul class="listNode">
+    <p class="listTitle">Basement tips:</p>
+    <ul class="listNode normalVisible sortWrapper" data-sort="/admin/how-it-works/basement-tips/sort">
         <li class="listWrapper">
             <a class="wrapperLink addLink" href="/admin/how-it-works/basement-tips/add">New tip</a>
         </li>
         {{# each tips }}
-        <li class="listWrapper">
+        <li class="listWrapper sortNode" data-id="{{{ tipID }}}">
             <a class="wrapperLink" href="/admin/how-it-works/basement-tips/edit/{{{ tipID }}}">
                 {{# if tipImage }}
                     <img class="listImage" src="{{{ tipImage }}}_330x173.jpg"
@@ -44,7 +45,7 @@
                 {{ else }}
                     <div class="defaultImage"></div>
                 {{/ if }}
-                <span class="listTitle">{{{ tipTitle }}}</span>
+                <span class="listTitle minTitle">{{{ tipTitle }}}</span>
             </a>
         </li>
         {{/ each }}

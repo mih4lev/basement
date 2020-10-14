@@ -8,15 +8,18 @@ const pressDir = `public/upload/press/`;
 const testimonialsImagesParser = multer({ dest: testimonialsDir });
 const pressImagesParser = multer({ dest: pressDir });
 
+const responseTimeout = 0;
+
 const { requestContent } = require("../../models/utils.model");
 const { requestMeta, updateMeta } = require("../../models/pages.model");
 const { saveImages, deleteImages } = require("../../models/images.model");
 const {
-    createPress, requestPress, requestArticle, updatePress, deletePress
+    createPress, requestPress, requestArticle, updatePress,
+    updatePositions: updatePressPositions, deletePress
 } = require("../../models/press.model");
 const {
     createTestimonial, requestTestimonials, requestTestimonial,
-    updateTestimonial, deleteTestimonial
+    updateTestimonial, updatePositions: updateTestimonialsPositions, deleteTestimonial
 } = require("../../models/testimonials.model");
 
 const { requestModerateCount } = require("../../models/ideas.model");
@@ -98,7 +101,7 @@ router.post(`/testimonials/add`, testimonialsImagesParser.fields(testimonialImag
 router.get(`/testimonials/edit/:testimonialID`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
-    request.data['isAdminTestimonials'] = true;
+    request.data['isTestimonialEdit'] = true;
     const { params: { testimonialID }} = request;
     const content = requestContent(await Promise.all([
         requestTestimonial(testimonialID),
@@ -121,6 +124,12 @@ router.post(`/testimonials/edit`, testimonialsImagesParser.fields(testimonialIma
     const formData = { ...request.body, ...files };
     const responseData = await updateTestimonial(formData);
     setTimeout(() => response.json(responseData), 0);
+});
+
+router.post(`/testimonials/sort`, formParser.none(), async (request, response, next) => {
+    if (!request.data['userID'] || !request.data['isAdmin']) return next();
+    const responseData = await updateTestimonialsPositions(request.body);
+    setTimeout(() => response.json(responseData), responseTimeout);
 });
 
 // TESTIMONIALS DELETE
@@ -178,7 +187,7 @@ router.post(`/press/add`, pressImagesParser.fields(pressImages), async (request,
 router.get(`/press/edit/:pressID`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
-    request.data['isAdminPress'] = true;
+    request.data['isPressEdit'] = true;
     const { params: { pressID }} = request;
     const content = requestContent(await Promise.all([
         requestArticle(pressID), requestModerateCount()
@@ -200,6 +209,12 @@ router.post(`/press/edit`, pressImagesParser.fields(pressImages), async (request
     const formData = { ...request.body, ...files };
     const responseData = await updatePress(formData);
     setTimeout(() => response.json(responseData), 0);
+});
+
+router.post(`/press/sort`, formParser.none(), async (request, response, next) => {
+    if (!request.data['userID'] || !request.data['isAdmin']) return next();
+    const responseData = await updatePressPositions(request.body);
+    setTimeout(() => response.json(responseData), responseTimeout);
 });
 
 // PRESS DELETE

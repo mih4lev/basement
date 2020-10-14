@@ -22,7 +22,7 @@ const requestPress = async ({ limit = 100000 } = {}) => {
             SELECT 
                 pressID, pressTitle, pressAnnounce, pressMagazine, pressImage, pressLink, 
                 DATE_FORMAT(press.timestamp, "%m/%d/%Y") AS pressDate 
-            FROM press ORDER BY timestamp DESC LIMIT ?
+            FROM press ORDER BY position LIMIT ?
         `;
         return { press: await DB(query, [ limit ]) };
     } catch (error) {
@@ -84,6 +84,22 @@ const updatePress = async ({ pressID, ...updateData }) => {
     }
 };
 
+const updatePositions = async (requestData) => {
+    try {
+        const promises = [];
+        for (const pressID in requestData) {
+            const updateData = { position: requestData[pressID] };
+            const query = `UPDATE press SET ? WHERE pressID = ?`;
+            promises.push(DB(query, [updateData, pressID]))
+        }
+        await Promise.all(promises);
+        return { status: 1 };
+    } catch (error) {
+        console.log(error);
+        return { status: 0, error };
+    }
+};
+
 // DELETE
 
 const deletePress = async (pressID) => {
@@ -100,5 +116,5 @@ const deletePress = async (pressID) => {
 
 module.exports = {
     createPress, requestPress, requestArticle, requestPressCount,
-    requestArticleByLink, updatePress, deletePress
+    requestArticleByLink, updatePress, updatePositions, deletePress
 };

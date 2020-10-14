@@ -529,6 +529,7 @@ const removeHover = () => {
 };
 const addReplaceEvents = (sortNode) => {
     sortNode.addEventListener(`dragstart`, (event) => {
+        event.dataTransfer.effectAllowed = `move`;
         const handleWrapper = event.target.closest(`.sortNode`);
         hoverElement = handleWrapper;
         handleElement = handleWrapper;
@@ -537,9 +538,11 @@ const addReplaceEvents = (sortNode) => {
     sortNode.addEventListener(`dragover`, (event) => {
         const hoverWrapper = event.target.closest(`.sortNode`);
         if (hoverElement === hoverWrapper) return false;
+        event.dataTransfer.dropEffect = `move`;
         removeHover();
         hoverWrapper.classList.add(`hoverWrapper`);
         hoverElement = hoverWrapper;
+        event.preventDefault();
     });
     sortNode.addEventListener(`dragend`, async () => {
         if (hoverElement === handleElement) {
@@ -625,9 +628,8 @@ const addMainListeners = (moveNode) => {
         const handleIndex = nodeIndex(mainHandle);
         const changeNode = (selectIndex > handleIndex) ? mainSelect.nextSibling : mainSelect;
         mainHandle.parentNode.insertBefore(mainHandle, changeNode);
-        const body = collectIndex();
         const { dataset: { sort: URL }} = moveSection;
-        const response = await fetch(URL, { method: `POST`, body });
+        const response = await fetch(URL, { method: `POST`, body: collectIndex() });
         const data = await response.json();
         if (data.status !== 1) console.log(data.error);
         mainHandle = null; mainHandleNode = null; mainSelect = null;
@@ -652,7 +654,7 @@ const addChildListeners = (moveNode) => {
         moveNode.classList.add(`hoverNode`);
         event.preventDefault();
     });
-    moveNode.addEventListener(`dragleave`, (event) => {
+    moveNode.addEventListener(`dragleave`, () => {
         moveNode.classList.remove(`hoverNode`);
     });
     moveNode.addEventListener(`dragend`, async () => {

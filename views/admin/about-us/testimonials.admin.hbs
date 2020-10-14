@@ -31,12 +31,13 @@
 </form>
 
 <section class="listSection">
-    <ul class="listNode">
+    <p class="listTitle">Testimonials: </p>
+    <ul class="listNode normalVisible sortWrapper" data-sort="/admin/about-us/testimonials/sort">
         <li class="listWrapper">
             <a class="wrapperLink addLink" href="/admin/about-us/testimonials/add">New testimonial</a>
         </li>
         {{# each testimonials }}
-            <li class="listWrapper">
+            <li class="listWrapper sortNode" data-id="{{{ testimonialID }}}">
                 <a class="wrapperLink" href="/admin/about-us/testimonials/edit/{{{ testimonialID }}}">
                     {{# if testimonialImage }}
                         <img class="listImage" src="{{{ testimonialImage }}}_330x173.jpg"
@@ -44,7 +45,7 @@
                     {{ else }}
                         <div class="defaultImage"></div>
                     {{/ if }}
-                    <span class="listTitle">{{{ testimonialAuthor }}}</span>
+                    <span class="listTitle minTitle">{{{ testimonialAuthor }}}</span>
                 </a>
             </li>
         {{/ each }}
