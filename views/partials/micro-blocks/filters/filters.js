@@ -85,11 +85,27 @@ const filterClickHandler = (selectNode) => {
     }
 };
 
+const outsideClickListener = (dropdownLink) => {
+    setTimeout(() => {
+        const changeVisible = (event) => {
+            document.removeEventListener(`click`, changeVisible);
+            const clickNode = event.target;
+            if (
+                clickNode.classList.contains(`currentFilter`) ||
+                clickNode.classList.contains(`dropdownFilter`)
+            ) return false;
+            changeDropdownVisible(dropdownLink)();
+        };
+        document.addEventListener(`click`, changeVisible);
+    }, 0);
+};
+
 const changeDropdownVisible = (dropdownLink) => {
     return () => {
         const dropdownLinks = [...document.querySelectorAll(`.dropdownFilter`)];
         const isActive = dropdownLink.classList.contains(`activeFilter`);
         const classAction = (isActive) ? `remove` : `add`;
+        if (!isActive) outsideClickListener(dropdownLink);
         // unset active dropdown menu
         dropdownLinks.forEach((link) => link.classList.remove(`activeFilter`));
         dropdownLink.classList[classAction](`activeFilter`);
