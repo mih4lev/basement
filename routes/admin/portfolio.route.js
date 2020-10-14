@@ -139,12 +139,12 @@ const saveIdeasImages = async ({ files, userID, creatorID = 9, ideaTitle, portfo
 
 router.post(`/add`, imagesParser.fields(ideasImages), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
-    const { possibleImage, workTitle, ...createData } = request.body;
-    const responseData = await createWork({ workTitle, ...createData });
+    const { possibleImage, workTitle, workCity, ...createData } = request.body;
+    const responseData = await createWork({ workTitle, workCity, ...createData });
     const { requestID: portfolioID } = responseData;
     const ideasData = {
         files: request.files, userID: request.data['userID'],
-        ideaTitle: workTitle, portfolioID
+        ideaTitle: `${workTitle}, ${workCity}`, portfolioID
     };
     const savedImages = await saveIdeasImages(ideasData);
     if (possibleImage) {

@@ -4,6 +4,7 @@ const { DB, singleDB } = require("./db.model");
 
 const createIdea = async ({ categoryArray, filterArray, ...ideaData }) => {
     try {
+        console.log(ideaData);
         const query = `INSERT INTO ideas SET ?`;
         const response = await DB(query, ideaData);
         const ideaID = response.insertId;

@@ -35,7 +35,6 @@ router.get(`/:categoryTitle`, async (request, response) => {
         requestCategoryIdeasByURL(ideasRequest),
         requestCategoryURLData(categoryTitle)
     ]));
-    console.log(content);
     const data = { ...request.data, ...content };
     const template = `pages/basement-ideas/categories/main-categories`;
     response.render(template, data);
