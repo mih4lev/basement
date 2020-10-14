@@ -1566,14 +1566,20 @@ button {
 .editWrapper {
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-start;
     width: 100%;
     ul {
         min-width: 300px;
-        margin: 0 40px 20px 0;
+        margin: 0 0 20px 0;
         padding: 0;
         list-style-type: none;
         li {
-            margin-bottom: 10px;
+            margin-bottom: 0;
+            padding: 5px 30px 5px 5px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 1px solid transparent;
+            cursor: pointer;
             form {
                 position: relative;
                 display: flex;
@@ -1657,21 +1663,33 @@ button {
             }
             .fieldWrapper {
                 margin: 0 5px;
+                &:first-of-type {
+                    margin: 0 5px 0 0;
+                }
+                &:last-of-type {
+                    margin: 0 0 0 5px;
+                }
+                &:first-of-type:last-of-type {
+                    margin: 0;
+                }
             }
             .categoryField {
                 font-size: 14px;
             }
             .saveButton {
                 position: absolute;
-                right: -15px;
+                z-index: 2;
+                right: -25px;
+                display: block;
                 padding: 0;
-                width: 13px;
-                height: 11px;
+                width: 20px;
+                height: 20px;
                 font-size: 0;
-                background-color: transparent;
+                background-color: #EEE;
                 background-image: url("/public/images/vector/confirm_icon_grey.svg");
                 background-repeat: no-repeat;
                 background-size: 13px 11px;
+                background-position: center center;
                 &:hover {
                     background-image: url("/public/images/vector/confirm_icon_blue.svg");
                 }
@@ -1684,6 +1702,37 @@ button {
                     &:after {
                         display: none;
                     }
+                }
+            }
+            .moveButton {
+                display: none;
+                position: absolute;
+                right: -22px;
+                padding: 0;
+                width: 16px;
+                height: 16px;
+                font-size: 0;
+                background-color: transparent;
+                background-image: url("/public/images/vector/move_icon.svg");
+                background-repeat: no-repeat;
+                background-size: 16px 16px;
+                &:hover {
+                    background-image: url("/public/images/vector/move_icon-blue.svg");
+                }
+                &.hiddenButton {
+                    display: none;
+                }
+                &.loadButton {
+                    background-image: url("/public/images/vector/move_icon-blue.svg");
+                    animation: rotate 1s linear infinite;
+                    &:after {
+                        display: none;
+                    }
+                }
+            }
+            &:hover {
+                .moveButton {
+                    display: block;
                 }
             }
         }
@@ -1754,6 +1803,66 @@ button {
                 .fieldLabel {
                     font-size: 13px;
                 }
+            }
+        }
+    }
+}
+
+.moveWrapper {
+    border: 1px solid transparent;
+    border-radius: 5px;
+    .moveNode {
+        position: relative;
+        &:after {
+            display: none;
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 8px;
+            transform: translateY(-50%);
+            width: 14px;
+            height: 14px;
+            background-size: 14px 14px;
+            background-image: url("/public/images/vector/move_icon.svg");
+        }
+        &:hover {
+            border: 1px dashed $grey;
+            &:after {
+                display: block;
+            }
+        }
+        &.hoverNode {
+            border: 1px dashed $blue;
+            &:after {
+                display: block;
+                width: 16px;
+                height: 16px;
+                background-size: 16px 16px;
+                background-image: url("/public/images/vector/drop_icon.svg");
+            }
+        }
+        &.activeNode {
+            opacity: 0.25;
+            border-color: transparent;
+            &:after {
+                display: none;
+            }
+        }
+    }
+    &.hoverWrapper {
+        border: 1px dashed $blue;
+        .moveNode {
+            &:hover {
+                border-color: transparent;
+            }
+        }
+    }
+    &.activeWrapper {
+        opacity: 0.25;
+        border: 1px dashed $grey;
+        .moveNode {
+            &:hover {
+                border-color: transparent;
             }
         }
     }

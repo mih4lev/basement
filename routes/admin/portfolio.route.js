@@ -13,7 +13,8 @@ const { saveImages, deleteImages } = require("../../models/images.model");
 
 const {
     createWork, addCreator, requestPortfolio, requestWork, requestCreators, requestImages,
-    updatePositions, updateImagePositions, updateWork, updateCreator, deleteWork, deleteCreator
+    updatePositions, updateImagePositions, updateFiltersPositions,
+    updateWork, updateCreator, deleteWork, deleteCreator
 } = require("../../models/portfolio.model");
 const {
     createPortfolioFilter, requestPortfolioFilters, updatePortfolioFilter, deletePortfolioFilter
@@ -94,6 +95,12 @@ router.get(`/filters`, async (request, response, next) => {
     const data = { ...request.data, ...content };
     const template = `admin/portfolio/portfolio-filters.admin.hbs`;
     response.render(template, data);
+});
+
+router.post(`/filters/sort`, formParser.none(), async (request, response, next) => {
+    if (!request.data['userID'] || !request.data['isAdmin']) return next();
+    const responseData = await updateFiltersPositions(request.body);
+    setTimeout(() => response.json(responseData), responseTimeout);
 });
 
 // ADD

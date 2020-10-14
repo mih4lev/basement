@@ -240,6 +240,22 @@ const updateImagePositions = async (requestData) => {
     }
 };
 
+const updateFiltersPositions = async (requestData) => {
+    try {
+        const promises = [];
+        for (const portfolioID in requestData) {
+            const updateData = { position: requestData[portfolioID] };
+            const query = `UPDATE portfolio_filters SET ? WHERE filterID = ?`;
+            promises.push(DB(query, [updateData, portfolioID]))
+        }
+        await Promise.all(promises);
+        return { status: 1 };
+    } catch (error) {
+        console.log(error);
+        return { status: 0, error };
+    }
+};
+
 const updateWork = async (requestData, hasFilters = false) => {
     const { portfolioID, portfolioImages, filterArray, ...updateData } = requestData;
     try {
@@ -305,6 +321,6 @@ const deleteCreator = async ({ creatorID }) => {
 
 module.exports = {
     createWork, addCreator, requestFilteredPortfolio, requestPortfolio, requestHomePortfolio, requestWork,
-    requestWorkByLink, requestImages, requestCreators, updatePositions, updateImagePositions, updateWork,
-    updateCreator, deleteWork, deleteCreator
+    requestWorkByLink, requestImages, requestCreators, updatePositions, updateImagePositions,
+    updateFiltersPositions, updateWork, updateCreator, deleteWork, deleteCreator
 };

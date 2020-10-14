@@ -372,7 +372,7 @@ const requestFilteredIdeas = async ({ limit = 1000000, userID = 0, filterArray, 
             JOIN users ON ideas.userID = users.userID
             JOIN ideas_properties as filters ON ideas.ideaID = filters.ideaID
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
-            WHERE filters.filterID IN (?)
+            WHERE filters.filterID IN (?) && ideas.isModerated = 1 
             GROUP BY ideas.ideaID 
             ORDER BY ?? DESC LIMIT ?
         `;
@@ -617,6 +617,22 @@ const updateIdea = async (requestData = {}, hasCategories = false, hasFilters = 
     }
 };
 
+const updatePositions = async (requestData) => {
+    try {
+        const promises = [];
+        for (const filterID in requestData) {
+            const updateData = { position: requestData[filterID] };
+            const query = `UPDATE ideas_filters SET ? WHERE filterID = ?`;
+            promises.push(DB(query, [updateData, filterID]))
+        }
+        await Promise.all(promises);
+        return { status: 1 };
+    } catch (error) {
+        console.log(error);
+        return { status: 0, error };
+    }
+};
+
 const updateCreator = async ({ creatorID, ...updateData } = {}) => {
     try {
         const query = `UPDATE ideas_creators SET ? WHERE creatorID = ?`;
@@ -661,5 +677,5 @@ module.exports = {
     requestIdeasByPortfolioID, requestCategoryIdeasByID, requestCategoryFilteredIdeasByID,
     requestCategoryIdeasByURL, requestCategoryFilteredIdeasByURL, requestModerateCount,
     requestUserIdeas, requestUploadIdeas, requestCreators, requestHomeIdeas, updateIdea,
-    updateCreator, deleteIdea, deleteCreator
+    updatePositions, updateCreator, deleteIdea, deleteCreator
 };

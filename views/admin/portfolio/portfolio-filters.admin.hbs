@@ -1,10 +1,10 @@
-<div class="editWrapper editFilters">
+<div class="editWrapper editFilters moveSection" data-sort="/admin/portfolio/filters/sort">
     {{# each filters }}
-        <ul>
-            <li>
+        <ul class="moveWrapper" data-id="{{{ filterID }}}">
+            <li class="moveNode mainNode" data-id="{{{ filterID }}}" draggable="true">
                 <form action="/admin/portfolio/filters/edit">
                     <div class="fieldWrapper">
-                        <label class="fieldLabel"
+                        <label class="fieldLabel greyLabel fixedLabel"
                                for="filter{{{ filterID }}}">Filter title</label>
                         <input class="categoryField titleField" name="filterTitle" type="text"
                                id="filter{{{ filterID }}}" value="{{{ filterTitle }}}">
@@ -18,17 +18,17 @@
             {{# if children }}
                 <ul>
                     {{# each children }}
-                        <li>
+                        <li class="moveNode childNode" data-id="{{{ filterID }}}" draggable="true">
                             <form action="/admin/portfolio/filters/edit">
                                 <div class="fieldWrapper">
-                                    <label class="fieldLabel"
+                                    <label class="fieldLabel greyLabel fixedLabel"
                                            for="filter{{{ filterID }}}">Filter title</label>
                                     <input class="categoryField titleField" name="filterTitle" type="text"
                                            id="filter{{{ filterID }}}" value="{{{ filterTitle }}}">
                                 </div>
                                 {{# if filterColor }}
                                     <div class="fieldWrapper">
-                                        <label class="fieldLabel"
+                                        <label class="fieldLabel greyLabel fixedLabel"
                                                for="filterColor{{{ filterID }}}">Filter color</label>
                                         <input class="categoryField colorField" name="filterColor" type="text"
                                                id="filterColor{{{ filterID }}}" value="{{{ filterColor }}}">

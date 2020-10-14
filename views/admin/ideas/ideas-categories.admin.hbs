@@ -1,7 +1,7 @@
-<div class="editWrapper editCategories">
+<div class="editWrapper editCategories moveSection" data-sort="/admin/basement-ideas/categories/sort">
     {{# each categories }}
-        <ul>
-            <li>
+        <ul class="moveWrapper" data-id="{{{ categoryID }}}">
+            <li class="moveNode mainNode" data-id="{{{ categoryID }}}" draggable="true">
                 <form action="/admin/basement-ideas/categories/edit">
                     <div class="imageWrapper">
                         <div class="uploadWrapper existCategory">
@@ -12,17 +12,17 @@
                             {{# if categoryImage }}
                                 <img class="categoryPreview" alt="Category image"
                                      src="{{{ categoryImage }}}_137x137.jpg">
-                            {{/if}}
+                            {{/ if }}
                         </div>
                     </div>
                     <div class="fieldWrapper">
-                        <label class="fieldLabel"
+                        <label class="fieldLabel greyLabel fixedLabel"
                                for="category{{{ categoryID }}}">Category title</label>
                         <input class="categoryField titleField" name="categoryTitle" type="text"
                                id="category{{{ categoryID }}}" value="{{{ categoryTitle }}}">
                     </div>
                     <div class="fieldWrapper">
-                        <label class="fieldLabel"
+                        <label class="fieldLabel greyLabel fixedLabel"
                                for="link{{{ categoryID }}}">Category link</label>
                         <input class="categoryField linkField" name="categoryLink" type="text"
                                id="link{{{ categoryID }}}" value="{{{ categoryLink }}}">
@@ -38,7 +38,7 @@
             {{# if children }}
                 <ul>
                     {{# each children }}
-                        <li>
+                        <li class="moveNode childNode" data-id="{{{ categoryID }}}" draggable="true">
                             <form action="/admin/basement-ideas/categories/edit">
                                 <div class="imageWrapper">
                                     <div class="uploadWrapper existCategory">
@@ -53,13 +53,13 @@
                                     </div>
                                 </div>
                                 <div class="fieldWrapper">
-                                    <label class="fieldLabel"
+                                    <label class="fieldLabel greyLabel fixedLabel"
                                            for="category{{{ categoryID }}}">Category title</label>
                                     <input class="categoryField titleField" name="categoryTitle" type="text"
                                            id="category{{{ categoryID }}}" value="{{{ categoryTitle }}}">
                                 </div>
                                 <div class="fieldWrapper">
-                                    <label class="fieldLabel"
+                                    <label class="fieldLabel greyLabel fixedLabel"
                                            for="link{{{ categoryID }}}">Category link</label>
                                     <input class="categoryField linkField" name="categoryLink" type="text"
                                            id="link{{{ categoryID }}}" value="{{{ categoryLink }}}">
@@ -75,7 +75,7 @@
                         {{# if children }}
                             <ul data-parent="{{{ categoryID }}}">
                                 {{# each children }}
-                                    <li>
+                                    <li class="moveNode innerNode" data-id="{{{ categoryID }}}" draggable="true">
                                         <form action="/admin/basement-ideas/categories/edit">
                                             <div class="imageWrapper">
                                                 <div class="uploadWrapper existCategory">
@@ -90,13 +90,13 @@
                                                 </div>
                                             </div>
                                             <div class="fieldWrapper">
-                                                <label class="fieldLabel"
+                                                <label class="fieldLabel greyLabel fixedLabel"
                                                        for="category{{{ categoryID }}}">Category title</label>
                                                 <input class="categoryField titleField" name="categoryTitle" type="text"
                                                        id="category{{{ categoryID }}}" value="{{{ categoryTitle }}}">
                                             </div>
                                             <div class="fieldWrapper">
-                                                <label class="fieldLabel"
+                                                <label class="fieldLabel greyLabel fixedLabel"
                                                        for="link{{{ categoryID }}}">Category link</label>
                                                 <input class="categoryField linkField" name="categoryLink" type="text"
                                                        id="link{{{ categoryID }}}" value="{{{ categoryLink }}}">

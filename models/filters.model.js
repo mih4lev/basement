@@ -4,7 +4,13 @@ const { DB } = require("./db.model");
 
 const createIdeasFilter = async (pageData) => {
     try {
-        const query = `INSERT INTO ideas_filters SET ?`;
+        const query = `
+            INSERT INTO ideas_filters SET ?, 
+            position = (
+                SELECT filters.position FROM ideas_filters as filters 
+                ORDER BY filters.filterID DESC LIMIT 1
+            ) + 1
+        `;
         const response = await DB(query, pageData);
         const status = Number(response.affectedRows && response.affectedRows === 1);
         return { status, requestID: Number(response.insertId) };
@@ -15,7 +21,13 @@ const createIdeasFilter = async (pageData) => {
 
 const createPortfolioFilter = async (pageData) => {
     try {
-        const query = `INSERT INTO portfolio_filters SET ?`;
+        const query = `
+            INSERT INTO portfolio_filters SET ?, 
+            position = (
+                SELECT filters.position FROM portfolio_filters as filters 
+                ORDER BY filters.filterID DESC LIMIT 1
+            ) + 1
+        `;
         const response = await DB(query, pageData);
         const status = Number(response.affectedRows && response.affectedRows === 1);
         return { status, requestID: Number(response.insertId) };
@@ -47,6 +59,7 @@ const requestIdeasFilters = async (ideaID = 0) => {
                     WHERE ideas_properties.ideaID = ? && ideas_properties.filterID = ideas_filters.filterID
                 ) as isChosen
             FROM ideas_filters
+            ORDER BY ideas_filters.position
         `;
         const filtersData = await DB(query, [ideaID]);
         const filters = [];
@@ -90,6 +103,7 @@ const requestPortfolioFilters = async (portfolioID = 0) => {
                           portfolio_properties.filterID = portfolio_filters.filterID
                 ) as isChosen
             FROM portfolio_filters
+            ORDER BY portfolio_filters.position
         `;
         const filtersData = await DB(query, [portfolioID]);
         const filters = [];

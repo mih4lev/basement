@@ -388,7 +388,8 @@ const editWrapper = (wrapper) => {
         if (saveButton) {
             saveButton.addEventListener(`click`, async () => {
                 const formData = new FormData(formNode);
-                const fieldTitle = formData.get(`categoryTitle`) || formData.get(`filterTitle`);
+                const fieldTitle = (formData.has(`categoryTitle`)) ?
+                    formData.get(`categoryTitle`) : formData.get(`filterTitle`);
                 const isEmpty = !fieldTitle.length;
                 const fieldID = formData.get(`categoryID`) || formData.get(`filterID`);
                 const isNew = !fieldID;
@@ -401,7 +402,7 @@ const editWrapper = (wrapper) => {
                     if (formData.get(`filterID`)) removeFilter();
                 }
                 hideButton(saveButton);
-                if (isNew) location.reload(); // need to create JS dynamic func
+                if (isNew || isEmpty) location.reload(); // need to create JS dynamic func
             });
         }
     });
@@ -474,7 +475,7 @@ previewsWrapper.forEach((wrapper) => {
         button.addEventListener(`click`, async () => {
             const { dataset: { image: imageID }} = button;
             const URL = `/admin/portfolio/images/${imageID}`;
-            const responseOptions = { URL, method: `delete`, button };
+            const responseOptions = { URL, method: `DELETE`, button };
             const responseData = await saveAction(responseOptions);
             if (responseData.status === 0) return false;
             const imageWrapper = button.closest(`.imageWrapper`);
@@ -565,10 +566,8 @@ const addReplaceEvents = (sortNode) => {
     });
 };
 if (sortNodes && sortNodes.length) sortNodes.forEach(addReplaceEvents);
-
+// mutation observer
 const loaderOptions = { attributes: true, childList: true, subtree: true };
-
-// Функция обратного вызова при срабатывании мутации
 const loaderCallback = (mutationsList) => {
     mutationsList.forEach((mutation) => {
         mutation.addedNodes.forEach((addedNode) => {
@@ -579,3 +578,98 @@ const loaderCallback = (mutationsList) => {
 };
 const observer = new MutationObserver(loaderCallback);
 if (sortWrapper) observer.observe(sortWrapper, loaderOptions);
+
+
+
+// categories && filters sorting
+const moveSection = document.querySelector(`.moveSection`);
+// main nodes
+const nodeIndex = (searchNode) => {
+    let searchIndex;
+    [...searchNode.parentNode.children].forEach((element, index) => {
+        if (element === searchNode) searchIndex = index;
+    });
+    return searchIndex;
+};
+const collectIndex = () => {
+    const data = new FormData();
+    const sortNodes = [...document.querySelectorAll(`.moveNode`)];
+    sortNodes.forEach((element, index) => {
+        const { dataset: { id: portfolioID }} = element;
+        data.append(portfolioID, index);
+    });
+    return data;
+};
+const mainNodes = [...document.querySelectorAll(`.moveNode.mainNode`)];
+let mainHandle, mainHandleNode, mainSelect;
+const addMainListeners = (moveNode) => {
+    const parentWrapper = moveNode.closest(`.moveWrapper`);
+    moveNode.addEventListener(`dragstart`, () => {
+        mainHandle = parentWrapper;
+        mainHandleNode = moveNode;
+        parentWrapper.classList.add(`activeWrapper`);
+    });
+    parentWrapper.addEventListener(`dragover`, () => {
+        if (!mainHandleNode || !mainHandleNode.classList.contains(`mainNode`)) return false;
+        mainSelect = parentWrapper;
+        parentWrapper.classList.add(`hoverWrapper`);
+    });
+    parentWrapper.addEventListener(`dragleave`, () => {
+        if (!parentWrapper) return false;
+        parentWrapper.classList.remove(`hoverWrapper`);
+    });
+    moveNode.addEventListener(`dragend`, async () => {
+        if (!mainHandle || !mainSelect) return false;
+        parentWrapper.classList.remove(`activeWrapper`);
+        const selectIndex = nodeIndex(mainSelect);
+        const handleIndex = nodeIndex(mainHandle);
+        const changeNode = (selectIndex > handleIndex) ? mainSelect.nextSibling : mainSelect;
+        mainHandle.parentNode.insertBefore(mainHandle, changeNode);
+        const body = collectIndex();
+        const { dataset: { sort: URL }} = moveSection;
+        const response = await fetch(URL, { method: `POST`, body });
+        const data = await response.json();
+        if (data.status !== 1) console.log(data.error);
+        mainHandle = null; mainHandleNode = null; mainSelect = null;
+    });
+};
+mainNodes.forEach(addMainListeners);
+// child nodes
+let childHandle, childSelect;
+const childNodes = [...document.querySelectorAll(`.moveNode.childNode`)];
+const addChildListeners = (moveNode) => {
+    moveNode.addEventListener(`dragstart`, (event) => {
+        event.dataTransfer.effectAllowed = `move`;
+        childHandle = moveNode;
+        childHandle.classList.add(`activeNode`);
+    });
+    moveNode.addEventListener(`dragover`, (event) => {
+        if (!childHandle) return false;
+        if (childHandle === moveNode) return false;
+        if (moveNode.parentNode !== childHandle.parentNode) return false;
+        event.dataTransfer.dropEffect = `move`;
+        childSelect = moveNode;
+        moveNode.classList.add(`hoverNode`);
+        event.preventDefault();
+    });
+    moveNode.addEventListener(`dragleave`, (event) => {
+        moveNode.classList.remove(`hoverNode`);
+    });
+    moveNode.addEventListener(`dragend`, async () => {
+        childHandle.classList.remove(`activeNode`);
+        if (!childHandle || !childSelect) return false;
+        if (childSelect.parentNode !== childHandle.parentNode) return false;
+        const selectIndex = nodeIndex(childSelect);
+        const handleIndex = nodeIndex(childHandle);
+        const changeNode = (selectIndex > handleIndex) ? childSelect.nextSibling : childSelect;
+        childHandle.parentNode.insertBefore(childHandle, changeNode);
+        childSelect.classList.remove(`hoverNode`);
+        const body = collectIndex();
+        const { dataset: { sort: URL }} = moveSection;
+        const response = await fetch(URL, { method: `POST`, body });
+        const data = await response.json();
+        if (data.status !== 1) console.log(data.error);
+        childHandle = null; childSelect = null;
+    });
+};
+childNodes.forEach(addChildListeners);

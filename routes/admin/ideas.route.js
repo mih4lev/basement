@@ -8,13 +8,15 @@ const imagesParser = multer({ dest: uploadDir });
 const categoriesUploadDir = `public/upload/categories/`;
 const categoriesParser = multer({ dest: categoriesUploadDir });
 
+const responseTimeout = 0;
+
 const { requestContent } = require("../../models/utils.model");
 const { saveImages, deleteImages } = require("../../models/images.model");
 
 const {
     createIdea, addCreator, requestAllIdeas, requestIdea, requestCreators,
     requestNewIdeas, requestModeratedIdeas, requestModerateCount, updateIdea, updateCreator,
-    deleteIdea, deleteCreator
+    updatePositions, deleteIdea, deleteCreator
 } = require("../../models/ideas.model");
 const {
     createCategory, requestCategories, updateCategory, deleteCategory
@@ -145,6 +147,12 @@ router.get(`/filters`, async (request, response, next) => {
     const data = { ...request.data, ...content };
     const template = `admin/ideas/ideas-filters.admin.hbs`;
     response.render(template, data);
+});
+
+router.post(`/filters/sort`, formParser.none(), async (request, response, next) => {
+    if (!request.data['userID'] || !request.data['isAdmin']) return next();
+    const responseData = await updatePositions(request.body);
+    setTimeout(() => response.json(responseData), responseTimeout);
 });
 
 // ADD
