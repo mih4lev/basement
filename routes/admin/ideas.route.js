@@ -16,7 +16,7 @@ const { saveImages, deleteImages } = require("../../models/images.model");
 const {
     createIdea, addCreator, requestAllIdeas, requestIdea, requestCreators,
     requestNewIdeas, requestModeratedIdeas, requestModerateCount, updateIdea, updateCreator,
-    updatePositions, deleteIdea, deleteCreator
+    updatePositions, updateCategoriesPositions, deleteIdea, deleteCreator
 } = require("../../models/ideas.model");
 const {
     createCategory, requestCategories, updateCategory, deleteCategory
@@ -149,12 +149,6 @@ router.get(`/filters`, async (request, response, next) => {
     response.render(template, data);
 });
 
-router.post(`/filters/sort`, formParser.none(), async (request, response, next) => {
-    if (!request.data['userID'] || !request.data['isAdmin']) return next();
-    const responseData = await updatePositions(request.body);
-    setTimeout(() => response.json(responseData), responseTimeout);
-});
-
 // ADD
 
 router.get(`/add`, async (request, response, next) => {
@@ -196,14 +190,26 @@ router.post(`/categories`, categoriesParser.fields(categoriesImages), async (req
     const { requestID } = responseData;
     const files = await saveImages(categoriesImages, request.files, requestID);
     const filesData = { ...files, ...{ categoryID: requestID }};
-    await updateCategory(filesData);
+    if (files) await updateCategory(filesData);
     setTimeout(() => response.json(responseData), 0);
+});
+
+router.post(`/categories/sort`, formParser.none(), async (request, response, next) => {
+    if (!request.data['userID'] || !request.data['isAdmin']) return next();
+    const responseData = await updateCategoriesPositions(request.body);
+    setTimeout(() => response.json(responseData), responseTimeout);
 });
 
 router.post(`/filters`, formParser.none(), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     const responseData = await createIdeasFilter(request.body);
     setTimeout(() => response.json(responseData), 0);
+});
+
+router.post(`/filters/sort`, formParser.none(), async (request, response, next) => {
+    if (!request.data['userID'] || !request.data['isAdmin']) return next();
+    const responseData = await updatePositions(request.body);
+    setTimeout(() => response.json(responseData), responseTimeout);
 });
 
 // EDIT

@@ -331,6 +331,7 @@ uploadFields.forEach((uploadField) => {
 });
 
 // idea categories
+let isLoading = false;
 const editWrapper = (wrapper) => {
     const showButton = (button) => button.classList.remove(`hiddenButton`);
     const hideButton = (button) => button.classList.add(`hiddenButton`);
@@ -343,22 +344,6 @@ const editWrapper = (wrapper) => {
         const linkField = category.querySelector(`.linkField`);
         const colorField = category.querySelector(`.colorField`);
         const categoryPreview = category.querySelector(`.categoryPreview`);
-        const removeCategory = () => {
-            const categoryID = category.querySelector(`.categoryID`).value;
-            const categoryWrapper = category.closest(`ul`);
-            const childSelector = `[data-parent="${categoryID}"]`;
-            const childCategories = [...categoryWrapper.querySelectorAll(childSelector)];
-            childCategories.forEach((childCategory) => categoryWrapper.removeChild(childCategory));
-            categoryWrapper.removeChild(category);
-        };
-        const removeFilter = () => {
-            const filterID = category.querySelector(`.filterID`).value;
-            const filterWrapper = category.closest(`ul`);
-            const childSelector = `[data-parent="${filterID}"]`;
-            const childFilters = [...filterWrapper.querySelectorAll(childSelector)];
-            childFilters.forEach((childCategory) => filterWrapper.removeChild(childCategory));
-            filterWrapper.removeChild(category);
-        };
         if (previewField) {
             previewField.addEventListener(`change`, () => {
                 showButton(saveButton);
@@ -387,6 +372,8 @@ const editWrapper = (wrapper) => {
         }
         if (saveButton) {
             saveButton.addEventListener(`click`, async () => {
+                if (isLoading) return false;
+                isLoading = true;
                 const formData = new FormData(formNode);
                 const fieldTitle = (formData.has(`categoryTitle`)) ?
                     formData.get(`categoryTitle`) : formData.get(`filterTitle`);
@@ -396,11 +383,8 @@ const editWrapper = (wrapper) => {
                 const method = (isEmpty) ? `delete` : `post`;
                 const responseOptions = { URL: formNode.action, method, body: formData, button: saveButton };
                 const responseData = await saveAction(responseOptions);
+                isLoading = false;
                 if (responseData.status !== 1) return false; // show error
-                if (isEmpty) {
-                    if (formData.get(`categoryID`)) removeCategory();
-                    if (formData.get(`filterID`)) removeFilter();
-                }
                 hideButton(saveButton);
                 if (isNew || isEmpty) location.reload(); // need to create JS dynamic func
             });
@@ -584,7 +568,7 @@ if (sortWrapper) observer.observe(sortWrapper, loaderOptions);
 
 
 
-// categories && filters sorting
+// filters sorting
 const moveSection = document.querySelector(`.moveSection`);
 // main nodes
 const nodeIndex = (searchNode) => {
@@ -675,3 +659,144 @@ const addChildListeners = (moveNode) => {
     });
 };
 childNodes.forEach(addChildListeners);
+
+
+// categories sorting
+const catSection = document.querySelector(`.catSection`);
+// categories main nodes
+const catNodes = [...document.querySelectorAll(`.catNode.catMain`)];
+let catMainHandle, catMainHandleNode, catMainSelect, catChildHandle,
+    catChildSelect, catInnerHandle, catInnerSelect;
+const resetVariables = () => {
+    catMainHandle = null; catMainHandleNode = null;
+    catMainSelect = null; catChildHandle = null;
+    catChildSelect = null; catInnerHandle = null;
+    catInnerSelect = null;
+}
+const collectCatIndex = () => {
+    const data = new FormData();
+    const sortNodes = [...document.querySelectorAll(`.catNode`)];
+    sortNodes.forEach((element, index) => {
+        const { dataset: { id: portfolioID }} = element;
+        data.append(portfolioID, index);
+    });
+    return data;
+};
+const sendIndexData = async () => {
+    const body = collectCatIndex();
+    const { dataset: { sort: URL }} = catSection;
+    const response = await fetch(URL, { method: `POST`, body });
+    const data = await response.json();
+    if (data.status !== 1) console.log(data.error);
+};
+const addCatMainListeners = (catNode) => {
+    const parentWrapper = catNode.closest(`.catWrapper`);
+    catNode.addEventListener(`dragstart`, (event) => {
+        event.dataTransfer.effectAllowed = `move`;
+        catMainHandle = parentWrapper;
+        catMainHandleNode = catNode;
+        parentWrapper.classList.add(`activeWrapper`);
+    });
+    parentWrapper.addEventListener(`dragover`, (event) => {
+        if (!catMainHandleNode || !catMainHandleNode.classList.contains(`catNode`)) return false;
+        event.dataTransfer.dropEffect = `move`;
+        catMainSelect = parentWrapper;
+        parentWrapper.classList.add(`hoverWrapper`);
+        event.preventDefault();
+    });
+    parentWrapper.addEventListener(`dragleave`, () => {
+        parentWrapper.classList.remove(`hoverWrapper`);
+    });
+    catNode.addEventListener(`dragend`, async () => {
+        if (!catMainHandle || !catMainSelect) return false;
+        parentWrapper.classList.remove(`activeWrapper`);
+        catMainSelect.classList.remove(`hoverWrapper`);
+        const selectIndex = nodeIndex(catMainSelect);
+        const handleIndex = nodeIndex(catMainHandle);
+        const changeNode = (selectIndex > handleIndex) ? catMainSelect.nextSibling : catMainSelect;
+        catMainHandle.parentNode.insertBefore(catMainHandle, changeNode);
+        resetVariables();
+        sendIndexData();
+    });
+};
+catNodes.forEach(addCatMainListeners);
+// request index
+const childIndex = (searchNode) => {
+    let searchIndex;
+    [...searchNode.closest(`.childSection`).children].forEach((element, index) => {
+        if (element === searchNode.parentNode) searchIndex = index;
+    });
+    return searchIndex;
+};
+// categories child nodes
+const catChildNodes = [...document.querySelectorAll(`.catNode.catChild`)];
+const addCatChildListeners = (catNode) => {
+    const childWrapper = catNode.closest(`.childWrapper`);
+    catNode.addEventListener(`dragstart`, (event) => {
+        if (catNode.classList.contains(`catInner`)) return false;
+        event.dataTransfer.effectAllowed = `move`;
+        catChildHandle = childWrapper;
+        childWrapper.classList.add(`activeWrapper`);
+    });
+    childWrapper.addEventListener(`dragover`, (event) => {
+        if (!catChildHandle) return false;
+        if (childWrapper.parentNode.parentNode !== catChildHandle.parentNode.parentNode) return false;
+        event.dataTransfer.dropEffect = `move`;
+        childWrapper.classList.add(`hoverWrapper`);
+        catChildSelect = childWrapper;
+        event.preventDefault();
+    });
+    childWrapper.addEventListener(`dragleave`, () => {
+        childWrapper.classList.remove(`hoverWrapper`);
+    });
+    catNode.addEventListener(`dragend`, async () => {
+        childWrapper.classList.remove(`activeWrapper`);
+        catChildSelect.classList.remove(`hoverWrapper`);
+        if (!catChildHandle || !catChildSelect) return false;
+        const selectIndex = childIndex(catChildSelect);
+        const handleIndex = childIndex(catChildHandle);
+        const selectParent = catChildSelect.parentNode;
+        const handleParent = catChildHandle.parentNode;
+        const changeNode = (selectIndex > handleIndex) ? selectParent.nextSibling : selectParent;
+        changeNode.parentNode.insertBefore(handleParent, changeNode);
+        resetVariables();
+        sendIndexData();
+    });
+};
+catChildNodes.forEach(addCatChildListeners);
+// categories inner nodes
+const catInnerNodes = [...document.querySelectorAll(`.catNode.catInner`)];
+const addCatInnerListeners = (catNode) => {
+    const innerWrapper = catNode.closest(`.childWrapper`);
+    catNode.addEventListener(`dragstart`, (event) => {
+        event.dataTransfer.effectAllowed = `move`;
+        catInnerHandle = catNode;
+        catInnerHandle.classList.add(`activeNode`);
+    });
+    catNode.addEventListener(`dragover`, (event) => {
+        if (!catInnerHandle) return false;
+        if (catInnerHandle === catNode) return false;
+        if (catNode.parentNode !== catInnerHandle.parentNode) return false;
+        event.dataTransfer.dropEffect = `move`;
+        catInnerSelect = catNode;
+        catNode.classList.add(`hoverNode`);
+        event.preventDefault();
+    });
+    catNode.addEventListener(`dragleave`, () => {
+        catNode.classList.remove(`hoverNode`);
+    });
+    catNode.addEventListener(`dragend`, async () => {
+        catInnerHandle.classList.remove(`activeNode`);
+        innerWrapper.classList.remove(`hoverWrapper`);
+        if (!catInnerHandle || !catInnerSelect) return false;
+        if (catInnerSelect.parentNode !== catInnerHandle.parentNode) return false;
+        const selectIndex = nodeIndex(catInnerSelect);
+        const handleIndex = nodeIndex(catInnerHandle);
+        const changeNode = (selectIndex > handleIndex) ? catInnerSelect.nextSibling : catInnerSelect;
+        catInnerHandle.parentNode.insertBefore(catInnerHandle, changeNode);
+        catInnerSelect.classList.remove(`hoverNode`);
+        resetVariables();
+        sendIndexData();
+    });
+};
+catInnerNodes.forEach(addCatInnerListeners);

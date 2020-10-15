@@ -4,7 +4,6 @@ const { DB, singleDB } = require("./db.model");
 
 const createIdea = async ({ categoryArray, filterArray, ...ideaData }) => {
     try {
-        console.log(ideaData);
         const query = `INSERT INTO ideas SET ?`;
         const response = await DB(query, ideaData);
         const ideaID = response.insertId;
@@ -618,6 +617,22 @@ const updateIdea = async (requestData = {}, hasCategories = false, hasFilters = 
     }
 };
 
+const updateCategoriesPositions = async (requestData) => {
+    try {
+        const promises = [];
+        for (const categoryID in requestData) {
+            const updateData = { position: requestData[categoryID] };
+            const query = `UPDATE ideas_categories SET ? WHERE categoryID = ?`;
+            promises.push(DB(query, [updateData, categoryID]))
+        }
+        await Promise.all(promises);
+        return { status: 1 };
+    } catch (error) {
+        console.log(error);
+        return { status: 0, error };
+    }
+};
+
 const updatePositions = async (requestData) => {
     try {
         const promises = [];
@@ -678,5 +693,5 @@ module.exports = {
     requestIdeasByPortfolioID, requestCategoryIdeasByID, requestCategoryFilteredIdeasByID,
     requestCategoryIdeasByURL, requestCategoryFilteredIdeasByURL, requestModerateCount,
     requestUserIdeas, requestUploadIdeas, requestCreators, requestHomeIdeas, updateIdea,
-    updatePositions, updateCreator, deleteIdea, deleteCreator
+    updatePositions, updateCategoriesPositions, updateCreator, deleteIdea, deleteCreator
 };

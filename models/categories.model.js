@@ -4,7 +4,13 @@ const { DB, singleDB } = require("./db.model");
 
 const createCategory = async (pageData) => {
     try {
-        const query = `INSERT INTO ideas_categories SET ?`;
+        const query = `
+            INSERT INTO ideas_categories SET ?, 
+            position = (
+                SELECT position FROM ideas_categories as categories
+                ORDER BY categories.categoryID DESC LIMIT 1
+            ) + 1
+        `;
         const response = await DB(query, pageData);
         const status = Number(response.affectedRows && response.affectedRows === 1);
         return { status, requestID: Number(response.insertId) };
@@ -23,6 +29,7 @@ const requestMainCategories = async () => {
                 ideas_categories.categoryImage
             FROM ideas_categories
             WHERE ideas_categories.categoryLevel = 0
+            ORDER BY ideas_categories.position
         `;
         return { categories: await DB(query) };
     } catch (error) {
@@ -51,6 +58,7 @@ const requestCategories = async (ideaID = 0) => {
                     WHERE ideas_relation.ideaID = ? && ideas_relation.categoryID = categories.categoryID
                 ) as isChosen
             FROM ideas_categories AS categories
+            ORDER BY position
         `;
         const response = await DB(query, [ideaID]);
         const categories = [];
@@ -100,7 +108,8 @@ const requestSubCategories = async (searchData, isURL, currentURL) => {
                 ON ideas_categories.categoryParent = parentCategories.categoryID
             LEFT JOIN ideas_categories as mainCategories 
                 ON parentCategories.categoryParent = mainCategories.categoryID
-            WHERE ideas_categories.categoryParent = ?
+            WHERE ideas_categories.categoryParent = ? 
+            ORDER BY ideas_categories.position
         `;
         const queryURL = `
             SELECT 
@@ -122,7 +131,8 @@ const requestSubCategories = async (searchData, isURL, currentURL) => {
             WHERE ideas_categories.categoryParent = (
                 SELECT ideas_categories.categoryID FROM ideas_categories 
                 WHERE ideas_categories.categoryLink = ?
-            )
+            ) 
+            ORDER BY ideas_categories.position
         `;
         const query = (isURL) ? queryURL : queryID;
         return { subCategories: await DB(query, [currentURL, searchData]) };
@@ -137,6 +147,7 @@ const requestCategory = async (searchData, isURL) => {
         const query = `
             SELECT categoryID, categoryTitle, categoryLink, categoryImage 
             FROM ideas_categories WHERE ?? = ?
+            ORDER BY position
         `;
         const params = (isURL) ? [`categoryLink`, searchData] : [`categoryID`, searchData];
         return { category: await singleDB(query, params) };
@@ -151,6 +162,7 @@ const requestSubCategory = async (searchData, isURL) => {
         const query = `
             SELECT categoryID, categoryTitle, categoryLink, categoryImage 
             FROM ideas_categories WHERE ?? = ?
+            ORDER BY position
         `;
         const params = (isURL) ? [`categoryLink`, searchData] : [`categoryID`, searchData];
         return { subCategory: await singleDB(query, params) };
@@ -165,6 +177,7 @@ const requestChildCategory = async (searchData, isURL) => {
         const query = `
             SELECT categoryID, categoryTitle, categoryLink, categoryImage
             FROM ideas_categories WHERE ?? = ?
+            ORDER BY position
         `;
         const params = (isURL) ? [`categoryLink`, searchData] : [`categoryID`, searchData];
         return { childCategory: await singleDB(query, params) };
