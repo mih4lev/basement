@@ -126,7 +126,11 @@ const requestCategoryIdeasByURL = async (requestData) => {
         const query = `
             SELECT 
                 ideas.ideaID, ideas.ideaTitle, ideas.ideaImage, 
-                CONCAT(users.name, ' ', users.surname) as ideaAuthor,
+                IF (
+                    ideas_creators.creatorName IS NOT NULL, 
+                    ideas_creators.creatorName, 
+                    CONCAT(users.name, ' ', users.surname)
+                ) as ideaAuthor,
                 ideas_creators.creatorName as ideaCreator,
                 (
                     SELECT COUNT(albums_relation.relationID) 
