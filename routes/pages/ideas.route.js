@@ -21,7 +21,7 @@ router.use(async (request, response, next) => {
     next();
 });
 
-router.get(`/:categoryTitle`, async (request, response) => {
+router.get(`/:categoryTitle`, async (request, response, next) => {
     const { params: { categoryTitle }} = request;
     const userID = request.data['userID'];
     const pageID = 13;
@@ -36,11 +36,12 @@ router.get(`/:categoryTitle`, async (request, response) => {
         requestCategoryURLData(categoryTitle)
     ]));
     const data = { ...request.data, ...content };
+    if (!data.category) return next();
     const template = `pages/basement-ideas/categories/main-categories`;
     response.render(template, data);
 });
 
-router.get(`/:categoryTitle/:subCategoryTitle`, async (request, response) => {
+router.get(`/:categoryTitle/:subCategoryTitle`, async (request, response, next) => {
     const { params: { categoryTitle, subCategoryTitle }} = request;
     const userID = request.data['userID'];
     const pageID = 13;
@@ -56,11 +57,12 @@ router.get(`/:categoryTitle/:subCategoryTitle`, async (request, response) => {
         requestCategoryURLData(subCategoryTitle)
     ]));
     const data = { ...request.data, ...content };
+    if (!data.subCategory) return next();
     const template = `pages/basement-ideas/categories/sub-categories`;
     response.render(template, data);
 });
 
-router.get(`/:categoryTitle/:subCategoryTitle/:childCategoryTitle`, async (request, response) => {
+router.get(`/:categoryTitle/:subCategoryTitle/:childCategoryTitle`, async (request, response, next) => {
     const { params: { categoryTitle, subCategoryTitle, childCategoryTitle }} = request;
     const userID = request.data['userID'];
     const pageID = 13;
@@ -77,6 +79,7 @@ router.get(`/:categoryTitle/:subCategoryTitle/:childCategoryTitle`, async (reque
         requestCategoryURLData(childCategoryTitle)
     ]));
     const data = { ...request.data, ...content };
+    if (!data.childCategory) return next();
     const template = `pages/basement-ideas/categories/child-categories`;
     response.render(template, data);
 });

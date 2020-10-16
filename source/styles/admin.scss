@@ -1816,6 +1816,7 @@ button {
     border-radius: 5px;
     .moveNode {
         position: relative;
+        cursor: move;
         &:after {
             display: none;
             content: "";
