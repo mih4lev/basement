@@ -115,3 +115,96 @@
         </div>
     </div>
 </template>
+
+<script>
+
+    const SAFE = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$-_.';
+
+    const titleField = document.querySelector(`#tipTitle`);
+    const linkField = document.querySelector(`#tipLink`);
+    const makeURL = () => {
+        const value = titleField.value;
+        let returnURL = ``;
+        for (let index = 0; index < value.length; index++) {
+            returnURL = returnURL + replaceIllegal(value.charAt(index));
+        }
+        if (returnURL.lastIndexOf(`.`) == returnURL.length - 1) {
+            returnURL = returnURL.substring(0, returnURL.length-1);
+        }
+        linkField.value = returnURL.toLowerCase();
+    };
+    titleField.addEventListener(`change`, makeURL);
+
+    function replaceIllegal(char) {
+        if (SAFE.indexOf(char) >= 0) return char;
+        const theChar = char.charCodeAt(0);
+        switch(theChar) {
+            case 32:return '-';
+            case 185:return '1';
+            case 186:return '0';
+            case 192:return 'A';
+            case 193:return 'A';
+            case 194:return 'A';
+            case 195:return 'A';
+            case 196:return 'A';
+            case 197:return 'A';
+            case 198:return 'AE';
+            case 199:return 'C';
+            case 200:return 'E';
+            case 201:return 'E';
+            case 202:return 'E';
+            case 203:return 'E';
+            case 204:return 'I';
+            case 205:return 'I';
+            case 206:return 'I';
+            case 207:return 'I';
+            case 208:return 'D';
+            case 209:return 'N';
+            case 210:return 'O';
+            case 211:return 'O';
+            case 212:return 'O';
+            case 213:return 'O';
+            case 214:return 'O';
+            case 215:return 'x';
+            case 216:return 'O';
+            case 217:return 'U';
+            case 218:return 'U';
+            case 219:return 'U';
+            case 220:return 'U';
+            case 201:return 'Y';
+            case 223:return 'ss';
+            case 224:return 'a';
+            case 225:return 'a';
+            case 226:return 'a';
+            case 227:return 'a';
+            case 228:return 'a';
+            case 229:return 'a';
+            case 230:return 'ae';
+            case 231:return 'c';
+            case 232:return 'e';
+            case 233:return 'e';
+            case 234:return 'e';
+            case 235:return 'e';
+            case 236:return 'i';
+            case 237:return 'i';
+            case 238:return 'i';
+            case 239:return 'i';
+            case 241:return 'n';
+            case 242:return 'o';
+            case 243:return 'o';
+            case 244:return 'o';
+            case 245:return 'o';
+            case 246:return 'o';
+            case 247:return '-';
+            case 248:return 'o';
+            case 249:return 'u';
+            case 250:return 'u';
+            case 251:return 'u';
+            case 252:return 'u';
+            case 253:return 'y';
+            case 255:return 'y';
+        }
+        return '';
+    }
+
+</script>
