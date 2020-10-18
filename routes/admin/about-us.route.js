@@ -71,6 +71,13 @@ router.get(`/testimonials`, async (request, response, next) => {
     response.render(template, data);
 });
 
+router.post(`/testimonials`, formParser.none(), async (request, response, next) => {
+    if (!request.data['userID'] || !request.data['isAdmin']) return next();
+    const formData = { ...request.body };
+    const responseData = await updateMeta(formData);
+    setTimeout(() => response.json(responseData), 0);
+});
+
 // TESTIMONIALS CREATE
 
 router.get(`/testimonials/add`, async (request, response, next) => {
@@ -155,6 +162,13 @@ router.get(`/press`, async (request, response, next) => {
     const data = { ...request.data, ...content };
     const template = `admin/about-us/press.admin.hbs`;
     response.render(template, data);
+});
+
+router.post(`/press`, formParser.none(), async (request, response, next) => {
+    if (!request.data['userID'] || !request.data['isAdmin']) return next();
+    const formData = { ...request.body };
+    const responseData = await updateMeta(formData);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 // PRESS CREATE
