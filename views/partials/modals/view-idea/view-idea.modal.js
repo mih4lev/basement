@@ -196,10 +196,26 @@ export const viewIdeaModal = () => {
         portfolioWrapper.classList.remove(`hiddenWrapper`);
     };
 
+    const requestArrowsID = (ideaID) => {
+        const nodeList = [...document.querySelectorAll(`.ideaPhoto`)];
+        const currentNode = document.querySelector(`.ideaPhoto[data-idea="${ideaID}"]`);
+        // request current node index
+        let currentIndex;
+        nodeList.forEach((node, index) => {
+            if (node === currentNode) currentIndex = index;
+        });
+        const prevNode = nodeList[currentIndex - 1];
+        const nextNode = nodeList[currentIndex + 1];
+        let prevID = null, nextID = null;
+        if (prevNode) prevID = prevNode.dataset.idea;
+        if (nextNode) nextID = nextNode.dataset.idea;
+        return { prevID, nextID };
+    };
+
     // set requested data to modal
     const setModalData = (responseData) => {
         const {
-            ideaID, ideaTitle, ideaAuthor, ideaImage, saveCount, prevID, nextID,
+            ideaID, ideaTitle, ideaAuthor, ideaImage, saveCount,
             categories, filters, isVisible, isLogin, portfolio, portfolioLink
         } = responseData;
         const { 0: { categoryTitle, categoryLink, similar } = {}} = categories;
@@ -211,8 +227,9 @@ export const viewIdeaModal = () => {
         // button
         changeButtonVisible(ideaID, isVisible, isLogin);
         // arrows
-        modalArrows[0].dataset.idea = nextID;
-        modalArrows[1].dataset.idea = prevID;
+        const { prevID, nextID } = requestArrowsID(ideaID);
+        modalArrows[0].dataset.idea = prevID;
+        modalArrows[1].dataset.idea = nextID;
         // create tag list
         createTagList(filters);
         // set other category title && link

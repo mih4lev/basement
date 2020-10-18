@@ -408,10 +408,11 @@ const requestUserIdeas = async (userID) => {
                     ideas_creators.creatorName IS NOT NULL, 
                     ideas_creators.creatorName, 
                     CONCAT(users.name, ' ', users.surname)
-                ) as ideaAuthor,
+                ) as ideaAuthor
             FROM albums_relation 
             JOIN ideas ON albums_relation.ideaID = ideas.ideaID 
             LEFT JOIN users ON users.userID = ideas.userID
+            LEFT JOIN ideas_creators ON ideas.creatorID = ideas_creators.creatorID
             WHERE albums_relation.userID = ? GROUP BY ideas.ideaID
         `;
         return { ideas: await DB(query, [userID]) };
@@ -445,11 +446,12 @@ const requestAlbumIdeas = async (albumID) => {
                     ideas_creators.creatorName IS NOT NULL, 
                     ideas_creators.creatorName, 
                     CONCAT(users.name, ' ', users.surname)
-                ) as ideaAuthor,
+                ) as ideaAuthor
             FROM albums_relation 
             JOIN ideas ON albums_relation.ideaID = ideas.ideaID 
             JOIN albums ON albums_relation.albumID = albums.albumID 
             JOIN users ON ideas.userID = users.userID 
+            LEFT JOIN ideas_creators ON ideas.creatorID = ideas_creators.creatorID
             WHERE albums_relation.albumID = ?
         `;
         return { ideas: await DB(query, [albumID]) };
