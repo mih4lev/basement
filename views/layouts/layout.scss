@@ -1384,6 +1384,13 @@ strong {
     em {
         display: block;
     }
+    a {
+        color: $blue;
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
+        }
+    }
     p {
         font-size: 9px;
         margin: 15px 0 0;

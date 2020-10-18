@@ -59,6 +59,10 @@ ul {
     margin: 20px 0 0;
 }
 
+em {
+    display: block;
+}
+
 pre {
     @extend %font;
     display: inline-block;
