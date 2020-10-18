@@ -61,7 +61,7 @@ export const viewIdeaModal = () => {
         const lastID = Number(lastNode.querySelector(`.ideaPhoto`).dataset.idea);
         modalArrows.forEach((arrow) => {
             const isNext = (arrow.classList.contains(`nextArrow`));
-            const isHidden = (isNext && ideaID === lastID) || (!isNext && ideaID === firstID);
+            const isHidden = (isNext && ideaID === lastID) || (!isNext && ideaID === firstID) || !isVisible;
             const classAction = (isHidden) ? `add` : `remove`;
             arrow.classList[classAction](`hiddenArrow`);
             arrow.disabled = isHidden || !isVisible;
@@ -230,6 +230,9 @@ export const viewIdeaModal = () => {
         const { prevID, nextID } = requestArrowsID(ideaID);
         modalArrows[0].dataset.idea = prevID;
         modalArrows[1].dataset.idea = nextID;
+        const isArrowsVisible = (!!prevID && !!nextID);
+        console.log(isArrowsVisible);
+        checkArrowVisible(isArrowsVisible);
         // create tag list
         createTagList(filters);
         // set other category title && link
