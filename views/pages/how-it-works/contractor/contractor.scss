@@ -292,6 +292,11 @@
     }
 }
 
+.downloadButtonWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 .downloadButton {
     @extend %shadow;
     @extend %font;
@@ -311,12 +316,16 @@
     cursor: pointer;
     outline: none;
     @include minWidth(480) {
-        margin-top: 20px;
+        margin-top: 0;
         padding: 13px 25px 13px 45px;
         font-size: 12px;
     }
     @include minWidth(768) {
         font-size: 13px;
+    }
+    &:hover {
+        @extend %animation;
+        color: $black;
     }
     &:before {
         @extend %buttonIconBefore;
