@@ -1,0 +1,69 @@
+@import "fonts";
+@import "variables";
+@import "mixins";
+@import "extends/all.extend";
+
+body {
+    @extend %font;
+    padding: 0 10px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+img {
+    margin: 0 auto;
+    width: 75%;
+    height: auto;
+    filter: drop-shadow(5px 5px 12px rgba(0,0,0,.25));
+}
+
+p {
+    @extend %font;
+    margin-top: 20px;
+}
+
+a {
+    color: $blue;
+    text-decoration: underline;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+h1 {
+    @extend %font;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+h2 {
+    @extend %font;
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+h3 {
+    @extend %font;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+h4 {
+    @extend %font;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+ul {
+    @extend %font;
+    margin: 20px 0 0;
+}
+
+pre {
+    @extend %font;
+    display: inline-block;
+    margin: 5px 0 0;
+    font-size: 13px;
+    font-style: italic;
+    white-space: unset;
+}

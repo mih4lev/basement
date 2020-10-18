@@ -19,6 +19,7 @@ gulp.task(`browser-sync`, () => {
     });
     gulp.watch(`./**/*.scss`, gulp.series(`styles`));
     gulp.watch(`./**/admin.scss`, gulp.series(`admin`));
+    gulp.watch(`./**/editor.scss`, gulp.series(`editor`));
     gulp.watch(`./source/images/**/*.{png,jpg,jpeg}`, gulp.series(`bitmap`));
     gulp.watch(`./source/images/**/*.{png,jpg,jpeg}`, gulp.series(`webp`));
     gulp.watch(`./source/images/*.svg`, gulp.series(`vector`));
@@ -52,6 +53,20 @@ gulp.task(`admin`, () => {
         ]))
         .pipe(csso())
         .pipe(rename(`admin.min.css`))
+        .pipe(gulp.dest(`./public/styles`))
+        .pipe(browserSync.stream());
+});
+
+// SASS -> CSS (Check .scss changes in all folder && compile css)
+gulp.task(`editor`, () => {
+    return gulp.src(`./source/styles/editor.scss`)
+        .pipe(plumber())
+        .pipe(sass())
+        .pipe(postcss([
+            autoprefixer()
+        ]))
+        .pipe(csso())
+        .pipe(rename(`editor.min.css`))
         .pipe(gulp.dest(`./public/styles`))
         .pipe(browserSync.stream());
 });
@@ -105,5 +120,5 @@ gulp.task(`reload`, (done) => {
 });
 
 // const tasks = [`browser-sync`, `styles`, `admin`, `fonts`, `bitmap`, `webp`, `vector`, `sprite`];
-const tasks = [`browser-sync`, `styles`, `admin`];
+const tasks = [`browser-sync`, `styles`, `admin`, `editor`];
 gulp.task(`default`, gulp.parallel(...tasks));

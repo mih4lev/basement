@@ -269,6 +269,12 @@ html, body {
     margin-bottom: 10px;
     width: 100%;
     max-width: 680px;
+    &.fullWidth {
+        max-width: 1000px;
+        .tinyField {
+            height: 600px;
+        }
+    }
 }
 
 .ratingSection {
@@ -389,6 +395,9 @@ html, body {
         }
         &.tinyField {
             height: 220px;
+        }
+        &.fullWidth {
+            width: 960px;
         }
     }
 }
