@@ -2,6 +2,9 @@
     .wrapper {
         padding-top: 40px;
         padding-bottom: 0;
+        .sectionTitle {
+            text-align: center;
+        }
     }
     .wrapper + .wrapper {
         padding-top: 0;
