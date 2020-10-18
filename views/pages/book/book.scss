@@ -1,0 +1,50 @@
+.bookBlock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    .blockWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .bookWrapper {
+        margin: 0 auto 20px auto;
+        width: 540px;
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        background-color: $sub;
+        .bookTitle {
+            margin-right: 20px;
+            font-size: 15px;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+        .consultationButton {
+            display: none !important;
+        }
+        .zipCodeForm {
+            display: block !important;
+        }
+    }
+    .offerWrapper {
+        text-align: center;
+        .offerLink {
+            color: $blue;
+            text-decoration: underline;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+    .bookRules {
+        .rulesTitle {
+            text-align: center;
+        }
+    }
+}

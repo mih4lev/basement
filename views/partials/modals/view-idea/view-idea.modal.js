@@ -231,7 +231,6 @@ export const viewIdeaModal = () => {
         modalArrows[0].dataset.idea = prevID;
         modalArrows[1].dataset.idea = nextID;
         const isArrowsVisible = (!!prevID && !!nextID);
-        console.log(isArrowsVisible);
         checkArrowVisible(isArrowsVisible);
         // create tag list
         createTagList(filters);
