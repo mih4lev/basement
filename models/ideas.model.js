@@ -51,7 +51,11 @@ const requestCategoryIdeasByID = async (requestData) => {
         const query = `
             SELECT 
                 ideas.ideaID as ideaID, ideas.ideaTitle, ideas.ideaImage, 
-                CONCAT(users.name, ' ', users.surname) as ideaAuthor, 
+                IF (
+                    ideas_creators.creatorName IS NOT NULL, 
+                    ideas_creators.creatorName, 
+                    CONCAT(users.name, ' ', users.surname)
+                ) as ideaAuthor,
                 ideas_creators.creatorName as ideaCreator, 
                 (
                     SELECT COUNT(albums_relation.relationID) 
@@ -87,7 +91,11 @@ const requestCategoryFilteredIdeasByID = async (requestData) => {
         const query = `
             SELECT 
                 ideas.ideaID as ideaID, ideas.ideaTitle, ideas.ideaImage, 
-                CONCAT(users.name, ' ', users.surname) as ideaAuthor,
+                IF (
+                    ideas_creators.creatorName IS NOT NULL, 
+                    ideas_creators.creatorName, 
+                    CONCAT(users.name, ' ', users.surname)
+                ) as ideaAuthor,
                 ideas_creators.creatorName as ideaCreator,
                 (
                     SELECT COUNT(albums_relation.relationID) 
@@ -177,7 +185,11 @@ const requestCategoryFilteredIdeasByURL = async (requestData) => {
         const query = `
             SELECT 
                 ideas.ideaID, ideas.ideaTitle, ideas.ideaImage, 
-                CONCAT(users.name, ' ', users.surname) as ideaAuthor,
+                IF (
+                    ideas_creators.creatorName IS NOT NULL, 
+                    ideas_creators.creatorName, 
+                    CONCAT(users.name, ' ', users.surname)
+                ) as ideaAuthor,
                 ideas_creators.creatorName as ideaCreator,
                 IF (ideas.userID = ?, false, true) as isVisible,
                 IF (? = 0, false, true) as isLogin
@@ -392,7 +404,11 @@ const requestUserIdeas = async (userID) => {
         const query = `           
             SELECT 
                 ideas.ideaID, ideas.ideaTitle, ideas.ideaImage,
-                CONCAT(users.name, ' ', users.surname) as ideaAuthor
+                IF (
+                    ideas_creators.creatorName IS NOT NULL, 
+                    ideas_creators.creatorName, 
+                    CONCAT(users.name, ' ', users.surname)
+                ) as ideaAuthor,
             FROM albums_relation 
             JOIN ideas ON albums_relation.ideaID = ideas.ideaID 
             LEFT JOIN users ON users.userID = ideas.userID
@@ -425,7 +441,11 @@ const requestAlbumIdeas = async (albumID) => {
             SELECT 
                 albums_relation.ideaID, ideas.ideaTitle, ideas.ideaImage, albums.albumTitle, 
                 albums.albumID, albums.albumCover, users.userID, 
-                CONCAT(users.name, ' ', users.surname) as ideaAuthor
+                IF (
+                    ideas_creators.creatorName IS NOT NULL, 
+                    ideas_creators.creatorName, 
+                    CONCAT(users.name, ' ', users.surname)
+                ) as ideaAuthor,
             FROM albums_relation 
             JOIN ideas ON albums_relation.ideaID = ideas.ideaID 
             JOIN albums ON albums_relation.albumID = albums.albumID 
