@@ -251,7 +251,7 @@ const requestAllIdeas = async ({ limit = 1000, userID = 0 } = {}) => {
     }
 };
 
-const requestIdeas = async ({ limit = 100000, userID = 0, order = `ideaID` } = {}) => {
+const requestIdeas = async ({ limit = 100000, userID = 0, order = `timestamp` } = {}) => {
     try {
         const query = `
             SELECT 
@@ -368,7 +368,7 @@ const requestModeratedIdeas = async ({ limit = 1000000, userID = 0 } = {}) => {
     }
 };
 
-const requestFilteredIdeas = async ({ limit = 1000000, userID = 0, filterArray, order = `ideaID` } = {}) => {
+const requestFilteredIdeas = async ({ limit = 1000000, userID = 0, filterArray, order = `timestamp` } = {}) => {
     try {
         const query = `
             SELECT 
