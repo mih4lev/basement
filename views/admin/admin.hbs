@@ -58,12 +58,6 @@
         <h2 class="wrapperTitle">Basement ideas</h2>
         <ul class="cards">
             <li class="card">
-                <a class="cardLink" href="/admin/basement-ideas/">
-                    <img src="/public/images/vector/admin-icon_cards.svg" alt="All ideas">
-                    <span class="cardTitle">All ideas</span>
-                </a>
-            </li>
-            <li class="card">
                 <a class="cardLink" href="/admin/basement-ideas/moderated/">
                     <img src="/public/images/vector/admin-icon_ideas.svg" alt="Moderated ideas">
                     <span class="cardTitle">Moderated ideas</span>
@@ -76,6 +70,12 @@
                     {{# if moderateCount }}
                         <span class="ideasCount">{{{ moderateCount }}}</span>
                     {{/ if }}
+                </a>
+            </li>
+            <li class="card">
+                <a class="cardLink" href="/admin/basement-ideas/archive/">
+                    <img src="/public/images/vector/admin-icon_ideas.svg" alt="Archive ideas">
+                    <span class="cardTitle">Archive ideas</span>
                 </a>
             </li>
             <li class="card addCart">
@@ -94,6 +94,12 @@
                 <a class="cardLink" href="/admin/basement-ideas/filters/">
                     <img src="/public/images/vector/admin-icon_cards.svg" alt="Idea filters">
                     <span class="cardTitle">Idea filters</span>
+                </a>
+            </li>
+            <li class="card">
+                <a class="cardLink" href="/admin/basement-ideas/">
+                    <img src="/public/images/vector/admin-icon_cards.svg" alt="All ideas">
+                    <span class="cardTitle">Ideas settings</span>
                 </a>
             </li>
         </ul>

@@ -943,6 +943,56 @@ button {
                     margin: 2px;
                 }
             }
+            .archiveButton {
+                @extend %font;
+                display: none;
+                position: absolute;
+                z-index: 2;
+                top: 5px;
+                right: 5px;
+                width: 20px;
+                height: 20px;
+                margin: 0;
+                padding: 0;
+                font-size: 0;
+                line-height: 100%;
+                font-weight: 800;
+                color: $black;
+                white-space: nowrap;
+                border-radius: 10px;
+                background-color: $white;
+                &:before, &:after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    width: 10px;
+                    height: 2px;
+                    background-color: $black;
+                }
+                &:before {
+                    transform: translate(-50%, -50%) rotate(45deg);
+                }
+                &:after {
+                    transform: translate(-50%, -50%) rotate(-45deg);
+                }
+                &:hover {
+                    width: auto;
+                    padding: 0 20px 0 10px;
+                    font-size: 10px;
+                    color: $red;
+                    cursor: alias;
+                    &:before, &:after {
+                        background-color: $red;
+                    }
+                }
+            }
+            &:hover {
+                box-shadow: inset 5em 1em $white;
+                .archiveButton {
+                    display: block;
+                }
+            }
         }
         &.normalVisible {
             .wrapperLink {
@@ -977,6 +1027,11 @@ button {
                 .listTitle {
                     color: $white;
                 }
+            }
+        }
+        &.archiveWrapper {
+            .archiveButton {
+                display: none !important;
             }
         }
     }

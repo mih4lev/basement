@@ -72,7 +72,7 @@ const requestCategoryIdeasByID = async (requestData) => {
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID 
             WHERE ( 
                 cat2.categoryID = ? || cat1.categoryID = ? || ideas_categories.categoryID = ? 
-            ) && ideas.isModerated = 1 
+            ) && ideas.isModerated = 1 && ideas.isArchived = 0 
             GROUP BY ideas.ideaID 
             ORDER BY ?? DESC 
             LIMIT ?
@@ -115,7 +115,7 @@ const requestCategoryFilteredIdeasByID = async (requestData) => {
                 cat2.categoryID = ? || 
                 cat1.categoryID = ? || 
                 ideas_categories.categoryID = ?
-            ) && ideas.isModerated = 1 && filters.filterID IN (?)
+            ) && ideas.isModerated = 1 && ideas.isArchived = 0 && filters.filterID IN (?)
             GROUP BY ideas.ideaID 
             ORDER BY ?? DESC
             LIMIT ?
@@ -166,7 +166,7 @@ const requestCategoryIdeasByURL = async (requestData) => {
                     SELECT ideas_categories.categoryID 
                     FROM ideas_categories WHERE ideas_categories.categoryLink = ?
                 )
-            ) && ideas.isModerated = 1
+            ) && ideas.isModerated = 1 && ideas.isArchived = 0 
             GROUP BY ideas.ideaID 
             ORDER BY ?? DESC
             LIMIT ?
@@ -214,7 +214,7 @@ const requestCategoryFilteredIdeasByURL = async (requestData) => {
                         SELECT ideas_categories.categoryID 
                         FROM ideas_categories WHERE ideas_categories.categoryLink = ?
                     )
-                ) && ideas.isModerated = 1 && filters.filterID IN (?)
+                ) && ideas.isModerated = 1 && filters.filterID IN (?) && ideas.isArchived = 0 
             GROUP BY ideas.ideaID 
             ORDER BY ideas.timestamp DESC
             LIMIT ?
@@ -242,6 +242,7 @@ const requestAllIdeas = async ({ limit = 1000, userID = 0 } = {}) => {
             FROM ideas 
             JOIN users ON ideas.userID = users.userID
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
+            WHERE ideas.isArchived = 0 
             ORDER BY ideas.timestamp DESC LIMIT ?
         `;
         return { ideas: await DB(query, [userID, userID, limit]) };
@@ -270,7 +271,7 @@ const requestIdeas = async ({ limit = 100000, userID = 0, order = `ideas.timesta
             FROM ideas 
             JOIN users ON ideas.userID = users.userID
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
-            WHERE ideas.isModerated = 1
+            WHERE ideas.isModerated = 1 && ideas.isArchived = 0 
             ORDER BY ?? DESC LIMIT ?
         `;
         return { ideas: await DB(query, [ userID, userID, order, limit ]) };
@@ -286,7 +287,7 @@ const requestIdeasCount = async () => {
             SELECT 
                 COUNT(ideaID) AS ideasCount, 
                 IF (COUNT(ideaID) <= 12, 1, 0) as hiddenButton
-            FROM ideas WHERE isModerated = 1
+            FROM ideas WHERE isModerated = 1 && ideas.isArchived = 0 
         `;
         return { ideasData: await singleDB(query) };
     } catch (error) {
@@ -310,7 +311,7 @@ const requestHomeIdeas = async ({ userID = 0 } = {}) => {
             FROM ideas 
             JOIN users ON ideas.userID = users.userID
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
-            WHERE ideas.isModerated = 1 && ideas.isHomeIdea = 1
+            WHERE ideas.isModerated = 1 && ideas.isHomeIdea = 1 && ideas.isArchived = 0 
             ORDER BY ideas.timestamp DESC LIMIT 4
         `;
         return { ideas: await DB(query, [userID, userID]) };
@@ -334,7 +335,31 @@ const requestNewIdeas = async ({ limit = 1000000, userID = 0 } = {}) => {
             FROM ideas 
             JOIN users ON ideas.userID = users.userID
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
-            WHERE ideas.isModerated = 0 
+            WHERE ideas.isModerated = 0 && ideas.isArchived = 0 
+            ORDER BY ideas.timestamp DESC LIMIT ?
+        `;
+        return { ideas: await DB(query, [userID, limit]) };
+    } catch (error) {
+        console.log(error);
+        return {};
+    }
+};
+
+const requestArchiveIdeas = async ({ limit = 1000000, userID = 0 } = {}) => {
+    try {
+        const query = `
+            SELECT 
+                ideas.ideaID, ideas.ideaTitle, ideas.ideaImage, ideas.timestamp, 
+                IF (
+                    ideas_creators.creatorName IS NOT NULL, 
+                    ideas_creators.creatorName, 
+                    CONCAT(users.name, ' ', users.surname)
+                ) as ideaAuthor,
+                IF (ideas.userID = ?, false, true) as isVisible
+            FROM ideas 
+            JOIN users ON ideas.userID = users.userID
+            LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
+            WHERE ideas.isArchived = 1 
             ORDER BY ideas.timestamp DESC LIMIT ?
         `;
         return { ideas: await DB(query, [userID, limit]) };
@@ -358,7 +383,7 @@ const requestModeratedIdeas = async ({ limit = 1000000, userID = 0 } = {}) => {
             FROM ideas 
             JOIN users ON ideas.userID = users.userID
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
-            WHERE ideas.isModerated = 1 
+            WHERE ideas.isModerated = 1 && ideas.isArchived = 0 
             ORDER BY ideas.timestamp DESC LIMIT ?
         `;
         return { ideas: await DB(query, [userID, limit]) };
@@ -388,7 +413,7 @@ const requestFilteredIdeas = async ({ limit = 1000000, userID = 0, filterArray, 
             JOIN users ON ideas.userID = users.userID
             JOIN ideas_properties as filters ON ideas.ideaID = filters.ideaID
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
-            WHERE filters.filterID IN (?) && ideas.isModerated = 1 
+            WHERE filters.filterID IN (?) && ideas.isModerated = 1 && ideas.isArchived = 0 
             GROUP BY ideas.ideaID 
             ORDER BY ? DESC LIMIT ?
         `;
@@ -476,7 +501,7 @@ const requestIdea = async (ideaID, userID = 0) => {
         const query = `
             SELECT 
                 ideas.ideaID, ideas.userID, ideas.ideaTitle, ideas.creatorID, ideas.ideaImage,
-                ideas.isModerated, ideas.isHomeIdea, ideas.timestamp,
+                ideas.isModerated, ideas.isHomeIdea, ideas.isArchived, ideas.timestamp,
                 COUNT(albums_relation.ideaID) AS saveCount, ideas_creators.creatorName,
                 CONCAT('/portfolio/', portfolio.workLink) as portfolioLink,
                 IF (ideas.userID = ?, false, true) as isVisible, ideas.portfolioID,
@@ -596,7 +621,10 @@ const requestCreators = async () => {
 
 const requestModerateCount = async () => {
     try {
-        const query = `SELECT COUNT(*) as moderateCount FROM ideas WHERE ideas.isModerated = 0`;
+        const query = `
+            SELECT COUNT(*) as moderateCount FROM ideas 
+            WHERE ideas.isModerated = 0 && ideas.isArchived = 0 
+        `;
         return await singleDB(query);
     } catch (error) {
         console.log(error);
@@ -687,6 +715,18 @@ const updateCreator = async ({ creatorID, ...updateData } = {}) => {
     }
 };
 
+const archiveIdea = async ({ ideaID, ...updateData }) => {
+    try {
+        const query = `UPDATE ideas SET ? WHERE ideaID = ?`;
+        const response = await DB(query, [updateData, ideaID]);
+        const status = Number(response.affectedRows && response.affectedRows === 1);
+        return { status, requestID: Number(ideaID) };
+    } catch (error) {
+        console.log(error);
+        return { status: 0, requestID: Number(ideaID), error };
+    }
+};
+
 // DELETE
 
 const deleteIdea = async (ideaID) => {
@@ -715,9 +755,9 @@ const deleteCreator = async ({ creatorID } = {}) => {
 
 module.exports = {
     createIdea, addCreator, requestIdea, requestAlbumIdeas, requestFilteredIdeas,
-    requestAllIdeas, requestIdeasCount, requestNewIdeas, requestModeratedIdeas, requestIdeas,
-    requestIdeasByPortfolioID, requestCategoryIdeasByID, requestCategoryFilteredIdeasByID,
-    requestCategoryIdeasByURL, requestCategoryFilteredIdeasByURL, requestModerateCount,
-    requestUserIdeas, requestUploadIdeas, requestCreators, requestHomeIdeas, updateIdea,
-    updatePositions, updateCategoriesPositions, updateCreator, deleteIdea, deleteCreator
+    requestAllIdeas, requestIdeasCount, requestNewIdeas, requestArchiveIdeas, archiveIdea,
+    requestModeratedIdeas, requestIdeas, requestIdeasByPortfolioID, requestCategoryIdeasByID,
+    requestCategoryFilteredIdeasByID, requestCategoryIdeasByURL, requestCategoryFilteredIdeasByURL,
+    requestModerateCount, requestUserIdeas, requestUploadIdeas, requestCreators, requestHomeIdeas,
+    updateIdea, updatePositions, updateCategoriesPositions, updateCreator, deleteIdea, deleteCreator
 };

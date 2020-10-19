@@ -51,6 +51,13 @@
         </div>
         <div class="selectWrapper autoWrapper">
             <div class="toggleButtonWrapper">
+                <input class="toggleButton" type="checkbox" {{# if page.isArchived }}checked{{/if}}
+                       name="isArchived" id="isArchived" value="1">
+                <label class="buttonLabel" for="isArchived">Archive</label>
+            </div>
+        </div>
+        <div class="selectWrapper autoWrapper">
+            <div class="toggleButtonWrapper">
                 <input class="toggleButton" type="checkbox" name="isModerated" id="isModerated" value="1">
                 <label class="buttonLabel" for="isModerated">Moderate</label>
             </div>
@@ -58,7 +65,7 @@
         <div class="selectWrapper autoWrapper">
             <div class="toggleButtonWrapper">
                 <input class="toggleButton" type="checkbox" name="isHomeIdea" id="isHomeIdea" value="1">
-                <label class="buttonLabel" for="isHomeIdea">Home idea</label>
+                <label class="buttonLabel" for="isHomeIdea">Home</label>
             </div>
         </div>
     </section>

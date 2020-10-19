@@ -14,9 +14,9 @@ const { requestContent } = require("../../models/utils.model");
 const { saveImages, deleteImages } = require("../../models/images.model");
 
 const {
-    createIdea, addCreator, requestAllIdeas, requestIdea, requestCreators,
+    createIdea, addCreator, requestAllIdeas, requestIdea, requestCreators, requestArchiveIdeas,
     requestNewIdeas, requestModeratedIdeas, requestModerateCount, updateIdea, updateCreator,
-    updatePositions, updateCategoriesPositions, deleteIdea, deleteCreator
+    updatePositions, updateCategoriesPositions, archiveIdea, deleteIdea, deleteCreator
 } = require("../../models/ideas.model");
 const {
     createCategory, requestCategories, updateCategory, deleteCategory
@@ -116,6 +116,20 @@ router.get(`/to-moderate`, async (request, response, next) => {
     request.data['ideasAPI'] = `/api/ideas/to-moderate`;
     const content = requestContent(await Promise.all([
         requestNewIdeas({ limit: 40 }),
+        requestModerateCount()
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `admin/ideas/ideas-list.admin.hbs`;
+    response.render(template, data);
+});
+
+router.get(`/archive`, async (request, response, next) => {
+    if (!request.data['userID'] || !request.data['isAdmin']) return next();
+    request.data['layout'] = `admin`;
+    request.data['isAdminArchiveIdeas'] = true;
+    request.data['ideasAPI'] = `/api/ideas/archive`;
+    const content = requestContent(await Promise.all([
+        requestArchiveIdeas({ limit: 40 }),
         requestModerateCount()
     ]));
     const data = { ...request.data, ...content };
@@ -238,6 +252,12 @@ router.post(`/edit`, imagesParser.fields(ideasImages), async (request, response,
     const files = await saveImages(ideasImages, request.files, ideaID);
     const formData = { ...request.body, isModerated, isHomeIdea, ...files };
     const responseData = await updateIdea(formData, true, true);
+    setTimeout(() => response.json(responseData), 0);
+});
+
+router.post(`/archive/add`, formParser.none(), async (request, response, next) =>  {
+    if (!request.data['userID'] || !request.data['isAdmin']) return next();
+    const responseData = await archiveIdea(request.body);
     setTimeout(() => response.json(responseData), 0);
 });
 

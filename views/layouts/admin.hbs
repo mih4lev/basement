@@ -90,18 +90,6 @@
                 <span class="menuLink">Basement ideas <span class="dropdownMenu"></span></span>
                 <ul class="subMenuLinks">
                     <li class="subMenuWrapper">
-                        {{# if isAdminIdeas }}
-                            <span class="subMenuLink activeLink">All ideas</span>
-                        {{ else }}
-                            <a class="subMenuLink" href="/admin/basement-ideas/">All ideas</a>
-                        {{/ if }}
-                    </li>
-                    {{# if isIdeaEdit }}
-                    <li class="subMenuWrapper">
-                        <span class="subMenuLink activeLink editLink">Edit idea {{{ page.ideaID }}}</span>
-                    </li>
-                    {{/ if }}
-                    <li class="subMenuWrapper">
                         {{# if isAdminModeratedIdeas }}
                             <span class="subMenuLink activeLink">Moderated ideas</span>
                         {{ else }}
@@ -122,6 +110,18 @@
                         {{/ if }}
                     </li>
                     <li class="subMenuWrapper">
+                        {{# if isAdminArchiveIdeas }}
+                            <span class="subMenuLink activeLink">Archive ideas</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/basement-ideas/archive/">Archive ideas</a>
+                        {{/ if }}
+                    </li>
+                    {{# if isIdeaEdit }}
+                        <li class="subMenuWrapper">
+                            <span class="subMenuLink activeLink editLink">Edit idea {{{ page.ideaID }}}</span>
+                        </li>
+                    {{/ if }}
+                    <li class="subMenuWrapper">
                         {{# if isAdminIdeasAdd }}
                             <span class="subMenuLink addLink activeLink">Add new idea</span>
                         {{ else }}
@@ -140,6 +140,13 @@
                             <span class="subMenuLink activeLink">Idea filters</span>
                         {{ else }}
                             <a class="subMenuLink" href="/admin/basement-ideas/filters/">Idea filters</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminIdeas }}
+                            <span class="subMenuLink activeLink">Ideas settings</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/basement-ideas/">Ideas settings</a>
                         {{/ if }}
                     </li>
                 </ul>

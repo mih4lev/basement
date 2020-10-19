@@ -800,3 +800,49 @@ const addCatInnerListeners = (catNode) => {
     });
 };
 catInnerNodes.forEach(addCatInnerListeners);
+
+// update moderate count
+const updateModerateCount = async () => {
+    const ideasCount = document.querySelector(`.ideasCount`);
+    const response = await fetch(`/api/ideas/to-moderate/count`);
+    const { moderateCount } = await response.json();
+    ideasCount.innerText = moderateCount;
+};
+
+// delete buttons
+const archiveButtons = [...document.querySelectorAll(`.archiveButton`)];
+const ideaWrapper = document.querySelector(`.listNode`);
+const archiveIdea = (archiveButton) => {
+    const ideaParent = archiveButton.closest(`.listWrapper`);
+    const ideaImage = ideaParent.querySelector(`.listImage`);
+    const { dataset: { idea: ideaID }} = ideaImage;
+    archiveButton.addEventListener(`click`, async (event) => {
+        event.preventDefault();
+        ideaParent.classList.add(`loaderWrapper`);
+        const updateData = new FormData;
+        updateData.append(`ideaID`, ideaID);
+        updateData.append(`isArchived`, `1`);
+        const options = { method: `POST`, body: updateData };
+        const response = await fetch(`/admin/basement-ideas/archive/add`, options);
+        const { status } = await response.json();
+        if (status !== 1) {
+            ideaParent.classList.remove(`loaderWrapper`);
+            return false;
+        }
+        ideaWrapper.removeChild(ideaParent);
+        await updateModerateCount();
+    });
+}
+archiveButtons.forEach(archiveIdea);
+const ideasOptions = { attributes: true, childList: true, subtree: true };
+const ideasCallback = (mutationsList) => {
+    mutationsList.forEach((mutation) => {
+        mutation.addedNodes.forEach((addedNode) => {
+            if (!addedNode.querySelector) return false;
+            const archiveButton = addedNode.querySelector(`.archiveButton`);
+            if (archiveButton) archiveIdea(archiveButton);
+        })
+    });
+};
+const ideasObserver = new MutationObserver(ideasCallback);
+if (archiveButtons.length) ideasObserver.observe(ideaWrapper, ideasOptions);

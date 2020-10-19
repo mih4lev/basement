@@ -1,5 +1,6 @@
 <section class="listSection">
-    <ul class="listNode normalVisible elementsWrapper" data-page="10" data-api="{{{ ideasAPI }}}">
+    <ul class="listNode normalVisible elementsWrapper {{# if isAdminArchiveIdeas }}archiveWrapper{{/if}}"
+        data-page="10" data-api="{{{ ideasAPI }}}">
         {{# each ideas }}
             <li class="listWrapper">
                 <a class="wrapperLink" href="/admin/basement-ideas/edit/{{{ ideaID }}}">
@@ -15,6 +16,8 @@
                         </picture>
                     </div>
                     <span class="listTitle">{{{ ideaTitle }}}</span>
+                    <button class="archiveButton"
+                            type="button">Archive</button>
                 </a>
             </li>
         {{/ each }}
@@ -29,6 +32,8 @@
         <a class="wrapperLink" href="">
             <div class="imageWrapper"></div>
             <span class="listTitle"></span>
+            <button class="archiveButton"
+                    type="button">Archive</button>
         </a>
     </li>
 </template>

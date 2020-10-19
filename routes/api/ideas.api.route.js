@@ -8,8 +8,8 @@ const imagesParser = multer({ dest: uploadDir });
 const { saveImages, deleteImages } = require("../../models/images.model");
 const {
     requestIdeas, requestModeratedIdeas, requestIdea, requestFilteredIdeas,
-    requestCategoryIdeasByID, requestNewIdeas, requestCategoryFilteredIdeasByID,
-    createIdea, updateIdea, deleteIdea
+    requestCategoryIdeasByID, requestNewIdeas, requestArchiveIdeas, requestCategoryFilteredIdeasByID,
+    requestModerateCount, createIdea, updateIdea, deleteIdea
 } = require("../../models/ideas.model");
 const { requestSavedAlbums, deleteRelations } = require("../../models/albums.model");
 
@@ -81,6 +81,18 @@ router.get(`/moderated`, async (request, response, next) => {
 router.get(`/to-moderate`, async (request, response, next) => {
     if (!request.data['userID'] || request.data['isAdmin'] !== 1) return next();
     const responseData = await requestNewIdeas();
+    setTimeout(() => response.json(responseData), 0);
+});
+
+router.get(`/to-moderate/count`, async (request, response, next) => {
+    if (!request.data['userID']) return next();
+    const responseData = await requestModerateCount();
+    setTimeout(() => response.json(responseData), 0);
+});
+
+router.get(`/archive`, async (request, response, next) => {
+    if (!request.data['userID']) return next();
+    const responseData = await requestArchiveIdeas();
     setTimeout(() => response.json(responseData), 0);
 });
 
