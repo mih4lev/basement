@@ -200,22 +200,24 @@
 }
 .gmnoprint {
     .gm-style-mtc:nth-of-type(1) {
-        div {
+        button {
             border-top-left-radius: 5px !important;
+            border-top-right-radius: 0 !important;
             border-bottom-left-radius: 5px !important;
             background-color: $white !important;
         }
-        div:nth-of-type(2) {
+        div {
             display: none !important;
         }
     }
     .gm-style-mtc:nth-of-type(2) {
-        div {
+        button {
+            border-top-left-radius: 0 !important;
             border-top-right-radius: 5px !important;
             border-bottom-right-radius: 5px !important;
             background-color: $white !important;
         }
-        div:nth-of-type(2) {
+        div {
             display: none !important;
         }
     }
@@ -284,7 +286,7 @@
 }
 .gm-style-mtc {
     display: none !important;
-    div {
+    button {
         @extend %animation;
         height: 41px !important;
         font-family: "Gilroy", Arial, sans-serif !important;
@@ -293,6 +295,12 @@
         text-transform: uppercase !important;
         &:hover {
             background-color: $white !important;
+        }
+        &:before {
+            display: none !important;
+        }
+        &:after {
+            display: none !important;
         }
     }
     div[aria-pressed="true"] {
