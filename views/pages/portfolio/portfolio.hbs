@@ -99,6 +99,7 @@
                 return false;
             }
             if (typeof window.responseData !== `object`) return false;
+            console.log(window.responseData);
             window.responseData.forEach((work) => {
                 const { lat, lng } = work;
                 const position = { lat: Number(lat), lng: Number(lng) };
