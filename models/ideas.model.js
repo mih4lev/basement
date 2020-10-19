@@ -271,7 +271,7 @@ const requestIdeas = async ({ limit = 100000, userID = 0, order = `timestamp` } 
             JOIN users ON ideas.userID = users.userID
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
             WHERE ideas.isModerated = 1
-            ORDER BY ? DESC LIMIT ?
+            ORDER BY ? LIMIT ?
         `;
         return { ideas: await DB(query, [ userID, userID, order, limit ]) };
     } catch (error) {
@@ -390,7 +390,7 @@ const requestFilteredIdeas = async ({ limit = 1000000, userID = 0, filterArray, 
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
             WHERE filters.filterID IN (?) && ideas.isModerated = 1 
             GROUP BY ideas.ideaID 
-            ORDER BY ? DESC LIMIT ?
+            ORDER BY ? LIMIT ?
         `;
         return { ideas: await DB(query, [ userID, userID, filterArray, order, limit ]) };
     } catch (error) {
