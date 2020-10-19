@@ -98,7 +98,7 @@
             if (!window.responseData || window.responseData.length === 0) {
                 return false;
             }
-            if (!window.responseData) return false;
+            if (typeof window.responseData !== `object`) return false;
             window.responseData.forEach((work) => {
                 const { lat, lng } = work;
                 const position = { lat: Number(lat), lng: Number(lng) };
