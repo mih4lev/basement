@@ -47,7 +47,7 @@ const addCreator = async (pageData) => {
 
 const requestCategoryIdeasByID = async (requestData) => {
     try {
-        const { categoryID, userID = 0, limit = 1000, order = `ideaID` } = requestData;
+        const { categoryID, userID = 0, limit = 1000, order = `ideas.timestamp` } = requestData;
         const query = `
             SELECT 
                 ideas.ideaID as ideaID, ideas.ideaTitle, ideas.ideaImage, 
@@ -87,7 +87,7 @@ const requestCategoryIdeasByID = async (requestData) => {
 
 const requestCategoryFilteredIdeasByID = async (requestData) => {
     try {
-        const { categoryID, filterArray, userID = 0, order = `ideaID`, limit = 1000 } = requestData;
+        const { categoryID, filterArray, userID = 0, order = `ideas.timestamp`, limit = 1000 } = requestData;
         const query = `
             SELECT 
                 ideas.ideaID as ideaID, ideas.ideaTitle, ideas.ideaImage, 
@@ -130,7 +130,7 @@ const requestCategoryFilteredIdeasByID = async (requestData) => {
 
 const requestCategoryIdeasByURL = async (requestData) => {
     try {
-        const { categoryURL, userID = 0, limit = 1000, order = `ideaID` } = requestData;
+        const { categoryURL, userID = 0, limit = 1000, order = `ideas.timestamp` } = requestData;
         const query = `
             SELECT 
                 ideas.ideaID, ideas.ideaTitle, ideas.ideaImage, 
@@ -251,7 +251,7 @@ const requestAllIdeas = async ({ limit = 1000, userID = 0 } = {}) => {
     }
 };
 
-const requestIdeas = async ({ limit = 100000, userID = 0, order = `timestamp` } = {}) => {
+const requestIdeas = async ({ limit = 100000, userID = 0, order = `ideas.timestamp` } = {}) => {
     try {
         const query = `
             SELECT 
@@ -271,7 +271,7 @@ const requestIdeas = async ({ limit = 100000, userID = 0, order = `timestamp` } 
             JOIN users ON ideas.userID = users.userID
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
             WHERE ideas.isModerated = 1
-            ORDER BY ? LIMIT ?
+            ORDER BY ?? DESC LIMIT ?
         `;
         return { ideas: await DB(query, [ userID, userID, order, limit ]) };
     } catch (error) {
@@ -368,7 +368,7 @@ const requestModeratedIdeas = async ({ limit = 1000000, userID = 0 } = {}) => {
     }
 };
 
-const requestFilteredIdeas = async ({ limit = 1000000, userID = 0, filterArray, order = `timestamp` } = {}) => {
+const requestFilteredIdeas = async ({ limit = 1000000, userID = 0, filterArray, order = `ideas.timestamp` } = {}) => {
     try {
         const query = `
             SELECT 
@@ -390,7 +390,7 @@ const requestFilteredIdeas = async ({ limit = 1000000, userID = 0, filterArray, 
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
             WHERE filters.filterID IN (?) && ideas.isModerated = 1 
             GROUP BY ideas.ideaID 
-            ORDER BY ? LIMIT ?
+            ORDER BY ? DESC LIMIT ?
         `;
         return { ideas: await DB(query, [ userID, userID, filterArray, order, limit ]) };
     } catch (error) {

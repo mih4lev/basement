@@ -283,8 +283,8 @@ export const orderButton = () => {
     if (!sortButton) return false;
     sortButton.addEventListener(`click`, () => {
         const { dataset: { order }} = sortButton;
-        const data = (order === `ideaID`) ? `popular` : `ideaID`;
-        const title = (order === `ideaID`) ? `MOST POPULAR` : `WHAT’S NEW`;
+        const data = (order === `ideas.timestamp`) ? `popular` : `ideas.timestamp`;
+        const title = (order === `ideas.timestamp`) ? `MOST POPULAR` : `WHAT’S NEW`;
         sortButton.dataset.order = data;
         sortButton.innerText = title;
         // set hidden order field
