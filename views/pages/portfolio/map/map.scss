@@ -205,6 +205,7 @@
             border-top-right-radius: 0 !important;
             border-bottom-left-radius: 5px !important;
             background-color: $white !important;
+            outline: none !important;
         }
         div {
             display: none !important;
@@ -216,6 +217,7 @@
             border-top-right-radius: 5px !important;
             border-bottom-right-radius: 5px !important;
             background-color: $white !important;
+            outline: none !important;
         }
         div {
             display: none !important;
@@ -303,14 +305,14 @@
             display: none !important;
         }
     }
-    div[aria-pressed="true"] {
+    button[aria-pressed="true"] {
         color: $raven !important;
         &:hover {
             color: $blue !important;
         }
     }
-    div[aria-pressed="false"] {
-        color: $ghost !important;
+    button[aria-pressed="false"] {
+        color: $grey !important;
         &:hover {
             color: $blue !important;
         }
