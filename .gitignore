@@ -5,11 +5,6 @@
 /.idea/
 /client/.idea/
 # ignore config
-data-mock/
-/data-mock/
-/data-mock/.json
-instagram.json
-# ignore config
 /config/
 /config/.json
 # ignore svg sprite files
@@ -20,7 +15,9 @@ instagram.json
 /public/upload/
 /tokens/
 /tokens/.json
-/data-mock/instagram.json
+# ignore mock files
+/data-mock/
+/data-mock/.json
 # ignore ENV files
 .env
 # ignore DS files
