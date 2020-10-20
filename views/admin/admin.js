@@ -846,3 +846,11 @@ const ideasCallback = (mutationsList) => {
 };
 const ideasObserver = new MutationObserver(ideasCallback);
 if (archiveButtons.length) ideasObserver.observe(ideaWrapper, ideasOptions);
+
+// check show more button status
+document.addEventListener(`dataLoaded`, () => {
+    const loadButton = document.querySelector(`.showMoreButton`);
+    if (!loadButton) return false;
+    const { dataset: { min }} = loadButton;
+    if (window.responseData.length <= Number(min)) loadButton.classList.add(`hiddenButton`);
+});
