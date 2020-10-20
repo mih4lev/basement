@@ -74,7 +74,7 @@ const requestCategoryIdeasByID = async (requestData) => {
                 cat2.categoryID = ? || cat1.categoryID = ? || ideas_categories.categoryID = ? 
             ) && ideas.isModerated = 1 && ideas.isArchived = 0 
             GROUP BY ideas.ideaID 
-            ORDER BY ??, ideas.timestamp DESC 
+            ORDER BY ?? DESC 
             LIMIT ?
         `;
         const params = [userID, userID, categoryID, categoryID, categoryID, order, limit];
@@ -117,7 +117,7 @@ const requestCategoryFilteredIdeasByID = async (requestData) => {
                 ideas_categories.categoryID = ?
             ) && ideas.isModerated = 1 && ideas.isArchived = 0 && filters.filterID IN (?)
             GROUP BY ideas.ideaID 
-            ORDER BY ??, ideas.timestamp DESC
+            ORDER BY ?? DESC
             LIMIT ?
         `;
         const params = [userID, userID, categoryID, categoryID, categoryID, filterArray, order, limit];
@@ -168,7 +168,7 @@ const requestCategoryIdeasByURL = async (requestData) => {
                 )
             ) && ideas.isModerated = 1 && ideas.isArchived = 0 
             GROUP BY ideas.ideaID 
-            ORDER BY ??, ideas.timestamp DESC
+            ORDER BY ?? DESC
             LIMIT ?
         `;
         const params = [ userID, userID, categoryURL, categoryURL, categoryURL, order, limit ];
@@ -272,7 +272,7 @@ const requestIdeas = async ({ limit = 100000, userID = 0, order = `ideas.timesta
             JOIN users ON ideas.userID = users.userID
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
             WHERE ideas.isModerated = 1 && ideas.isArchived = 0 
-            ORDER BY ??, ideas.timestamp DESC LIMIT ?
+            ORDER BY ?? DESC LIMIT ?
         `;
         return { ideas: await DB(query, [ userID, userID, order, limit ]) };
     } catch (error) {
@@ -415,7 +415,7 @@ const requestFilteredIdeas = async ({ limit = 1000000, userID = 0, filterArray, 
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
             WHERE filters.filterID IN (?) && ideas.isModerated = 1 && ideas.isArchived = 0 
             GROUP BY ideas.ideaID 
-            ORDER BY ?, ideas.timestamp DESC LIMIT ?
+            ORDER BY ? DESC LIMIT ?
         `;
         return { ideas: await DB(query, [ userID, userID, filterArray, order, limit ]) };
     } catch (error) {
