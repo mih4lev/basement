@@ -415,7 +415,7 @@ const requestFilteredIdeas = async ({ limit = 1000000, userID = 0, filterArray, 
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
             WHERE filters.filterID IN (?) && ideas.isModerated = 1 && ideas.isArchived = 0 
             GROUP BY ideas.ideaID 
-            ORDER BY ? DESC LIMIT ?
+            ORDER BY ?? DESC LIMIT ?
         `;
         return { ideas: await DB(query, [ userID, userID, filterArray, order, limit ]) };
     } catch (error) {

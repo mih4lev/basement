@@ -47,6 +47,9 @@
             @extend %animation;
             background: $black;
         }
+        &.hiddenWrapper {
+            display: none;
+        }
     }
     .pageLoader {
         transition: all 0.1s ease-in;

@@ -154,6 +154,16 @@ const hideButton = () => {
     if (buttonNode) buttonNode.classList.add(`hiddenButton`);
 }
 
+const hideSorting = () => {
+    const sortingNode = document.querySelector(`.ideasSortWrapper`);
+    if (sortingNode) sortingNode.classList.add(`hiddenWrapper`);
+};
+
+const showSorting = () => {
+    const sortingNode = document.querySelector(`.ideasSortWrapper`);
+    if (sortingNode) sortingNode.classList.remove(`hiddenWrapper`);
+};
+
 export const loader = (renderData) => {
     const buttonNode = document.querySelector(`.showMoreButton`);
     if (!buttonNode) return false;
@@ -165,8 +175,13 @@ export const loader = (renderData) => {
     };
     const observer = new IntersectionObserver(intersectionCallback);
     if (scroll && scroll === `1`) observer.observe(buttonNode);
-    document.addEventListener(`dataLoaded`, () => {
-        if (window.responseData.length === 0) hideButton();
+    document.addEventListener(`listResponse`, () => {
+        if (window.responseData.length === 0) {
+            hideButton();
+            hideSorting();
+            return false;
+        }
+        showSorting();
     });
 };
 
