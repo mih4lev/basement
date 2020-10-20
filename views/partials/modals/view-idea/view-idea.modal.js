@@ -45,6 +45,7 @@ export const viewIdeaModal = () => {
                 otherPreviewList.innerHTML = ``;
                 portfolioList.innerHTML = ``;
                 saveButton.dataset.idea = ``;
+                ideaModalPhoto.src = ``;
                 resolve();
             }, animationTimeout);
         });
