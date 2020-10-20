@@ -74,7 +74,7 @@ const requestCategoryIdeasByID = async (requestData) => {
                 cat2.categoryID = ? || cat1.categoryID = ? || ideas_categories.categoryID = ? 
             ) && ideas.isModerated = 1 && ideas.isArchived = 0 
             GROUP BY ideas.ideaID 
-            ORDER BY ?? DESC 
+            ORDER BY ?? DESC, ideas.timestamp DESC 
             LIMIT ?
         `;
         const params = [userID, userID, categoryID, categoryID, categoryID, order, limit];
@@ -117,7 +117,7 @@ const requestCategoryFilteredIdeasByID = async (requestData) => {
                 ideas_categories.categoryID = ?
             ) && ideas.isModerated = 1 && ideas.isArchived = 0 && filters.filterID IN (?)
             GROUP BY ideas.ideaID 
-            ORDER BY ?? DESC
+            ORDER BY ?? DESC, ideas.timestamp DESC 
             LIMIT ?
         `;
         const params = [userID, userID, categoryID, categoryID, categoryID, filterArray, order, limit];
@@ -168,7 +168,7 @@ const requestCategoryIdeasByURL = async (requestData) => {
                 )
             ) && ideas.isModerated = 1 && ideas.isArchived = 0 
             GROUP BY ideas.ideaID 
-            ORDER BY ?? DESC
+            ORDER BY ?? DESC, ideas.timestamp DESC 
             LIMIT ?
         `;
         const params = [ userID, userID, categoryURL, categoryURL, categoryURL, order, limit ];
