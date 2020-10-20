@@ -136,22 +136,22 @@ export const createScroll = (scrollWrapper, maxVisibleNodes) => {
 
 const showLoader = () => {
     const loaderNode = document.querySelector(`.pageLoader`);
-    loaderNode.classList.remove(`hiddenLoader`);
+    if (loaderNode) loaderNode.classList.remove(`hiddenLoader`);
 };
 
 const hideLoader = () => {
     const loaderNode = document.querySelector(`.pageLoader`);
-    loaderNode.classList.add(`hiddenLoader`);
+    if (loaderNode) loaderNode.classList.add(`hiddenLoader`);
 };
 
 const showButton = () => {
     const buttonNode = document.querySelector(`.showMoreButton`);
-    buttonNode.classList.remove(`hiddenButton`);
+    if (buttonNode) buttonNode.classList.remove(`hiddenButton`);
 };
 
 const hideButton = () => {
     const buttonNode = document.querySelector(`.showMoreButton`);
-    buttonNode.classList.add(`hiddenButton`);
+    if (buttonNode) buttonNode.classList.add(`hiddenButton`);
 }
 
 export const loader = (renderData) => {
@@ -165,6 +165,9 @@ export const loader = (renderData) => {
     };
     const observer = new IntersectionObserver(intersectionCallback);
     if (scroll && scroll === `1`) observer.observe(buttonNode);
+    document.addEventListener(`dataLoaded`, () => {
+        if (window.responseData.length === 0) hideButton();
+    });
 };
 
 export const requestData = async (requestURL) => {
