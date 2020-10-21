@@ -99,7 +99,7 @@ router.post(`/add`, imagesParser.fields(landingsImages), async (request, respons
 router.get(`/edit/:requestID`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
-    request.data['isAdminLandings'] = true;
+    request.data['isAdminLandingsEdit'] = true;
     const { params: { requestID }} = request;
     const content = requestContent(await Promise.all([
         requestLanding(requestID, false), requestModerateCount()
