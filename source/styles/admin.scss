@@ -2167,8 +2167,9 @@ button {
             text-decoration: none;
             color: $black;
             span {
+                flex-shrink: 0;
                 width: 20%;
-                padding-right: 20px;
+                padding-right: 10px;
                 box-sizing: border-box;
                 &.fieldAddress {
                     width: 40%;
@@ -2189,6 +2190,29 @@ button {
                 font-weight: 600;
                 border-bottom: 2px solid $white;
             }
+        }
+    }
+    &.bookingData {
+        span.timestamp {
+            width: 13%  !important;
+        }
+        span.fieldName {
+            width: 12%  !important;
+        }
+        span.fieldAddress {
+            width: 28% !important;
+        }
+        span.fieldPhone {
+            width: 10%  !important;
+        }
+        span.fieldEmail {
+            width: 18%  !important;
+        }
+        span.fieldSquare {
+            width: 4%  !important;
+        }
+        span.fieldDate {
+            width: 13%  !important;
         }
     }
 }
