@@ -1,19 +1,25 @@
 <ul class="formsData">
     <li class="dataWrapper">
         <div class="dataLink headerWrapper">
-            <span class="fieldName">Client name</span>
+            <span class="timestamp">Booking Made</span>
+            <span class="fieldName">Name</span>
             <span class="fieldAddress">Address</span>
-            <span class="fieldDate">Booking date</span>
-            <span class="timestamp">Added date</span>
+            <span class="fieldPhone">Phone</span>
+            <span class="fieldEmail">Email</span>
+            <span class="fieldSquare">Sq.Ft.</span>
+            <span class="fieldDate">Appointment Date</span>
         </div>
     </li>
     {{# each forms }}
         <li class="dataWrapper">
             <a class="dataLink" href="{{{ bookingID }}}">
+                <span class="timestamp">{{{ timestamp }}}</span>
                 <span class="fieldName">{{{ firstName }}} {{{ lastName }}}</span>
                 <span class="fieldAddress">{{{ address }}}, {{{ town }}}, {{{ state }}} {{{ zipCode }}}</span>
+                <span class="fieldPhone">{{{ phone }}}</span>
+                <span class="fieldEmail">{{{ email }}}</span>
+                <span class="fieldSquare">{{{ square }}}</span>
                 <span class="fieldDate">{{{ date }}}</span>
-                <span class="timestamp">{{{ timestamp }}}</span>
             </a>
         </li>
     {{/ each }}

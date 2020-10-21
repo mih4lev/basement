@@ -2163,16 +2163,16 @@ button {
             justify-content: space-between;
             padding: 5px 10px;
             box-sizing: border-box;
-            font-size: 15px;
+            font-size: 14px;
             text-decoration: none;
             color: $black;
             span {
                 width: 20%;
-                &.timestamp {
-                    text-align: right;
-                }
                 &.fieldAddress {
                     width: 40%;
+                }
+                &.fieldSquare {
+                    width: 10%;
                 }
                 &.fieldConsultation {
                     width: 40%;

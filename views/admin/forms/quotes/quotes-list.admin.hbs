@@ -1,19 +1,21 @@
 <ul class="formsData">
     <li class="dataWrapper">
         <div class="dataLink headerWrapper">
-            <span class="fieldName">Client name</span>
-            <span class="fieldAddress">Square / Zip code</span>
-            <span class="fieldDate">Client email</span>
-            <span class="timestamp">Added date</span>
+            <span class="timestamp">Form Submitted</span>
+            <span class="fieldName">Name</span>
+            <span class="fieldZIP">ZIP</span>
+            <span class="fieldEmail">Email</span>
+            <span class="fieldSquare">Sq.Ft.</span>
         </div>
     </li>
     {{# each forms }}
         <li class="dataWrapper">
             <a class="dataLink" href="{{{ requestID }}}">
-                <span class="fieldName">{{{ firstName }}} {{{ lastName }}}</span>
-                <span class="fieldConsultation">{{{ square }}} SQ. FT. / {{{ zipCode }}}</span>
-                <span class="fieldEmail">{{{ email }}}</span>
                 <span class="timestamp">{{{ timestamp }}}</span>
+                <span class="fieldName">{{{ firstName }}} {{{ lastName }}}</span>
+                <span class="fieldZIP">{{{ zipCode }}}</span>
+                <span class="fieldEmail">{{{ email }}}</span>
+                <span class="fieldSquare">{{{ square }}} sq.ft.</span>
             </a>
         </li>
     {{/ each }}
