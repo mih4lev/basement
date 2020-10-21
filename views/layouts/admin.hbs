@@ -37,6 +37,13 @@
                             <a class="subMenuLink" href="/admin/landings/">All local landings</a>
                         {{/ if }}
                     </li>
+                    {{# if isAdminLandingsEdit }}
+                        <li class="subMenuWrapper">
+                            <span class="subMenuLink activeLink editLink">
+                                Edit landing {{{ page.landingID }}}
+                            </span>
+                        </li>
+                    {{/ if }}
                 </ul>
             </li>
             <li class="menuWrapper">
@@ -273,6 +280,14 @@
             <li class="menuWrapper">
                 <span class="menuLink">Other <span class="dropdownMenu"></span></span>
                 <ul class="subMenuLinks">
+                    <li class="subMenuWrapper">
+                        {{# if isAdminZipCodes }}
+                            <span class="subMenuLink activeLink">Zip codes</span>
+                        {{ else }}
+                            <a class="subMenuLink"
+                               href="/admin/zip-codes/">Zip codes</a>
+                        {{/ if }}
+                    </li>
                     <li class="subMenuWrapper">
                         {{# if isAdminFormsBooking }}
                             <span class="subMenuLink activeLink">Appointment Bookings</span>

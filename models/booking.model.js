@@ -13,6 +13,17 @@ const saveBooking = async (bookingData) => {
     }
 };
 
+// REQUEST
+
+const requestZipCodes = async () => {
+    try {
+        const query = `SELECT * FROM zip_codes`;
+        return { zipCodes: await DB(query) };
+    } catch (error) {
+        return { status: 0, error };
+    }
+};
+
 const requestUserByZipCode = async (zipCode) => {
     try {
         const query = `SELECT * FROM calendars WHERE zipCodes LIKE '%?%'`;
@@ -33,4 +44,6 @@ const tempBookingRedirect = async (zipCode) => {
     }
 };
 
-module.exports = { saveBooking, requestUserByZipCode, tempBookingRedirect };
+module.exports = {
+    saveBooking, requestZipCodes, requestUserByZipCode, tempBookingRedirect
+};
