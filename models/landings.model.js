@@ -18,7 +18,7 @@ const createLanding = async (pageData) => {
 
 const requestLandings = async () => {
     try {
-        const query = `SELECT landingID, pageURL, landingImage FROM landings`;
+        const query = `SELECT landingID, pageURL, pageTitle, landingImage FROM landings`;
         return { landings: await DB(query) };
     } catch (error) {
         console.log(error);
