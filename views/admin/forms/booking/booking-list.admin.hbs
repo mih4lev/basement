@@ -1,0 +1,12 @@
+<ul class="formsData">
+    {{# each forms }}
+        <li class="dataWrapper">
+            <a class="dataLink" href="{{{ bookingID }}}">
+                <span class="fieldName">{{{ firstName }}} {{{ lastName }}}</span>
+                <span class="fieldAddress">{{{ address }}}, {{{ town }}}, {{{ state }}} {{{ zipCode }}}</span>
+                <span class="fieldDate">{{{ date }}}</span>
+                <span class="timestamp">{{{ timestamp }}}</span>
+            </a>
+        </li>
+    {{/ each }}
+</ul>

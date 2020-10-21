@@ -1,0 +1,78 @@
+<form class="formNode" action="/admin/forms/contact-us/edit">
+
+    <input class="hiddenField" name="bookingID" type="hidden" value="{{{ form.requestID }}}">
+
+    <section class="fieldSection">
+        <div class="fieldWrapper" style="margin-right: 8px;">
+            <label class="fieldLabel" for="firstName">First name</label>
+            <input class="textField" type="text" id="firstName" name="firstName" value="{{{ form.firstName }}}">
+        </div>
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="lastName">Last name</label>
+            <input class="textField" type="text" id="lastName" name="lastName" value="{{{ form.lastName }}}">
+        </div>
+        <div class="buttonWrapper">
+            <button class="deleteButton" type="button" data-redirect="/admin/forms/instant-quote/"
+                    data-action="/admin/forms/instant-quote/{{{ form.requestID }}}">
+                Delete form data
+            </button>
+            <div class="buttonHiddenWrapper hiddenWrapper">
+                <div class="wrapperTitle">Are you sure you want to remove this form data?</div>
+                <div class="wrapperButtons">
+                    <button class="cancelButton" type="button">CANCEL</button>
+                    <button class="confirmButton" type="button">DELETE</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper" style="margin-right: 8px;">
+            <label class="fieldLabel" for="square">Square</label>
+            <input class="textField" type="text" id="square" name="square" value="{{{ form.square }}}">
+        </div>
+        <div class="fieldWrapper" style="margin-right: 8px;">
+            <label class="fieldLabel" for="email">Email</label>
+            <input class="textField" type="text" id="email" name="email" value="{{{ form.email }}}">
+        </div>
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="zipCode">Zip code</label>
+            <input class="textField" type="text" id="zipCode" name="zipCode" value="{{{ form.zipCode }}}">
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper" style="margin-right: 8px;">
+            <label class="fieldLabel" for="bathroomExist">Bathroom</label>
+            <input class="textField" type="text"
+                   id="bathroomExist" name="bathroomExist" value="{{{ form.bathroomExist }}}">
+        </div>
+        <div class="fieldWrapper" style="margin-right: 8px;">
+            <label class="fieldLabel" for="demolitionRequired">Demolition</label>
+            <input class="textField" type="text"
+                   id="demolitionRequired" name="demolitionRequired" value="{{{ form.demolitionRequired }}}">
+        </div>
+        <div class="fieldWrapper" style="margin-right: 8px;">
+            <label class="fieldLabel" for="kitchenExist">Wet bar / kitchen</label>
+            <input class="textField" type="text"
+                   id="kitchenExist" name="kitchenExist" value="{{{ form.kitchenExist }}}">
+        </div>
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="isHeightOver">Ceiling height over 8 ft</label>
+            <input class="textField" type="text"
+                   id="isHeightOver" name="isHeightOver" value="{{{ form.isHeightOver }}}">
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper" style="width: 330px; margin-right: 8px;">
+            <label class="fieldLabel" for="referer">Referer</label>
+            <input class="textField" type="text" id="referer" name="referer" value="{{{ form.referer }}}">
+        </div>
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="referer">Send time</label>
+            <input class="textField" type="text" id="referer" name="referer" value="{{{ form.timestamp }}}">
+        </div>
+    </section>
+
+</form>

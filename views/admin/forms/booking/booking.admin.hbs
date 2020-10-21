@@ -1,0 +1,92 @@
+<form class="formNode" action="/admin/forms/booking/edit">
+
+    <input class="hiddenField" name="bookingID" type="hidden" value="{{{ form.bookingID }}}">
+
+    <section class="fieldSection">
+        <div class="fieldWrapper" style="margin-right: 8px;">
+            <label class="fieldLabel" for="firstName">First name</label>
+            <input class="textField" type="text" id="firstName" name="firstName" value="{{{ form.firstName }}}">
+        </div>
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="lastName">Last name</label>
+            <input class="textField" type="text" id="lastName" name="lastName" value="{{{ form.lastName }}}">
+        </div>
+        <div class="buttonWrapper">
+            <button class="deleteButton" type="button" data-redirect="/admin/forms/booking/"
+                    data-action="/admin/forms/booking/{{{ form.bookingID }}}">
+                Delete form data
+            </button>
+            <div class="buttonHiddenWrapper hiddenWrapper">
+                <div class="wrapperTitle">Are you sure you want to remove this form data?</div>
+                <div class="wrapperButtons">
+                    <button class="cancelButton" type="button">CANCEL</button>
+                    <button class="confirmButton" type="button">DELETE</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper" style="margin-right: 8px;">
+            <label class="fieldLabel" for="date">Booking date</label>
+            <input class="textField" type="text" id="date" name="date" value="{{{ form.date }}}">
+        </div>
+        <div class="fieldWrapper" style="margin-right: 8px;">
+            <label class="fieldLabel" for="phone">Phone</label>
+            <input class="textField" type="text" id="phone" name="phone" value="{{{ form.phone }}}">
+        </div>
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="email">Email</label>
+            <input class="textField" type="text" id="email" name="email" value="{{{ form.email }}}">
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper" style="margin-right: 8px;">
+            <label class="fieldLabel" for="address">Address</label>
+            <input class="textField" type="text" id="address" name="address" value="{{{ form.address }}}">
+        </div>
+        <div class="fieldWrapper" style="margin-right: 8px;">
+            <label class="fieldLabel" for="town">Town</label>
+            <input class="textField" type="text" id="town" name="town" value="{{{ form.town }}}">
+        </div>
+        <div class="fieldWrapper" style="width: 330px; margin-right: 8px;">
+            <label class="fieldLabel" for="state">State</label>
+            <input class="textField" type="text" id="state" name="state" value="{{{ form.state }}}">
+        </div>
+        <div class="fieldWrapper" style="width: 330px;">
+            <label class="fieldLabel" for="zipCode">Zip code</label>
+            <input class="textField" type="text" id="zipCode" name="zipCode" value="{{{ form.zipCode }}}">
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="service">Service</label>
+            <textarea class="textareaField" id="service" name="service">{{{ form.service }}}</textarea>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper" style="width: 200px; margin-right: 8px;">
+            <label class="fieldLabel" for="square">Square</label>
+            <input class="textField" type="text" id="square" name="square" value="{{{ form.square }}}">
+        </div>
+        <div class="fieldWrapper" style="width: 460px; margin-right: 8px;">
+            <label class="fieldLabel" for="budget">Budget</label>
+            <input class="textField" type="text" id="budget" name="budget" value="{{{ form.budget }}}">
+        </div>
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="referer">Referer</label>
+            <input class="textField" type="text" id="referer" name="referer" value="{{{ form.referer }}}">
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="message">Message</label>
+            <textarea class="textareaField" id="message" name="message">{{{ form.message }}}</textarea>
+        </div>
+    </section>
+
+</form>

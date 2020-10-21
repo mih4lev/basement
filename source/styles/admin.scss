@@ -2148,6 +2148,44 @@ button {
     }
 }
 
+// forms
+
+.formsData {
+    display: flex;
+    flex-direction: column;
+    margin: 0 -10px;
+    padding-left: 0;
+    list-style-type: none;
+    .dataWrapper {
+        .dataLink {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 5px 10px;
+            box-sizing: border-box;
+            font-size: 15px;
+            text-decoration: none;
+            color: $black;
+            span {
+                width: 20%;
+                &.timestamp {
+                    text-align: right;
+                }
+                &.fieldAddress {
+                    width: 40%;
+                }
+                &.fieldConsultation {
+                    width: 40%;
+                }
+            }
+            &:hover {
+                background-color: $white;
+                color: $blue;
+            }
+        }
+    }
+}
+
 // tinyMCE
 
 .tox-tinymce {

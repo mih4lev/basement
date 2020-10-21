@@ -281,6 +281,51 @@
                 <span class="menuLink">Other <span class="dropdownMenu"></span></span>
                 <ul class="subMenuLinks">
                     <li class="subMenuWrapper">
+                        {{# if isAdminFormsBooking }}
+                            <span class="subMenuLink activeLink">Booking data</span>
+                        {{ else }}
+                            <a class="subMenuLink"
+                               href="/admin/forms/booking/">Booking data</a>
+                        {{/ if }}
+                    </li>
+                    {{# if isAdminFormsBookingEdit }}
+                    <li class="subMenuWrapper">
+                        <span class="subMenuLink activeLink editLink">
+                            Edit data {{{ form.bookingID }}}
+                        </span>
+                    </li>
+                    {{/ if }}
+                    <li class="subMenuWrapper">
+                        {{# if isAdminFormsContacts }}
+                            <span class="subMenuLink activeLink">Contact us forms data</span>
+                        {{ else }}
+                            <a class="subMenuLink"
+                               href="/admin/forms/contact-us/">Contact us forms data</a>
+                        {{/ if }}
+                    </li>
+                    {{# if isAdminFormsContactsEdit }}
+                        <li class="subMenuWrapper">
+                        <span class="subMenuLink activeLink editLink">
+                            Edit data {{{ form.requestID }}}
+                        </span>
+                        </li>
+                    {{/ if }}
+                    <li class="subMenuWrapper">
+                        {{# if isAdminFormsQuotes }}
+                            <span class="subMenuLink activeLink">Instant quote forms data</span>
+                        {{ else }}
+                            <a class="subMenuLink"
+                               href="/admin/forms/instant-quote/">Instant quote forms data</a>
+                        {{/ if }}
+                    </li>
+                    {{# if isAdminFormsQuotesEdit }}
+                        <li class="subMenuWrapper">
+                        <span class="subMenuLink activeLink editLink">
+                            Edit data {{{ form.requestID }}}
+                        </span>
+                        </li>
+                    {{/ if }}
+                    <li class="subMenuWrapper">
                         {{# if isAdminSettings }}
                             <span class="subMenuLink activeLink">Settings</span>
                         {{ else }}

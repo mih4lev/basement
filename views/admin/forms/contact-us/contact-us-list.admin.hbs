@@ -1,0 +1,12 @@
+<ul class="formsData">
+    {{# each forms }}
+        <li class="dataWrapper">
+            <a class="dataLink" href="{{{ requestID }}}">
+                <span class="fieldName">{{{ firstName }}} {{{ lastName }}}</span>
+                <span class="fieldConsultation">{{{ consultationTime }}} / {{{ developStart }}}</span>
+                <span class="fieldEmail">{{{ email }}}</span>
+                <span class="timestamp">{{{ timestamp }}}</span>
+            </a>
+        </li>
+    {{/ each }}
+</ul>

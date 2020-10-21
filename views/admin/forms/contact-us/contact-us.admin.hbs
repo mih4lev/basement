@@ -1,0 +1,84 @@
+<form class="formNode" action="/admin/forms/contact-us/edit">
+
+    <input class="hiddenField" name="bookingID" type="hidden" value="{{{ form.requestID }}}">
+
+    <section class="fieldSection">
+        <div class="fieldWrapper" style="margin-right: 8px;">
+            <label class="fieldLabel" for="firstName">First name</label>
+            <input class="textField" type="text" id="firstName" name="firstName" value="{{{ form.firstName }}}">
+        </div>
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="lastName">Last name</label>
+            <input class="textField" type="text" id="lastName" name="lastName" value="{{{ form.lastName }}}">
+        </div>
+        <div class="buttonWrapper">
+            <button class="deleteButton" type="button" data-redirect="/admin/forms/contact-us/"
+                    data-action="/admin/forms/contact-us/{{{ form.requestID }}}">
+                Delete form data
+            </button>
+            <div class="buttonHiddenWrapper hiddenWrapper">
+                <div class="wrapperTitle">Are you sure you want to remove this form data?</div>
+                <div class="wrapperButtons">
+                    <button class="cancelButton" type="button">CANCEL</button>
+                    <button class="confirmButton" type="button">DELETE</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper" style="margin-right: 8px;">
+            <label class="fieldLabel" for="phone">Phone</label>
+            <input class="textField" type="text" id="phone" name="phone" value="{{{ form.phone }}}">
+        </div>
+        <div class="fieldWrapper" style="margin-right: 8px;">
+            <label class="fieldLabel" for="email">Email</label>
+            <input class="textField" type="text" id="email" name="email" value="{{{ form.email }}}">
+        </div>
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="zipCode">Zip code</label>
+            <input class="textField" type="text" id="zipCode" name="zipCode" value="{{{ form.zipCode }}}">
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="service">Service</label>
+            <textarea class="textareaField" id="service" name="service">{{{ form.service }}}</textarea>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper" style="margin-right: 8px;">
+            <label class="fieldLabel" for="address">Consultation</label>
+            <input class="textField" type="text" id="address" name="address" value="{{{ form.consultationTime }}}">
+        </div>
+        <div class="fieldWrapper" style="margin-right: 8px;">
+            <label class="fieldLabel" for="town">Get started</label>
+            <input class="textField" type="text" id="town" name="town" value="{{{ form.developStart }}}">
+        </div>
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="state">Budget</label>
+            <input class="textField" type="text" id="state" name="state" value="{{{ form.budget }}}">
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="message">Message</label>
+            <textarea class="textareaField" id="message" name="message">{{{ form.message }}}</textarea>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper" style="width: 330px; margin-right: 8px;">
+            <label class="fieldLabel" for="referer">Referer</label>
+            <input class="textField" type="text" id="referer" name="referer" value="{{{ form.referer }}}">
+        </div>
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="referer">Send time</label>
+            <input class="textField" type="text" id="referer" name="referer" value="{{{ form.timestamp }}}">
+        </div>
+    </section>
+
+</form>
