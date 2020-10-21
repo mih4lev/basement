@@ -854,3 +854,35 @@ document.addEventListener(`dataLoaded`, () => {
     const { dataset: { min }} = loadButton;
     if (window.responseData.length <= Number(min)) loadButton.classList.add(`hiddenButton`);
 });
+
+// zipcode zones
+const zipForms = [...document.querySelectorAll(`form.zipZone`)];
+zipForms.forEach((form) => {
+    const { action: actionLink } = form;
+    const updateButton = form.querySelector(`.updateButton`);
+    const createButton = form.querySelector(`.createButton`);
+    const fields = [...form.querySelectorAll(`.textField, .textareaField`)];
+    // check for field edit
+    fields.forEach((field) => {
+        field.addEventListener(`input`, () => {
+            if (updateButton) updateButton.removeAttribute(`disabled`);
+            if (createButton) createButton.removeAttribute(`disabled`);
+        });
+    });
+    const updateData = async () => {
+        updateButton.classList.add(`loadButton`);
+        const body = new FormData(form);
+        const response = await fetch(actionLink, { method: `POST`, body });
+        const { status }  = await response.json();
+        if (status === 1) updateButton.classList.remove(`loadButton`);
+    };
+    const createData = async () => {
+        createButton.classList.add(`loadButton`);
+        const body = new FormData(form);
+        const response = await fetch(actionLink, { method: `POST`, body });
+        const { status }  = await response.json();
+        if (status === 1) return location.reload();
+    };
+    if (updateButton) updateButton.addEventListener(`click`, updateData);
+    if (createButton) createButton.addEventListener(`click`, createData);
+});

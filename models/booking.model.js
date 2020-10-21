@@ -2,6 +2,17 @@ const { DB, singleDB } = require("./db.model");
 
 // CREATE
 
+const addZipCodes = async (addData) => {
+    try {
+        const query = `INSERT INTO zip_codes SET ?`;
+        const response = await DB(query, addData);
+        const status = Number(response.affectedRows && response.affectedRows === 1);
+        return { status, requestID: Number(response.insertId) };
+    } catch (error) {
+        return { status: 0, error };
+    }
+};
+
 const saveBooking = async (bookingData) => {
     try {
         const query = `INSERT INTO booking SET ?`;
@@ -44,6 +55,35 @@ const tempBookingRedirect = async (zipCode) => {
     }
 };
 
+// UPDATE
+
+const updateZipCodes = async ({ codeID, ...updateData }) => {
+    try {
+        const query = `UPDATE zip_codes SET ? WHERE codeID = ?`;
+        const response = await DB(query, [ updateData, codeID ]);
+        const status = Number(response.affectedRows && response.affectedRows === 1);
+        return { status, requestID: Number(codeID) };
+    } catch (error) {
+        console.log(error);
+        return { status: 0, requestID: Number(codeID), error };
+    }
+};
+
+// DELETE
+
+const deleteZone = async (codeID) => {
+    try {
+        const query = `DELETE FROM zip_codes WHERE codeID = ?`;
+        const response = await DB(query, [codeID]);
+        const status = Number(response.affectedRows && response.affectedRows === 1);
+        return { status, requestID: Number(codeID) };
+    } catch (error) {
+        console.log(error);
+        return { status: 0, error };
+    }
+};
+
 module.exports = {
-    saveBooking, requestZipCodes, requestUserByZipCode, tempBookingRedirect
+    addZipCodes, saveBooking, requestZipCodes, requestUserByZipCode,
+    tempBookingRedirect, updateZipCodes, deleteZone
 };
