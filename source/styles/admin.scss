@@ -2168,6 +2168,8 @@ button {
             color: $black;
             span {
                 width: 20%;
+                padding-right: 20px;
+                box-sizing: border-box;
                 &.fieldAddress {
                     width: 40%;
                 }
