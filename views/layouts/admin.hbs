@@ -281,6 +281,28 @@
                 <span class="menuLink">Other <span class="dropdownMenu"></span></span>
                 <ul class="subMenuLinks">
                     <li class="subMenuWrapper">
+                        {{# if isAdminOffices }}
+                            <span class="subMenuLink activeLink">Offices</span>
+                        {{ else }}
+                            <a class="subMenuLink"
+                               href="/admin/offices/">Offices</a>
+                        {{/ if }}
+                    </li>
+                    {{# if isAdminOfficesAdd }}
+                        <li class="subMenuWrapper">
+                            <span class="subMenuLink activeLink editLink">
+                                Add office
+                            </span>
+                        </li>
+                    {{/ if }}
+                    {{# if isAdminOfficesEdit }}
+                        <li class="subMenuWrapper">
+                            <span class="subMenuLink activeLink editLink">
+                                Edit office {{{ form.officeID }}}
+                            </span>
+                        </li>
+                    {{/ if }}
+                    <li class="subMenuWrapper">
                         {{# if isAdminZipCodes }}
                             <span class="subMenuLink activeLink">Zip codes</span>
                         {{ else }}

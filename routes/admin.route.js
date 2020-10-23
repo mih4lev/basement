@@ -11,7 +11,8 @@ const createAdminRoutes = (app) => {
         { URL: `/admin/users`, route: `users.route` },
         { URL: `/admin/upload`, route: `upload.route` },
         { URL: `/admin/forms`, route: `forms.route` },
-        { URL: `/admin/zip-codes`, route: `zip-codes.route` }
+        { URL: `/admin/zip-codes`, route: `zip-codes.route` },
+        { URL: `/admin/offices`, route: `offices.route` }
     ];
 
     pages.forEach((routeData) => {
