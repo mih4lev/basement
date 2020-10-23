@@ -84,6 +84,7 @@ router.get(`/financing-offers`, async (request, response, next) => {
 
 router.get(`/contact-us`, async (request, response, next) => {
     request.data['isContactUs'] = true;
+    request.data['isGreyMain'] = true;
     const pageID = 9;
     const content = requestContent(await Promise.all([
         requestMeta(pageID),
