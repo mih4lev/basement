@@ -14,7 +14,7 @@ router.use((request, response, next) => {
 router.get(`/`, async (request, response, next) => {
     const { query: { referer }} = request;
     const isBookingReferer = (referer === `booking`);
-    const pageID = 16;
+    const pageID = 11;
     const content = requestContent(await Promise.all([
         requestMeta(pageID)
     ]));
