@@ -1,5 +1,3 @@
-import { saveAction } from "../../../../source/scripts/utils";
-
 export const offersForm = () => {
     const offersForm = document.querySelector(`.offersForm`);
     const offersButton = offersForm.querySelector(`.offersButton`);

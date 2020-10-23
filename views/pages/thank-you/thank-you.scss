@@ -1,6 +1,6 @@
 .offersBlock {
     .roundBlock {
-        padding-bottom: 60px;
+        padding-bottom: 20px;
         &:after {
             content: "";
             position: absolute;
@@ -48,6 +48,23 @@
     .formHint {
         margin: 0;
         font-size: 12px;
+    }
+    .offersButtonWrapper {
+        display: flex;
+        flex-direction: row;
+        .offersButton {
+            align-self: flex-start;
+            @extend %blueButton;
+            margin-top: 15px;
+            &:after {
+                @extend %buttonIconAfter;
+                @extend %arrowIcon;
+                background: $white;
+            }
+            @include minWidth(480) {
+                margin-top: 20px;
+            }
+        }
     }
 }
 

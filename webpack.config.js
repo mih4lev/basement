@@ -11,6 +11,7 @@ const filesMap = {
     'offers': `./views/pages/about-us/offers/offers.main.js`,
     'testimonials': `./views/pages/about-us/testimonials/testimonials.main.js`,
     'press': `./views/pages/about-us/press/press.main.js`,
+    'thank-you': `./views/pages/thank-you/thank-you.main.js`,
     'admin': `./views/admin/admin.js`
 };
 
