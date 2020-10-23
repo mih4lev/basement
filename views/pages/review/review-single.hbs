@@ -28,31 +28,36 @@
             <ul class="socialLinks">
                 {{# if office.facebookLink }}
                 <li class="socialLinkWrapper">
-                    <a class="socialLink logoSprite facebookLogo" rel="nofollow" title="Facebook"
+                    <a class="socialLink logoSprite facebookLogo"
+                       rel="nofollow" title="Facebook" data-link="facebook_link"
                        href="{{{ office.facebookLink }}}" target="_blank">Facebook</a>
                 </li>
                 {{/ if }}
                 {{# if office.houzzLink }}
                 <li class="socialLinkWrapper backgroundLogoWrapper">
-                    <a class="socialLink logoSprite houzzLogo" rel="nofollow" title="houzz"
+                    <a class="socialLink logoSprite houzzLogo"
+                       rel="nofollow" title="houzz" data-link="houzz_link"
                        href="{{{ office.houzzLink }}}" target="_blank">houzz</a>
                 </li>
                 {{/ if }}
                 {{# if office.angielListLink }}
                 <li class="socialLinkWrapper">
-                    <a class="socialLink logoSprite angiesListLogo" rel="nofollow" title="Angie`s list"
+                    <a class="socialLink logoSprite angiesListLogo"
+                       rel="nofollow" title="Angie`s list" data-link="angieslist_link"
                        href="{{{ office.angielListLink }}}" target="_blank">Angie`s list</a>
                 </li>
                 {{/ if }}
                 {{# if office.porchLink }}
                 <li class="socialLinkWrapper backgroundLogoWrapper">
-                    <a class="socialLink logoSprite porchLogo" rel="nofollow" title="Porch"
+                    <a class="socialLink logoSprite porchLogo"
+                       rel="nofollow" title="Porch" data-link="porch_link"
                        href="{{{ office.porchLink }}}" target="_blank">Porch</a>
                 </li>
                 {{/ if }}
                 {{# if office.googleLink }}
                 <li class="socialLinkWrapper">
-                    <a class="socialLink logoSprite googleLogo" rel="nofollow" title="Google"
+                    <a class="socialLink logoSprite googleLogo"
+                       rel="nofollow" title="Google" data-link="google_link"
                        href="{{{ office.googleLink }}}" target="_blank">Google</a>
                 </li>
                 {{/ if }}
@@ -64,6 +69,26 @@
 </section>
 
 <script>
+
+    const query = location.search;
+
+    const searchString = (query.substr(0,1) === `?`) ? query.substr(1) : query;
+    const queryArray = searchString.split(`&`)
+
+    const links = {};
+
+    queryArray.forEach((link) => {
+        const separator = link.indexOf(`=`);
+        links[link.substr(0, separator)] = link.substr(separator + 1);
+    });
+
+    const linkNodes = [...document.querySelectorAll(`.socialLink`)];
+    linkNodes.forEach((node) => {
+        const { dataset: { link }} = node;
+        if (!links[link]) return false;
+        node.setAttribute(`href`, decodeURIComponent(links[link]));
+    });
+
     const mapNodes = [...document.querySelectorAll(`.reviewMap`)];
     function initMap() {
         mapNodes.forEach((mapNode) => {

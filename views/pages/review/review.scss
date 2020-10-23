@@ -160,21 +160,6 @@
                                 height: 57px;
                                 background-size: 57px 57px;
                             }
-                            &.facebookLogo {
-                                background-image: url("/public/images/facebook_icon.png");
-                            }
-                            &.houzzLogo {
-                                background-image: url("/public/images/houzz_icon.png");
-                            }
-                            &.angiesListLogo {
-                                background-image: url("/public/images/angies_icon.png");
-                            }
-                            &.porchLogo {
-                                background-image: url("/public/images/porch_icon.png");
-                            }
-                            &.googleLogo {
-                                background-image: url("/public/images/google_icon.png");
-                            }
                             &:hover {
                                 filter: grayscale(100%) drop-shadow(5px 5px 7px rgba(0,0,0,.25));
                             }
@@ -214,6 +199,41 @@
                     display: none !important;
                 }
             }
+        }
+    }
+}
+
+.reviewsSection.innerSection .socialLink {
+    &.facebookLogo {
+        background-image: url("/public/images/facebook_icon.png");
+    }
+    &.houzzLogo {
+        background-image: url("/public/images/houzz_icon.png");
+    }
+    &.angiesListLogo {
+        background-image: url("/public/images/angies_icon.png");
+    }
+    &.porchLogo {
+        background-image: url("/public/images/porch_icon.png");
+    }
+    &.googleLogo {
+        background-image: url("/public/images/google_icon.png");
+    }
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        &.facebookLogo {
+            background-image: url("/public/images/facebook_icon@2x.png");
+        }
+        &.houzzLogo {
+            background-image: url("/public/images/houzz_icon@2x.png");
+        }
+        &.angiesListLogo {
+            background-image: url("/public/images/angies_icon@2x.png");
+        }
+        &.porchLogo {
+            background-image: url("/public/images/porch_icon@2x.png");
+        }
+        &.googleLogo {
+            background-image: url("/public/images/google_icon@2x.png");
         }
     }
 }

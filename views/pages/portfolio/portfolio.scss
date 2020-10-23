@@ -55,68 +55,6 @@
         }
     }
 }
-//
-//.no-webp .mapPicture {
-//    background-image: url("/public/images/portfolio-map_480x123.png");
-//    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-//        background-image: url("/public/images/portfolio-map_960x246.png");
-//    }
-//    @include minWidth(480) {
-//        background-image: url("/public/images/portfolio-map_768x123.png");
-//        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-//            background-image: url("/public/images/portfolio-map_1536x246.png");
-//        }
-//    }
-//    @include minWidth(768) {
-//        background-image: url("/public/images/portfolio-map_1032x123.png");
-//        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-//            background-image: url("/public/images/portfolio-map_2064x246.png");
-//        }
-//    }
-//    @include minWidth(1000) {
-//        background-image: url("/public/images/portfolio-map_968x123.png");
-//        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-//            background-image: url("/public/images/portfolio-map_1936x246.png");
-//        }
-//    }
-//    @include minWidth(1440) {
-//        background-image: url("/public/images/portfolio-map_1032x123.png");
-//        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-//            background-image: url("/public/images/portfolio-map_2064x246.png");
-//        }
-//    }
-//}
-//
-//.webp .mapPicture {
-//    background-image: url("/public/images/portfolio-map_480x123.webp");
-//    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-//        background-image: url("/public/images/portfolio-map_960x246.webp");
-//    }
-//    @include minWidth(480) {
-//        background-image: url("/public/images/portfolio-map_768x123.webp");
-//        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-//            background-image: url("/public/images/portfolio-map_1536x246.webp");
-//        }
-//    }
-//    @include minWidth(768) {
-//        background-image: url("/public/images/portfolio-map_1032x123.webp");
-//        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-//            background-image: url("/public/images/portfolio-map_2064x246.webp");
-//        }
-//    }
-//    @include minWidth(1000) {
-//        background-image: url("/public/images/portfolio-map_968x123.webp");
-//        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-//            background-image: url("/public/images/portfolio-map_1936x246.webp");
-//        }
-//    }
-//    @include minWidth(1440) {
-//        background-image: url("/public/images/portfolio-map_1032x123.webp");
-//        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-//            background-image: url("/public/images/portfolio-map_2064x246.webp");
-//        }
-//    }
-//}
 
 .portfolioList {
     display: flex;
