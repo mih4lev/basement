@@ -1,0 +1,80 @@
+<section class="pageHeader">
+    <div class="wrapper headerWrapper">
+        <div class="contentWrapper">
+            <h1 class="pageTitle">{{{ page.pageTitle }}}</h1>
+            <nav class="breadcrumbs">
+                <ul class="breadcrumbList">
+                    <li class="breadcrumbLinkWrapper">
+                        <a class="breadcrumbLink" href="/">BasementRemodeling.com</a>
+                    </li>
+                    <li class="breadcrumbLinkWrapper">
+                        <span class="breadcrumbLink breadcrumbActive">Please leave a review</span>
+                    </li>
+                    <li class="breadcrumbLinkWrapper">
+                        <span class="breadcrumbLink breadcrumbActive">{{{ office.officeName }}}</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="reviewsSection innerSection">
+    <div class="wrapper singleWrapper">
+        <div class="reviewLinks">
+            <h2 class="reviewTitle">{{{ office.reviewTitle }}}</h2>
+            <p class="reviewText">{{{ office.reviewText }}}</p>
+            <p class="linksAnnotation">{{{ office.linksText }}}</p>
+            <ul class="socialLinks">
+                {{# if office.facebookLink }}
+                <li class="socialLinkWrapper">
+                    <a class="socialLink logoSprite facebookLogo" rel="nofollow" title="Facebook"
+                       href="{{{ office.facebookLink }}}" target="_blank">Facebook</a>
+                </li>
+                {{/ if }}
+                {{# if office.houzzLink }}
+                <li class="socialLinkWrapper backgroundLogoWrapper">
+                    <a class="socialLink logoSprite houzzLogo" rel="nofollow" title="houzz"
+                       href="{{{ office.houzzLink }}}" target="_blank">houzz</a>
+                </li>
+                {{/ if }}
+                {{# if office.angielListLink }}
+                <li class="socialLinkWrapper">
+                    <a class="socialLink logoSprite angiesListLogo" rel="nofollow" title="Angie`s list"
+                       href="{{{ office.angielListLink }}}" target="_blank">Angie`s list</a>
+                </li>
+                {{/ if }}
+                {{# if office.porchLink }}
+                <li class="socialLinkWrapper backgroundLogoWrapper">
+                    <a class="socialLink logoSprite porchLogo" rel="nofollow" title="Porch"
+                       href="{{{ office.porchLink }}}" target="_blank">Porch</a>
+                </li>
+                {{/ if }}
+                {{# if office.googleLink }}
+                <li class="socialLinkWrapper">
+                    <a class="socialLink logoSprite googleLogo" rel="nofollow" title="Google"
+                       href="{{{ office.googleLink }}}" target="_blank">Google</a>
+                </li>
+                {{/ if }}
+            </ul>
+        </div>
+        <div class="reviewMap" data-lat="{{{ office.lat }}}"
+             data-lng="{{{ office.lng }}}" data-zoom="{{{ office.zoom }}}"></div>
+    </div>
+</section>
+
+<script>
+    const mapNodes = [...document.querySelectorAll(`.reviewMap`)];
+    function initMap() {
+        mapNodes.forEach((mapNode) => {
+            const { dataset: { lat, lng, zoom }} = mapNode;
+            const position = { lat: (lat) ? Number(lat) : 38.89511, lng: (lng) ? Number(lng) : -77.03637 };
+            const map = new google.maps.Map(mapNode, { zoom: (zoom) ? Number(zoom) : 8, center: position });
+            const icon = `/public/images/vector/pin-image.svg`;
+            const pinOptions = { map, position, icon };
+            new google.maps.Marker(pinOptions);
+        });
+    }
+</script>
+
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUZcbipHbHCXwp6PdXIFGhExytbzvh7Tk&callback=initMap"></script>
