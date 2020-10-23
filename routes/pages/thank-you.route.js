@@ -7,6 +7,7 @@ const { requestContent } = require("../../models/utils.model");
 router.use((request, response, next) => {
     request.data['isAdaptiveHeader'] = false;
     request.data['scripts'] = [];
+    request.data['isGreyMain'] = true;
     next();
 });
 

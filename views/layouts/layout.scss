@@ -46,6 +46,9 @@ main {
             height: 138px;
         }
     }
+    &.greyMain {
+        background: $sub;
+    }
 }
 
 p {
