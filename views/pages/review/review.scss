@@ -1,4 +1,4 @@
-.reviewsSection {
+.reviewsSection:not(.homeSection) {
     margin-top: 0;
     @include minWidth(768) {
         margin-top: 10px;
