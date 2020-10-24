@@ -1,4 +1,4 @@
-const { singleDB } = require("./db.model");
+const { DB, singleDB } = require("./db.model");
 
 const requestSettingsData = async () => {
     try {
@@ -17,4 +17,16 @@ const requestSettingsData = async () => {
     }
 };
 
-module.exports = { requestSettingsData };
+const updateSettings = async ({ settingID, ...updateData }) => {
+    try {
+        const query = `UPDATE settings SET ? WHERE settingID = ?`;
+        const response = await DB(query, [ updateData, settingID ]);
+        const status = Number(response.affectedRows && response.affectedRows === 1);
+        return { status, requestID: Number(settingID) };
+    } catch (error) {
+        console.log(error);
+        return { status: 0, requestID: Number(settingID), error };
+    }
+};
+
+module.exports = { requestSettingsData, updateSettings };
