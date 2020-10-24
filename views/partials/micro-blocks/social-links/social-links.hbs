@@ -1,30 +1,50 @@
 <ul class="socialLinks">
-    <li class="socialLinkWrapper">
-        <a class="socialLink logoSprite angiesListLogo" rel="nofollow" title="Angie`s list"
-           href="https://member.angieslist.com/member/store/2346351/" target="_blank">Angie`s list</a>
+    <li class="socialLinkWrapper backgroundLogoWrapper">
+        {{# if angiesListLink }}
+            <a class="socialLink logoSprite angiesListLogo" rel="nofollow" title="Angie`s list"
+               href="{{{ angiesListLink }}}" target="_blank">Angie`s list</a>
+        {{ else }}
+            <span class="socialLink logoSprite angiesListLogo">Angie`s list</span>
+        {{/ if }}
     </li>
     <li class="socialLinkWrapper backgroundLogoWrapper">
-        <a class="socialLink logoSprite houzzLogo" rel="nofollow" title="houzz"
-           href="https://www.houzz.com/professionals/general-contractors/basement-masters-pfvwus-pf~847553638"
-           target="_blank">houzz</a>
-    </li>
-    <li class="socialLinkWrapper">
-        <a class="socialLink logoSprite googleLogo" rel="nofollow" title="Google"
-           href="https://search.google.com/local/writereview?placeid=ChIJbSYsElAGyIkRh36j6z1FtFc"
-           target="_blank">Google</a>
-    </li>
-    <li class="socialLinkWrapper">
-        <a class="socialLink logoSprite facebookLogo" rel="nofollow" title="Facebook"
-           href="https://www.facebook.com/pg/BasementRemodelingCom/reviews/"
-           target="_blank">Facebook</a>
+        {{# if houzzLink }}
+            <a class="socialLink logoSprite houzzLogo" rel="nofollow" title="houzz"
+               href="{{{ houzzLink }}}" target="_blank">houzz</a>
+        {{ else }}
+            <span class="socialLink logoSprite houzzLogo">houzz</span>
+        {{/ if }}
     </li>
     <li class="socialLinkWrapper backgroundLogoWrapper">
-        <a class="socialLink logoSprite porchLogo" rel="nofollow" title="Porch"
-           href="https://porch.com/rockville-md/remodeling-contractors/basement-remodeling-company-164612476/pp"
-           target="_blank">Porch</a>
+        {{# if googleLink }}
+            <a class="socialLink logoSprite googleLogo" rel="nofollow" title="Google"
+               href="{{{ googleLink }}}" target="_blank">Google</a>
+        {{ else }}
+            <span class="socialLink logoSprite googleLogo">Google</span>
+        {{/ if }}
+    </li>
+    <li class="socialLinkWrapper backgroundLogoWrapper">
+        {{# if facebookLink }}
+            <a class="socialLink logoSprite facebookLogo" rel="nofollow" title="Facebook"
+               href="{{{ facebookLink }}}" target="_blank">Facebook</a>
+        {{ else }}
+            <span class="socialLink logoSprite facebookLogo">Facebook</span>
+        {{/ if }}
+    </li>
+    <li class="socialLinkWrapper backgroundLogoWrapper">
+        {{# if porchLink }}
+            <a class="socialLink logoSprite porchLogo" rel="nofollow" title="Porch"
+               href="{{{ porchLink }}}" target="_blank">Porch</a>
+        {{ else }}
+            <span class="socialLink logoSprite porchLogo">Porch</span>
+        {{/ if }}
     </li>
     <li class="socialLinkWrapper">
-        <a class="socialLink logoSprite homeAdvisorLogo" rel="nofollow" title="Home advisor"
-           href="#" target="_blank">Home advisor</a>
+        {{# if homeAdvisorLink }}
+            <a class="socialLink logoSprite homeAdvisorLogo" rel="nofollow" title="Home advisor"
+               href="{{{ homeAdvisorLink }}}" target="_blank">Home advisor</a>
+        {{ else }}
+            <span class="socialLink logoSprite homeAdvisorLogo">Home advisor</span>
+        {{/ if }}
     </li>
 </ul>

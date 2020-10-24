@@ -5,6 +5,7 @@ const app = express();
 const hbs = require(`hbs`);
 const cookieParser = require(`cookie-parser`);
 const setRequest = require("./middlewares/request.middleware");
+const settingsData = require("./middlewares/settings.middleware");
 const loginMiddleware = require("./middlewares/login.middleware");
 const createPageRoutes = require("./routes/pages.route");
 const createAPIRoutes = require("./routes/api.route");
@@ -31,6 +32,7 @@ app.use(express.json({ extended: true }));
 app.use(cookieParser('secretKeyBasementRemodelingDotCom'));
 app.use(setRequest);
 app.use(loginMiddleware);
+app.use(settingsData);
 
 // pages routes
 createPageRoutes(app);
