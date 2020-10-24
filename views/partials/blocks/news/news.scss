@@ -125,6 +125,9 @@
         @include minWidth(1000) {
             font-size: 15px;
         }
+        p {
+            margin: 0;
+        }
     }
     .newsDate {
         display: block;

@@ -4,7 +4,6 @@ const router = new Router();
 const { requestContent } = require("../../models/utils.model");
 const { requestMeta, requestTextContent } = require("../../models/pages.model");
 const { requestHomePortfolio } = require("../../models/portfolio.model");
-const { requestNews } = require("../../models/news.model");
 const { requestTestimonials } = require("../../models/testimonials.model");
 const { requestAwards } = require("../../models/awards.model");
 const { requestInstagram } = require("../../models/instagram.model");
@@ -30,7 +29,6 @@ router.get(`/`, async (request, response, next) => {
         requestMeta(pageID),
         requestTextContent(pageID),
         requestHomePortfolio(10),
-        requestNews(),
         requestTestimonials({ limit: 6 }),
         requestAwards(),
         requestInstagram(),
