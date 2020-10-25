@@ -11,6 +11,7 @@ router.get(`/`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminZipCodes'] = true;
+    request.data['isHeaderHidden'] = true;
     const content = requestContent(await Promise.all([
         requestModerateCount(), requestZipCodes()
     ]));

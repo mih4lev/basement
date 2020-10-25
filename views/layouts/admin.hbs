@@ -374,7 +374,17 @@
         </ul>
     </aside>
     <div class="content">
-        <header class="header"></header>
+        {{# if isHeaderHidden }}
+        {{ else }}
+        <header class="header">
+            {{# if backButton }}
+                <a href="{{{ backButton }}}" class="backButton">GO BACK</a>
+            {{/ if }}
+            {{# if locationLink }}
+                <a href="{{{ locationLink }}}" class="locationLink" target="_blank">{{{ locationLink }}}</a>
+            {{/ if }}
+        </header>
+            {{/ if }}
         <div class="wrapper">{{{ body }}}</div>
     </div>
 </main>

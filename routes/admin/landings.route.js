@@ -37,6 +37,7 @@ router.get(`/`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminLandings'] = true;
+    request.data['isHeaderHidden'] = true;
     const content = requestContent(await Promise.all([
         requestLandings(), requestModerateCount()
     ]));
@@ -51,6 +52,8 @@ router.get(`/home`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminHome'] = true;
+    request.data['backButton'] = `/admin/landings/`;
+    request.data['locationLink'] = `/`;
     const pageID = 1;
     const content = requestContent(await Promise.all([
         requestMeta(pageID), requestTextContent(pageID), requestModerateCount()
@@ -75,6 +78,7 @@ router.get(`/add`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminLandingAdd'] = true;
+    request.data['backButton'] = `/admin/landings/`;
     const content = requestContent(await Promise.all([
         requestModerateCount()
     ]));
@@ -100,10 +104,12 @@ router.get(`/edit/:requestID`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminLandingsEdit'] = true;
+    request.data['backButton'] = `/admin/landings/`;
     const { params: { requestID }} = request;
     const content = requestContent(await Promise.all([
         requestLanding(requestID, false), requestModerateCount()
     ]));
+    request.data['locationLink'] = `/` + content['page']['pageURL'];
     const data = { ...request.data, ...content };
     const template = `admin/landings/edit-landing.admin.hbs`;
     response.render(template, data);

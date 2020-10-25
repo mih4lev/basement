@@ -16,6 +16,7 @@ router.get(`/`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminOffices'] = true;
+    request.data['isHeaderHidden'] = true;
     const pageID = 18;
     const content = requestContent(await Promise.all([
         requestMeta(pageID), requestModerateCount(), requestOffices()

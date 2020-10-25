@@ -43,6 +43,8 @@ router.get(`/our-process`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminProcess'] = true;
+    request.data['backButton'] = `/admin/`;
+    request.data['locationLink'] = `/how-it-works/our-process/`;
     const pageID = 3;
     const content = requestContent(await Promise.all([
         requestMeta(pageID), requestModerateCount()
@@ -65,6 +67,8 @@ router.get(`/faq`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminFAQ'] = true;
+    request.data['backButton'] = `/admin/`;
+    request.data['locationLink'] = `/how-it-works/contractor-faq/`;
     const pageID = 4;
     const content = requestContent(await Promise.all([
         requestMeta(pageID), requestModerateCount()
@@ -87,6 +91,8 @@ router.get(`/basement-tips`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminTips'] = true;
+    request.data['backButton'] = `/admin/`;
+    request.data['locationLink'] = `/how-it-works/basement-tips/`;
     const pageID = 5;
     const content = requestContent(await Promise.all([
         requestMeta(pageID), requestTips(), requestModerateCount()
@@ -109,6 +115,7 @@ router.get(`/basement-tips/add`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminTipsAdd'] = true;
+    request.data['backButton'] = `/admin/how-it-works/basement-tips/`;
     const content = requestContent(await Promise.all([
         requestCategories(), requestModerateCount()
     ]));
@@ -140,11 +147,13 @@ router.get(`/basement-tips/edit/:tipID`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isTipEdit'] = true;
+    request.data['backButton'] = `/admin/how-it-works/basement-tips/`;
     const { params: { tipID }} = request;
     const content = requestContent(await Promise.all([
         requestTip(tipID), requestCategories(), requestModerateCount()
     ]));
     if (!content.page) return next();
+    request.data['locationLink'] = `/how-it-works/basement-tips/` + content['page']['tipLink'];
     // replace quotes for tinyMCE
     content.page.tipText =  content.page.tipText.replace(/"/g, "&quot;");
     const data = { ...request.data, ...content };

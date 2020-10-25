@@ -54,6 +54,7 @@ router.get(`/`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminPortfolio'] = true;
+    request.data['isHeaderHidden'] = true;
     const content = requestContent(await Promise.all([
         requestPortfolio(30),
         requestModerateCount()
@@ -67,6 +68,7 @@ router.get(`/settings`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminPortfolioSettings'] = true;
+    request.data['backButton'] = `/admin/portfolio/`;
     const pageID = 2;
     const content = requestContent(await Promise.all([
         requestMeta(pageID),
@@ -88,6 +90,7 @@ router.get(`/filters`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminPortfolioFilters'] = true;
+    request.data['backButton'] = `/admin/portfolio/`;
     const content = requestContent(await Promise.all([
         requestModerateCount(),
         requestPortfolioFilters()
@@ -109,6 +112,7 @@ router.get(`/add`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminPortfolioAdd'] = true;
+    request.data['backButton'] = `/admin/portfolio/`;
     const content = requestContent(await Promise.all([
         requestCreators(),
         requestModerateCount(),
@@ -172,6 +176,7 @@ router.get(`/edit/:portfolioID`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isPortfolioEdit'] = true;
+    request.data['backButton'] = `/admin/portfolio/`;
     const { params: { portfolioID }} = request;
     const content = requestContent(await Promise.all([
         requestWork(portfolioID),
@@ -185,6 +190,7 @@ router.get(`/edit/:portfolioID`, async (request, response, next) => {
     if (content.page.workText) {
         content.page.workText = content.page.workText.replace(/"/g, "&quot;");
     }
+    request.data['locationLink'] = `/portfolio/` + content['page']['workLink'];
     const data = { ...request.data, ...content };
     const template = `admin/portfolio/edit-portfolio.admin.hbs`;
     response.render(template, data);

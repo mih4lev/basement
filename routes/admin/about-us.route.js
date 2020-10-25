@@ -60,6 +60,8 @@ router.get(`/testimonials`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminTestimonials'] = true;
+    request.data['backButton'] = `/admin/`;
+    request.data['locationLink'] = `/about-us/testimonials/`;
     const pageID = 6;
     const content = requestContent(await Promise.all([
         requestMeta(pageID),
@@ -84,6 +86,7 @@ router.get(`/testimonials/add`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminTestimonialsAdd'] = true;
+    request.data['backButton'] = `/admin/about-us/testimonials/`;
     const content = requestContent(await Promise.all([
         requestModerateCount()
     ]));
@@ -109,12 +112,14 @@ router.get(`/testimonials/edit/:testimonialID`, async (request, response, next) 
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isTestimonialEdit'] = true;
+    request.data['backButton'] = `/admin/about-us/testimonials/`;
     const { params: { testimonialID }} = request;
     const content = requestContent(await Promise.all([
         requestTestimonial(testimonialID),
         requestModerateCount()
     ]));
     if (!content.page) return next();
+    request.data['locationLink'] = `/about-us/testimonials/` + content['page']['testimonialLink'];
     // replace quotes for tinyMCE
     if (content.page.testimonialText) {
         content.page.testimonialText = content.page.testimonialText.replace(/"/g, "&quot;");
@@ -155,6 +160,8 @@ router.get(`/press`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminPress'] = true;
+    request.data['backButton'] = `/admin/`;
+    request.data['locationLink'] = `/about-us/in-the-press/`;
     const pageID = 7;
     const content = requestContent(await Promise.all([
         requestMeta(pageID), requestPress(), requestModerateCount()
@@ -177,6 +184,7 @@ router.get(`/press/add`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminPressAdd'] = true;
+    request.data['backButton'] = `/admin/about-us/press/`;
     const content = requestContent(await Promise.all([
         requestModerateCount()
     ]));
@@ -202,11 +210,13 @@ router.get(`/press/edit/:pressID`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isPressEdit'] = true;
+    request.data['backButton'] = `/admin/about-us/press/`;
     const { params: { pressID }} = request;
     const content = requestContent(await Promise.all([
         requestArticle(pressID), requestModerateCount()
     ]));
     if (!content.page) return next();
+    request.data['locationLink'] = `/about-us/in-the-press/` + content['page']['pressLink'];
     // replace quotes for tinyMCE
     if (content.page.pressText) {
         content.page.pressText = content.page.pressText.replace(/"/g, "&quot;");
@@ -247,6 +257,8 @@ router.get(`/offers`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminOffers'] = true;
+    request.data['backButton'] = `/admin/`;
+    request.data['locationLink'] = `/about-us/financing-offers/`;
     const pageID = 8;
     const content = requestContent(await Promise.all([
         requestMeta(pageID), requestModerateCount()
@@ -269,6 +281,8 @@ router.get(`/contact-us`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminContact'] = true;
+    request.data['backButton'] = `/admin/`;
+    request.data['locationLink'] = `/about-us/contact-us/`;
     const pageID = 9;
     const content = requestContent(await Promise.all([
         requestMeta(pageID), requestModerateCount()
@@ -291,6 +305,8 @@ router.get(`/instant-quotes`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminQuotes'] = true;
+    request.data['backButton'] = `/admin/`;
+    request.data['locationLink'] = `/instant-quote/`;
     const pageID = 10;
     const content = requestContent(await Promise.all([
         requestMeta(pageID), requestModerateCount()
@@ -313,6 +329,8 @@ router.get(`/thank-you`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminThanks'] = true;
+    request.data['backButton'] = `/admin/`;
+    request.data['locationLink'] = `/thank-you/`;
     const pageID = 11;
     const content = requestContent(await Promise.all([
         requestMeta(pageID), requestModerateCount()
@@ -335,6 +353,8 @@ router.get(`/leave-review`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminReview'] = true;
+    request.data['backButton'] = `/admin/`;
+    request.data['locationLink'] = `/leave-a-review/`;
     const pageID = 12;
     const content = requestContent(await Promise.all([
         requestMeta(pageID), requestModerateCount()

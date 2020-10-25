@@ -15,6 +15,7 @@ router.get(`/booking`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminFormsBooking'] = true;
+    request.data['isHeaderHidden'] = true;
     const content = requestContent(await Promise.all([
         requestModerateCount(), requestBookingList()
     ]));
@@ -27,6 +28,7 @@ router.get(`/booking/:bookingID`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminFormsBookingEdit'] = true;
+    request.data['backButton'] = `/admin/forms/booking/`;
     const { params: { bookingID }} = request;
     const content = requestContent(await Promise.all([
         requestModerateCount(), requestBookingContent(bookingID)
@@ -40,6 +42,7 @@ router.get(`/contact-us`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminFormsContacts'] = true;
+    request.data['isHeaderHidden'] = true;
     const content = requestContent(await Promise.all([
         requestModerateCount(), requestContactsList()
     ]));
@@ -52,6 +55,7 @@ router.get(`/contact-us/:requestID`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminFormsContactsEdit'] = true;
+    request.data['backButton'] = `/admin/forms/contact-us/`;
     const { params: { requestID }} = request;
     const content = requestContent(await Promise.all([
         requestModerateCount(), requestContactsContent(requestID)
@@ -65,6 +69,7 @@ router.get(`/instant-quote`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminFormsQuotes'] = true;
+    request.data['isHeaderHidden'] = true;
     const content = requestContent(await Promise.all([
         requestModerateCount(), requestQuotesList()
     ]));
@@ -77,6 +82,7 @@ router.get(`/instant-quote/:requestID`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminFormsQuotesEdit'] = true;
+    request.data['backButton'] = `/admin/forms/instant-quote/`;
     const { params: { requestID }} = request;
     const content = requestContent(await Promise.all([
         requestModerateCount(), requestQuotesContent(requestID)

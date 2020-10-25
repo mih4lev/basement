@@ -74,6 +74,7 @@ router.get(`/`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminIdeas'] = true;
+    request.data['isHeaderHidden'] = true;
     const pageID = 13;
     const content = requestContent(await Promise.all([
         requestMeta(pageID),
@@ -100,6 +101,7 @@ router.get(`/moderated`, async (request, response, next) => {
     request.data['layout'] = `admin`;
     request.data['isAdminModeratedIdeas'] = true;
     request.data['ideasAPI'] = `/api/ideas/moderated`;
+    request.data['isHeaderHidden'] = true;
     const content = requestContent(await Promise.all([
         requestModeratedIdeas({ limit: 40 }),
         requestModerateCount()
@@ -114,6 +116,7 @@ router.get(`/to-moderate`, async (request, response, next) => {
     request.data['layout'] = `admin`;
     request.data['isAdminToModerateIdeas'] = true;
     request.data['ideasAPI'] = `/api/ideas/to-moderate`;
+    request.data['isHeaderHidden'] = true;
     const content = requestContent(await Promise.all([
         requestNewIdeas({ limit: 40 }),
         requestModerateCount()
@@ -128,6 +131,7 @@ router.get(`/archive`, async (request, response, next) => {
     request.data['layout'] = `admin`;
     request.data['isAdminArchiveIdeas'] = true;
     request.data['ideasAPI'] = `/api/ideas/archive`;
+    request.data['isHeaderHidden'] = true;
     const content = requestContent(await Promise.all([
         requestArchiveIdeas({ limit: 40 }),
         requestModerateCount()
@@ -141,6 +145,7 @@ router.get(`/categories`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminIdeasCategories'] = true;
+    request.data['isHeaderHidden'] = true;
     const content = requestContent(await Promise.all([
         requestCategories(),
         requestModerateCount()
@@ -154,6 +159,7 @@ router.get(`/filters`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminIdeasFilters'] = true;
+    request.data['isHeaderHidden'] = true;
     const content = requestContent(await Promise.all([
         requestModerateCount(),
         requestIdeasFilters()
@@ -169,6 +175,7 @@ router.get(`/add`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminIdeasAdd'] = true;
+    request.data['backButton'] = `/admin/basement-ideas/to-moderate/`;
     const content = requestContent(await Promise.all([
         requestCreators(),
         requestCategories(),
@@ -241,6 +248,12 @@ router.get(`/edit/:ideaID`, async (request, response, next) => {
         requestModerateCount()
     ]));
     if (!content.page) return next();
+    const { page: { isModerated, isArchived }} = content;
+    const archive = `/admin/basement-ideas/archive/`;
+    const moderated = `/admin/basement-ideas/moderated/`;
+    const toModerate = `/admin/basement-ideas/to-moderate/`;
+    if (isModerated && !isArchived) request.data['locationLink'] = `/basement-ideas/`;
+    request.data['backButton'] = (isArchived) ? archive : (isModerated) ? moderated : toModerate;
     const data = { ...request.data, ...content };
     const template = `admin/ideas/edit-idea.admin.hbs`;
     response.render(template, data);

@@ -11,6 +11,7 @@ router.get(`/`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminSettings'] = true;
+    request.data['backButton'] = `/admin/`;
     const content = requestContent(await Promise.all([
         requestModerateCount()
     ]));
