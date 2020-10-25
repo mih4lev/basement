@@ -5,8 +5,6 @@ const formParser = multer();
 
 // API /api/quote - POST - save quote data form
 router.post(`/`, formParser.none(), async (request, response) => {
-    const formData = { ...request.body };
-    console.log(formData);
     const data = { code: 200 };
     setTimeout(() => response.json(data), 0);
 });
