@@ -288,3 +288,10 @@
         }
     }
 }
+
+.roundBlock.masterBlock {
+    z-index: 2;
+}
+.roundBlock.slaveBlock {
+    z-index: 1;
+}
