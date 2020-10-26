@@ -8,19 +8,19 @@
         <ul class="licenseList">
             {{# each licenses }}
                 <li class="licenseWrapper">
-                    <picture class="licenseImage">
-                        <source srcset="/public/images/home/licenses/{{{ licenseCover }}}.webp,
-                                        /public/images/home/licenses/{{{ licenseCover }}}@2x.webp 2x"
-                                type="image/webp">
-                        <source srcset="/public/images/home/licenses/{{{ licenseCover }}}.png,
-                                        /public/images/home/licenses/{{{ licenseCover }}}@2x.png 2x"
-                                type="image/jpeg">
-                        <img class="licenseImage"
-                             src="/public/images/home/licenses/{{{ licenseCover }}}.png"
-                             srcset="/public/images/home/licenses/{{{ licenseCover }}}.png,
-                                     /public/images/home/licenses/{{{ licenseCover }}}@2x.png 2x"
-                             alt="{{{ licenseTitle }}}">
-                    </picture>
+                    <a href="/public/images/home/licenses/{{{ licenseCover }}}_fullsize.jpg"
+                       data-fslightbox="licenses">
+                        <picture class="licenseImage">
+                            <source srcset="/public/images/home/licenses/{{{ licenseCover }}}.png,
+                                            /public/images/home/licenses/{{{ licenseCover }}}@2x.png 2x"
+                                    type="image/jpeg">
+                            <img class="licenseImage"
+                                 src="/public/images/home/licenses/{{{ licenseCover }}}.png"
+                                 srcset="/public/images/home/licenses/{{{ licenseCover }}}.png,
+                                         /public/images/home/licenses/{{{ licenseCover }}}@2x.png 2x"
+                                 alt="{{{ licenseTitle }}}">
+                        </picture>
+                    </a>
                 </li>
             {{/ each }}
         </ul>
