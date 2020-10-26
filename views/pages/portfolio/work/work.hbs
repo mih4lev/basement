@@ -50,17 +50,18 @@
                             data-picture="{{{ ideaImage }}}.jpg">
                             <picture>
                                 <source srcset="{{{ ideaImage }}}_44x44.jpg,
-                                                {{{ ideaImage }}}_88x88.jpg 2x"
+                                            {{{ ideaImage }}}_88x88.jpg 2x"
                                         media="(max-width: 479px)">
                                 <source srcset="{{{ ideaImage }}}_71x71.jpg,
-                                                {{{ ideaImage }}}_142x142.jpg 2x"
+                                            {{{ ideaImage }}}_142x142.jpg 2x"
                                         media="(min-width: 480px)">
                                 <img class="previewImage" src="{{{ ideaImage }}}_71x71.jpg"
                                      data-picture="{{{ ideaImage }}}.jpg"
                                      srcset="{{{ ideaImage }}}_71x71.jpg,
-                                             {{{ ideaImage }}}_142x142.jpg 2x"
+                                         {{{ ideaImage }}}_142x142.jpg 2x"
                                      alt="{{{ ideaTitle }}}">
                             </picture>
+                            <a class="previewLink"></a>
                         </li>
                     {{/each}}
                 </ul>
