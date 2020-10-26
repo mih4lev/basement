@@ -630,6 +630,30 @@ html, body {
         object-fit: cover;
         border-radius: 5px;
     }
+    .previewButton {
+        z-index: 5;
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        display: block;
+        padding: 0;
+        width: 24px;
+        height: 24px;
+        font-size: 0;
+        background-color: $black;
+        background-image: url("/public/images/vector/zoom-in.svg");
+        background-size: 14px 14px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover {
+            background-color: $yellow;
+        }
+        &.hiddenButton {
+            display: none;
+        }
+    }
 }
 
 .formButtons {

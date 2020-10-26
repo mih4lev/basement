@@ -1,5 +1,7 @@
 import { loader, requestData, saveAction } from "../../source/scripts/utils";
 
+require('fslightbox');
+
 const formNode = document.querySelector(`.formNode`);
 const formButton = document.querySelector(`.submitButton`);
 // left menu
@@ -44,11 +46,16 @@ const createUploadPicture = (generatedURL, fileName) => {
 };
 
 const updateCustomFiles = (files, fieldWrapper) => {
+    const previewButton = fieldWrapper.querySelector(`.previewButton`);
     [...files].forEach((file) => {
         const reader = new FileReader();
         reader.addEventListener(`load`, () => {
             const uploadThumb = createUploadPicture(reader.result, file.name);
             fieldWrapper.appendChild(uploadThumb);
+            // show button
+            previewButton.classList.remove(`hiddenButton`);
+            previewButton.setAttribute(`href`, String(reader.result));
+            refreshFsLightbox();
         });
         // delete previous preview if exist
         const previewImage = fieldWrapper.querySelector(`.fieldPreview`);
