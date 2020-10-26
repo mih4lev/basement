@@ -111,6 +111,9 @@
                 width: 704px;
                 min-height: 590px;
             }
+            .fullsizePictureLink {
+                cursor: zoom-in;
+            }
             .fullsizePicture {
                 @extend %animation;
                 @extend %shadow;
