@@ -28,21 +28,14 @@
         </div>
     </section>
     <section class="fieldSection">
-        <div class="fieldWrapper">
+        <div class="fieldWrapper" style="margin-right: 10px;">
             <label class="fieldLabel" for="address">Address</label>
             <input class="textField" type="text" id="address" name="address" value="{{{ address }}}">
         </div>
-    </section>
-    <section class="fieldSection">
-        <div class="fieldWrapper" style="margin-right: 10px;">
+        <div class="fieldWrapper">
             <label class="fieldLabel" for="email">Site email</label>
             <input class="textField" type="text" id="email"
                    name="email" value="{{{ email }}}">
-        </div>
-        <div class="fieldWrapper">
-            <label class="fieldLabel" for="sendEmail">Form mails</label>
-            <input class="textField" type="text" id="sendEmail"
-                   name="sendEmail" value="{{{ sendEmail }}}">
         </div>
     </section>
     <section class="fieldSection">
@@ -137,4 +130,62 @@
         <button class="submitButton" type="button" title="Update"
                 data-action="update" data-api="">Update</button>
     </div>
+
+    <p class="listTitle">Form emails setting:</p>
+    <section class="fieldSection">
+        <div class="fieldWrapper" style="width: 25%; margin-right: 10px;">
+            <label class="fieldLabel" for="mailHost">Host</label>
+            <input class="textField" type="text" id="mailHost"
+                   name="mailHost" value="smtp.yandex.ru">
+        </div>
+        <div class="fieldWrapper" style="width: 10%; margin-right: 10px;">
+            <label class="fieldLabel" for="mailPort">Port</label>
+            <input class="textField" type="text" id="mailPort"
+                   name="mailPort" value="465">
+        </div>
+        <div class="fieldWrapper" style="width: 10%; margin-right: 10px;">
+            <label class="fieldLabel" for="mailSecure">Secure</label>
+            <input class="textField" type="text" id="mailSecure"
+                   name="mailSecure" value="true">
+        </div>
+        <div class="fieldWrapper" style="width: 25%; margin-right: 10px;">
+            <label class="fieldLabel" for="authUser">Auth user</label>
+            <input class="textField" type="text" id="authUser"
+                   name="authUser" value="sales@artegallery.ru">
+        </div>
+        <div class="fieldWrapper" style="width: 25%">
+            <label class="fieldLabel" for="authPassword">Auth password</label>
+            <input class="textField" type="text" id="authPassword"
+                   name="authPassword" value="arte2020sales">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="emailFrom">Email from</label>
+            <input class="textField" type="text" id="emailFrom"
+                   name="emailFrom" value="BasementRemodeling.com sales@artegallery.ru">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="emailSubject">Email subject</label>
+            <input class="textField" type="text" id="emailSubject"
+                   name="emailSubject" value="Thank you for submitting your request">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="sendEmail">Admin mail</label>
+            <input class="textField" type="text" id="sendEmail"
+                   name="sendEmail" value="andevme@gmail.com">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="adminSubject">Admin subject</label>
+            <input class="textField" type="text" id="adminSubject"
+                   name="adminSubject" value="New request from site">
+        </div>
+    </section>
+
 </form>

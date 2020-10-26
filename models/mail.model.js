@@ -14,12 +14,10 @@ const createTransport = () => {
             extName: '.hbs'
         };
         const transporter = nodemailer.createTransport({
-            host: 'smtp.yandex.ru',
-            port: 465,
-            secure: true,
+            service: 'gmail',
             auth: {
-                user: "sales@artegallery.ru",
-                pass: "arte2020sales"
+                user: "contacts@basementremodeling.com",
+                pass: "bmasters1985"
             }
         });
         transporter.use('compile', hbsNodemailer(hbsOptions));
@@ -33,7 +31,7 @@ const sendClientMail = async (sendData, templateName, clientMail) => {
     try {
         let mailOptions = {
             // from: `BasementRemodeling.com contacts@basementremodeling.com`,
-            from: `BasementRemodeling.com sales@artegallery.ru`,
+            from: `BasementRemodeling.com`,
             to: clientMail,
             subject: `Thank you for submitting your request`,
             template: templateName,
@@ -49,7 +47,7 @@ const sendOwnerMail = async (sendData, templateName) => {
     try {
         let mailOptions = {
             // from: `BasementRemodeling.com contacts@basementremodeling.com`,
-            from: `BasementRemodeling.com sales@artegallery.ru`,
+            from: `BasementRemodeling.com`,
             // to: `contacts@basementremodeling.com`,
             to: `andevme@gmail.com`,
             subject: `New request from site`,
