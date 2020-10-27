@@ -1,0 +1,53 @@
+<form class="formNode">
+
+    <input class="hiddenField" type="hidden" name="pageID" value="{{{ page.pageID }}}">
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageTitle">Page title</label>
+            <input class="textField" type="text" id="pageTitle" name="pageTitle" value="{{{ page.pageTitle }}}">
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageDescription">Page description</label>
+            <textarea class="textareaField" id="pageDescription" name="pageDescription">{{{ page.pageDescription }}}</textarea>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageKeywords">Page keywords</label>
+            <textarea class="textareaField" id="pageKeywords" name="pageKeywords">{{{ page.pageKeywords }}}</textarea>
+        </div>
+    </section>
+
+    <div class="formButtons">
+        <button class="submitButton" type="button" title="Update"
+                data-action="update" data-api="">Update</button>
+    </div>
+
+</form>
+
+<section class="listSection">
+    <p class="listTitle">Basement tips:</p>
+    <ul class="listNode normalVisible sortWrapper" data-sort="/admin/how-it-works/basement-tips/sort">
+        <li class="listWrapper">
+            <a class="wrapperLink addLink" href="/admin/how-it-works/basement-tips/add">New tip</a>
+        </li>
+        {{# each tips }}
+        <li class="listWrapper sortNode" data-id="{{{ tipID }}}">
+            <a class="wrapperLink" href="/admin/how-it-works/basement-tips/edit/{{{ tipID }}}">
+                {{# if tipImage }}
+                    <img class="listImage" src="{{{ tipImage }}}_330x173.jpg"
+                         alt="{{{ tipTitle }}}">
+                {{ else }}
+                    <div class="defaultImage"></div>
+                {{/ if }}
+                <span class="listTitle minTitle">{{{ tipTitle }}}</span>
+            </a>
+        </li>
+        {{/ each }}
+    </ul>
+</section>

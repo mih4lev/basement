@@ -21,6 +21,10 @@ const {
     createTestimonial, requestTestimonials, requestTestimonial,
     updateTestimonial, updatePositions: updateTestimonialsPositions, deleteTestimonial
 } = require("../../models/testimonials.model");
+const {
+    addOffice, requestOffices, requestOfficeByID, updateOffice, deleteOffice
+} = require("../../models/offices.model");
+const { updateSettings } = require("../../models/settings.model");
 
 const { requestModerateCount } = require("../../models/ideas.model");
 
@@ -69,14 +73,16 @@ router.get(`/testimonials`, async (request, response, next) => {
         requestModerateCount()
     ]));
     const data = { ...request.data, ...content };
-    const template = `admin/about-us/testimonials.admin.hbs`;
+    const template = `admin/about-us/testimonials/testimonials.admin.hbs`;
     response.render(template, data);
 });
 
 router.post(`/testimonials`, formParser.none(), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
-    const formData = { ...request.body };
-    const responseData = await updateMeta(formData);
+    const { pageID, pageTitle, pageKeywords, pageDescription, ...settingsData } = request.body;
+    const metaData = { pageID, pageTitle, pageKeywords, pageDescription };
+    const responseData = await updateMeta(metaData);
+    await updateSettings(settingsData);
     setTimeout(() => response.json(responseData), 0);
 });
 
@@ -91,7 +97,7 @@ router.get(`/testimonials/add`, async (request, response, next) => {
         requestModerateCount()
     ]));
     const data = { ...request.data, ...content };
-    const template = `admin/about-us/add-testimonial.admin.hbs`;
+    const template = `admin/about-us/testimonials/add-testimonial.admin.hbs`;
     response.render(template, data);
 });
 
@@ -125,7 +131,7 @@ router.get(`/testimonials/edit/:testimonialID`, async (request, response, next) 
         content.page.testimonialText = content.page.testimonialText.replace(/"/g, "&quot;");
     }
     const data = { ...request.data, ...content };
-    const template = `admin/about-us/edit-testimonial.admin.hbs`;
+    const template = `admin/about-us/testimonials/edit-testimonial.admin.hbs`;
     response.render(template, data);
 });
 
@@ -167,7 +173,7 @@ router.get(`/press`, async (request, response, next) => {
         requestMeta(pageID), requestPress(), requestModerateCount()
     ]));
     const data = { ...request.data, ...content };
-    const template = `admin/about-us/press.admin.hbs`;
+    const template = `admin/about-us/press/press.admin.hbs`;
     response.render(template, data);
 });
 
@@ -189,7 +195,7 @@ router.get(`/press/add`, async (request, response, next) => {
         requestModerateCount()
     ]));
     const data = { ...request.data, ...content };
-    const template = `admin/about-us/add-press.admin.hbs`;
+    const template = `admin/about-us/press/add-press.admin.hbs`;
     response.render(template, data);
 });
 
@@ -222,7 +228,7 @@ router.get(`/press/edit/:pressID`, async (request, response, next) => {
         content.page.pressText = content.page.pressText.replace(/"/g, "&quot;");
     }
     const data = { ...request.data, ...content };
-    const template = `admin/about-us/edit-press.admin.hbs`;
+    const template = `admin/about-us/press/edit-press.admin.hbs`;
     response.render(template, data);
 });
 
@@ -264,7 +270,7 @@ router.get(`/offers`, async (request, response, next) => {
         requestMeta(pageID), requestModerateCount()
     ]));
     const data = { ...request.data, ...content };
-    const template = `admin/about-us/offers.admin.hbs`;
+    const template = `admin/about-us/offers/offers.admin.hbs`;
     response.render(template, data);
 });
 
@@ -285,89 +291,64 @@ router.get(`/contact-us`, async (request, response, next) => {
     request.data['locationLink'] = `/about-us/contact-us/`;
     const pageID = 9;
     const content = requestContent(await Promise.all([
-        requestMeta(pageID), requestModerateCount()
+        requestMeta(pageID), requestModerateCount(), requestOffices()
     ]));
     const data = { ...request.data, ...content };
-    const template = `admin/about-us/contact-us.admin.hbs`;
+    const template = `admin/about-us/contact-us/contact-us.admin.hbs`;
     response.render(template, data);
 });
 
 router.post(`/contact-us`, formParser.none(), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
-    const formData = { ...request.body };
-    const responseData = await updateMeta(formData);
+    const { pageID, pageTitle, pageKeywords, pageDescription, ...settingsData } = request.body;
+    const metaData = { pageID, pageTitle, pageKeywords, pageDescription };
+    const responseData = await updateMeta(metaData);
+    await updateSettings(settingsData);
     setTimeout(() => response.json(responseData), 0);
 });
 
-// INSTANT QUOTES
-
-router.get(`/instant-quotes`, async (request, response, next) => {
+router.get(`/contact-us/offices/add`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
-    request.data['isAdminQuotes'] = true;
-    request.data['backButton'] = `/admin/`;
-    request.data['locationLink'] = `/instant-quote/`;
-    const pageID = 10;
+    request.data['isAdminOfficesAdd'] = true;
     const content = requestContent(await Promise.all([
-        requestMeta(pageID), requestModerateCount()
+        requestModerateCount()
     ]));
     const data = { ...request.data, ...content };
-    const template = `admin/about-us/instant-quotes.admin.hbs`;
+    const template = `admin/about-us/contact-us/offices-add.admin.hbs`;
     response.render(template, data);
 });
 
-router.post(`/instant-quotes`, formParser.none(), async (request, response, next) => {
+router.post(`/contact-us/offices/add`, formParser.none(), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
-    const formData = { ...request.body };
-    const responseData = await updateMeta(formData);
+    const responseData = await addOffice(request.body);
     setTimeout(() => response.json(responseData), 0);
 });
 
-// THANK YOU
-
-router.get(`/thank-you`, async (request, response, next) => {
+router.get(`/contact-us/offices/edit/:officeID`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
+    const { params: { officeID }} = request;
     request.data['layout'] = `admin`;
-    request.data['isAdminThanks'] = true;
-    request.data['backButton'] = `/admin/`;
-    request.data['locationLink'] = `/thank-you/`;
-    const pageID = 11;
+    request.data['isAdminOfficesEdit'] = true;
+    request.data['backButton'] = `/admin/about-us/contact-us/`;
     const content = requestContent(await Promise.all([
-        requestMeta(pageID), requestModerateCount()
+        requestModerateCount(), requestOfficeByID(officeID)
     ]));
     const data = { ...request.data, ...content };
-    const template = `admin/about-us/thank-you.admin.hbs`;
+    const template = `admin/about-us/contact-us/offices-edit.admin.hbs`;
     response.render(template, data);
 });
 
-router.post(`/thank-you`, formParser.none(), async (request, response, next) => {
+router.post(`/contact-us/offices/edit`, formParser.none(), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
-    const formData = { ...request.body };
-    const responseData = await updateMeta(formData);
+    const responseData = await updateOffice(request.body);
     setTimeout(() => response.json(responseData), 0);
 });
 
-// LEAVE REVIEW
-
-router.get(`/leave-review`, async (request, response, next) => {
+router.delete(`/contact-us/offices/:officeID`, formParser.none(), async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
-    request.data['layout'] = `admin`;
-    request.data['isAdminReview'] = true;
-    request.data['backButton'] = `/admin/`;
-    request.data['locationLink'] = `/leave-a-review/`;
-    const pageID = 12;
-    const content = requestContent(await Promise.all([
-        requestMeta(pageID), requestModerateCount()
-    ]));
-    const data = { ...request.data, ...content };
-    const template = `admin/about-us/leave-review.admin.hbs`;
-    response.render(template, data);
-});
-
-router.post(`/leave-review`, formParser.none(), async (request, response, next) => {
-    if (!request.data['userID'] || !request.data['isAdmin']) return next();
-    const formData = { ...request.body };
-    const responseData = await updateMeta(formData);
+    const { params: { officeID }} = request;
+    const responseData = await deleteOffice(officeID);
     setTimeout(() => response.json(responseData), 0);
 });
 

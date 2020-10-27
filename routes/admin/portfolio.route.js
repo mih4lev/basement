@@ -75,7 +75,7 @@ router.get(`/settings`, async (request, response, next) => {
         requestModerateCount()
     ]));
     const data = { ...request.data, ...content };
-    const template = `admin/portfolio/portfolio-settings.admin.hbs`;
+    const template = `admin/portfolio/portfolio-seo.admin.hbs`;
     response.render(template, data);
 });
 

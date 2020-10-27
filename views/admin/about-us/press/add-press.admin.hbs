@@ -1,0 +1,79 @@
+<form class="formNode" action="/admin/about-us/press/add">
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageTitle">Page title</label>
+            <input class="textField" type="text" id="pageTitle" name="pageTitle">
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageDescription">Page description</label>
+            <textarea class="textareaField" id="pageDescription" name="pageDescription"></textarea>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageKeywords">Page keywords</label>
+            <textarea class="textareaField" id="pageKeywords" name="pageKeywords"></textarea>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pressLink">Press link</label>
+            <input class="textField" type="text" id="pressLink" name="pressLink">
+        </div>
+    </section>
+
+    <section class="fileSection">
+        <div class="fileWrapper" style="width: 330px; height: 173px;">
+            <input type="file" class="fileField" id="pressImage" name="pressImage">
+            <label class="fileLabel" for="pressImage">Press cover</label>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pressMagazine">Press magazine</label>
+            <input class="textField" type="text" id="pressMagazine" name="pressMagazine">
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pressSource">Source link</label>
+            <input class="textField" type="text" id="pressSource" name="pressSource">
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pressTitle">Press title</label>
+            <input class="textField" type="text" id="pressTitle" name="pressTitle">
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pressAnnounce">Press announce</label>
+            <textarea class="textareaField" id="pressAnnounce" name="pressAnnounce"></textarea>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pressText">Press text</label>
+            <textarea class="textareaField tinyField" id="pressText" name="pressText"></textarea>
+        </div>
+    </section>
+
+    <div class="formButtons">
+        {{> micro-blocks/upload-button/upload-button }}
+        <button class="submitButton" type="button" title="Create" data-redirect="/admin/about-us/press"
+                data-action="create" data-api="">CREATE</button>
+    </div>
+
+</form>

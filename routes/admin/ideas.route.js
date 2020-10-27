@@ -83,7 +83,7 @@ router.get(`/`, async (request, response, next) => {
         requestModerateCount()
     ]));
     const data = { ...request.data, ...content };
-    const template = `admin/ideas/ideas.admin.hbs`;
+    const template = `admin/ideas/ideas-seo.admin.hbs`;
     response.render(template, data);
 });
 

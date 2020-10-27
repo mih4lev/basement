@@ -53,6 +53,7 @@ const updateCustomFiles = (files, fieldWrapper) => {
             const uploadThumb = createUploadPicture(reader.result, file.name);
             fieldWrapper.appendChild(uploadThumb);
             // show button
+            if (!previewButton) return false;
             previewButton.classList.remove(`hiddenButton`);
             previewButton.setAttribute(`href`, String(reader.result));
             refreshFsLightbox();

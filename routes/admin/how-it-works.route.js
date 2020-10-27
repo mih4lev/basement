@@ -50,7 +50,7 @@ router.get(`/our-process`, async (request, response, next) => {
         requestMeta(pageID), requestModerateCount()
     ]));
     const data = { ...request.data, ...content };
-    const template = `admin/how-it-works/our-process.admin.hbs`;
+    const template = `admin/how-it-works/process/our-process.admin.hbs`;
     response.render(template, data);
 });
 
@@ -74,7 +74,7 @@ router.get(`/faq`, async (request, response, next) => {
         requestMeta(pageID), requestModerateCount()
     ]));
     const data = { ...request.data, ...content };
-    const template = `admin/how-it-works/faq.admin.hbs`;
+    const template = `admin/how-it-works/faq/faq.admin.hbs`;
     response.render(template, data);
 });
 
@@ -98,7 +98,7 @@ router.get(`/basement-tips`, async (request, response, next) => {
         requestMeta(pageID), requestTips(), requestModerateCount()
     ]));
     const data = { ...request.data, ...content };
-    const template = `admin/how-it-works/basement-tips.admin.hbs`;
+    const template = `admin/how-it-works/tips/basement-tips.admin.hbs`;
     response.render(template, data);
 });
 
@@ -120,7 +120,7 @@ router.get(`/basement-tips/add`, async (request, response, next) => {
         requestCategories(), requestModerateCount()
     ]));
     const data = { ...request.data, ...content };
-    const template = `admin/how-it-works/add-tip.admin.hbs`;
+    const template = `admin/how-it-works/tips/add-tip.admin.hbs`;
     response.render(template, data);
 });
 
@@ -157,7 +157,7 @@ router.get(`/basement-tips/edit/:tipID`, async (request, response, next) => {
     // replace quotes for tinyMCE
     content.page.tipText =  content.page.tipText.replace(/"/g, "&quot;");
     const data = { ...request.data, ...content };
-    const template = `admin/how-it-works/edit-tip.admin.hbs`;
+    const template = `admin/how-it-works/tips/edit-tip.admin.hbs`;
     response.render(template, data);
 });
 

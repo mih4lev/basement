@@ -1,0 +1,126 @@
+<form class="formNode">
+    <input class="hiddenField" type="hidden" name="pageID" value="{{{ page.pageID }}}">
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageTitle">Page title</label>
+            <input class="textField" type="text" id="pageTitle" name="pageTitle" value="{{{ page.pageTitle }}}">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageDescription">Page description</label>
+            <textarea class="textareaField" id="pageDescription" name="pageDescription">{{{ page.pageDescription }}}</textarea>
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageKeywords">Page keywords</label>
+            <textarea class="textareaField" id="pageKeywords" name="pageKeywords">{{{ page.pageKeywords }}}</textarea>
+        </div>
+    </section>
+    <input class="hiddenField" type="hidden" name="settingID" value="1">
+    <section class="fieldSection">
+        <div class="fieldWrapper" style="margin-right: 10px;">
+            <label class="fieldLabel" for="phoneMain">Main phone</label>
+            <input class="textField" type="text" id="phoneMain"
+                   name="phoneMain" value="{{{ phoneMain }}}">
+        </div>
+        <div class="fieldWrapper" style="margin-right: 10px;">
+            <label class="fieldLabel" for="phoneMD1">MD #1</label>
+            <input class="textField" type="text" id="phoneMD1"
+                   name="phoneMD1" value="{{{ phoneMD1 }}}">
+        </div>
+        <div class="fieldWrapper" style="margin-right: 10px;">
+            <label class="fieldLabel" for="phoneMD2">MD #2</label>
+            <input class="textField" type="text" id="phoneMD2"
+                   name="phoneMD2" value="{{{ phoneMD2 }}}">
+        </div>
+        <div class="fieldWrapper" style="margin-right: 10px;">
+            <label class="fieldLabel" for="phoneVA">VA</label>
+            <input class="textField" type="text" id="phoneVA"
+                   name="phoneVA" value="{{{ phoneVA }}}">
+        </div>
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="phoneDC">DC</label>
+            <input class="textField" type="text" id="phoneDC"
+                   name="phoneDC" value="{{{ phoneDC }}}">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper" style="margin-right: 10px;">
+            <label class="fieldLabel" for="address">Address</label>
+            <input class="textField" type="text" id="address" name="address" value="{{{ address }}}">
+        </div>
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="email">Site email</label>
+            <input class="textField" type="text" id="email"
+                   name="email" value="{{{ email }}}">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper" style="margin-right: 10px;">
+            <label class="fieldLabel" for="workDays">Work days</label>
+            <input class="textField" type="text" id="workDays"
+                   name="workDays" value="{{{ workDays }}}">
+        </div>
+        <div class="fieldWrapper" style="margin-right: 10px;">
+            <label class="fieldLabel" for="workTime">Work time</label>
+            <input class="textField" type="text" id="workTime"
+                   name="workTime" value="{{{ workTime }}}">
+        </div>
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="closedTime">Closed days</label>
+            <input class="textField" type="text" id="closedTime"
+                   name="closedTime" value="{{{ closedTime }}}">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="linkInstagram">Instagram link</label>
+            <input class="textField" type="text" id="linkInstagram"
+                   name="linkInstagram" value="{{{ linkInstagram }}}">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="linkFacebook">Facebook link</label>
+            <input class="textField" type="text" id="linkFacebook"
+                   name="linkFacebook" value="{{{ linkFacebook }}}">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="linkPinterest">Pinterest link</label>
+            <input class="textField" type="text" id="linkPinterest"
+                   name="linkPinterest" value="{{{ linkPinterest }}}">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="copyrightText">Copyright text</label>
+            <textarea class="textareaField" id="copyrightText"
+                      name="copyrightText">{{{ copyrightText }}}</textarea>
+        </div>
+    </section>
+    <div class="formButtons">
+        <button class="submitButton" type="button" title="Update"
+                data-action="update" data-api="">Update</button>
+    </div>
+</form>
+
+<section class="listSection">
+    <p class="listTitle">Offices:</p>
+    <ul class="listNode normalVisible">
+        <li class="listWrapper">
+            <a class="wrapperLink addLink" href="/admin/about-us/contact-us/offices/add">Add office</a>
+        </li>
+        {{# each offices }}
+            <li class="listWrapper sortNode" data-id="{{{ officeID }}}">
+                <a class="wrapperLink" href="/admin/about-us/contact-us/offices/edit/{{{ officeID }}}">
+                    <div class="defaultImage"></div>
+                    <span class="listTitle minTitle">{{{ officeTitle }}}</span>
+                </a>
+            </li>
+        {{/ each }}
+    </ul>
+</section>

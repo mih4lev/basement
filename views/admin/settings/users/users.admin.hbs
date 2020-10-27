@@ -1,0 +1,18 @@
+<section class="listSection">
+    <ul class="usersList">
+        {{# each users }}
+            <li class="userWrapper">
+                {{# if avatarImage }}
+                    <img class="userImage" src="{{{ avatarImage }}}_32x32.jpg" alt="User avatar">
+                {{ else }}
+                    <div class="userImage"></div>
+                {{/ if }}
+                <a class="userLink" href="/admin/settings/users/edit/{{{ userID }}}">{{{ user }}}</a>
+                {{# if isGoogle }}<span class="userSocial">G</span>{{/ if }}
+                {{# if isFacebook }}<span class="userSocial">F</span>{{/ if }}
+                {{# if isAdmin }}<span class="userAdmin">Admin</span>{{/if}}
+                {{# if isSpec }}<span class="userAdmin">Spec</span>{{/if}}
+            </li>
+        {{/ each }}
+    </ul>
+</section>

@@ -1,0 +1,104 @@
+<form class="formNode" action="/admin/settings/users/edit">
+
+    <input class="hiddenField" name="userID" type="hidden" value="{{{ user.userID }}}">
+
+    <div class="userWrapper">
+        <div class="avatarWrapper">
+            <section class="fileSection">
+                <div class="fileWrapper" style="width: 130px; height: 130px;">
+                    <input type="file" class="fileField" id="avatarImage" name="avatarImage">
+                    <label class="fileLabel" for="avatarImage">Avatar image</label>
+                    {{# if user.avatarImage }}
+                        <img class="fieldPreview" src="{{{ user.avatarImage }}}_130x130.jpg" alt="Avatar image">
+                    {{/ if }}
+                </div>
+            </section>
+        </div>
+        <div class="fieldsWrapper">
+            <section class="fieldSection">
+                <div class="fieldWrapper" style="width: 30%; margin-right: 10px;">
+                    <label class="fieldLabel" for="name">First name</label>
+                    <input class="textField" type="text" id="name" name="name" value="{{{ user.name }}}">
+                </div>
+                <div class="fieldWrapper" style="width: 30%; margin-right: 10px;">
+                    <label class="fieldLabel" for="surname">Last name</label>
+                    <input class="textField" type="text" id="surname" name="surname" value="{{{ user.surname }}}">
+                </div>
+                <div class="fieldWrapper" style="width: 40%;">
+                    <label class="fieldLabel" for="mail">Mail</label>
+                    <input class="textField" type="text" id="mail" name="mail" value="{{{ user.mail }}}">
+                </div>
+            </section>
+            <section class="fieldSection">
+                <div class="fieldWrapper">
+                    <label class="fieldLabel" for="membership">Membership</label>
+                    <input class="textField" type="text" id="membership" disabled
+                           name="membership" value="{{{ user.membership }}}">
+                </div>
+            </section>
+            <section class="fieldSection">
+                <div class="fieldWrapper">
+                    <label class="fieldLabel" for="username">Username</label>
+                    <input class="textField" type="text" id="username" name="username" value="{{{ user.username }}}">
+                </div>
+                <div class="selectWrapper autoWrapper">
+                    <div class="toggleButtonWrapper">
+                        <input class="toggleButton" type="checkbox" {{# if user.isAdmin }}checked{{/if}}
+                               name="isAdmin" id="isAdmin" value="1">
+                        <label class="buttonLabel" for="isAdmin">Admin</label>
+                    </div>
+                </div>
+                <div class="selectWrapper autoWrapper">
+                    <div class="toggleButtonWrapper">
+                        <input class="toggleButton" type="checkbox" {{# if user.isSpec }}checked{{/if}}
+                               name="isSpec" id="isSpec" value="1">
+                        <label class="buttonLabel" for="isSpec">Spec</label>
+                    </div>
+                </div>
+                <div class="buttonWrapper">
+                    <button class="deleteButton" type="button" data-redirect="/admin/users/"
+                            data-action="/admin/users/{{{ user.userID }}}">
+                        Delete user
+                    </button>
+                    <div class="buttonHiddenWrapper hiddenWrapper">
+                        <div class="wrapperTitle">Are you sure you want to remove this user?</div>
+                        <div class="wrapperButtons">
+                            <button class="cancelButton" type="button">CANCEL</button>
+                            <button class="confirmButton" type="button">DELETE</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="fieldSection">
+                <div class="fieldWrapper">
+                    <label class="fieldLabel" for="passwordHash">Password hash</label>
+                    <textarea class="textareaField" id="passwordHash" disabled>{{{ user.password }}}</textarea>
+                </div>
+            </section>
+            <section class="fieldSection">
+                <div class="fieldWrapper">
+                    <label class="fieldLabel" for="salt">Salt</label>
+                    <input class="textField" type="text" disabled
+                           id="salt" name="salt" value="{{{ user.salt }}}">
+                </div>
+                <div class="buttonWrapper">
+                    <button class="deleteButton" type="button">
+                        Reset password
+                    </button>
+                    <div class="buttonHiddenWrapper hiddenWrapper">
+                        <div class="wrapperTitle">Are you sure you want to reset user password?</div>
+                        <div class="wrapperButtons">
+                            <button class="cancelButton" type="button">CANCEL</button>
+                            <button class="confirmButton" type="button">CHANGE</button>
+                        </div>
+                    </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="formButtons">
+        <button class="submitButton" type="button" title="Update"
+                data-action="update" data-api="">Update</button>
+    </div>
+
+</form>

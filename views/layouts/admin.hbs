@@ -50,6 +50,13 @@
                 <span class="menuLink">Portfolio <span class="dropdownMenu"></span></span>
                 <ul class="subMenuLinks">
                     <li class="subMenuWrapper">
+                        {{# if isAdminPortfolioAdd }}
+                            <span class="subMenuLink addLink activeLink">Add new project</span>
+                        {{ else }}
+                            <a class="subMenuLink addLink" href="/admin/portfolio/add/">Add new project</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
                         {{# if isAdminPortfolio }}
                             <span class="subMenuLink activeLink">All projects</span>
                         {{ else }}
@@ -64,24 +71,17 @@
                         </li>
                     {{/ if }}
                     <li class="subMenuWrapper">
-                        {{# if isAdminPortfolioAdd }}
-                            <span class="subMenuLink addLink activeLink">Add new project</span>
-                        {{ else }}
-                            <a class="subMenuLink addLink" href="/admin/portfolio/add/">Add new project</a>
-                        {{/ if }}
-                    </li>
-                    <li class="subMenuWrapper">
-                        {{# if isAdminPortfolioSettings }}
-                            <span class="subMenuLink activeLink">Portfolio settings</span>
-                        {{ else }}
-                            <a class="subMenuLink" href="/admin/portfolio/settings/">Portfolio settings</a>
-                        {{/ if }}
-                    </li>
-                    <li class="subMenuWrapper">
                         {{# if isAdminPortfolioFilters }}
                             <span class="subMenuLink activeLink">Portfolio filters</span>
                         {{ else }}
                             <a class="subMenuLink" href="/admin/portfolio/filters/">Portfolio filters</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminPortfolioSettings }}
+                            <span class="subMenuLink activeLink">Portfolio SEO</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/portfolio/settings/">Portfolio SEO</a>
                         {{/ if }}
                     </li>
                 </ul>
@@ -89,6 +89,18 @@
             <li class="menuWrapper">
                 <span class="menuLink">Basement ideas <span class="dropdownMenu"></span></span>
                 <ul class="subMenuLinks">
+                    <li class="subMenuWrapper">
+                        {{# if isAdminIdeasAdd }}
+                            <span class="subMenuLink addLink activeLink">Add new idea</span>
+                        {{ else }}
+                            <a class="subMenuLink addLink" href="/admin/basement-ideas/add/">Add new idea</a>
+                        {{/ if }}
+                    </li>
+                    {{# if isIdeaEdit }}
+                        <li class="subMenuWrapper">
+                            <span class="subMenuLink activeLink editLink">Edit idea {{{ page.ideaID }}}</span>
+                        </li>
+                    {{/ if }}
                     <li class="subMenuWrapper">
                         {{# if isAdminModeratedIdeas }}
                             <span class="subMenuLink activeLink">Moderated ideas</span>
@@ -116,18 +128,6 @@
                             <a class="subMenuLink" href="/admin/basement-ideas/archive/">Archived ideas</a>
                         {{/ if }}
                     </li>
-                    {{# if isIdeaEdit }}
-                        <li class="subMenuWrapper">
-                            <span class="subMenuLink activeLink editLink">Edit idea {{{ page.ideaID }}}</span>
-                        </li>
-                    {{/ if }}
-                    <li class="subMenuWrapper">
-                        {{# if isAdminIdeasAdd }}
-                            <span class="subMenuLink addLink activeLink">Add new idea</span>
-                        {{ else }}
-                            <a class="subMenuLink addLink" href="/admin/basement-ideas/add/">Add new idea</a>
-                        {{/ if }}
-                    </li>
                     <li class="subMenuWrapper">
                         {{# if isAdminIdeasCategories }}
                             <span class="subMenuLink activeLink">Ideas categories</span>
@@ -144,9 +144,9 @@
                     </li>
                     <li class="subMenuWrapper">
                         {{# if isAdminIdeas }}
-                            <span class="subMenuLink activeLink">Ideas settings</span>
+                            <span class="subMenuLink activeLink">Ideas SEO</span>
                         {{ else }}
-                            <a class="subMenuLink" href="/admin/basement-ideas/">Ideas settings</a>
+                            <a class="subMenuLink" href="/admin/basement-ideas/">Ideas SEO</a>
                         {{/ if }}
                     </li>
                 </ul>
@@ -183,14 +183,11 @@
                             <span class="subMenuLink activeLink editLink">Edit tip {{{ page.tipID }}}</span>
                         </li>
                     {{/ if }}
+                    {{# if isAdminTipsAdd }}
                     <li class="subMenuWrapper">
-                        {{# if isAdminTipsAdd }}
-                            <span class="subMenuLink addLink activeLink">Add new basement tip</span>
-                        {{ else }}
-                            <a class="subMenuLink addLink"
-                               href="/admin/how-it-works/basement-tips/add/">Add new basement tip</a>
-                        {{/ if }}
+                        <span class="subMenuLink addLink activeLink editLink">Add new basement tip</span>
                     </li>
+                    {{/ if }}
                 </ul>
             </li>
             <li class="menuWrapper">
@@ -211,14 +208,11 @@
                             </span>
                         </li>
                     {{/ if }}
+                    {{# if isAdminTestimonialsAdd }}
                     <li class="subMenuWrapper">
-                        {{# if isAdminTestimonialsAdd }}
-                            <span class="subMenuLink addLink activeLink">Add new testimonial</span>
-                        {{ else }}
-                            <a class="subMenuLink addLink"
-                               href="/admin/about-us/testimonials/add/">Add new testimonial</a>
-                        {{/ if }}
+                        <span class="subMenuLink addLink activeLink editLink">Add new testimonial</span>
                     </li>
+                    {{/ if }}
                     <li class="subMenuWrapper">
                         {{# if isAdminPress }}
                             <span class="subMenuLink activeLink">All press</span>
@@ -233,13 +227,11 @@
                             </span>
                         </li>
                     {{/ if }}
+                    {{# if isAdminPressAdd }}
                     <li class="subMenuWrapper">
-                        {{# if isAdminPressAdd }}
-                            <span class="subMenuLink addLink activeLink">Add new press</span>
-                        {{ else }}
-                            <a class="subMenuLink addLink" href="/admin/about-us/press/add/">Add new press</a>
-                        {{/ if }}
+                        <span class="subMenuLink addLink activeLink editLink">Add new press</span>
                     </li>
+                    {{/ if }}
                     <li class="subMenuWrapper">
                         {{# if isAdminOffers }}
                             <span class="subMenuLink activeLink">Financing offers</span>
@@ -252,40 +244,6 @@
                             <span class="subMenuLink activeLink">Contact us</span>
                         {{ else }}
                             <a class="subMenuLink" href="/admin/about-us/contact-us/">Contact us</a>
-                        {{/ if }}
-                    </li>
-                    <li class="subMenuWrapper">
-                        {{# if isAdminQuotes }}
-                            <span class="subMenuLink activeLink">Get an instant quote</span>
-                        {{ else }}
-                            <a class="subMenuLink" href="/admin/about-us/instant-quotes/">Get an instant quote</a>
-                        {{/ if }}
-                    </li>
-                    <li class="subMenuWrapper">
-                        {{# if isAdminThanks }}
-                            <span class="subMenuLink activeLink">Thank you</span>
-                        {{ else }}
-                            <a class="subMenuLink" href="/admin/about-us/thank-you/">Thank you</a>
-                        {{/ if }}
-                    </li>
-                    <li class="subMenuWrapper">
-                        {{# if isAdminReview }}
-                            <span class="subMenuLink activeLink">Leave a review</span>
-                        {{ else }}
-                            <a class="subMenuLink" href="/admin/about-us/leave-review/">Leave a review</a>
-                        {{/ if }}
-                    </li>
-                </ul>
-            </li>
-            <li class="menuWrapper">
-                <span class="menuLink">Other <span class="dropdownMenu"></span></span>
-                <ul class="subMenuLinks">
-                    <li class="subMenuWrapper">
-                        {{# if isAdminOffices }}
-                            <span class="subMenuLink activeLink">Offices</span>
-                        {{ else }}
-                            <a class="subMenuLink"
-                               href="/admin/offices/">Offices</a>
                         {{/ if }}
                     </li>
                     {{# if isAdminOfficesAdd }}
@@ -302,20 +260,43 @@
                             </span>
                         </li>
                     {{/ if }}
+                </ul>
+            </li>
+            <li class="menuWrapper">
+                <span class="menuLink">Other <span class="dropdownMenu"></span></span>
+                <ul class="subMenuLinks">
                     <li class="subMenuWrapper">
-                        {{# if isAdminZipCodes }}
-                            <span class="subMenuLink activeLink">Zip codes</span>
+                        {{# if isAdminQuotes }}
+                            <span class="subMenuLink activeLink">Get an instant quote</span>
                         {{ else }}
-                            <a class="subMenuLink"
-                               href="/admin/zip-codes/">Zip codes</a>
+                            <a class="subMenuLink" href="/admin/other/instant-quotes/">Get an instant quote</a>
                         {{/ if }}
                     </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminThanks }}
+                            <span class="subMenuLink activeLink">Thank you</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/other/thank-you/">Thank you</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminReview }}
+                            <span class="subMenuLink activeLink">Leave a review</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/other/leave-review/">Leave a review</a>
+                        {{/ if }}
+                    </li>
+                </ul>
+            </li>
+            <li class="menuWrapper">
+                <span class="menuLink">Clients <span class="dropdownMenu"></span></span>
+                <ul class="subMenuLinks">
                     <li class="subMenuWrapper">
                         {{# if isAdminFormsBooking }}
                             <span class="subMenuLink activeLink">Appointment Bookings</span>
                         {{ else }}
                             <a class="subMenuLink"
-                               href="/admin/forms/booking/">Appointment Bookings</a>
+                               href="/admin/clients/booking/">Appointment Bookings</a>
                         {{/ if }}
                     </li>
                     {{# if isAdminFormsBookingEdit }}
@@ -330,7 +311,7 @@
                             <span class="subMenuLink activeLink">Online Quotes</span>
                         {{ else }}
                             <a class="subMenuLink"
-                               href="/admin/forms/instant-quote/">Online Quotes</a>
+                               href="/admin/clients/instant-quote/">Online Quotes</a>
                         {{/ if }}
                     </li>
                     {{# if isAdminFormsQuotesEdit }}
@@ -345,7 +326,7 @@
                             <span class="subMenuLink activeLink">Contact Us Forms</span>
                         {{ else }}
                             <a class="subMenuLink"
-                               href="/admin/forms/contact-us/">Contact Us Forms</a>
+                               href="/admin/clients/contact-us/">Contact Us Forms</a>
                         {{/ if }}
                     </li>
                     {{# if isAdminFormsContactsEdit }}
@@ -355,18 +336,30 @@
                             </span>
                         </li>
                     {{/ if }}
+                </ul>
+            </li>
+            <li class="menuWrapper">
+                <span class="menuLink">Settings <span class="dropdownMenu"></span></span>
+                <ul class="subMenuLinks">
                     <li class="subMenuWrapper">
                         {{# if isAdminSettings }}
-                            <span class="subMenuLink activeLink">Settings</span>
+                            <span class="subMenuLink activeLink">Email settings</span>
                         {{ else }}
-                            <a class="subMenuLink" href="/admin/settings/">Settings</a>
+                            <a class="subMenuLink" href="/admin/settings/email/">Email settings</a>
+                        {{/ if }}
+                    </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminZipCodes }}
+                            <span class="subMenuLink activeLink">Zip codes</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/settings/zip-codes/">Zip codes</a>
                         {{/ if }}
                     </li>
                     <li class="subMenuWrapper">
                         {{# if isAdminUser }}
-                            <span class="subMenuLink activeLink">All users</span>
+                            <span class="subMenuLink activeLink">Users</span>
                         {{ else }}
-                            <a class="subMenuLink" href="/admin/users/">All users</a>
+                            <a class="subMenuLink" href="/admin/settings/users/">Users</a>
                         {{/ if }}
                     </li>
                 </ul>
