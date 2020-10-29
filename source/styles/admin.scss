@@ -1565,12 +1565,16 @@ button {
         box-sizing: border-box;
         list-style-type: none;
         li {
+            position: relative;
             margin: 10px 0;
             font-size: 14px;
             font-weight: 800;
             text-transform: uppercase;
             &.activeFilter {
                 margin: 2px 0;
+            }
+            .categoryHeader {
+                display: block;
             }
             input[type="checkbox"] {
                 display: none;
@@ -1587,6 +1591,50 @@ button {
             input[type="checkbox"]:checked + label {
                 background-color: $blue;
                 color: $white;
+            }
+            .similarButton {
+                display: none;
+                position: absolute;
+                top: 50%;
+                right: -20px;
+                transform: translateY(-50%);
+                padding: 0;
+                width: 20px;
+                height: 100%;
+                border-radius: 0;
+                font-size: 0;
+                background-color: transparent;
+                cursor: copy;
+                &:before {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 13px;
+                    height: 11px;
+                    background-image: url("/public/images/vector/confirm_icon_grey.svg");
+                    background-repeat: no-repeat;
+                }
+                &:hover {
+                    &:before {
+                        background-image: url("/public/images/vector/confirm_icon_blue.svg");
+                    }
+                }
+            }
+            &:hover {
+                .similarButton {
+                    display: block;
+                }
+            }
+            &.similarFilter {
+                .similarButton {
+                    display: block;
+                    &:before {
+                        background-image: url("/public/images/vector/confirm_icon_blue.svg");
+                    }
+                }
             }
         }
         ul {

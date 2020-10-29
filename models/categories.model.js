@@ -56,11 +56,20 @@ const requestCategories = async (ideaID = 0) => {
                     SELECT COUNT(ideas_relation.relationID)
                     FROM ideas_relation
                     WHERE ideas_relation.ideaID = ? && ideas_relation.categoryID = categories.categoryID
-                ) as isChosen
+                ) as isChosen,
+                (
+                    SELECT COUNT(cats.categoryID)
+                    FROM ideas_categories AS cats
+                    JOIN ideas ON ideas.similarID = cats.categoryID
+                    WHERE 
+                        cats.categoryID = ideas.similarID && 
+                        cats.categoryID = categories.categoryID &&
+                        ideas.ideaID = ?
+                ) as isSimilar
             FROM ideas_categories AS categories
             ORDER BY position
         `;
-        const response = await DB(query, [ideaID]);
+        const response = await DB(query, [ideaID, ideaID]);
         const categories = [];
         // edit children categories
         response.forEach((category) => {

@@ -338,6 +338,43 @@ uploadFields.forEach((uploadField) => {
     uploadField.addEventListener(`change`, collectFiles);
 });
 
+// similar buttons on ideas
+const similarButtons = [...document.querySelectorAll(`.similarButton`)];
+const removeActiveSimilar = (parentWrapper) => {
+    const categoriesParent = [...document.querySelectorAll(`.catFilter`)];
+    categoriesParent.forEach((parentNode) => {
+        // remove field
+        const similarField = parentNode.querySelector(`.similarField`);
+        if (similarField) parentNode.removeChild(similarField);
+        // remove active class
+        if (parentNode === parentWrapper) return false;
+        parentNode.classList.remove(`similarFilter`);
+    });
+};
+const createSimilarField = (categoryID) => {
+    const similarField = document.createElement(`input`);
+    similarField.setAttribute(`type`, `hidden`);
+    similarField.classList.add(`similarField`, `hiddenField`);
+    similarField.setAttribute(`name`, `similarID`);
+    similarField.value = categoryID;
+    return similarField;
+};
+similarButtons.forEach((similarButton) => {
+    const { dataset: { category: categoryID }} = similarButton;
+    const parentWrapper = similarButton.closest(`.catFilter`);
+    if (!parentWrapper) return false;
+    similarButton.addEventListener(`click`, () => {
+        removeActiveSimilar(parentWrapper);
+        const isActive = parentWrapper.classList.contains(`similarFilter`);
+        const classAction = (isActive) ? `remove` : `add`;
+        parentWrapper.classList[classAction](`similarFilter`);
+        if (!isActive) {
+            const similarField = createSimilarField(categoryID);
+            parentWrapper.appendChild(similarField);
+        }
+    });
+});
+
 // idea categories
 let isLoading = false;
 const editWrapper = (wrapper) => {

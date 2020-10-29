@@ -183,10 +183,10 @@ export const viewIdeaModal = () => {
         saveButton.classList[saveAction](`saveIdea`);
     };
 
-    const setOtherCategory = ({ categoryTitle, categoryLink, isVisibleCategory }) => {
+    const setOtherCategory = ({ similarTitle, similarLink, isVisibleCategory }) => {
         if (!isVisibleCategory) return categoryWrapper.classList.add(`hiddenWrapper`);
-        ideaLink.innerText = categoryTitle;
-        ideaLink.setAttribute(`href`, categoryLink);
+        ideaLink.innerText = similarTitle;
+        ideaLink.setAttribute(`href`, similarLink);
         categoryWrapper.classList.remove(`hiddenWrapper`);
     };
 
@@ -216,10 +216,9 @@ export const viewIdeaModal = () => {
     // set requested data to modal
     const setModalData = (responseData) => {
         const {
-            ideaID, ideaTitle, ideaAuthor, ideaImage, saveCount,
-            categories, filters, isVisible, isLogin, portfolio, portfolioLink
+            ideaID, ideaTitle, ideaAuthor, ideaImage, saveCount, filters, similar,
+            isVisible, isLogin, portfolio, portfolioLink, similarTitle, similarLink
         } = responseData;
-        const { 0: { categoryTitle, categoryLink, similar } = {}} = categories;
         // set data to modal
         ideaIDNode.value = ideaID;
         sectionTitle.innerText = ideaTitle;
@@ -237,7 +236,7 @@ export const viewIdeaModal = () => {
         createTagList(filters);
         // set other category title && link
         const isVisibleCategory = similar && !!similar.length;
-        setOtherCategory({ categoryTitle, categoryLink, isVisibleCategory });
+        setOtherCategory({ similarTitle, similarLink, isVisibleCategory });
         // create thumbs list
         createPreviewList(similar);
         // set profile category title && link

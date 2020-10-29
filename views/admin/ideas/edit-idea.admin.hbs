@@ -96,36 +96,52 @@
         <div class="categoriesWrapper">
             {{# each categories }}
                 <ul>
-                    <li>{{{ categoryTitle }}}</li>
+                    <li class="catFilter{{# if isSimilar }} similarFilter{{/ if }}">
+                        <span class="categoryHeader" data->{{{ categoryTitle }}}</span>
+                        <div class="similarButton"
+                             data-category="{{{ categoryID }}}">Select</div>
+                    </li>
                     {{# if children }}
                         <ul>
                             {{# each children }}
                                 {{# if isActive }}
-                                    <li class="activeFilter">
+                                    <li class="catFilter activeFilter{{# if isSimilar }} similarFilter{{/ if }}">
                                         <input type="checkbox" name="categoryArray"
-                                               {{# if isChosen }}checked{{/if}}
+                                               {{# if isChosen }}checked{{/ if }}
                                                value="{{{ categoryID }}}" id="category{{{ categoryID }}}">
                                         <label for="category{{{ categoryID }}}">
                                             {{{ categoryTitle }}}
                                         </label>
+                                        <div class="similarButton"
+                                             data-category="{{{ categoryID }}}">Select</div>
                                     </li>
                                 {{ else }}
-                                    <li>{{{ categoryTitle }}}</li>
+                                    <li class="catFilter{{# if isSimilar }} similarFilter{{/ if }}">
+                                        <span class="categoryHeader">{{{ categoryTitle }}}</span>
+                                        <div class="similarButton"
+                                             data-category="{{{ categoryID }}}">Select</div>
+                                    </li>
                                 {{/ if }}
                                 {{# if children }}
                                     <ul>
                                         {{# each children }}
                                             {{# if isActive }}
-                                                <li class="activeFilter">
+                                                <li class="catFilter activeFilter{{# if isSimilar }} similarFilter{{/ if }}">
                                                     <input type="checkbox" name="categoryArray"
-                                                           {{# if isChosen }}checked{{/if}}
+                                                           {{# if isChosen }}checked{{/ if }}
                                                            value="{{{ categoryID }}}" id="category{{{ categoryID }}}">
                                                     <label for="category{{{ categoryID }}}">
                                                         {{{ categoryTitle }}}
                                                     </label>
+                                                    <div class="similarButton"
+                                                         data-category="{{{ categoryID }}}">Select</div>
                                                 </li>
                                             {{ else }}
-                                                <li>{{{ categoryTitle }}}</li>
+                                                <li class="catFilter{{# if isSimilar }} similarFilter{{/ if }}">
+                                                    <span class="categoryHeader">{{{ categoryTitle }}}</span>
+                                                    <div class="similarButton"
+                                                         data-category="{{{ categoryID }}}">Select</div>
+                                                </li>
                                             {{/ if }}
                                         {{/ each }}
                                     </ul>
