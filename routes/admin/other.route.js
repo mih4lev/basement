@@ -87,6 +87,7 @@ router.get(`/leave-review/pages/add`, async (request, response, next) => {
     if (!request.data['userID'] || !request.data['isAdmin']) return next();
     request.data['layout'] = `admin`;
     request.data['isAdminReviewPageAdd'] = true;
+    request.data['backButton'] = `/admin/other/leave-review/`;
     const content = requestContent(await Promise.all([
         requestModerateCount()
     ]));
