@@ -106,10 +106,11 @@ router.get(`/leave-review/pages/edit/:pageID`, async (request, response, next) =
     const { params: { pageID }} = request;
     request.data['layout'] = `admin`;
     request.data['isAdminReviewPageEdit'] = true;
-    request.data['backButton'] = `/admin/about-us/contact-us/`;
+    request.data['backButton'] = `/admin/other/leave-review/`;
     const content = requestContent(await Promise.all([
         requestModerateCount(), requestReviewPageByID(pageID)
     ]));
+    request.data['locationLink'] = `/leave-a-review/` + content['reviewPage']['pageLink'];
     const data = { ...request.data, ...content };
     const template = `admin/other/leave-review/review-edit.admin.hbs`;
     response.render(template, data);
