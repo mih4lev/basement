@@ -286,6 +286,20 @@
                             <a class="subMenuLink" href="/admin/other/leave-review/">Leave a review</a>
                         {{/ if }}
                     </li>
+                    {{# if isAdminReviewPageAdd }}
+                        <li class="subMenuWrapper">
+                            <span class="subMenuLink activeLink editLink">
+                                Add office
+                            </span>
+                        </li>
+                    {{/ if }}
+                    {{# if isAdminReviewPageEdit }}
+                        <li class="subMenuWrapper">
+                            <span class="subMenuLink activeLink editLink">
+                                Edit office {{{ reviewPage.reviewID }}}
+                            </span>
+                        </li>
+                    {{/ if }}
                 </ul>
             </li>
             <li class="menuWrapper">

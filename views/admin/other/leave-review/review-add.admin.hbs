@@ -1,21 +1,51 @@
-<form class="formNode zipZone" action="/admin/about-us/contact-us/offices/add">
+<form class="formNode zipZone" action="/admin/other/leave-review/pages/add">
     <section class="fieldSection">
-        <div class="fieldWrapper">
-            <label class="fieldLabel" for="officeName">Office name</label>
-            <input class="textField" type="text" id="officeName" name="officeName">
+        <div class="fieldWrapper" style="margin-right: 10px;">
+            <label class="fieldLabel" for="pageLink">Page link</label>
+            <input class="textField" type="text" id="pageLink" name="pageLink">
         </div>
     </section>
     <section class="fieldSection">
         <div class="fieldWrapper">
-            <label class="fieldLabel" for="officeTitle">Office title</label>
-            <input class="textField" type="text" id="officeTitle" name="officeTitle">
+            <label class="fieldLabel" for="pageTitle">Page title</label>
+            <input class="textField" type="text" id="pageTitle" name="pageTitle">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageDescription">Page description</label>
+            <textarea class="textareaField" id="pageDescription" name="pageDescription"></textarea>
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageKeywords">Page keywords</label>
+            <textarea class="textareaField" id="pageKeywords" name="pageKeywords"></textarea>
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="reviewTitle">Review title</label>
+            <input class="textField" type="text" id="reviewTitle" name="reviewTitle">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="reviewText">Review text</label>
+            <textarea class="textareaField" id="reviewText" name="reviewText"></textarea>
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="linksText">Links text</label>
+            <textarea class="textareaField" id="linksText" name="linksText"></textarea>
         </div>
     </section>
 
     <section class="fieldSection">
         <div class="fieldWrapper" style="width: 52%; margin-right: 10px;">
             <label class="fieldLabel" for="officeAddress">Address</label>
-            <input class="textField" type="text" id="officeAddress" name="officeAddress">
+            <input class="textField" type="text" id="officeAddress">
         </div>
         <div class="fieldWrapper" style="width: 18%; margin-right: 10px;">
             <label class="fieldLabel" for="lat">LAT</label>
@@ -84,9 +114,40 @@
         </script>
     </section>
 
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="facebookLink">Facebook link</label>
+            <input class="textField" type="text" id="facebookLink" name="facebookLink">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="houzzLink">Houzz link</label>
+            <input class="textField" type="text" id="houzzLink" name="houzzLink">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="angielListLink">Angies list link</label>
+            <input class="textField" type="text" id="angielListLink" name="angielListLink">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="porchLink">Porch link</label>
+            <input class="textField" type="text" id="porchLink" name="porchLink">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="googleLink">Google link</label>
+            <input class="textField" type="text" id="googleLink" name="googleLink">
+        </div>
+    </section>
+
     <div class="formButtons">
         <button class="submitButton" type="button" title="Create"
-                data-redirect="/admin/about-us/contact-us/offices"
+                data-redirect="/admin/other/leave-review/pages"
                 data-action="create" data-api="">Create</button>
     </div>
 

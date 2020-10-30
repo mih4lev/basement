@@ -1,11 +1,6 @@
 <form class="formNode zipZone" action="/admin/about-us/contact-us/offices/edit">
     <input class="hiddenField" type="hidden" name="officeID" value="{{{ office.officeID }}}">
     <section class="fieldSection">
-        <div class="fieldWrapper" style="margin-right: 10px;">
-            <label class="fieldLabel" for="pageLink">Page link</label>
-            <input class="textField" type="text" id="pageLink"
-                   name="pageLink" value="{{{ office.pageLink }}}">
-        </div>
         <div class="fieldWrapper">
             <label class="fieldLabel" for="officeName">Office name</label>
             <input class="textField" type="text" id="officeName"
@@ -30,27 +25,6 @@
             <label class="fieldLabel" for="officeTitle">Office title</label>
             <input class="textField" type="text" id="officeTitle"
                    name="officeTitle" value="{{{ office.officeTitle }}}">
-        </div>
-    </section>
-    <section class="fieldSection">
-        <div class="fieldWrapper">
-            <label class="fieldLabel" for="reviewTitle">Review title</label>
-            <input class="textField" type="text" id="reviewTitle"
-                   name="reviewTitle" value="{{{ office.reviewTitle }}}">
-        </div>
-    </section>
-    <section class="fieldSection">
-        <div class="fieldWrapper">
-            <label class="fieldLabel" for="reviewText">Review text</label>
-            <textarea class="textareaField" id="reviewText"
-                      name="reviewText">{{{ office.reviewText }}}</textarea>
-        </div>
-    </section>
-    <section class="fieldSection">
-        <div class="fieldWrapper">
-            <label class="fieldLabel" for="linksText">Links text</label>
-            <textarea class="textareaField" id="linksText"
-                      name="linksText">{{{ office.linksText }}}</textarea>
         </div>
     </section>
 
@@ -125,42 +99,6 @@
                 });
             }
         </script>
-    </section>
-
-    <section class="fieldSection">
-        <div class="fieldWrapper">
-            <label class="fieldLabel" for="facebookLink">Facebook link</label>
-            <input class="textField" type="text" id="facebookLink"
-                   name="facebookLink" value="{{{ office.facebookLink }}}">
-        </div>
-    </section>
-    <section class="fieldSection">
-        <div class="fieldWrapper">
-            <label class="fieldLabel" for="houzzLink">Houzz link</label>
-            <input class="textField" type="text" id="houzzLink"
-                   name="houzzLink" value="{{{ office.houzzLink }}}">
-        </div>
-    </section>
-    <section class="fieldSection">
-        <div class="fieldWrapper">
-            <label class="fieldLabel" for="angielListLink">Angies list link</label>
-            <input class="textField" type="text" id="angielListLink"
-                   name="angielListLink" value="{{{ office.angielListLink }}}">
-        </div>
-    </section>
-    <section class="fieldSection">
-        <div class="fieldWrapper">
-            <label class="fieldLabel" for="porchLink">Porch link</label>
-            <input class="textField" type="text" id="porchLink"
-                   name="porchLink" value="{{{ office.porchLink }}}">
-        </div>
-    </section>
-    <section class="fieldSection">
-        <div class="fieldWrapper">
-            <label class="fieldLabel" for="googleLink">Google link</label>
-            <input class="textField" type="text" id="googleLink"
-                   name="googleLink" value="{{{ office.googleLink }}}">
-        </div>
     </section>
 
     <div class="formButtons">

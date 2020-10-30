@@ -11,7 +11,7 @@
                         <span class="breadcrumbLink breadcrumbActive">Please leave a review</span>
                     </li>
                     <li class="breadcrumbLinkWrapper">
-                        <span class="breadcrumbLink breadcrumbActive">{{{ office.officeName }}}</span>
+                        <span class="breadcrumbLink breadcrumbActive">{{{ page.pageTitle }}}</span>
                     </li>
                 </ul>
             </nav>
@@ -22,49 +22,49 @@
 <section class="reviewsSection innerSection">
     <div class="wrapper singleWrapper">
         <div class="reviewLinks">
-            <h2 class="reviewTitle">{{{ office.reviewTitle }}}</h2>
-            <p class="reviewText">{{{ office.reviewText }}}</p>
-            <p class="linksAnnotation">{{{ office.linksText }}}</p>
+            <h2 class="reviewTitle">{{{ page.reviewTitle }}}</h2>
+            <p class="reviewText">{{{ page.reviewText }}}</p>
+            <p class="linksAnnotation">{{{ page.linksText }}}</p>
             <ul class="socialLinks">
-                {{# if office.facebookLink }}
+                {{# if page.facebookLink }}
                 <li class="socialLinkWrapper">
                     <a class="socialLink logoSprite facebookLogo"
                        rel="nofollow" title="Facebook" data-link="facebook_link"
-                       href="{{{ office.facebookLink }}}" target="_blank">Facebook</a>
+                       href="{{{ page.facebookLink }}}" target="_blank">Facebook</a>
                 </li>
                 {{/ if }}
-                {{# if office.houzzLink }}
+                {{# if page.houzzLink }}
                 <li class="socialLinkWrapper backgroundLogoWrapper">
                     <a class="socialLink logoSprite houzzLogo"
                        rel="nofollow" title="houzz" data-link="houzz_link"
-                       href="{{{ office.houzzLink }}}" target="_blank">houzz</a>
+                       href="{{{ page.houzzLink }}}" target="_blank">houzz</a>
                 </li>
                 {{/ if }}
-                {{# if office.angielListLink }}
+                {{# if page.angielListLink }}
                 <li class="socialLinkWrapper">
                     <a class="socialLink logoSprite angiesListLogo"
                        rel="nofollow" title="Angie`s list" data-link="angieslist_link"
-                       href="{{{ office.angielListLink }}}" target="_blank">Angie`s list</a>
+                       href="{{{ page.angielListLink }}}" target="_blank">Angie`s list</a>
                 </li>
                 {{/ if }}
-                {{# if office.porchLink }}
+                {{# if page.porchLink }}
                 <li class="socialLinkWrapper backgroundLogoWrapper">
                     <a class="socialLink logoSprite porchLogo"
                        rel="nofollow" title="Porch" data-link="porch_link"
-                       href="{{{ office.porchLink }}}" target="_blank">Porch</a>
+                       href="{{{ page.porchLink }}}" target="_blank">Porch</a>
                 </li>
                 {{/ if }}
-                {{# if office.googleLink }}
+                {{# if page.googleLink }}
                 <li class="socialLinkWrapper">
                     <a class="socialLink logoSprite googleLogo"
                        rel="nofollow" title="Google" data-link="google_link"
-                       href="{{{ office.googleLink }}}" target="_blank">Google</a>
+                       href="{{{ page.googleLink }}}" target="_blank">Google</a>
                 </li>
                 {{/ if }}
             </ul>
         </div>
-        <div class="reviewMap" data-lat="{{{ office.lat }}}"
-             data-lng="{{{ office.lng }}}" data-zoom="{{{ office.zoom }}}"></div>
+        <div class="reviewMap" data-lat="{{{ page.lat }}}"
+             data-lng="{{{ page.lng }}}" data-zoom="{{{ page.zoom }}}"></div>
     </div>
 </section>
 

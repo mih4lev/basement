@@ -1,0 +1,181 @@
+<form class="formNode zipZone" action="/admin/other/leave-review/pages/edit">
+    <input class="hiddenField" type="hidden" name="reviewID" value="{{{ reviewPage.reviewID }}}">
+    <section class="fieldSection">
+        <div class="fieldWrapper" style="margin-right: 10px;">
+            <label class="fieldLabel" for="pageLink">Page link</label>
+            <input class="textField" type="text" id="pageLink"
+                   name="pageLink" value="{{{ reviewPage.pageLink }}}">
+        </div>
+        <div class="buttonWrapper">
+            <button class="deleteButton" type="button" data-redirect="/admin/other/leave-review"
+                    data-action="/admin/other/leave-review/pages/{{{ reviewPage.reviewID }}}">
+                Delete page
+            </button>
+            <div class="buttonHiddenWrapper hiddenWrapper">
+                <div class="wrapperTitle">Are you sure you want to remove this page?</div>
+                <div class="wrapperButtons">
+                    <button class="cancelButton" type="button">CANCEL</button>
+                    <button class="confirmButton" type="button">DELETE</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageTitle">Page title</label>
+            <input class="textField" type="text" id="pageTitle"
+                   name="pageTitle" value="{{{ reviewPage.pageTitle }}}">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageDescription">Page description</label>
+            <textarea class="textareaField" id="pageDescription"
+                      name="pageDescription">{{{ reviewPage.pageDescription }}}</textarea>
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="pageKeywords">Page keywords</label>
+            <textarea class="textareaField" id="pageKeywords"
+                      name="pageKeywords">{{{ reviewPage.pageKeywords }}}</textarea>
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="reviewTitle">Review title</label>
+            <input class="textField" type="text" id="reviewTitle"
+                   name="reviewTitle" value="{{{ reviewPage.reviewTitle }}}">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="reviewText">Review text</label>
+            <textarea class="textareaField" id="reviewText"
+                      name="reviewText">{{{ reviewPage.reviewText }}}</textarea>
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="linksText">Links text</label>
+            <textarea class="textareaField" id="linksText"
+                      name="linksText">{{{ reviewPage.linksText }}}</textarea>
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper" style="width: 52%; margin-right: 10px;">
+            <label class="fieldLabel" for="officeAddress">Address</label>
+            <input class="textField" type="text" id="officeAddress" value="{{{ reviewPage.officeAddress }}}">
+        </div>
+        <div class="fieldWrapper" style="width: 18%; margin-right: 10px;">
+            <label class="fieldLabel" for="lat">LAT</label>
+            <input class="textField" type="text" id="lat" name="lat" value="{{{ reviewPage.lat }}}">
+        </div>
+        <div class="fieldWrapper" style="width: 18%; margin-right: 10px;">
+            <label class="fieldLabel" for="lng">LNG</label>
+            <input class="textField" type="text" id="lng" name="lng" value="{{{ reviewPage.lng }}}">
+        </div>
+        <div class="fieldWrapper" style="width: 10%">
+            <label class="fieldLabel" for="zoom">Zoom</label>
+            <input class="textField" type="text" id="zoom" name="zoom" value="{{{ reviewPage.zoom }}}">
+        </div>
+    </section>
+
+    <section class="mapSection">
+        <div class="mapPlaceholder"></div>
+        <script>
+            const mapNode = document.querySelector(`.mapPlaceholder`);
+            const addressField = document.querySelector(`#officeAddress`);
+            const latField = document.querySelector(`#lat`);
+            const lngField = document.querySelector(`#lng`);
+            const zoomField = document.querySelector(`#zoom`);
+            const markers = [];
+            const setZoom = (map) => {
+                return () => {
+                    zoomField.value = map.getZoom();
+                };
+            };
+            const setCenter = (map) => {
+                return () => {
+                    latField.value = map.getCenter().lat();
+                    lngField.value = map.getCenter().lng();
+                }
+            };
+            function initMap() {
+                const lat = Number(latField.value) || 38.89511;
+                const lng = Number(lngField.value) || -77.03637;
+                const zoom = Number(zoomField.value) || 8;
+                const coors = { lat, lng };
+                const map = new google.maps.Map(mapNode, { zoom, center: coors });
+                setZoom(map)();
+                setCenter(map)();
+                map.addListener(`zoom_changed`, setZoom(map));
+                map.addListener(`center_changed`, setCenter(map));
+                const geocoder = new google.maps.Geocoder();
+                const callback = (results, status) => {
+                    if (!status || !results.length) return false;
+                    latField.value = results[0].geometry.location.lat();
+                    lngField.value = results[0].geometry.location.lng();
+                    const position = results[0].geometry.location;
+                    map.setCenter(position);
+                    map.setZoom(13);
+                };
+                const geocodeAddress = (geocoder) => {
+                    if (!addressField.value) return false;
+                    geocoder.geocode({ address: addressField.value }, callback);
+                };
+                addressField.addEventListener(`change`, () => {
+                    geocodeAddress(geocoder, map);
+                });
+                addressField.addEventListener(`input`, () => {
+                    geocodeAddress(geocoder, map);
+                });
+            }
+        </script>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="facebookLink">Facebook link</label>
+            <input class="textField" type="text" id="facebookLink"
+                   name="facebookLink" value="{{{ reviewPage.facebookLink }}}">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="houzzLink">Houzz link</label>
+            <input class="textField" type="text" id="houzzLink"
+                   name="houzzLink" value="{{{ reviewPage.houzzLink }}}">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="angielListLink">Angies list link</label>
+            <input class="textField" type="text" id="angielListLink"
+                   name="angielListLink" value="{{{ reviewPage.angielListLink }}}">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="porchLink">Porch link</label>
+            <input class="textField" type="text" id="porchLink"
+                   name="porchLink" value="{{{ reviewPage.porchLink }}}">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="googleLink">Google link</label>
+            <input class="textField" type="text" id="googleLink"
+                   name="googleLink" value="{{{ reviewPage.googleLink }}}">
+        </div>
+    </section>
+
+    <div class="formButtons">
+        <button class="submitButton" type="button" title="Update"
+                data-action="update" data-api="">Update</button>
+    </div>
+
+</form>
+
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUZcbipHbHCXwp6PdXIFGhExytbzvh7Tk&callback=initMap"></script>
