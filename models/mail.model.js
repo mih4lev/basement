@@ -1,7 +1,24 @@
 const nodemailer = require('nodemailer');
 const hbsNodemailer = require('nodemailer-express-handlebars');
 
-const createTransport = () => {
+const { singleDB } = require("./db.model");
+
+const requestMailSettings = async () => {
+    try {
+        const query = `
+            SELECT 
+                mailHost, mailPort, mailSecure, authUser, authPassword, 
+                emailFrom, emailSubject, sendEmail, adminSubject
+            FROM settings
+        `;
+        return { ...(await singleDB(query)) };
+    } catch (error) {
+        console.log(error);
+        return {};
+    }
+};
+
+const createTransport = (transportData) => {
     try {
         const hbsOptions = {
             viewEngine: {
@@ -13,11 +30,14 @@ const createTransport = () => {
             viewPath: 'views/email/',
             extName: '.hbs'
         };
+        const { mailHost, mailPort, mailSecure, authUser, authPassword } = transportData;
         const transporter = nodemailer.createTransport({
-            service: 'gmail',
+            host: mailHost,
+            port: mailPort,
+            secure: mailSecure,
             auth: {
-                user: "contacts@basementremodeling.com",
-                pass: "bmasters1985"
+                user: authUser,
+                pass: authPassword
             }
         });
         transporter.use('compile', hbsNodemailer(hbsOptions));
@@ -29,15 +49,16 @@ const createTransport = () => {
 
 const sendClientMail = async (sendData, templateName, clientMail) => {
     try {
+        const mailData = await requestMailSettings();
+        const { emailFrom, emailSubject, ...transportData } = mailData;
         let mailOptions = {
-            // from: `BasementRemodeling.com contacts@basementremodeling.com`,
-            from: `BasementRemodeling.com`,
+            from: emailFrom,
             to: clientMail,
-            subject: `Thank you for submitting your request`,
+            subject: emailSubject,
             template: templateName,
             context: sendData
         };
-        await createTransport().sendMail(mailOptions);
+        await createTransport(transportData).sendMail(mailOptions);
     } catch (error) {
         console.log(error);
     }
@@ -45,19 +66,19 @@ const sendClientMail = async (sendData, templateName, clientMail) => {
 
 const sendOwnerMail = async (sendData, templateName) => {
     try {
+        const mailData = await requestMailSettings();
+        const { emailFrom, sendEmail, adminSubject, ...transportData } = mailData;
         let mailOptions = {
-            // from: `BasementRemodeling.com contacts@basementremodeling.com`,
-            from: `BasementRemodeling.com`,
-            // to: `contacts@basementremodeling.com`,
-            to: `andevme@gmail.com`,
-            subject: `New request from site`,
+            from: emailFrom,
+            to: sendEmail,
+            subject: adminSubject,
             template: templateName,
             context: sendData
         };
-        await createTransport().sendMail(mailOptions);
+        await createTransport(transportData).sendMail(mailOptions);
     } catch (error) {
         console.log(error);
     }
 };
 
-module.exports = { sendClientMail, sendOwnerMail };
+module.exports = { requestMailSettings, sendClientMail, sendOwnerMail };

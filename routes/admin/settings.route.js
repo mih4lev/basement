@@ -9,6 +9,7 @@ const { requestContent } = require("../../models/utils.model");
 const { requestModerateCount } = require("../../models/ideas.model");
 const { updateSettings } = require("../../models/settings.model");
 const { saveImages, deleteImages } = require("../../models/images.model");
+const { requestMailSettings } = require("../../models/mail.model");
 
 const {
     addZipCodes, requestZipCodes, updateZipCodes, deleteZone
@@ -41,7 +42,8 @@ router.get(`/email`, async (request, response, next) => {
     const content = requestContent(await Promise.all([
         requestModerateCount()
     ]));
-    const data = { ...request.data, ...content };
+    const mailData = await requestMailSettings();
+    const data = { ...request.data, ...content, ...mailData };
     const template = `admin/settings/email/email-settings.admin.hbs`;
     response.render(template, data);
 });
