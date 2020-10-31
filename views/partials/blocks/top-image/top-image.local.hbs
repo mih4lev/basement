@@ -49,7 +49,7 @@
     <div class="swiper-container">
         <div class="swiper-wrapper">
             {{# each sliders }}
-                <div class="swiper-slide slide1">
+                <div class="swiper-slide slide{{{ sliderID }}}">
                     <style>
                         .slide{{{ sliderID }}} {
                             --top-image_320: url("{{{ sliderImage }}}_480x722.jpg");
