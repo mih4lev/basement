@@ -1,3 +1,5 @@
+import Swiper from 'swiper/bundle';
+
 export const webpCheck = () => {
     const canvas = document.createElement(`canvas`);
     let canUseWebp = false;
@@ -316,4 +318,16 @@ const showWorks = (renderCallback) => {
 export const filterEvents = (renderData) => {
     document.addEventListener(`listRequest`, showLoader);
     document.addEventListener(`listResponse`, showWorks(renderData));
+};
+
+export const topSlider = () => {
+    new Swiper(`.swiper-container`, {
+        direction: `vertical`,
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        }
+    });
 };

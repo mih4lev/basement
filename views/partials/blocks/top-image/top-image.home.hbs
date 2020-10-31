@@ -12,38 +12,24 @@
     </div>
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide slide1">
-                <style>
-                    .slide1 {
-                        --top-image_320: url("/public/images/slider/1/top-image_320.jpg");
-                        --top-image_320x2: url("/public/images/slider/1/top-image_320@2x.jpg");
-                        --top-image_480: url("/public/images/slider/1/top-image_480.jpg");
-                        --top-image_480x2: url("/public/images/slider/1/top-image_480@2x.jpg");
-                        --top-image_768: url("/public/images/slider/1/top-image_768.jpg");
-                        --top-image_768x2: url("/public/images/slider/1/top-image_768@2x.jpg");
-                        --top-image_1000: url("/public/images/slider/1/top-image_1000.jpg");
-                        --top-image_1000x2: url("/public/images/slider/1/top-image_1000@2x.jpg");
-                        --top-image_1440: url("/public/images/slider/1/top-image_1440.jpg");
-                        --top-image_1440x2: url("/public/images/slider/1/top-image_1440@2x.jpg");
-                    }
-                </style>
-            </div>
-            <div class="swiper-slide slide2">
-                <style>
-                    .slide2 {
-                        --top-image_320: url("/public/images/slider/2/top-image_320.jpg");
-                        --top-image_320x2: url("/public/images/slider/2/top-image_320@2x.jpg");
-                        --top-image_480: url("/public/images/slider/2/top-image_480.jpg");
-                        --top-image_480x2: url("/public/images/slider/2/top-image_480@2x.jpg");
-                        --top-image_768: url("/public/images/slider/2/top-image_768.jpg");
-                        --top-image_768x2: url("/public/images/slider/2/top-image_768@2x.jpg");
-                        --top-image_1000: url("/public/images/slider/2/top-image_1000.jpg");
-                        --top-image_1000x2: url("/public/images/slider/2/top-image_1000@2x.jpg");
-                        --top-image_1440: url("/public/images/slider/2/top-image_1440.jpg");
-                        --top-image_1440x2: url("/public/images/slider/2/top-image_1440@2x.jpg");
-                    }
-                </style>
-            </div>
+            {{# each sliders }}
+                <div class="swiper-slide slide{{{ sliderID }}}">
+                    <style>
+                        .slide{{{ sliderID }}} {
+                            --top-image_320: url("{{{ sliderImage }}}_480x722.jpg");
+                            --top-image_320x2: url("{{{ sliderImage }}}_960x1444.jpg");
+                            --top-image_480: url("{{{ sliderImage }}}_768x726.jpg");
+                            --top-image_480x2: url("{{{ sliderImage }}}_1536x1452.jpg");
+                            --top-image_768: url("{{{ sliderImage }}}_1000x619.jpg");
+                            --top-image_768x2: url("{{{ sliderImage }}}_2000x1238.jpg");
+                            --top-image_1000: url("{{{ sliderImage }}}_1440x721.jpg");
+                            --top-image_1000x2: url("{{{ sliderImage }}}_2880x1442.jpg");
+                            --top-image_1440: url("{{{ sliderImage }}}_1440x877.jpg");
+                            --top-image_1440x2: url("{{{ sliderImage }}}_2880x1754.jpg");
+                        }
+                    </style>
+                </div>
+            {{/each}}
         </div>
     </div>
  </section>

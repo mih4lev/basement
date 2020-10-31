@@ -1,15 +1,6 @@
 import { testimonialsCarousel, youtubeVideo } from "../../partials/blocks/testimonials/testimonials";
-import Swiper from 'swiper/bundle';
+import { topSlider } from "../../../source/scripts/utils";
 
 testimonialsCarousel();
 youtubeVideo();
-
-new Swiper(`.swiper-container`, {
-    direction: `vertical`,
-    spaceBetween: 30,
-    centeredSlides: true,
-    autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-    }
-});
+topSlider();

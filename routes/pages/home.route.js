@@ -3,6 +3,7 @@ const router = new Router();
 
 const { requestContent } = require("../../models/utils.model");
 const { requestMeta, requestTextContent } = require("../../models/pages.model");
+const { requestSliders } = require("../../models/slider.model");
 const { requestHomePortfolio } = require("../../models/portfolio.model");
 const { requestTestimonials } = require("../../models/testimonials.model");
 const { requestAwards } = require("../../models/awards.model");
@@ -28,6 +29,7 @@ router.get(`/`, async (request, response, next) => {
     const content = requestContent(await Promise.all([
         requestMeta(pageID),
         requestTextContent(pageID),
+        requestSliders(),
         requestHomePortfolio(10),
         requestTestimonials({ limit: 6 }),
         requestAwards(),
@@ -53,6 +55,7 @@ router.get(`/:landingURL`, async (request, response, next) => {
     const { params: { landingURL }} = request;
     const content = requestContent(await Promise.all([
         requestLanding(landingURL),
+        requestSliders(),
         requestHomePortfolio(10),
         requestTestimonials({ limit: 6 }),
         requestInstagram()
