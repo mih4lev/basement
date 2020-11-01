@@ -466,44 +466,13 @@
     left: 0;
     z-index: 0;
     .swiper-slide {
-        -webkit-transform: translate3d(0, 0, 0);
+        -webkit-transform: translateZ(0);
         -webkit-backface-visibility: hidden;
         width: 100%;
         height: 100%;
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
-    }
-}
-
-.topImageSection .swiper-slide {
-    background-image: var(--top-image_320);
-    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-        background-image: var(--top-image_320x2);
-    }
-    @include minWidth(480) {
-        background-image: var(--top-image_480);
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: var(--top-image_480);
-        }
-    }
-    @include minWidth(768) {
-        background-image: var(--top-image_768);
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: var(--top-image_768x2);
-        }
-    }
-    @include minWidth(1000) {
-        background-image: var(--top-image_1000);
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: var(--top-image_1000x2);
-        }
-    }
-    @include minWidth(1440) {
-        background-image: var(--top-image_1440);
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
-            background-image: var(--top-image_1440x2);
-        }
     }
 }
 

@@ -15,17 +15,55 @@
             {{# each slider }}
                 <div class="swiper-slide slide{{{ sliderID }}}">
                     <style>
-                        .slide{{{ sliderID }}} {
-                            --top-image_320: url("{{{ sliderImage }}}_480x722.jpg");
-                            --top-image_320x2: url("{{{ sliderImage }}}_960x1444.jpg");
-                            --top-image_480: url("{{{ sliderImage }}}_768x726.jpg");
-                            --top-image_480x2: url("{{{ sliderImage }}}_1536x1452.jpg");
-                            --top-image_768: url("{{{ sliderImage }}}_1000x619.jpg");
-                            --top-image_768x2: url("{{{ sliderImage }}}_2000x1238.jpg");
-                            --top-image_1000: url("{{{ sliderImage }}}_1440x721.jpg");
-                            --top-image_1000x2: url("{{{ sliderImage }}}_2880x1442.jpg");
-                            --top-image_1440: url("{{{ sliderImage }}}_1440x877.jpg");
-                            --top-image_1440x2: url("{{{ sliderImage }}}_2880x1754.jpg");
+                        @media screen and (max-width: 479px) {
+                            .slide{{{ sliderID }}} {
+                                background-image: url("{{{ sliderImage }}}_480x722.jpg");
+                            }
+                            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+                                .slide{{{ sliderID }}} {
+                                    background-image: url("{{{ sliderImage }}}_960x1444.jpg");
+                                }
+                            }
+                        }
+                        @media screen and (min-width: 480px) and (max-width: 767px) {
+                            .slide{{{ sliderID }}} {
+                                background-image: url("{{{ sliderImage }}}_768x726.jpg");
+                            }
+                            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+                                .slide{{{ sliderID }}} {
+                                    background-image: url("{{{ sliderImage }}}_1536x1452.jpg");
+                                }
+                            }
+                        }
+                        @media screen and (min-width: 768px) and (max-width: 999px) {
+                            .slide{{{ sliderID }}} {
+                                background-image: url("{{{ sliderImage }}}_1000x619.jpg");
+                            }
+                            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+                                .slide{{{ sliderID }}} {
+                                    background-image: url("{{{ sliderImage }}}_2000x1238.jpg");
+                                }
+                            }
+                        }
+                        @media screen and (min-width: 1000px) and (max-width: 1439px) {
+                            .slide{{{ sliderID }}} {
+                                background-image: url("{{{ sliderImage }}}_1440x721.jpg");
+                            }
+                            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+                                .slide{{{ sliderID }}} {
+                                    background-image: url("{{{ sliderImage }}}_2880x1442.jpg");
+                                }
+                            }
+                        }
+                        @media screen and (min-width: 1440px) {
+                            .slide{{{ sliderID }}} {
+                                background-image: url("{{{ sliderImage }}}_1440x877.jpg");
+                            }
+                            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+                                .slide{{{ sliderID }}} {
+                                    background-image: url("{{{ sliderImage }}}_2880x1754.jpg");
+                                }
+                            }
                         }
                     </style>
                 </div>
