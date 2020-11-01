@@ -1,0 +1,32 @@
+<section class="imagesSection sliderSection">
+    <div class="imagesWrapper sortWrapper previewsWrapper collectData"
+         data-sort="/admin/landings/header-images/sort">
+        <div class="imageWrapper addWrapper">
+            <input class="fileField previewUpload" type="file" id="fileField"
+                   data-load="/admin/landings/header-images/add" data-name="sliderImage">
+            <label class="fileLabel" for="fileField">+</label>
+        </div>
+        {{# each slider }}
+            <div class="imageWrapper sortNode uploadedWrapper"
+                 data-image="{{{ sliderID }}}" data-id="{{{ sliderID }}}">
+                <img class="imagePreview" src="{{{ sliderImage }}}_1000x619.jpg" alt="Slider {{{ sliderID }}}">
+                <div class="deleteWrapper">
+                    <button class="wrapperButton uploadedButton" type="button"
+                            data-api="/admin/landings/header-images/{{{ sliderID }}}"
+                            title="Delete photo" data-image="{{{ sliderID }}}">Delete</button>
+                </div>
+                <button class="deleteImageButton" type="button" title="Delete photo">Delete</button>
+            </div>
+        {{/ each }}
+    </div>
+</section>
+
+<template class="previewTemplate">
+    <div class="imageWrapper createdWrapper" data-name="ideaImage">
+        <img class="imagePreview" src="" alt="Image preview">
+        <div class="deleteWrapper">
+            <button class="wrapperButton" type="button" title="Delete photo">Delete</button>
+        </div>
+        <button class="deleteImageButton" type="button" title="Delete photo">Delete</button>
+    </div>
+</template>

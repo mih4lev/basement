@@ -2341,6 +2341,20 @@ button {
     }
 }
 
+// Slider
+
+.sliderSection {
+    .imagesWrapper {
+        .imageWrapper {
+            width: 200px;
+            height: 123px;
+            &.workImage {
+                border-color: #EEE;
+            }
+        }
+    }
+}
+
 // tinyMCE
 
 .tox-tinymce {
