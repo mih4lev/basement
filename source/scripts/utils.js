@@ -322,11 +322,12 @@ export const filterEvents = (renderData) => {
 
 export const topSlider = () => {
     new Swiper(`.swiper-container`, {
+        direction: `vertical`,
         spaceBetween: 30,
         centeredSlides: true,
         autoplay: {
-            delay: 3500,
-            disableOnInteraction: false,
+            delay: 2500,
+            disableOnInteraction: false
         }
     });
 };
