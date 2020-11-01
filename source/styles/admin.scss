@@ -245,6 +245,9 @@ html, body {
         margin-bottom: 20px;
         font-size: 18px;
         text-transform: uppercase;
+        &.singleTitle {
+            margin-bottom: 0 !important;
+        }
     }
 }
 
@@ -2146,11 +2149,12 @@ button {
 
 .toggleButtonWrapper {
     position: relative;
-    overflow: hidden;
+    //overflow: hidden;
     margin-left: 10px;
     .toggleButton {
         position: absolute;
         margin-top: -200%;
+        display: none;
     }
     .buttonLabel {
         @extend %animation;

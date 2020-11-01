@@ -76,10 +76,13 @@
             </div>
         </div>
         <div class="selectWrapper autoWrapper">
-            <div class="toggleButtonWrapper">
+            <div class="toggleButtonWrapper buttonWrapper">
                 <input class="toggleButton" type="checkbox" {{# if page.isModerated }}checked{{/if}}
-                       name="isModerated" id="isModerated" value="1">
+                       data-check="true" name="isModerated" id="isModerated" value="1">
                 <label class="buttonLabel" for="isModerated">Moderate</label>
+                <div class="buttonHiddenWrapper hiddenWrapper">
+                    <div class="wrapperTitle singleTitle">Select the category to show in 'Other photos of' section by marking [v].</div>
+                </div>
             </div>
         </div>
         <div class="selectWrapper autoWrapper">

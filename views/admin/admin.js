@@ -359,6 +359,10 @@ const createSimilarField = (categoryID) => {
     similarField.value = categoryID;
     return similarField;
 };
+const clearModerate = () => {
+    const moderateCheckNode = document.querySelector(`input[name="isModerated"]`);
+    moderateCheckNode.checked = false;
+};
 similarButtons.forEach((similarButton) => {
     const { dataset: { category: categoryID }} = similarButton;
     const parentWrapper = similarButton.closest(`.catFilter`);
@@ -366,6 +370,7 @@ similarButtons.forEach((similarButton) => {
     similarButton.addEventListener(`click`, () => {
         removeActiveSimilar(parentWrapper);
         const isActive = parentWrapper.classList.contains(`similarFilter`);
+        if (isActive) clearModerate();
         const classAction = (isActive) ? `remove` : `add`;
         parentWrapper.classList[classAction](`similarFilter`);
         if (!isActive) {
@@ -960,3 +965,24 @@ zipForms.forEach((form) => {
     if (updateButton) updateButton.addEventListener(`click`, updateData);
     if (createButton) createButton.addEventListener(`click`, createData);
 });
+
+// isModerate check ideas
+const moderateCheckNode = document.querySelector(`input[name="isModerated"]`);
+if (moderateCheckNode) {
+    let errorTimeout = false;
+    const errorWrapper = moderateCheckNode.parentNode.querySelector(`.buttonHiddenWrapper`);
+    moderateCheckNode.addEventListener(`change`, () => {
+        if (!moderateCheckNode.checked) return false;
+        const isFilterSelect = [...document.querySelectorAll(`.similarFilter`)].length > 0;
+        if (!isFilterSelect) {
+            moderateCheckNode.checked = false;
+            if (errorTimeout) return false;
+            errorWrapper.classList.remove(`hiddenWrapper`);
+            errorTimeout = true;
+            setTimeout(() => {
+                errorWrapper.classList.add(`hiddenWrapper`);
+                errorTimeout = false;
+            }, 2000);
+        }
+    });
+}
