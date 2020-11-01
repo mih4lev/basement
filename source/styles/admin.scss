@@ -2357,7 +2357,8 @@ button {
             height: auto;
             margin: 0;
             &.workImage {
-                border-color: #EEE;
+                margin: 0 !important;
+                border: none !important;
             }
             .imagePreview {
                 display: block;
