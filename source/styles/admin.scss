@@ -2348,12 +2348,35 @@ button {
 // Slider
 
 .sliderSection {
+    width: 100%;
+    max-width: 100%;
     .imagesWrapper {
+        margin: 0;
         .imageWrapper {
-            width: 200px;
-            height: 123px;
+            width: 20%;
+            height: auto;
+            margin: 0;
+            //width: 200px;
+            //height: 123px;
             &.workImage {
                 border-color: #EEE;
+            }
+            .imagePreview {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+            .deleteWrapper {
+                display: none;
+                &.activeWrapper {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .fileLabel {
+                width: 100% !important;
+                height: 100% !important;
             }
         }
     }
