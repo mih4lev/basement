@@ -75,22 +75,26 @@ const requestCategories = async (ideaID = 0) => {
         response.forEach((category) => {
             const { categoryID, categoryLevel } = category;
             if (categoryLevel !== 0) return false;
+            category.level = 1;
             category.children = [];
             response.forEach((secondCategory) => {
                 const { categoryID: childID, categoryParent, categoryChildren } = secondCategory;
                 if (categoryParent !== categoryID) return false;
                 secondCategory.isActive = categoryChildren === 0;
                 secondCategory.children = [];
+                secondCategory.level = 2;
                 response.forEach((thirdCategory) => {
                     const { categoryParent, categoryChildren } = thirdCategory;
                     if (categoryParent !== childID) return false;
                     thirdCategory.isActive = categoryChildren === 0;
+                    thirdCategory.level = 3;
                     secondCategory.children.push(thirdCategory);
                 });
                 category.children.push(secondCategory);
             });
             categories.push(category);
         });
+        console.log(categories);
         return { categories };
     } catch (error) {
         console.log(error);

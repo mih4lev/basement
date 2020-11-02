@@ -95,11 +95,11 @@
     </section>
 
     <section class="filtersSection">
-        Categories:
+        <p class="fieldLabel">Categories:</p>
         <div class="categoriesWrapper">
             {{# each categories }}
                 <ul>
-                    <li class="catFilter{{# if isSimilar }} similarFilter{{/ if }}">
+                    <li class="catFilter{{# if isSimilar }} similarFilter{{/ if }} level{{{ level }}}">
                         <span class="categoryHeader" data->{{{ categoryTitle }}}</span>
                         <div class="similarButton"
                              data-category="{{{ categoryID }}}">Select</div>
@@ -108,7 +108,7 @@
                         <ul>
                             {{# each children }}
                                 {{# if isActive }}
-                                    <li class="catFilter activeFilter{{# if isSimilar }} similarFilter{{/ if }}">
+                                    <li class="catFilter activeFilter{{# if isSimilar }} similarFilter{{/ if }} level{{{ level }}}">
                                         <input type="checkbox" name="categoryArray"
                                                {{# if isChosen }}checked{{/ if }}
                                                value="{{{ categoryID }}}" id="category{{{ categoryID }}}">
@@ -123,8 +123,10 @@
                                         {{/if}}
                                     </li>
                                 {{ else }}
-                                    <li class="catFilter{{# if isSimilar }} similarFilter{{/ if }}">
-                                        <span class="categoryHeader">{{{ categoryTitle }}}</span>
+                                    <li class="catFilter{{# if isSimilar }} similarFilter{{/ if }} level{{{ level }}}">
+                                        <span class="categoryHeader">
+                                            {{{ categoryTitle }}}
+                                        </span>
                                         <div class="similarButton"
                                              data-category="{{{ categoryID }}}">Select</div>
                                         {{# if isSimilar }}
@@ -137,10 +139,11 @@
                                     <ul>
                                         {{# each children }}
                                             {{# if isActive }}
-                                                <li class="catFilter activeFilter{{# if isSimilar }} similarFilter{{/ if }}">
+                                                <li class="catFilter activeFilter{{# if isSimilar }} similarFilter{{/ if }} level{{{ level }}}">
                                                     <input type="checkbox" name="categoryArray"
                                                            {{# if isChosen }}checked{{/ if }}
-                                                           value="{{{ categoryID }}}" id="category{{{ categoryID }}}">
+                                                           value="{{{ categoryID }}}"
+                                                           id="category{{{ categoryID }}}">
                                                     <label for="category{{{ categoryID }}}">
                                                         {{{ categoryTitle }}}
                                                     </label>
@@ -152,8 +155,10 @@
                                                     {{/if}}
                                                 </li>
                                             {{ else }}
-                                                <li class="catFilter{{# if isSimilar }} similarFilter{{/ if }}">
-                                                    <span class="categoryHeader">{{{ categoryTitle }}}</span>
+                                                <li class="catFilter{{# if isSimilar }} similarFilter{{/ if }} level{{{ level }}}">
+                                                    <span class="categoryHeader">
+                                                        {{{ categoryTitle }}}
+                                                    </span>
                                                     <div class="similarButton"
                                                          data-category="{{{ categoryID }}}">Select</div>
                                                     {{# if isSimilar }}
@@ -174,7 +179,7 @@
     </section>
 
     <section class="filtersSection">
-        Filters:
+        <p class="fieldLabel">Filters:</p>
         <div class="filtersWrapper">
             {{# each filters }}
                 <ul>

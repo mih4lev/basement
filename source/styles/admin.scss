@@ -1558,26 +1558,30 @@ button {
     width: 100%;
     max-width: 680px;
     @extend %font;
-    margin: -10px;
+    margin: -15px;
     display: flex;
     flex-direction: row;
     ul {
         width: 33%;
-        margin: 10px 0 0;
+        //margin: 10px 0 0;
+        margin: 0;
         padding: 10px;
         box-sizing: border-box;
         list-style-type: none;
         li {
             position: relative;
-            margin: 10px 0;
-            font-size: 14px;
+            margin: 10px 0 0;
+            font-size: 12px;
             font-weight: 800;
             text-transform: uppercase;
             &.activeFilter {
                 margin: 2px 0;
             }
             .categoryHeader {
+                padding: 5px;
                 display: block;
+                font-weight: 800;
+                cursor: default;
             }
             input[type="checkbox"] {
                 display: none;
@@ -1655,6 +1659,15 @@ button {
         cursor: pointer;
         &:hover {
             color: $blue;
+        }
+    }
+    .level1 {
+        font-size: 14px;
+    }
+    .level2 {
+        margin-top: 10px !important;
+        label {
+            color: $black;
         }
     }
 }
