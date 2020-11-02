@@ -117,12 +117,20 @@
                                         </label>
                                         <div class="similarButton"
                                              data-category="{{{ categoryID }}}">Select</div>
+                                        {{# if isSimilar }}
+                                            <input type="hidden" class="similarField hiddenField"
+                                                   name="similarID" value="{{{ categoryID }}}">
+                                        {{/if}}
                                     </li>
                                 {{ else }}
                                     <li class="catFilter{{# if isSimilar }} similarFilter{{/ if }}">
                                         <span class="categoryHeader">{{{ categoryTitle }}}</span>
                                         <div class="similarButton"
                                              data-category="{{{ categoryID }}}">Select</div>
+                                        {{# if isSimilar }}
+                                            <input type="hidden" class="similarField hiddenField"
+                                                   name="similarID" value="{{{ categoryID }}}">
+                                        {{/if}}
                                     </li>
                                 {{/ if }}
                                 {{# if children }}
@@ -138,12 +146,20 @@
                                                     </label>
                                                     <div class="similarButton"
                                                          data-category="{{{ categoryID }}}">Select</div>
+                                                    {{# if isSimilar }}
+                                                        <input type="hidden" class="similarField hiddenField"
+                                                               name="similarID" value="{{{ categoryID }}}">
+                                                    {{/if}}
                                                 </li>
                                             {{ else }}
                                                 <li class="catFilter{{# if isSimilar }} similarFilter{{/ if }}">
                                                     <span class="categoryHeader">{{{ categoryTitle }}}</span>
                                                     <div class="similarButton"
                                                          data-category="{{{ categoryID }}}">Select</div>
+                                                    {{# if isSimilar }}
+                                                        <input type="hidden" class="similarField hiddenField"
+                                                               name="similarID" value="{{{ categoryID }}}">
+                                                    {{/if}}
                                                 </li>
                                             {{/ if }}
                                         {{/ each }}
