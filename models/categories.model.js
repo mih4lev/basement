@@ -94,7 +94,6 @@ const requestCategories = async (ideaID = 0) => {
             });
             categories.push(category);
         });
-        console.log(categories);
         return { categories };
     } catch (error) {
         console.log(error);

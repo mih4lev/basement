@@ -194,7 +194,7 @@ router.post(`/add`, imagesParser.fields(ideasImages), async (request, response, 
     const { requestID } = responseData;
     const files = await saveImages(ideasImages, request.files, requestID);
     const filesData = { ...files, ...{ ideaID: requestID }};
-    await updateIdea(filesData, false);
+    await updateIdea(filesData, false, false, true);
     setTimeout(() => response.json(responseData), 0);
 });
 

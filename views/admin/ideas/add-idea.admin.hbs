@@ -77,36 +77,41 @@
         <div class="categoriesWrapper">
             {{# each categories }}
                 <ul>
-                    <li>{{{ categoryTitle }}}</li>
+                    <li class="catFilter level{{{ level }}}">
+                        <span class="categoryHeader" data->{{{ categoryTitle }}}</span>
+                        <div class="similarButton" data-category="{{{ categoryID }}}">Select</div>
+                    </li>
                     {{# if children }}
                         <ul>
                             {{# each children }}
                                 {{# if isActive }}
-                                    <li class="activeFilter">
+                                    <li class="catFilter activeFilter level{{{ level }}}">
                                         <input type="checkbox" name="categoryArray"
                                                value="{{{ categoryID }}}" id="category{{{ categoryID }}}">
-                                        <label for="category{{{ categoryID }}}">
-                                            {{{ categoryTitle }}}
-                                        </label>
-                                        <div class="similarButton">Select</div>
+                                        <label for="category{{{ categoryID }}}">{{{ categoryTitle }}}</label>
+                                        <div class="similarButton" data-category="{{{ categoryID }}}">Select</div>
                                     </li>
                                 {{ else }}
-                                    <li>{{{ categoryTitle }}}</li>
+                                    <li class="catFilter level{{{ level }}}">
+                                        <span class="categoryHeader">{{{ categoryTitle }}}</span>
+                                        <div class="similarButton" data-category="{{{ categoryID }}}">Select</div>
+                                    </li>
                                 {{/ if }}
                                 {{# if children }}
                                     <ul>
                                         {{# each children }}
                                             {{# if isActive }}
-                                                <li class="activeFilter">
+                                                <li class="catFilter activeFilter level{{{ level }}}">
                                                     <input type="checkbox" name="categoryArray"
                                                            value="{{{ categoryID }}}" id="category{{{ categoryID }}}">
-                                                    <label for="category{{{ categoryID }}}">
-                                                        {{{ categoryTitle }}}
-                                                    </label>
-                                                    <div class="similarButton">Select</div>
+                                                    <label for="category{{{ categoryID }}}">{{{ categoryTitle }}}</label>
+                                                    <div class="similarButton" data-category="{{{ categoryID }}}">Select</div>
                                                 </li>
                                             {{ else }}
-                                                <li>{{{ categoryTitle }}}</li>
+                                                <li class="catFilter level{{{ level }}}">
+                                                    <span class="categoryHeader">{{{ categoryTitle }}}</span>
+                                                    <div class="similarButton" data-category="{{{ categoryID }}}">Select</div>
+                                                </li>
                                             {{/ if }}
                                         {{/ each }}
                                     </ul>

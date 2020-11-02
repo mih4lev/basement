@@ -659,11 +659,11 @@ const requestModerateCount = async () => {
 
 // UPDATE
 
-const updateIdea = async (requestData = {}, hasCategories = false, hasFilters = false) => {
+const updateIdea = async (requestData = {}, hasCategories = false, hasFilters = false, isUpdated = false) => {
     const { ideaID, categoryArray, similarID = 0, filterArray, ...receivedData } = requestData;
     try {
         const query = `UPDATE ideas SET ? WHERE ideaID = ?`;
-        const updateData = { ...receivedData, similarID };
+        const updateData = (isUpdated) ? { ...receivedData } : { ...receivedData, similarID };
         const response = await DB(query, [updateData, ideaID]);
         if (hasCategories) {
             const deleteQuery = `DELETE FROM ideas_relation WHERE ideaID = ?`;

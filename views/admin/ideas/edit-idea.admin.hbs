@@ -20,7 +20,7 @@
             <input class="textField" type="text" id="ideaTitle" name="ideaTitle" value="{{{ page.ideaTitle }}}">
         </div>
         <div class="buttonWrapper">
-            <button class="deleteButton" type="button" data-redirect="/admin/basement-ideas/"
+            <button class="deleteButton" type="button" data-redirect="/admin/basement-ideas/to-moderate/"
                     data-action="/admin/basement-ideas/{{{ page.ideaID }}}">
                 Delete idea
             </button>
@@ -101,8 +101,7 @@
                 <ul>
                     <li class="catFilter{{# if isSimilar }} similarFilter{{/ if }} level{{{ level }}}">
                         <span class="categoryHeader" data->{{{ categoryTitle }}}</span>
-                        <div class="similarButton"
-                             data-category="{{{ categoryID }}}">Select</div>
+                        <div class="similarButton" data-category="{{{ categoryID }}}">Select</div>
                     </li>
                     {{# if children }}
                         <ul>
