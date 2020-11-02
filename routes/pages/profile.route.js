@@ -4,7 +4,7 @@ const router = new Router();
 const { requestContent } = require("../../models/utils.model");
 const { requestMeta } = require("../../models/pages.model");
 const { requestUser } = require("../../models/users.model");
-const { requestUserAlbums } = require("../../models/albums.model");
+const { requestAlbumData, requestUserAlbums } = require("../../models/albums.model");
 const {
     requestUserIdeas, requestUploadIdeas, requestAlbumIdeas
 } = require("../../models/ideas.model");
@@ -39,10 +39,13 @@ router.get(`/saved/:albumID`, async (request, response, next) => {
     if (!request.data['userID']) return next();
     const { params: { albumID }} = request;
     request.data['isSavedIdeas'] = true;
+    request.data['isAlbumPage'] = true;
     const content = requestContent(await Promise.all([
+        requestAlbumData(albumID),
         requestAlbumIdeas(albumID)
     ]));
     const data = { ...request.data, ...content };
+    console.log(data);
     response.render(`pages/profile/profile`, data);
 });
 

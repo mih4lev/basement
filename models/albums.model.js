@@ -1,4 +1,4 @@
-const { DB } = require("./db.model");
+const { singleDB, DB } = require("./db.model");
 
 // CREATE
 
@@ -44,6 +44,16 @@ const requestUserAlbums = async (userID) => {
             GROUP BY albums.albumID
         `;
         return { albums: await DB(query, [userID]) };
+    } catch (error) {
+        console.log(error);
+        return {};
+    }
+};
+
+const requestAlbumData = async (albumID) => {
+    try {
+        const query = `SELECT * FROM albums WHERE albumID = ?`;
+        return { album: await singleDB(query, [ albumID ]) };
     } catch (error) {
         console.log(error);
         return {};
@@ -118,6 +128,6 @@ const deleteRelations = async (userID, ideaID, albumID) => {
 };
 
 module.exports = {
-    createAlbum, createRelation, requestUserAlbums, requestSavedAlbums,
+    createAlbum, createRelation, requestUserAlbums, requestSavedAlbums, requestAlbumData,
     updateAlbum, deleteAlbum, deleteRelations
 };

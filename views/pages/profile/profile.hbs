@@ -37,7 +37,14 @@
 <section class="userSavedPhotos">
     <div class="wrapper center">
         <div class="sectionHeader">
-            <h2 class="sectionTitle">My collection</h2>
+            {{# if isAlbumPage }}
+                <div class="albumWrapper">
+                    <a href="/profile/" class="sectionTitle">My collection</a>
+                    <h2 class="sectionTitle albumTitle">{{{ album.albumTitle }}}</h2>
+                </div>
+            {{ else }}
+                <h2 class="sectionTitle">My collection</h2>
+            {{/ if }}
             {{# if isAlbumsVisible }}
                 <button class="createAlbumButton"
                         type="button" title="Create album">CREATE ALBUM</button>
