@@ -1668,6 +1668,9 @@ button {
         margin-top: 10px !important;
         label {
             color: $black;
+            &:hover {
+                color: $blue;
+            }
         }
     }
 }
