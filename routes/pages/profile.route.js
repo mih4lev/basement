@@ -45,7 +45,6 @@ router.get(`/saved/:albumID`, async (request, response, next) => {
         requestAlbumIdeas(albumID)
     ]));
     const data = { ...request.data, ...content };
-    console.log(data);
     response.render(`pages/profile/profile`, data);
 });
 

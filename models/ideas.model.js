@@ -439,6 +439,7 @@ const requestUserIdeas = async (userID) => {
             LEFT JOIN users ON users.userID = ideas.userID
             LEFT JOIN ideas_creators ON ideas.creatorID = ideas_creators.creatorID
             WHERE albums_relation.userID = ? GROUP BY ideas.ideaID
+            ORDER BY albums_relation.timestamp DESC
         `;
         return { ideas: await DB(query, [userID]) };
     } catch (error) {
@@ -478,6 +479,7 @@ const requestAlbumIdeas = async (albumID) => {
             JOIN users ON ideas.userID = users.userID 
             LEFT JOIN ideas_creators ON ideas.creatorID = ideas_creators.creatorID
             WHERE albums_relation.albumID = ?
+            ORDER BY albums_relation.timestamp DESC
         `;
         return { ideas: await DB(query, [albumID]) };
     } catch (error) {
