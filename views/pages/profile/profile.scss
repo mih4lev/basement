@@ -322,6 +322,12 @@
             &:hover {
                 color: $blue;
                 text-decoration: underline;
+                &:before {
+                    color: $blue;
+                }
+                &:after {
+                    color: $blue;
+                }
             }
             @include minWidth(480) {
                 top: 28px;

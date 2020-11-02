@@ -557,7 +557,7 @@ const requestIdea = async (ideaID, userID = 0) => {
                 LEFT JOIN ideas_categories ON ideas_relation.categoryID = ideas_categories.categoryID
                 LEFT JOIN ideas_categories AS cat1 ON ideas_categories.categoryParent = cat1.categoryID
                 lEFT JOIN ideas_categories AS cat2 ON cat1.categoryParent = cat2.categoryID
-                WHERE ideas.ideaID != ? && (
+                WHERE ideas.ideaID != ? && ideas.isModerated = 1 && (
                     cat2.categoryID = (
                         SELECT ideas_categories.categoryID 
                         FROM ideas_categories 

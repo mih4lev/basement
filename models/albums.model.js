@@ -82,6 +82,19 @@ const requestSavedAlbums = async (ideaID, userID) => {
     }
 };
 
+const requestCount = async (userID) => {
+    try {
+        const query = `
+            SELECT albumID, COUNT(*) as saveCount FROM albums_relation 
+            WHERE userID = ? GROUP BY albumID
+        `;
+        return { albums: await DB(query, [userID]) };
+    } catch (error) {
+        console.log(error);
+        return {};
+    }
+};
+
 //
 
 // UPDATE
@@ -129,5 +142,5 @@ const deleteRelations = async (userID, ideaID, albumID) => {
 
 module.exports = {
     createAlbum, createRelation, requestUserAlbums, requestSavedAlbums, requestAlbumData,
-    updateAlbum, deleteAlbum, deleteRelations
+    requestCount, updateAlbum, deleteAlbum, deleteRelations
 };

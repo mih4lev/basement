@@ -6,7 +6,7 @@ const uploadDir = `public/upload/albums/`;
 const imagesParser = multer({ dest: uploadDir });
 
 const { saveImages, deleteImages } = require("../../../models/images.model");
-const { createAlbum, updateAlbum, deleteAlbum } = require("../../../models/albums.model");
+const { createAlbum, requestCount, updateAlbum, deleteAlbum } = require("../../../models/albums.model");
 
 const albumsImages = [
     {
@@ -44,6 +44,14 @@ router.post(`/edit`, imagesParser.fields(albumsImages), async (request, response
     const files = await saveImages(albumsImages, request.files, albumID);
     const formData = { ...request.body, ...files };
     const responseData = await updateAlbum(formData);
+    setTimeout(() => response.json(responseData), 0);
+});
+
+// API /api/profile/albums/count GET
+router.get(`/count`, async (request, response, next) => {
+    if (!request.data['userID']) return next();
+    const userID = request.data['userID'];
+    const responseData = await requestCount(userID);
     setTimeout(() => response.json(responseData), 0);
 });
 

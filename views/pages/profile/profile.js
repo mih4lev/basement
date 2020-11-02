@@ -31,6 +31,10 @@ export const showDeleteWrappers = () => {
             albumCoverWrapper.removeChild(albumCountNode);
         };
 
+        const updateAlbumsCount = async () => {
+            const response = await fetch(`/api/ideas/relation`)
+        };
+
         const deleteHandler = async () => {
             const { dataset: { api: URL }} = deleteButton;
             const parentWrapper = deleteButton.closest(`.ideaWrapper`);
@@ -41,6 +45,7 @@ export const showDeleteWrappers = () => {
             if (response.status !== 1) return false; // show error
             removeFromAlbum(parentWrapper.dataset.album);
             parentWrapper.parentNode.removeChild(parentWrapper);
+            await updateAlbumsCount();
         };
 
         deleteCardButton.addEventListener(`click`, changeHoverVisible);
