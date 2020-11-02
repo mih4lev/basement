@@ -85,10 +85,11 @@ const requestSavedAlbums = async (ideaID, userID) => {
 const requestCount = async (userID) => {
     try {
         const query = `
-            SELECT albumID, COUNT(*) as saveCount FROM albums_relation 
-            WHERE userID = ? GROUP BY albumID
+            SELECT albums.albumID, COUNT(albums_relation.albumID) as saveCount FROM albums 
+            LEFT JOIN albums_relation ON albums.albumID = albums_relation.albumID
+            WHERE albums.userID = ? GROUP BY albums.albumID
         `;
-        return { albums: await DB(query, [userID]) };
+        return await DB(query, [userID]);
     } catch (error) {
         console.log(error);
         return {};

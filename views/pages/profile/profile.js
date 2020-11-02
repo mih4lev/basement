@@ -32,7 +32,15 @@ export const showDeleteWrappers = () => {
         };
 
         const updateAlbumsCount = async () => {
-            const response = await fetch(`/api/ideas/relation`)
+            const response = await fetch(`/api/profile/albums/count`);
+            const data = await response.json();
+            data.forEach(({ albumID, saveCount }) => {
+                const selector = `.albumWrapper[data-album="${albumID}"]`;
+                const albumWrapper = document.querySelector(selector);
+                const countNode = albumWrapper.querySelector(`.albumPicturesCount`);
+                if (countNode) countNode.innerText = saveCount;
+                if (countNode && saveCount === 0) countNode.parentNode.removeChild(countNode);
+            });
         };
 
         const deleteHandler = async () => {
