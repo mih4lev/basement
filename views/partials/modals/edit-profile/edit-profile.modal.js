@@ -1,6 +1,13 @@
 import { changeModalVisible, setModal } from "../modals";
 import { resetDropEvents, saveAction } from "../../../../source/scripts/utils";
 
+const validateMAP = {
+    name: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
+    surname: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
+    username: /^[a-z0-9_-]{3,15}$/,
+    mail: /\S+@\S+\.\S+/
+};
+
 export const editProfileModal = () => {
 
     const modalNode = setModal(`edit-profile`);
@@ -56,12 +63,12 @@ export const editProfileModal = () => {
         })
     };
 
-    // check button status
     const checkButtonStatus = () => {
-        const filter = (field) => !!field.value;
-        const isFieldsValid = textFields.filter(filter).length === textFields.length;
-        const isFilesValid = !!(avatarNode && avatarNode.src);
-        updateButton.disabled = !isFieldsValid || !isFilesValid;
+        const filterFunc = (field) => {
+            return (field.value && !field.classList.contains(`errorField`));
+        };
+        let isFieldsValid = textFields.filter((filterFunc)).length === textFields.length;
+        updateButton.disabled = !isFieldsValid;
     };
 
     // set profile data to edit modal
@@ -123,6 +130,17 @@ export const editProfileModal = () => {
     // check button status on text fields edit
     textFields.forEach((field) => {
         field.addEventListener(`input`, () => checkButtonStatus());
+    });
+
+    textFields.forEach((field) => {
+        const { name: fieldName } = field;
+        field.addEventListener(`input`, () => {
+            const isValid = validateMAP[fieldName].test(field.value);
+            const classAction = (isValid && field.value) ? `remove` : `add`;
+            console.log(!field.value);
+            field.classList[classAction](`errorField`);
+            checkButtonStatus();
+        });
     });
 
     // update data from modal to profile
