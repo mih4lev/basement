@@ -57,13 +57,13 @@ export const showDeleteWrappers = () => {
     const uploadObserverCallback = (mutationList) => {
         mutationList.forEach((mutation) => {
             if (!mutation.addedNodes || !mutation.addedNodes.length) return false;
-            if (!mutation.nextSibling) {
-                [...mutation.addedNodes].forEach((addedNode) => {
-                    if (!addedNode.classList || !addedNode.classList.contains(`ideaWrapper`)) return false;
-                    const deleteButton = addedNode.querySelector(`.deleteCardButton`);
-                    deleteCard(deleteButton);
-                });
-            }
+            [...mutation.addedNodes].forEach((addedNode) => {
+                if (!addedNode.classList || !addedNode.classList.contains(`ideaWrapper`)) return false;
+                if (addedNode.isLoaded) return false;
+                addedNode.isLoaded = true;
+                const deleteButton = addedNode.querySelector(`.deleteCardButton`);
+                deleteCard(deleteButton);
+            });
         });
     };
     const uploadObserver = new MutationObserver(uploadObserverCallback);

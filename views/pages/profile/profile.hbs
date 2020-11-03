@@ -103,7 +103,7 @@
             {{# each ideas }}
                 <li class="ideaWrapper" {{# if albumID }}data-album="{{{ albumID }}}"{{/ if }}>
                     <div class="ideaPhotoWrapper">
-                        <img class="{{# if ideaAuthor }}ideaPhoto{{ else }}uploadedPhoto{{/ if }}"
+                        <img class="ideaPhoto"
                              data-idea="{{{ ideaID }}}"
                              src="{{{ ideaImage }}}_252x252.jpg"
                              alt="{{{ ideaTitle }}}">

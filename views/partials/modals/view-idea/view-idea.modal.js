@@ -264,6 +264,8 @@ export const viewIdeaModal = () => {
 
     // show idea modal
     const showModal = (ideaPhoto) => {
+        if (ideaPhoto.isEvented) return false;
+        ideaPhoto.isEvented = true;
         ideaPhoto.addEventListener(`click`, async () => {
             const { dataset: { idea: ideaID }} = ideaPhoto;
             changeModalVisible(modalNode)();
@@ -287,10 +289,10 @@ export const viewIdeaModal = () => {
     // observe new elements
     const callback = (mutationsList) => {
         mutationsList.forEach((mutation) => {
-            mutation.addedNodes.forEach((node) => {
+            [...mutation.addedNodes].forEach((node) => {
                 if (!node.classList || !node.classList.contains(`ideaWrapper`)) return false;
-                const saveButton = [...node.querySelectorAll(`.ideaPhoto`)];
-                saveButton.forEach(showModal);
+                const saveButtons = [...node.querySelectorAll(`.ideaPhoto`)];
+                saveButtons.forEach(showModal);
             });
         });
     };
