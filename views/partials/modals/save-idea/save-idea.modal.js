@@ -1,5 +1,7 @@
 import { changeModalVisible, setModal } from "../modals";
-import { createScroll, resetDropEvents, saveAction } from "../../../../source/scripts/utils";
+import {
+    createScroll, resetDropEvents, saveAction, updateAlbumsCount
+} from "../../../../source/scripts/utils";
 
 const uploadPhoto = (modalNode) => {
     const dropZone = document.querySelector(`.coverWrapper`);
@@ -88,6 +90,7 @@ const sendData = (modalNode) => {
         const ideaID = formData.get(`ideaID`);
         await updateIdeaCount(ideaID);
         changeModalVisible(modalNode)();
+        await updateAlbumsCount();
     }
 };
 

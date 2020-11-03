@@ -88,7 +88,12 @@
 
 <section class="ideasMain">
     <div class="wrapper listWrapper">
-        <ul class="ideaList">
+        {{# if isUploadedIdeas }}
+            <ul class="ideaList">
+        {{ else }}
+            <ul class="ideaList elementsWrapper" data-page="12"
+                data-api="{{{ ideasAPI }}}" data-login="{{{ isLogin }}}">
+        {{/ if }}
             {{# if isUploadedIdeas }}
                 <li class="ideaWrapper buttonWrapper">
                     <button class="addPhotoButton"
@@ -96,7 +101,7 @@
                 </li>
             {{/ if }}
             {{# each ideas }}
-                <li class="ideaWrapper" data-album="{{{ albumID }}}">
+                <li class="ideaWrapper" {{# if albumID }}data-album="{{{ albumID }}}"{{/ if }}>
                     <div class="ideaPhotoWrapper">
                         <img class="{{# if ideaAuthor }}ideaPhoto{{ else }}uploadedPhoto{{/ if }}"
                              data-idea="{{{ ideaID }}}"
@@ -136,8 +141,12 @@
                 </li>
             {{/each}}
         </ul>
-        <button class="showMoreButton hiddenButton">SHOW MORE</button>
+        {{# if isUploadedIdeas }}{{ else }}
+        <button title="Show more" data-scroll="1" data-items="{{{ renderCount }}}"
+                class="showMoreButton {{# if ideasData.hiddenButton }}hiddenButton{{/ if }}">SHOW MORE</button>
+        {{/ if }}
     </div>
+    <div class="pageLoader hiddenLoader"></div>
 </section>
 
 <template class="albumTemplate">
@@ -171,5 +180,27 @@
         </div>
         <h3 class="ideaTitle"></h3>
         <strong class="ideaAuthor">By you</strong>
+    </li>
+</template>
+
+<template class="elementTemplate">
+    <li class="ideaWrapper">
+        <div class="ideaPhotoWrapper">
+            <div class="imageWrapper"></div>
+            <button class="deleteCardButton" title="Delete picture" type="button">DELETE</button>
+            <div class="hoverCardWrapper">
+                <div class="deleteWrapper">
+                    <p class="deleteAnnotation">Are you sure you want to remove this photo?</p>
+                    <form class="deleteButtonsWrapper formWrapper">
+                        <button class="cancelButton"
+                                title="Cancel" type="button">CANCEL</button>
+                        <button class="deleteButton" data-api="/api/ideas/relation"
+                                title="Delete" type="button">DELETE</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <h3 class="ideaTitle"></h3>
+        <strong class="ideaAuthor"></strong>
     </li>
 </template>

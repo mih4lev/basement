@@ -424,7 +424,7 @@ const requestFilteredIdeas = async ({ limit = 1000000, userID = 0, filterArray, 
     }
 };
 
-const requestUserIdeas = async (userID) => {
+const requestUserIdeas = async (userID, limit = 10000) => {
     try {
         const query = `           
             SELECT 
@@ -439,30 +439,30 @@ const requestUserIdeas = async (userID) => {
             LEFT JOIN users ON users.userID = ideas.userID
             LEFT JOIN ideas_creators ON ideas.creatorID = ideas_creators.creatorID
             WHERE albums_relation.userID = ? GROUP BY ideas.ideaID
-            ORDER BY albums_relation.timestamp DESC
+            ORDER BY albums_relation.timestamp DESC LIMIT ?
         `;
-        return { ideas: await DB(query, [userID]) };
+        return { ideas: await DB(query, [ userID, limit ]) };
     } catch (error) {
         console.log(error);
         return {};
     }
 };
 
-const requestUploadIdeas = async (userID) => {
+const requestUploadIdeas = async (userID, limit = 10000) => {
     try {
         const query = `
             SELECT ideaID, ideaTitle, ideaImage 
             FROM ideas WHERE userID = ? && portfolioID IS NULL 
-            ORDER BY ideaID DESC
+            ORDER BY ideaID DESC LIMIT ?
         `;
-        return { ideas: await DB(query, [userID]) };
+        return { ideas: await DB(query, [ userID, limit ]) };
     } catch (error) {
         console.log(error);
         return {};
     }
 };
 
-const requestAlbumIdeas = async (albumID) => {
+const requestAlbumIdeas = async (albumID, limit = 10000) => {
     try {
         const query = `
             SELECT 
@@ -479,9 +479,9 @@ const requestAlbumIdeas = async (albumID) => {
             JOIN users ON ideas.userID = users.userID 
             LEFT JOIN ideas_creators ON ideas.creatorID = ideas_creators.creatorID
             WHERE albums_relation.albumID = ?
-            ORDER BY albums_relation.timestamp DESC
+            ORDER BY albums_relation.timestamp DESC LIMIT ?
         `;
-        return { ideas: await DB(query, [albumID]) };
+        return { ideas: await DB(query, [ albumID, limit ]) };
     } catch (error) {
         console.log(error);
         return {};

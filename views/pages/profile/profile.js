@@ -1,4 +1,4 @@
-import { saveAction } from "../../../source/scripts/utils";
+import { saveAction, updateAlbumsCount } from "../../../source/scripts/utils";
 
 export const showDeleteWrappers = () => {
 
@@ -31,18 +31,6 @@ export const showDeleteWrappers = () => {
             albumCoverWrapper.removeChild(albumCountNode);
         };
 
-        const updateAlbumsCount = async () => {
-            const response = await fetch(`/api/profile/albums/count`);
-            const data = await response.json();
-            data.forEach(({ albumID, saveCount }) => {
-                const selector = `.albumWrapper[data-album="${albumID}"]`;
-                const albumWrapper = document.querySelector(selector);
-                const countNode = albumWrapper.querySelector(`.albumPicturesCount`);
-                if (countNode) countNode.innerText = saveCount;
-                if (countNode && saveCount === 0) countNode.parentNode.removeChild(countNode);
-            });
-        };
-
         const deleteHandler = async () => {
             const { dataset: { api: URL }} = deleteButton;
             const parentWrapper = deleteButton.closest(`.ideaWrapper`);
@@ -65,19 +53,21 @@ export const showDeleteWrappers = () => {
     deleteCardButtons.forEach(deleteCard);
 
     // add mutationObserver for new albums add
-    const observerOptions = { attributes: true, childList: true };
-    const observerCallback = (mutationList) => {
+    const uploadObserverOptions = { attributes: true, childList: true };
+    const uploadObserverCallback = (mutationList) => {
         mutationList.forEach((mutation) => {
             if (!mutation.addedNodes || !mutation.addedNodes.length) return false;
-            if (!mutation.nextSibling) return false;
-            [...mutation.addedNodes].forEach((ideaWrapper) => {
-                const deleteButton = ideaWrapper.querySelector(`.deleteCardButton`);
-                deleteCard(deleteButton);
-            });
+            if (!mutation.nextSibling) {
+                [...mutation.addedNodes].forEach((addedNode) => {
+                    if (!addedNode.classList || !addedNode.classList.contains(`ideaWrapper`)) return false;
+                    const deleteButton = addedNode.querySelector(`.deleteCardButton`);
+                    deleteCard(deleteButton);
+                });
+            }
         });
     };
-    const observer = new MutationObserver(observerCallback);
-    if (ideaList) observer.observe(ideaList, observerOptions);
+    const uploadObserver = new MutationObserver(uploadObserverCallback);
+    if (ideaList) uploadObserver.observe(ideaList, uploadObserverOptions);
 
 };
 
@@ -150,4 +140,24 @@ export const calendarToken = async () => {
         createField(tokenTextNode);
     });
     tokenTextNode.appendChild(linkNode);
+};
+
+const imageSize = [
+    [`(max-width: 479px)`, `image/jpeg`, `_154x154.jpg`, `_308x308.jpg`],
+    [`(min-width: 480px)`, `image/jpeg`, `_252x252.jpg`, `_504x504.jpg`]
+];
+
+export const albumsIdeasData = (data) => {
+    const { ideaID, ideaImage, ideaTitle, ideaAuthor, albumID } = data;
+    return [
+        {
+            type: `picture`, parent: `.imageWrapper`, alt: ideaTitle, image: ideaImage,
+            imageSize, selector: `ideaPhoto`, data: `idea`, value: ideaID
+        },
+        { type: `wrapper`, wrapper: `.ideaWrapper`, data: `album`, value: albumID },
+        { type: `text`, selector: `.ideaTitle`, text: ideaTitle },
+        { type: `text`, selector: `.ideaAuthor`, text: `By ` + ideaAuthor },
+        { type: `hidden`, wrapper: `.deleteButtonsWrapper`, name: `ideaID`, value: ideaID },
+        { type: `hidden`, wrapper: `.deleteButtonsWrapper`, name: `albumID`, value: albumID }
+    ];
 };

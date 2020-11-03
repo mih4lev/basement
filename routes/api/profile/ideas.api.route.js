@@ -22,6 +22,9 @@ const { saveImages } = require("../../../models/images.model");
 const {
     createAlbum, createRelation, updateAlbum, deleteRelations
 } = require("../../../models/albums.model");
+const {
+    requestUserIdeas, requestUploadIdeas, requestAlbumIdeas
+} = require("../../../models/ideas.model");
 
 // API /api/profile/ideas/save POST
 router.post(`/save`, imagesParser.fields(albumsImages), async (request, response, next) => {
@@ -59,6 +62,30 @@ router.post(`/save`, imagesParser.fields(albumsImages), async (request, response
     const status = (savedRelations.length === albumsArray.length) ? 1 : 0;
     const data = { status, savedRelations };
     setTimeout(() => response.json(data), 0);
+});
+
+// API /api/profile/ideas/saved/all GET
+router.get(`/saved/all`, async (request, response, next) => {
+    if (!request.data['userID']) return next();
+    const userID = request.data['userID'];
+    const responseData = await requestUserIdeas(userID);
+    setTimeout(() => response.json(responseData), 0);
+});
+
+// API /api/profile/ideas/saved/all GET
+router.get(`/saved/album/:albumID`, async (request, response, next) => {
+    if (!request.data['userID']) return next();
+    const { params: { albumID }} = request;
+    const responseData = await requestAlbumIdeas(albumID);
+    setTimeout(() => response.json(responseData), 0);
+});
+
+// API /api/profile/ideas/uploaded/all GET
+router.get(`/uploaded/all`, async (request, response, next) => {
+    if (!request.data['userID']) return next();
+    const userID = request.data['userID'];
+    const responseData = await requestUploadIdeas(userID);
+    setTimeout(() => response.json(responseData), 0);
 });
 
 module.exports = router;

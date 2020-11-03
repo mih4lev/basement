@@ -24,12 +24,15 @@ router.use(async (request, response, next) => {
 
 router.get(`/`, async (request, response, next) => {
     if (!request.data['userID']) return next();
+    const renderCount = 16;
     request.data['isSavedIdeas'] = true;
     request.data['isAlbumsVisible'] = true;
+    request.data['renderCount'] = renderCount;
+    request.data['ideasAPI'] = `/api/profile/ideas/saved/all`;
     const userID = request.data['userID'];
     const content = requestContent(await Promise.all([
         requestUserAlbums(userID),
-        requestUserIdeas(userID)
+        requestUserIdeas(userID, 16)
     ]));
     const data = { ...request.data, ...content };
     response.render(`pages/profile/profile`, data);
@@ -38,11 +41,14 @@ router.get(`/`, async (request, response, next) => {
 router.get(`/saved/:albumID`, async (request, response, next) => {
     if (!request.data['userID']) return next();
     const { params: { albumID }} = request;
+    const renderCount = 16;
     request.data['isSavedIdeas'] = true;
     request.data['isAlbumPage'] = true;
+    request.data['renderCount'] = renderCount;
+    request.data['ideasAPI'] = `/api/profile/ideas/saved/album/` + albumID;
     const content = requestContent(await Promise.all([
         requestAlbumData(albumID),
-        requestAlbumIdeas(albumID)
+        requestAlbumIdeas(albumID, renderCount)
     ]));
     const data = { ...request.data, ...content };
     response.render(`pages/profile/profile`, data);

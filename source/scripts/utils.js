@@ -169,7 +169,7 @@ const showSorting = () => {
 export const loader = (renderData) => {
     const buttonNode = document.querySelector(`.showMoreButton`);
     if (!buttonNode) return false;
-    const { dataset: { scroll }} = buttonNode;
+    const { dataset: { scroll, items: loaderItems }} = buttonNode;
     buttonNode.addEventListener(`click`, showWorks(renderData));
     const intersectionCallback = (event) => {
         if (!event[0].isIntersecting) return false;
@@ -185,10 +185,17 @@ export const loader = (renderData) => {
         }
         showSorting();
     });
+    document.addEventListener(`dataLoaded`, () => {
+        if (!window.responseData || !loaderItems) return false;
+        const loadedItems = window.responseData.length;
+        const loaderAction = (loadedItems > Number(loaderItems)) ? showButton : hideButton;
+        loaderAction();
+    });
 };
 
 export const requestData = async (requestURL) => {
     const wrapper = document.querySelector(`.elementsWrapper`);
+    if (!wrapper) return false;
     const URL = requestURL || wrapper.dataset.api;
     const response = await fetch(URL);
     const data = await response.json();
@@ -248,6 +255,17 @@ const createData = (nodeClone, { selector, name, value, title }) => {
     dataNode.dataset[name] = value;
 };
 
+const createHidden = (nodeClone, { wrapper, name, value }) => {
+    if (!value) return false;
+    const wrapperNode = nodeClone.querySelector(wrapper);
+    const hiddenNode = document.createElement(`input`);
+    hiddenNode.classList.add(`hiddenField`);
+    hiddenNode.setAttribute(`type`, `hidden`);
+    hiddenNode.setAttribute(`name`, name);
+    hiddenNode.value = value;
+    wrapperNode.appendChild(hiddenNode);
+};
+
 const createCustom = (nodeClone, { selector, name, value, isVisible, isLogin }) => {
     const dataNode = nodeClone.querySelector(selector);
     if (isLogin === 0) {
@@ -264,9 +282,9 @@ const createCustom = (nodeClone, { selector, name, value, isVisible, isLogin }) 
 };
 
 const updateWrapper = (nodeClone, { wrapper, selector, data, value }) => {
-    const wrapperNode = nodeClone.querySelector(wrapper)
-    wrapperNode.classList.add(selector);
-    wrapperNode.dataset[data] = value;
+    const wrapperNode = nodeClone.querySelector(wrapper);
+    if (selector) wrapperNode.classList.add(selector);
+    if (data && value) wrapperNode.dataset[data] = value;
 };
 
 export const renderElements = (elements) => {
@@ -279,6 +297,7 @@ export const renderElements = (elements) => {
         if (type === `text`) createText(nodeClone, data);
         if (type === `data`) createData(nodeClone, data);
         if (type === `custom`) createCustom(nodeClone, data);
+        if (type === `hidden`) createHidden(nodeClone, data);
     });
     return nodeClone;
 };
@@ -327,6 +346,29 @@ export const topSlider = () => {
         autoplay: {
             delay: 2500,
             disableOnInteraction: false
+        }
+    });
+};
+
+export const updateAlbumsCount = async () => {
+    const response = await fetch(`/api/profile/albums/count`);
+    const data = await response.json();
+    data.forEach(({ albumID, saveCount }) => {
+        const selector = `.albumWrapper[data-album="${albumID}"]`;
+        const albumWrapper = document.querySelector(selector);
+        if (!albumWrapper) return false;
+        const countWrapper = albumWrapper.querySelector(`.albumCoverWrapper`);
+        let countNode = albumWrapper.querySelector(`.albumPicturesCount`);
+        // if updated saveCount = 0 && exist count node
+        if (countNode && saveCount === 0) return countWrapper.removeChild(countNode);
+        // if updated saveCount != 0 && exist count node
+        if (countNode) return countNode.innerText = saveCount;
+        // if updated saveCount > 0 && not exist count node
+        if (!countNode && saveCount > 0) {
+            countNode = document.createElement(`div`);
+            countNode.innerText = saveCount;
+            countNode.classList.add(`albumPicturesCount`);
+            countWrapper.appendChild(countNode);
         }
     });
 };

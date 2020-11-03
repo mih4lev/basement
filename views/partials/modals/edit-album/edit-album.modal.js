@@ -83,6 +83,7 @@ export const editAlbumModal = () => {
         const responseData = await requestData(`DELETE`, deleteButton);
         if (responseData.status !== 1) return false; // show error
         // hide edit modal && change album data
+        location.reload();
         const albumID = modalNode.dataset.album;
         albumList.removeChild(albumList.querySelector(`[data-album="${albumID}"]`));
         modalNode.classList.remove(`activeModal`);
