@@ -72,7 +72,7 @@ export const createAlbumModal = () => {
         //     coverWrapper.appendChild(defaultNode);
         // }
         const albumLink = albumClone.querySelector(`.albumLink`);
-        albumLink.setAttribute(`href`, `profile/saved/${responseData.requestID}`);
+        albumLink.setAttribute(`href`, `/profile/saved/${responseData.requestID}`);
         albumList.insertBefore(albumClone, albumList.children[albumList.children.length -1]);
     }
 
