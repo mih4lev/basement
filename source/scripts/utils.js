@@ -195,8 +195,8 @@ export const loader = (renderData) => {
 
 export const requestData = async (requestURL) => {
     const wrapper = document.querySelector(`.elementsWrapper`);
-    if (!wrapper) return false;
-    const URL = requestURL || wrapper.dataset.api;
+    const URL = requestURL || (wrapper && wrapper.dataset.api);
+    if (!URL) return false;
     const response = await fetch(URL);
     const data = await response.json();
     window.responseData = data[Object.keys(data)];
