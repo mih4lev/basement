@@ -11,6 +11,7 @@ export const editAlbumModal = () => {
     const modalAlbumTitle = modalNode.querySelector(`.fieldInput`);
     const updateButton = modalNode.querySelector(`.submitButton`);
     const deleteButton = modalNode.querySelector(`.deleteButton`);
+    const modalAlbumField = modalNode.querySelector(`#editAlbumCover`);
 
     const editButtons = [...document.querySelectorAll(`.editAlbumButton`)];
     const albumList = document.querySelector(`.albumList`);
@@ -30,6 +31,7 @@ export const editAlbumModal = () => {
         const coverNode = modalNode.querySelector(`.inputFieldPicture`);
         if (albumCoverNode.src) coverNode.src = albumCoverNode.src;
         else coverNode.removeAttribute(`src`);
+        modalAlbumField.value = ``;
         // if (albumCoverNode.src) {
         //     coverNode.src = albumCoverNode.src;
         // } else {
@@ -117,6 +119,7 @@ export const editAlbumModal = () => {
 
     // upload photo handler
     const changeHandler = () => {
+        console.log(`change`);
         if (!modalPhotoField.files || !modalPhotoField.files.length) return false;
         showUploadFiles([...modalPhotoField.files]);
     };
