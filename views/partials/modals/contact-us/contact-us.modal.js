@@ -24,6 +24,9 @@ export const contactUsModal = () => {
     // show modal
     addButtons.forEach((addButton) => {
         addButton.addEventListener(`click`, changeModalVisible(modalNode));
+        addButton.addEventListener(`click`, () => {
+            if (window.innerWidth <= 767) location.href = "#";
+        });
     });
 
 };
