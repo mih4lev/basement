@@ -29,6 +29,7 @@ export const editAlbumModal = () => {
         modalNode.querySelector(`#editAlbumID`).value = albumID;
         const coverNode = modalNode.querySelector(`.inputFieldPicture`);
         if (albumCoverNode.src) coverNode.src = albumCoverNode.src;
+        else coverNode.removeAttribute(`src`);
         // if (albumCoverNode.src) {
         //     coverNode.src = albumCoverNode.src;
         // } else {
