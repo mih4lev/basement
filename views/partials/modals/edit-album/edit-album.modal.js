@@ -119,7 +119,6 @@ export const editAlbumModal = () => {
 
     // upload photo handler
     const changeHandler = () => {
-        console.log(`change`);
         if (!modalPhotoField.files || !modalPhotoField.files.length) return false;
         showUploadFiles([...modalPhotoField.files]);
     };
