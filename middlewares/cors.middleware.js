@@ -1,6 +1,6 @@
 const { CORS } = process.env;
 
-const allowedOrigins = [ CORS ];
+const allowedOrigins = [ CORS, `http://192.168.1.67:8888` ];
 const corsOptions = {
     origin: function(origin, callback){
         if (!origin) return callback(null, true);

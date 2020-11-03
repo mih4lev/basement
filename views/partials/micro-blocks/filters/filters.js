@@ -263,7 +263,7 @@ export const filters = () => {
             //
             const touchEndHandler = () => {
                 document.removeEventListener(`touchmove`, mouseMoveHandler);
-                document.removeEventListener(`touchend`, mouseUpHandler);
+                document.removeEventListener(`touchend`, touchEndHandler);
                 collectFiltersData();
             };
             const touchStartHandler = (event) => {
