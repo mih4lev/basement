@@ -6,3 +6,4 @@ requestData(`/api/tips/all`);
 filters();
 filterEvents(blogData);
 loader(blogData);
+

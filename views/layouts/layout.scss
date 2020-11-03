@@ -1427,4 +1427,20 @@ strong {
         height: auto;
         filter: drop-shadow(5px 5px 12px rgba(0, 0, 0, 0.25));
     }
+    table {
+        margin-top: 20px;
+    }
+    table.previews {
+        margin: 20px -5px 0;
+        border-spacing: 5px;
+        td {
+            width: 25%;
+            img {
+                filter: none;
+                &:hover {
+                    opacity: 0.75;
+                }
+            }
+        }
+    }
 }
