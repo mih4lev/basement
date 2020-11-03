@@ -291,7 +291,7 @@ export const renderElements = (elements) => {
     const template = document.querySelector(`.elementTemplate`);
     const nodeClone = template.content.cloneNode(true);
     elements.forEach(({ type, ...data }) => {
-        if (type === `wrapper`) updateWrapper(nodeClone, data)
+        if (type === `wrapper`) updateWrapper(nodeClone, data);
         if (type === `link`) createLink(nodeClone, data);
         if (type === `picture`) createCover(nodeClone, data);
         if (type === `text`) createText(nodeClone, data);
