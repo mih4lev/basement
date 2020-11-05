@@ -255,6 +255,7 @@ router.get(`/edit/:ideaID`, async (request, response, next) => {
     if (isModerated && !isArchived) request.data['locationLink'] = `/basement-ideas/`;
     request.data['backButton'] = (isArchived) ? archive : (isModerated) ? moderated : toModerate;
     const data = { ...request.data, ...content };
+    console.log(data);
     const template = `admin/ideas/edit-idea.admin.hbs`;
     response.render(template, data);
 });

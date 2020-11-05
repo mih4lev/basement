@@ -15,9 +15,13 @@
     </section>
 
     <section class="fieldSection">
-        <div class="fieldWrapper">
+        <div class="fieldWrapper" style="width: 66%; margin-right: 10px;">
             <label class="fieldLabel" for="ideaTitle">Idea title</label>
             <input class="textField" type="text" id="ideaTitle" name="ideaTitle" value="{{{ page.ideaTitle }}}">
+        </div>
+        <div class="fieldWrapper" style="width: 34%;">
+            <label class="fieldLabel" for="uploadedBy">Uploaded by</label>
+            <input class="textField" type="text" disabled id="uploadedBy" value="{{{ page.uploadUser }}}">
         </div>
         <div class="buttonWrapper">
             <button class="deleteButton" type="button" data-redirect="/admin/basement-ideas/to-moderate/"

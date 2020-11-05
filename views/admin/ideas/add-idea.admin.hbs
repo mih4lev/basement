@@ -6,15 +6,18 @@
         <div class="fileWrapper" style="width: 252px; height: 252px;">
             <input type="file" class="fileField" id="ideaImage" name="ideaImage">
             <label class="fileLabel" for="ideaImage">Idea image</label>
-            <a href="{{{ page.ideaImage }}}.jpg" class="previewButton hiddenButton"
-               data-fslightbox="preview">Zoom-in preview</a>
+            <a href="" class="previewButton hiddenButton" data-fslightbox="preview">Zoom-in preview</a>
         </div>
     </section>
 
     <section class="fieldSection">
-        <div class="fieldWrapper">
+        <div class="fieldWrapper" style="width: 69%; margin-right: 10px;">
             <label class="fieldLabel" for="ideaTitle">Idea title</label>
             <input class="textField" type="text" id="ideaTitle" name="ideaTitle">
+        </div>
+        <div class="fieldWrapper" style="width: 31%;">
+            <label class="fieldLabel" for="uploadedBy">Uploaded by</label>
+            <input class="textField" type="text" id="uploadedBy" disabled value="{{{ profile.user }}}">
         </div>
     </section>
 

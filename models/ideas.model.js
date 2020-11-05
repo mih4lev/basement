@@ -506,6 +506,7 @@ const requestIdea = async (ideaID, userID = 0) => {
                 ideas.isModerated, ideas.isHomeIdea, ideas.isArchived, ideas.timestamp,
                 COUNT(albums_relation.ideaID) AS saveCount, ideas_creators.creatorName,
                 CONCAT('/portfolio/', portfolio.workLink) as portfolioLink,
+                CONCAT(users.name, ' ', users.surname) as uploadUser, 
                 IF (ideas.userID = ?, false, true) as isVisible, ideas.portfolioID,
                 IF (? = 0, false, true) as isLogin,
                 IF (
