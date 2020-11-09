@@ -137,7 +137,6 @@ export const editProfileModal = () => {
         field.addEventListener(`input`, () => {
             const isValid = validateMAP[fieldName].test(field.value);
             const classAction = (isValid && field.value) ? `remove` : `add`;
-            console.log(!field.value);
             field.classList[classAction](`errorField`);
             checkButtonStatus();
         });

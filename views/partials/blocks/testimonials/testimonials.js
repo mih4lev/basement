@@ -58,7 +58,6 @@ export const testimonialsCarousel = () => {
     let touchValue;
     const touchendHandler = (event) => {
         const offsetValue = touchValue - event.changedTouches[0].pageX;
-        console.log(offsetValue);
         if (offsetValue >= 0 && offsetValue < 5) return false;
         // event.preventDefault();
         event.stopPropagation();

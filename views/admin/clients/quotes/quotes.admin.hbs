@@ -1,4 +1,4 @@
-<form class="formNode" action="/admin/forms/contact-us/edit">
+<form class="formNode">
 
     <input class="hiddenField" name="bookingID" type="hidden" value="{{{ form.requestID }}}">
 
@@ -12,8 +12,8 @@
             <input class="textField" type="text" id="lastName" name="lastName" value="{{{ form.lastName }}}">
         </div>
         <div class="buttonWrapper">
-            <button class="deleteButton" type="button" data-redirect="/admin/forms/instant-quote/"
-                    data-action="/admin/forms/instant-quote/{{{ form.requestID }}}">
+            <button class="deleteButton" type="button" data-redirect="/admin/clients/instant-quote/"
+                    data-action="/admin/clients/instant-quote/{{{ form.requestID }}}">
                 Delete entry
             </button>
             <div class="buttonHiddenWrapper hiddenWrapper">

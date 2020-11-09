@@ -349,8 +349,6 @@ const requestHomeIdeas = async ({ userID = 0 } = {}) => {
             WHERE ideas.isModerated = 1 && ideas.isHomeIdea = 1 && ideas.isArchived = 0 
             ORDER BY ideas.timestamp DESC LIMIT 4
         `;
-        const ideas = await DB(query, [ userID, userID, userID ]);
-        console.log(ideas);
         return { ideas: await DB(query, [ userID, userID, userID ]) };
     } catch (error) {
         console.log(error);
