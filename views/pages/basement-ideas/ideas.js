@@ -4,12 +4,13 @@ const imageSize = [
 ];
 
 export const ideasData = (data) => {
-    const { ideaID, ideaImage, ideaTitle, ideaAuthor, isVisible, isLogin } = data;
+    const { ideaID, ideaImage, ideaTitle, ideaAuthor, isVisible, isLogin, editLink } = data;
     return [
         {
             type: `picture`, parent: `.imageWrapper`, alt: ideaTitle, image: ideaImage,
             imageSize, selector: `ideaPhoto`, data: `idea`, value: ideaID
         },
+        { type: `editLink`, parent: `.imageWrapper`, selector: `adminEdit`, link: editLink },
         { type: `text`, selector: `.ideaTitle`, text: ideaTitle },
         { type: `text`, selector: `.ideaAuthor`, text: ideaAuthor },
         { type: `custom`, selector: `.saveIdea`, name: `idea`, value: ideaID, isVisible, isLogin }

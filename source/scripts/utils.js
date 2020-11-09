@@ -209,6 +209,16 @@ const createLink = (nodeClone, { selector, title, link }) => {
     linkNode.setAttribute(`href`, link);
 };
 
+const createEditLink = (nodeClone, { parent, selector, link }) => {
+    if (!link) return false;
+    const parentNode = nodeClone.querySelector(parent);
+    const editLink = document.createElement(`a`);
+    editLink.setAttribute(`href`, link);
+    editLink.classList.add(selector);
+    editLink.setAttribute(`target`, `_blank`);
+    parentNode.appendChild(editLink);
+};
+
 const createPlug = (plug) => {
     const plugNode = document.createElement(`div`);
     plug.forEach((selector) => plugNode.classList.add(selector));
@@ -293,6 +303,7 @@ export const renderElements = (elements) => {
     elements.forEach(({ type, ...data }) => {
         if (type === `wrapper`) updateWrapper(nodeClone, data);
         if (type === `link`) createLink(nodeClone, data);
+        if (type === `editLink`) createEditLink(nodeClone, data);
         if (type === `picture`) createCover(nodeClone, data);
         if (type === `text`) createText(nodeClone, data);
         if (type === `data`) createData(nodeClone, data);

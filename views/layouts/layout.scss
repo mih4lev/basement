@@ -1,3 +1,7 @@
+@keyframes rotate {
+    to { transform: rotate(360deg); }
+}
+
 html {
     height: 100%;
 }
@@ -1261,6 +1265,40 @@ strong {
             &:hover {
                 //filter: saturate(200%);
             }
+        }
+        .adminEdit {
+            display: none;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            margin: 0;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            font-size: 0;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            &:before {
+                animation: rotate 2s linear infinite;
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin: -7px -7px;
+                width: 14px;
+                height: 14px;
+                background-size: 14px 14px;
+                background-image: url("/public/images/vector/settings-icon.svg");
+            }
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.5);
+                &:before {
+                    background-image: url("/public/images/vector/settings-icon_white.svg");
+                }
+            }
+        }
+        &:hover .adminEdit {
+            display: block;
         }
         .uploadedPhoto {
             width: 143px;

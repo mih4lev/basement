@@ -9,6 +9,9 @@
                  srcset="{{{ ideaImage }}}_252x252.jpg, {{{ ideaImage }}}_504x504.jpg 2x"
                  alt="{{{ ideaTitle }}}">
         </picture>
+        {{# if editLink }}
+            <a href="{{{ editLink }}}" target="_blank" class="adminEdit">Edit idea</a>
+        {{/ if }}
     </div>
     {{# if isVisible }}
         {{# if isLogin }}

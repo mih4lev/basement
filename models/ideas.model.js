@@ -62,13 +62,18 @@ const requestCategoryIdeasByID = async (requestData) => {
                     FROM albums_relation WHERE ideas.ideaID = albums_relation.ideaID
                 ) as popular,
                 IF (ideas.userID = ?, false, true) as isVisible,
-                IF (? = 0, false, true) as isLogin
+                IF (? = 0, false, true) as isLogin,
+                IF (
+                    tempUsers.isAdmin = 1, 
+                    CONCAT('/admin/basement-ideas/edit/', ideas.ideaID), NULL
+                ) as editLink
             FROM ideas_relation 
             LEFT JOIN ideas_categories ON ideas_relation.categoryID = ideas_categories.categoryID 
             LEFT JOIN ideas_categories AS cat1 ON ideas_categories.categoryParent = cat1.categoryID 
             lEFT JOIN ideas_categories AS cat2 ON cat1.categoryParent = cat2.categoryID 
             LEFT JOIN ideas ON ideas.ideaID = ideas_relation.ideaID 
             LEFT JOIN users ON users.userID = ideas.userID 
+            LEFT JOIN users AS tempUsers ON tempUsers.userID = ?
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID 
             WHERE ( 
                 cat2.categoryID = ? || cat1.categoryID = ? || ideas_categories.categoryID = ? 
@@ -77,7 +82,7 @@ const requestCategoryIdeasByID = async (requestData) => {
             ORDER BY ?? DESC, ideas.timestamp DESC 
             LIMIT ?
         `;
-        const params = [userID, userID, categoryID, categoryID, categoryID, order, limit];
+        const params = [userID, userID, userID, categoryID, categoryID, categoryID, order, limit];
         return { ideas: await DB(query, params) };
     } catch (error) {
         console.log(error);
@@ -102,13 +107,18 @@ const requestCategoryFilteredIdeasByID = async (requestData) => {
                     FROM albums_relation WHERE ideas.ideaID = albums_relation.ideaID
                 ) as popular,
                 IF (ideas.userID = ?, false, true) as isVisible,
-                IF (? = 0, false, true) as isLogin
+                IF (? = 0, false, true) as isLogin,
+                IF (
+                    tempUsers.isAdmin = 1, 
+                    CONCAT('/admin/basement-ideas/edit/', ideas.ideaID), NULL
+                ) as editLink
             FROM ideas_relation 
             LEFT JOIN ideas_categories ON ideas_relation.categoryID = ideas_categories.categoryID
             LEFT JOIN ideas_categories AS cat1 ON ideas_categories.categoryParent = cat1.categoryID
             lEFT JOIN ideas_categories AS cat2 ON cat1.categoryParent = cat2.categoryID
             LEFT JOIN ideas ON ideas.ideaID = ideas_relation.ideaID 
             LEFT JOIN users ON users.userID = ideas.userID
+            LEFT JOIN users AS tempUsers ON tempUsers.userID = ?
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
             JOIN ideas_properties as filters ON ideas.ideaID = filters.ideaID
             WHERE (
@@ -120,7 +130,7 @@ const requestCategoryFilteredIdeasByID = async (requestData) => {
             ORDER BY ?? DESC, ideas.timestamp DESC 
             LIMIT ?
         `;
-        const params = [userID, userID, categoryID, categoryID, categoryID, filterArray, order, limit];
+        const params = [userID, userID, userID, categoryID, categoryID, categoryID, filterArray, order, limit];
         return { ideas: await DB(query, params) };
     } catch (error) {
         console.log(error);
@@ -145,13 +155,18 @@ const requestCategoryIdeasByURL = async (requestData) => {
                     FROM albums_relation WHERE ideas.ideaID = albums_relation.ideaID
                 ) as popular,
                 IF (ideas.userID = ?, false, true) as isVisible,
-                IF (? = 0, false, true) as isLogin
+                IF (? = 0, false, true) as isLogin,
+                IF (
+                    tempUsers.isAdmin = 1, 
+                    CONCAT('/admin/basement-ideas/edit/', ideas.ideaID), NULL
+                ) as editLink
             FROM ideas_relation 
             LEFT JOIN ideas_categories ON ideas_relation.categoryID = ideas_categories.categoryID
             LEFT JOIN ideas_categories AS cat1 ON ideas_categories.categoryParent = cat1.categoryID
             lEFT JOIN ideas_categories AS cat2 ON cat1.categoryParent = cat2.categoryID
             LEFT JOIN ideas ON ideas.ideaID = ideas_relation.ideaID 
             LEFT JOIN users ON users.userID = ideas.userID
+            LEFT JOIN users AS tempUsers ON tempUsers.userID = ?
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
             WHERE (
                 cat2.categoryID = (
@@ -171,7 +186,7 @@ const requestCategoryIdeasByURL = async (requestData) => {
             ORDER BY ?? DESC, ideas.timestamp DESC 
             LIMIT ?
         `;
-        const params = [ userID, userID, categoryURL, categoryURL, categoryURL, order, limit ];
+        const params = [ userID, userID, userID, categoryURL, categoryURL, categoryURL, order, limit ];
         return { ideas: await DB(query, params) };
     } catch (error) {
         console.log(error);
@@ -192,13 +207,18 @@ const requestCategoryFilteredIdeasByURL = async (requestData) => {
                 ) as ideaAuthor,
                 ideas_creators.creatorName as ideaCreator,
                 IF (ideas.userID = ?, false, true) as isVisible,
-                IF (? = 0, false, true) as isLogin
+                IF (? = 0, false, true) as isLogin,
+                IF (
+                    tempUsers.isAdmin = 1, 
+                    CONCAT('/admin/basement-ideas/edit/', ideas.ideaID), NULL
+                ) as editLink
             FROM ideas_relation 
             LEFT JOIN ideas_categories ON ideas_relation.categoryID = ideas_categories.categoryID
             LEFT JOIN ideas_categories AS cat1 ON ideas_categories.categoryParent = cat1.categoryID
             lEFT JOIN ideas_categories AS cat2 ON cat1.categoryParent = cat2.categoryID
             LEFT JOIN ideas ON ideas.ideaID = ideas_relation.ideaID 
             LEFT JOIN users ON users.userID = ideas.userID
+            LEFT JOIN users AS tempUsers ON tempUsers.userID = ?
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
             JOIN ideas_properties as filters ON ideas.ideaID = filters.ideaID
             WHERE (
@@ -219,7 +239,7 @@ const requestCategoryFilteredIdeasByURL = async (requestData) => {
             ORDER BY ideas.timestamp DESC
             LIMIT ?
         `;
-        const params = [userID, userID, categoryURL, categoryURL, categoryURL, filterArray, limit];
+        const params = [userID, userID, userID, categoryURL, categoryURL, categoryURL, filterArray, limit];
         return { ideas: await DB(query, params) };
     } catch (error) {
         console.log(error);
@@ -238,14 +258,19 @@ const requestAllIdeas = async ({ limit = 1000, userID = 0 } = {}) => {
                     CONCAT(users.name, ' ', users.surname)
                 ) as ideaAuthor,
                 IF (ideas.userID = ?, false, true) as isVisible,
-                IF (? = 0, false, true) as isLogin
+                IF (? = 0, false, true) as isLogin,
+                IF (
+                    tempUsers.isAdmin = 1, 
+                    CONCAT('/admin/basement-ideas/edit/', ideas.ideaID), NULL
+                ) as editLink
             FROM ideas 
             JOIN users ON ideas.userID = users.userID
+            LEFT JOIN users AS tempUsers ON tempUsers.userID = ?
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
             WHERE ideas.isArchived = 0 
             ORDER BY ideas.timestamp DESC LIMIT ?
         `;
-        return { ideas: await DB(query, [userID, userID, limit]) };
+        return { ideas: await DB(query, [userID, userID, userID, limit]) };
     } catch (error) {
         console.log(error);
         return {};
@@ -267,14 +292,19 @@ const requestIdeas = async ({ limit = 100000, userID = 0, order = `ideas.timesta
                     FROM albums_relation WHERE ideas.ideaID = albums_relation.ideaID
                 ) as popular,
                 IF (ideas.userID = ?, false, true) as isVisible,
-                IF (? = 0, false, true) as isLogin
+                IF (? = 0, false, true) as isLogin,
+                IF (
+                    tempUsers.isAdmin = 1, 
+                    CONCAT('/admin/basement-ideas/edit/', ideas.ideaID), NULL
+                ) as editLink
             FROM ideas 
             JOIN users ON ideas.userID = users.userID
+            LEFT JOIN users AS tempUsers ON tempUsers.userID = ?
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
             WHERE ideas.isModerated = 1 && ideas.isArchived = 0 
             ORDER BY ?? DESC, ideas.timestamp DESC LIMIT ?
         `;
-        return { ideas: await DB(query, [ userID, userID, order, limit ]) };
+        return { ideas: await DB(query, [ userID, userID, userID, order, limit ]) };
     } catch (error) {
         console.log(error);
         return {};
@@ -307,14 +337,21 @@ const requestHomeIdeas = async ({ userID = 0 } = {}) => {
                     CONCAT(users.name, ' ', users.surname)
                 ) as ideaAuthor,
                 IF (ideas.userID = ?, false, true) as isVisible,
-                IF (? = 0, false, true) as isLogin
+                IF (? = 0, false, true) as isLogin,
+                IF (
+                    tempUsers.isAdmin = 1, 
+                    CONCAT('/admin/basement-ideas/edit/', ideas.ideaID), NULL
+                ) as editLink
             FROM ideas 
             JOIN users ON ideas.userID = users.userID
+            LEFT JOIN users AS tempUsers ON tempUsers.userID = ?
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
             WHERE ideas.isModerated = 1 && ideas.isHomeIdea = 1 && ideas.isArchived = 0 
             ORDER BY ideas.timestamp DESC LIMIT 4
         `;
-        return { ideas: await DB(query, [userID, userID]) };
+        const ideas = await DB(query, [ userID, userID, userID ]);
+        console.log(ideas);
+        return { ideas: await DB(query, [ userID, userID, userID ]) };
     } catch (error) {
         console.log(error);
         return {};
@@ -408,16 +445,21 @@ const requestFilteredIdeas = async ({ limit = 1000000, userID = 0, filterArray, 
                     FROM albums_relation WHERE ideas.ideaID = albums_relation.ideaID
                 ) as popular,
                 IF (ideas.userID = ?, false, true) as isVisible,
-                IF (? = 0, false, true) as isLogin
+                IF (? = 0, false, true) as isLogin,
+                IF (
+                    tempUsers.isAdmin = 1, 
+                    CONCAT('/admin/basement-ideas/edit/', ideas.ideaID), NULL
+                ) as editLink
             FROM ideas 
             JOIN users ON ideas.userID = users.userID
+            LEFT JOIN users AS tempUsers ON tempUsers.userID = ?
             JOIN ideas_properties as filters ON ideas.ideaID = filters.ideaID
             LEFT JOIN ideas_creators ON ideas_creators.creatorID = ideas.creatorID
             WHERE filters.filterID IN (?) && ideas.isModerated = 1 && ideas.isArchived = 0 
             GROUP BY ideas.ideaID 
             ORDER BY ?? DESC, ideas.timestamp DESC LIMIT ?
         `;
-        return { ideas: await DB(query, [ userID, userID, filterArray, order, limit ]) };
+        return { ideas: await DB(query, [ userID, userID, userID, filterArray, order, limit ]) };
     } catch (error) {
         console.log(error);
         return {};
