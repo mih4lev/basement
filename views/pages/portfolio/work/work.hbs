@@ -74,6 +74,10 @@
         </div>
         <div class="buttonWrapper">
             <a href="/portfolio/" title="Return to portfolio" class="backButton">GO BACK</a>
+            {{# if isAdmin }}
+                <a href="/admin/portfolio/edit/{{{ page.portfolioID }}}" title="Edit portfolio entry"
+                   class="adminEditButton" target="_blank">EDIT ENTRY</a>
+            {{/ if }}
         </div>
     </div>
 </section>

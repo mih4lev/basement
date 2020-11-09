@@ -374,6 +374,22 @@ strong {
     }
 }
 
+.adminEditButton {
+    @extend %menuButton;
+    &:before {
+        background: $grey;
+        transform: rotate(180deg) scale(0.6);
+        @include minWidth(480) {
+            transform: rotate(180deg) scale(1);
+        }
+    }
+    &:hover {
+        &:before {
+            background: $black;
+        }
+    }
+}
+
 .sourceButton {
     color: $white;
     @extend %blueButton;
