@@ -41,6 +41,10 @@
     <div class="wrapper center">
         <div class="twoColumnsWrapper">
             <a href="/about-us/in-the-press/" class="backButton">GO BACK</a>
+            {{# if isAdmin }}
+                <a class="adminEditButton rightPosition" target="_blank"
+                   href="/admin/about-us/press/edit/{{{ page.pressID }}}">EDIT ENTRY</a>
+            {{/ if }}
             {{# if page.pressSource }}
                 <a class="sourceButton" href="{{{ page.pressSource }}}" target="_blank">SEE IN THE SOURCE</a>
             {{/ if }}

@@ -47,9 +47,13 @@
     <div class="wrapper center">
         <div class="twoColumnsWrapper">
             <a class="backButton" href="/about-us/testimonials/">GO BACK</a>
+            {{# if isAdmin }}
+                <a class="adminEditButton rightPosition" target="_blank"
+                   href="/admin/about-us/testimonials/edit/{{{ page.testimonialID }}}">EDIT ENTRY</a>
+            {{/ if }}
             {{# if page.workLink }}
                 <a class="sourceButton" href="/portfolio/{{{ page.workLink }}}">VIEW PROJECT</a>
-            {{/if}}
+            {{/ if }}
         </div>
     </div>
 </section>

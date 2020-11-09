@@ -388,6 +388,12 @@ strong {
             background: $black;
         }
     }
+    &.rightPosition {
+        margin: 0 5px 0 auto;
+        @include minWidth(480) {
+            margin: 0 10px 0 auto;
+        }
+    }
 }
 
 .sourceButton {
