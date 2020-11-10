@@ -5,7 +5,7 @@ export const testimonialsCarousel = () => {
     const sectionTitle = document.querySelector(`.reviewsSection .sectionTitle`);
     const cards = [...document.querySelectorAll(`.reviewsWrapper .cardWrapper`)];
     const wrapperWidth = reviewsWrapper.scrollWidth;
-    const reviewsArrows = [...document.querySelectorAll(`.carouselArrow`)];
+    const reviewsArrows = [...document.querySelectorAll(`.reviewsSection .carouselArrow`)];
     const cardWidth = (pageWidth >= 1440) ? 350 : (pageWidth >= 1000) ? 320 : (pageWidth >= 480) ? 285 : 204;
     if (pageWidth >= 1000) reviewsWrapper.style.marginLeft = `${cardWidth}px`; // > 1000
     const wrapperOffset = () => {
